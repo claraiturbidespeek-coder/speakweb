@@ -4,12 +4,6 @@
    Imagen destacada, índice y tarjetas de relacionados no existen en la
    referencia: esos vienen del sistema del sitio y de landing.css. */
 
-.main {
-  max-width: none;
-  margin: 0;
-  padding: 0;
-}
-
 /* ---------- Cabecera — padding 10%/4% vertical, 8% lateral ---------- */
 
 .cabecera {

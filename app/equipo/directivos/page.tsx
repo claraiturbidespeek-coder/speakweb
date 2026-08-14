@@ -1,6 +1,6 @@
 export default function Page() {
   return (
-    <main>
+    <main className="contenedor">
       <h1>Directivos</h1>
       <p>/equipo/directivos/</p>
     </main>

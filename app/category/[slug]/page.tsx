@@ -16,7 +16,7 @@ export default async function Page(props: PageProps<"/category/[slug]">) {
   }
 
   return (
-    <main>
+    <main className="contenedor">
       <h1>Categoría</h1>
       <p>/category/{slug}/</p>
     </main>

@@ -3,12 +3,6 @@
    con los porcentajes convertidos al viewport de referencia de 1416px.
    El filtro y la carga progresiva no existen en el original. */
 
-.main {
-  max-width: none;
-  margin: 0;
-  padding: 0;
-}
-
 /* ---------- Cabecera ----------
    En la referencia los tres contenedores son `e-con-full`: sin `.e-con-inner`,
    el tope de 1140px de Elementor no se les aplica. Son de ancho completo con

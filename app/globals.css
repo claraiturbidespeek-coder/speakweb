@@ -31,7 +31,14 @@ body {
   background: #fff;
 }
 
-main {
+/* `main` no lleva política de maquetación: es un elemento semántico, no un
+   contenedor. Acotarlo obligaba a cada página con secciones a sangre a anularlo
+   desde su propio módulo, y quien se olvidaba acababa con el contenido
+   encajonado sin que nada lo delatara. Ahora el contenedor es explícito: la
+   página que quiera caja aplica .contenedor; la que maqueta a sangre no hace
+   nada. Si te olvidas del contenedor se ve al instante. */
+
+.contenedor {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 32px 28px;

@@ -343,6 +343,7 @@ const SCRIPT_VOLVER_ARRIBA = `
 export default function Page() {
   return (
     <>
+<main>
 {/* HERO */}
 <section className="hero">
   <img className="deco deco-hero" src="/images/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy" />
@@ -777,6 +778,7 @@ export default function Page() {
   <p>Permítanos diseñar un programa de inglés que su equipo sí termine, con avance medible y evidencia para Dirección.</p>
   <button className="btn-white" onClick={() => window.openModal()}>Solicite Información</button>
 </section>
+</main>
 {/* MODAL FORMULARIO */}
 <div className="modal-overlay" id="lead-modal" onClick={(e) => window.overlayClose(e)}>
   <div className="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">

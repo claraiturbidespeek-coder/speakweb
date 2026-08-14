@@ -3,14 +3,6 @@
    a nuestro contenedor de 1160px con 28px de padding).
    Las alturas en vh se convirtieron con la altura de viewport de la referencia: 626px. */
 
-/* globals.css limita `main` al contenedor. Aquí el ancho lo gobierna cada
-   sección: la sección va a sangre y lleva el fondo, y .inner centra el contenido. */
-.main {
-  max-width: none;
-  margin: 0;
-  padding: 0;
-}
-
 .inner {
   max-width: var(--container-max);
   margin: 0 auto;

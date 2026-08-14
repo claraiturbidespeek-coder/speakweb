@@ -214,7 +214,7 @@ const POSTS = [
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <main>
       {/* 1. Hero */}
       <section className={styles.hero}>
         <div className={styles.heroInner}>

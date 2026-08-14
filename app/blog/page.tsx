@@ -16,7 +16,7 @@ export default function Blog() {
   const categorias = obtenerCategorias();
 
   return (
-    <main className={styles.main}>
+    <main>
       <section className={styles.cabecera}>
         <h1 className={styles.titulo}>Centro de Recursos</h1>
         <p className={styles.subtitulo}>

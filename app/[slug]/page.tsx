@@ -64,7 +64,7 @@ export default async function Nota(props: PageProps<"/[slug]">) {
   const relacionados = obtenerRelacionados(post.slug, post.categorySlug);
 
   return (
-    <main className={styles.main}>
+    <main>
       <article>
         <header className={styles.cabecera}>
           <div className={styles.cabeceraInner}>
