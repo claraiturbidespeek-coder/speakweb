@@ -1,0 +1,122 @@
+/* Patrones tomados de app/idioma/ingles-para-empresas/landing.css (footer, líneas 574-602). */
+
+.footer {
+  background: var(--color-navy);
+  padding: 64px 0 0;
+  font-family: inherit;
+}
+
+.inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 28px 56px;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 48px;
+  color: var(--color-white);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logoWrap {
+  margin: 0 0 16px;
+}
+
+.about {
+  margin: 0 0 20px;
+  max-width: 320px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-white);
+}
+
+/* La referencia usa un cuadro de 40x40 para el icono de LinkedIn. Aquí el enlace
+   es texto, así que se conserva el borde y el hover, con ancho según contenido. */
+.social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.social:hover {
+  color: #ffd6df;
+  border-color: #ffd6df;
+}
+
+.social:focus-visible,
+.link:focus-visible,
+.logoWrap a:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+/* La landing declara `nav { position: sticky; background; backdrop-filter; border-bottom }`
+   como selector de elemento: en esa ruta volvería sticky a estas dos columnas. Se neutraliza. */
+.col {
+  position: static;
+  top: auto;
+  z-index: auto;
+  background: none;
+  backdrop-filter: none;
+  border-bottom: none;
+}
+
+.title {
+  margin: 0 0 18px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: var(--color-white);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.link {
+  font-size: 14px;
+  color: var(--color-white);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.link:hover {
+  color: #ffd6df;
+}
+
+.bottom {
+  background: #0f2330;
+  padding: 20px 28px;
+  text-align: center;
+}
+
+.bottom p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-white);
+}
+
+@media (max-width: 600px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
