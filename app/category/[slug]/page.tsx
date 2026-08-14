@@ -1,6 +1,12 @@
 import { notFound } from "next/navigation";
 
-const SLUGS_VALIDOS = ["categoria-de-ejemplo"];
+const SLUGS_VALIDOS = [
+  "diagnostico-de-necesidades",
+  "seleccion-de-proveedor",
+  "implementacion-del-programa",
+  "resultados-y-roi",
+  "nearshoring-y-expansion",
+];
 
 export default async function Page(props: PageProps<"/category/[slug]">) {
   const { slug } = await props.params;

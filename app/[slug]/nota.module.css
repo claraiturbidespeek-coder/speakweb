@@ -1,0 +1,411 @@
+/* Nota del blog.
+   Tipografía, espaciado vertical y tratamiento del cuerpo: post-6445.css de la
+   referencia, con los porcentajes convertidos al viewport de 1416px.
+   Imagen destacada, índice y tarjetas de relacionados no existen en la
+   referencia: esos vienen del sistema del sitio y de landing.css. */
+
+.main {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Cabecera — padding 10%/4% vertical, 8% lateral ---------- */
+
+.cabecera {
+  background: #f0f9ff;
+  padding: 142px 0 57px;
+}
+
+.cabeceraInner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-navy);
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icono {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.metaEnlace {
+  color: var(--color-navy);
+  text-decoration: none;
+}
+
+.metaEnlace:hover {
+  color: var(--color-red);
+}
+
+.titulo {
+  margin: 0;
+  max-width: 900px;
+  text-align: center;
+  font-size: 44px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  color: var(--color-navy);
+}
+
+.extracto {
+  margin: 0;
+  max-width: 80%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 26px;
+  color: var(--color-navy);
+}
+
+/* ---------- Imagen destacada, a ancho completo ---------- */
+
+.destacada {
+  display: block;
+  width: 100%;
+  max-height: 520px;
+  object-fit: cover;
+}
+
+/* ---------- Cuerpo — padding 4% vertical, 6% lateral, gap 40 ---------- */
+
+.cuerpo {
+  padding: 57px 0 85px;
+}
+
+.cuerpoInner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 28px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 40px;
+  align-items: start;
+}
+
+.columnaPrincipal {
+  min-width: 0;
+}
+
+.lectura {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 30px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-navy);
+}
+
+/* ---------- Contenido markdown — 17px / 33px ---------- */
+
+.contenido {
+  font-size: 17px;
+  line-height: 33px;
+  color: var(--color-navy);
+}
+
+.contenido > *:first-child {
+  margin-top: 0;
+}
+
+.contenido p {
+  margin: 0 0 24px;
+}
+
+.contenido h2 {
+  margin: 48px 0 18px;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  color: var(--color-navy);
+  scroll-margin-top: 92px;
+}
+
+.contenido h3 {
+  margin: 36px 0 14px;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-navy);
+  scroll-margin-top: 92px;
+}
+
+.contenido h4 {
+  margin: 30px 0 12px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-navy);
+  scroll-margin-top: 92px;
+}
+
+.contenido ul,
+.contenido ol {
+  margin: 0 0 24px;
+  padding-left: 22px;
+}
+
+.contenido li {
+  margin: 0 0 10px;
+}
+
+.contenido a {
+  color: var(--color-red);
+  text-decoration: underline;
+}
+
+.contenido a:hover {
+  color: #8f1832;
+}
+
+.contenido strong {
+  font-weight: 700;
+}
+
+.contenido img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 32px 0;
+}
+
+.contenido blockquote {
+  margin: 32px 0;
+  padding: 4px 0 4px 24px;
+  border-left: 3px solid var(--color-red);
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.contenido blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.contenido hr {
+  margin: 40px 0;
+  border: none;
+  border-top: 1px solid rgba(26, 60, 77, 0.15);
+}
+
+.contenido table {
+  width: 100%;
+  margin: 0 0 24px;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.contenido th,
+.contenido td {
+  padding: 10px 12px;
+  border: 1px solid rgba(26, 60, 77, 0.15);
+  text-align: left;
+}
+
+/* ---------- Columna lateral ---------- */
+
+/* El grid usa align-items: start, que encogería esta columna a la altura de su
+   contenido. El hijo sticky se desplaza dentro de su bloque contenedor, así que
+   con esa altura no le quedaría recorrido: necesita que la columna ocupe toda
+   la fila. */
+.lateral {
+  min-width: 0;
+  align-self: stretch;
+}
+
+.lateralSticky {
+  position: sticky;
+  top: 92px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tarjetaCta {
+  background: var(--color-navy);
+  color: var(--color-white);
+  padding: 24px;
+}
+
+.ctaTitulo {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-white);
+}
+
+.ctaTexto {
+  margin: 0 0 20px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.cta {
+  display: inline-block;
+  background: var(--color-red);
+  color: var(--color-white);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 22px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cta:hover {
+  background: #8f1832;
+}
+
+/* ---------- Relacionados — padding 4%/2% vertical, 4% lateral ---------- */
+
+.relacionados {
+  background: var(--color-off-white);
+  padding: 57px 0 28px;
+}
+
+.relacionadosInner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.relacionadosTitulo {
+  margin: 0 0 8px;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  color: var(--color-navy);
+}
+
+.relacionadosLista {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 30px 0 0;
+  border-top: 1px solid rgba(26, 60, 77, 0.15);
+}
+
+.tarjeta {
+  margin: 0;
+}
+
+.tarjetaEnlace {
+  display: block;
+  text-decoration: none;
+}
+
+.tarjetaImagen {
+  display: block;
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+}
+
+.tarjetaTitulo {
+  margin: 16px 0 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--color-navy);
+}
+
+.tarjetaEnlace:hover .tarjetaTitulo {
+  text-decoration: underline;
+}
+
+/* ---------- Responsive: breakpoints del sitio (960 / 600) ---------- */
+
+@media (max-width: 960px) {
+  .cabecera {
+    padding: 64px 0 40px;
+  }
+
+  .titulo {
+    font-size: 27px;
+    line-height: 32px;
+    letter-spacing: -1px;
+  }
+
+  .extracto {
+    max-width: 100%;
+    text-align: start;
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  .cuerpoInner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* El índice pasa delante del artículo, plegado. */
+  .lateral {
+    order: -1;
+  }
+
+  .lateralSticky {
+    position: static;
+  }
+
+  .contenido {
+    line-height: 31px;
+  }
+
+  .contenido h2 {
+    font-size: 24px;
+  }
+
+  .relacionadosLista {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cabeceraInner,
+  .cuerpoInner,
+  .relacionadosInner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .cabecera {
+    padding: 48px 0 32px;
+  }
+
+  .cuerpo {
+    padding: 40px 0 56px;
+  }
+
+  .relacionadosLista {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,103 @@
+/* El original no tiene índice de contenidos: lleva una barra de progreso.
+   El tratamiento sale del sistema del sitio (paleta y patrón de <details>
+   del header y del FAQ del home). */
+
+.indice {
+  border: 1px solid rgba(26, 60, 77, 0.15);
+  padding: 20px 22px;
+  background: var(--color-white);
+}
+
+.resumen {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  list-style: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-navy);
+}
+
+.resumen::-webkit-details-marker {
+  display: none;
+}
+
+.resumen::after {
+  content: "";
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s;
+}
+
+.indice[open] > .resumen::after {
+  transform: translateY(1px) rotate(225deg);
+}
+
+.resumen:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: 3px;
+}
+
+.lista {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+  border-left: 1px solid rgba(26, 60, 77, 0.15);
+}
+
+.item,
+.itemNivel3 {
+  margin: 0;
+}
+
+.enlace {
+  display: block;
+  padding: 7px 0 7px 14px;
+  margin-left: -1px;
+  border-left: 2px solid transparent;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--color-navy);
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.itemNivel3 .enlace {
+  padding-left: 28px;
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.enlace:hover {
+  color: var(--color-red);
+}
+
+.activo {
+  border-left-color: var(--color-red);
+  color: var(--color-red);
+  font-weight: 600;
+}
+
+.enlace:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: -2px;
+}
+
+/* En escritorio el resumen funciona como título de la caja, no como control. */
+@media (min-width: 961px) {
+  .resumen {
+    cursor: default;
+  }
+
+  .resumen::after {
+    display: none;
+  }
+}
