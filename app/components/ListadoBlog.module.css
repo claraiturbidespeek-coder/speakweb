@@ -1,0 +1,117 @@
+/* El filtro y la carga progresiva no existen en la referencia: el tratamiento
+   sale del sistema del sitio. */
+
+.filtro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.opcion {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-white);
+  color: var(--color-navy);
+  border: 1px solid rgba(26, 60, 77, 0.18);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 9px 16px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.opcion:hover {
+  border-color: var(--color-navy);
+}
+
+.activa {
+  background: var(--color-navy);
+  border-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+.opcion:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: 2px;
+}
+
+.cuenta {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.65;
+}
+
+.rejilla {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Carga progresiva ----------
+   Solo aplica al estado "Todos". Con un filtro activo se muestran todas las
+   coincidencias: ninguna categoría pasa de 7 posts. */
+
+.rejilla[data-filtro="todos"][data-visibles="9"] > *:nth-child(n + 10),
+.rejilla[data-filtro="todos"][data-visibles="18"] > *:nth-child(n + 19) {
+  display: none;
+}
+
+/* ---------- Filtrado ---------- */
+
+.rejilla[data-filtro="diagnostico-de-necesidades"]
+  > *:not([data-categoria="diagnostico-de-necesidades"]),
+.rejilla[data-filtro="seleccion-de-proveedor"]
+  > *:not([data-categoria="seleccion-de-proveedor"]),
+.rejilla[data-filtro="implementacion-del-programa"]
+  > *:not([data-categoria="implementacion-del-programa"]),
+.rejilla[data-filtro="resultados-y-roi"]
+  > *:not([data-categoria="resultados-y-roi"]),
+.rejilla[data-filtro="nearshoring-y-expansion"]
+  > *:not([data-categoria="nearshoring-y-expansion"]) {
+  display: none;
+}
+
+.masWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.mas {
+  background: var(--color-red);
+  color: var(--color-white);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 13px 26px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.mas:hover {
+  background: #8f1832;
+}
+
+.mas:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: 3px;
+}
+
+@media (max-width: 960px) {
+  .rejilla {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .rejilla {
+    grid-template-columns: 1fr;
+  }
+}

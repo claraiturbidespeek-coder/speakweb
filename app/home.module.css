@@ -470,9 +470,15 @@
   padding: 85px 0 57px;
 }
 
+/* El reparto medido en la referencia es 65/35. La segunda columna se escribe
+   como 1fr y no como 35% a propósito: los porcentajes se resuelven contra la
+   caja de contenido de la rejilla, así que 65% + 35% ya la ocupan entera y el
+   gap de 20px se sumaría por fuera, desbordando el documento. Con 1fr la
+   segunda columna toma el resto una vez descontado el gap, que es exactamente
+   el 35% visible. No lo cambies de vuelta a 35%. */
 .cases {
   display: grid;
-  grid-template-columns: 65% 35%;
+  grid-template-columns: 65% 1fr;
   gap: 20px;
   margin-top: 30px;
   padding: 0 2%;
@@ -765,6 +771,17 @@
 
 /* ---------- Responsive: breakpoints de landing.css (960 / 600) ---------- */
 
+/* Los callouts sobresalen 40px de la columna de media. Por encima de 1200px el
+   contenedor de 1160 deja margen de sobra; por debajo ese margen se agota y el
+   documento se desborda 12px. Dejan de flotar antes de que eso ocurra. */
+@media (max-width: 1200px) {
+  .callout {
+    position: static;
+    width: auto;
+    margin-top: 16px;
+  }
+}
+
 @media (max-width: 960px) {
   .heroInner,
   .programGrid,
@@ -804,12 +821,6 @@
   .faqTitle {
     font-size: 21px;
     letter-spacing: -0.5px;
-  }
-
-  .callout {
-    position: static;
-    width: auto;
-    margin-top: 16px;
   }
 
   .differentiators,

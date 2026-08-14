@@ -28,7 +28,21 @@ export type Post = {
   seoDescription?: string;
   readingTime?: number;
   hasLeadForm?: boolean;
+  // Extracto para listados: el propio si existe, y si no el arranque del cuerpo.
+  // Nunca la meta description: esa es para Google, no para el índice.
+  resumen: string;
 };
+
+export type Categoria = { nombre: string; slug: string; total: number };
+
+// Orden de presentación del filtro: el recorrido del lector, no alfabético.
+const ORDEN_CATEGORIAS = [
+  "diagnostico-de-necesidades",
+  "seleccion-de-proveedor",
+  "implementacion-del-programa",
+  "resultados-y-roi",
+  "nearshoring-y-expansion",
+];
 
 export type PostRenderizado = Post & {
   html: string;
@@ -80,10 +94,49 @@ function expandirCampos<T extends Record<string, unknown>>(datos: T): T {
   return salida as T;
 }
 
+const LIMITE_RESUMEN = 160;
+
+// Igual que WordPress cuando un post no trae excerpt manual: cae al arranque
+// del propio cuerpo. Verificado contra el archivo de categoría en producción.
+function primerParrafo(markdown: string): string {
+  for (const bruta of markdown.split("\n")) {
+    const linea = bruta.trim();
+    if (!linea) continue;
+    // Encabezados, listas, citas, imágenes, tablas y separadores no son prosa.
+    if (/^(#{1,6}\s|[-*+]\s|\d+\.\s|>|!\[|\||---)/.test(linea)) continue;
+    return limpiarMarkdown(linea);
+  }
+  return "";
+}
+
+function limpiarMarkdown(texto: string): string {
+  return texto
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, "")
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/\*\*([^*]+)\*\*/g, "$1")
+    .replace(/\*([^*]+)\*/g, "$1")
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function recortar(texto: string, limite = LIMITE_RESUMEN): string {
+  if (texto.length <= limite) return texto;
+  const corte = texto.slice(0, limite);
+  const ultimoEspacio = corte.lastIndexOf(" ");
+  return `${corte.slice(0, ultimoEspacio > 0 ? ultimoEspacio : limite).replace(/[.,;:]$/, "")}…`;
+}
+
 function leerArchivo(slug: string): Post {
   const crudo = fs.readFileSync(path.join(DIR_CONTENIDO, `${slug}.md`), "utf8");
-  const { data } = matter(crudo);
-  return { ...expandirCampos(data as Omit<Post, "slug">), slug };
+  const { data, content } = matter(crudo);
+  const campos = expandirCampos(data as Omit<Post, "slug" | "resumen">);
+  const propio = typeof campos.excerpt === "string" ? campos.excerpt.trim() : "";
+  return {
+    ...campos,
+    slug,
+    resumen: recortar(propio || primerParrafo(content)),
+  };
 }
 
 let cache: Post[] | null = null;
@@ -154,6 +207,27 @@ export async function renderizarPost(slug: string): Promise<PostRenderizado | nu
     html: String(archivo),
     encabezados,
   };
+}
+
+export function obtenerCategorias(): Categoria[] {
+  const porSlug = new Map<string, Categoria>();
+  for (const post of obtenerPosts()) {
+    const actual = porSlug.get(post.categorySlug);
+    if (actual) actual.total += 1;
+    else
+      porSlug.set(post.categorySlug, {
+        nombre: post.category,
+        slug: post.categorySlug,
+        total: 1,
+      });
+  }
+  const posicion = (slug: string) => {
+    const i = ORDEN_CATEGORIAS.indexOf(slug);
+    return i === -1 ? ORDEN_CATEGORIAS.length : i;
+  };
+  return [...porSlug.values()].sort(
+    (a, b) => posicion(a.slug) - posicion(b.slug) || a.nombre.localeCompare(b.nombre)
+  );
 }
 
 // Tres de la misma categoría, sin el actual. Si no llegan a tres,
