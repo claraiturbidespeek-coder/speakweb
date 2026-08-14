@@ -1,18 +1,27 @@
 :root {
   color-scheme: light;
+
+  /* Paleta de marca */
+  --color-navy: #1a3c4d;
+  --color-red: #b51e40;
+  --color-yellow: #eab120;
+  --color-off-white: #f5f7fa;
+  --color-white: #ffffff;
+
+  /* Marca */
+  --logo-height: 40px;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  border-radius: 0;
 }
 
 body {
   margin: 0;
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: #000;
@@ -33,4 +42,10 @@ h1 {
 
 p {
   margin: 0 0 16px;
+}
+
+.site-logo {
+  display: block;
+  height: var(--logo-height);
+  width: auto;
 }
