@@ -10,7 +10,7 @@ declare global {
 }
 
 // Datos estructurados, copiados del original (líneas 713-740).
-const DATOS_ESTRUCTURADOS = "{\n    \"@context\": \"https://schema.org\",\n    \"@graph\": [\n      {\n        \"@type\": \"BreadcrumbList\",\n        \"itemListElement\": [\n          { \"@type\": \"ListItem\", \"position\": 1, \"name\": \"Inicio\", \"item\": \"https://s-peak.com/\" },\n          { \"@type\": \"ListItem\", \"position\": 2, \"name\": \"Soluciones por Equipo\", \"item\": \"https://s-peak.com/equipo/\" },\n          { \"@type\": \"ListItem\", \"position\": 3, \"name\": \"Ventas y Marketing\", \"item\": \"https://s-peak.com/equipo/ventas-y-marketing/\" }\n        ]\n      },\n      {\n        \"@type\": \"Service\",\n        \"name\": \"Cursos de idiomas para equipos de Ventas y Marketing\",\n        \"serviceType\": \"Capacitación corporativa de idiomas para equipos comerciales\",\n        \"provider\": { \"@type\": \"Organization\", \"name\": \"S-Peak\", \"url\": \"https://s-peak.com\" },\n        \"areaServed\": { \"@type\": \"Country\", \"name\": \"México\" },\n        \"description\": \"Inglés y otros idiomas para vendedores y equipos de marketing B2B. Vocabulario comercial, negociación internacional y presentaciones ejecutivas.\"\n      },\n      {\n        \"@type\": \"FAQPage\",\n        \"mainEntity\": [\n          { \"@type\": \"Question\", \"name\": \"¿Cuánto cuesta capacitar a un equipo de ventas en S-Peak?\", \"acceptedAnswer\": { \"@type\": \"Answer\", \"text\": \"Depende de la frecuencia, modalidad, duración y tamaño del grupo (de 1 a 10 personas; a más alumnos, menor es el costo por persona). Solicite una cotización adaptada a sus objetivos.\" } },\n          { \"@type\": \"Question\", \"name\": \"¿En cuánto tiempo mi equipo comercial estará listo para cerrar negocios en otro idioma?\", \"acceptedAnswer\": { \"@type\": \"Answer\", \"text\": \"Depende del nivel inicial. Pasar de un nivel básico (A2) a uno apto para negociar (B2) toma de 12 a 18 meses. Si el equipo ya es intermedio (B1), puede lograrlo en 6 a 9 meses con sesiones intensivas.\" } }\n        ]\n      }\n    ]\n  }";
+const DATOS_ESTRUCTURADOS = "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Inicio\",\n          \"item\": \"https://s-peak.com/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Soluciones por Equipo\",\n          \"item\": \"https://s-peak.com/equipo/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Ventas y Marketing\",\n          \"item\": \"https://s-peak.com/equipo/ventas-y-marketing/\"\n        }\n      ]\n    },\n    {\n      \"@type\": \"Service\",\n      \"name\": \"Cursos de idiomas para equipos de Ventas y Marketing\",\n      \"serviceType\": \"Capacitación corporativa de idiomas para equipos comerciales\",\n      \"provider\": {\n        \"@type\": \"Organization\",\n        \"name\": \"S-Peak\",\n        \"url\": \"https://s-peak.com\"\n      },\n      \"areaServed\": {\n        \"@type\": \"Country\",\n        \"name\": \"México\"\n      },\n      \"description\": \"Inglés y otros idiomas para vendedores y equipos de marketing B2B. Vocabulario comercial, presentaciones ejecutivas y conversación con clientes internacionales.\"\n    },\n    {\n      \"@type\": \"FAQPage\",\n      \"mainEntity\": [\n        {\n          \"@type\": \"Question\",\n          \"name\": \"¿Cuánto cuesta capacitar a un equipo de ventas y marketing?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"El precio se define por la modalidad (en línea o presencial) y los horarios de las sesiones. Se cotiza por grupo completo, no por persona: de 1 a 10 participantes, a mayor número, menor costo por colaborador. La frecuencia no cambia la tarifa: define el ritmo de avance y la inversión mensual. Solicite una cotización adaptada a su equipo.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"¿En cuánto tiempo mi equipo estará listo para negociar en otro idioma?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Depende del nivel de partida. En promedio, pasar de un nivel al siguiente (por ejemplo, de B1 a B2, el nivel apto para negociar) toma alrededor de 9 meses con dos sesiones semanales de hora y media. Cotice y le damos una proyección realista en el diagnóstico inicial.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"¿Cómo miden el progreso de mi equipo?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Evaluamos el desempeño real con entregables prácticos al final de cada etapa (simulaciones de llamadas, propuestas escritas o la adaptación de un texto de campaña), no con exámenes de memoria. RH recibe la evidencia evaluada por rúbrica para verificar el avance de cada colaborador.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"¿Qué pasa si las agendas del equipo se atraviesan?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Las sesiones se agendan en los horarios que mejor convengan a su operación. Si un día se cruza una junta o un viaje, la sesión se repone sin trámites y el colaborador recibe la grabación con los temas vistos, para que el avance del grupo no se detenga.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"¿Qué idiomas ofrecen para equipos de ventas y marketing?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Inglés, francés, alemán, italiano, portugués y español para extranjeros. Cada programa se alinea a su mercado: inglés para negocios globales, alemán para el sector automotriz o italiano para el Bajío industrial. Y si su empresa opera en varios países, coordinamos la capacitación simultánea desde un solo punto de contacto.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"¿Sirve también para el equipo de marketing o solo para vendedores?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Sí. Marketing trabaja el idioma en sus propias situaciones: redactar y revisar textos de campaña, dar briefs a agencias o proveedores en el extranjero, y adaptar mensajes a otro mercado sin traducir literal. El programa se arma según la función de cada colaborador. Cuéntenos cómo trabaja su equipo y lo armamos a la medida.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"¿La capacitación tiene registro ante la STPS y es deducible?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Sí a ambas. Contamos con registro oficial ante la STPS y emitimos constancia de capacitación para sus colaboradores. La inversión puede calificar para la deducción adicional del 25% del Plan México (DOF 2025); confírmelo con su área contable.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"¿Cuál es el ROI de capacitar al equipo comercial?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Se vuelve tangible cuando su equipo vende y se comunica directamente, sin traductores ni intermediarios. Para la mayoría de las empresas, asegurar un solo contrato internacional que se habría perdido cubre toda la inversión anual del programa.\"\n          }\n        }\n      ]\n    }\n  ]\n}";
 
 // Scripts copiados textualmente. Quedan fuera el modal y el envío del
 // formulario, que se van con el componente de contacto compartido.
@@ -26,7 +26,7 @@ const GUION = `
     const car = document.getElementById('mercadoCarousel');
     if (!car) return;
 
-    const SPEED = 0.024;   // px por milisegundo (~24 px/s)
+    const SPEED = 0.045;   // px por milisegundo (~45 px/s)
     const originals = Array.from(car.children);
     if (!originals.length) return;
 
@@ -51,9 +51,10 @@ const GUION = `
 
     let pos = car.scrollLeft;
     let hovering = false, dragging = false, touching = false, touchTimer = null;
+    let manual = false;
     let last = null;
 
-    const running = () => !hovering && !dragging && !touching && period > 0;
+    const running = () => !hovering && !dragging && !touching && !manual && period > 0;
 
     const tick = (ts) => {
       if (last === null) last = ts;
@@ -119,10 +120,55 @@ const GUION = `
     car.addEventListener('pointercancel', stopDrag);
     car.addEventListener('pointerleave', stopDrag);
 
+    // --- Flechas de navegación ---
+    const prev = document.getElementById('mercadoPrev');
+    const next = document.getElementById('mercadoNext');
+    const suave = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+
+    const paso = () => {
+      const a = car.children[0], b = car.children[1];
+      return b ? b.offsetLeft - a.offsetLeft : a.offsetWidth;
+    };
+
+    const actualizarFlechas = () => {
+      if (!prev || !next) return;
+      const max = car.scrollWidth - car.clientWidth;
+      prev.disabled = car.scrollLeft <= 1;
+      next.disabled = car.scrollLeft >= max - 1;
+    };
+
+    // Al usar una flecha el carrusel pasa a manual de forma permanente: se
+    // retiran los clones del bucle para que tenga principio y final reales, y
+    // así el estado deshabilitado de las flechas signifique algo.
+    const pasarAManual = () => {
+      if (manual) return;
+      manual = true;
+      while (car.children.length > originals.length) car.removeChild(car.lastElementChild);
+      const max = car.scrollWidth - car.clientWidth;
+      if (car.scrollLeft > max) car.scrollLeft = max;
+      pos = car.scrollLeft;
+    };
+
+    const mover = (dir) => {
+      pasarAManual();
+      car.scrollBy({ left: dir * paso(), behavior: suave });
+    };
+
+    if (prev && next) {
+      prev.addEventListener('click', () => mover(-1));
+      next.addEventListener('click', () => mover(1));
+      car.addEventListener('scroll', actualizarFlechas, { passive: true });
+      actualizarFlechas();
+    }
+
     let resizeTimer = null;
     window.addEventListener('resize', () => {
       if (resizeTimer) clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => { layout(); pos = car.scrollLeft; }, 150);
+      resizeTimer = setTimeout(() => {
+        // En manual no se vuelven a clonar tarjetas: el recorrido ya es finito.
+        if (!manual) { layout(); pos = car.scrollLeft; }
+        actualizarFlechas();
+      }, 150);
     });
 
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -162,8 +208,8 @@ export default function VentasYMarketing() {
     <div className="hero-content reveal">
       <div className="hero-tag">Inglés corporativo · Ventas y Marketing</div>
       <h1>Cursos de idiomas para equipos de <strong>Ventas y Marketing</strong></h1>
-      <p className="hero-sub">Cierre más negocios y conecte con clientes internacionales en inglés, francés, alemán, italiano, portugués o español. Su equipo es la cara de la empresa: cuando el idioma no está a la altura, una sola oportunidad perdida cuesta más que todo un programa anual de capacitación.</p>
-      <button className="btn-red" type="button">Solicitar Cotización</button>
+      <p className="hero-sub">Negocie, presente y comunique con confianza en el idioma de su cliente, y que el idioma nunca sea la razón de una oportunidad perdida: una sola cuesta más que todo un programa anual de capacitación. Inglés, francés, alemán, italiano, portugués o español: su equipo es la cara de la empresa.</p>
+      <button className="btn-red" type="button">Solicite una Cotización</button>
       <div className="hero-social">
         <div className="hero-avatars">
           <span className="hero-avatar">MG</span>
@@ -237,74 +283,66 @@ export default function VentasYMarketing() {
 <section className="competencias" id="competencias">
   <div className="competencias-inner">
     <div className="section-top reveal">
-      <div className="eyebrow" style={{ justifyContent: "center" }}>Las habilidades que cierran negocios</div>
-      <h2>Las habilidades que su equipo comercial necesita para cerrar en cualquier idioma</h2>
-      <p>Desarrollamos las competencias lingüísticas que su equipo aplica en situaciones reales de negocio. No enseñamos gramática aislada: entrenamos para que cierren, presenten y negocien con confianza.</p>
+      <div className="eyebrow" style={{ justifyContent: "center" }}>Las habilidades lingüísticas del equipo de ventas y marketing</div>
+      <h2>Su equipo ya sabe su trabajo. Le falta hacerlo en el idioma de su cliente.</h2>
+      <p>No necesita más gramática: necesita el idioma dentro de las situaciones que ya maneja, del primer contacto al seguimiento. En inglés o en el idioma de su mercado.</p>
     </div>
     <div className="comp-grid reveal stagger">
       <div className="comp-card">
         <div className="comp-icon">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
         </div>
-        <div className="comp-num">01</div>
-        <h3>Vocabulario técnico comercial</h3>
-        <p>Terminología específica de ventas, marketing digital, embudo de conversión y métricas clave (CAC, LTV, CTR).</p>
+        <h3>Eventos y ferias</h3>
+        <p>Interacción natural en encuentros internacionales: iniciar y sostener diálogos de valor con desconocidos.</p>
       </div>
       <div className="comp-card">
         <div className="comp-icon">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg>
         </div>
-        <div className="comp-num">02</div>
-        <h3>Redacción profesional</h3>
-        <p>Correos de ventas, propuestas por escrito y mensajes de prospección en LinkedIn que generan respuestas.</p>
+        <h3>Llamadas y videollamadas</h3>
+        <p>Entender a un cliente con acento y responder en el momento, sin pedir que repita ni depender de un compañero que traduzca.</p>
       </div>
       <div className="comp-card">
         <div className="comp-icon">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h20"/><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/><path d="m7 21 5-5 5 5"/></svg>
         </div>
-        <div className="comp-num">03</div>
-        <h3>Presentaciones ejecutivas</h3>
-        <p>Pitches ante directivos, comités o inversionistas con manejo de diapositivas y respuestas fluidas en tiempo real.</p>
+        <h3>Correos y propuestas</h3>
+        <p>Correos de ventas, propuestas y mensajes de prospección redactados con claridad, sin errores y con el tono correcto.</p>
       </div>
       <div className="comp-card">
         <div className="comp-icon">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <div className="comp-num">04</div>
-        <h3>Conversación y networking</h3>
-        <p>Interacción natural en eventos y ferias internacionales, iniciando y sosteniendo diálogos de valor.</p>
+        <h3>Presentaciones ejecutivas</h3>
+        <p>Exposición ante directivos, comités o inversionistas, con respuestas fluidas a preguntas en tiempo real.</p>
       </div>
       <div className="comp-card">
         <div className="comp-icon">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg>
         </div>
-        <div className="comp-num">05</div>
-        <h3>Negociación internacional</h3>
-        <p>Estructuras para negociar condiciones, precios y plazos. Aprenden a proponer contraofertas y manejar silencios estratégicos.</p>
+        <h3>Negociación y objeciones</h3>
+        <p>Frases y estructuras para proponer condiciones, contraofertar, manejar pausas y responder resistencias (precio, tiempo, autoridad, riesgo) sin perder fluidez ni tono.</p>
       </div>
       <div className="comp-card">
         <div className="comp-icon">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
         </div>
-        <div className="comp-num">06</div>
-        <h3>Manejo de objeciones</h3>
-        <p>Respuestas fluidas ante las resistencias típicas del entorno B2B (precio, tiempo, autoridad, riesgo).</p>
+        <h3>Posventa y seguimiento</h3>
+        <p>Comunicación de seguimiento y resolución de problemas en el idioma del cliente, cuando la precisión importa más.</p>
       </div>
       <div className="comp-card">
         <div className="comp-icon">
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg>
         </div>
-        <div className="comp-num">07</div>
-        <h3>Comunicación comercial integral</h3>
-        <p>Aplicación de marcos de venta consultiva (descubrimiento, propuesta y cierre) en dos idiomas.</p>
+        <h3>Materiales y campañas</h3>
+        <p>Briefs a agencias y proveedores en el extranjero, revisión de textos de campaña y adaptación de mensajes sin traducir literal.</p>
       </div>
       <div className="comp-card">
         <div className="comp-icon">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5a9 9 0 0 1 18 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
         </div>
-        <div className="comp-num">08</div>
-        <h3>Atención a clientes internacionales</h3>
-        <p>Comunicación de posventa, seguimiento y resolución de problemas. La retención se define en la primera queja bien resuelta.</p>
+        <h3>Vocabulario de su industria</h3>
+        <p>Terminología de ventas y marketing del día a día (embudo, métricas, CAC, LTV, CTR), en el idioma en que su cliente la usa.</p>
       </div>
     </div>
   </div>
@@ -342,7 +380,7 @@ export default function VentasYMarketing() {
       </div>
     </div>
     <div className="dolor-cta reveal">
-      <button className="btn-red" type="button">Solicitar cotización</button>
+      <button className="btn-red" type="button">Solicite una Cotización</button>
     </div>
   </div>
 </section>
@@ -356,6 +394,14 @@ export default function VentasYMarketing() {
       <p>Cada mes que su equipo comercial opera sin el idioma correcto es una ventana que se cierra frente a la competencia. Estos son los datos que explican por qué actuar ahora, no en el próximo trimestre, marca la diferencia.</p>
     </div>
     <div className="mercado-right reveal">
+      <div className="mercado-nav">
+        <button type="button" className="mercado-arrow" id="mercadoPrev" aria-controls="mercadoCarousel" aria-label="Ver tarjetas anteriores">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+        </button>
+        <button type="button" className="mercado-arrow" id="mercadoNext" aria-controls="mercadoCarousel" aria-label="Ver tarjetas siguientes">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+        </button>
+      </div>
       <div className="mercado-carousel stagger" id="mercadoCarousel" tabIndex={0} role="region" aria-label="Razones para capacitar al equipo comercial ahora">
         <article className="mercado-card">
           <div className="mercado-item-icon">
@@ -435,7 +481,7 @@ export default function VentasYMarketing() {
         </div>
         <div>
           <h3>Registro STPS y deducción fiscal</h3>
-          <p>Contamos con registro oficial ante la STPS. La inversión califica para la deducción adicional del 25% bajo el decreto del Plan México (DOF 2023 y 2025).</p>
+          <p>Contamos con registro oficial ante la STPS. La inversión puede calificar para la deducción adicional del 25% del Plan México (DOF 2025); confírmelo con su área contable.</p>
         </div>
       </div>
     </div>
@@ -445,16 +491,16 @@ export default function VentasYMarketing() {
 {/* CTA BANDA */}
 <section className="cta-banda">
   <img style={{ position: "absolute", top: "50%", right: "40px", width: "120px", opacity: "0.08", transform: "translateY(-50%) rotate(30deg)", pointerEvents: "none" }} src="/images/isotype.svg" alt="" aria-hidden="true" />
-  <h2>Comience con una cotización para su equipo comercial</h2>
+  <h2>Comience con una cotización para su equipo de ventas y marketing</h2>
   <p>Cuéntenos su caso. Le responderemos en menos de 24 horas hábiles.</p>
-  <button className="btn-white" type="button">Solicitar Cotización</button>
+  <button className="btn-white" type="button">Solicite una Cotización</button>
 </section>
 
 {/* TESTIMONIOS */}
 <section className="testimonials" id="resultados">
   <div className="testi-top reveal">
     <div className="eyebrow" style={{ color: "rgba(255,255,255,0.4)", justifyContent: "center" }}>Lo que dicen los equipos</div>
-    <h2>Lo que dicen los equipos de ventas que ya tomaron clases con S-Peak</h2>
+    <h2>Lo que dicen los equipos de ventas que ya se capacitaron con S-Peak</h2>
     <p>En S-Peak, el éxito no se supone: se mide en números.</p>
   </div>
   <div className="testi-grid reveal stagger">
@@ -509,59 +555,59 @@ export default function VentasYMarketing() {
     <div className="faq-list reveal">
       <div className="faq-item">
         <button className="faq-q" onClick={(e) => window.toggleFaq(e.currentTarget)}>
-          ¿Cuánto cuesta capacitar a un equipo de ventas en S-Peak?
+          ¿Cuánto cuesta capacitar a un equipo de ventas y marketing?
           <span className="faq-icon">+</span>
         </button>
-        <div className="faq-a">Depende de la frecuencia, modalidad, duración y tamaño del grupo (de 1 a 10 personas; a más alumnos, menor es el costo por persona). Solicite una cotización adaptada a sus objetivos.</div>
+        <div className="faq-a">El precio se define por la modalidad (en línea o presencial) y los horarios de las sesiones. Se cotiza <strong>por grupo completo, no por persona:</strong> de 1 a 10 participantes, a mayor número, menor costo por colaborador. La frecuencia no cambia la tarifa: define el ritmo de avance y la inversión mensual. <strong>Solicite una cotización adaptada a su equipo.</strong></div>
       </div>
       <div className="faq-item">
         <button className="faq-q" onClick={(e) => window.toggleFaq(e.currentTarget)}>
-          ¿En cuánto tiempo mi equipo estará listo para cerrar negocios en otro idioma?
+          ¿En cuánto tiempo mi equipo estará listo para negociar en otro idioma?
           <span className="faq-icon">+</span>
         </button>
-        <div className="faq-a">Depende del nivel inicial. Pasar de un nivel básico (A2) a uno apto para negociar (B2) toma de 12 a 18 meses. Si el equipo ya es intermedio (B1), puede lograrlo en <strong>6 a 9 meses</strong> con sesiones intensivas. En el diagnóstico inicial le damos una proyección realista.</div>
+        <div className="faq-a">Depende del nivel de partida. En promedio, pasar de un nivel al siguiente (por ejemplo, de B1 a B2, el nivel apto para negociar) toma <strong>alrededor de 9 meses</strong> con dos sesiones semanales de hora y media. <strong>Cotice y le damos una proyección realista en el diagnóstico inicial.</strong></div>
       </div>
       <div className="faq-item">
         <button className="faq-q" onClick={(e) => window.toggleFaq(e.currentTarget)}>
-          ¿Cómo miden el progreso de mis colaboradores?
+          ¿Cómo miden el progreso de mi equipo?
           <span className="faq-icon">+</span>
         </button>
-        <div className="faq-a">Evaluamos el desempeño real con entregables prácticos (grabaciones, propuestas escritas o simulaciones de llamadas) al final de cada etapa, no con exámenes de memoria. RH recibe un <strong>reporte mensual</strong> con enlaces para verificar el avance.</div>
+        <div className="faq-a">Evaluamos el desempeño real con entregables prácticos al final de cada etapa (simulaciones de llamadas, propuestas escritas o la adaptación de un texto de campaña), no con exámenes de memoria. RH recibe la evidencia evaluada por rúbrica para verificar el avance de cada colaborador.</div>
       </div>
       <div className="faq-item">
         <button className="faq-q" onClick={(e) => window.toggleFaq(e.currentTarget)}>
-          ¿Qué pasa si mis vendedores tienen agendas ocupadas y faltan a clases?
+          ¿Qué pasa si las agendas del equipo se atraviesan?
           <span className="faq-icon">+</span>
         </button>
-        <div className="faq-a">Monitoreamos la asistencia de forma proactiva. Si un colaborador falta, lo reportamos a RH en tiempo real para buscar su recuperación o ajustar el grupo, protegiendo así su inversión.</div>
+        <div className="faq-a">Las sesiones se agendan en los horarios que mejor convengan a su operación. Si un día se cruza una junta o un viaje, <strong>la sesión se repone sin trámites</strong> y el colaborador recibe la grabación con los temas vistos, para que el avance del grupo no se detenga.</div>
       </div>
       <div className="faq-item">
         <button className="faq-q" onClick={(e) => window.toggleFaq(e.currentTarget)}>
-          ¿Qué idiomas ofrecen para equipos comerciales?
+          ¿Qué idiomas ofrecen para equipos de ventas y marketing?
           <span className="faq-icon">+</span>
         </button>
-        <div className="faq-a">Inglés, francés, alemán, italiano, portugués y español para extranjeros. Cada programa se alinea a su mercado: inglés para negocios globales, alemán para el sector automotriz o italiano para el Bajío industrial, según el diagnóstico inicial.</div>
+        <div className="faq-a"><strong>Inglés, francés, alemán, italiano, portugués y español para extranjeros.</strong> Cada programa se alinea a su mercado: inglés para negocios globales, alemán para el sector automotriz o italiano para el Bajío industrial. Y si su empresa opera en varios países, coordinamos la capacitación simultánea desde un solo punto de contacto.</div>
       </div>
       <div className="faq-item">
         <button className="faq-q" onClick={(e) => window.toggleFaq(e.currentTarget)}>
-          ¿Pueden capacitar equipos comerciales en varios países?
+          ¿Sirve también para el equipo de marketing o solo para vendedores?
           <span className="faq-icon">+</span>
         </button>
-        <div className="faq-a">Sí. Coordinamos la capacitación simultánea en México y filiales de Latinoamérica o el mundo, centralizando la gestión en un solo punto de contacto y bajo un estándar de calidad uniforme.</div>
+        <div className="faq-a">Sí. Marketing trabaja el idioma en sus propias situaciones: redactar y revisar textos de campaña, dar briefs a agencias o proveedores en el extranjero, y adaptar mensajes a otro mercado sin traducir literal. El programa se arma <strong>según la función de cada colaborador.</strong> <strong>Cuéntenos cómo trabaja su equipo y lo armamos a la medida.</strong></div>
       </div>
       <div className="faq-item">
         <button className="faq-q" onClick={(e) => window.toggleFaq(e.currentTarget)}>
-          ¿S-Peak está registrado ante la STPS?
+          ¿La capacitación tiene registro ante la STPS y es deducible?
           <span className="faq-icon">+</span>
         </button>
-        <div className="faq-a">Sí, contamos con registro oficial ante la Secretaría del Trabajo y Previsión Social y emitimos las constancias de capacitación correspondientes para su empresa.</div>
+        <div className="faq-a">Sí a ambas. Contamos con <strong>registro oficial ante la STPS</strong> y emitimos constancia de capacitación para sus colaboradores. La inversión <strong>puede calificar</strong> para la deducción adicional del 25% del Plan México (DOF 2025); confírmelo con su área contable.</div>
       </div>
       <div className="faq-item">
         <button className="faq-q" onClick={(e) => window.toggleFaq(e.currentTarget)}>
           ¿Cuál es el ROI de capacitar al equipo comercial?
           <span className="faq-icon">+</span>
         </button>
-        <div className="faq-a">Se vuelve tangible cuando su equipo vende directamente sin traductores ni intermediarios. Para la mayoría de las empresas, <strong>asegurar un solo contrato internacional</strong> que se habría perdido cubre toda la inversión anual del programa.</div>
+        <div className="faq-a">Se vuelve tangible cuando su equipo vende y se comunica directamente, sin traductores ni intermediarios. Para la mayoría de las empresas, <strong>asegurar un solo contrato internacional que se habría perdido cubre toda la inversión anual del programa.</strong></div>
       </div>
     </div>
   </div>

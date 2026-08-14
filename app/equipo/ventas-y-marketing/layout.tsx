@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Cursos de Idiomas para Equipos de Ventas y Marketing | S-Peak",
   description:
-    "Inglés y otros idiomas para vendedores y equipos de marketing B2B. Vocabulario comercial, negociación internacional y presentaciones ejecutivas. Cotice ahora.",
+    "Inglés y otros idiomas para vendedores y equipos de marketing B2B. Vocabulario comercial, presentaciones ejecutivas y conversación con clientes internacionales. Cotice ahora.",
   alternates: { canonical: "https://s-peak.com/equipo/ventas-y-marketing/" },
 };
 

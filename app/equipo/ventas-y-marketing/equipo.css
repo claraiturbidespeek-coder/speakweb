@@ -229,6 +229,7 @@
     .section-top h2 {
       font-size: clamp(26px, 2.8vw, 38px); font-weight: 800;
       letter-spacing: -0.025em; color: var(--navy); line-height: 1.15; margin-bottom: 16px;
+      text-wrap: balance;
     }
     .section-top p { font-size: 16px; color: var(--ink-2); line-height: 1.7; }
     .comp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -249,14 +250,11 @@
     .comp-icon {
       width: 48px; height: 48px; background: #FDF0F3; color: var(--red);
       display: flex; align-items: center; justify-content: center;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       transition: background 0.3s ease, color 0.3s ease, transform 0.35s cubic-bezier(.22,.85,.3,1);
     }
     .comp-icon svg { width: 24px; height: 24px; }
     .comp-card:hover .comp-icon { transform: scale(1.08) rotate(-3deg); }
-    .comp-card .comp-num { transition: letter-spacing 0.3s ease; }
-    .comp-card:hover .comp-num { letter-spacing: 0.16em; }
-    .comp-num { font-size: 11px; font-weight: 700; color: var(--red); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
     .comp-card h3 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.35; }
     .comp-card p { font-size: 13px; color: var(--ink-2); line-height: 1.65; }
 
@@ -269,8 +267,6 @@
     .comp-card:nth-child(5) h3, .comp-card:nth-child(7) h3, .comp-card:nth-child(8) h3,
     .comp-card:nth-child(1) p, .comp-card:nth-child(2) p, .comp-card:nth-child(4) p,
     .comp-card:nth-child(5) p, .comp-card:nth-child(7) p, .comp-card:nth-child(8) p { color: var(--white); }
-    .comp-card:nth-child(1) .comp-num, .comp-card:nth-child(2) .comp-num, .comp-card:nth-child(4) .comp-num,
-    .comp-card:nth-child(5) .comp-num, .comp-card:nth-child(7) .comp-num, .comp-card:nth-child(8) .comp-num { color: rgba(255,255,255,0.7); }
     .comp-card:nth-child(1) .comp-icon, .comp-card:nth-child(2) .comp-icon, .comp-card:nth-child(4) .comp-icon,
     .comp-card:nth-child(5) .comp-icon, .comp-card:nth-child(7) .comp-icon, .comp-card:nth-child(8) .comp-icon {
       background: rgba(255,255,255,0.15); color: var(--white);
@@ -278,7 +274,6 @@
     /* amarillo: texto e ícono en navy */
     .comp-card:nth-child(3) h3, .comp-card:nth-child(6) h3,
     .comp-card:nth-child(3) p, .comp-card:nth-child(6) p { color: var(--navy); }
-    .comp-card:nth-child(3) .comp-num, .comp-card:nth-child(6) .comp-num { color: var(--navy); }
     .comp-card:nth-child(3) .comp-icon, .comp-card:nth-child(6) .comp-icon {
       background: rgba(26,60,77,0.12); color: var(--navy);
     }
@@ -328,6 +323,21 @@
     .mercado-left > p { font-size: 16px; color: var(--ink-2); line-height: 1.7; margin-bottom: 32px; max-width: none; }
 
     /* CARRUSEL MERCADO */
+    /* Flechas del carrusel. Reutilizan el lenguaje de la página: cuadrado sin
+       radio, borde e interior de .mercado-card, y el mismo hover rojo y foco
+       que ya usan las tarjetas y el propio carrusel. */
+    .mercado-nav { display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 14px; }
+    .mercado-arrow {
+      width: 40px; height: 40px; flex: 0 0 auto;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--white); border: 1px solid var(--border); color: var(--navy);
+      cursor: pointer; transition: background 0.25s, border-color 0.25s, color 0.25s, opacity 0.25s;
+    }
+    .mercado-arrow svg { width: 18px; height: 18px; }
+    .mercado-arrow:hover:not(:disabled) { background: var(--red); border-color: var(--red); color: var(--white); }
+    .mercado-arrow:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
+    .mercado-arrow:disabled { opacity: 0.35; cursor: default; }
+
     .mercado-carousel {
       display: flex; gap: 16px;
       width: 100%; max-width: 100%; min-width: 0;
@@ -424,7 +434,7 @@
     /* TESTIMONIOS */
     .testimonials { background: var(--navy); padding: 88px 28px; }
     .testi-top { max-width: var(--max); margin: 0 auto 48px; text-align: center; }
-    .testi-top h2 { font-size: clamp(26px, 2.8vw, 38px); font-weight: 800; color: var(--white); margin-bottom: 12px; letter-spacing: -0.025em; }
+    .testi-top h2 { font-size: clamp(26px, 2.8vw, 38px); font-weight: 800; color: var(--white); margin-bottom: 12px; letter-spacing: -0.025em; text-wrap: balance; }
     .testi-top p { font-size: 16px; color: rgba(255,255,255,0.55); }
     .testi-grid { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .testi-card {
