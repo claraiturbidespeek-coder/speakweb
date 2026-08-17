@@ -2,14 +2,12 @@
 
 import type { FormEvent, MouseEvent } from "react";
 import Script from "next/script";
+import { useContacto } from "@/app/components/contacto/useContacto";
 import styles from "./landing.module.css";
 
 // Las funciones del original viven en scope global, definidas por los <Script> de abajo.
 declare global {
   interface Window {
-    openModal: () => void;
-    closeModal: () => void;
-    overlayClose: (e: MouseEvent) => void;
     openWaModal: (e: MouseEvent) => void;
     closeWaModal: () => void;
     closeWaModalOnOverlay: (e: MouseEvent) => void;
@@ -49,39 +47,22 @@ const SCRIPT_PRINCIPAL = `
     window.__lenis = lenis;
   })();
 
-  // Modal
-  function openModal() {
-    // Restablece el estado inicial (formulario visible, confirmación oculta) por si se reabre.
-    const form = document.getElementById('leadForm');
-    const success = document.getElementById('leadSuccess');
-    const head = document.getElementById('leadModalHead');
-    const status = document.getElementById('leadStatus');
-    if (form) form.hidden = false;
-    if (head) head.hidden = false;
-    if (success) success.hidden = true;
-    if (status) { status.hidden = true; status.textContent = ''; status.classList.remove('is-success', 'is-error'); }
-    document.getElementById('lead-modal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-    if (window.__lenis) window.__lenis.stop();
-  }
-  function closeModal() {
-    document.getElementById('lead-modal').classList.remove('open');
-    document.body.style.overflow = '';
-    if (window.__lenis) window.__lenis.start();
-  }
-  function overlayClose(e) {
-    if (e.target === e.currentTarget) closeModal();
-  }
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-  });
 
   // ---- Envío de leads vía función serverless (Resend) ----
   // Endpoint de la función. Si el sitio y la función viven en el mismo dominio de Vercel,
   // déjalo relativo ('/api/lead'). Si la función está en otro dominio, pon la URL absoluta aquí.
   window.LEAD_ENDPOINT = 'https://s-peak-landings.vercel.app/api/lead';
 
-  // Etiquetas internas comunes a ambos formularios: UTMs de la URL + idioma fijo de la landing.
+  // Atribución del lead: UTMs de la URL más el idioma de esta página.
+  //
+  // OJO: ESTA LÓGICA ESTÁ DUPLICADA, A PROPÓSITO.
+  // La copia buena vive en lib/atribucion.ts y la usa el modal de contacto
+  // compartido. Esta se queda porque el formulario del modal de WhatsApp, que
+  // sigue siendo un guion inline, no puede importar un módulo. Exponer las
+  // funciones de React en window crearía una dependencia de orden de carga que
+  // enviaría leads sin atribución sin que nada lo delatara.
+  // Las dos copias tienen que cambiar juntas, y esta desaparece el día que el
+  // modal de WhatsApp pase a React.
   window.collectLeadTags = function () {
     let params;
     try { params = new URLSearchParams(window.location.search); } catch (_) { params = null; }
@@ -131,58 +112,6 @@ const SCRIPT_PRINCIPAL = `
     });
   };
 
-  // Formulario principal "Solicite Información": POST + estado en el modal, sin redirección.
-  (function () {
-    const form = document.getElementById('leadForm');
-    if (!form) return;
-    const btn = document.getElementById('leadSubmit');
-    const status = document.getElementById('leadStatus');
-
-    function setStatus(text, kind) {
-      status.textContent = text;
-      status.classList.remove('is-success', 'is-error');
-      if (kind) status.classList.add(kind);
-      status.hidden = false;
-    }
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!form.reportValidity()) return;
-
-      const payload = Object.assign({
-        nombre: form.nombre.value.trim(),
-        empresa: form.empresa.value.trim(),
-        correo: form.correo.value.trim(),
-        telefono: form.telefono.value.trim(),
-        puesto: form.puesto.value.trim(),
-        mensaje: form.mensaje.value.trim(),
-        origen: 'Formulario principal',
-      }, window.collectLeadTags());
-
-      const originalLabel = btn.textContent;
-      btn.disabled = true;
-      btn.textContent = 'Enviando…';
-      setStatus('Enviando su solicitud…', null);
-
-      window.sendLead(payload)
-        .then(function () {
-          // Éxito: reemplaza el contenido del modal por el estado de confirmación.
-          form.reset();
-          form.hidden = true;
-          const head = document.getElementById('leadModalHead');
-          if (head) head.hidden = true;
-          const success = document.getElementById('leadSuccess');
-          if (success) success.hidden = false;
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event: 'lead_formulario_principal' });
-        })
-        .catch(function () {
-          setStatus('No pudimos enviar su solicitud. Inténtelo de nuevo o escríbanos por WhatsApp.', 'is-error');
-          btn.disabled = false;
-          btn.textContent = originalLabel;
-        });
-    });
-  })();
 
   // Reveal on scroll
   const revealObserver = new IntersectionObserver((entries) => {
@@ -332,6 +261,8 @@ const SCRIPT_VOLVER_ARRIBA = `
 `;
 
 export default function Page() {
+  const { abrir } = useContacto();
+
   return (
     <>
 <main>
@@ -344,7 +275,7 @@ export default function Page() {
       <div className="sp-etiqueta">Inglés corporativo · México</div>
       <h1><strong>Cursos de inglés para empresas</strong> que transforman la operación de su equipo.</h1>
       <p className="sp-hero-sub">Sus colaboradores necesitan comunicarse con seguridad en inglés: <strong>hablar, presentar, negociar y colaborar</strong> en situaciones reales de trabajo. En <strong>S-Peak</strong> diseñamos programas de inglés para empresas por puesto, con seguimiento continuo, reportes claros y evidencia verificable del avance de cada colaborador.</p>
-      <div className={styles.fakeForm} onClick={() => window.openModal()} role="button" tabIndex={0}>
+      <div className={styles.fakeForm} onClick={abrir} role="button" tabIndex={0}>
         <span className={styles.fakeFormIcon}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
         </span>
@@ -440,7 +371,7 @@ export default function Page() {
       <div className="sp-eyebrow">Inglés de negocios</div>
       <h2>Prepare a su talento con un programa de inglés para el mercado global</h2>
       <p>Cada departamento enfrenta retos distintos en inglés: ventas negocia, finanzas reporta a casa matriz, operaciones coordina con proveedores. Por eso cada programa de inglés empresarial <strong>se adapta al rol y al contexto real del puesto</strong>. Medimos el avance con <strong>indicadores verificables</strong> y entregamos reportes que le permiten <strong>decidir sobre su inversión</strong>.</p>
-      <button className="sp-btn sp-btn--rojo" onClick={() => window.openModal()}>Solicite Información</button>
+      <button className="sp-btn sp-btn--rojo" onClick={abrir}>Solicite Información</button>
     </div>
   </div>
 </section>
@@ -457,7 +388,7 @@ export default function Page() {
         <span className={styles.evidenciaTag}>Métricas de avance y asistencia</span>
         <span className={styles.evidenciaTag}>Reportes de desempeño</span>
       </div>
-      <button className="sp-btn sp-btn--rojo" onClick={() => window.openModal()}>Solicite Información</button>
+      <button className="sp-btn sp-btn--rojo" onClick={abrir}>Solicite Información</button>
     </div>
     <div className={`${styles.evidenciaRight} reveal`}>
       <div className={styles.dash} role="img" aria-label="Panel de progreso del equipo en el programa de inglés para empresas de S-Peak">
@@ -698,7 +629,7 @@ export default function Page() {
       <p>Hemos recopilado las dudas más comunes de nuestros clientes para brindarle claridad desde el primer momento.</p>
       <div className={`sp-cta-card ${styles.faqCtaCard}`}>
         <p>¿Tiene una pregunta que no está aquí?</p>
-        <button className="sp-btn sp-btn--rojo" onClick={() => window.openModal()}>Solicite Información</button>
+        <button className="sp-btn sp-btn--rojo" onClick={abrir}>Solicite Información</button>
       </div>
     </div>
     <div className="sp-faq-lista reveal">
@@ -767,62 +698,9 @@ export default function Page() {
   <img className={`${styles.deco} ${styles.decoCta}`} src="/images/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy" />
   <h2>Lleve a su equipo al nivel que<br />su operación necesita</h2>
   <p>Permítanos diseñar un programa de inglés que su equipo sí termine, con avance medible y evidencia para Dirección.</p>
-  <button className="sp-btn sp-btn--blanco" onClick={() => window.openModal()}>Solicite Información</button>
+  <button className="sp-btn sp-btn--blanco" onClick={abrir}>Solicite Información</button>
 </section>
 </main>
-{/* MODAL FORMULARIO */}
-<div className="sp-modal-overlay" id="lead-modal" onClick={(e) => window.overlayClose(e)}>
-  <div className="sp-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div className={styles.modalHeader}>
-      <div id="leadModalHead">
-        <h2 id="modal-title">Hable con un Experto</h2>
-        <p>Un asesor se pondrá en contacto en menos de 24 horas.</p>
-      </div>
-      <button className={styles.modalClose} type="button" onClick={() => window.closeModal()} aria-label="Cerrar">&times;</button>
-    </div>
-    <div className="sp-form-exito" id="leadSuccess" role="status" aria-live="polite" hidden>
-      <svg className={styles.leadSuccessCheck} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="11"></circle>
-        <path d="M7 12.5l3.5 3.5L17 9"></path>
-      </svg>
-      <h3>¡Solicitud enviada!</h3>
-      <p>Nuestro equipo está atendiendo su solicitud. Le contactaremos muy pronto.</p>
-    </div>
-    <form className="sp-form" id="leadForm" noValidate>
-      <div className="sp-form-row">
-        <div className="sp-form-group">
-          <label htmlFor="leadNombre">Nombre y Apellido *</label>
-          <input type="text" id="leadNombre" name="nombre" autoComplete="name" placeholder="María González" required />
-        </div>
-        <div className="sp-form-group">
-          <label htmlFor="leadEmpresa">Empresa *</label>
-          <input type="text" id="leadEmpresa" name="empresa" autoComplete="organization" placeholder="Grupo Industrial SA" required />
-        </div>
-      </div>
-      <div className="sp-form-row">
-        <div className="sp-form-group">
-          <label htmlFor="leadCorreo">Correo Electrónico *</label>
-          <input type="email" id="leadCorreo" name="correo" autoComplete="email" placeholder="maria@empresa.com" required />
-        </div>
-        <div className="sp-form-group">
-          <label htmlFor="leadTelefono">Teléfono</label>
-          <input type="tel" id="leadTelefono" name="telefono" autoComplete="tel" placeholder="+52 55 0000 0000" />
-        </div>
-      </div>
-      <div className="sp-form-group">
-        <label htmlFor="leadPuesto">Puesto que desempeña</label>
-        <input type="text" id="leadPuesto" name="puesto" autoComplete="organization-title" placeholder="Ej. Directora de Recursos Humanos" />
-      </div>
-      <div className="sp-form-group">
-        <label htmlFor="leadMensaje">Cuéntenos su necesidad</label>
-        <textarea id="leadMensaje" name="mensaje" placeholder="Número de colaboradores, área, nivel actual de inglés…"></textarea>
-      </div>
-      <button className="sp-form-submit" type="submit" id="leadSubmit">Solicite Información</button>
-      <p className="sp-form-estado" id="leadStatus" role="status" aria-live="polite" hidden></p>
-      <p className="sp-form-nota">Al enviar acepto recibir comunicaciones de <strong>S-Peak</strong>. Consulte nuestro <a href="https://s-peak.com/aviso-de-privacidad/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-muted)", textDecoration: "underline" }}>Aviso de privacidad</a>.</p>
-    </form>
-  </div>
-</div>
 {/* Botón flotante de WhatsApp */}
 <a href="https://wa.me/525585265520"
    className={styles.whatsappFloat}

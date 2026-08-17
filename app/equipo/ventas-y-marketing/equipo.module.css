@@ -683,7 +683,7 @@
 
 @media (max-width: 600px) {
   .hero {
-    padding: 48px var(--space-gutter-mobile) 80px;
+    padding: 48px var(--space-gutter) 80px;
   }
 
   .compGrid,

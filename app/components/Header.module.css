@@ -11,8 +11,8 @@
 .inner {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 28px;
-  min-height: 68px;
+  padding: 0 var(--space-gutter);
+  min-height: var(--header-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -137,7 +137,7 @@
 @media (max-width: 960px) {
   .inner {
     flex-wrap: wrap;
-    padding: 14px 20px;
+    padding: 14px var(--space-gutter);
     gap: 16px;
   }
 

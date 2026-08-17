@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import BotonContacto from "@/app/components/contacto/BotonContacto";
 import styles from "./home.module.css";
 
 export const metadata: Metadata = {
@@ -234,10 +235,9 @@ export default function Home() {
               continuo, reportes claros y evidencia verificable del avance de
               cada colaborador.
             </p>
-            {/* TODO: abre el modal de contacto — se implementa en fase posterior */}
-            <button type="button" className="sp-btn sp-btn--rojo">
+            <BotonContacto className="sp-btn sp-btn--rojo">
               Solicite una Cotización
-            </button>
+            </BotonContacto>
           </div>
 
           <div className={styles.heroMedia}>
@@ -324,10 +324,9 @@ export default function Home() {
               <li>Métricas de Asistencia</li>
               <li>Reportes de Desempeño</li>
             </ul>
-            {/* TODO: abre el modal de contacto — se implementa en fase posterior */}
-            <button type="button" className="sp-btn sp-btn--rojo">
+            <BotonContacto className="sp-btn sp-btn--rojo">
               Solicite una Cotización
-            </button>
+            </BotonContacto>
           </div>
         </div>
       </section>
@@ -391,10 +390,9 @@ export default function Home() {
               reales y entregamos reportes que le permiten tomar decisiones sobre
               su inversión.
             </p>
-            {/* TODO: abre el modal de contacto — se implementa en fase posterior */}
-            <button type="button" className="sp-btn sp-btn--rojo">
+            <BotonContacto className="sp-btn sp-btn--rojo">
               Solicite una Cotización
-            </button>
+            </BotonContacto>
           </div>
 
           <div className={styles.mosaic}>
@@ -439,15 +437,14 @@ export default function Home() {
               para resultados reales.
             </p>
           </div>
-          {/* TODO: abre el modal de contacto — se implementa en fase posterior */}
-          <button type="button" className={`sp-btn sp-btn--amarillo ${styles.bandCta}`}>
+          <BotonContacto className={`sp-btn sp-btn--amarillo ${styles.bandCta}`}>
             Solicita una Cotización
-          </button>
+          </BotonContacto>
         </div>
       </section>
 
       {/* 9. Casos de éxito */}
-      <section className="sp-seccion">
+      <section className="sp-seccion sp-seccion--ancha">
         <div className={`sp-inner ${styles.centered}`}>
           <p className="sp-eyebrow">Casos de Éxito</p>
           <h2 className={styles.heading}>
@@ -458,7 +455,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className={`sp-inner ${styles.cases}`}>
+        <div className={`sp-inner sp-inner--ancho ${styles.cases}`}>
           <article
             className={styles.case}
             style={{
@@ -515,7 +512,7 @@ export default function Home() {
 
         </div>
 
-        <div className={`sp-inner ${styles.cases} ${styles.casesSecond}`}>
+        <div className={`sp-inner sp-inner--ancho ${styles.cases} ${styles.casesSecond}`}>
           <article
             className={`${styles.case} ${styles.caseRed} ${styles.caseOnColor}`}
           >
@@ -611,17 +608,16 @@ export default function Home() {
             <p className={styles.faqAsideText}>
               Habla con un experto y resuelve tus dudas ahora.
             </p>
-            {/* TODO: abre el modal de contacto — se implementa en fase posterior */}
-            <button type="button" className="sp-btn sp-btn--rojo">
+            <BotonContacto className="sp-btn sp-btn--rojo">
               Hablar con un Experto
-            </button>
+            </BotonContacto>
           </aside>
         </div>
       </section>
 
       {/* 11. Centro de Recursos */}
-      <section className={`sp-seccion ${styles.resources}`}>
-        <div className="sp-inner">
+      <section className={`sp-seccion sp-seccion--ancha ${styles.resources}`}>
+        <div className="sp-inner sp-inner--ancho">
           <div className={styles.resourcesHead}>
             <div className={styles.resourcesIntro}>
               <h2 className={styles.resourcesTitle}>Centro de Recursos</h2>

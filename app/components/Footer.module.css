@@ -9,7 +9,7 @@
 .inner {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 28px 56px;
+  padding: 0 var(--space-gutter) 56px;
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr;
   gap: 48px;
@@ -93,7 +93,7 @@
 
 .bottom {
   background: var(--color-navy-dark);
-  padding: 20px 28px;
+  padding: 20px var(--space-gutter);
   text-align: center;
 }
 

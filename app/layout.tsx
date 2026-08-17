@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import ProveedorContacto from "./components/contacto/ProveedorContacto";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import "./globals.css";
@@ -26,9 +27,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es" className={montserrat.variable}>
       <body>
-        <Header />
-        {children}
-        <Footer />
+        {/* El proveedor monta el modal de contacto una sola vez para todo el
+            sitio. `children` cruza esta frontera como prop, así que las páginas
+            siguen renderizándose en el servidor. */}
+        <ProveedorContacto>
+          <Header />
+          {children}
+          <Footer />
+        </ProveedorContacto>
       </body>
     </html>
   );

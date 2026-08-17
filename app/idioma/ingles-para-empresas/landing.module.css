@@ -839,58 +839,7 @@
   transform: translateY(-50%) rotate(30deg);
 }
 
-/* ---------- Modal de contacto ----------
-   Se extrae al sistema en la fase 2, junto con el componente de contacto
-   compartido que hoy está pendiente en tres botones del sitio. */
-
-.modalHeader {
-  background: var(--color-navy);
-  color: var(--color-white);
-  padding: 26px 28px 24px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.modalHeader h2 {
-  margin-bottom: 6px;
-  font-size: 22px;
-  font-weight: var(--weight-black);
-  line-height: 1.2;
-}
-
-.modalHeader p {
-  font-size: 13px;
-  color: rgba(255, 255, 255, 0.65);
-}
-
-.modalClose {
-  background: none;
-  border: none;
-  color: var(--color-white);
-  font-size: 28px;
-  line-height: 1;
-  cursor: pointer;
-  padding: 0;
-  flex-shrink: 0;
-  opacity: 0.75;
-  transition: opacity var(--transition-fast);
-}
-
-.modalClose:hover {
-  opacity: 1;
-}
-
 /* ---------- Formulario ---------- */
-
-.leadSuccessCheck {
-  width: 84px;
-  height: 84px;
-  color: #1b7a3d;
-  margin: 0 auto 20px;
-  display: block;
-}
 
 /* ---------- WhatsApp ---------- */
 
@@ -1145,7 +1094,7 @@
 
 @media (max-width: 600px) {
   .hero {
-    padding: 48px var(--space-gutter-mobile) 100px;
+    padding: 48px var(--space-gutter) 100px;
   }
 
   .heroPhoto {

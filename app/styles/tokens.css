@@ -85,16 +85,58 @@
 
   /* ---------- Espaciado ---------- */
 
-  /* Ritmo vertical de sección de la referencia. Hoy hay 37 declaraciones de
-     padding de sección repartidas en cinco archivos, con cuatro valores. */
+  /* Ritmo vertical de sección de la referencia. */
   --space-section: 88px;
   --space-section-mobile: 56px;
-  --space-gutter: 28px;
-  --space-gutter-mobile: 20px;
+
+  /* Margen lateral de página, fluido. El porcentaje se resuelve contra el
+     ancho del bloque contenedor, no contra el viewport: eso deja fuera la
+     barra de scroll y evita el desbordamiento horizontal que produciría 4vw.
+
+     El suelo de 20px existe porque 4% de una pantalla de 390px son 15,6px, y
+     ahí el texto quedaría más pegado al borde de lo que está hoy. El
+     porcentaje toma el mando a partir de 500px, que es donde 4% alcanza los
+     20px. Medido: 20px hasta 500, 24 a 600, 31 a 768, 41 a 1024, 51 a 1280 y
+     59 cuando el contenido llega a su tope. */
+  --space-gutter: max(20px, 4%);
+
+  /* Margen lateral de las secciones de ancho extendido. Es el valor que el
+     original de WordPress ya usaba en las dos secciones que lo llevan: el
+     envoltorio de los casos de éxito y el fondo del centro de recursos, los
+     dos al 2% (28,5px medidos sobre un viewport de 1416).
+
+     Mismo suelo de 20px que el gutter normal, y por eso en móvil y tablet
+     estrecha no se nota la diferencia entre una sección extendida y una
+     normal. Por encima del suelo es exactamente la mitad del gutter normal:
+     2% frente a 4%. */
+  --space-gutter-ancho: max(20px, 2%);
+
+  /* Relleno interior de tarjetas y paneles. No es margen de página: si usara
+     el gutter fluido, un panel acabaría con 55px de relleno por efecto
+     colateral de ensanchar el sitio. */
+  --space-inset: 28px;
 
   /* ---------- Anchos y medidas ---------- */
 
-  --container-max: 1160px;
+  /* Tope del contenido. Los 1160 anteriores venían de landing.css, que era una
+     landing de conversión diseñada estrecha a propósito: en una pantalla de
+     1559px dejaba 200px de margen a cada lado y el sitio se leía como una
+     columna. Con 1360 el margen a ese ancho baja a 99px. */
+  --container-max: 1360px;
+
+  /* Las notas del blog no llegan a ese tope. Su cuerpo es una rejilla de
+     `1fr 340px`: con 1360 la columna de lectura mediría 980px, unos 115
+     caracteres por línea a 17px. Con 1160 se queda en los 780 de hoy, que ya
+     están en el techo de lo cómodo. Lo usa la nota entera —cabecera, cuerpo y
+     relacionados— para que la página no se desalinee consigo misma. */
+  --container-lectura: 1160px;
+
+  /* Tope de las secciones extendidas. Generoso a propósito: por debajo de
+     ~2040px de viewport no interviene. Existe para pantallas muy anchas,
+     donde el panel mayor de los casos llevaría la tarjeta de testimonio a
+     895px, unos 119 caracteres por línea. */
+  --container-ancho: 2000px;
+
   --logo-height: 40px;
 
   /* Alto del header sticky. Lo consultan el header, el nav de la landing y el

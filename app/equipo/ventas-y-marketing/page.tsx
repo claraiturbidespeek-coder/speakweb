@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import BotonContacto from "@/app/components/contacto/BotonContacto";
 import styles from "./equipo.module.css";
 
 export const metadata: Metadata = {
@@ -202,7 +203,7 @@ export default function VentasYMarketing() {
       <div className="sp-etiqueta">Inglés corporativo · Ventas y Marketing</div>
       <h1>Cursos de idiomas para equipos de <strong>Ventas y Marketing</strong></h1>
       <p className="sp-hero-sub">Negocie, presente y comunique con confianza en el idioma de su cliente, y que el idioma nunca sea la razón de una oportunidad perdida: una sola cuesta más que todo un programa anual de capacitación. Inglés, francés, alemán, italiano, portugués o español: su equipo es la cara de la empresa.</p>
-      <button className="sp-btn sp-btn--rojo" type="button">Solicite una Cotización</button>
+      <BotonContacto className="sp-btn sp-btn--rojo">Solicite una Cotización</BotonContacto>
       <div className="sp-hero-social">
         <div className="sp-avatares">
           <span className="sp-avatar-apilado">MG</span>
@@ -373,7 +374,7 @@ export default function VentasYMarketing() {
       </div>
     </div>
     <div className={`${styles.dolorCta} reveal`}>
-      <button className="sp-btn sp-btn--rojo" type="button">Solicite una Cotización</button>
+      <BotonContacto className="sp-btn sp-btn--rojo">Solicite una Cotización</BotonContacto>
     </div>
   </div>
 </section>
@@ -486,7 +487,7 @@ export default function VentasYMarketing() {
   <img style={{ position: "absolute", top: "50%", right: "40px", width: "120px", opacity: "0.08", transform: "translateY(-50%) rotate(30deg)", pointerEvents: "none" }} src="/images/isotype.svg" alt="" aria-hidden="true" />
   <h2>Comience con una cotización para su equipo de ventas y marketing</h2>
   <p>Cuéntenos su caso. Le responderemos en menos de 24 horas hábiles.</p>
-  <button className="sp-btn sp-btn--blanco" type="button">Solicite una Cotización</button>
+  <BotonContacto className="sp-btn sp-btn--blanco">Solicite una Cotización</BotonContacto>
 </section>
 
 {/* TESTIMONIOS */}
@@ -542,7 +543,7 @@ export default function VentasYMarketing() {
       <p>Resolvemos las dudas más comunes antes de que tenga que buscarlas.</p>
       <div className={`sp-cta-card ${styles.faqCtaCard}`}>
         <p>¿Tiene una pregunta que no está aquí?</p>
-        <button className="sp-btn sp-btn--rojo" type="button">Hable con un experto</button>
+        <BotonContacto className="sp-btn sp-btn--rojo">Hable con un experto</BotonContacto>
       </div>
     </div>
     <div className="sp-faq-lista reveal">

@@ -38,7 +38,7 @@
 /* El panel enmarca el listado sobre el fondo de la página. */
 .panel {
   background: var(--color-off-white);
-  padding: var(--space-gutter);
+  padding: var(--space-inset);
 }
 
 .tituloSeccion {

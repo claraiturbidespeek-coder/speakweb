@@ -1,10 +1,11 @@
 /* Home: lo propio de esta página.
 
    Proporciones extraídas de post-6390.css, bloque @media(min-width:768px),
-   convertidas al viewport de referencia de 1416px (contenido 1104.5px,
-   equivalente a nuestro contenedor de 1160px con 28px de padding).
+   convertidas al viewport de referencia de 1416px (contenido 1104.5px).
    Las alturas en vh se convirtieron con la altura de viewport de la
-   referencia: 626px.
+   referencia: 626px. Los porcentajes que quedan (el mosaico, la banda, las
+   tarjetas de caso) se resuelven contra su propio contenedor, así que
+   siguieron siendo válidos al pasar el sitio a contenedor fluido.
 
    FASE 3: esta página cede al sistema en lo que tenía resuelto de otra forma.
    Salieron de aquí, a patrones.css: el antetítulo, los botones, la marquesina,
@@ -98,7 +99,7 @@
   width: 85%;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 36px var(--space-gutter);
+  padding: 36px var(--space-inset);
   background: var(--color-white);
 }
 
@@ -240,6 +241,13 @@
    secciones centradas se centra. */
 .centered :global(.sp-eyebrow) {
   justify-content: center;
+}
+
+/* Sin tope, este párrafo ocuparía el contenedor entero. Los mismos 760px que
+   el sistema le da al encabezado centrado de sección. */
+.centered .lead {
+  max-width: 760px;
+  margin-inline: auto;
 }
 
 .differentiators {
@@ -399,12 +407,13 @@
    gap de 20px se sumaría por fuera, desbordando el documento. Con 1fr la
    segunda columna toma el resto una vez descontado el gap, que es exactamente
    el 35% visible. No lo cambies de vuelta a 35%. */
+/* El 2% de envoltorio que tenía aquí lo pone ahora `.sp-seccion--ancha`: si se
+   quedara, se sumaría al de la sección y estas filas no se ensancharían. */
 .cases {
   display: grid;
   grid-template-columns: 65% 1fr;
   gap: 20px;
   margin-top: 30px;
-  padding: 0 2%;
 }
 
 /* La segunda fila reparte 50/50 */
@@ -533,8 +542,11 @@
   color: var(--color-navy);
 }
 
+/* La rejilla del FAQ reparte 65/30, así que sin tope las respuestas llegarían
+   a 884px: unos 126 caracteres a 14px. Se quedan en el ancho que tenían. */
 .faqList {
   margin-top: 28px;
+  max-width: 760px;
 }
 
 .faqAnswer p {
@@ -683,7 +695,7 @@
 
 @media (max-width: 600px) {
   .hero {
-    padding: var(--space-section-mobile) var(--space-gutter-mobile);
+    padding: var(--space-section-mobile) var(--space-gutter);
   }
 
   .counters,

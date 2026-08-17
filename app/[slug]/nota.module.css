@@ -4,13 +4,16 @@
    Imagen destacada, índice y tarjetas de relacionados no existen en la
    referencia: esos vienen del sistema del sitio y de landing.css. */
 
-/* ---------- Cabecera ---------- */
+/* ---------- Cabecera ----------
+   Los tres contenedores de la nota usan el tope de lectura, no el del sitio:
+   con 1360 la columna del artículo se iría a 980px. Ver tokens.css. */
 
 .cabecera {
   background: var(--color-blue-hero);
 }
 
 .cabeceraInner {
+  max-width: var(--container-lectura);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,6 +86,7 @@
 /* ---------- Cuerpo ---------- */
 
 .cuerpoInner {
+  max-width: var(--container-lectura);
   display: grid;
   grid-template-columns: 1fr 340px;
   gap: 40px;
@@ -247,6 +251,10 @@
 
 .relacionados {
   background: var(--color-off-white);
+}
+
+.relacionadosInner {
+  max-width: var(--container-lectura);
 }
 
 .relacionadosTitulo {

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import BotonContacto from "@/app/components/contacto/BotonContacto";
 import styles from "./Header.module.css";
 
 export default function Header() {
@@ -91,10 +92,9 @@ export default function Header() {
           </ul>
         </nav>
 
-        {/* TODO: abre el modal de contacto — se implementa en fase posterior */}
-        <button type="button" className={`sp-btn sp-btn--rojo sp-btn--plano ${styles.cta}`}>
+        <BotonContacto className={`sp-btn sp-btn--rojo sp-btn--plano ${styles.cta}`}>
           Solicite Información
-        </button>
+        </BotonContacto>
       </div>
     </header>
   );

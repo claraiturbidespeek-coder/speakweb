@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import BotonContacto from "@/app/components/contacto/BotonContacto";
 import IndiceContenidos from "@/app/components/IndiceContenidos";
 import {
   formatearFecha,
@@ -161,10 +162,9 @@ export default async function Nota(props: PageProps<"/[slug]">) {
                   <p className={styles.ctaTexto}>
                     Un asesor le responde en menos de 24 horas, sin compromiso.
                   </p>
-                  {/* TODO: abre el modal de contacto — se implementa en fase posterior */}
-                  <button type="button" className="sp-btn sp-btn--rojo">
+                  <BotonContacto className="sp-btn sp-btn--rojo">
                     Solicite Información
-                  </button>
+                  </BotonContacto>
                 </div>
               </div>
             </aside>
@@ -174,7 +174,7 @@ export default async function Nota(props: PageProps<"/[slug]">) {
 
       {relacionados.length > 0 ? (
         <section className={`sp-seccion ${styles.relacionados}`}>
-          <div className="sp-inner">
+          <div className={`sp-inner ${styles.relacionadosInner}`}>
             <h2 className={styles.relacionadosTitulo}>Artículos Relacionados</h2>
             <ul className={styles.relacionadosLista}>
               {relacionados.map((r) => (
