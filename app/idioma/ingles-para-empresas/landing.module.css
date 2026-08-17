@@ -759,12 +759,6 @@
   color: var(--color-ink-2);
 }
 
-.faqCtaCard {
-  background: var(--color-navy);
-  color: var(--color-white);
-  padding: 28px 26px;
-}
-
 .faqCtaCard p {
   margin-bottom: 18px;
   font-size: 18px;
@@ -849,30 +843,6 @@
    Se extrae al sistema en la fase 2, junto con el componente de contacto
    compartido que hoy está pendiente en tres botones del sitio. */
 
-.modalOverlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  z-index: 1000;
-}
-
-.modalOverlay:global(.open) {
-  display: flex;
-}
-
-.modalBox {
-  background: var(--color-white);
-  width: 100%;
-  max-width: 600px;
-  max-height: 92vh;
-  overflow-y: auto;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
-}
-
 .modalHeader {
   background: var(--color-navy);
   color: var(--color-white);
@@ -914,133 +884,12 @@
 
 /* ---------- Formulario ---------- */
 
-.formBody {
-  padding: 24px 28px 28px;
-}
-
-.formRow {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 12px;
-}
-
-.formGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-bottom: 12px;
-}
-
-.formGroup label {
-  font-size: 11.5px;
-  font-weight: var(--weight-bold);
-  color: var(--color-ink-2);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.formGroup input,
-.formGroup textarea {
-  border: 1.5px solid var(--color-border);
-  padding: 10px 12px;
-  font-size: 14px;
-  color: var(--color-ink);
-  background: var(--color-white);
-  outline: none;
-  width: 100%;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.formGroup input:focus,
-.formGroup textarea:focus {
-  border-color: var(--color-navy);
-  box-shadow: 0 0 0 3px rgba(26, 60, 77, 0.08);
-}
-
-.formGroup textarea {
-  resize: vertical;
-  min-height: 80px;
-}
-
-.formSubmit {
-  width: 100%;
-  background: var(--color-red);
-  color: var(--color-white);
-  border: none;
-  padding: 15px;
-  margin-top: 4px;
-  font-size: 15px;
-  font-weight: var(--weight-black);
-  letter-spacing: 0.01em;
-  cursor: pointer;
-  transition: background var(--transition-fast), transform 0.1s;
-}
-
-.formSubmit:hover {
-  background: var(--color-red-dark);
-}
-
-.formSubmit:active {
-  transform: scale(0.99);
-}
-
-.formSubmit:disabled {
-  opacity: 0.7;
-  cursor: progress;
-}
-
-.formStatus {
-  font-size: 13px;
-  text-align: center;
-  margin-top: 12px;
-  padding: 10px 12px;
-  border-radius: 6px;
-}
-
-.formStatus:global(.is-success) {
-  background: #e7f6ec;
-  color: #1b7a3d;
-}
-
-.formStatus:global(.is-error) {
-  background: #fbe9ec;
-  color: var(--color-red);
-}
-
-.formNote {
-  font-size: 11px;
-  color: var(--color-muted);
-  text-align: center;
-  margin-top: 10px;
-}
-
-.leadSuccess {
-  padding: 40px 28px 44px;
-  text-align: center;
-}
-
 .leadSuccessCheck {
   width: 84px;
   height: 84px;
   color: #1b7a3d;
   margin: 0 auto 20px;
   display: block;
-}
-
-.leadSuccess h3 {
-  margin: 0 0 10px;
-  font-size: 24px;
-  font-weight: var(--weight-black);
-  color: var(--color-navy);
-}
-
-.leadSuccess p {
-  margin: 0 auto;
-  max-width: 360px;
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--color-ink-2);
 }
 
 /* ---------- WhatsApp ---------- */
@@ -1088,13 +937,9 @@
   }
 }
 
+/* El modal de WhatsApp usa la caja del sistema con su propia entrada: se funde
+   y sube un poco, en vez de aparecer de golpe. */
 .waModalOverlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  display: none;
-  align-items: center;
-  justify-content: center;
   padding: 20px;
   background: rgba(17, 24, 39, 0.6);
   opacity: 0;
@@ -1102,14 +947,13 @@
 }
 
 .waModalOverlay:global(.open) {
-  display: flex;
   opacity: 1;
 }
 
 .waModal {
-  width: 100%;
   max-width: 380px;
-  background: var(--color-white);
+  max-height: none;
+  overflow-y: visible;
   border-top: 4px solid var(--color-red);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
   transform: translateY(12px);
@@ -1168,57 +1012,13 @@
   padding: 22px 28px 28px;
 }
 
-.waFormGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-bottom: 14px;
-}
-
-.waFormGroup label {
-  font-size: 11.5px;
-  font-weight: var(--weight-bold);
-  color: var(--color-ink-2);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.waFormGroup input {
-  border: 1.5px solid var(--color-border);
-  padding: 11px 12px;
-  font-size: 14px;
-  color: var(--color-ink);
-  background: var(--color-white);
-  outline: none;
-  width: 100%;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.waFormGroup input:focus {
-  border-color: var(--color-navy);
-  box-shadow: 0 0 0 3px rgba(26, 60, 77, 0.08);
-}
-
 .waSubmit {
-  width: 100%;
   background: #25d366;
-  color: var(--color-white);
-  border: none;
-  padding: 15px;
   margin-top: 6px;
-  font-size: 15px;
-  font-weight: var(--weight-black);
-  letter-spacing: 0.01em;
-  cursor: pointer;
-  transition: background var(--transition-fast), transform 0.1s;
 }
 
 .waSubmit:hover {
   background: #1ebe5a;
-}
-
-.waSubmit:active {
-  transform: scale(0.99);
 }
 
 /* ---------- Volver arriba ----------
@@ -1379,10 +1179,6 @@
 
   .fakeFormBtn {
     width: 100%;
-  }
-
-  .formRow {
-    grid-template-columns: 1fr;
   }
 
   .testiCard {

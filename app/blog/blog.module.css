@@ -1,24 +1,28 @@
-/* Índice del blog.
-   Tipografía, colores y ritmo: post-6441.css de https://s-peak.com/blog/,
-   con los porcentajes convertidos al viewport de referencia de 1416px.
-   El filtro y la carga progresiva no existen en el original. */
+/* Índice del blog: lo propio de esta página.
 
-/* ---------- Cabecera ----------
-   En la referencia los tres contenedores son `e-con-full`: sin `.e-con-inner`,
-   el tope de 1140px de Elementor no se les aplica. Son de ancho completo con
-   padding porcentual, y ese padding es el que sitúa el contenido. Por eso aquí
-   no hay contenedor interior ni `max-width`. */
+   Tipografía, colores y ritmo salían de post-6441.css de https://s-peak.com/blog/,
+   con los porcentajes convertidos al viewport de referencia de 1416px.
+
+   FASE 3: los paddings porcentuales se van. Venían de que en la referencia los
+   tres contenedores eran `e-con-full` de Elementor, sin tope de ancho y con el
+   contenido colocado por un padding en porcentaje. Eso hacía que el margen
+   creciera con la pantalla y que esta página no se alineara con ninguna otra
+   del sitio. Ahora usa el mismo contenedor y el mismo ritmo vertical que el
+   resto: `.sp-seccion` pone el aire y el gutter, `.sp-inner` la caja.
+
+   Las tarjetas pasan a las del sistema. El filtro por categorías y la carga
+   progresiva no existen en la referencia y siguen siendo de aquí. */
 
 .cabecera {
   background: var(--color-navy);
-  padding: 4% 6%;
 }
 
 .titulo {
   margin: 0 0 12px;
-  font-size: 44px;
-  font-weight: 600;
+  font-size: var(--text-title-lg);
+  font-weight: var(--weight-black);
   line-height: 1.1;
+  letter-spacing: -0.025em;
   color: var(--color-white);
 }
 
@@ -26,103 +30,32 @@
   margin: 0;
   max-width: 640px;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: var(--weight-normal);
   line-height: 1.6;
   color: var(--color-white);
 }
 
-/* ---------- Cuerpo ----------
-   Envoltorio al 2% del viewport: deja el margen lateral que enmarca el panel.
-   El panel al 4%, que resuelve contra el contenido del envoltorio (96% del
-   viewport), no contra el viewport: 54.4px sobre un panel de 1359px a 1416.
-   Es lo que hace que el contenido quede pegado a sus bordes. */
-
-.cuerpo {
-  padding: 2%;
-}
-
+/* El panel enmarca el listado sobre el fondo de la página. */
 .panel {
   background: var(--color-off-white);
-  padding: 4%;
+  padding: var(--space-gutter);
 }
 
 .tituloSeccion {
   margin: 0 0 40px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -1px;
+  font-size: var(--text-title-md);
+  font-weight: var(--weight-black);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
   color: var(--color-navy);
 }
-
-/* ---------- Tarjeta ---------- */
 
 .tarjeta {
   margin: 0;
 }
 
-.enlace {
-  display: block;
-  text-decoration: none;
-}
-
-/* padding-bottom: calc(0.63 * 100%) en el original -> proporción 100:63 */
-.marco {
-  display: block;
-  position: relative;
-  width: 100%;
-  padding-bottom: 63%;
-  overflow: hidden;
-  background: rgba(26, 60, 77, 0.06);
-}
-
-.imagen {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.tarjetaTitulo {
-  margin: 16px 0 12px;
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.35;
-  color: var(--color-navy);
-}
-
-.enlace:hover .tarjetaTitulo {
-  color: var(--color-red);
-}
-
-.tarjetaResumen {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.6;
-  color: var(--color-navy);
-}
-
-/* ---------- Responsive: breakpoints del sitio (960 / 600) ---------- */
-
-/* La referencia sube a 8% en la cabecera y 4% en cuerpo y panel por debajo de
-   767px; aquí se aplica en el breakpoint del sitio. */
 @media (max-width: 960px) {
-  .cabecera {
-    padding: 8%;
-  }
-
-  .titulo {
-    font-size: 30px;
-  }
-
   .tituloSeccion {
-    font-size: 24px;
     margin-bottom: 28px;
-  }
-
-  .cuerpo {
-    padding: 4%;
   }
 }

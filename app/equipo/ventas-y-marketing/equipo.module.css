@@ -592,13 +592,6 @@
   color: var(--color-ink-2);
 }
 
-.faqCtaCard {
-  background: var(--color-navy);
-  color: var(--color-white);
-  padding: 28px 26px;
-  border-top: 4px solid var(--color-red);
-}
-
 .faqCtaCard p {
   margin-bottom: 18px;
   font-size: 17px;

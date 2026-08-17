@@ -94,7 +94,7 @@ export default function ListadoBlog({
         <div className={styles.masWrap}>
           <button
             type="button"
-            className={styles.mas}
+            className="sp-btn sp-btn--rojo"
             onClick={() => setVisibles((v) => Math.min(v + PASO, total))}
           >
             Ver más artículos

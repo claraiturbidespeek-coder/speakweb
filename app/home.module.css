@@ -1,71 +1,32 @@
-/* Home. Proporciones extraídas de post-6390.css, bloque @media(min-width:768px),
-   convertidas al viewport de referencia de 1416px (contenido 1104.5px, equivalente
-   a nuestro contenedor de 1160px con 28px de padding).
-   Las alturas en vh se convirtieron con la altura de viewport de la referencia: 626px. */
+/* Home: lo propio de esta página.
 
-.inner {
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: 0 28px;
-}
+   Proporciones extraídas de post-6390.css, bloque @media(min-width:768px),
+   convertidas al viewport de referencia de 1416px (contenido 1104.5px,
+   equivalente a nuestro contenedor de 1160px con 28px de padding).
+   Las alturas en vh se convirtieron con la altura de viewport de la
+   referencia: 626px.
 
-.eyebrow {
-  display: inline-block;
-  background: #f4f4f8;
-  color: var(--color-navy);
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 14px;
-  padding: 6px 20px;
-  margin: 0 0 18px;
-}
+   FASE 3: esta página cede al sistema en lo que tenía resuelto de otra forma.
+   Salieron de aquí, a patrones.css: el antetítulo, los botones, la marquesina,
+   el acordeón, la tarjeta azul de llamada a la acción y las tarjetas de
+   artículo. El ritmo vertical de sección y el gutter lateral los pone ahora
+   `.sp-seccion`, así que las secciones ya no llevan padding propio salvo
+   cuando continúan la anterior y no deben abrir hueco arriba.
 
-.heading {
-  margin: 0 0 16px;
-  font-size: 34px;
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -1px;
-  color: var(--color-navy);
-}
+   Los títulos pasan a la escala del sistema: peso 800 y letter-spacing en em,
+   en vez de 600 con píxeles negativos. El hero, los contadores, el mosaico de
+   áreas y los casos de éxito se quedan: son de esta página y de ninguna otra. */
 
-.lead {
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.65;
-  color: var(--color-navy);
-}
-
-.cta {
-  display: inline-block;
-  align-self: flex-start;
-  background: var(--color-red);
-  color: var(--color-white);
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 700;
-  padding: 13px 26px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-/* El original no declara hover; el tono viene de landing.css. */
-.cta:hover {
-  background: #8f1832;
-}
-
-/* ---------- 1. Hero — padding 4%/2%, columnas 55/45, gap 80 ---------- */
+/* ---------- 1. Hero ---------- */
 
 .hero {
-  background: #f0f9ff;
-  padding: 57px 0 28px;
+  background: var(--color-blue-hero);
+  padding: 57px var(--space-gutter) 28px;
 }
 
 .heroInner {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 28px;
   display: grid;
   grid-template-columns: 55fr 45fr;
   gap: 80px;
@@ -74,10 +35,10 @@
 
 .heroTitle {
   margin: 0 0 24px;
-  font-size: 44px;
-  font-weight: 600;
+  font-size: var(--text-title-lg);
+  font-weight: var(--weight-black);
   line-height: 1.1;
-  letter-spacing: -2px;
+  letter-spacing: -0.03em;
   color: var(--color-navy);
 }
 
@@ -125,18 +86,19 @@
   right: -40px;
 }
 
-/* ---------- 2. Confianza — tarjeta al 85% ---------- */
+/* ---------- 2. Confianza ----------
+   Continúa el hero: mismo fondo y sin hueco arriba. */
 
 .trust {
-  background: #f0f9ff;
-  padding: 0 0 57px;
+  background: var(--color-blue-hero);
+  padding-top: 0;
 }
 
 .trustCard {
   width: 85%;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 36px 28px;
+  padding: 36px var(--space-gutter);
   background: var(--color-white);
 }
 
@@ -144,54 +106,23 @@
   margin: 0 0 28px;
   text-align: center;
   font-size: 22px;
-  font-weight: 600;
+  font-weight: var(--weight-bold);
   color: var(--color-navy);
 }
 
-/* Marquesina: el original usa un slider con JavaScript.
-   Patrón .logos-track de landing.css. */
-.trackWrap {
-  overflow: hidden;
-}
-
-.track {
-  display: flex;
-  align-items: center;
-  gap: 64px;
-  width: max-content;
-  animation: slide 40s linear infinite;
-}
-
-.track img {
-  height: 38px;
-  width: auto;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-@keyframes slide {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-/* ---------- 3. Claim + idiomas — padding 6%/6%, título al 80%, gap 42 ---------- */
+/* ---------- 3. Claim + idiomas ---------- */
 
 .claim {
-  padding: 85px 0;
   text-align: center;
 }
 
 .claimTitle {
   width: 80%;
   margin: 0 auto 42px;
-  font-size: 34px;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -1px;
+  font-size: var(--text-title-md);
+  font-weight: var(--weight-black);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
   color: var(--color-navy);
 }
 
@@ -204,15 +135,11 @@
   margin: 0;
   padding: 0;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   color: var(--color-navy);
 }
 
-/* ---------- 4. Prepare a su talento — padding 4%/6%, 50/50, gap 60 ---------- */
-
-.program {
-  padding: 57px 0 85px;
-}
+/* ---------- 4. Prepare a su talento ---------- */
 
 .programGrid {
   display: grid;
@@ -228,12 +155,19 @@
   object-fit: cover;
 }
 
-.programTitle {
-  margin: 0 0 20px;
-  font-size: 36px;
-  font-weight: 600;
+.heading {
+  margin: 0 0 16px;
+  font-size: var(--text-title-md);
+  font-weight: var(--weight-black);
   line-height: 1.15;
-  letter-spacing: -1px;
+  letter-spacing: -0.025em;
+  color: var(--color-navy);
+}
+
+.lead {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.65;
   color: var(--color-navy);
 }
 
@@ -246,12 +180,17 @@
   margin: 30px 0;
   padding: 0;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   line-height: 1.3;
   color: var(--color-navy);
 }
 
-/* ---------- 5. Contadores — cajas por contenido, gap 40, padding 20/40 ---------- */
+/* ---------- 5. Contadores ----------
+   Cierran la sección anterior: sin hueco arriba. */
+
+.countersSection {
+  padding-top: 0;
+}
 
 .counters {
   display: flex;
@@ -260,7 +199,7 @@
   gap: 40px;
   list-style: none;
   margin: 0;
-  padding: 0 0 85px;
+  padding: 0;
 }
 
 .counter {
@@ -273,7 +212,7 @@
 .counterNum {
   display: block;
   font-size: 80px;
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   line-height: 1;
 }
 
@@ -281,15 +220,11 @@
   display: block;
   margin-top: 10px;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   line-height: 16px;
 }
 
-/* ---------- 6. Diferenciadores — padding 6%/4%, 3 columnas gap 30 ---------- */
-
-.differentiatorsSection {
-  padding: 85px 0 57px;
-}
+/* ---------- 6. Diferenciadores ---------- */
 
 .centered {
   text-align: center;
@@ -299,6 +234,12 @@
   width: 80%;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* El antetítulo del sistema alinea a la izquierda con su raya; en las
+   secciones centradas se centra. */
+.centered :global(.sp-eyebrow) {
+  justify-content: center;
 }
 
 .differentiators {
@@ -326,7 +267,7 @@
 .diffTitle {
   margin: 22px 0 12px;
   font-size: 20px;
-  font-weight: 600;
+  font-weight: var(--weight-bold);
   line-height: 1.25;
   color: var(--color-navy);
 }
@@ -338,11 +279,7 @@
   color: var(--color-navy);
 }
 
-/* ---------- 7. Áreas — padding 4%/4%, 50/50, gap 40 ---------- */
-
-.areasSection {
-  padding: 57px 0;
-}
+/* ---------- 7. Áreas ---------- */
 
 .areasGrid {
   display: grid;
@@ -387,7 +324,6 @@
   background-size: cover;
   background-position: center;
   color: var(--color-white);
-  text-decoration: none;
   overflow: hidden;
 }
 
@@ -396,7 +332,7 @@
   position: absolute;
   inset: 0;
   background: rgba(26, 60, 77, 0.62);
-  transition: background 0.2s;
+  transition: background var(--transition-fast);
 }
 
 .tile:hover::after {
@@ -411,11 +347,17 @@
   align-items: flex-end;
   margin: 0;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: var(--weight-bold);
   line-height: 1.2;
 }
 
-/* ---------- 8. Banda roja — interior 60/40 ---------- */
+/* ---------- 8. Banda roja ----------
+   Va entre dos secciones y no aporta ritmo propio. */
+
+.bandSection {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 
 .band {
   position: relative;
@@ -433,9 +375,9 @@
 
 .bandTitle {
   margin: 0 0 14px;
-  font-size: 32px;
-  font-weight: 600;
-  letter-spacing: -1px;
+  font-size: var(--text-title-md);
+  font-weight: var(--weight-black);
+  letter-spacing: -0.025em;
   color: var(--color-white);
 }
 
@@ -445,22 +387,11 @@
   line-height: 1.6;
 }
 
-.ctaYellow {
-  composes: cta;
+.bandCta {
   justify-self: center;
-  background: var(--color-yellow);
-  color: var(--color-navy);
 }
 
-.ctaYellow:hover {
-  background: #fec23f;
-}
-
-/* ---------- 9. Casos de éxito — envoltorio 2%, paneles 65/35 y 50/50 ---------- */
-
-.casesSection {
-  padding: 85px 0 57px;
-}
+/* ---------- 9. Casos de éxito ---------- */
 
 /* El reparto medido en la referencia es 65/35. La segunda columna se escribe
    como 1fr y no como 35% a propósito: los porcentajes se resuelven contra la
@@ -524,7 +455,7 @@
 .caseTitle {
   margin: 0 0 14px;
   font-size: 22px;
-  font-weight: 600;
+  font-weight: var(--weight-bold);
   line-height: 1.25;
   color: var(--color-navy);
 }
@@ -574,7 +505,7 @@
 .personName {
   display: block;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: var(--weight-bold);
   color: var(--color-navy);
 }
 
@@ -584,11 +515,7 @@
   color: var(--color-navy);
 }
 
-/* ---------- 10. FAQ — padding 4%/6%, 65/30, gap 60 ---------- */
-
-.faqSection {
-  padding: 57px 0 85px;
-}
+/* ---------- 10. FAQ ---------- */
 
 .faqGrid {
   display: grid;
@@ -599,62 +526,15 @@
 
 .faqTitle {
   margin: 0 0 14px;
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -1px;
+  font-size: var(--text-title-md);
+  font-weight: var(--weight-black);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
   color: var(--color-navy);
 }
 
 .faqList {
   margin-top: 28px;
-  border-top: 1px solid #e5e7eb;
-}
-
-.faqItem {
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.faqQuestion {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 18px 4px;
-  list-style: none;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.4;
-  color: var(--color-navy);
-}
-
-.faqQuestion::-webkit-details-marker {
-  display: none;
-}
-
-.faqQuestion::after {
-  content: "";
-  flex-shrink: 0;
-  width: 7px;
-  height: 7px;
-  border-right: 1.5px solid currentColor;
-  border-bottom: 1.5px solid currentColor;
-  transform: rotate(-45deg);
-  transition: transform 0.2s;
-}
-
-.faqItem[open] .faqQuestion::after {
-  transform: rotate(45deg);
-}
-
-.faqQuestion:focus-visible {
-  outline: 2px solid var(--color-navy);
-  outline-offset: -2px;
-}
-
-.faqAnswer {
-  padding: 0 4px 20px;
 }
 
 .faqAnswer p {
@@ -668,17 +548,13 @@
   margin-bottom: 0;
 }
 
-.faqAside {
-  background: var(--color-navy);
-  color: var(--color-white);
-  padding: 30px;
-}
-
+/* La tarjeta lateral usa la superficie del sistema; la tipografía se queda
+   aquí porque en esta página ocupa una columna entera, no un pie de párrafo. */
 .faqAsideTitle {
   margin: 0 0 12px;
-  font-size: 32px;
-  font-weight: 600;
-  letter-spacing: -1px;
+  font-size: var(--text-title-md);
+  font-weight: var(--weight-black);
+  letter-spacing: -0.025em;
   color: var(--color-white);
 }
 
@@ -688,14 +564,13 @@
   line-height: 1.6;
 }
 
-/* ---------- 11. Centro de recursos — cabecera al 60%, 4 columnas gap 30 ---------- */
+/* ---------- 11. Centro de recursos ---------- */
 
 /* No va a sangre: en el original el fondo deja un 2% a cada lado
    (28.5px medidos sobre un viewport de 1416). */
 .resources {
   background: var(--color-off-white);
   margin: 0 2%;
-  padding: 85px 0;
 }
 
 .resourcesHead {
@@ -713,16 +588,16 @@
 
 .resourcesTitle {
   margin: 0 0 10px;
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -1px;
+  font-size: var(--text-title-md);
+  font-weight: var(--weight-black);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
   color: var(--color-navy);
 }
 
 .resourcesLink {
   font-size: 13px;
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   color: var(--color-navy);
   text-decoration: underline;
 }
@@ -736,32 +611,7 @@
   padding: 0;
 }
 
-/* padding-bottom: calc(0.8 * 100%) en el original -> relación 5:4 */
-.postImage {
-  display: block;
-  width: 100%;
-  aspect-ratio: 5 / 4;
-  height: auto;
-  object-fit: cover;
-}
-
-.postTitle {
-  margin: 16px 0 0;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.35;
-}
-
-.postTitle a {
-  color: var(--color-navy);
-  text-decoration: none;
-}
-
-.postTitle a:hover {
-  text-decoration: underline;
-}
-
-/* ---------- Responsive: breakpoints de landing.css (960 / 600) ---------- */
+/* ---------- Responsive ---------- */
 
 /* Los callouts sobresalen 40px de la columna de media. Por encima de 1200px el
    contenedor de 1160 deja margen de sobra; por debajo ese margen se agota y el
@@ -789,30 +639,14 @@
     gap: 20px;
   }
 
-  .hero {
-    padding: 48px 0;
-  }
-
   .heroTitle {
-    font-size: 33px;
-    letter-spacing: -1px;
-  }
-
-  .programTitle {
-    font-size: 30px;
+    letter-spacing: -0.02em;
   }
 
   .claimTitle,
   .heading,
   .centered .heading {
     width: 100%;
-    font-size: 26px;
-    line-height: 1.2;
-  }
-
-  .faqTitle {
-    font-size: 21px;
-    letter-spacing: -0.5px;
   }
 
   .differentiators,
@@ -825,7 +659,7 @@
     gap: 24px;
   }
 
-  .ctaYellow {
+  .bandCta {
     justify-self: start;
   }
 
@@ -848,20 +682,8 @@
 }
 
 @media (max-width: 600px) {
-  .claim,
-  .program,
-  .differentiatorsSection,
-  .areasSection,
-  .casesSection,
-  .faqSection,
-  .resources {
-    padding: 48px 0;
-  }
-
-  .inner,
-  .heroInner {
-    padding-left: 20px;
-    padding-right: 20px;
+  .hero {
+    padding: var(--space-section-mobile) var(--space-gutter-mobile);
   }
 
   .counters,

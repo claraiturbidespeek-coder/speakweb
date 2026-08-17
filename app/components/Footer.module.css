@@ -51,8 +51,8 @@
 }
 
 .social:hover {
-  color: #ffd6df;
-  border-color: #ffd6df;
+  color: var(--color-red-hover);
+  border-color: var(--color-red-hover);
 }
 
 .social:focus-visible,
@@ -88,11 +88,11 @@
 }
 
 .link:hover {
-  color: #ffd6df;
+  color: var(--color-red-hover);
 }
 
 .bottom {
-  background: #0f2330;
+  background: var(--color-navy-dark);
   padding: 20px 28px;
   text-align: center;
 }

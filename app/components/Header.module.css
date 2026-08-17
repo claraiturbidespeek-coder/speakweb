@@ -127,21 +127,9 @@
   outline-offset: -2px;
 }
 
+/* La piel la pone el botón del sistema; aquí solo que no se encoja. */
 .cta {
   flex-shrink: 0;
-  background: var(--color-red);
-  color: var(--color-white);
-  padding: 11px 22px;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 700;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.cta:hover {
-  background: #8f1832;
 }
 
 /* La referencia oculta los links por debajo de 960px porque la landing no tiene menú.
@@ -153,6 +141,7 @@
     gap: 16px;
   }
 
+  /* Los enlaces bajan a una segunda fila. */
   .nav {
     order: 3;
     flex-basis: 100%;

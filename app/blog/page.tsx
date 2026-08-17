@@ -17,16 +17,18 @@ export default function Blog() {
 
   return (
     <main>
-      <section className={styles.cabecera}>
-        <h1 className={styles.titulo}>Centro de Recursos</h1>
-        <p className={styles.subtitulo}>
-          Explora nuestra biblioteca completa de guías, tutoriales, y plantillas
-          descargables.
-        </p>
+      <section className={`sp-seccion ${styles.cabecera}`}>
+        <div className="sp-inner">
+          <h1 className={styles.titulo}>Centro de Recursos</h1>
+          <p className={styles.subtitulo}>
+            Explora nuestra biblioteca completa de guías, tutoriales, y
+            plantillas descargables.
+          </p>
+        </div>
       </section>
 
-      <section className={styles.cuerpo}>
-        <div className={styles.panel}>
+      <section className="sp-seccion">
+        <div className={`sp-inner ${styles.panel}`}>
           <h2 className={styles.tituloSeccion}>Artículos</h2>
 
           <ListadoBlog categorias={categorias} total={posts.length}>
@@ -36,20 +38,18 @@ export default function Blog() {
                 className={styles.tarjeta}
                 data-categoria={post.categorySlug}
               >
-                <Link className={styles.enlace} href={`/${post.slug}/`}>
+                <Link className="sp-post-enlace" href={`/${post.slug}/`}>
                   {post.featuredImage ? (
-                    <span className={styles.marco}>
-                      <img
-                        className={styles.imagen}
-                        src={post.featuredImage}
-                        alt={post.featuredImageAlt ?? ""}
-                        loading="lazy"
-                      />
-                    </span>
+                    <img
+                      className="sp-post-img"
+                      src={post.featuredImage}
+                      alt={post.featuredImageAlt ?? ""}
+                      loading="lazy"
+                    />
                   ) : null}
-                  <h3 className={styles.tarjetaTitulo}>{post.title}</h3>
+                  <h3 className="sp-post-titulo">{post.title}</h3>
                 </Link>
-                <p className={styles.tarjetaResumen}>{post.resumen}</p>
+                <p className="sp-post-resumen">{post.resumen}</p>
               </li>
             ))}
           </ListadoBlog>

@@ -66,8 +66,8 @@ export default async function Nota(props: PageProps<"/[slug]">) {
   return (
     <main>
       <article>
-        <header className={styles.cabecera}>
-          <div className={styles.cabeceraInner}>
+        <header className={`sp-seccion ${styles.cabecera}`}>
+          <div className={`sp-inner ${styles.cabeceraInner}`}>
             <p className={styles.meta}>
               <span className={styles.metaItem}>
                 <svg
@@ -124,8 +124,8 @@ export default async function Nota(props: PageProps<"/[slug]">) {
           />
         ) : null}
 
-        <div className={styles.cuerpo}>
-          <div className={styles.cuerpoInner}>
+        <div className="sp-seccion">
+          <div className={`sp-inner ${styles.cuerpoInner}`}>
             <div className={styles.columnaPrincipal}>
               {post.readingTime ? (
                 <p className={styles.lectura}>
@@ -156,13 +156,13 @@ export default async function Nota(props: PageProps<"/[slug]">) {
               <div className={styles.lateralSticky}>
                 <IndiceContenidos encabezados={post.encabezados} />
 
-                <div className={styles.tarjetaCta}>
+                <div className="sp-cta-card">
                   <p className={styles.ctaTitulo}>¿Necesita un programa a la medida?</p>
                   <p className={styles.ctaTexto}>
                     Un asesor le responde en menos de 24 horas, sin compromiso.
                   </p>
                   {/* TODO: abre el modal de contacto — se implementa en fase posterior */}
-                  <button type="button" className={styles.cta}>
+                  <button type="button" className="sp-btn sp-btn--rojo">
                     Solicite Información
                   </button>
                 </div>
@@ -173,22 +173,22 @@ export default async function Nota(props: PageProps<"/[slug]">) {
       </article>
 
       {relacionados.length > 0 ? (
-        <section className={styles.relacionados}>
-          <div className={styles.relacionadosInner}>
+        <section className={`sp-seccion ${styles.relacionados}`}>
+          <div className="sp-inner">
             <h2 className={styles.relacionadosTitulo}>Artículos Relacionados</h2>
             <ul className={styles.relacionadosLista}>
               {relacionados.map((r) => (
-                <li key={r.slug} className={styles.tarjeta}>
-                  <Link className={styles.tarjetaEnlace} href={`/${r.slug}/`}>
+                <li key={r.slug}>
+                  <Link className="sp-post-enlace" href={`/${r.slug}/`}>
                     {r.featuredImage ? (
                       <img
-                        className={styles.tarjetaImagen}
+                        className="sp-post-img"
                         src={r.featuredImage}
                         alt={r.featuredImageAlt ?? ""}
                         loading="lazy"
                       />
                     ) : null}
-                    <h3 className={styles.tarjetaTitulo}>{r.title}</h3>
+                    <h3 className="sp-post-titulo">{r.title}</h3>
                   </Link>
                 </li>
               ))}

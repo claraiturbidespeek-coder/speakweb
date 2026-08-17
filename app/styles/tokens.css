@@ -15,15 +15,14 @@
 
    Criterio de admisión, para que este archivo no se llene de valores
    inventados: entra lo que ya existía en dos o más lugares del proyecto. Un
-   valor que hoy aparece una sola vez se queda en su página hasta que una
-   segunda página lo pida. Los tamaños de texto sueltos, los gaps de rejilla y
-   las 31 sombras distintas se resuelven al escribir los patrones (fase 1a), no
-   antes.
+   valor que aparece una sola vez se queda en su página hasta que una segunda
+   la pida. Por eso no están aquí el verde de WhatsApp, los tonos de acierto y
+   error del formulario ni los tres literales de la escena 404.
 
-   Los nombres siguen la convención que ya usaban globals.css y los siete
-   módulos del sitio (--color-*, --container-*). Las hojas migradas usan nombres
-   cortos heredados de su repo de origen (--red, --navy, --max); esos viven al
-   final, en el bloque de compatibilidad, y se borran en la fase 4. */
+   Los nombres siguen la convención de --color-* y --container-*, que ya usaban
+   globals.css y los módulos del sitio. Durante la migración convivieron con los
+   nombres cortos del repo de origen (--red, --navy, --max) mediante un bloque
+   de alias; ese bloque se borró al terminar y no debe volver. */
 
 :root {
   /* ---------- Paleta ---------- */
@@ -134,36 +133,5 @@
        600px   móvil
        768px   tablet vertical
        960px   tablet horizontal / colapso de rejillas
-       1200px  único uso, los callouts flotantes del home
-
-     ---------- Compatibilidad temporal ----------
-     Alias de los nombres cortos que usan las tres hojas migradas
-     (landing.css, equipo.css, not-found.css). Existen para que la fase 0 no
-     tenga que tocar cientos de referencias dentro de esas hojas. Se borran en
-     la fase 4, cuando esas hojas ya sean módulos y usen los nombres de arriba.
-     No los uses en código nuevo. */
-
-  --red: var(--color-red);
-  --red-dark: var(--color-red-dark);
-  --navy: var(--color-navy);
-  --white: var(--color-white);
-  --off: var(--color-off-white);
-  --ink: var(--color-ink);
-  --ink-2: var(--color-ink-2);
-  --muted: var(--color-muted);
-  --border: var(--color-border);
-  --yellow: var(--color-yellow);
-  --font: var(--font-sitio);
-  --max: var(--container-max);
-
-  /* Nombres del handoff de diseño de la escena 404. */
-  --sp-navy-700: var(--color-navy);
-  --sp-navy-300: var(--color-navy-light);
-  --sp-red-700: var(--color-red);
-  --sp-red-500: var(--color-red-light);
-  --sp-cyan-700: var(--color-cyan);
-  --sp-cyan-500: var(--color-cyan-light);
-  --sp-yellow-500: var(--color-yellow-light);
-  --sp-gray-700: var(--color-muted-2);
-  --focus-ring: var(--color-cyan);
+       1200px  único uso, los callouts flotantes del home */
 }

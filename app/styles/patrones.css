@@ -179,6 +179,36 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
+.sp-btn--amarillo {
+  background: var(--color-yellow);
+  color: var(--color-navy);
+  padding: 15px 32px;
+  font-size: 15px;
+  font-weight: var(--weight-bold);
+}
+
+.sp-btn--amarillo::after {
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+}
+
+.sp-btn--amarillo:hover {
+  background: var(--color-yellow-light);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(26, 60, 77, 0.24);
+}
+
+/* Para barras de navegación y contextos estrechos: sin brillo ni elevación, y
+   con la medida que la referencia usaba en su nav. */
+.sp-btn--plano {
+  padding: 11px 22px;
+  font-size: 14px;
+}
+
 .sp-btn--plano::after {
   display: none;
 }
@@ -630,13 +660,226 @@
   opacity: 1;
 }
 
-/* ========== Acordeón ==========
-   OJO: `.sp-faq-item` y `.open` los consulta el JavaScript de las páginas
-   migradas. Ver app/styles/interacciones.css antes de renombrarlos.
+/* ========== Tarjeta de llamada a la acción ==========
+   El bloque azul con un botón dentro. Aparecía cuatro veces en el proyecto: al
+   pie del intro del FAQ en las dos páginas migradas, como columna lateral del
+   FAQ del home y como tarjeta lateral de las notas del blog.
 
-   Esto desaparece en la fase 2, cuando el acordeón pase a <details> y el
-   toggleFaq de las dos páginas se borre. La piel de abajo es la que sobrevive
-   a ese cambio; el motor no. */
+   Solo se comparte la superficie. La tipografía se queda en cada página porque
+   la escala es distinta de verdad: en unas es una tarjeta pequeña bajo un
+   párrafo y en el home es una columna entera. */
+
+.sp-cta-card {
+  background: var(--color-navy);
+  color: var(--color-white);
+  padding: 28px 26px;
+  border-top: 4px solid var(--color-red);
+}
+
+/* ========== Tarjeta de artículo ==========
+   Tres implementaciones: los teasers del home, los relacionados de una nota y
+   las tarjetas del índice del blog. Ninguna de las dos páginas de referencia
+   tiene una, así que manda la coincidencia: dos de las tres usaban proporción
+   5:4, título de 16px y subrayado al pasar el cursor. */
+
+.sp-post-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+  background: rgba(26, 60, 77, 0.06);
+}
+
+.sp-post-titulo {
+  margin: 16px 0 0;
+  font-size: 16px;
+  font-weight: var(--weight-semibold);
+  line-height: 1.35;
+  color: var(--color-navy);
+}
+
+.sp-post-resumen {
+  margin: 12px 0 0;
+  font-size: 14px;
+  font-weight: var(--weight-normal);
+  line-height: 1.6;
+  color: var(--color-navy);
+}
+
+.sp-post-enlace {
+  display: block;
+}
+
+.sp-post-enlace:hover .sp-post-titulo {
+  text-decoration: underline;
+}
+
+/* ========== Modal ==========
+   Solo la caja: el fondo oscuro, el panel y el ancho. Las dos cabeceras que
+   hay hoy son distintas de verdad (una es una barra azul con título y subtítulo,
+   la otra un encabezado blanco con filo rojo) y se quedan en su módulo.
+
+   `.open` la ponen y la quitan los guiones de la página. Ver interacciones.css. */
+
+.sp-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.sp-modal-overlay.open {
+  display: flex;
+}
+
+.sp-modal {
+  width: 100%;
+  max-width: 600px;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: var(--color-white);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+}
+
+/* ========== Formulario ==========
+   Unifica los dos formularios que tenía la landing, que eran el mismo con
+   dos píxeles de diferencia en el padding y en el margen. */
+
+.sp-form {
+  padding: 24px 28px 28px;
+}
+
+.sp-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.sp-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+
+.sp-form-group label {
+  font-size: 11.5px;
+  font-weight: var(--weight-bold);
+  color: var(--color-ink-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sp-form-group input,
+.sp-form-group textarea {
+  width: 100%;
+  border: 1.5px solid var(--color-border);
+  padding: 10px 12px;
+  font-size: 14px;
+  color: var(--color-ink);
+  background: var(--color-white);
+  outline: none;
+  transition: border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.sp-form-group input:focus,
+.sp-form-group textarea:focus {
+  border-color: var(--color-navy);
+  box-shadow: 0 0 0 3px rgba(26, 60, 77, 0.08);
+}
+
+.sp-form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Botón de envío: ancho completo, a diferencia de los CTA de página. */
+.sp-form-submit {
+  width: 100%;
+  background: var(--color-red);
+  color: var(--color-white);
+  border: none;
+  padding: 15px;
+  margin-top: 4px;
+  font-size: 15px;
+  font-weight: var(--weight-black);
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform 0.1s;
+}
+
+.sp-form-submit:hover {
+  background: var(--color-red-dark);
+}
+
+.sp-form-submit:active {
+  transform: scale(0.99);
+}
+
+.sp-form-submit:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.sp-form-nota {
+  margin-top: 10px;
+  font-size: 11px;
+  text-align: center;
+  color: var(--color-muted);
+}
+
+.sp-form-estado {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.sp-form-estado.is-success {
+  background: #e7f6ec;
+  color: #1b7a3d;
+}
+
+.sp-form-estado.is-error {
+  background: #fbe9ec;
+  color: var(--color-red);
+}
+
+.sp-form-exito {
+  padding: 40px 28px 44px;
+  text-align: center;
+}
+
+.sp-form-exito h3 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  font-weight: var(--weight-black);
+  color: var(--color-navy);
+}
+
+.sp-form-exito p {
+  margin: 0 auto;
+  max-width: 360px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-ink-2);
+}
+
+/* ========== Acordeón ==========
+   `<details>` y `<summary>`, sin JavaScript. Las tres páginas con FAQ usaban
+   esto o un <div> con una clase que ponía un guion; ahora es lo mismo en todas.
+
+   El agrupamiento exclusivo (abrir una cierra la anterior) lo da el atributo
+   `name` compartido, que es la versión nativa de lo que antes hacía el guion
+   recorriendo el DOM. Donde el navegador no lo soporte, el acordeón sigue
+   funcionando: solo permitirá varias abiertas a la vez. */
 
 .sp-faq-lista {
   display: flex;
@@ -651,10 +894,11 @@
 }
 
 .sp-faq-item:hover,
-.sp-faq-item.open {
+.sp-faq-item[open] {
   border-color: var(--color-red);
 }
 
+/* Vale como <button> y como <summary>: de ahí el list-style y el marcador. */
 .sp-faq-pregunta {
   width: 100%;
   display: flex;
@@ -669,10 +913,20 @@
   font-weight: var(--weight-semibold);
   color: var(--color-navy);
   cursor: pointer;
+  list-style: none;
+}
+
+.sp-faq-pregunta::-webkit-details-marker {
+  display: none;
 }
 
 .sp-faq-pregunta:hover {
   color: var(--color-red);
+}
+
+.sp-faq-pregunta:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: -2px;
 }
 
 .sp-faq-icono {
@@ -690,28 +944,19 @@
     color var(--transition-fast);
 }
 
-.sp-faq-item.open .sp-faq-icono {
+.sp-faq-item[open] .sp-faq-icono {
   transform: rotate(45deg);
   background: var(--color-red);
   color: var(--color-white);
 }
 
 .sp-faq-respuesta {
-  padding: 0 20px;
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
+  padding: 0 20px 20px;
   font-size: 14px;
   line-height: 1.75;
   color: var(--color-ink-2);
-  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
 }
 
-.sp-faq-item.open .sp-faq-respuesta {
-  max-height: 600px;
-  opacity: 1;
-  padding-bottom: 20px;
-}
 
 /* ========== Responsive ==========
    Los breakpoints del sistema están documentados en tokens.css. */
@@ -731,6 +976,10 @@
 @media (max-width: 600px) {
   .sp-seccion {
     padding: var(--space-section-mobile) var(--space-gutter-mobile);
+  }
+
+  .sp-form-row {
+    grid-template-columns: 1fr;
   }
 }
 

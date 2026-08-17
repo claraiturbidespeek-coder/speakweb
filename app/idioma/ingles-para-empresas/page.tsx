@@ -13,7 +13,6 @@ declare global {
     openWaModal: (e: MouseEvent) => void;
     closeWaModal: () => void;
     closeWaModalOnOverlay: (e: MouseEvent) => void;
-    toggleFaq: (el: Element) => void;
     submitWaForm: (e: FormEvent) => void;
   }
 }
@@ -226,14 +225,6 @@ const SCRIPT_PRINCIPAL = `
     show(0);
     start();
   })();
-
-  // FAQ accordion
-  function toggleFaq(btn) {
-    const item = btn.closest('.sp-faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.sp-faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  }
 
   // Carrusel testimonios: avance automático tarjeta por tarjeta
   (function () {
@@ -705,68 +696,68 @@ export default function Page() {
       <div className="sp-eyebrow">Preguntas frecuentes</div>
       <h2>Resolvamos sus dudas</h2>
       <p>Hemos recopilado las dudas más comunes de nuestros clientes para brindarle claridad desde el primer momento.</p>
-      <div className={styles.faqCtaCard}>
+      <div className={`sp-cta-card ${styles.faqCtaCard}`}>
         <p>¿Tiene una pregunta que no está aquí?</p>
         <button className="sp-btn sp-btn--rojo" onClick={() => window.openModal()}>Solicite Información</button>
       </div>
     </div>
     <div className="sp-faq-lista reveal">
-      <div className="sp-faq-item">
-        <button className="sp-faq-pregunta" onClick={(e) => window.toggleFaq(e.currentTarget)}>
+      <details className="sp-faq-item" name="faq-ingles">
+        <summary className="sp-faq-pregunta">
           1. ¿Cómo sé que de verdad funciona? ¿Qué recibe Recursos Humanos?
           <span className="sp-faq-icono">+</span>
-        </button>
+        </summary>
         <div className="sp-faq-respuesta">Cada programa avanza por Sprints, 26 horas enfocadas en un dominio del puesto, que cierran con evidencia real (una simulación, un correo, una presentación), evaluada con rúbrica y documentada en una <strong>Tarjeta de Resultados</strong> que usted presenta a Dirección. Su equipo avanza por dominio comprobado, no por horas cursadas. <em>Solicite una propuesta y le mostramos un ejemplo de Tarjeta.</em></div>
-      </div>
-      <div className="sp-faq-item">
-        <button className="sp-faq-pregunta" onClick={(e) => window.toggleFaq(e.currentTarget)}>
+      </details>
+      <details className="sp-faq-item" name="faq-ingles">
+        <summary className="sp-faq-pregunta">
           2. ¿En cuánto tiempo veo un cambio real?
           <span className="sp-faq-icono">+</span>
-        </button>
+        </summary>
         <div className="sp-faq-respuesta">Depende del punto de partida y la constancia del equipo. Como referencia, pasar de un dominio al siguiente (de B1 a B2) toma <strong>alrededor de 9 meses</strong> con dos sesiones semanales de hora y media. En el diagnóstico inicial le damos una proyección realista para su caso. <em>Cotice y le estimamos el plan.</em></div>
-      </div>
-      <div className="sp-faq-item">
-        <button className="sp-faq-pregunta" onClick={(e) => window.toggleFaq(e.currentTarget)}>
+      </details>
+      <details className="sp-faq-item" name="faq-ingles">
+        <summary className="sp-faq-pregunta">
           3. ¿Adaptan el inglés a mi industria y manejan equipos en varios países?
           <span className="sp-faq-icono">+</span>
-        </button>
+        </summary>
         <div className="sp-faq-respuesta">Sí. Anclamos cada Sprint al lenguaje de su sector y a la función de cada equipo: comercial, operaciones, finanzas, atención a clientes, coordinación con casa matriz, con foco en que comuniquen y reporten en inglés en situaciones reales. Para multinacionales capacitamos <strong>México y filiales en simultáneo</strong>, con gestión central y resultados consolidados. <em>Indíquenos su industria y el alcance.</em></div>
-      </div>
-      <div className="sp-faq-item">
-        <button className="sp-faq-pregunta" onClick={(e) => window.toggleFaq(e.currentTarget)}>
+      </details>
+      <details className="sp-faq-item" name="faq-ingles">
+        <summary className="sp-faq-pregunta">
           4. ¿Quién imparte y qué respaldo tienen?
           <span className="sp-faq-icono">+</span>
-        </button>
+        </summary>
         <div className="sp-faq-respuesta">Instructores certificados con experiencia en entornos corporativos, no profesores de escuela. Cada uno se asigna según el dominio y el puesto de su equipo, y si alguno no resulta el adecuado, <strong>lo cambiamos.</strong> La calidad no se deja al azar. <em>Pregúntenos por el perfil de quienes trabajarían con su equipo.</em></div>
-      </div>
-      <div className="sp-faq-item">
-        <button className="sp-faq-pregunta" onClick={(e) => window.toggleFaq(e.currentTarget)}>
+      </details>
+      <details className="sp-faq-item" name="faq-ingles">
+        <summary className="sp-faq-pregunta">
           5. ¿Qué pasa si un colaborador falta, se rezaga o deja la empresa?
           <span className="sp-faq-icono">+</span>
-        </button>
+        </summary>
         <div className="sp-faq-respuesta">Cubierto en los tres casos. Si falta, le enviamos la grabación y los temas para que no pierda el ritmo. Si se rezaga, lo detectamos a tiempo y ajustamos. Y si deja la empresa, reasignamos su lugar a otro colaborador del mismo dominio, <strong>sin perder lo invertido</strong>. <em>Lo dejamos definido en la propuesta desde el inicio.</em></div>
-      </div>
-      <div className="sp-faq-item">
-        <button className="sp-faq-pregunta" onClick={(e) => window.toggleFaq(e.currentTarget)}>
+      </details>
+      <details className="sp-faq-item" name="faq-ingles">
+        <summary className="sp-faq-pregunta">
           6. ¿Cómo encaja el programa sin frenar la operación?
           <span className="sp-faq-icono">+</span>
-        </button>
+        </summary>
         <div className="sp-faq-respuesta">Las sesiones se agendan en los horarios que le convengan a su equipo, en la modalidad que elija: en sus instalaciones, en línea en vivo o híbrida. Y como la operación trae imprevistos, manejamos reposición ágil: si se atraviesa una junta o una urgencia, <strong>la sesión se repone sin trámites</strong>, para que el avance no se detenga. <em>Cuéntenos cómo opera su equipo.</em></div>
-      </div>
-      <div className="sp-faq-item">
-        <button className="sp-faq-pregunta" onClick={(e) => window.toggleFaq(e.currentTarget)}>
+      </details>
+      <details className="sp-faq-item" name="faq-ingles">
+        <summary className="sp-faq-pregunta">
           7. ¿Cuánto cuesta y cómo se cobra?
           <span className="sp-faq-icono">+</span>
-        </button>
+        </summary>
         <div className="sp-faq-respuesta">Se cotiza <strong>por grupo completo, no por persona</strong>, de 1 a 10 colaboradores: a más participantes, menor el costo por colaborador. La frecuencia (sesiones por semana) define el ritmo de avance y la inversión mensual; más sesiones es avanzar más rápido, no pagar más caro por hora. Por eso no manejamos precio de lista: armamos la propuesta según cómo opere su empresa. <em>Solicite su cotización y le damos el número para su caso.</em></div>
-      </div>
-      <div className="sp-faq-item">
-        <button className="sp-faq-pregunta" onClick={(e) => window.toggleFaq(e.currentTarget)}>
+      </details>
+      <details className="sp-faq-item" name="faq-ingles">
+        <summary className="sp-faq-pregunta">
           8. ¿Tiene registro ante la STPS y es deducible de impuestos?
           <span className="sp-faq-icono">+</span>
-        </button>
+        </summary>
         <div className="sp-faq-respuesta"><strong>Sí a ambas.</strong> El programa cuenta con registro oficial ante la STPS y emitimos la constancia de capacitación de cada colaborador. Además es deducible, y según el decreto del Plan México (DOF) pueden existir estímulos adicionales para la formación de personal; le entregamos la documentación de soporte y le recomendamos confirmar la aplicación a su caso con su área contable. <em>Solicite la información para su expediente.</em></div>
-      </div>
+      </details>
     </div>
   </div>
 </section>
@@ -780,8 +771,8 @@ export default function Page() {
 </section>
 </main>
 {/* MODAL FORMULARIO */}
-<div className={styles.modalOverlay} id="lead-modal" onClick={(e) => window.overlayClose(e)}>
-  <div className={styles.modalBox} role="dialog" aria-modal="true" aria-labelledby="modal-title">
+<div className="sp-modal-overlay" id="lead-modal" onClick={(e) => window.overlayClose(e)}>
+  <div className="sp-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div className={styles.modalHeader}>
       <div id="leadModalHead">
         <h2 id="modal-title">Hable con un Experto</h2>
@@ -789,7 +780,7 @@ export default function Page() {
       </div>
       <button className={styles.modalClose} type="button" onClick={() => window.closeModal()} aria-label="Cerrar">&times;</button>
     </div>
-    <div className={styles.leadSuccess} id="leadSuccess" role="status" aria-live="polite" hidden>
+    <div className="sp-form-exito" id="leadSuccess" role="status" aria-live="polite" hidden>
       <svg className={styles.leadSuccessCheck} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="11"></circle>
         <path d="M7 12.5l3.5 3.5L17 9"></path>
@@ -797,38 +788,38 @@ export default function Page() {
       <h3>¡Solicitud enviada!</h3>
       <p>Nuestro equipo está atendiendo su solicitud. Le contactaremos muy pronto.</p>
     </div>
-    <form className={styles.formBody} id="leadForm" noValidate>
-      <div className={styles.formRow}>
-        <div className={styles.formGroup}>
+    <form className="sp-form" id="leadForm" noValidate>
+      <div className="sp-form-row">
+        <div className="sp-form-group">
           <label htmlFor="leadNombre">Nombre y Apellido *</label>
           <input type="text" id="leadNombre" name="nombre" autoComplete="name" placeholder="María González" required />
         </div>
-        <div className={styles.formGroup}>
+        <div className="sp-form-group">
           <label htmlFor="leadEmpresa">Empresa *</label>
           <input type="text" id="leadEmpresa" name="empresa" autoComplete="organization" placeholder="Grupo Industrial SA" required />
         </div>
       </div>
-      <div className={styles.formRow}>
-        <div className={styles.formGroup}>
+      <div className="sp-form-row">
+        <div className="sp-form-group">
           <label htmlFor="leadCorreo">Correo Electrónico *</label>
           <input type="email" id="leadCorreo" name="correo" autoComplete="email" placeholder="maria@empresa.com" required />
         </div>
-        <div className={styles.formGroup}>
+        <div className="sp-form-group">
           <label htmlFor="leadTelefono">Teléfono</label>
           <input type="tel" id="leadTelefono" name="telefono" autoComplete="tel" placeholder="+52 55 0000 0000" />
         </div>
       </div>
-      <div className={styles.formGroup}>
+      <div className="sp-form-group">
         <label htmlFor="leadPuesto">Puesto que desempeña</label>
         <input type="text" id="leadPuesto" name="puesto" autoComplete="organization-title" placeholder="Ej. Directora de Recursos Humanos" />
       </div>
-      <div className={styles.formGroup}>
+      <div className="sp-form-group">
         <label htmlFor="leadMensaje">Cuéntenos su necesidad</label>
         <textarea id="leadMensaje" name="mensaje" placeholder="Número de colaboradores, área, nivel actual de inglés…"></textarea>
       </div>
-      <button className={styles.formSubmit} type="submit" id="leadSubmit">Solicite Información</button>
-      <p className={styles.formStatus} id="leadStatus" role="status" aria-live="polite" hidden></p>
-      <p className={styles.formNote}>Al enviar acepto recibir comunicaciones de <strong>S-Peak</strong>. Consulte nuestro <a href="https://s-peak.com/aviso-de-privacidad/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-muted)", textDecoration: "underline" }}>Aviso de privacidad</a>.</p>
+      <button className="sp-form-submit" type="submit" id="leadSubmit">Solicite Información</button>
+      <p className="sp-form-estado" id="leadStatus" role="status" aria-live="polite" hidden></p>
+      <p className="sp-form-nota">Al enviar acepto recibir comunicaciones de <strong>S-Peak</strong>. Consulte nuestro <a href="https://s-peak.com/aviso-de-privacidad/" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-muted)", textDecoration: "underline" }}>Aviso de privacidad</a>.</p>
     </form>
   </div>
 </div>
@@ -846,8 +837,8 @@ export default function Page() {
 </a>
 
 {/* Modal de pre-registro WhatsApp */}
-<div className={styles.waModalOverlay} id="waModal" role="dialog" aria-modal="true" aria-labelledby="waModalTitle" onClick={(e) => window.closeWaModalOnOverlay(e)}>
-  <div className={styles.waModal}>
+<div className={`sp-modal-overlay ${styles.waModalOverlay}`} id="waModal" role="dialog" aria-modal="true" aria-labelledby="waModalTitle" onClick={(e) => window.closeWaModalOnOverlay(e)}>
+  <div className={`sp-modal ${styles.waModal}`}>
     <div className={styles.waModalHead}>
       <button type="button" className={styles.waModalClose} aria-label="Cerrar" onClick={() => window.closeWaModal()}>&times;</button>
       <h3 id="waModalTitle">Un paso antes de conectar</h3>
@@ -855,19 +846,19 @@ export default function Page() {
     </div>
     <div className={styles.waModalBody}>
       <form id="waForm" onSubmit={(e) => window.submitWaForm(e)}>
-        <div className={styles.waFormGroup}>
+        <div className="sp-form-group">
           <label htmlFor="waNombre">Nombre *</label>
           <input type="text" id="waNombre" name="nombre" autoComplete="name" required />
         </div>
-        <div className={styles.waFormGroup}>
+        <div className="sp-form-group">
           <label htmlFor="waCorreo">Correo electrónico *</label>
           <input type="email" id="waCorreo" name="correo" autoComplete="email" required />
         </div>
-        <div className={styles.waFormGroup}>
+        <div className="sp-form-group">
           <label htmlFor="waTelefono">Teléfono *</label>
           <input type="tel" id="waTelefono" name="telefono" autoComplete="tel" required />
         </div>
-        <button type="submit" className={styles.waSubmit}>Continuar a WhatsApp &rarr;</button>
+        <button type="submit" className={`sp-form-submit ${styles.waSubmit}`}>Continuar a WhatsApp &rarr;</button>
       </form>
     </div>
   </div>

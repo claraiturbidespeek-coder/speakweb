@@ -217,7 +217,7 @@ export default function Home() {
     <main>
       {/* 1. Hero */}
       <section className={styles.hero}>
-        <div className={styles.heroInner}>
+        <div className={`sp-inner ${styles.heroInner}`}>
           <div className={styles.heroText}>
             <h1 className={styles.heroTitle}>
               Cursos de idiomas para empresas en México
@@ -235,7 +235,7 @@ export default function Home() {
               cada colaborador.
             </p>
             {/* TODO: abre el modal de contacto — se implementa en fase posterior */}
-            <button type="button" className={styles.cta}>
+            <button type="button" className="sp-btn sp-btn--rojo">
               Solicite una Cotización
             </button>
           </div>
@@ -261,14 +261,14 @@ export default function Home() {
       </section>
 
       {/* 2. Confianza */}
-      <section className={styles.trust}>
+      <section className={`sp-seccion ${styles.trust}`}>
         <div className={styles.trustCard}>
           <h2 className={styles.trustTitle}>
             +500 organizaciones confían en nuestra formación lingüística
             corporativa
           </h2>
-          <div className={styles.trackWrap}>
-            <div className={styles.track}>
+          <div className="sp-marquesina">
+            <div className="sp-marquesina-track">
               {[...CLIENTES, ...CLIENTES].map((c, i) => (
                 <img
                   key={`${c.archivo}-${i}`}
@@ -284,8 +284,8 @@ export default function Home() {
       </section>
 
       {/* 3. Claim + idiomas */}
-      <section className={styles.claim}>
-        <div className={styles.inner}>
+      <section className={`sp-seccion ${styles.claim}`}>
+        <div className="sp-inner">
           <h2 className={styles.claimTitle}>
             El 96% de los colaboradores demuestra un desempeño superior en su
             puesto con evidencias verificables.
@@ -299,8 +299,8 @@ export default function Home() {
       </section>
 
       {/* 4. Prepare a su talento */}
-      <section className={styles.program}>
-        <div className={`${styles.inner} ${styles.programGrid}`}>
+      <section className="sp-seccion">
+        <div className={`sp-inner ${styles.programGrid}`}>
           <img
             className={styles.programImage}
             src="/images/home/programa-metricas.jpg"
@@ -308,7 +308,7 @@ export default function Home() {
             loading="lazy"
           />
           <div>
-            <h2 className={styles.programTitle}>
+            <h2 className={styles.heading}>
               Prepare a su talento con clases de idiomas para el mercado global
             </h2>
             <p className={styles.lead}>
@@ -325,7 +325,7 @@ export default function Home() {
               <li>Reportes de Desempeño</li>
             </ul>
             {/* TODO: abre el modal de contacto — se implementa en fase posterior */}
-            <button type="button" className={styles.cta}>
+            <button type="button" className="sp-btn sp-btn--rojo">
               Solicite una Cotización
             </button>
           </div>
@@ -333,8 +333,8 @@ export default function Home() {
       </section>
 
       {/* 5. Contadores */}
-      <div className={styles.inner}>
-        <ul className={styles.counters}>
+      <section className={`sp-seccion ${styles.countersSection}`}>
+        <ul className={`sp-inner ${styles.counters}`}>
           <li className={styles.counter}>
             <span className={styles.counterNum}>+40K</span>
             <span className={styles.counterLabel}>Alumnos</span>
@@ -348,12 +348,12 @@ export default function Home() {
             <span className={styles.counterLabel}>Años de Experiencia</span>
           </li>
         </ul>
-      </div>
+      </section>
 
       {/* 6. Diferenciadores */}
-      <section className={styles.differentiatorsSection}>
-        <div className={`${styles.inner} ${styles.centered}`}>
-          <p className={styles.eyebrow}>
+      <section className="sp-seccion">
+        <div className={`sp-inner ${styles.centered}`}>
+          <p className="sp-eyebrow">
             Programas de idiomas diseñados para el mercado global
           </p>
           <h2 className={styles.heading}>
@@ -378,8 +378,8 @@ export default function Home() {
       </section>
 
       {/* 7. Áreas */}
-      <section className={styles.areasSection}>
-        <div className={`${styles.inner} ${styles.areasGrid}`}>
+      <section className="sp-seccion">
+        <div className={`sp-inner ${styles.areasGrid}`}>
           <div>
             <h2 className={styles.heading}>
               Formación diseñada para cada área de su empresa
@@ -392,7 +392,7 @@ export default function Home() {
               su inversión.
             </p>
             {/* TODO: abre el modal de contacto — se implementa en fase posterior */}
-            <button type="button" className={styles.cta}>
+            <button type="button" className="sp-btn sp-btn--rojo">
               Solicite una Cotización
             </button>
           </div>
@@ -429,8 +429,8 @@ export default function Home() {
       </section>
 
       {/* 8. Banda roja */}
-      <div className={styles.inner}>
-        <div className={styles.band}>
+      <section className={`sp-seccion ${styles.bandSection}`}>
+        <div className={`sp-inner ${styles.band}`}>
           <div>
             <h2 className={styles.bandTitle}>El Talento se Desarrolla</h2>
             <p className={styles.bandText}>
@@ -440,16 +440,16 @@ export default function Home() {
             </p>
           </div>
           {/* TODO: abre el modal de contacto — se implementa en fase posterior */}
-          <button type="button" className={styles.ctaYellow}>
+          <button type="button" className={`sp-btn sp-btn--amarillo ${styles.bandCta}`}>
             Solicita una Cotización
           </button>
         </div>
-      </div>
+      </section>
 
       {/* 9. Casos de éxito */}
-      <section className={styles.casesSection}>
-        <div className={`${styles.inner} ${styles.centered}`}>
-          <p className={styles.eyebrow}>Casos de Éxito</p>
+      <section className="sp-seccion">
+        <div className={`sp-inner ${styles.centered}`}>
+          <p className="sp-eyebrow">Casos de Éxito</p>
           <h2 className={styles.heading}>
             Resultados reales en equipos nacionales e internacionales
           </h2>
@@ -458,7 +458,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className={`${styles.inner} ${styles.cases}`}>
+        <div className={`sp-inner ${styles.cases}`}>
           <article
             className={styles.case}
             style={{
@@ -515,7 +515,7 @@ export default function Home() {
 
         </div>
 
-        <div className={`${styles.inner} ${styles.cases} ${styles.casesSecond}`}>
+        <div className={`sp-inner ${styles.cases} ${styles.casesSecond}`}>
           <article
             className={`${styles.case} ${styles.caseRed} ${styles.caseOnColor}`}
           >
@@ -579,8 +579,8 @@ export default function Home() {
       </section>
 
       {/* 10. FAQ */}
-      <section className={styles.faqSection} id="faq">
-        <div className={`${styles.inner} ${styles.faqGrid}`}>
+      <section className="sp-seccion" id="faq">
+        <div className={`sp-inner ${styles.faqGrid}`}>
           <div>
             <h2 className={styles.faqTitle}>
               Preguntas frecuentes sobre nuestra clases de idiomas para empresas
@@ -589,11 +589,14 @@ export default function Home() {
               Hemos recopilado las dudas más comunes de nuestros clientes para
               darte claridad desde el primer momento.
             </p>
-            <div className={styles.faqList}>
+            <div className={`sp-faq-lista ${styles.faqList}`}>
               {FAQ.map((f) => (
-                <details key={f.pregunta} className={styles.faqItem}>
-                  <summary className={styles.faqQuestion}>{f.pregunta}</summary>
-                  <div className={styles.faqAnswer}>
+                <details key={f.pregunta} className="sp-faq-item" name="faq-home">
+                  <summary className="sp-faq-pregunta">
+                    {f.pregunta}
+                    <span className="sp-faq-icono">+</span>
+                  </summary>
+                  <div className={`sp-faq-respuesta ${styles.faqAnswer}`}>
                     {f.respuesta.map((parrafo) => (
                       <p key={parrafo}>{parrafo}</p>
                     ))}
@@ -603,13 +606,13 @@ export default function Home() {
             </div>
           </div>
 
-          <aside className={styles.faqAside}>
+          <aside className="sp-cta-card">
             <h3 className={styles.faqAsideTitle}>¿Quedan Dudas?</h3>
             <p className={styles.faqAsideText}>
               Habla con un experto y resuelve tus dudas ahora.
             </p>
             {/* TODO: abre el modal de contacto — se implementa en fase posterior */}
-            <button type="button" className={styles.cta}>
+            <button type="button" className="sp-btn sp-btn--rojo">
               Hablar con un Experto
             </button>
           </aside>
@@ -617,8 +620,8 @@ export default function Home() {
       </section>
 
       {/* 11. Centro de Recursos */}
-      <section className={styles.resources}>
-        <div className={styles.inner}>
+      <section className={`sp-seccion ${styles.resources}`}>
+        <div className="sp-inner">
           <div className={styles.resourcesHead}>
             <div className={styles.resourcesIntro}>
               <h2 className={styles.resourcesTitle}>Centro de Recursos</h2>
@@ -635,12 +638,12 @@ export default function Home() {
             {POSTS.map((p) => (
               <li key={p.url}>
                 <img
-                  className={styles.postImage}
+                  className="sp-post-img"
                   src={`/images/home/${p.imagen}`}
                   alt={p.alt}
                   loading="lazy"
                 />
-                <h3 className={styles.postTitle}>
+                <h3 className="sp-post-titulo">
                   <Link href={p.url}>{p.titulo}</Link>
                 </h3>
               </li>

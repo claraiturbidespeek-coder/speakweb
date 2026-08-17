@@ -1,0 +1,618 @@
+/* Escena 404. Copiada textualmente de 404.html del repo s-peak-landings
+   (líneas 127-331 para el bloque de la escena).
+
+   FASE 4: era la última hoja global de página del proyecto. Ahora es un módulo,
+   así que sus nombres van con hash y no pueden alcanzar a nadie más. Los
+   tokens del handoff de diseño (--sp-navy-700, --sp-red-500…) se resuelven
+   contra los del sistema, que llevan los mismos valores.
+
+   `sp404-char` sigue en el markup como nombre suelto sin estilo: el guion de la
+   escena la consulta para cambiar de pose. Los estados que enciende (is-on,
+   is-pop, is-bad) se enganchan con :global().
+
+   EXCEPCIÓN APROBADA AL border-radius: 0 DEL SISTEMA DE MARCA.
+   El bloque de abajo conserva los tres radios del diseño aprobado por el
+   cliente: 30px en las burbujas de diálogo, 6px en su pico y 4px en el CTA.
+   La regla de radio cero es del sistema general, no un veto sobre elementos
+   ilustrativos: una burbuja de diálogo cuadrada deja de ser una burbuja.
+   No los pongas a 0. */
+
+.escena {
+  min-height: calc(100vh - var(--header-height));
+  background: #ededef;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate; /* contiene los z-index internos */
+}
+
+/* — "404" gigante de fondo, con falla de señal — */
+
+.fondo {
+  position: absolute;
+  top: 120px;
+  left: 0;
+  right: 0;
+  height: 300px;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.fondo > span {
+  position: absolute;
+  inset: 0;
+  display: block;
+  text-align: center;
+  font: 900 300px/1 var(--font-sitio);
+  letter-spacing: -0.05em;
+}
+
+.fondoBase {
+  background: linear-gradient(
+    160deg,
+    var(--color-cyan) 0%,
+    var(--color-navy) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  opacity: 0.28;
+  animation: sp-flicker 3.2s steps(1) infinite;
+}
+
+/* Capas de glitch: ráfagas cortas, desplazadas y recortadas en bandas.
+   Deliberadamente tenues — el foco son los personajes. */
+
+.fondoRojo {
+  color: var(--color-red-light);
+  opacity: 0;
+  mix-blend-mode: multiply;
+  animation: sp-glR 4.6s steps(1) infinite;
+}
+
+.fondoCian {
+  color: var(--color-cyan-light);
+  opacity: 0;
+  mix-blend-mode: multiply;
+  animation: sp-glC 4.6s steps(1) infinite;
+}
+
+/* — Escenario — */
+
+.escenario {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 90px;
+  padding: 170px 40px 0; /* el padding-top reserva sitio a las burbujas */
+  position: relative;
+  z-index: 2;
+}
+
+.lado {
+  position: relative;
+  width: 340px;
+  display: flex;
+  justify-content: center;
+}
+
+/* — Personajes — */
+
+.personaje {
+  position: relative;
+  width: 340px;
+  height: 300px;
+}
+
+.ladoIzq .personaje {
+  animation: sp-charA 3.4s ease-in-out infinite;
+}
+
+.ladoDer .personaje {
+  animation: sp-charB 3.8s ease-in-out infinite;
+}
+
+/* Las tres poses se apilan, pero nunca se ven dos a la vez: la actual
+   se desvanece por completo antes de que entre la siguiente. */
+.personaje img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.personaje img:global(.is-on) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* — Burbujas de diálogo — */
+
+.burbuja {
+  position: absolute;
+  bottom: 308px;
+  z-index: 3;
+}
+
+.ladoIzq .burbuja {
+  left: -18px;
+}
+
+.ladoDer .burbuja {
+  right: -18px;
+}
+
+.ladoIzq .flota {
+  animation: sp-floatA 4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+}
+
+.ladoDer .flota {
+  animation: sp-floatB 4.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite 0.4s;
+}
+
+.globo {
+  position: relative;
+  border-radius: 30px;
+  padding: 18px 26px;
+  min-width: 170px;
+  text-align: center;
+}
+
+.globo::after {
+  /* colita */
+  content: "";
+  position: absolute;
+  bottom: -13px;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  transform: rotate(45deg);
+}
+
+.ladoIzq .globo {
+  background: var(--color-white);
+  box-shadow: 0 26px 40px -14px rgba(18, 35, 46, 0.4), 0 3px 0 #e3e5e8;
+}
+
+.ladoIzq .globo::after {
+  left: 34px;
+  background: var(--color-white);
+  box-shadow: 6px 6px 12px -6px rgba(18, 35, 46, 0.35);
+}
+
+.ladoDer .globo {
+  background: var(--color-navy);
+  box-shadow: 0 26px 40px -14px rgba(18, 35, 46, 0.55), 0 3px 0 #0f2530;
+}
+
+.ladoDer .globo::after {
+  right: 34px;
+  background: var(--color-navy);
+  box-shadow: 6px 6px 12px -6px rgba(0, 0, 0, 0.4);
+}
+
+.idioma {
+  font: 600 10px/1 var(--font-sitio);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+.ladoIzq .idioma {
+  color: var(--color-navy-light);
+}
+
+.ladoDer .idioma {
+  color: var(--color-yellow-light);
+}
+
+.dice span {
+  font: 800 21px/1.25 var(--font-sitio);
+}
+
+.ladoIzq .dice span {
+  color: var(--color-navy);
+}
+
+.ladoDer .dice span {
+  color: var(--color-white);
+}
+
+.dice:global(.is-pop) {
+  animation: sp-pop 0.34s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.dice:global(.is-bad) {
+  animation: sp-shake 0.5s ease infinite;
+}
+
+/* — Bloque de copy — */
+
+.copy {
+  text-align: center;
+  padding: 8px 40px 56px;
+  position: relative;
+  z-index: 5;
+}
+
+.copy h1 {
+  margin: 0 0 10px;
+  font: 800 40px/1.05 var(--font-sitio);
+  letter-spacing: -0.025em;
+  color: var(--color-navy);
+  text-wrap: balance;
+}
+
+.copy p {
+  margin: 0 auto 24px;
+  max-width: 600px;
+  font: 400 16px/1.55 var(--font-sitio);
+  color: var(--color-muted-2);
+  text-wrap: pretty;
+}
+
+.entradilla {
+  color: var(--color-red);
+  font-weight: var(--weight-semibold);
+}
+
+.copy strong {
+  color: var(--color-navy);
+}
+
+.cta {
+  display: inline-block;
+  background: var(--color-red);
+  color: var(--color-white);
+  font: 700 16px/1 var(--font-sitio);
+  padding: 17px 34px;
+  border-radius: 4px; /* recto por decisión del cliente, no pill */
+  box-shadow: 0 12px 26px rgba(181, 30, 64, 0.32);
+  transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.18s;
+}
+
+.cta:hover {
+  background: var(--color-red-light);
+  transform: translateY(-2px);
+}
+
+.cta:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.cta:focus-visible {
+  outline: 3px solid var(--color-cyan);
+  outline-offset: 3px;
+}
+
+.soloLectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* — Keyframes (valores literales del prototipo aprobado) — */
+
+@keyframes sp-floatA {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1.5deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(-1.5deg);
+  }
+}
+@keyframes sp-floatB {
+  0%,
+  100% {
+    transform: translateY(0) rotate(1.5deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(1.5deg);
+  }
+}
+@keyframes sp-charA {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+@keyframes sp-charB {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+@keyframes sp-shake {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0);
+  }
+  20% {
+    transform: translate(-4px, 1px) rotate(-1.6deg);
+  }
+  40% {
+    transform: translate(4px, -1px) rotate(1.6deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(-1.2deg);
+  }
+  80% {
+    transform: translate(3px, 0) rotate(1.2deg);
+  }
+}
+@keyframes sp-pop {
+  0% {
+    transform: scale(0.86);
+    opacity: 0.2;
+  }
+  60% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes sp-flicker {
+  0%,
+  88%,
+  100% {
+    opacity: 0.5;
+  }
+  89% {
+    opacity: 0.18;
+  }
+  90% {
+    opacity: 0.55;
+  }
+  92% {
+    opacity: 0.3;
+  }
+  93% {
+    opacity: 0.5;
+  }
+}
+@keyframes sp-glR {
+  0%,
+  7%,
+  13%,
+  54%,
+  60%,
+  100% {
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.4;
+    transform: translate(-8px, 2px);
+    clip-path: inset(18% 0 58% 0);
+  }
+  10% {
+    opacity: 0.4;
+    transform: translate(6px, -2px);
+    clip-path: inset(60% 0 12% 0);
+  }
+  12% {
+    opacity: 0.4;
+    transform: translate(-4px, 0);
+    clip-path: inset(38% 0 34% 0);
+  }
+  55% {
+    opacity: 0.4;
+    transform: translate(7px, 1px);
+    clip-path: inset(8% 0 72% 0);
+  }
+  57% {
+    opacity: 0.4;
+    transform: translate(-6px, 0);
+    clip-path: inset(68% 0 10% 0);
+  }
+  59% {
+    opacity: 0.4;
+    transform: translate(3px, -1px);
+    clip-path: inset(44% 0 30% 0);
+  }
+}
+@keyframes sp-glC {
+  0%,
+  7%,
+  13%,
+  54%,
+  60%,
+  100% {
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.35;
+    transform: translate(8px, -2px);
+    clip-path: inset(30% 0 46% 0);
+  }
+  10% {
+    opacity: 0.35;
+    transform: translate(-6px, 2px);
+    clip-path: inset(52% 0 22% 0);
+  }
+  12% {
+    opacity: 0.35;
+    transform: translate(5px, 0);
+    clip-path: inset(12% 0 66% 0);
+  }
+  55% {
+    opacity: 0.35;
+    transform: translate(-7px, -1px);
+    clip-path: inset(58% 0 20% 0);
+  }
+  57% {
+    opacity: 0.35;
+    transform: translate(6px, 0);
+    clip-path: inset(20% 0 60% 0);
+  }
+  59% {
+    opacity: 0.35;
+    transform: translate(-3px, 1px);
+    clip-path: inset(36% 0 40% 0);
+  }
+}
+
+/* — Responsive: punto de partida, pendiente de validar con diseño — */
+
+@media (max-width: 900px) {
+  /* El escenario deja de estirarse: si no, en viewports altos los personajes
+     se van al fondo y el 404 se queda arriba, despegado de ellos. */
+  .escena {
+    justify-content: center;
+  }
+
+  .escenario {
+    flex: 0 0 auto;
+    gap: 24px;
+    padding: 130px 24px 0;
+  }
+
+  .lado,
+  .personaje {
+    width: 240px;
+  }
+
+  .personaje {
+    height: 210px;
+  }
+
+  .burbuja {
+    bottom: 218px;
+  }
+
+  .fondo {
+    top: auto;
+    bottom: 30px;
+    height: 180px;
+  }
+
+  .fondo > span {
+    font-size: 180px;
+  }
+
+  .globo {
+    min-width: 140px;
+    padding: 14px 18px;
+  }
+
+  .dice span {
+    font-size: 17px;
+  }
+
+  .copy h1 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .escenario {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 104px;
+    padding: 120px 20px 0;
+  }
+
+  .lado,
+  .personaje {
+    width: 200px;
+  }
+
+  .personaje {
+    height: 175px;
+  }
+
+  .burbuja {
+    bottom: 183px;
+  }
+
+  .ladoIzq .burbuja {
+    left: -10px;
+  }
+
+  .ladoDer .burbuja {
+    right: -10px;
+  }
+
+  .globo {
+    min-width: 120px;
+    max-width: 62vw;
+    padding: 12px 16px;
+  }
+
+  .dice span {
+    font-size: 15px;
+  }
+
+  /* Apilados, el 404 se queda detrás del personaje de arriba. */
+  .fondo {
+    top: 130px;
+    bottom: auto;
+    height: 120px;
+  }
+
+  .fondo > span {
+    font-size: 120px;
+  }
+
+  .copy {
+    padding: 8px 20px 44px;
+  }
+
+  .copy h1 {
+    font-size: 26px;
+  }
+
+  .copy p {
+    font-size: 15px;
+  }
+
+  .cta {
+    padding: 15px 24px;
+    font-size: 15px;
+  }
+}
+
+/* — Movimiento reducido: se congela el ciclo en el paso 1 — */
+
+@media (prefers-reduced-motion: reduce) {
+  .fondoBase,
+  .fondoRojo,
+  .fondoCian,
+  .personaje,
+  .flota,
+  .dice {
+    animation: none !important;
+  }
+
+  /* El selector necesita ganarle a `.fondo > span`, que fija display:block. */
+  .fondo > .fondoRojo,
+  .fondo > .fondoCian {
+    display: none;
+  }
+
+  .personaje img {
+    transition: none;
+  }
+}

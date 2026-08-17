@@ -23,9 +23,14 @@
 - Todo el estilo es CSS propio, organizado en capas:
     app/styles/tokens.css         los valores de diseño, única fuente de verdad
     app/styles/base.css           el reset y los estilos de elemento, únicos
+    app/styles/patrones.css       el vocabulario compartido, clases sp-*
     app/styles/interacciones.css  las clases que consulta el JavaScript
-    app/styles/patrones.css       los patrones compartidos (fase 1a)
-  Lo propio de una página va en su módulo CSS. Nada de hojas globales nuevas.
+  Lo propio de una página va en su módulo CSS. No hay ni debe haber hojas
+  globales de página: el orden de capas (base, patrones, y los módulos fuera de
+  toda capa) hace que un módulo siempre pueda ajustar un patrón con una regla
+  normal, sin !important ni selectores inflados.
+- Un patrón sube a patrones.css cuando lo piden dos páginas, no antes. Lo que
+  solo usa una se queda en su módulo por evidente que parezca.
 - No inventes valores fuera del sistema: usa los tokens de tokens.css. Si un
   valor no está, no lo escribas suelto: decide si toca añadirlo al sistema.
 - Jerarquía de referencia cuando dos páginas resuelven lo mismo distinto:

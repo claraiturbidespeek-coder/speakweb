@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import "./not-found.css";
+import styles from "./not-found.module.css";
 
 export const metadata: Metadata = {
   title: "Página no encontrada (404) | S-Peak",
@@ -101,48 +101,48 @@ const GUION_ESCENA = `
 export default function NoEncontrado() {
   return (
     <>
-<main className="sp404" id="sp404">
-  <span className="sp404-sr">Error 404</span>
+<main className={styles.escena} id="sp404">
+  <span className={styles.soloLectores}>Error 404</span>
 
   {/* Escenario. Decorativo: el mensaje real lo lleva el bloque de copy,
        y las burbujas cambian de texto cada 2.9s (ruido para un lector de pantalla). */}
-  <div className="sp404-stage" aria-hidden="true">
+  <div className={styles.escenario} aria-hidden="true">
 
     {/* "404" gigante con falla de señal. Vive dentro del escenario para poder
          anclarlo a los personajes en pantallas chicas; en desktop el escenario
          arranca en y=0, así que top:120px equivale a la posición del prototipo. */}
-    <div className="sp404-bg">
-      <span className="sp404-bg-base">404</span>
-      <span className="sp404-bg-r">404</span>
-      <span className="sp404-bg-c">404</span>
+    <div className={styles.fondo}>
+      <span className={styles.fondoBase}>404</span>
+      <span className={styles.fondoRojo}>404</span>
+      <span className={styles.fondoCian}>404</span>
     </div>
 
-    <div className="sp404-side sp404-side-l">
-      <div className="sp404-bubble">
-        <div className="sp404-float">
-          <div className="sp404-box">
-            <div className="sp404-lang" id="sp404-l-lang">Español</div>
-            <div className="sp404-say" id="sp404-l-say"><span id="sp404-l-text">¿Dónde está la página?</span></div>
+    <div className={`${styles.lado} ${styles.ladoIzq}`}>
+      <div className={styles.burbuja}>
+        <div className={styles.flota}>
+          <div className={styles.globo}>
+            <div className={styles.idioma} id="sp404-l-lang">Español</div>
+            <div className={styles.dice} id="sp404-l-say"><span id="sp404-l-text">¿Dónde está la página?</span></div>
           </div>
         </div>
       </div>
-      <div className="sp404-char">
+      <div className={`${styles.personaje} sp404-char`}>
         <img src="/images/404/s2-m-calm.webp"   alt="" data-mood="calm" className="is-on" fetchPriority="high" />
         <img src="/images/404/s2-m-stress.webp" alt="" data-mood="stress" />
         <img src="/images/404/s2-m-mal.webp"    alt="" data-mood="mal" />
       </div>
     </div>
 
-    <div className="sp404-side sp404-side-r">
-      <div className="sp404-bubble">
-        <div className="sp404-float">
-          <div className="sp404-box">
-            <div className="sp404-lang" id="sp404-r-lang">English</div>
-            <div className="sp404-say" id="sp404-r-say"><span id="sp404-r-text">Sorry… what page?</span></div>
+    <div className={`${styles.lado} ${styles.ladoDer}`}>
+      <div className={styles.burbuja}>
+        <div className={styles.flota}>
+          <div className={styles.globo}>
+            <div className={styles.idioma} id="sp404-r-lang">English</div>
+            <div className={styles.dice} id="sp404-r-say"><span id="sp404-r-text">Sorry… what page?</span></div>
           </div>
         </div>
       </div>
-      <div className="sp404-char">
+      <div className={`${styles.personaje} sp404-char`}>
         <img src="/images/404/s2-w-calm.webp"   alt="" data-mood="calm" className="is-on" fetchPriority="high" />
         <img src="/images/404/s2-w-stress.webp" alt="" data-mood="stress" />
         <img src="/images/404/s2-w-mal.webp"    alt="" data-mood="mal" />
@@ -150,10 +150,10 @@ export default function NoEncontrado() {
     </div>
   </div>
 
-  <div className="sp404-copy">
+  <div className={styles.copy}>
     <h1>Se perdió en la traducción.</h1>
-    <p><span className="sp404-lead">Buscabas una página y no la encontramos.</span> Pasa igual que en una conversación: cuando los idiomas no conectan, el mensaje se pierde. <strong>Eso es justo lo que resolvemos</strong> en S-Peak.</p>
-    <a className="sp404-cta" href="/">Volver a donde sí nos entendemos</a>
+    <p><span className={styles.entradilla}>Buscabas una página y no la encontramos.</span> Pasa igual que en una conversación: cuando los idiomas no conectan, el mensaje se pierde. <strong>Eso es justo lo que resolvemos</strong> en S-Peak.</p>
+    <a className={styles.cta} href="/">Volver a donde sí nos entendemos</a>
   </div>
 </main>
 

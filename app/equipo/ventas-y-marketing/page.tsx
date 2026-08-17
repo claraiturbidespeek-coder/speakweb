@@ -1,13 +1,13 @@
-"use client";
-
+import type { Metadata } from "next";
 import Script from "next/script";
 import styles from "./equipo.module.css";
 
-declare global {
-  interface Window {
-    toggleFaq: (el: Element) => void;
-  }
-}
+export const metadata: Metadata = {
+  title: "Cursos de Idiomas para Equipos de Ventas y Marketing | S-Peak",
+  description:
+    "Inglés y otros idiomas para vendedores y equipos de marketing B2B. Vocabulario comercial, presentaciones ejecutivas y conversación con clientes internacionales. Cotice ahora.",
+  alternates: { canonical: "https://s-peak.com/equipo/ventas-y-marketing/" },
+};
 
 // Datos estructurados, copiados del original (líneas 713-740).
 const DATOS_ESTRUCTURADOS = "{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"BreadcrumbList\",\n      \"itemListElement\": [\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 1,\n          \"name\": \"Inicio\",\n          \"item\": \"https://s-peak.com/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 2,\n          \"name\": \"Soluciones por Equipo\",\n          \"item\": \"https://s-peak.com/equipo/\"\n        },\n        {\n          \"@type\": \"ListItem\",\n          \"position\": 3,\n          \"name\": \"Ventas y Marketing\",\n          \"item\": \"https://s-peak.com/equipo/ventas-y-marketing/\"\n        }\n      ]\n    },\n    {\n      \"@type\": \"Service\",\n      \"name\": \"Cursos de idiomas para equipos de Ventas y Marketing\",\n      \"serviceType\": \"Capacitación corporativa de idiomas para equipos comerciales\",\n      \"provider\": {\n        \"@type\": \"Organization\",\n        \"name\": \"S-Peak\",\n        \"url\": \"https://s-peak.com\"\n      },\n      \"areaServed\": {\n        \"@type\": \"Country\",\n        \"name\": \"México\"\n      },\n      \"description\": \"Inglés y otros idiomas para vendedores y equipos de marketing B2B. Vocabulario comercial, presentaciones ejecutivas y conversación con clientes internacionales.\"\n    },\n    {\n      \"@type\": \"FAQPage\",\n      \"mainEntity\": [\n        {\n          \"@type\": \"Question\",\n          \"name\": \"¿Cuánto cuesta capacitar a un equipo de ventas y marketing?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"El precio se define por la modalidad (en línea o presencial) y los horarios de las sesiones. Se cotiza por grupo completo, no por persona: de 1 a 10 participantes, a mayor número, menor costo por colaborador. La frecuencia no cambia la tarifa: define el ritmo de avance y la inversión mensual. Solicite una cotización adaptada a su equipo.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"¿En cuánto tiempo mi equipo estará listo para negociar en otro idioma?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Depende del nivel de partida. En promedio, pasar de un nivel al siguiente (por ejemplo, de B1 a B2, el nivel apto para negociar) toma alrededor de 9 meses con dos sesiones semanales de hora y media. Cotice y le damos una proyección realista en el diagnóstico inicial.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"¿Cómo miden el progreso de mi equipo?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Evaluamos el desempeño real con entregables prácticos al final de cada etapa (simulaciones de llamadas, propuestas escritas o la adaptación de un texto de campaña), no con exámenes de memoria. RH recibe la evidencia evaluada por rúbrica para verificar el avance de cada colaborador.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"¿Qué pasa si las agendas del equipo se atraviesan?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Las sesiones se agendan en los horarios que mejor convengan a su operación. Si un día se cruza una junta o un viaje, la sesión se repone sin trámites y el colaborador recibe la grabación con los temas vistos, para que el avance del grupo no se detenga.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"¿Qué idiomas ofrecen para equipos de ventas y marketing?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Inglés, francés, alemán, italiano, portugués y español para extranjeros. Cada programa se alinea a su mercado: inglés para negocios globales, alemán para el sector automotriz o italiano para el Bajío industrial. Y si su empresa opera en varios países, coordinamos la capacitación simultánea desde un solo punto de contacto.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"¿Sirve también para el equipo de marketing o solo para vendedores?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Sí. Marketing trabaja el idioma en sus propias situaciones: redactar y revisar textos de campaña, dar briefs a agencias o proveedores en el extranjero, y adaptar mensajes a otro mercado sin traducir literal. El programa se arma según la función de cada colaborador. Cuéntenos cómo trabaja su equipo y lo armamos a la medida.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"¿La capacitación tiene registro ante la STPS y es deducible?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Sí a ambas. Contamos con registro oficial ante la STPS y emitimos constancia de capacitación para sus colaboradores. La inversión puede calificar para la deducción adicional del 25% del Plan México (DOF 2025); confírmelo con su área contable.\"\n          }\n        },\n        {\n          \"@type\": \"Question\",\n          \"name\": \"¿Cuál es el ROI de capacitar al equipo comercial?\",\n          \"acceptedAnswer\": {\n            \"@type\": \"Answer\",\n            \"text\": \"Se vuelve tangible cuando su equipo vende y se comunica directamente, sin traductores ni intermediarios. Para la mayoría de las empresas, asegurar un solo contrato internacional que se habría perdido cubre toda la inversión anual del programa.\"\n          }\n        }\n      ]\n    }\n  ]\n}";
@@ -176,13 +176,6 @@ const GUION = `
     }
   })();
 
-  // FAQ
-  function toggleFaq(btn) {
-    const item = btn.closest('.sp-faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.sp-faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  }
 `;
 
 export default function VentasYMarketing() {
@@ -547,68 +540,68 @@ export default function VentasYMarketing() {
       <div className="sp-eyebrow">Preguntas frecuentes</div>
       <h2>Preguntas frecuentes sobre capacitación para equipos de ventas y marketing</h2>
       <p>Resolvemos las dudas más comunes antes de que tenga que buscarlas.</p>
-      <div className={styles.faqCtaCard}>
+      <div className={`sp-cta-card ${styles.faqCtaCard}`}>
         <p>¿Tiene una pregunta que no está aquí?</p>
         <button className="sp-btn sp-btn--rojo" type="button">Hable con un experto</button>
       </div>
     </div>
     <div className="sp-faq-lista reveal">
-      <div className="sp-faq-item">
-        <button className="sp-faq-pregunta" onClick={(e) => window.toggleFaq(e.currentTarget)}>
+      <details className="sp-faq-item" name="faq-equipo">
+        <summary className="sp-faq-pregunta">
           ¿Cuánto cuesta capacitar a un equipo de ventas y marketing?
           <span className="sp-faq-icono">+</span>
-        </button>
+        </summary>
         <div className="sp-faq-respuesta">El precio se define por la modalidad (en línea o presencial) y los horarios de las sesiones. Se cotiza <strong>por grupo completo, no por persona:</strong> de 1 a 10 participantes, a mayor número, menor costo por colaborador. La frecuencia no cambia la tarifa: define el ritmo de avance y la inversión mensual. <strong>Solicite una cotización adaptada a su equipo.</strong></div>
-      </div>
-      <div className="sp-faq-item">
-        <button className="sp-faq-pregunta" onClick={(e) => window.toggleFaq(e.currentTarget)}>
+      </details>
+      <details className="sp-faq-item" name="faq-equipo">
+        <summary className="sp-faq-pregunta">
           ¿En cuánto tiempo mi equipo estará listo para negociar en otro idioma?
           <span className="sp-faq-icono">+</span>
-        </button>
+        </summary>
         <div className="sp-faq-respuesta">Depende del nivel de partida. En promedio, pasar de un nivel al siguiente (por ejemplo, de B1 a B2, el nivel apto para negociar) toma <strong>alrededor de 9 meses</strong> con dos sesiones semanales de hora y media. <strong>Cotice y le damos una proyección realista en el diagnóstico inicial.</strong></div>
-      </div>
-      <div className="sp-faq-item">
-        <button className="sp-faq-pregunta" onClick={(e) => window.toggleFaq(e.currentTarget)}>
+      </details>
+      <details className="sp-faq-item" name="faq-equipo">
+        <summary className="sp-faq-pregunta">
           ¿Cómo miden el progreso de mi equipo?
           <span className="sp-faq-icono">+</span>
-        </button>
+        </summary>
         <div className="sp-faq-respuesta">Evaluamos el desempeño real con entregables prácticos al final de cada etapa (simulaciones de llamadas, propuestas escritas o la adaptación de un texto de campaña), no con exámenes de memoria. RH recibe la evidencia evaluada por rúbrica para verificar el avance de cada colaborador.</div>
-      </div>
-      <div className="sp-faq-item">
-        <button className="sp-faq-pregunta" onClick={(e) => window.toggleFaq(e.currentTarget)}>
+      </details>
+      <details className="sp-faq-item" name="faq-equipo">
+        <summary className="sp-faq-pregunta">
           ¿Qué pasa si las agendas del equipo se atraviesan?
           <span className="sp-faq-icono">+</span>
-        </button>
+        </summary>
         <div className="sp-faq-respuesta">Las sesiones se agendan en los horarios que mejor convengan a su operación. Si un día se cruza una junta o un viaje, <strong>la sesión se repone sin trámites</strong> y el colaborador recibe la grabación con los temas vistos, para que el avance del grupo no se detenga.</div>
-      </div>
-      <div className="sp-faq-item">
-        <button className="sp-faq-pregunta" onClick={(e) => window.toggleFaq(e.currentTarget)}>
+      </details>
+      <details className="sp-faq-item" name="faq-equipo">
+        <summary className="sp-faq-pregunta">
           ¿Qué idiomas ofrecen para equipos de ventas y marketing?
           <span className="sp-faq-icono">+</span>
-        </button>
+        </summary>
         <div className="sp-faq-respuesta"><strong>Inglés, francés, alemán, italiano, portugués y español para extranjeros.</strong> Cada programa se alinea a su mercado: inglés para negocios globales, alemán para el sector automotriz o italiano para el Bajío industrial. Y si su empresa opera en varios países, coordinamos la capacitación simultánea desde un solo punto de contacto.</div>
-      </div>
-      <div className="sp-faq-item">
-        <button className="sp-faq-pregunta" onClick={(e) => window.toggleFaq(e.currentTarget)}>
+      </details>
+      <details className="sp-faq-item" name="faq-equipo">
+        <summary className="sp-faq-pregunta">
           ¿Sirve también para el equipo de marketing o solo para vendedores?
           <span className="sp-faq-icono">+</span>
-        </button>
+        </summary>
         <div className="sp-faq-respuesta">Sí. Marketing trabaja el idioma en sus propias situaciones: redactar y revisar textos de campaña, dar briefs a agencias o proveedores en el extranjero, y adaptar mensajes a otro mercado sin traducir literal. El programa se arma <strong>según la función de cada colaborador.</strong> <strong>Cuéntenos cómo trabaja su equipo y lo armamos a la medida.</strong></div>
-      </div>
-      <div className="sp-faq-item">
-        <button className="sp-faq-pregunta" onClick={(e) => window.toggleFaq(e.currentTarget)}>
+      </details>
+      <details className="sp-faq-item" name="faq-equipo">
+        <summary className="sp-faq-pregunta">
           ¿La capacitación tiene registro ante la STPS y es deducible?
           <span className="sp-faq-icono">+</span>
-        </button>
+        </summary>
         <div className="sp-faq-respuesta">Sí a ambas. Contamos con <strong>registro oficial ante la STPS</strong> y emitimos constancia de capacitación para sus colaboradores. La inversión <strong>puede calificar</strong> para la deducción adicional del 25% del Plan México (DOF 2025); confírmelo con su área contable.</div>
-      </div>
-      <div className="sp-faq-item">
-        <button className="sp-faq-pregunta" onClick={(e) => window.toggleFaq(e.currentTarget)}>
+      </details>
+      <details className="sp-faq-item" name="faq-equipo">
+        <summary className="sp-faq-pregunta">
           ¿Cuál es el ROI de capacitar al equipo comercial?
           <span className="sp-faq-icono">+</span>
-        </button>
+        </summary>
         <div className="sp-faq-respuesta">Se vuelve tangible cuando su equipo vende y se comunica directamente, sin traductores ni intermediarios. Para la mayoría de las empresas, <strong>asegurar un solo contrato internacional que se habría perdido cubre toda la inversión anual del programa.</strong></div>
-      </div>
+      </details>
     </div>
   </div>
 </section>

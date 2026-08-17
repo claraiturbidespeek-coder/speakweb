@@ -16,7 +16,7 @@ export default function Header() {
           />
         </Link>
 
-        <nav aria-label="Principal">
+        <nav className={styles.nav} aria-label="Principal">
           <ul className={styles.list}>
             <li className={styles.item}>
               <details className={styles.details}>
@@ -92,7 +92,7 @@ export default function Header() {
         </nav>
 
         {/* TODO: abre el modal de contacto — se implementa en fase posterior */}
-        <button type="button" className={styles.cta}>
+        <button type="button" className={`sp-btn sp-btn--rojo sp-btn--plano ${styles.cta}`}>
           Solicite Información
         </button>
       </div>
