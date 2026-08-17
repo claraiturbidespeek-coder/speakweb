@@ -1,0 +1,142 @@
+/* Contrato con el JavaScript de las páginas migradas.
+
+   Los <Script> inline de /idioma/ingles-para-empresas/ y /equipo/ventas-y-marketing/
+   consultan estos nombres de clase por cadena de texto. Si renombras uno aquí,
+   el script deja de encontrarlo y la animación no ocurre: no falla el build, no
+   falla TypeScript, no hay error en consola. Simplemente no pasa nada.
+
+   Nombres que el JS toca hoy, y quién los toca:
+
+     .reveal / .visible     observador de scroll, en las dos páginas
+     .stagger               entrada escalonada de tarjetas, en equipo
+     .faq-item / .open      acordeón, en las dos páginas (se retira en la fase 2,
+                            cuando el FAQ pase a <details>)
+     .mercado-carousel / .dragging   arrastre del carrusel, en equipo
+     .cycle-node / .active  ciclo radial, en la landing
+     .back-to-top / .is-visible      botón de volver arriba, en la landing
+
+   Aquí viven solo los que estaban duplicados o son de sitio. Los específicos de
+   una página siguen en su hoja hasta que esa página se convierta en módulo. */
+
+/* ---------- Lenis ----------
+   Clases que la librería de scroll suave pone en <html> desde JavaScript. Solo
+   las usa /idioma/ingles-para-empresas/, pero no pueden vivir en su módulo: un
+   módulo hashea los nombres y la librería escribe estos literales. */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ---------- Aparición al hacer scroll ----------
+   Copia idéntica en landing.css y equipo.css. */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Entrada escalonada de tarjetas ---------- */
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+}
+
+.stagger.visible > *,
+.reveal.visible .stagger > * {
+  animation: card-in 0.6s var(--ease-out-soft) backwards;
+}
+
+.stagger > *:nth-child(2) {
+  animation-delay: 0.07s;
+}
+.stagger > *:nth-child(3) {
+  animation-delay: 0.14s;
+}
+.stagger > *:nth-child(4) {
+  animation-delay: 0.21s;
+}
+.stagger > *:nth-child(5) {
+  animation-delay: 0.28s;
+}
+.stagger > *:nth-child(6) {
+  animation-delay: 0.35s;
+}
+.stagger > *:nth-child(7) {
+  animation-delay: 0.42s;
+}
+.stagger > *:nth-child(8) {
+  animation-delay: 0.49s;
+}
+
+/* ---------- Keyframes compartidos ----------
+   `pulse` y `logos-scroll` estaban duplicados literalmente en landing.css y
+   equipo.css. El home tiene un tercer clon de `logos-scroll` llamado `slide`
+   dentro de su módulo; se retira cuando el home adopte la marquesina del
+   sistema, porque los nombres de @keyframes de un módulo van con hash y no se
+   pueden compartir desde aquí. */
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes logos-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- Movimiento reducido ----------
+   Bloque universal, antes solo en equipo.css y ahora en todo el sitio: el home
+   y el índice del blog también tienen marquesinas y transiciones.
+
+   Las páginas conservan sus propios bloques para lo que es suyo: la landing
+   para el dashboard y el botón de WhatsApp, equipo para los hover que mueven
+   tarjetas, y el 404 para congelar su escena. Esos no son duplicados. */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

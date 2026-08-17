@@ -16,7 +16,7 @@ export default function Header() {
           />
         </Link>
 
-        <nav className={styles.nav} aria-label="Principal">
+        <nav aria-label="Principal">
           <ul className={styles.list}>
             <li className={styles.item}>
               <details className={styles.details}>

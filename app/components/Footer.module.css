@@ -62,17 +62,6 @@
   outline-offset: 3px;
 }
 
-/* La landing declara `nav { position: sticky; background; backdrop-filter; border-bottom }`
-   como selector de elemento: en esa ruta volvería sticky a estas dos columnas. Se neutraliza. */
-.col {
-  position: static;
-  top: auto;
-  z-index: auto;
-  background: none;
-  backdrop-filter: none;
-  border-bottom: none;
-}
-
 .title {
   margin: 0 0 18px;
   font-size: 15px;

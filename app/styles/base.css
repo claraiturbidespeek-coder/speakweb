@@ -1,0 +1,78 @@
+/* Reset y estilos de elemento. Único en el proyecto.
+
+   Sustituye a los tres que había: el parcial de globals.css y las dos copias
+   literales del reset del repo s-peak-landings en landing.css y equipo.css.
+   La base es la de equipo.css, la referencia de diseño, más las reglas de
+   elemento que globals.css ya aplicaba a todo el sitio (h1, p).
+
+   Lo que este reset NO trae, y por qué:
+
+   - `list-style: none` en ol/ul. Las viñetas de las 26 notas del blog dependen
+     del estilo del navegador: `.contenido ul` declara el sangrado pero no el
+     marcador. Un reset que las quite deja los 26 artículos sin viñetas sin que
+     nada lo delate.
+   - `overflow-x: hidden` en html o body. Basta con uno de los dos para clipar
+     el viewport, pero esconde cualquier desbordamiento horizontal de cualquier
+     página del sitio. Ya se cazaron tres desbordamientos que llevaban tiempo
+     invisibles por motivos parecidos. Si algo se desborda, queremos verlo.
+     landing.css conserva el suyo de momento, marcado, hasta la fase 1b. */
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: var(--radius);
+}
+
+body {
+  font-family: var(--font-sitio);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-ink);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Que un salto a #ancla no deje el destino debajo del header sticky. */
+:target,
+[id] {
+  scroll-margin-top: var(--anchor-offset);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+/* Estilos de elemento que globals.css ya aplicaba a todo el sitio. Los usan las
+   22 rutas que siguen siendo placeholder; las páginas con diseño declaran los
+   suyos y ganan por especificidad. */
+
+h1 {
+  margin: 0 0 16px;
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+p {
+  margin: 0 0 16px;
+}

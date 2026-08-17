@@ -1,35 +1,32 @@
-:root {
-  color-scheme: light;
+/* Punto de entrada del CSS del sitio. Se carga una vez, desde el layout raíz.
 
-  /* Paleta de marca */
-  --color-navy: #1a3c4d;
-  --color-red: #b51e40;
-  --color-yellow: #eab120;
-  --color-off-white: #f5f7fa;
-  --color-white: #ffffff;
+   El sistema vive repartido en app/styles/:
+     tokens.css         los valores de diseño, única fuente de verdad
+     base.css           el reset y los estilos de elemento, únicos
+     patrones.css       el vocabulario compartido: botones, tarjetas, secciones
+     interacciones.css  las clases que consulta el JavaScript de las páginas
 
-  /* Marca */
-  --logo-height: 40px;
+   El orden de capas es la pieza que sostiene todo esto:
 
-  /* Ancho de contenido, alineado con la referencia de landing.css */
-  --container-max: 1160px;
-}
+     @layer base, patrones;   y los módulos de página, fuera de toda capa
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  border-radius: 0;
-}
+   El CSS sin capa gana siempre al CSS en capas, sin importar especificidad ni
+   orden de carga. Así, el módulo de una página siempre puede ajustar un patrón
+   con una regla normal: nada de !important, nada de inflar selectores, y nadie
+   tiene que saber en qué orden carga cada hoja.
 
-body {
-  margin: 0;
-  font-family: var(--font-montserrat), sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #000;
-  background: #fff;
-}
+   interacciones.css se queda fuera de las capas a propósito: es el contrato con
+   el JavaScript y debe pesar lo mismo que el CSS de página.
+
+   Debajo de los imports van las clases de sitio: las que usan varias páginas
+   pero no son un patrón visual con variantes. */
+
+/* El orden de capas se declara en la primera línea de tokens.css. Ver allí. */
+
+@import "./styles/tokens.css";
+@import "./styles/base.css" layer(base);
+@import "./styles/patrones.css" layer(patrones);
+@import "./styles/interacciones.css";
 
 /* `main` no lleva política de maquetación: es un elemento semántico, no un
    contenedor. Acotarlo obligaba a cada página con secciones a sangre a anularlo
@@ -41,17 +38,7 @@ body {
 .contenedor {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 32px 28px;
-}
-
-h1 {
-  margin: 0 0 16px;
-  font-size: 32px;
-  line-height: 1.2;
-}
-
-p {
-  margin: 0 0 16px;
+  padding: 32px var(--space-gutter);
 }
 
 .site-logo {

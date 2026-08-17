@@ -8,15 +8,28 @@
   que tocaste. El commit y el push los hace el equipo manualmente desde terminal.
 
 ## Flujo de trabajo
-- Antes de escribir código, entrega un plan: qué archivos vas a crear o modificar,
-  qué decisiones técnicas implica y qué riesgos ves.
-- Espera aprobación explícita antes de ejecutar. No asumas aprobación por silencio.
+- Antes de escribir código en tareas estructurales o no triviales, entrega un plan.
+- Cuando entregues un plan, espera aprobación explícita antes de ejecutarlo.
+  No asumas aprobación por silencio.
+- Para cambios acotados (un valor, un texto, una clase), ejecuta directamente.
 - Si durante la ejecución encuentras algo que el plan no contemplaba, detente
   y repórtalo antes de improvisar una solución.
 
 ## Fidelidad de diseño
 - Fase actual: copia fiel. No refactorices, no optimices, no "limpies" markup.
-- Nada de Tailwind. Todo estilo viene de CSS propio.
+- El proyecto NO usa Tailwind. Se evaluó y se descartó: sin clases de utilidad,
+  lo único que aportaba era un reset que preferimos escribir nosotros. No lo
+  reintroduzcas ni escribas clases de utilidad.
+- Todo el estilo es CSS propio, organizado en capas:
+    app/styles/tokens.css         los valores de diseño, única fuente de verdad
+    app/styles/base.css           el reset y los estilos de elemento, únicos
+    app/styles/interacciones.css  las clases que consulta el JavaScript
+    app/styles/patrones.css       los patrones compartidos (fase 1a)
+  Lo propio de una página va en su módulo CSS. Nada de hojas globales nuevas.
+- No inventes valores fuera del sistema: usa los tokens de tokens.css. Si un
+  valor no está, no lo escribas suelto: decide si toca añadirlo al sistema.
+- Jerarquía de referencia cuando dos páginas resuelven lo mismo distinto:
+  1. /equipo/ventas-y-marketing/  2. /idioma/ingles-para-empresas/  3. el resto.
 - Si algo se ve duplicado, mal escrito o mejorable, repórtalo. No lo corrijas.
 
 ## Alcance

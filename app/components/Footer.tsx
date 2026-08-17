@@ -34,7 +34,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <nav className={styles.col} aria-labelledby="footer-informacion">
+        <nav aria-labelledby="footer-informacion">
           <h2 className={styles.title} id="footer-informacion">
             Información
           </h2>
@@ -57,7 +57,7 @@ export default function Footer() {
           </ul>
         </nav>
 
-        <nav className={styles.col} aria-labelledby="footer-idiomas">
+        <nav aria-labelledby="footer-idiomas">
           <h2 className={styles.title} id="footer-idiomas">
             Idiomas
           </h2>

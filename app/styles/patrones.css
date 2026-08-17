@@ -1,0 +1,746 @@
+/* Patrones compartidos del sistema.
+
+   Todos los valores salen de /equipo/ventas-y-marketing/, la referencia de
+   diseño. Las páginas que resolvían lo mismo de otra forma ceden a esta.
+
+   Criterio de admisión, el mismo que en tokens.css: entra lo que resuelve el
+   mismo problema en dos o más páginas. Lo que solo existe en una se queda en su
+   módulo, por evidente que parezca el patrón. El breadcrumb, por ejemplo, hoy
+   solo lo tiene ventas y marketing: sube aquí cuando una segunda página lo
+   pida, no antes.
+
+   Estas clases son globales a propósito: son el vocabulario compartido y viven
+   en la capa `patrones`, por debajo de los módulos. Eso significa que un módulo
+   de página siempre gana sin pelear especificidad: para ajustar un patrón en
+   una página, basta una regla normal en su módulo, sin !important ni selectores
+   inflados.
+
+   Nombres en inglés cuando ya existía convención (--color-*), en español el
+   resto, como en el markup del proyecto. Prefijo sp- para que nunca choquen con
+   los nombres de las hojas migradas que aún quedan por convertir. */
+
+/* ========== Maquetación de sección ========== */
+
+.sp-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.sp-seccion {
+  position: relative;
+  padding: var(--space-section) var(--space-gutter);
+}
+
+/* Banda de acento: mismo gutter, la mitad de ritmo vertical. */
+.sp-banda {
+  position: relative;
+  padding: 56px var(--space-gutter);
+}
+
+/* Encabezado centrado de sección. Unifica `.section-top` y `.dolor-top`, que
+   eran idénticos salvo que solo uno equilibraba el corte de línea del título.
+   Se conserva el equilibrado: es el más reciente de los dos. */
+.sp-seccion-top {
+  max-width: 760px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+
+.sp-seccion-top h2 {
+  margin-bottom: 16px;
+  font-size: var(--text-title-md);
+  font-weight: var(--weight-black);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--color-navy);
+  text-wrap: balance;
+}
+
+.sp-seccion-top h2 em {
+  font-style: normal;
+  color: var(--color-red);
+}
+
+.sp-seccion-top p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-ink-2);
+}
+
+/* ========== Antetítulo ========== */
+
+.sp-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-red);
+}
+
+.sp-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-red);
+}
+
+/* ========== Botones ==========
+   Un solo botón con variantes, en lugar de las diez implementaciones que había
+   repartidas por el proyecto. El realce (brillo que barre y elevación al pasar
+   el cursor) es el comportamiento por defecto porque así lo resuelve la
+   referencia en sus CTA de página. Para contextos donde ese movimiento estorba
+   —la barra de navegación, un botón dentro de una tarjeta pequeña— está
+   `.sp-btn--plano`. */
+
+.sp-btn {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: background 0.25s ease, transform 0.25s var(--ease-out-soft),
+    box-shadow 0.25s ease;
+}
+
+.sp-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 45%;
+  height: 100%;
+  transform: skewX(-22deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.sp-btn:hover::after {
+  left: 130%;
+}
+
+.sp-btn--rojo {
+  background: var(--color-red);
+  color: var(--color-white);
+  padding: 15px 32px;
+  font-size: 15px;
+  font-weight: var(--weight-bold);
+}
+
+.sp-btn--rojo::after {
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.28),
+    transparent
+  );
+}
+
+.sp-btn--rojo:hover {
+  background: var(--color-red-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(181, 30, 64, 0.32);
+}
+
+.sp-btn--rojo:active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(181, 30, 64, 0.28);
+}
+
+.sp-btn--blanco {
+  background: var(--color-white);
+  color: var(--color-red);
+  padding: 16px 36px;
+  font-size: 15px;
+  font-weight: var(--weight-black);
+}
+
+.sp-btn--blanco::after {
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(181, 30, 64, 0.14),
+    transparent
+  );
+}
+
+.sp-btn--blanco:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.24);
+}
+
+.sp-btn--blanco:active {
+  transform: translateY(-1px) scale(1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.sp-btn--plano::after {
+  display: none;
+}
+
+.sp-btn--plano:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.sp-btn:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: 3px;
+}
+
+/* ========== Tarjetas ==========
+   La superficie y la barra son piezas separadas a propósito: la tarjeta de
+   testimonio usa la barra sobre un fondo translúcido, no sobre la superficie
+   blanca. Combinar dos clases evita que una tenga que deshacer a la otra.
+
+   El padding no está aquí. Cada tarjeta tiene el suyo (24/20, 24/22, 28/24) y
+   forzarlas a un único valor sí movería el diseño. */
+
+.sp-tarjeta {
+  position: relative;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  transition: var(--transition-card);
+}
+
+.sp-tarjeta:hover {
+  border-color: var(--color-red);
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: var(--shadow-hover-red);
+}
+
+/* Barra que crece desde la esquina al pasar el cursor. El -1px y el +2px tapan
+   el borde de la tarjeta: la barra debe montarse encima, no encajar dentro. */
+.sp-barra::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 0;
+  height: 3px;
+  background: var(--color-red);
+  transition: width 0.4s var(--ease-out-soft);
+}
+
+.sp-barra:hover::before {
+  width: calc(100% + 2px);
+}
+
+.sp-barra-lateral::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 3px;
+  height: 0;
+  background: var(--color-red);
+  transition: height 0.4s var(--ease-out-soft);
+}
+
+.sp-barra-lateral:hover::before {
+  height: calc(100% + 2px);
+}
+
+/* ========== Cuadros de icono ==========
+   Sustituyen a los seis cuadros que había, con cuatro tamaños y tres fondos.
+   El tamaño del svg va con el del cuadro. */
+
+.sp-icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s ease, color 0.3s ease,
+    transform 0.35s var(--ease-out-soft);
+}
+
+.sp-icono svg {
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sp-icono--sm {
+  width: 36px;
+  height: 36px;
+  font-size: 17px;
+}
+
+.sp-icono--sm svg {
+  width: 18px;
+  height: 18px;
+}
+
+.sp-icono--md {
+  width: 40px;
+  height: 40px;
+}
+
+.sp-icono--md svg {
+  width: 20px;
+  height: 20px;
+}
+
+.sp-icono--lg {
+  width: 44px;
+  height: 44px;
+}
+
+.sp-icono--lg svg {
+  width: 22px;
+  height: 22px;
+}
+
+.sp-icono--xl {
+  width: 48px;
+  height: 48px;
+}
+
+.sp-icono--xl svg {
+  width: 24px;
+  height: 24px;
+}
+
+.sp-icono--rojo {
+  background: var(--color-red-soft);
+  color: var(--color-red);
+}
+
+.sp-icono--navy {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+/* Sobre fondo oscuro. */
+.sp-icono--claro {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+}
+
+/* ========== Hero ==========
+   La composición del hero es distinta en cada página (una lleva foto recortada,
+   la otra un retrato sobre un círculo), así que la rejilla se queda en cada
+   módulo. Estas piezas de dentro sí son las mismas en las dos. */
+
+.sp-etiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-red-soft);
+  color: var(--color-red);
+  padding: 6px 14px;
+  margin-bottom: 22px;
+  font-size: 11.5px;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sp-etiqueta::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-red);
+  animation: pulse 2s infinite; /* keyframes en interacciones.css */
+}
+
+.sp-hero-sub {
+  margin-bottom: 32px;
+  max-width: 540px;
+  font-size: 16px;
+  font-weight: var(--weight-normal);
+  line-height: 1.7;
+  color: var(--color-ink-2);
+}
+
+.sp-hero-social {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.sp-hero-social p {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--color-ink-2);
+}
+
+.sp-hero-social strong {
+  color: var(--color-navy);
+  font-weight: var(--weight-bold);
+}
+
+/* ========== Cifras destacadas ==========
+   Copia literal en las dos páginas migradas. */
+
+.sp-stats-row {
+  display: flex;
+  gap: 12px;
+  margin-top: -56px;
+  position: relative;
+  z-index: 2;
+}
+
+.sp-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  padding: 16px 10px;
+  text-align: center;
+}
+
+.sp-stat-num {
+  font-size: 22px;
+  font-weight: var(--weight-black);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-navy);
+}
+
+.sp-stat-label {
+  font-size: 11px;
+  font-weight: var(--weight-medium);
+  line-height: 1.3;
+  color: var(--color-muted);
+}
+
+/* ========== Prueba social ========== */
+
+.sp-avatares {
+  display: flex;
+}
+
+.sp-avatar-apilado {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--color-navy);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: var(--weight-black);
+  border: 2px solid var(--color-white);
+  margin-left: -10px;
+  flex-shrink: 0;
+}
+
+.sp-avatar-apilado:first-child {
+  margin-left: 0;
+}
+
+.sp-avatar-apilado:nth-child(2) {
+  background: var(--color-red);
+}
+
+.sp-estrellas {
+  font-size: 13px;
+  color: var(--color-yellow);
+  margin-bottom: 3px;
+}
+
+/* ========== Franja de logos ==========
+   Monta sobre la sección anterior: de ahí el margen negativo y el z-index. */
+
+.sp-logos {
+  position: relative;
+  z-index: 5;
+  background: var(--color-off-white);
+  padding: 0 var(--space-gutter);
+  margin-top: -60px;
+}
+
+.sp-logos-card {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  background: var(--color-white);
+  padding: 24px 0;
+  box-shadow: var(--shadow-panel);
+}
+
+.sp-logos-label {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 13px;
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* ========== Testimonios ========== */
+
+.sp-testi-top {
+  max-width: var(--container-max);
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.sp-testi-top h2 {
+  margin-bottom: 12px;
+  font-size: var(--text-title-md);
+  font-weight: var(--weight-black);
+  letter-spacing: -0.025em;
+  color: var(--color-white);
+  text-wrap: balance;
+}
+
+.sp-testi-top p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.sp-testi-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 28px 24px;
+  transition: background 0.3s ease, border-color 0.3s ease,
+    box-shadow 0.35s ease, transform 0.35s var(--ease-out-soft);
+}
+
+.sp-testi-card:hover {
+  background: rgba(255, 255, 255, 0.11);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.3);
+}
+
+.sp-testi-card--acento,
+.sp-testi-card--acento:hover {
+  background: var(--color-yellow);
+  border-color: transparent;
+}
+
+.sp-testi-quote {
+  flex: 1;
+  margin-bottom: 22px;
+  font-size: 14px;
+  line-height: 1.72;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.sp-testi-autor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.sp-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: var(--weight-black);
+  color: var(--color-white);
+  flex-shrink: 0;
+}
+
+.sp-autor-nombre {
+  font-size: 13px;
+  font-weight: var(--weight-bold);
+  color: var(--color-white);
+}
+
+.sp-autor-rol {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.sp-testi-card--acento .sp-testi-quote,
+.sp-testi-card--acento .sp-autor-nombre {
+  color: var(--color-navy);
+}
+
+.sp-testi-card--acento .sp-avatar {
+  background: rgba(30, 45, 74, 0.18);
+  color: var(--color-navy);
+}
+
+.sp-testi-card--acento .sp-autor-rol {
+  color: rgba(30, 45, 74, 0.55);
+}
+
+/* ========== Marquesina de logos ========== */
+
+.sp-marquesina {
+  overflow: hidden;
+  max-width: 920px;
+  width: 100%;
+  margin: 0 auto;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+}
+
+.sp-marquesina-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: logos-scroll 25s linear infinite;
+}
+
+.sp-marquesina-track img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  margin-right: 56px;
+  flex-shrink: 0;
+  filter: grayscale(100%);
+  opacity: 0.65;
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+.sp-marquesina-track img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* ========== Acordeón ==========
+   OJO: `.sp-faq-item` y `.open` los consulta el JavaScript de las páginas
+   migradas. Ver app/styles/interacciones.css antes de renombrarlos.
+
+   Esto desaparece en la fase 2, cuando el acordeón pase a <details> y el
+   toggleFaq de las dos páginas se borre. La piel de abajo es la que sobrevive
+   a ese cambio; el motor no. */
+
+.sp-faq-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sp-faq-item {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  transition: border-color var(--transition-fast);
+}
+
+.sp-faq-item:hover,
+.sp-faq-item.open {
+  border-color: var(--color-red);
+}
+
+.sp-faq-pregunta {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 14.5px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-navy);
+  cursor: pointer;
+}
+
+.sp-faq-pregunta:hover {
+  color: var(--color-red);
+}
+
+.sp-faq-icono {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--color-off-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 17px;
+  color: var(--color-muted);
+  transition: transform 0.3s, background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.sp-faq-item.open .sp-faq-icono {
+  transform: rotate(45deg);
+  background: var(--color-red);
+  color: var(--color-white);
+}
+
+.sp-faq-respuesta {
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--color-ink-2);
+  transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+}
+
+.sp-faq-item.open .sp-faq-respuesta {
+  max-height: 600px;
+  opacity: 1;
+  padding-bottom: 20px;
+}
+
+/* ========== Responsive ==========
+   Los breakpoints del sistema están documentados en tokens.css. */
+
+@media (max-width: 768px) {
+  /* Tres cifras no caben en una fila estrecha sin quedar ilegibles. Las dos
+     páginas migradas ocultan la tercera exactamente igual. */
+  .sp-stats-row .sp-stat:nth-child(3) {
+    display: none;
+  }
+
+  .sp-stats-row {
+    margin-top: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sp-seccion {
+    padding: var(--space-section-mobile) var(--space-gutter-mobile);
+  }
+}
+
+/* Movimiento reducido: los patrones dejan de desplazarse. El bloque universal
+   que congela duraciones está en interacciones.css; este quita el movimiento en
+   sí, que con duración cero seguiría saltando de golpe. */
+@media (prefers-reduced-motion: reduce) {
+  .sp-tarjeta:hover,
+  .sp-testi-card:hover,
+  .sp-btn:hover {
+    transform: none;
+  }
+}
