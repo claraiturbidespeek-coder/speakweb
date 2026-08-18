@@ -1,4 +1,9 @@
-/* Patrones tomados de app/idioma/ingles-para-empresas/landing.css (nav, líneas 63-85). */
+/* La caja del header: la barra, la fila, el logo y el botón de contacto.
+
+   El contenido de la navegación —menú general, desplegables, botón de menú y
+   panel a pantalla completa— vive en app/components/nav/nav.module.css, que es
+   donde están sus componentes. Los valores de los desplegables se movieron allí
+   sin cambios; venían de app/idioma/ingles-para-empresas (nav, líneas 63-85). */
 
 .header {
   position: sticky;
@@ -15,140 +20,53 @@
   min-height: var(--header-height);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 32px;
+  gap: 20px;
 }
 
+/* El margen automático empuja la navegación y el botón de contacto a la
+   derecha, y deja el logo junto al botón de menú cuando ese se muestra. */
 .logo {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  margin-right: auto;
 }
 
-.list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.item {
-  position: relative;
-}
-
-.link {
-  color: rgba(255, 255, 255, 0.85);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.link:hover {
-  color: var(--color-white);
-}
-
-.link:focus-visible,
-.summary:focus-visible {
-  outline: 2px solid var(--color-white);
-  outline-offset: 3px;
-}
-
-/* Dropdown de idiomas: <details>/<summary>, sin JavaScript. */
-.details {
-  position: relative;
-}
-
-.summary {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  color: rgba(255, 255, 255, 0.85);
-  cursor: pointer;
-  list-style: none;
-  transition: color 0.2s;
-}
-
-.summary::-webkit-details-marker {
-  display: none;
-}
-
-.summary:hover {
-  color: var(--color-white);
-}
-
-/* Chevron propio: no hay iconos en el proyecto. */
-.summary::after {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-right: 1.5px solid currentColor;
-  border-bottom: 1.5px solid currentColor;
-  transform: translateY(-2px) rotate(45deg);
-  transition: transform 0.2s;
-}
-
-.details[open] > .summary::after {
-  transform: translateY(1px) rotate(225deg);
-}
-
-.dropdown {
-  position: absolute;
-  top: calc(100% + 14px);
-  left: 0;
-  z-index: 101;
-  min-width: 200px;
-  margin: 0;
-  padding: 8px 0;
-  list-style: none;
-  background: var(--color-white);
-  border: 1px solid rgba(26, 60, 77, 0.15);
-  box-shadow: 0 12px 28px rgba(26, 60, 77, 0.18);
-}
-
-.dropdownLink {
-  display: block;
-  padding: 9px 18px;
-  color: var(--color-navy);
-  font-size: 14px;
-  font-weight: 500;
-  text-decoration: none;
-  transition: background 0.2s;
-}
-
-.dropdownLink:hover {
-  background: var(--color-off-white);
-}
-
-.dropdownLink:focus-visible {
-  outline: 2px solid var(--color-navy);
-  outline-offset: -2px;
-}
-
-/* La piel la pone el botón del sistema; aquí solo que no se encoja. */
 .cta {
   flex-shrink: 0;
 }
 
-/* La referencia oculta los links por debajo de 960px porque la landing no tiene menú.
-   Aquí bajan a una segunda fila: ocultarlos dejaría el sitio sin navegación en móvil. */
+/* Las dos etiquetas del botón de contacto conviven en el marcado y el ancho
+   decide cuál se ve. No hay JavaScript detrás: se renderiza en el servidor y
+   no hay un estado intermedio en el que se lea la otra. */
+.ctaCorto {
+  display: none;
+}
+
+/* La segunda fila de enlaces que había aquí como provisional desapareció: por
+   debajo de 960px la navegación es el botón de menú, en nav.module.css. */
 @media (max-width: 960px) {
   .inner {
-    flex-wrap: wrap;
     padding: 14px var(--space-gutter);
     gap: 16px;
   }
 
-  /* Los enlaces bajan a una segunda fila. */
-  .nav {
-    order: 3;
-    flex-basis: 100%;
+  /* La fila no encoge —el toggle, el logo y el botón son flex-shrink: 0— y a
+     partir de aquí la suma de los tres supera el ancho disponible: a 440px de
+     viewport se salía 16px, y más cuanto más estrecha la pantalla. Se recupera
+     el espacio de los dos sitios donde sobra, el logo y la etiqueta.
+
+     El token se redefine en el header y no en tokens.css para no encoger
+     también el logo del pie, que no tiene este problema. */
+  .header {
+    --logo-height: 28px;
   }
 
-  .list {
-    flex-wrap: wrap;
-    gap: 20px;
+  .ctaLargo {
+    display: none;
+  }
+
+  .ctaCorto {
+    display: inline;
   }
 }

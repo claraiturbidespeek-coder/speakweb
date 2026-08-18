@@ -41,7 +41,7 @@ export default function Footer() {
           <ul className={styles.list}>
             <li>
               <Link className={styles.link} href="/blog/">
-                Centro de Recursos
+                Recursos
               </Link>
             </li>
             <li>

@@ -74,8 +74,12 @@
   top: 210px;
   left: 50%;
   transform: translate(-50%, -50%);
+  /* Ancho fijo con tope: por debajo de ~420px de viewport los 420px se salían
+     por los dos lados, y .hero no recorta. Con aspect-ratio en lugar de una
+     altura fija sigue siendo un círculo al ceder. */
   width: 420px;
-  height: 420px;
+  max-width: 100%;
+  aspect-ratio: 1;
   border-radius: 50%;
   background: var(--color-navy);
   opacity: 0.12;

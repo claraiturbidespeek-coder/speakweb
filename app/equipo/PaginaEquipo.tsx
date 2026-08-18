@@ -444,7 +444,7 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
         </section>
 
         {/* DIFERENCIADORES */}
-        <section className={`sp-seccion ${styles.diferenciadores}`}>
+        <section className={`sp-seccion ${styles.diferenciadores}`} id="diferenciadores">
           <div className="sp-inner">
             <div className="sp-seccion-top reveal">
               <div className="sp-eyebrow" style={{ justifyContent: "center" }}>

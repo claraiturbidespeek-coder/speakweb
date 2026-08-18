@@ -1,0 +1,447 @@
+/* La navegación del header: menú en línea, desplegables, botón de menú y panel
+   a pantalla completa.
+
+   Vive aparte de Header.module.css porque el header ya solo es la caja —logo,
+   fila y botón de contacto— y esto es su contenido. Los valores de los
+   desplegables vienen de la hoja anterior del header, sin cambios. */
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  font-size: 14px;
+  font-weight: var(--weight-medium);
+}
+
+.item {
+  position: relative;
+}
+
+.link {
+  color: rgba(255, 255, 255, 0.85);
+  transition: color var(--transition-fast);
+}
+
+.link:hover {
+  color: var(--color-white);
+}
+
+.link:focus-visible,
+.summary:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+/* ---------- Desplegable ----------
+   Es <details>. Los tres cierres que le faltan —clic fuera, Escape y
+   navegación— los pone Desplegable.tsx; que abrir uno cierre el otro lo da el
+   atributo `name` compartido. */
+
+.details {
+  position: relative;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  list-style: none;
+  transition: color var(--transition-fast);
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary:hover {
+  color: var(--color-white);
+}
+
+/* Chevron propio: no hay iconos en el proyecto. */
+.summary::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform var(--transition-fast);
+}
+
+.details[open] > .summary::after {
+  transform: translateY(1px) rotate(225deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 0;
+  z-index: 101;
+  min-width: 200px;
+  margin: 0;
+  padding: 8px 0;
+  list-style: none;
+  background: var(--color-white);
+  border: 1px solid rgba(26, 60, 77, 0.15);
+  box-shadow: 0 12px 28px rgba(26, 60, 77, 0.18);
+}
+
+.dropdownLink {
+  display: block;
+  padding: 9px 18px;
+  color: var(--color-navy);
+  font-size: 14px;
+  font-weight: var(--weight-medium);
+  white-space: nowrap;
+  transition: background var(--transition-fast);
+}
+
+.dropdownLink:hover {
+  background: var(--color-off-white);
+}
+
+.dropdownLink:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: -2px;
+}
+
+/* ---------- Botón de menú ----------
+   Oculto por defecto. Aparece en escritorio solo donde el header lleva menú de
+   secciones, y por debajo de 960px en todas las páginas. */
+
+.toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--color-white);
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+.toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+}
+
+.toggleSiempre {
+  display: inline-flex;
+}
+
+/* ---------- Panel a pantalla completa ----------
+   Dos columnas en escritorio: la lista a la izquierda, el contenido del
+   elemento seleccionado a la derecha. Por debajo de 768px se colapsa a una
+   sola, y `data-detalle` decide cuál de las dos se ve. */
+
+.panel {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  border: none;
+  padding: 0;
+  background: var(--color-navy);
+  color: var(--color-white);
+  overflow-y: auto;
+}
+
+.panel[open] {
+  display: block;
+}
+
+.panelInner {
+  position: relative;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 88px var(--space-gutter) var(--space-section);
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 56px;
+  align-items: start;
+}
+
+/* Fijo al panel y no absoluto dentro de .panelInner: anclado al contenido, si
+   esa caja se ensancha por cualquier motivo el botón se va fuera de la
+   pantalla. Dentro de un <dialog> en la capa superior, `fixed` se resuelve
+   contra el viewport, que es exactamente lo que se quiere aquí. */
+.cerrar {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  color: var(--color-white);
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: opacity var(--transition-fast);
+}
+
+.cerrar:hover {
+  opacity: 1;
+}
+
+.cerrar:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+/* ---------- Columna izquierda ---------- */
+
+.lista {
+  min-width: 0;
+}
+
+.listaItems {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Los que despliegan: chevron a la derecha y fondo cuando están seleccionados. */
+.listaBoton {
+  width: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  background: none;
+  border: none;
+  border-left: 2px solid transparent;
+  text-align: left;
+  font-size: 18px;
+  font-weight: var(--weight-semibold);
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.listaBoton::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-right: 1.5px solid currentColor;
+  border-top: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.listaBoton:hover {
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.listaActivo {
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.1);
+  border-left-color: var(--color-red);
+}
+
+/* Los que no despliegan: van tras una separación, sin fondo de seleccionado y
+   con una flecha en vez del chevron. Llevan a otra página y no deben leerse
+   como los de arriba. */
+.listaDirectos {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.listaEnlace {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  font-size: 18px;
+  font-weight: var(--weight-semibold);
+  color: rgba(255, 255, 255, 0.75);
+  transition: color var(--transition-fast);
+}
+
+.listaEnlace::after {
+  content: "→";
+  font-size: 15px;
+  opacity: 0.6;
+}
+
+.listaEnlace:hover {
+  color: var(--color-white);
+}
+
+.listaBoton:focus-visible,
+.listaEnlace:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: -2px;
+}
+
+/* ---------- Columna derecha ---------- */
+
+.contenido {
+  min-width: 0;
+}
+
+.contenidoTitulo {
+  margin: 0 0 18px;
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.contenidoLista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 32px;
+}
+
+.panelEnlace {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  display: block;
+  font-size: 18px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-white);
+  transition: color var(--transition-fast);
+}
+
+.panelEnlace:hover {
+  color: var(--color-red-hover);
+}
+
+.panelEnlace:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+/* Solo existe en la vista de una columna. */
+.volver {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 14px;
+  font-weight: var(--weight-semibold);
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+}
+
+.volver::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-left: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.volver:hover {
+  color: var(--color-white);
+}
+
+.volver:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+/* ---------- Responsive ----------
+   Por debajo de 960px el menú en línea desaparece y el botón lo sustituye en
+   todas las páginas. Esto reemplaza la solución provisional que bajaba los
+   enlaces a una segunda fila del header. */
+
+@media (max-width: 960px) {
+  .nav {
+    display: none;
+  }
+
+  .toggle {
+    display: inline-flex;
+  }
+}
+
+/* Dos columnas no caben: se ve la lista o el detalle, nunca los dos. Lo decide
+   `data-detalle`, que en escritorio no interviene. */
+@media (max-width: 768px) {
+  /* Bloque, no rejilla de una columna. Una pista `1fr` puede crecer por encima
+     de su contenedor si algo dentro fija un mínimo; un bloque no. Con una sola
+     columna la rejilla no aportaba nada y sí ese riesgo. */
+  .panelInner {
+    display: block;
+    padding-top: 72px;
+  }
+
+  .panelInner[data-detalle="no"] .contenido {
+    display: none;
+  }
+
+  .panelInner[data-detalle="si"] .lista {
+    display: none;
+  }
+
+  .volver {
+    display: inline-flex;
+  }
+
+  .contenidoLista {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .listaBoton,
+  .listaEnlace,
+  .panelEnlace {
+    font-size: 17px;
+  }
+}

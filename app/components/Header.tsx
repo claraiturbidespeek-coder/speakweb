@@ -1,12 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
+import MenuCompleto from "@/app/components/nav/MenuCompleto";
+import Navegacion from "@/app/components/nav/Navegacion";
 import styles from "./Header.module.css";
+
+/* El header sigue siendo componente de servidor. Lo que cruza a cliente son
+   dos islas: la navegación, que necesita saber la ruta para elegir entre el
+   menú general y el de secciones, y el botón de menú con su panel. El logo y
+   el botón de contacto no dependen de la ruta y se quedan fuera. */
 
 export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
+        <MenuCompleto />
+
         <Link href="/" className={styles.logo}>
           <Image
             className="site-logo"
@@ -17,83 +26,13 @@ export default function Header() {
           />
         </Link>
 
-        <nav className={styles.nav} aria-label="Principal">
-          <ul className={styles.list}>
-            <li className={styles.item}>
-              <details className={styles.details}>
-                <summary className={styles.summary}>Idiomas</summary>
-                <ul className={styles.dropdown}>
-                  <li>
-                    <Link
-                      className={styles.dropdownLink}
-                      href="/idioma/aleman-para-empresas/"
-                    >
-                      Alemán
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className={styles.dropdownLink}
-                      href="/idioma/espanol-para-empresas/"
-                    >
-                      Español
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className={styles.dropdownLink}
-                      href="/idioma/frances-para-empresas/"
-                    >
-                      Francés
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className={styles.dropdownLink}
-                      href="/idioma/ingles-para-empresas/"
-                    >
-                      Inglés
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className={styles.dropdownLink}
-                      href="/idioma/italiano-para-empresas/"
-                    >
-                      Italiano
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className={styles.dropdownLink}
-                      href="/idioma/portugues-para-empresas/"
-                    >
-                      Portugués
-                    </Link>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li className={styles.item}>
-              <Link className={styles.link} href="/clientes/">
-                Clientes
-              </Link>
-            </li>
-            <li className={styles.item}>
-              <Link className={styles.link} href="/#faq">
-                Preguntas Frecuentes
-              </Link>
-            </li>
-            <li className={styles.item}>
-              <Link className={styles.link} href="/blog/">
-                Centro de Recursos
-              </Link>
-            </li>
-          </ul>
-        </nav>
+        <Navegacion />
 
-        <BotonContacto className={`sp-btn sp-btn--rojo sp-btn--plano ${styles.cta}`}>
-          Solicite Información
+        <BotonContacto
+          className={`sp-btn sp-btn--rojo sp-btn--plano ${styles.cta}`}
+        >
+          <span className={styles.ctaLargo}>Solicite Información</span>
+          <span className={styles.ctaCorto}>Cotizar</span>
         </BotonContacto>
       </div>
     </header>
