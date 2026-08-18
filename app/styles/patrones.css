@@ -49,13 +49,16 @@
   padding: 56px var(--space-gutter);
 }
 
-/* Encabezado centrado de sección. Unifica `.section-top` y `.dolor-top`, que
-   eran idénticos salvo que solo uno equilibraba el corte de línea del título.
-   Se conserva el equilibrado: es el más reciente de los dos. */
+/* El bloque que llena una sección extendida. Sin este modificador, un
+   `.sp-inner` dentro de `.sp-seccion--ancha` sigue topado en el contenedor
+   normal, que es lo que mantiene legible una cabecera centrada. */
 .sp-inner--ancho {
   max-width: var(--container-ancho);
 }
 
+/* Encabezado centrado de sección. Unifica `.section-top` y `.dolor-top`, que
+   eran idénticos salvo que solo uno equilibraba el corte de línea del título.
+   Se conserva el equilibrado: es el más reciente de los dos. */
 .sp-seccion-top {
   max-width: 760px;
   margin: 0 auto 56px;
@@ -679,6 +682,84 @@
   opacity: 1;
 }
 
+/* ========== Franja de idiomas ==========
+   La banda azul con las lenguas en pastillas, al pie de la sección de
+   competencias. Las siete páginas de Soluciones por Equipo la llevan, y es
+   además el bloque que enlaza a las seis páginas de idioma.
+
+   El CSS venía escrito en la hoja de la referencia pero su markup nunca se
+   migró, así que se retiró como código muerto al unificar. Vuelve tal cual,
+   ahora con seis páginas que lo piden. */
+
+.sp-franja {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-navy);
+  border-top: 4px solid var(--color-red);
+  padding: 56px var(--space-gutter);
+}
+
+.sp-franja::after {
+  content: "";
+  position: absolute;
+  right: -60px;
+  top: -50px;
+  width: 210px;
+  height: 210px;
+  border: 2px solid rgba(181, 30, 64, 0.55);
+  transform: rotate(22deg);
+  pointer-events: none;
+}
+
+.sp-franja-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.sp-franja-texto h2 {
+  margin-bottom: 16px;
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: var(--weight-black);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-white);
+}
+
+.sp-franja-texto p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sp-franja-idiomas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.sp-pill {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: var(--weight-semibold);
+  transition: background var(--transition-fast), border-color var(--transition-fast),
+    transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.sp-pill:hover {
+  background: var(--color-red);
+  border-color: var(--color-red);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(181, 30, 64, 0.35);
+}
+
 /* ========== Tarjeta de llamada a la acción ==========
    El bloque azul con un botón dentro. Aparecía cuatro veces en el proyecto: al
    pie del intro del FAQ en las dos páginas migradas, como columna lateral del
@@ -1069,7 +1150,8 @@
 @media (prefers-reduced-motion: reduce) {
   .sp-tarjeta:hover,
   .sp-testi-card:hover,
-  .sp-btn:hover {
+  .sp-btn:hover,
+  .sp-pill:hover {
     transform: none;
   }
 }

@@ -56,7 +56,10 @@ const DIFERENCIADORES = [
   },
 ];
 
-// Tres columnas con reparto 3/3/2, igual que el original.
+/* Tres columnas con reparto 3/2/2. El original repartía 3/3/2 con ocho áreas;
+   Recursos Humanos salió de Soluciones por Equipo —no es un área que aprenda
+   idiomas, es quien compra el programa— y las siete restantes se reequilibran
+   para que ninguna columna quede coja. */
 const MOSAICO = [
   [
     {
@@ -86,17 +89,12 @@ const MOSAICO = [
       ruta: "/equipo/legal-y-juridico/",
       imagen: "area-legal-y-juridico.jpg",
     },
+  ],
+  [
     {
       nombre: "Operaciones y Logística",
       ruta: "/equipo/operaciones-y-logistica/",
       imagen: "area-operaciones-y-logistica.jpg",
-    },
-  ],
-  [
-    {
-      nombre: "Recursos Humanos",
-      ruta: "/equipo/recursos-humanos/",
-      imagen: "area-recursos-humanos.jpg",
     },
     {
       nombre: "Tecnología e Ingeniería",

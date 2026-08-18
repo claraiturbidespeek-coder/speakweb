@@ -1,9 +1,14 @@
-/* Ventas y Marketing: lo propio de esta página.
+/* Soluciones por Equipo: la piel de las siete páginas de área.
 
-   Lo compartido vive en app/styles/patrones.css con nombres sp-*. Aquí queda
-   solo lo que no resuelve nadie más: el breadcrumb, la composición del hero, la
-   rejilla de competencias con sus colores por posición, el carrusel de mercado
-   y los acentos gráficos de sección.
+   Lo compartido con el resto del sitio vive en app/styles/patrones.css con
+   nombres sp-*. Aquí queda lo que es de este tipo de página y de ningún otro:
+   el breadcrumb, la composición del hero, la rejilla de competencias con sus
+   colores por posición, el carrusel de mercado y los acentos gráficos de
+   sección.
+
+   Es un módulo y no un patrón del sistema a propósito: no es vocabulario de
+   sitio, es la piel de una plantilla. Las siete páginas de /equipo/ lo
+   importan; nadie más debería.
 
    Como esto es un módulo, sus nombres van con hash y no pueden chocar con los
    de ninguna otra página. Y por estar fuera de toda capa, sus reglas ganan a
@@ -121,6 +126,48 @@
 }
 
 
+
+/* ---------- Isotipos decorativos ----------
+   En la referencia iban como estilo inline en el markup. Al pasar a plantilla
+   se nombran, porque los repiten siete páginas. */
+
+.decoHero,
+.decoCta {
+  position: absolute;
+  pointer-events: none;
+}
+
+.decoHero {
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  opacity: 0.06;
+  transform: rotate(15deg);
+}
+
+.decoCta {
+  top: 50%;
+  right: 40px;
+  width: 120px;
+  opacity: 0.08;
+  transform: translateY(-50%) rotate(30deg);
+}
+
+/* ---------- Nota de encuadre ----------
+   Va bajo el hero y dice qué enseña S-Peak y qué no. Solo la traen las áreas
+   cuyo contenido la incluye. */
+
+.encuadre {
+  background: var(--color-off-white);
+  border-bottom: 1px solid var(--color-border);
+  padding: 22px var(--space-gutter);
+}
+
+.encuadreTexto {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--color-ink-2);
+}
 
 /* ---------- Competencias ---------- */
 
