@@ -17,7 +17,12 @@
 const NO_ESPECIFICADO = "No especificado";
 const CLAVE_SESION = "speak_attribution";
 
-export const ENDPOINT_LEAD = "https://s-peak-landings.vercel.app/api/lead";
+/* El endpoint propio del proyecto, en app/api/lead/route.ts.
+   LA BARRA FINAL NO SOBRA: el proyecto tiene trailingSlash activado, así que
+   /api/lead responde con un 308 hacia /api/lead/. La redirección preserva
+   método y cuerpo, o sea que funcionaría igual, pero con un salto de más en
+   cada envío. No la quites. */
+export const ENDPOINT_LEAD = "/api/lead/";
 
 /* El idioma se deducía de la página porque el guion solo existía en la landing
    de inglés. Ahora que el modal es de todo el sitio, sale de la ruta. Las cinco
