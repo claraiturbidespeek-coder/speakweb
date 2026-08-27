@@ -99,10 +99,8 @@ html.lenis body {
 
 /* ---------- Keyframes compartidos ----------
    `pulse` y `logos-scroll` estaban duplicados literalmente en landing.css y
-   equipo.css. El home tiene un tercer clon de `logos-scroll` llamado `slide`
-   dentro de su módulo; se retira cuando el home adopte la marquesina del
-   sistema, porque los nombres de @keyframes de un módulo van con hash y no se
-   pueden compartir desde aquí. */
+   equipo.css: se centralizan aquí porque los nombres de @keyframes de un
+   módulo van con hash y no se pueden compartir desde ahí. */
 
 @keyframes pulse {
   0%,

@@ -31,11 +31,17 @@ const INGLES: Seccion[] = [
   { id: "faq", etiqueta: "Preguntas" },
 ];
 
+/* Lista explícita, no por prefijo: activar una página es agregar su ruta
+   aquí apuntando al conjunto de secciones que le corresponde; desactivarla es
+   quitar la entrada. Las siete páginas de /equipo/ están fuera hoy, pero
+   EQUIPO se queda arriba lista para volver a apuntarlas. */
+const RUTAS_CONTEXTUALES: Record<string, Seccion[]> = {
+  "/idioma/ingles-para-empresas": INGLES,
+};
+
 export function seccionesDe(ruta: string): Seccion[] | null {
   const limpia = ruta.replace(/\/+$/, "");
-  if (limpia.startsWith("/equipo/")) return EQUIPO;
-  if (limpia === "/idioma/ingles-para-empresas") return INGLES;
-  return null;
+  return RUTAS_CONTEXTUALES[limpia] ?? null;
 }
 
 /* ---------- El menú general ---------- */

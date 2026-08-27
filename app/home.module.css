@@ -87,30 +87,6 @@
   right: -40px;
 }
 
-/* ---------- 2. Confianza ----------
-   Continúa el hero: mismo fondo y sin hueco arriba. */
-
-.trust {
-  background: var(--color-blue-hero);
-  padding-top: 0;
-}
-
-.trustCard {
-  width: 85%;
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: 36px var(--space-inset);
-  background: var(--color-white);
-}
-
-.trustTitle {
-  margin: 0 0 28px;
-  text-align: center;
-  font-size: 22px;
-  font-weight: var(--weight-bold);
-  color: var(--color-navy);
-}
-
 /* ---------- 3. Claim + idiomas ---------- */
 
 .claim {
@@ -681,7 +657,6 @@
     margin-left: 0;
   }
 
-  .trustCard,
   .resourcesIntro {
     width: 100%;
   }

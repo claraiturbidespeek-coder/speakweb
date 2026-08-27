@@ -141,7 +141,7 @@ const datos: DatosEquipo = {
 
   diferenciadores: {
     eyebrow: "Por qué S-Peak",
-    titulo: "Por qué empresas como Braskem Idesa, Chedraui y más eligen S-Peak para su equipo de finanzas",
+    titulo: "Empresas como Braskem Idesa, Chedraui y +500 más eligen S-Peak para su equipo de finanzas",
     tarjetas: [
       {
         icono: "diana",

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Script from "next/script";
+import BandaLogos from "@/app/components/BandaLogos";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
 import Icono from "./Icono";
 import type { DatosEquipo } from "./tipos";
@@ -13,16 +14,6 @@ import styles from "./equipo.module.css";
 
    Se renderiza en el servidor. Los únicos trozos de cliente son los botones de
    contacto y el guion de interacción, igual que en la referencia. */
-
-const LOGOS = [
-  { archivo: "axa.webp", marca: "AXA" },
-  { archivo: "gbm.webp", marca: "GBM" },
-  { archivo: "loreal.webp", marca: "L'Oréal" },
-  { archivo: "naturgy.webp", marca: "Naturgy" },
-  { archivo: "pepsico.webp", marca: "PepsiCo" },
-  { archivo: "santander.webp", marca: "Santander" },
-  { archivo: "walmart.webp", marca: "Walmart" },
-];
 
 // Comunes a las siete áreas: el documento de contenido no los trae y se
 // reutilizan de la referencia.
@@ -294,27 +285,7 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
         ) : null}
 
         {/* LOGOS */}
-        <div className="sp-logos">
-          <div className="sp-logos-card">
-            <p className="sp-logos-label">
-              Más de 500 empresas confían en <strong>S-Peak</strong>
-            </p>
-            <div className="sp-marquesina">
-              <div className="sp-marquesina-track">
-                {[...LOGOS, ...LOGOS].map((l, i) => (
-                  <img
-                    key={`${l.archivo}-${i}`}
-                    src={`/images/logos/${l.archivo}`}
-                    alt={i < LOGOS.length ? l.marca : ""}
-                    aria-hidden={i >= LOGOS.length}
-                    height="44"
-                    loading="lazy"
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+        <BandaLogos />
 
         {/* COMPETENCIAS */}
         <section className={`sp-seccion ${styles.competencias}`} id="competencias">

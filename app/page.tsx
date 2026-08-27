@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import BandaLogos from "@/app/components/BandaLogos";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
 import styles from "./home.module.css";
 
@@ -8,20 +9,6 @@ export const metadata: Metadata = {
   description:
     "Transforme el dominio de idiomas en métricas de negocio. Capacitación para empresas con evidencias de desempeño y reportes para RRHH.",
 };
-
-const CLIENTES = [
-  { marca: "Walmart", archivo: "cliente-walmart.png" },
-  { marca: "Paramount+", archivo: "cliente-paramount.png" },
-  { marca: "KIO Networks", archivo: "cliente-kio.png" },
-  { marca: "Santander", archivo: "cliente-santander.png" },
-  { marca: "L'Oréal", archivo: "cliente-loreal.png" },
-  { marca: "Naturgy", archivo: "cliente-naturgy.png" },
-  { marca: "GBM", archivo: "cliente-gbm.png" },
-  { marca: "Renault", archivo: "cliente-renault.png" },
-  { marca: "AXA", archivo: "cliente-axa.png" },
-  { marca: "PepsiCo", archivo: "cliente-pepsico.png" },
-  { marca: "Club Med", archivo: "cliente-club-med.png" },
-];
 
 const IDIOMAS = [
   "🇬🇧 Inglés",
@@ -259,27 +246,7 @@ export default function Home() {
       </section>
 
       {/* 2. Confianza */}
-      <section className={`sp-seccion ${styles.trust}`}>
-        <div className={styles.trustCard}>
-          <h2 className={styles.trustTitle}>
-            +500 organizaciones confían en nuestra formación lingüística
-            corporativa
-          </h2>
-          <div className="sp-marquesina">
-            <div className="sp-marquesina-track">
-              {[...CLIENTES, ...CLIENTES].map((c, i) => (
-                <img
-                  key={`${c.archivo}-${i}`}
-                  src={`/images/home/${c.archivo}`}
-                  alt={i < CLIENTES.length ? `Logo de ${c.marca}` : ""}
-                  aria-hidden={i >= CLIENTES.length}
-                  loading="lazy"
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <BandaLogos />
 
       {/* 3. Claim + idiomas */}
       <section className={`sp-seccion ${styles.claim}`}>

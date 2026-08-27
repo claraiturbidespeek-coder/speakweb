@@ -366,7 +366,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
-  align-items: start;
+  align-items: center;
 }
 
 .mercadoLeft,
@@ -522,6 +522,22 @@
   border-top: 1px solid var(--color-border);
 }
 
+/* El titular de "Por qué S-Peak" es más largo que el resto de los que usan
+   `.sp-seccion-top` en patrones.css (competencias, dolor) y con su medida de
+   760px corta en líneas demasiado cortas. No se toca el patrón porque esas
+   otras dos secciones lo necesitan tal como está; aquí se amplía solo para
+   esta instancia. El contenedor se libera al ancho estándar del sitio y la
+   medida de línea real queda en el propio h2, en `ch` para que escale con su
+   tamaño de tipografía en vez de quedar fija en píxeles. */
+.diferenciadores :global(.sp-seccion-top) {
+  max-width: var(--container-max);
+}
+
+.diferenciadores :global(.sp-seccion-top) h2 {
+  max-width: 48ch;
+  margin-inline: auto;
+}
+
 .difGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -604,7 +620,6 @@
   background: var(--color-navy);
   overflow: hidden;
 }
-
 
 .testiGrid {
   max-width: var(--container-max);

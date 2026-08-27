@@ -2,6 +2,7 @@
 
 import type { FormEvent, MouseEvent } from "react";
 import Script from "next/script";
+import BandaLogos from "@/app/components/BandaLogos";
 import { useContacto } from "@/app/components/contacto/useContacto";
 import styles from "./landing.module.css";
 
@@ -324,40 +325,12 @@ export default function Page() {
 </section>
 
 {/* LOGOS */}
-<div className={`sp-logos ${styles.logos}`}>
-  <img className={`${styles.deco} ${styles.decoLogos}`} src="/images/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy" />
-  <div className={`sp-logos-card ${styles.logosCard}`}>
-    <p className="sp-logos-label">Más de 500 empresas confían en <strong>S-Peak</strong></p>
-    <div className="sp-marquesina">
-      <div className="sp-marquesina-track">
-      {/* Set 1 */}
-      <img src="/images/logos/axa.webp" alt="Logo de AXA" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/club%20med.webp" alt="Logo de Club Med" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/gbm.webp" alt="Logo de GBM" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/kio.webp" alt="Logo de KIO" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/loreal.webp" alt="Logo de L'Oréal" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/naturgy.webp" alt="Logo de Naturgy" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/paramount.webp" alt="Logo de Paramount" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/pepsico.webp" alt="Logo de PepsiCo" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/reanult.webp" alt="Logo de Renault" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/santander.webp" alt="Logo de Santander" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/walmart.webp" alt="Logo de Walmart" width="600" height="300" loading="lazy" />
-      {/* Set 2 (duplicado para loop infinito) */}
-      <img src="/images/logos/axa.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/club%20med.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/gbm.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/kio.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/loreal.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/naturgy.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/paramount.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/pepsico.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/reanult.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/santander.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy" />
-      <img src="/images/logos/walmart.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy" />
-      </div>
-    </div>
-  </div>
-</div>
+<BandaLogos
+  decorativo
+  className={styles.logos}
+  claseTarjeta={styles.logosCard}
+  claseDecorativo={`${styles.deco} ${styles.decoLogos}`}
+/>
 
 {/* ÁREAS */}
 <section className="sp-seccion">
