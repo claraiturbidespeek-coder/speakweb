@@ -7,7 +7,7 @@ excerpt: "Comprar \"horas de clase\" en escuelas tradicionales de idiomas suele 
 category: "Selección de proveedor"
 categorySlug: "seleccion-de-proveedor"
 tags: []
-featuredImage: "/images/blog/blog-clases-idiomas-empresas-proveedor-portada.jpg"
+featuredImage: "/images/blog/blog-clases-idiomas-empresas-proveedor-portada.webp"
 featuredImageAlt: "Un grupo de profesionales ejecutivos en una sala de juntas participando en clases de idiomas para empresas impartidas por S-Peak."
 seoTitle: "Clases de idiomas para empresas: ¡Elija al aliado ideal! I %%sitename%%"
 seoDescription: "¿Busca clases de idiomas para empresas? No tire su dinero en escuelas genéricas. Conozca cómo elegir un verdadero aliado corporativo."
@@ -38,7 +38,7 @@ Un proveedor genérico vende un programa estático. **Un aliado de idiomas para 
 
 Si su proveedor actual no es capaz de auditar los flujos de comunicación de su empresa para entender si el área de logística necesita portugués técnico o si el equipo de ventas requiere un enfoque estricto de inglés comercial, entonces usted está contratando una escuela, no una solución corporativa.
 
-![La capacitación en idiomas para empresas debe ser flexible e integrarse de forma invisible en la agenda de sus colaboradores para garantizar el cumplimiento.](/images/blog/blog-clases-idiomas-empresas-proveedor-01.jpg)
+![La capacitación en idiomas para empresas debe ser flexible e integrarse de forma invisible en la agenda de sus colaboradores para garantizar el cumplimiento.](/images/blog/blog-clases-idiomas-empresas-proveedor-01.webp)
 
 ## Características de un verdadero especialista en idiomas empresas
 

@@ -7,7 +7,7 @@ excerpt: "¿Cómo saber qué idiomas para empresas necesita realmente su organiz
 category: "Diagnóstico de necesidades"
 categorySlug: "diagnostico-de-necesidades"
 tags: []
-featuredImage: "/images/blog/mejores-idiomas-para-empresas-portada.jpg"
+featuredImage: "/images/blog/mejores-idiomas-para-empresas-portada.webp"
 featuredImageAlt: "os ejecutivos corporativos analizando la estrategia de idiomas para empresas frente a un mapa mundial."
 seoTitle: "Los mejores idiomas para empresas: Guía de elección | %%sitename%%"
 seoDescription: "¿Qué idiomas piden las empresas y cuál es mejor para su plantilla? Mapee las necesidades lingüísticas de su negocio con esta guía."
@@ -41,7 +41,7 @@ Los directores de talento humano analizan constantemente cuáles son los mejores
 -   **Portugués corporativo:** Es clave para expandir operaciones comerciales y logísticas hacia Brasil.
 -   **Francés de nicho:** Es muy valorado en la industria aeronáutica, farmacéutica y en el mercado de lujo.
 
-![Idiomas para negocios en S-Peak](/images/blog/mejores-idiomas-para-empresas-01.jpg)
+![Idiomas para negocios en S-Peak](/images/blog/mejores-idiomas-para-empresas-01.webp)
 
 ## Los mejores idiomas para negocios según su sector industrial
 

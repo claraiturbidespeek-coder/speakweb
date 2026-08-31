@@ -26,7 +26,7 @@ const POSTS = [
     titulo:
       "Inglés para ejecutivos: 6 situaciones clave donde urge una evaluación de inglés",
     url: "/evaluacion-de-ingles-ejecutivos/",
-    imagen: "blog-evaluacion-ingles.jpg",
+    imagen: "blog-evaluacion-ingles.webp",
     alt: "Evaluación de inglés corporativa para ejecutivos y directores en una junta de negocios.",
   },
   {
@@ -39,27 +39,27 @@ const POSTS = [
   {
     titulo: "Inglés de negocios: habilidades clave según su rol ejecutivo",
     url: "/ingles-de-negocios-ejecutivos/",
-    imagen: "blog-ingles-de-negocios.jpg",
+    imagen: "blog-ingles-de-negocios.webp",
     alt: "Ejecutiva participando en una videollamada internacional y aplicando su inglés de negocios con un equipo de trabajo.",
   },
   {
     titulo:
       "¿Alemán, francés o inglés? Cómo identificar qué idiomas para empresas necesita su equipo",
     url: "/mejores-idiomas-para-empresas/",
-    imagen: "blog-idiomas-para-empresas.jpg",
+    imagen: "blog-idiomas-para-empresas.webp",
     alt: "os ejecutivos corporativos analizando la estrategia de idiomas para empresas frente a un mapa mundial.",
   },
   {
     titulo:
       "De cero a bilingüe: Cómo estructurar una capacitación en inglés que su equipo no abandone",
     url: "/como-implementar-capacitacion-en-ingles-empresas/",
-    imagen: "blog-capacitacion-en-ingles.jpg",
+    imagen: "blog-capacitacion-en-ingles.webp",
     alt: "Capacitación en inglés empresarial para equipos de trabajo en una mesa de negociación con banderas internacionales.",
   },
   {
     titulo: "5 errores de comunicación en tu primer año de Nearshoring",
     url: "/errores-comunicacion-nearshoring-en-mexico/",
-    imagen: "blog-errores-nearshoring.jpg",
+    imagen: "blog-errores-nearshoring.webp",
     alt: "Directivo analizando mapas de comercio global y estrategias de nearshoring en mexico usando una tableta en su oficina.",
   },
 ];

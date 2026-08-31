@@ -7,7 +7,7 @@ excerpt: "Invertir en un programa de idiomas y descubrir que la tasa de abandono
 category: "Resultados y ROI"
 categorySlug: "resultados-y-roi"
 tags: []
-featuredImage: "/images/blog/blog-capacitacion-en-ingles-programa-fantasma-portada.jpg"
+featuredImage: "/images/blog/blog-capacitacion-en-ingles-programa-fantasma-portada.webp"
 featuredImageAlt: "Una profesionista en su oficina revisando el progreso de un programa de capacitación en inglés en su computadora, representando la gestión del talento corporativo."
 seoTitle: "Capacitación en inglés: Por qué fallan los cursos corporativos I %%sitename%%"
 seoDescription: "¿Nadie usa el curso de idiomas de su empresa? Conozca las causas del programa fantasma en la capacitación en inglés corporativa."
@@ -58,7 +58,7 @@ Cada área de su compañía se comunica bajo un ecosistema de inglés empresaria
 
 **Mezclar estas necesidades en un curso genérico provoca que el contenido le resulte irrelevante a la mayoría de los asistentes, acelerando el abandono de las clases.**
 
-![Cursos de idiomas para empresas con S-Peak.](/images/blog/blog-capacitacion-en-ingles-programa-fantasma-01.jpg)
+![Cursos de idiomas para empresas con S-Peak.](/images/blog/blog-capacitacion-en-ingles-programa-fantasma-01.webp)
 
 ## 4\. La rigidez de horarios frente a la operación diaria
 

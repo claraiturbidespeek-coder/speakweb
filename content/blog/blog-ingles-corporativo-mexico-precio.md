@@ -7,7 +7,7 @@ excerpt: "Evaluar el costo de la capacitación lingüística va más allá de co
 category: "Selección de proveedor"
 categorySlug: "seleccion-de-proveedor"
 tags: []
-featuredImage: "/images/blog/blog-ingles-corporativo-mexico-precio-portada.jpg"
+featuredImage: "/images/blog/blog-ingles-corporativo-mexico-precio-portada.webp"
 featuredImageAlt: "Directivos y líderes de Recursos Humanos evaluando una propuesta y un presupuesto estratégico de inglés corporativo en una oficina moderna."
 seoTitle: "¿Cuánto cuesta un curso de inglés corporativo en México? I %%sitename%%"
 seoDescription: "Descubra cuánto cuesta un curso de inglés corporativo en México, qué servicios exigir por su dinero y cómo justificar el ROI ante dirección."
@@ -64,7 +64,7 @@ Al momento de evaluar a un candidato, exija claridad en los siguientes puntos cr
 
 💡 Si desea identificar las señales de alerta de un curso deficiente, lo invitamos a revisar nuestra guía sobre [las causas reales del abandono en la capacitación de idiomas de las empresas.](https://s-peak.com/blog-capacitacion-en-ingles-programa-fantasma/)
 
-![](/images/blog/blog-ingles-corporativo-mexico-precio-01.jpg)
+![](/images/blog/blog-ingles-corporativo-mexico-precio-01.webp)
 
 ## Cómo justificar la inversión en capacitación ante su Dirección General
 

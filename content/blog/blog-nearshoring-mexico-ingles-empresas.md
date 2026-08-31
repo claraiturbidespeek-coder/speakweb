@@ -7,7 +7,7 @@ excerpt: "El auge del nearshoring en México representa una oportunidad históri
 category: "Nearshoring y expansión"
 categorySlug: "nearshoring-y-expansion"
 tags: []
-featuredImage: "/images/blog/blog-nearshoring-mexico-ingles-empresas-portada.jpg"
+featuredImage: "/images/blog/blog-nearshoring-mexico-ingles-empresas-portada.webp"
 featuredImageAlt: "Mapa conceptual o entorno industrial que ilustra de forma clara el nearshoring qué es y cómo impacta a las empresas en México."
 seoTitle: "Nearshoring: ¿Qué es y por qué exige inglés empresarial? I %%sitename%%"
 seoDescription: "¿Su empresa está lista para el nearshoring? Descubra qué es y por qué el inglés empresarial es clave para captar inversiones internacionales."
@@ -36,7 +36,7 @@ Asimismo, estudios de[l Banco Interamericano de Desarrollo (BID)](https://www.ia
 
 Esta relocalización geográfica implica una integración operativa inmediata. Su organización ya no competirá únicamente con proveedores locales; ahora estará bajo el escrutinio de auditorías internacionales, comités de calidad norteamericanos y juntas de planeación con corporaciones asiáticas y europeas que utilizan el inglés como idioma vehicular exclusivo para sus operaciones.
 
-![Una profesionista corporativa en un entorno multicultural rodeada de banderas de diferentes países, representando la comunicación global requerida por el nearshoring.](/images/blog/blog-nearshoring-mexico-ingles-empresas-01.jpg)
+![Una profesionista corporativa en un entorno multicultural rodeada de banderas de diferentes países, representando la comunicación global requerida por el nearshoring.](/images/blog/blog-nearshoring-mexico-ingles-empresas-01.webp)
 
 ## El idioma como infraestructura humana en la era del nearshoring
 

@@ -25,7 +25,7 @@ const datos: DatosEquipo = {
     ),
     imagen: {
       // Provisional: la del mosaico del home.
-      src: "/images/home/area-tecnologia-e-ingenieria.jpg",
+      src: "/images/home/area-tecnologia-e-ingenieria.webp",
       alt: "Equipo de tecnología en capacitación de idioma de negocios",
     },
   },

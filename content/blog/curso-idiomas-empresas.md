@@ -6,7 +6,7 @@ author: "ANDREA RIOS"
 category: "Selección de proveedor"
 categorySlug: "seleccion-de-proveedor"
 tags: []
-featuredImage: "/images/blog/curso-idiomas-empresas-portada.jpeg"
+featuredImage: "/images/blog/curso-idiomas-empresas-portada.webp"
 featuredImageAlt: "Sesión interactiva de capacitación de idiomas para empresas con un instructor corporativo y un pizarrón de checklist."
 seoTitle: "Curso de idiomas para empresas: Elige el ideal | Blog S-Peak"
 seoDescription: "Elige el mejor curso de idiomas para empresas. Maximiza la productividad y el ROI de tu equipo con nuestra guía estratégica."

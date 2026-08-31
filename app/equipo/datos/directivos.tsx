@@ -33,7 +33,7 @@ const datos: DatosEquipo = {
     ),
     imagen: {
       // Provisional: la del mosaico del home.
-      src: "/images/home/area-directivos.jpg",
+      src: "/images/home/area-directivos.webp",
       alt: "Directivo en capacitación de inglés ejecutivo",
     },
   },

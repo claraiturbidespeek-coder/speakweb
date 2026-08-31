@@ -6,7 +6,7 @@ author: "ANDREA RIOS"
 category: "Nearshoring y expansión"
 categorySlug: "nearshoring-y-expansion"
 tags: []
-featuredImage: "/images/blog/expansion-global-empresas-claves-portada.png"
+featuredImage: "/images/blog/expansion-global-empresas-claves-portada.webp"
 featuredImageAlt: "Colaboración departamental en capacitación en idiomas para la expansión global de empresas."
 seoTitle: "Expansión global de empresas: 4 claves para triunfar | Blog S-Peak"
 seoDescription: "Logra la expansión global de empresas con estas 4 claves. Domina idiomas y cultura para asegurar el éxito de tu negocio internacional."

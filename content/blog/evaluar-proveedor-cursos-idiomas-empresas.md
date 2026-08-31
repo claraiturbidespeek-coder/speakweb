@@ -7,7 +7,7 @@ excerpt: "Contratar capacitación no debe ser un acto de fe. Descubra los secret
 category: "Selección de proveedor"
 categorySlug: "seleccion-de-proveedor"
 tags: []
-featuredImage: "/images/blog/evaluar-proveedor-cursos-idiomas-empresas-portada.jpg"
+featuredImage: "/images/blog/evaluar-proveedor-cursos-idiomas-empresas-portada.webp"
 featuredImageAlt: "Profesora profesional impartiendo cursos de idiomas para empresas en vivo a través de una plataforma corporativa interactiva."
 seoTitle: "Cursos de idiomas para empresas: Lo qué ocultan I %%sitename%%"
 seoDescription: "Lo que las academias te ocultan al venderte cursos de idiomas para empresas. 10 preguntas clave para auditarlas."
@@ -22,7 +22,7 @@ Invertir en cursos de idiomas para empresas suele convertirse en un fracaso fina
 
 Para evitar caer en la trampa de pagar por licencias digitales genéricas que su personal terminará abandonando, evalúe sus opciones de idiomas para empresas con estas 10 preguntas de auditoría interna.
 
-![Cursos de idiomas para empresas con S-Peak](/images/blog/evaluar-proveedor-cursos-idiomas-empresas-01.jpg)
+![Cursos de idiomas para empresas con S-Peak](/images/blog/evaluar-proveedor-cursos-idiomas-empresas-01.webp)
 
 ## 10 preguntas clave para evaluar un proveedor de idiomas para empresas
 

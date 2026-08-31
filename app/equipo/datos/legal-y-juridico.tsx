@@ -33,7 +33,7 @@ const datos: DatosEquipo = {
     imagen: {
       // Provisional: la del mosaico del home. No existe una imagen de hero
       // propia para esta área.
-      src: "/images/home/area-legal-y-juridico.jpg",
+      src: "/images/home/area-legal-y-juridico.webp",
       alt: "Equipo legal en capacitación de inglés de negocios",
     },
   },

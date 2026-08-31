@@ -6,7 +6,7 @@ author: "ANDREA RIOS"
 category: "Resultados y ROI"
 categorySlug: "resultados-y-roi"
 tags: []
-featuredImage: "/images/blog/capacitacion-idiomas-retencion-desempeno-talento-portada.png"
+featuredImage: "/images/blog/capacitacion-idiomas-retencion-desempeno-talento-portada.webp"
 featuredImageAlt: "Profesionales en una empresa donde la capacitación en idiomas potencia la retención y el desempeño del talento."
 seoTitle: "Capacitación en idiomas y retención de talento | Blog S-Peak"
 seoDescription: "La capacitación en idiomas y retención de talento potencia el desempeño de tu equipo. Reduce la rotación y mejora resultados ahora."

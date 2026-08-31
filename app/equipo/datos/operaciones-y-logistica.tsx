@@ -28,7 +28,7 @@ const datos: DatosEquipo = {
     ),
     imagen: {
       // Provisional: la del mosaico del home.
-      src: "/images/home/area-operaciones-y-logistica.jpg",
+      src: "/images/home/area-operaciones-y-logistica.webp",
       alt: "Equipo de planta en capacitación de inglés técnico",
     },
   },

@@ -6,7 +6,7 @@ author: "ANDREA RIOS"
 category: "Resultados y ROI"
 categorySlug: "resultados-y-roi"
 tags: []
-featuredImage: "/images/blog/roi-capacitacion-idiomas-portada.jpeg"
+featuredImage: "/images/blog/roi-capacitacion-idiomas-portada.webp"
 featuredImageAlt: "ROI de capacitación de idiomas en una reunión de ejecutivos analizando documentos estratégicos."
 seoTitle: "ROI de capacitación de idiomas: Beneficios | Blog S-Peak"
 seoDescription: "Mejora el ROI de capacitación de idiomas: reduce un 20% los errores y potencia tu equipo con S-Peak. ¡Maximiza tu inversión hoy!"

@@ -7,7 +7,7 @@ excerpt: "El liderazgo global exige comunicación impecable. Conozca las situaci
 category: "Diagnóstico de necesidades"
 categorySlug: "diagnostico-de-necesidades"
 tags: []
-featuredImage: "/images/blog/evaluacion-de-ingles-ejecutivos-portada.jpg"
+featuredImage: "/images/blog/evaluacion-de-ingles-ejecutivos-portada.webp"
 featuredImageAlt: "Evaluación de inglés corporativa para ejecutivos y directores en una junta de negocios."
 seoTitle: "Evaluación de inglés para ejecutivos: 6 situaciones | %%sitename%%"
 seoDescription: "¿Su equipo directivo realmente domina el idioma? Conozca las 6 situaciones críticas y por qué una evaluación de inglés protege su negocio."
@@ -48,7 +48,7 @@ Las mejores alianzas ocurren fuera de la oficina. Un directivo con un inglés pl
 
 Coordinar células de trabajo en diferentes países requiere empatía y claridad absoluta. El inglés para ejecutivos ayuda a inspirar confianza y a delegar de forma exacta. Si el mensaje es confuso, el equipo perderá el rumbo rápidamente.
 
-![](/images/blog/evaluacion-de-ingles-ejecutivos-01.jpg)
+![](/images/blog/evaluacion-de-ingles-ejecutivos-01.webp)
 
 ## Resultados del negocio: Con vs. Sin evaluación de inglés
 

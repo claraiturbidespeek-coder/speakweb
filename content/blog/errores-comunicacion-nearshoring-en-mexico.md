@@ -7,7 +7,7 @@ excerpt: "El auge comercial exige más que proximidad geográfica. Conozca los 5
 category: "Nearshoring y expansión"
 categorySlug: "nearshoring-y-expansion"
 tags: []
-featuredImage: "/images/blog/errores-comunicacion-nearshoring-en-mexico-portada.jpg"
+featuredImage: "/images/blog/errores-comunicacion-nearshoring-en-mexico-portada.webp"
 featuredImageAlt: "Directivo analizando mapas de comercio global y estrategias de nearshoring en mexico usando una tableta en su oficina."
 seoTitle: "Nearshoring en México: 5 errores de comunicación I %%sitename%%"
 seoDescription: "Nearshoring en mexico: descubra los 5 errores críticos de comunicación que amenazan sus contratos en el primer año."
@@ -34,7 +34,7 @@ Si analizamos nearshoring ejemplos de éxito en industrias como la automotriz, a
 
 *Si quiere saber más sobre nearshoring, puede visitar nuestro blog "[Nearshoring: ¿Qué es y por qué exige inglés empresarial?](https://s-peak.com/blog-nearshoring-mexico-ingles-empresas/)"*
 
-![Planeación estratégica de nearshoring en México](/images/blog/errores-comunicacion-nearshoring-en-mexico-01.jpg)
+![Planeación estratégica de nearshoring en México](/images/blog/errores-comunicacion-nearshoring-en-mexico-01.webp)
 
 ## ¿Cómo beneficia el Nearshoring en México y cuál es su cuello de botella?
 

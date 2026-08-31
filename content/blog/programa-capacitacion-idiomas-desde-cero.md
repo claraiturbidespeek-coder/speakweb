@@ -6,7 +6,7 @@ author: "ANDREA RIOS"
 category: "Implementación del programa"
 categorySlug: "implementacion-del-programa"
 tags: []
-featuredImage: "/images/blog/programa-capacitacion-idiomas-desde-cero-portada.jpeg"
+featuredImage: "/images/blog/programa-capacitacion-idiomas-desde-cero-portada.webp"
 seoTitle: "Programa de capacitación en idiomas para empresas | S-Peak"
 seoDescription: "Crea un programa de capacitación en idiomas para empresas desde cero. Sigue la guía de 7 pasos de S-Peak para mejorar la comunicación global."
 focusKeyword: "Programa de capacitación en idiomas para empresas"

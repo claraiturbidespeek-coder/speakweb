@@ -6,7 +6,7 @@ author: "ANDREA RIOS"
 category: "Resultados y ROI"
 categorySlug: "resultados-y-roi"
 tags: []
-featuredImage: "/images/blog/capacitacion-idiomas-cultura-corporativa-portada.png"
+featuredImage: "/images/blog/capacitacion-idiomas-cultura-corporativa-portada.webp"
 featuredImageAlt: "Sesión de trabajo sobre las mejores prácticas para integrar la capacitación en idiomas en la cultura corporativa con instructora de S-Peak."
 seoTitle: "Capacitación en idiomas en la cultura corporativa | Blog S-Peak"
 seoDescription: "Aprende a integrar la capacitación en idiomas en la cultura corporativa. Mejora la comunicación y el compromiso con estas mejores prácticas."

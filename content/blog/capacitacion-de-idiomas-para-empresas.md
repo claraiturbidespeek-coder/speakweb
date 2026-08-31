@@ -6,7 +6,7 @@ author: "ANDREA RIOS"
 category: "Implementación del programa"
 categorySlug: "implementacion-del-programa"
 tags: []
-featuredImage: "/images/blog/capacitacion-de-idiomas-para-empresas-portada.jpg"
+featuredImage: "/images/blog/capacitacion-de-idiomas-para-empresas-portada.webp"
 featuredImageAlt: "Silueta de un equipo corporativo en una mesa redonda, representando la formación lingüística corporativa y la inteligencia cultural para negociaciones internacionales exitosas, con burbujas de diálogo que muestran banderas internacionales de Francia, India, Japón, Brasil, EE. UU., Alemania, Reino Unido y China."
 seoTitle: "Capacitación de idiomas para empresas: 8 claves | S-Peak"
 seoDescription: "8 claves para la capacitación de idiomas para empresas. Mejora el ROI y la retención de talento. Potencia el crecimiento global con S-Peak."

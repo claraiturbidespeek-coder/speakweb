@@ -67,7 +67,7 @@ Esto, transforma el aprendizaje en una experiencia dinámica. En consecuencia, l
 
 **Esquema S-Peak:** Auditorías de comunicación y retorno de inversión claro.
 
-![Capacitación de personal en idiomas con S-Peak.](/images/blog/capacitacion-personal-programa-idiomas-01.jpg)
+![Capacitación de personal en idiomas con S-Peak.](/images/blog/capacitacion-personal-programa-idiomas-01.webp)
 
 ## ¿Por qué fracasan la mayoría de los esfuerzos de desarrollo técnico?
 

@@ -32,21 +32,21 @@ const DIFERENCIADORES = [
     titulo: "Expansión Global y comunicación estratégica",
     texto:
       "Prepara a tus líderes para negociar, vender y operar en cualquier parte del mundo. Eliminamos las barreras de comunicación para que tu empresa pueda cerrar tratos con clientes y socios globales sin fricciones.",
-    imagen: "diferenciador-expansion-global.jpg",
+    imagen: "diferenciador-expansion-global.webp",
     alt: "Equipo directivo revisando una estrategia comercial en una oficina",
   },
   {
     titulo: "Retención de Talento mediante planes de carrera",
     texto:
       "El desarrollo profesional es el beneficio más valorado hoy en día. Ofrece un programa de idiomas de alto nivel que aumente el sentido de pertenencia, fortalezca el liderazgo de tu equipo y reduzca la rotación de personal.",
-    imagen: "diferenciador-retencion-talento.jpg",
+    imagen: "diferenciador-retencion-talento.webp",
     alt: "Colaboradores aprendiendo un nuevo idioma en su lugar de trabajo",
   },
   {
     titulo: "Agilidad Operativa y fluidez empresarial",
     texto:
       "Evita retrasos causados por malentendidos al dotar a tu equipo de la fluidez que tu industria exige, optimizas tiempos de respuesta, agilizas procesos internos y elimina los cuellos de botella en la comunicación diaria.",
-    imagen: "diferenciador-agilidad-operativa.jpg",
+    imagen: "diferenciador-agilidad-operativa.webp",
     alt: "Sesión de formación intercultural con empleados de mercados internacionales",
   },
 ];
@@ -60,41 +60,41 @@ const MOSAICO = [
     {
       nombre: "Ventas y Marketing",
       ruta: "/equipo/ventas-y-marketing/",
-      imagen: "area-ventas-y-marketing.jpg",
+      imagen: "area-ventas-y-marketing.webp",
     },
     {
       nombre: "Atención a Clientes",
       ruta: "/equipo/atencion-a-clientes/",
-      imagen: "area-atencion-a-clientes.jpg",
+      imagen: "area-atencion-a-clientes.webp",
     },
     {
       nombre: "Directivos",
       ruta: "/equipo/directivos/",
-      imagen: "area-directivos.jpg",
+      imagen: "area-directivos.webp",
     },
   ],
   [
     {
       nombre: "Finanzas y Contabilidad",
       ruta: "/equipo/finanzas-y-contabilidad/",
-      imagen: "area-finanzas-y-contabilidad.jpg",
+      imagen: "area-finanzas-y-contabilidad.webp",
     },
     {
       nombre: "Legal y Jurídico",
       ruta: "/equipo/legal-y-juridico/",
-      imagen: "area-legal-y-juridico.jpg",
+      imagen: "area-legal-y-juridico.webp",
     },
   ],
   [
     {
       nombre: "Operaciones y Logística",
       ruta: "/equipo/operaciones-y-logistica/",
-      imagen: "area-operaciones-y-logistica.jpg",
+      imagen: "area-operaciones-y-logistica.webp",
     },
     {
       nombre: "Tecnología e Ingeniería",
       ruta: "/equipo/tecnologia-e-ingenieria/",
-      imagen: "area-tecnologia-e-ingenieria.jpg",
+      imagen: "area-tecnologia-e-ingenieria.webp",
     },
   ],
 ];
@@ -219,7 +219,7 @@ export default function Home() {
         <div className={`sp-inner ${styles.programGrid}`}>
           <img
             className={styles.programImage}
-            src="/images/home/programa-metricas.jpg"
+            src="/images/home/programa-metricas.webp"
             alt="Colaboradora en una sesión de idiomas con burbujas de conversación"
             loading="lazy"
           />
@@ -380,7 +380,7 @@ export default function Home() {
           <article
             className={styles.case}
             style={{
-              backgroundImage: `url("/images/home/caso-brechas-linguisticas.jpg")`,
+              backgroundImage: `url("/images/home/caso-brechas-linguisticas.webp")`,
             }}
           >
             <div className={`${styles.caseCard} ${styles.caseCardNarrow}`}>
@@ -395,7 +395,7 @@ export default function Home() {
               </p>
               <div className={styles.person}>
                 <img
-                  src="/images/home/testimonio-braskem.jpg"
+                  src="/images/home/testimonio-braskem.webp"
                   alt=""
                   loading="lazy"
                 />
@@ -419,7 +419,7 @@ export default function Home() {
               </p>
               <div className={styles.person}>
                 <img
-                  src="/images/home/testimonio-fernanda.jpg"
+                  src="/images/home/testimonio-fernanda.webp"
                   alt=""
                   loading="lazy"
                 />
@@ -449,7 +449,7 @@ export default function Home() {
               </p>
               <div className={`${styles.person} ${styles.personNarrow}`}>
                 <img
-                  src="/images/home/testimonio-anabel.jpg"
+                  src="/images/home/testimonio-anabel.webp"
                   alt=""
                   loading="lazy"
                 />
@@ -466,7 +466,7 @@ export default function Home() {
           <article
             className={styles.case}
             style={{
-              backgroundImage: `url("/images/home/caso-seguimiento-calidad.jpg")`,
+              backgroundImage: `url("/images/home/caso-seguimiento-calidad.webp")`,
             }}
           >
             <div className={`${styles.caseCard} ${styles.caseCardWide}`}>
@@ -480,7 +480,7 @@ export default function Home() {
               </p>
               <div className={`${styles.person} ${styles.personNarrow}`}>
                 <img
-                  src="/images/home/testimonio-erika.jpg"
+                  src="/images/home/testimonio-erika.webp"
                   alt=""
                   loading="lazy"
                 />

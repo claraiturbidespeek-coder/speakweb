@@ -29,7 +29,7 @@ const datos: DatosEquipo = {
     ),
     imagen: {
       // Provisional: la del mosaico del home.
-      src: "/images/home/area-atencion-a-clientes.jpg",
+      src: "/images/home/area-atencion-a-clientes.webp",
       alt: "Agente de soporte resolviendo en otro idioma con cliente internacional",
     },
   },

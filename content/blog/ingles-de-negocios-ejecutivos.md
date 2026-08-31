@@ -7,7 +7,7 @@ excerpt: "Optimice el desarrollo de su equipo global. Descubra qué habilidades 
 category: "Diagnóstico de necesidades"
 categorySlug: "diagnostico-de-necesidades"
 tags: []
-featuredImage: "/images/blog/ingles-de-negocios-ejecutivos-portada.jpg"
+featuredImage: "/images/blog/ingles-de-negocios-ejecutivos-portada.webp"
 featuredImageAlt: "Ejecutiva participando en una videollamada internacional y aplicando su inglés de negocios con un equipo de trabajo."
 seoTitle: "Inglés de negocios para ejecutivos: Habilidades clave | %%sitename%%"
 seoDescription: "¿Qué se incluye en el inglés para negocios y cómo priorizarlo? Conozca las habilidades clave para ventas, operaciones y dirección general."
@@ -54,7 +54,7 @@ Recuerde un factor clave. Asimismo, [la capacitación en idiomas potencia la ret
 -   **Comunicación interna:** Inspirar a equipos distribuidos en diferentes países.
 -   **Negociaciones complejas:** Liderar fusiones corporativas con total seguridad jurídica.
 
-![Clases de ingles para empresas s-peak](/images/blog/ingles-de-negocios-ejecutivos-01.jpg)
+![Clases de ingles para empresas s-peak](/images/blog/ingles-de-negocios-ejecutivos-01.webp)
 
 ## Ejemplos prácticos
 

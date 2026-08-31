@@ -7,7 +7,7 @@ excerpt: "¿Está invirtiendo en capacitación de idiomas sin ver resultados cla
 category: "Selección de proveedor"
 categorySlug: "seleccion-de-proveedor"
 tags: []
-featuredImage: "/images/blog/blog-errores-cursos-idiomas-empresas-portada.jpg"
+featuredImage: "/images/blog/blog-errores-cursos-idiomas-empresas-portada.webp"
 featuredImageAlt: "Colaboradores de una oficina en México en una sesión de capacitación en idiomas para empresas organizada por S-Peak."
 seoTitle: "Cursos de idiomas para empresas: ¡Evite estos 5 errores! I %%sitename%%"
 seoDescription: "¿Buscas cursos de idiomas para empresas? Evite perder presupuesto. Descubra los 5 errores más comunes en México y su solución."
@@ -58,7 +58,7 @@ Si obliga a sus colaboradores a asistir a una hora fija en un aula física, o po
 
 ### El secreto de la capacitación corporativa en idiomas que los directores sí aprueban
 
-![Una profesional ejecutiva en su oficina analizando su progreso en una plataforma de capacitación en idiomas con enfoque en inglés de negocios.](/images/blog/blog-errores-cursos-idiomas-empresas-01.jpg)
+![Una profesional ejecutiva en su oficina analizando su progreso en una plataforma de capacitación en idiomas con enfoque en inglés de negocios.](/images/blog/blog-errores-cursos-idiomas-empresas-01.webp)
 
 Cuando presenta un proyecto de capacitación ante la Dirección general o finanzas, la pregunta del millón siempre será: *¿Cuál es el retorno de inversión (ROI)?* Para justificar cada peso, **la estrategia debe transformarse de un simple beneficio laboral a un pilar de crecimiento del negocio.**
 

@@ -7,7 +7,7 @@ excerpt: "Diseñar un plan de idiomas institucional requiere más que contratar 
 category: "Implementación del programa"
 categorySlug: "implementacion-del-programa"
 tags: []
-featuredImage: "/images/blog/como-implementar-capacitacion-en-ingles-empresas-portada.jpg"
+featuredImage: "/images/blog/como-implementar-capacitacion-en-ingles-empresas-portada.webp"
 featuredImageAlt: "Capacitación en inglés empresarial para equipos de trabajo en una mesa de negociación con banderas internacionales."
 seoTitle: "Capacitación en inglés: Guía de implementación | %%sitename%%"
 seoDescription: "Capacitación en inglés corporativa: la guía paso a paso para directores de RRHH que necesitan estructurar un programa desde cero."
@@ -58,7 +58,7 @@ No mida el éxito de su programa basándose únicamente en la asistencia a una p
 
 Finalmente, recuerde que la capacitación es un esfuerzo compartido. Vincule el aprovechamiento del programa con los planes de carrera internos o las evaluaciones de desempeño anuales. **Cuando el colaborador comprende que dominar el idioma es el requisito clave para acceder a una promoción económica, las tasas de retención escolar se disparan por encima del 90%.**
 
-![inglés empresarial con S-Peak](/images/blog/como-implementar-capacitacion-en-ingles-empresas-01.jpg)
+![inglés empresarial con S-Peak](/images/blog/como-implementar-capacitacion-en-ingles-empresas-01.webp)
 
 ## Lanza tu estrategia de idiomas corporativa con S-Peak
 

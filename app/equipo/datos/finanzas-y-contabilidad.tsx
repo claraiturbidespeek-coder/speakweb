@@ -30,7 +30,7 @@ const datos: DatosEquipo = {
     ),
     imagen: {
       // Provisional: la del mosaico del home.
-      src: "/images/home/area-finanzas-y-contabilidad.jpg",
+      src: "/images/home/area-finanzas-y-contabilidad.webp",
       alt: "Equipo de finanzas en capacitación de inglés de negocios",
     },
   },

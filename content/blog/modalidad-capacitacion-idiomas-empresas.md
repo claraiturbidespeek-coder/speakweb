@@ -6,7 +6,7 @@ author: "ANDREA RIOS"
 category: "Implementación del programa"
 categorySlug: "implementacion-del-programa"
 tags: []
-featuredImage: "/images/blog/modalidad-capacitacion-idiomas-empresas-portada.jpg"
+featuredImage: "/images/blog/modalidad-capacitacion-idiomas-empresas-portada.webp"
 featuredImageAlt: "Mujer colaboradora en una sesión de capacitación de idiomas en línea para empresas usando auriculares y laptop."
 seoTitle: "Modalidad de capacitación en idiomas para empresas | %%sitename%%"
 seoDescription: "¿Qué modalidad de capacitación en idiomas para empresas elegir? Comparamos clases online y presenciales para potenciar a tu equipo."

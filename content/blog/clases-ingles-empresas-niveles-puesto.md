@@ -7,7 +7,7 @@ excerpt: "Clasificar las necesidades de su plantilla bajo etiquetas genéricas c
 category: "Diagnóstico de necesidades"
 categorySlug: "diagnostico-de-necesidades"
 tags: []
-featuredImage: "/images/blog/clases-ingles-empresas-niveles-puesto-portada.jpg"
+featuredImage: "/images/blog/clases-ingles-empresas-niveles-puesto-portada.webp"
 featuredImageAlt: "Instructor nativo de S-Peak mostrando aprobación durante clases de ingles para empresas online avanzadas."
 seoTitle: "Clases de ingles para empresas: Niveles por puesto | %%sitename%%"
 seoDescription: "Clases de ingles para empresas: descubra qué nivel real exige cada puesto y por qué el MCER ya no es suficiente."
@@ -24,7 +24,7 @@ De acuerdo con análisis de desarrollo organizacional publicados por [Harvard Bu
 
 Para que sus clases de inglés para empresas dejen de ser una fuga de presupuesto, es momento de traducir la teoría académica en habilidades operativas reales.
 
-![Clases de inglés para empresas con S-Peak](/images/blog/clases-ingles-empresas-niveles-puesto-01.jpg)
+![Clases de inglés para empresas con S-Peak](/images/blog/clases-ingles-empresas-niveles-puesto-01.webp)
 
 ## ¿Qué significa nivel A1, A2, B1, B2, C1, C2 en las clases de ingles para empresas?
 

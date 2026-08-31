@@ -7,7 +7,7 @@ excerpt: "¿Qué nivel necesita cada área de su organización? Extracto: Exigir
 category: "Diagnóstico de necesidades"
 categorySlug: "diagnostico-de-necesidades"
 tags: []
-featuredImage: "/images/blog/blog-nivel-ingles-empresas-areas-portada.jpg"
+featuredImage: "/images/blog/blog-nivel-ingles-empresas-areas-portada.webp"
 featuredImageAlt: "Dos profesionales ejecutivos en una oficina moderna revisando un diagnóstico de nivelación de inglés para empresas organizado por S-Peak."
 seoTitle: "Inglés para empresas: ¡Defina el nivel de cada área! I %%sitename%%"
 seoDescription: "¿Qué nivel de inglés para empresas requiere su equipo? Evite pérdidas. Aprenda a evaluar cada área y optimice su presupuesto."
@@ -70,7 +70,7 @@ La capacitación aquí no se enfoca en gramática, sino en habilidades directiva
 -   Gestión de crisis y debates en comités internacionales.
 -   Redacción de contratos y minutas legales de alta fidelidad.
 
-![Una profesionista ejecutiva sonriendo mientras habla con fluidez gracias a los cursos de inglés para empresas de S-Peak.](/images/blog/blog-nivel-ingles-empresas-areas-01.jpg)
+![Una profesionista ejecutiva sonriendo mientras habla con fluidez gracias a los cursos de inglés para empresas de S-Peak.](/images/blog/blog-nivel-ingles-empresas-areas-01.webp)
 
 ## Cómo realizar un diagnóstico de necesidades sin afectar su presupuesto
 

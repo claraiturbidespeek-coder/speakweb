@@ -7,7 +7,7 @@ excerpt: "La falta de tiempo es la barrera número uno en la capacitación direc
 category: "Implementación del programa"
 categorySlug: "implementacion-del-programa"
 tags: []
-featuredImage: "/images/blog/como-aprende-ingles-un-ejecutivo-ocupado-metodologia-tiempos-y-expectativas-reales-portada.jpg"
+featuredImage: "/images/blog/como-aprende-ingles-un-ejecutivo-ocupado-metodologia-tiempos-y-expectativas-reales-portada.webp"
 featuredImageAlt: "Una profesionista ejecutiva en su oficina expresando seguridad y fluidez gracias al programa de inglés para ejecutivos de S-Peak."
 seoTitle: "Inglés para ejecutivos: ¡Aprenda sin perder tiempo! I %%sitename%%"
 seoDescription: "¿Busca inglés para ejecutivos? Conozca la metodología ideal para agendas saturadas y optimice el tiempo de sus líderes."
@@ -38,7 +38,7 @@ Los métodos tradicionales B2C asumen que el alumno tiene bloques de tiempo libr
 
 Intentar forzar un esquema rígido solo provoca fatiga cognitiva y ausentismo. La formación a este nivel debe ser ágil, quirúrgica y directamente aplicable a los retos que el líder enfrentará al día siguiente de su sesión.
 
-![Un profesionista enfocado revisando material interactivo de un curso de inglés para ejecutivos en su dispositivo móvil.](/images/blog/como-aprende-ingles-un-ejecutivo-ocupado-metodologia-tiempos-y-expectativas-reales-01.jpg)
+![Un profesionista enfocado revisando material interactivo de un curso de inglés para ejecutivos en su dispositivo móvil.](/images/blog/como-aprende-ingles-un-ejecutivo-ocupado-metodologia-tiempos-y-expectativas-reales-01.webp)
 
 ## Pilares de un curso de inglés para ejecutivos altamente eficiente
 

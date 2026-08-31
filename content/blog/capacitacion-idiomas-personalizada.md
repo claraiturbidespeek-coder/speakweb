@@ -6,7 +6,7 @@ author: "ANDREA RIOS"
 category: "Implementación del programa"
 categorySlug: "implementacion-del-programa"
 tags: []
-featuredImage: "/images/blog/capacitacion-idiomas-personalizada-portada.jpeg"
+featuredImage: "/images/blog/capacitacion-idiomas-personalizada-portada.webp"
 seoTitle: "Capacitación de Idiomas Personalizada l Blog S-Peak"
 seoDescription: "Capacitación de idiomas personalizada para empresas. Ahorra tiempo en RH y mejora el ROI de tu equipo con el método S-Peak. ¡Descúbrelo!"
 focusKeyword: "Capacitación de idiomas personalizada"
