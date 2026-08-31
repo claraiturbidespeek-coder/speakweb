@@ -980,48 +980,9 @@
   background: #1ebe5a;
 }
 
-/* ---------- Volver arriba ----------
-   Discreto, a la izquierda, aparece al hacer scroll. */
-
-.backToTop {
-  position: fixed;
-  left: 20px;
-  bottom: 24px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--color-border);
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  color: var(--color-navy);
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(8px);
-  transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease,
-    background var(--transition-fast);
-  z-index: 900;
-}
-
-.backToTop:global(.is-visible) {
-  opacity: 0.55;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.backToTop:hover {
-  opacity: 1;
-  background: var(--color-white);
-}
-
-.backToTop svg {
-  width: 18px;
-  height: 18px;
-}
+/* El botón de volver arriba salió de aquí: ahora es global
+   (VolverArriba.tsx, montado en el layout raíz), con su estilo en
+   patrones.css (.sp-volver-arriba). */
 
 /* ---------- Responsive ---------- */
 
@@ -1143,13 +1104,6 @@
   .testiCard {
     flex-basis: 100%;
     margin-right: 0;
-  }
-
-  .backToTop {
-    left: 14px;
-    bottom: 18px;
-    width: 36px;
-    height: 36px;
   }
 }
 

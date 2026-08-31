@@ -15,7 +15,6 @@
      .dragging               arrastre del carrusel, Carrusel.tsx (componente
                              React; regla en patrones.css, no aquí)
      .cycle-node / .active  ciclo radial, en la landing
-     .back-to-top / .is-visible      botón de volver arriba, en la landing
 
    El acordeón salió de esta lista: ya no lo mueve ningún guion. Las tres
    páginas con FAQ usan <details> y el agrupamiento nativo por `name`.

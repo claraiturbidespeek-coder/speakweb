@@ -310,6 +310,13 @@
   align-items: center;
 }
 
+/* `.lead` no trae margen inferior (lo necesita para otros usos, como cuando
+   sigue una lista). Aquí el botón va justo después del párrafo, así que
+   necesita su propio espacio. */
+.areasCta {
+  margin-top: 30px;
+}
+
 /* Tres columnas reales, repeat(3, 1fr) con gap 30 */
 .mosaic {
   display: grid;
@@ -592,7 +599,20 @@
 
 /* Centro de Recursos salió de aquí: con ocho páginas usándolo pasó a
    componente compartido (CentroDeRecursos.tsx) con su estilo en
-   patrones.css (sp-recursos-*), igual que BandaLogos. */
+   patrones.css (sp-recursos-*), igual que BandaLogos.
+
+   El padding de `sp-seccion` (88px arriba y abajo) es el mismo en las 7
+   páginas de equipo que también usan este componente: no se toca ahí. Este
+   override es solo para la home.
+
+   `margin-bottom: 2%` es el hueco real entre la tarjeta y el footer (hoy en
+   0, porque `.resources` solo trae margen lateral). Con el mismo 2% que ya
+   usa ese margen lateral, ambos resuelven contra el ancho del contenedor y
+   miden lo mismo a cualquier ancho de viewport. */
+.recursosCompacto {
+  padding-top: var(--space-section-mobile);
+  margin-bottom: 2%;
+}
 
 /* ---------- Responsive ---------- */
 

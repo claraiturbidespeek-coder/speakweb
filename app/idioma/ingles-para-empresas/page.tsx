@@ -207,23 +207,6 @@ const SCRIPT_WHATSAPP = `
   })();
 `;
 
-const SCRIPT_VOLVER_ARRIBA = `
-  (function () {
-    var btn = document.getElementById('backToTop');
-    if (!btn) return;
-    function onScroll() {
-      if (window.pageYOffset > 400) btn.classList.add('is-visible');
-      else btn.classList.remove('is-visible');
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    btn.addEventListener('click', function () {
-      if (window.__lenis) window.__lenis.scrollTo(0);
-      else window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  })();
-`;
-
 export default function Page() {
   const { abrir } = useContacto();
 
@@ -643,7 +626,7 @@ export default function Page() {
    className={styles.whatsappFloat}
    target="_blank"
    rel="noopener noreferrer"
-   aria-label="Escríbenos por WhatsApp"
+   aria-label="Escríbanos por WhatsApp"
    aria-haspopup="dialog"
    onClick={(e) => window.openWaModal(e)}>
   <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
@@ -678,13 +661,6 @@ export default function Page() {
     </div>
   </div>
 </div>
-{/* Botón volver al inicio */}
-<button type="button" className={`${styles.backToTop} back-to-top`} id="backToTop" aria-label="Volver al inicio">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <path d="M12 19V5"></path>
-    <path d="M5 12l7-7 7 7"></path>
-  </svg>
-</button>
 
       <Script
         id="lp-ingles-principal"
@@ -695,11 +671,6 @@ export default function Page() {
         id="lp-ingles-whatsapp"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: SCRIPT_WHATSAPP }}
-      />
-      <Script
-        id="lp-ingles-volver-arriba"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: SCRIPT_VOLVER_ARRIBA }}
       />
     </>
   );

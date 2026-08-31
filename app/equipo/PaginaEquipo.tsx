@@ -4,7 +4,7 @@ import BandaLogos from "@/app/components/BandaLogos";
 import Carrusel from "@/app/components/Carrusel";
 import CentroDeRecursos from "@/app/components/CentroDeRecursos";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
-import Icono from "./Icono";
+import Icono from "@/app/components/Icono";
 import type { DatosEquipo } from "./tipos";
 import styles from "./equipo.module.css";
 

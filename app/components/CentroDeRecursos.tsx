@@ -64,9 +64,11 @@ const POSTS = [
   },
 ];
 
-export default function CentroDeRecursos() {
+export default function CentroDeRecursos({ className }: { className?: string }) {
   return (
-    <section className="sp-seccion sp-seccion--ancha sp-recursos">
+    <section
+      className={`sp-seccion sp-seccion--ancha sp-recursos${className ? ` ${className}` : ""}`}
+    >
       <div className="sp-inner sp-inner--ancho">
         <CarruselProvider>
           <div className="sp-recursos-head">

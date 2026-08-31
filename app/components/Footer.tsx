@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ENLACES_EQUIPOS, ENLACES_IDIOMAS } from "@/app/components/nav/secciones";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
-import Icono from "@/app/equipo/Icono";
+import Icono from "@/app/components/Icono";
 import styles from "./Footer.module.css";
 
 export default function Footer() {

@@ -98,7 +98,7 @@ export default function Icono({ nombre }: { nombre: string }) {
   if (!trazo) {
     // Ruidoso a propósito: un icono que no existe se vería como un hueco.
     throw new Error(
-      `Icono desconocido: "${nombre}". Añádelo a TRAZOS o SOLIDOS en app/equipo/Icono.tsx.`
+      `Icono desconocido: "${nombre}". Añádelo a TRAZOS o SOLIDOS en app/components/Icono.tsx.`
     );
   }
   return (

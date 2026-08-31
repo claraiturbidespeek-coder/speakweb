@@ -152,7 +152,7 @@ export default function NoEncontrado() {
 
   <div className={styles.copy}>
     <h1>Se perdió en la traducción.</h1>
-    <p><span className={styles.entradilla}>Buscabas una página y no la encontramos.</span> Pasa igual que en una conversación: cuando los idiomas no conectan, el mensaje se pierde. <strong>Eso es justo lo que resolvemos</strong> en S-Peak.</p>
+    <p><span className={styles.entradilla}>Buscaba una página y no la encontramos.</span> Pasa igual que en una conversación: cuando los idiomas no conectan, el mensaje se pierde. <strong>Eso es justo lo que resolvemos</strong> en S-Peak.</p>
     <a className={styles.cta} href="/">Volver a donde sí nos entendemos</a>
   </div>
 </main>

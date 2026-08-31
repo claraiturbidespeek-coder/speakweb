@@ -3,7 +3,7 @@ import Link from "next/link";
 import BandaLogos from "@/app/components/BandaLogos";
 import CentroDeRecursos from "@/app/components/CentroDeRecursos";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
-import Icono from "@/app/equipo/Icono";
+import Icono from "@/app/components/Icono";
 import styles from "./home.module.css";
 
 export const metadata: Metadata = {
@@ -31,21 +31,21 @@ const DIFERENCIADORES = [
   {
     titulo: "Expansión Global y comunicación estratégica",
     texto:
-      "Prepara a tus líderes para negociar, vender y operar en cualquier parte del mundo. Eliminamos las barreras de comunicación para que tu empresa pueda cerrar tratos con clientes y socios globales sin fricciones.",
+      "Prepare a sus líderes para negociar, vender y operar en cualquier parte del mundo. Eliminamos las barreras de comunicación para que su empresa pueda cerrar tratos con clientes y socios globales sin fricciones.",
     imagen: "diferenciador-expansion-global.webp",
     alt: "Equipo directivo revisando una estrategia comercial en una oficina",
   },
   {
     titulo: "Retención de Talento mediante planes de carrera",
     texto:
-      "El desarrollo profesional es el beneficio más valorado hoy en día. Ofrece un programa de idiomas de alto nivel que aumente el sentido de pertenencia, fortalezca el liderazgo de tu equipo y reduzca la rotación de personal.",
+      "El desarrollo profesional es el beneficio más valorado hoy en día. Ofrezca un programa de idiomas de alto nivel que aumente el sentido de pertenencia, fortalezca el liderazgo de su equipo y reduzca la rotación de personal.",
     imagen: "diferenciador-retencion-talento.webp",
     alt: "Colaboradores aprendiendo un nuevo idioma en su lugar de trabajo",
   },
   {
     titulo: "Agilidad Operativa y fluidez empresarial",
     texto:
-      "Evita retrasos causados por malentendidos al dotar a tu equipo de la fluidez que tu industria exige, optimizas tiempos de respuesta, agilizas procesos internos y elimina los cuellos de botella en la comunicación diaria.",
+      "Evite retrasos causados por malentendidos al dotar a su equipo de la fluidez que su industria exige, optimiza tiempos de respuesta, agiliza procesos internos y elimina los cuellos de botella en la comunicación diaria.",
     imagen: "diferenciador-agilidad-operativa.webp",
     alt: "Sesión de formación intercultural con empleados de mercados internacionales",
   },
@@ -109,42 +109,42 @@ const FAQ = [
   {
     pregunta: "¿Qué pasa si mis colaboradores tienen agendas muy ocupadas?",
     respuesta: [
-      "Tenemos una política clara de seguimiento proactivo. Si un colaborador falta, nuestro equipo de coordinación lo detecta de inmediato y lo reportamos a RH en tiempo real. No dejamos que el programa se pierda por falta de uso; buscamos recuperar al colaborador o ajustar el grupo para que tu inversión no se desperdicie.",
+      "Tenemos una política clara de seguimiento proactivo. Si un colaborador falta, nuestro equipo de coordinación lo detecta de inmediato y lo reportamos a RH en tiempo real. No dejamos que el programa se pierda por falta de uso; buscamos recuperar al colaborador o ajustar el grupo para que su inversión no se desperdicie.",
     ],
   },
   {
     pregunta: "¿Qué idiomas tienen disponibles?",
     respuesta: [
-      "Contamos con programas de Inglés, Francés, Alemán, Italiano, Portugués y Español para extranjeros. Nos enfocamos en los idiomas que tu empresa necesita para conectar con el mundo.",
+      "Contamos con programas de Inglés, Francés, Alemán, Italiano, Portugués y Español para extranjeros. Nos enfocamos en los idiomas que su empresa necesita para conectar con el mundo.",
     ],
   },
   {
     pregunta:
-      "¿S-Peak esta registrado y tiene constancia ante la Secretaría del Trabajo y Previsión Social (STPS)?",
+      "¿S-Peak está registrado y tiene constancia ante la Secretaría del Trabajo y Previsión Social (STPS)?",
     respuesta: [
-      "Sí, el programa S-Peak cuenta con registro oficial ante la Secretaría del Trabajo y Previsión Social (STPS). Actualmente, S-Peak puede emitir una constancia de que te capacitamos para el aprendizaje de un idioma.",
+      "Sí, el programa S-Peak cuenta con registro oficial ante la Secretaría del Trabajo y Previsión Social (STPS). Actualmente, S-Peak puede emitir una constancia de que lo capacitamos para el aprendizaje de un idioma.",
     ],
   },
   {
     pregunta: "¿Pueden manejar proyectos masivos en varios países?",
     respuesta: [
       "Sí. Estamos especializados en gestionar proyectos complejos y de gran escala para multinacionales.",
-      "Alcance: Gracias a nuestra operación, eliminamos las barreras geográficas. Podemos capacitar a tus equipos en México y en cualquier otra filial de Latinoamérica o el mundo de forma simultánea.",
-      "Gestión Centralizada: Aunque el proyecto sea masivo, tú mantienes el control desde un solo punto. Nosotros nos encargamos de la logística y el seguimiento de cada grupo, sin importar el país donde se encuentren.",
-      "Uniformidad: Garantizamos que todos los colaboradores, sin importar su ubicación, reciban el mismo estándar de calidad y evaluación bajo nuestra metodología, entregándote resultados consolidados de toda tu operación regional.",
+      "Alcance: Gracias a nuestra operación, eliminamos las barreras geográficas. Podemos capacitar a sus equipos en México y en cualquier otra filial de Latinoamérica o el mundo de forma simultánea.",
+      "Gestión Centralizada: Aunque el proyecto sea masivo, usted mantiene el control desde un solo punto. Nosotros nos encargamos de la logística y el seguimiento de cada grupo, sin importar el país donde se encuentren.",
+      "Uniformidad: Garantizamos que todos los colaboradores, sin importar su ubicación, reciban el mismo estándar de calidad y evaluación bajo nuestra metodología, entregándole resultados consolidados de toda su operación regional.",
     ],
   },
   {
     pregunta:
-      "¿Cuál es el retorno de inversión (ROI) de capacitar en idiomas con S-peak?",
+      "¿Cuál es el retorno de inversión (ROI) de capacitar en idiomas con S-Peak?",
     respuesta: [
-      "El ROI de S-Peak se mide en eficiencia y ahorro operativo. Al entrenar a tu equipo en tareas específicas, reducimos el tiempo perdido por errores de comunicación y el costo de retrabajo, permitiéndoles enfocarse en lo estratégico mientras nosotros garantizamos que el presupuesto se convierta en capacidades reales.",
+      "El ROI de S-Peak se mide en eficiencia y ahorro operativo. Al entrenar a su equipo en tareas específicas, reducimos el tiempo perdido por errores de comunicación y el costo de retrabajo, permitiéndoles enfocarse en lo estratégico mientras nosotros garantizamos que el presupuesto se convierta en capacidades reales.",
     ],
   },
   {
     pregunta: "¿Cómo garantizan que los colaboradores realmente aprendan?",
     respuesta: [
-      "Cambiamos los exámenes por evidencias de desempeño. En S-Peak, el colaborador no solo memoriza reglas, sino que debe producir algo real (como una presentación o una negociación) que se califica con una rúbrica profesional. Al final, te entregamos una Tarjeta de Resultados con pruebas del avance.",
+      "Cambiamos los exámenes por evidencias de desempeño. En S-Peak, el colaborador no solo memoriza reglas, sino que debe producir algo real (como una presentación o una negociación) que se califica con una rúbrica profesional. Al final, le entregamos una Tarjeta de Resultados con pruebas del avance.",
     ],
   },
 ];
@@ -257,7 +257,7 @@ export default function Home() {
         <ul className={`sp-inner ${styles.counters}`}>
           <li className={styles.counter}>
             <span className={styles.counterNum}>+40K</span>
-            <span className={styles.counterLabel}>Alumnos</span>
+            <span className={styles.counterLabel}>Profesionales formados</span>
           </li>
           <li className={styles.counter}>
             <span className={styles.counterNum}>+500</span>
@@ -311,7 +311,7 @@ export default function Home() {
               reales y entregamos reportes que le permiten tomar decisiones sobre
               su inversión.
             </p>
-            <BotonContacto className="sp-btn sp-btn--rojo">
+            <BotonContacto className={`sp-btn sp-btn--rojo ${styles.areasCta}`}>
               Solicite una Cotización
             </BotonContacto>
           </div>
@@ -359,7 +359,7 @@ export default function Home() {
             </p>
           </div>
           <BotonContacto className={`sp-btn sp-btn--amarillo ${styles.bandCta}`}>
-            Solicita una Cotización
+            Solicite una Cotización
           </BotonContacto>
         </div>
       </section>
@@ -527,7 +527,7 @@ export default function Home() {
           <aside className="sp-cta-card">
             <h3 className={styles.faqAsideTitle}>¿Quedan Dudas?</h3>
             <p className={styles.faqAsideText}>
-              Habla con un experto y resuelve tus dudas ahora.
+              Hable con un experto y resuelva sus dudas ahora.
             </p>
             <BotonContacto className="sp-btn sp-btn--rojo">
               Hablar con un Experto
@@ -537,7 +537,7 @@ export default function Home() {
       </section>
 
       {/* 11. Centro de Recursos */}
-      <CentroDeRecursos />
+      <CentroDeRecursos className={styles.recursosCompacto} />
     </main>
   );
 }

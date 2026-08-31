@@ -28,11 +28,17 @@
 
 .subtitulo {
   margin: 0;
-  max-width: 640px;
+  max-width: 680px;
   font-size: 16px;
   font-weight: var(--weight-normal);
   line-height: 1.6;
   color: var(--color-white);
+}
+
+/* El corte navy-a-gris hace que el ritmo estándar de sección (88px) se lea
+   como demasiado hueco entre el hero y la tarjeta: se acorta solo aquí. */
+.seccionArticulos {
+  padding-top: var(--space-section-mobile);
 }
 
 /* El panel enmarca el listado sobre el fondo de la página. */

@@ -4,6 +4,7 @@ import ProveedorContacto from "./components/contacto/ProveedorContacto";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ScrollSuave from "./components/ScrollSuave";
+import VolverArriba from "./components/VolverArriba";
 import "./globals.css";
 
 const montserrat = localFont({
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
           <Footer />
         </ProveedorContacto>
+        <VolverArriba />
       </body>
     </html>
   );

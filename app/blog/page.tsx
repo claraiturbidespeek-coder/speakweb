@@ -7,7 +7,7 @@ import styles from "./blog.module.css";
 export const metadata: Metadata = {
   title: "Centro de Recursos | S-Peak",
   description:
-    "Explora nuestra biblioteca completa de guías, tutoriales, y plantillas descargables.",
+    "Explore nuestra biblioteca completa de guías, tutoriales y plantillas descargables.",
   alternates: { canonical: "https://s-peak.com/blog/" },
 };
 
@@ -21,13 +21,13 @@ export default function Blog() {
         <div className="sp-inner">
           <h1 className={styles.titulo}>Centro de Recursos</h1>
           <p className={styles.subtitulo}>
-            Explora nuestra biblioteca completa de guías, tutoriales, y
+            Explore nuestra biblioteca completa de guías, tutoriales y
             plantillas descargables.
           </p>
         </div>
       </section>
 
-      <section className="sp-seccion">
+      <section className={`sp-seccion ${styles.seccionArticulos}`}>
         <div className={`sp-inner ${styles.panel}`}>
           <h2 className={styles.tituloSeccion}>Artículos</h2>
 

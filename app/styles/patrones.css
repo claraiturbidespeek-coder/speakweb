@@ -1267,6 +1267,50 @@
   color: var(--color-ink-2);
 }
 
+/* ========== Volver arriba ==========
+   Nace de /idioma/ingles-para-empresas/, la única página que lo tenía.
+   Ahora lo monta VolverArriba.tsx una vez en el layout raíz, así que pasa a
+   vocabulario sp-*: lo ve el sitio completo. */
+
+.sp-volver-arriba {
+  position: fixed;
+  left: 20px;
+  bottom: 24px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--color-navy);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease,
+    background var(--transition-fast);
+  z-index: 900;
+}
+
+.sp-volver-arriba[data-visible] {
+  opacity: 0.55;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.sp-volver-arriba:hover {
+  opacity: 1;
+  background: var(--color-white);
+}
+
+.sp-volver-arriba svg {
+  width: 18px;
+  height: 18px;
+}
 
 /* ========== Responsive ==========
    Los breakpoints del sistema están documentados en tokens.css. */
@@ -1308,6 +1352,13 @@
 
   .sp-recursos-tarjeta {
     flex-basis: min(88%, 320px);
+  }
+
+  .sp-volver-arriba {
+    left: 14px;
+    bottom: 18px;
+    width: 36px;
+    height: 36px;
   }
 }
 
