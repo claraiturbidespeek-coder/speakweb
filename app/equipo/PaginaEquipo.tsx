@@ -1,6 +1,8 @@
 import Link from "next/link";
-import Script from "next/script";
+import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BandaLogos from "@/app/components/BandaLogos";
+import Carrusel from "@/app/components/Carrusel";
+import CentroDeRecursos from "@/app/components/CentroDeRecursos";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
 import Icono from "./Icono";
 import type { DatosEquipo } from "./tipos";
@@ -12,8 +14,8 @@ import styles from "./equipo.module.css";
    diseño del proyecto. Lo que cambia entre áreas es el contenido, no el
    marcado: por eso cada página es un archivo de datos y esta plantilla.
 
-   Se renderiza en el servidor. Los únicos trozos de cliente son los botones de
-   contacto y el guion de interacción, igual que en la referencia. */
+   Se renderiza en el servidor. Los únicos trozos de cliente son los botones
+   de contacto y los componentes de interacción (AnimacionesEntrada, Carrusel). */
 
 // Comunes a las siete áreas: el documento de contenido no los trae y se
 // reutilizan de la referencia.
@@ -48,129 +50,6 @@ const TESTIMONIOS = [
     cita: "Valoramos el seguimiento que S-Peak nos brinda, el feedback que piden a través de citas regulares y encuestas, así como su reacción a lo que pedimos como cliente.",
   },
 ];
-
-// Copiado textualmente de la referencia: aparición al hacer scroll y arrastre
-// del carrusel de mercado.
-const GUION = `
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-  (function () {
-    const car = document.getElementById('mercadoCarousel');
-    if (!car) return;
-    const SPEED = 0.045;
-    const originals = Array.from(car.children);
-    if (!originals.length) return;
-
-    const appendSet = () => originals.forEach(node => {
-      const clone = node.cloneNode(true);
-      clone.setAttribute('aria-hidden', 'true');
-      clone.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
-      car.appendChild(clone);
-    });
-
-    let period = 0;
-    const layout = () => {
-      if (car.children.length <= originals.length) appendSet();
-      period = car.children[originals.length].offsetLeft - car.children[0].offsetLeft;
-      let guard = 0;
-      while (period > 0 && car.scrollWidth - car.clientWidth < period && guard++ < 6) appendSet();
-    };
-    layout();
-
-    let pos = car.scrollLeft;
-    let hovering = false, dragging = false, touching = false, touchTimer = null;
-    let manual = false, last = null;
-    const running = () => !hovering && !dragging && !touching && !manual && period > 0;
-
-    const tick = (ts) => {
-      if (last === null) last = ts;
-      let dt = ts - last; last = ts;
-      if (dt > 100) dt = 100;
-      if (running()) { pos += SPEED * dt; while (pos >= period) pos -= period; car.scrollLeft = pos; }
-      requestAnimationFrame(tick);
-    };
-
-    car.addEventListener('scroll', () => {
-      if (Math.abs(car.scrollLeft - pos) > 2) pos = car.scrollLeft;
-    }, { passive: true });
-    car.addEventListener('mouseenter', () => { hovering = true; });
-    car.addEventListener('mouseleave', () => { hovering = false; });
-    car.addEventListener('focusin', () => { hovering = true; });
-    car.addEventListener('focusout', () => { hovering = false; });
-    car.addEventListener('touchstart', () => {
-      touching = true; if (touchTimer) clearTimeout(touchTimer);
-    }, { passive: true });
-    car.addEventListener('touchend', () => {
-      if (touchTimer) clearTimeout(touchTimer);
-      touchTimer = setTimeout(() => { touching = false; }, 1200);
-    }, { passive: true });
-
-    let startX = 0, startLeft = 0;
-    car.addEventListener('pointerdown', (e) => {
-      if (e.pointerType === 'touch') return;
-      dragging = true; startX = e.clientX; startLeft = car.scrollLeft;
-      car.classList.add('dragging');
-    });
-    car.addEventListener('pointermove', (e) => {
-      if (!dragging) return;
-      const dx = e.clientX - startX;
-      if (Math.abs(dx) > 4 && !car.hasPointerCapture(e.pointerId)) car.setPointerCapture(e.pointerId);
-      car.scrollLeft = startLeft - dx;
-    });
-    const stopDrag = (e) => {
-      if (!dragging) return;
-      dragging = false; pos = car.scrollLeft;
-      car.classList.remove('dragging');
-      if (e && car.hasPointerCapture(e.pointerId)) car.releasePointerCapture(e.pointerId);
-    };
-    car.addEventListener('pointerup', stopDrag);
-    car.addEventListener('pointercancel', stopDrag);
-    car.addEventListener('pointerleave', stopDrag);
-
-    const prev = document.getElementById('mercadoPrev');
-    const next = document.getElementById('mercadoNext');
-    const suave = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
-    const paso = () => {
-      const a = car.children[0], b = car.children[1];
-      return b ? b.offsetLeft - a.offsetLeft : a.offsetWidth;
-    };
-    const actualizarFlechas = () => {
-      if (!prev || !next) return;
-      const max = car.scrollWidth - car.clientWidth;
-      prev.disabled = car.scrollLeft <= 1;
-      next.disabled = car.scrollLeft >= max - 1;
-    };
-    const pasarAManual = () => {
-      if (manual) return;
-      manual = true;
-      while (car.children.length > originals.length) car.removeChild(car.lastElementChild);
-      const max = car.scrollWidth - car.clientWidth;
-      if (car.scrollLeft > max) car.scrollLeft = max;
-      pos = car.scrollLeft;
-    };
-    const mover = (dir) => { pasarAManual(); car.scrollBy({ left: dir * paso(), behavior: suave }); };
-    if (prev && next) {
-      prev.addEventListener('click', () => mover(-1));
-      next.addEventListener('click', () => mover(1));
-      car.addEventListener('scroll', actualizarFlechas, { passive: true });
-      actualizarFlechas();
-    }
-
-    let resizeTimer = null;
-    window.addEventListener('resize', () => {
-      if (resizeTimer) clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        if (!manual) { layout(); pos = car.scrollLeft; }
-        actualizarFlechas();
-      }, 150);
-    });
-
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) requestAnimationFrame(tick);
-  })();
-`;
 
 function datosEstructurados(datos: DatosEquipo) {
   const url = `https://s-peak.com/equipo/${datos.slug}/`;
@@ -208,6 +87,7 @@ function datosEstructurados(datos: DatosEquipo) {
 export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
   return (
     <>
+      <AnimacionesEntrada threshold={0.08} />
       <main>
         {/* BREADCRUMB */}
         <div className={styles.breadcrumb}>
@@ -368,37 +248,7 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
               <p>{datos.mercado.texto}</p>
             </div>
             <div className={`${styles.mercadoRight} reveal`}>
-              <div className={styles.mercadoNav}>
-                <button
-                  type="button"
-                  className={styles.mercadoArrow}
-                  id="mercadoPrev"
-                  aria-controls="mercadoCarousel"
-                  aria-label="Ver tarjetas anteriores"
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M15 18l-6-6 6-6" />
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  className={styles.mercadoArrow}
-                  id="mercadoNext"
-                  aria-controls="mercadoCarousel"
-                  aria-label="Ver tarjetas siguientes"
-                >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M9 18l6-6-6-6" />
-                  </svg>
-                </button>
-              </div>
-              <div
-                className={`${styles.mercadoCarousel} stagger`}
-                id="mercadoCarousel"
-                tabIndex={0}
-                role="region"
-                aria-label={datos.mercado.etiquetaCarrusel}
-              >
+              <Carrusel etiqueta={datos.mercado.etiquetaCarrusel} className="stagger">
                 {datos.mercado.tarjetas.map((t) => (
                   <article key={t.titulo} className={`sp-tarjeta sp-barra ${styles.mercadoCard}`}>
                     <div className="sp-icono sp-icono--md sp-icono--rojo">
@@ -409,7 +259,7 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
                     <span className={styles.mercadoCardSource}>{t.fuente}</span>
                   </article>
                 ))}
-              </div>
+              </Carrusel>
             </div>
           </div>
         </section>
@@ -521,6 +371,9 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
             </div>
           </div>
         </section>
+
+        {/* CENTRO DE RECURSOS */}
+        <CentroDeRecursos />
       </main>
 
       {/* Etiqueta nativa, no next/script: con `afterInteractive` el JSON-LD se
@@ -528,11 +381,6 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: datosEstructurados(datos) }}
-      />
-      <Script
-        id={`equipo-${datos.slug}`}
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: GUION }}
       />
     </>
   );

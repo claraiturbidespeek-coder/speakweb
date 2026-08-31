@@ -42,11 +42,11 @@
 .heroInner {
   position: relative;
   z-index: 1;
-  max-width: var(--container-max);
+  max-width: 1160px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  gap: 56px;
+  gap: 96px;
   align-items: stretch;
 }
 
@@ -62,6 +62,12 @@
 .hero h1 strong {
   color: var(--color-red);
   font-weight: var(--weight-black);
+}
+
+.hero :global(.sp-hero-sub) {
+  /* El patrón compartido tope a 540px; aquí el titular no tiene tope y llena
+     la columna, así que el párrafo debe hacer lo mismo. */
+  max-width: none;
 }
 
 .heroVisual {

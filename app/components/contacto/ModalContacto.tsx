@@ -25,8 +25,6 @@ const ESTADO_INICIAL = { enviando: false, error: false, exito: false };
 
 declare global {
   interface Window {
-    // La landing de inglés monta Lenis para el scroll suave. Solo existe ahí.
-    __lenis?: { stop: () => void; start: () => void };
     dataLayer?: Record<string, unknown>[];
   }
 }
@@ -142,7 +140,7 @@ export default function ModalContacto({
             <div className="sp-modal-head">
               <div>
                 <h2 id="modal-contacto-titulo">Hable con un Experto</h2>
-                <p>Un asesor se pondrá en contacto en menos de 24 horas.</p>
+                <p>Un asesor se pondrá en contacto en menos de 24 horas hábiles.</p>
               </div>
               <button
                 className="sp-modal-cerrar"

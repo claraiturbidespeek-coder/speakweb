@@ -11,8 +11,8 @@
   margin: 0 auto;
   padding: 0 var(--space-gutter) 56px;
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr;
-  gap: 48px;
+  grid-template-columns: 1.3fr 0.9fr 1.1fr 0.9fr;
+  gap: 40px;
   color: var(--color-white);
 }
 
@@ -34,25 +34,25 @@
   color: var(--color-white);
 }
 
-/* La referencia usa un cuadro de 40x40 para el icono de LinkedIn. Aquí el enlace
-   es texto, así que se conserva el borde y el hover, con ancho según contenido. */
+.cta {
+  margin-bottom: 24px;
+}
+
 .social {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 40px;
   padding: 0 16px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
   color: var(--color-white);
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
-  transition: color 0.2s, border-color 0.2s;
+  transition: color 0.2s;
 }
 
 .social:hover {
   color: var(--color-red-hover);
-  border-color: var(--color-red-hover);
 }
 
 .social:focus-visible,
@@ -94,7 +94,38 @@
 .bottom {
   background: var(--color-navy-dark);
   padding: 20px var(--space-gutter);
-  text-align: center;
+}
+
+.bottomInner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+}
+
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.legalLink {
+  font-size: 13px;
+  color: var(--color-white);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.legalLink:hover {
+  color: var(--color-red-hover);
+}
+
+.legalLink:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
 }
 
 .bottom p {
@@ -103,9 +134,20 @@
   color: var(--color-white);
 }
 
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media (max-width: 600px) {
   .inner {
     grid-template-columns: 1fr;
     gap: 36px;
+  }
+
+  .bottomInner {
+    justify-content: center;
+    text-align: center;
   }
 }

@@ -320,6 +320,21 @@
   overflow: hidden;
 }
 
+/* Igual que en Diferenciadores más abajo: los titulares de Dolor son largos y
+   con la medida de 760px de `.sp-seccion-top` rompen en tres líneas. No se
+   toca el patrón porque Competencias sí lo necesita tal como está; aquí se
+   amplía solo para esta instancia, con la misma medida en `ch` en el propio
+   h2 para que escale con su tamaño de tipografía en vez de quedar fija en
+   píxeles. */
+.dolor :global(.sp-seccion-top) {
+  max-width: var(--container-max);
+}
+
+.dolor :global(.sp-seccion-top) h2 {
+  max-width: 48ch;
+  margin-inline: auto;
+}
+
 .dolorGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -394,84 +409,9 @@
   color: var(--color-ink-2);
 }
 
-/* Flechas del carrusel. Reutilizan el lenguaje de la página: cuadrado sin
-   radio, borde e interior de la tarjeta, y el mismo hover rojo y foco que ya
-   usan las tarjetas y el propio carrusel. */
-
-.mercadoNav {
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-  margin-bottom: 14px;
-}
-
-.mercadoArrow {
-  width: 40px;
-  height: 40px;
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
-  color: var(--color-navy);
-  cursor: pointer;
-  transition: background 0.25s, border-color 0.25s, color 0.25s, opacity 0.25s;
-}
-
-.mercadoArrow svg {
-  width: 18px;
-  height: 18px;
-}
-
-.mercadoArrow:hover:not(:disabled) {
-  background: var(--color-red);
-  border-color: var(--color-red);
-  color: var(--color-white);
-}
-
-.mercadoArrow:focus-visible {
-  outline: 2px solid var(--color-red);
-  outline-offset: 4px;
-}
-
-.mercadoArrow:disabled {
-  opacity: 0.35;
-  cursor: default;
-}
-
-.mercadoCarousel {
-  display: flex;
-  gap: 16px;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior-x: contain;
-  scroll-behavior: auto;
-  padding: 8px 0 14px;
-  margin: 0;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  cursor: grab;
-  -webkit-overflow-scrolling: touch;
-}
-
-.mercadoCarousel::-webkit-scrollbar {
-  display: none;
-}
-
-.mercadoCarousel:focus-visible {
-  outline: 2px solid var(--color-red);
-  outline-offset: 4px;
-}
-
-/* `dragging` la pone y la quita el JS: por eso es global y no del módulo. */
-.mercadoCarousel:global(.dragging) {
-  cursor: grabbing;
-  user-select: none;
-}
+/* Flechas, track, arrastre y auto-avance: mecánica compartida, en
+   patrones.css (.sp-carrusel-*) vía Carrusel.tsx. Aquí solo queda lo propio
+   de esta tarjeta. */
 
 .mercadoCard {
   flex: 0 0 min(74%, 246px);
@@ -522,13 +462,14 @@
   border-top: 1px solid var(--color-border);
 }
 
-/* El titular de "Por qué S-Peak" es más largo que el resto de los que usan
-   `.sp-seccion-top` en patrones.css (competencias, dolor) y con su medida de
-   760px corta en líneas demasiado cortas. No se toca el patrón porque esas
-   otras dos secciones lo necesitan tal como está; aquí se amplía solo para
+/* El titular de "Por qué S-Peak" es más largo que el de Competencias, la
+   otra sección que usa `.sp-seccion-top` en patrones.css sin override, y con
+   su medida de 760px corta en líneas demasiado cortas. No se toca el patrón
+   porque Competencias sí lo necesita tal como está; aquí se amplía solo para
    esta instancia. El contenedor se libera al ancho estándar del sitio y la
    medida de línea real queda en el propio h2, en `ch` para que escale con su
-   tamaño de tipografía en vez de quedar fija en píxeles. */
+   tamaño de tipografía en vez de quedar fija en píxeles. Mismo tratamiento en
+   Dolor, arriba. */
 .diferenciadores :global(.sp-seccion-top) {
   max-width: var(--container-max);
 }
@@ -596,7 +537,7 @@
   position: relative;
   z-index: 1;
   margin: 0 auto 28px;
-  max-width: 560px;
+  max-width: 600px;
   font-size: 17px;
   color: rgba(255, 255, 255, 0.8);
 }

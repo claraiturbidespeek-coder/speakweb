@@ -1,4 +1,6 @@
-/* Iconos de las páginas de Soluciones por Equipo.
+/* Iconos de las páginas de Soluciones por Equipo, y registro central de
+   iconos del sitio: cualquier página que necesite uno de estos trazados
+   importa este componente en vez de escribir el SVG suelto.
 
    Trazados de estilo Lucide, los mismos que trajo la referencia. Viven en un
    registro y no sueltos en cada página porque son 17 por área y siete áreas: en
@@ -19,6 +21,8 @@ const TRAZOS: Record<string, string> = {
   // — Comunicación y coordinación —
   usuarios:
     "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2|circle:9,7,4|M22 21v-2a4 4 0 0 0-3-3.87|M16 3.13a4 4 0 0 1 0 7.75",
+  usuarioCheck:
+    "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2|circle:9,7,4|m16 11 2 2 4-4",
   mensaje:
     "M21 11.5a8.4 8.4 0 0 1-.9 3.8A8.5 8.5 0 0 1 12.5 20a8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6A8.4 8.4 0 0 1 12.5 3h.5a8.5 8.5 0 0 1 8 8z",
   correo:
@@ -42,6 +46,8 @@ const TRAZOS: Record<string, string> = {
   // — Negocio y análisis —
   grafico: "M3 3v16a2 2 0 0 0 2 2h16|M18 17V9|M13 17V5|M8 17v-3",
   tendencia: "M3 3v16a2 2 0 0 0 2 2h16|m19 9-5 5-4-4-3 3",
+  graficoArea:
+    "M3 3v16a2 2 0 0 0 2 2h16|M7 11.207a.5.5 0 0 1 .146-.353l2-2a.5.5 0 0 1 .708 0l3.292 3.292a.5.5 0 0 0 .708 0l4.292-4.292a.5.5 0 0 1 .854.353V16a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1z",
   balanza:
     "M12 3v18|M5 7h14|m5 7-3 6h6z|m19 7-3 6h6z|M8 21h8",
   escudo:
@@ -68,14 +74,31 @@ const TRAZOS: Record<string, string> = {
   diana: "circle:12,12,10|circle:12,12,6|circle:12,12,2",
 };
 
-export type NombreIcono = keyof typeof TRAZOS;
+/* Marcas de marca: un solo trazado relleno, no un contorno de Lucide. Van en
+   su propio registro porque necesitan lo contrario de TRAZOS —
+   fill: currentColor, sin stroke— así que anulan en línea el estilo que
+   `.sp-icono svg` pone para los iconos de contorno, en vez de vivir de él. */
+const SOLIDOS: Record<string, string> = {
+  linkedin:
+    "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.328-1.85 3.556 0 4.212 2.342 4.212 5.39v6.351zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z",
+};
+
+export type NombreIcono = keyof typeof TRAZOS | keyof typeof SOLIDOS;
 
 export default function Icono({ nombre }: { nombre: string }) {
+  const solido = SOLIDOS[nombre];
+  if (solido) {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true" style={{ fill: "currentColor", stroke: "none" }}>
+        <path d={solido} />
+      </svg>
+    );
+  }
   const trazo = TRAZOS[nombre];
   if (!trazo) {
     // Ruidoso a propósito: un icono que no existe se vería como un hueco.
     throw new Error(
-      `Icono desconocido: "${nombre}". Añádelo a TRAZOS en app/equipo/Icono.tsx.`
+      `Icono desconocido: "${nombre}". Añádelo a TRAZOS o SOLIDOS en app/equipo/Icono.tsx.`
     );
   }
   return (

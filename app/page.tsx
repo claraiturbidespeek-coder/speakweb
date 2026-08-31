@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import BandaLogos from "@/app/components/BandaLogos";
+import CentroDeRecursos from "@/app/components/CentroDeRecursos";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
+import Icono from "@/app/equipo/Icono";
 import styles from "./home.module.css";
 
 export const metadata: Metadata = {
@@ -17,6 +19,12 @@ const IDIOMAS = [
   "🇵🇹 Portugués",
   "🇮🇹 Italiano",
   "🇪🇸 Español",
+];
+
+const FEATURES = [
+  { texto: "Evidencias Demostrables", icono: "usuarioCheck" },
+  { texto: "Métricas de Asistencia", icono: "reloj" },
+  { texto: "Reportes de Desempeño", icono: "graficoArea" },
 ];
 
 const DIFERENCIADORES = [
@@ -141,70 +149,13 @@ const FAQ = [
   },
 ];
 
-const POSTS = [
-  {
-    titulo:
-      "Aprender idiomas en la era del nearshoring: Las lenguas más demandadas en México",
-    url: "/aprender-idiomas-nearshoring-mexico/",
-    imagen: "blog-nearshoring-idiomas.webp",
-    alt: "Ejecutivos bilingües en México planeando estrategias comerciales para aprender idiomas corporativos.",
-  },
-  {
-    titulo:
-      "Capacitación de personal: cómo diseñar un programa de idiomas que sí completen",
-    url: "/capacitacion-personal-programa-idiomas/",
-    imagen: "blog-capacitacion-personal.webp",
-    alt: "Capacitación de personal corporativo participando activamente en un taller de idiomas dinámico.",
-  },
-  {
-    titulo:
-      "Inglés para ejecutivos: 6 situaciones clave donde urge una evaluación de inglés",
-    url: "/evaluacion-de-ingles-ejecutivos/",
-    imagen: "blog-evaluacion-ingles.jpg",
-    alt: "Evaluación de inglés corporativa para ejecutivos y directores en una junta de negocios.",
-  },
-  {
-    titulo:
-      "Por qué el 70% de los programas de capacitación en idiomas fracasan antes de los 6 meses",
-    url: "/negocios-en-ingles-porque-fracasan-cursos/",
-    imagen: "blog-negocios-en-ingles.webp",
-    alt: "Grupo de profesionales en una oficina moderna colaborando y preparándose para hacer negocios en inglés con éxito.",
-  },
-  {
-    titulo: "Inglés de negocios: habilidades clave según su rol ejecutivo",
-    url: "/ingles-de-negocios-ejecutivos/",
-    imagen: "blog-ingles-de-negocios.jpg",
-    alt: "Ejecutiva participando en una videollamada internacional y aplicando su inglés de negocios con un equipo de trabajo.",
-  },
-  {
-    titulo:
-      "¿Alemán, francés o inglés? Cómo identificar qué idiomas para empresas necesita su equipo",
-    url: "/mejores-idiomas-para-empresas/",
-    imagen: "blog-idiomas-para-empresas.jpg",
-    alt: "os ejecutivos corporativos analizando la estrategia de idiomas para empresas frente a un mapa mundial.",
-  },
-  {
-    titulo:
-      "De cero a bilingüe: Cómo estructurar una capacitación en inglés que su equipo no abandone",
-    url: "/como-implementar-capacitacion-en-ingles-empresas/",
-    imagen: "blog-capacitacion-en-ingles.jpg",
-    alt: "Capacitación en inglés empresarial para equipos de trabajo en una mesa de negociación con banderas internacionales.",
-  },
-  {
-    titulo: "5 errores de comunicación en tu primer año de Nearshoring",
-    url: "/errores-comunicacion-nearshoring-en-mexico/",
-    imagen: "blog-errores-nearshoring.jpg",
-    alt: "Directivo analizando mapas de comercio global y estrategias de nearshoring en mexico usando una tableta en su oficina.",
-  },
-];
-
 export default function Home() {
   return (
     <main>
-      {/* 1. Hero */}
-      <section className={styles.hero}>
-        <div className={`sp-inner ${styles.heroInner}`}>
-          <div className={styles.heroText}>
+      {/* Hero nuevo — en construcción */}
+      <section className={`sp-seccion ${styles.heroNuevo}`}>
+        <div className={`sp-inner ${styles.heroNuevoInner}`}>
+          <div className={styles.heroNuevoText}>
             <h1 className={styles.heroTitle}>
               Cursos de idiomas para empresas en México
             </h1>
@@ -225,9 +176,9 @@ export default function Home() {
             </BotonContacto>
           </div>
 
-          <div className={styles.heroMedia}>
+          <div className={styles.heroNuevoMedia}>
             <video
-              className={styles.heroVideo}
+              className={styles.heroNuevoVideo}
               src="/video/hero-speak.mp4"
               autoPlay
               muted
@@ -285,9 +236,14 @@ export default function Home() {
               presupuesto.
             </p>
             <ul className={styles.features}>
-              <li>Evidencias Demostrables</li>
-              <li>Métricas de Asistencia</li>
-              <li>Reportes de Desempeño</li>
+              {FEATURES.map((f) => (
+                <li key={f.texto}>
+                  <span className="sp-icono sp-icono--sm">
+                    <Icono nombre={f.icono} />
+                  </span>
+                  {f.texto}
+                </li>
+              ))}
             </ul>
             <BotonContacto className="sp-btn sp-btn--rojo">
               Solicite una Cotización
@@ -581,37 +537,7 @@ export default function Home() {
       </section>
 
       {/* 11. Centro de Recursos */}
-      <section className={`sp-seccion sp-seccion--ancha ${styles.resources}`}>
-        <div className="sp-inner sp-inner--ancho">
-          <div className={styles.resourcesHead}>
-            <div className={styles.resourcesIntro}>
-              <h2 className={styles.resourcesTitle}>Centro de Recursos</h2>
-              <p className={styles.lead}>
-                Guías y Recursos sobre Clases de Idiomas para Empresas
-              </p>
-            </div>
-            <Link className={styles.resourcesLink} href="/blog/">
-              Más Información
-            </Link>
-          </div>
-
-          <ul className={styles.posts}>
-            {POSTS.map((p) => (
-              <li key={p.url}>
-                <img
-                  className="sp-post-img"
-                  src={`/images/home/${p.imagen}`}
-                  alt={p.alt}
-                  loading="lazy"
-                />
-                <h3 className="sp-post-titulo">
-                  <Link href={p.url}>{p.titulo}</Link>
-                </h3>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <CentroDeRecursos />
     </main>
   );
 }

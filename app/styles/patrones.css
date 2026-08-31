@@ -814,6 +814,157 @@
   text-decoration: underline;
 }
 
+/* ========== Carrusel horizontal ==========
+   Mecánica del carrusel de "Por qué urge ahora" (mercado, en equipo): flechas
+   cuadradas, track con arrastre y auto-avance. La ejecuta Carrusel.tsx, no un
+   guion inline. Lo que varía por página —ancho de tarjeta, separación entre
+   tarjetas— se ajusta desde el módulo de esa página sobre `.sp-carrusel-track`
+   con `:global()`, como ya hacía equipo.module.css con `.dragging`. */
+
+.sp-carrusel-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.sp-carrusel-flecha {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  color: var(--color-navy);
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, color 0.25s, opacity 0.25s;
+}
+
+.sp-carrusel-flecha svg {
+  width: 18px;
+  height: 18px;
+}
+
+.sp-carrusel-flecha:hover:not(:disabled) {
+  background: var(--color-red);
+  border-color: var(--color-red);
+  color: var(--color-white);
+}
+
+.sp-carrusel-flecha:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 4px;
+}
+
+.sp-carrusel-flecha:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.sp-carrusel-track {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-behavior: auto;
+  padding: 8px 0 14px;
+  margin: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sp-carrusel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.sp-carrusel-track:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 4px;
+}
+
+.sp-carrusel-track.dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+/* ========== Centro de Recursos ==========
+   Compartida por la home y las siete páginas de Soluciones por Equipo (ver
+   CentroDeRecursos.tsx): con ocho páginas deja de ser "propia de una
+   página" y pasa a vocabulario sp-*, igual que ya hace BandaLogos.
+
+   No va a sangre: el fondo deja un 2% a cada lado. El padding interno no es
+   ese mismo 2% —con `sp-seccion--ancha` el contenido quedaba pegado al borde
+   de esta tarjeta— así que se pisa con el gutter normal del sitio (el
+   doble), sin tocar `sp-seccion--ancha` porque la usan otras páginas. */
+
+.sp-recursos {
+  background: var(--color-off-white);
+  margin: 0 2%;
+  padding-inline: var(--space-gutter);
+}
+
+.sp-recursos-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.sp-recursos-intro {
+  width: 60%;
+}
+
+.sp-recursos-titulo {
+  margin: 0 0 10px;
+  font-size: var(--text-title-md);
+  font-weight: var(--weight-black);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--color-navy);
+}
+
+.sp-recursos-lead {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-navy);
+}
+
+.sp-recursos-acciones {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.sp-recursos-link {
+  font-size: 13px;
+  font-weight: var(--weight-medium);
+  color: var(--color-navy);
+  text-decoration: underline;
+}
+
+/* `.sp-recursos-track` se aplica junto con `.sp-carrusel-track` sobre el
+   mismo elemento, no es un descendiente: aquí solo la separación entre
+   tarjetas. El ancho de tarjeta (cuatro a la vez) va en `.sp-recursos-tarjeta`. */
+.sp-recursos-track {
+  gap: 30px;
+}
+
+.sp-recursos-tarjeta {
+  flex: 0 0 calc((100% - 3 * 30px) / 4);
+  min-width: 0;
+}
+
 /* ========== Modal ==========
    Solo la caja: el fondo oscuro, el panel y el ancho. Las dos cabeceras que
    hay hoy son distintas de verdad (una es una barra azul con título y subtítulo,
@@ -1120,6 +1271,18 @@
 /* ========== Responsive ==========
    Los breakpoints del sistema están documentados en tokens.css. */
 
+@media (max-width: 900px) {
+  /* Con cuatro columnas de ancho fijo el paso directo a una sola a los
+     600px quedaba apretado: dos tarjetas por pantalla de escalón intermedio. */
+  .sp-recursos-tarjeta {
+    flex-basis: calc((100% - 30px) / 2);
+  }
+
+  .sp-recursos-intro {
+    width: 100%;
+  }
+}
+
 @media (max-width: 768px) {
   /* Tres cifras no caben en una fila estrecha sin quedar ilegibles. Las dos
      páginas migradas ocultan la tercera exactamente igual. */
@@ -1141,6 +1304,10 @@
 
   .sp-form-row {
     grid-template-columns: 1fr;
+  }
+
+  .sp-recursos-tarjeta {
+    flex-basis: min(88%, 320px);
   }
 }
 

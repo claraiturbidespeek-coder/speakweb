@@ -8,15 +8,14 @@
   que tocaste. El commit y el push los hace el equipo manualmente desde terminal.
 
 ## Flujo de trabajo
-- Antes de escribir código en tareas estructurales o no triviales, entrega un plan.
-- Cuando entregues un plan, espera aprobación explícita antes de ejecutarlo.
-  No asumas aprobación por silencio.
-- Para cambios acotados (un valor, un texto, una clase), ejecuta directamente.
-- Si durante la ejecución encuentras algo que el plan no contemplaba, detente
-  y repórtalo antes de improvisar una solución.
+- Ejecuta directamente. No entregues plan previo ni esperes aprobación,
+  salvo que la tarea sea ambigua o que ejecutarla implique una decisión
+  que no está en la instrucción.
+- Si durante la ejecución encuentras algo que la instrucción no contemplaba,
+  detente y repórtalo antes de improvisar una solución.
+- No repitas contexto ya establecido en el proyecto.
 
-## Fidelidad de diseño
-- Fase actual: copia fiel. No refactorices, no optimices, no "limpies" markup.
+## Sistema de diseño
 - El proyecto NO usa Tailwind. Se evaluó y se descartó: sin clases de utilidad,
   lo único que aportaba era un reset que preferimos escribir nosotros. No lo
   reintroduzcas ni escribas clases de utilidad.
@@ -35,16 +34,19 @@
   valor no está, no lo escribas suelto: decide si toca añadirlo al sistema.
 - Jerarquía de referencia cuando dos páginas resuelven lo mismo distinto:
   1. /equipo/ventas-y-marketing/  2. /idioma/ingles-para-empresas/  3. el resto.
-- Si algo se ve duplicado, mal escrito o mejorable, repórtalo. No lo corrijas.
+- Si un cambio toca un patrón compartido y afectaría a otras páginas, no lo
+  toques: aplica el override acotado a la sección y repórtalo.
 
 ## Alcance
 - Haz solo lo que se pide. No agregues elementos, secciones ni mejoras no solicitadas.
-- No repitas contexto ya establecido en el proyecto.
+- Si algo se ve duplicado, mal escrito o mejorable fuera del alcance, repórtalo.
+  No lo corrijas.
 
 ## Verificación
 - No hagas comprobaciones repetidas ni ciclos de validación por tu cuenta.
   Ejecuta la tarea una vez y reporta.
-- La revisión visual la hace el equipo. No levantes el servidor ni abras
-  el navegador para verificar cómo se ve algo.
+- Para cambios visuales, la revisión la hace el equipo. No abras el navegador
+  para valorar cómo se ve algo.
+- Para diagnosticar un fallo reportado, sí levanta el servidor y mide en el
+  navegador. No deduzcas la causa leyendo el CSS: repróducela.
 - Si detectas un error real que impide que la tarea funcione, repórtalo.
-  Esa es la única excepción.

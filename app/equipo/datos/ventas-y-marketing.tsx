@@ -27,7 +27,14 @@ const datos: DatosEquipo = {
         Cursos de idiomas para equipos de <strong>Ventas y Marketing</strong>
       </>
     ),
-    sub: "Negocie, presente y comunique con confianza en el idioma de su cliente, y que el idioma nunca sea la razón de una oportunidad perdida: una sola cuesta más que todo un programa anual de capacitación. Inglés, francés, alemán, italiano, portugués o español: su equipo es la cara de la empresa.",
+    sub: (
+      <>
+        Negocie, presente y comunique con confianza en el idioma de su cliente, y{" "}
+        <strong>que nunca sea la razón de una oportunidad perdida</strong>: una
+        sola cuesta más que todo un programa anual de capacitación. Inglés, francés,
+        alemán, italiano, portugués o español: su equipo es la cara de la empresa.
+      </>
+    ),
     cta: "Solicite una Cotización",
     prueba: (
       <>
@@ -64,7 +71,7 @@ const datos: DatosEquipo = {
       {
         icono: "usuarios",
         titulo: "Presentaciones ejecutivas",
-        texto: "Exposición ante directivos, comités o inversionistas, con respuestas fluidas a preguntas en tiempo real.",
+        texto: "Exposición ante directivos, comités de compra o socios comerciales, con respuestas fluidas a preguntas en tiempo real.",
       },
       {
         icono: "apreton",
@@ -168,7 +175,7 @@ const datos: DatosEquipo = {
       {
         icono: "sello",
         titulo: "Registro STPS y deducción fiscal",
-        texto: "Contamos con registro oficial ante la STPS. La inversión puede calificar para la deducción adicional del 25% del Plan México (DOF 2025); confírmelo con su área contable.",
+        texto: "Registro oficial ante la STPS y constancia de capacitación para sus colaboradores. La inversión puede calificar para la deducción adicional del 25% del Plan México.",
       },
     ],
   },
@@ -236,12 +243,13 @@ const datos: DatosEquipo = {
         respuesta: (
           <>
             <strong>Inglés, francés, alemán, italiano, portugués y español para extranjeros.</strong>{" "}
-            Cada programa se alinea a su mercado: inglés para negocios globales, alemán para el
-            sector automotriz o italiano para el Bajío industrial. Y si su empresa opera en varios
-            países, coordinamos la capacitación simultánea desde un solo punto de contacto.
+            Cada programa se alinea a su mercado: inglés para negocios globales, alemán si le
+            vende a la cadena automotriz, italiano si su mercado es el Bajío industrial. Y si su
+            empresa opera en varios países, coordinamos la capacitación simultánea desde un solo
+            punto de contacto.
           </>
         ),
-        respuestaPlana: "Inglés, francés, alemán, italiano, portugués y español para extranjeros. Cada programa se alinea a su mercado: inglés para negocios globales, alemán para el sector automotriz o italiano para el Bajío industrial. Y si su empresa opera en varios países, coordinamos la capacitación simultánea desde un solo punto de contacto.",
+        respuestaPlana: "Inglés, francés, alemán, italiano, portugués y español para extranjeros. Cada programa se alinea a su mercado: inglés para negocios globales, alemán si le vende a la cadena automotriz, italiano si su mercado es el Bajío industrial. Y si su empresa opera en varios países, coordinamos la capacitación simultánea desde un solo punto de contacto.",
       },
       {
         pregunta: "¿Sirve también para el equipo de marketing o solo para vendedores?",

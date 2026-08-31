@@ -7,11 +7,13 @@
 
    Nombres que el JS toca hoy, y quién los toca:
 
-     .reveal / .visible     observador de scroll, en las dos páginas
+     .reveal / .visible     observador de scroll, AnimacionesEntrada.tsx
+                            (componente React, no <Script>: ver ese archivo)
      .stagger               entrada escalonada de tarjetas, en equipo
      .open                  los dos modales de la landing
      .is-success/.is-error  respuesta del formulario, en la landing
-     .mercado-carousel / .dragging   arrastre del carrusel, en equipo
+     .dragging               arrastre del carrusel, Carrusel.tsx (componente
+                             React; regla en patrones.css, no aquí)
      .cycle-node / .active  ciclo radial, en la landing
      .back-to-top / .is-visible      botón de volver arriba, en la landing
 
@@ -22,9 +24,9 @@
    una página siguen en su hoja hasta que esa página se convierta en módulo. */
 
 /* ---------- Lenis ----------
-   Clases que la librería de scroll suave pone en <html> desde JavaScript. Solo
-   las usa /idioma/ingles-para-empresas/, pero no pueden vivir en su módulo: un
-   módulo hashea los nombres y la librería escribe estos literales. */
+   Clases que la librería de scroll suave pone en <html> desde JavaScript, sitio
+   completo. No pueden vivir en un módulo: un módulo hashea los nombres y la
+   librería escribe estos literales. */
 
 html.lenis,
 html.lenis body {
@@ -45,6 +47,17 @@ html.lenis body {
 
 .lenis.lenis-smooth iframe {
   pointer-events: none;
+}
+
+/* Sin esto, el rebote nativo del navegador en los bordes del documento
+   compite con el scroll virtual de Lenis: al tocar el tope o el fondo y
+   seguir empujando, el navegador seguía acumulando su propio impulso más
+   allá del límite real, y al invertir la dirección la página no respondía
+   hasta consumir esa distancia de más. Atado a `.lenis`, así que con
+   movimiento reducido (donde Lenis no se monta) el navegador conserva su
+   comportamiento nativo normal. */
+html.lenis {
+  overscroll-behavior: none;
 }
 
 /* ---------- Aparición al hacer scroll ----------

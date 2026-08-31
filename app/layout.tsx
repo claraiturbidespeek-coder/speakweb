@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import ProveedorContacto from "./components/contacto/ProveedorContacto";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import ScrollSuave from "./components/ScrollSuave";
 import "./globals.css";
 
 const montserrat = localFont({
@@ -62,6 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/* El proveedor monta el modal de contacto una sola vez para todo el
             sitio. `children` cruza esta frontera como prop, así que las páginas
             siguen renderizándose en el servidor. */}
+        <ScrollSuave />
         <ProveedorContacto>
           <Header />
           {children}

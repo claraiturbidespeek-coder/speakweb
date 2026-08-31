@@ -2,6 +2,7 @@
 
 import type { FormEvent, MouseEvent } from "react";
 import Script from "next/script";
+import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BandaLogos from "@/app/components/BandaLogos";
 import { useContacto } from "@/app/components/contacto/useContacto";
 import styles from "./landing.module.css";
@@ -17,38 +18,10 @@ declare global {
 }
 
 // Scripts copiados textualmente de ingles-para-empresas.html (líneas 1633-1872, 1917-1974, 1985-1998).
+// El bloque de Lenis que iba aquí se retiró: ahora es global, montado por
+// <ScrollSuave /> en el layout raíz. El botón "volver arriba" más abajo
+// sigue usando window.__lenis, que esa instancia expone igual.
 const SCRIPT_PRINCIPAL = `
-  // Smooth scroll (Lenis)
-  (function () {
-    if (typeof Lenis === 'undefined') return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const lenis = new Lenis({
-      lerp: 0.12,
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.5,
-    });
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-    // Mantener funcionando los anchors de scroll internos (#)
-    document.querySelectorAll('a[href^="#"]').forEach((a) => {
-      const id = a.getAttribute('href');
-      if (id.length <= 1) return;
-      a.addEventListener('click', (e) => {
-        const target = document.querySelector(id);
-        if (!target) return;
-        e.preventDefault();
-        lenis.scrollTo(target, { offset: -80 });
-        history.pushState(null, '', id);
-      });
-    });
-    window.__lenis = lenis;
-  })();
-
-
   // ---- Envío de leads vía función serverless (Resend) ----
   // Endpoint de la función. Si el sitio y la función viven en el mismo dominio de Vercel,
   // déjalo relativo ('/api/lead'). Si la función está en otro dominio, pon la URL absoluta aquí.
@@ -113,16 +86,6 @@ const SCRIPT_PRINCIPAL = `
     });
   };
 
-
-  // Reveal on scroll
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(el => {
-      if (el.isIntersecting) {
-        el.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
   // Ciclo radial del método (centro muestra el paso activo, auto-rota)
   (function () {
@@ -266,6 +229,7 @@ export default function Page() {
 
   return (
     <>
+<AnimacionesEntrada />
 <main>
 {/* HERO */}
 <section className={styles.hero}>
@@ -722,7 +686,6 @@ export default function Page() {
   </svg>
 </button>
 
-      <Script src="/js/lenis-1.1.13.min.js" strategy="afterInteractive" />
       <Script
         id="lp-ingles-principal"
         strategy="afterInteractive"
