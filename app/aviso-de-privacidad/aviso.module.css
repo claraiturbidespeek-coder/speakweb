@@ -1,0 +1,93 @@
+/* Aviso de privacidad, migrado de https://s-peak.com/aviso-de-privacidad/.
+
+   Tipografía y ritmo vertical del cuerpo: los mismos valores que ya usa
+   `.contenido` en app/[slug]/nota.module.css (17px/33px, h2 30px, h3 22px,
+   h4 18px) — es el único sitio del proyecto con texto largo y jerarquía de
+   encabezados, así que es la referencia. No se comparte el archivo porque
+   la nota trae columna lateral, meta de autor/fecha y demás piezas propias
+   del blog que este documento no tiene. Si terminos-y-condiciones necesita
+   lo mismo, ahí sí conviene subir esto a patrones.css. */
+
+.cabecera {
+  background: var(--color-navy);
+}
+
+.titulo {
+  margin: 0 0 12px;
+  font-size: var(--text-title-lg);
+  font-weight: var(--weight-black);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--color-white);
+}
+
+.actualizacion {
+  margin: 0;
+  font-size: 14px;
+  font-weight: var(--weight-medium);
+  color: var(--color-white);
+  opacity: 0.75;
+}
+
+/* El padding superior estándar de sección (88px) sumado al de la cabecera
+   dejaba demasiado hueco entre el navy y el inicio del contenido. */
+.cuerpo {
+  padding-top: var(--space-section-mobile);
+}
+
+/* Ancho de lectura propio: sin columna lateral, el de la nota (1160px) deja
+   la línea demasiado larga. `sp-inner` centra con `margin: 0 auto`; acá se
+   anula para que el cuerpo arranque en el mismo margen izquierdo que el
+   titular de la cabecera, no centrado en su propio eje. */
+.cuerpoInner {
+  max-width: 760px;
+  margin-left: 0;
+}
+
+.contenido {
+  font-size: 17px;
+  line-height: 33px;
+  color: var(--color-navy);
+}
+
+.contenido > *:first-child {
+  margin-top: 0;
+}
+
+.contenido p {
+  margin: 0 0 24px;
+}
+
+.contenido h2 {
+  margin: 0 0 24px;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  color: var(--color-navy);
+}
+
+.contenido h3 {
+  margin: 44px 0 16px;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-navy);
+}
+
+.contenido h4 {
+  margin: 28px 0 12px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-navy);
+}
+
+.contenido a {
+  color: var(--color-red);
+  text-decoration: underline;
+}
+
+.contenido a:hover {
+  color: var(--color-red-dark);
+}

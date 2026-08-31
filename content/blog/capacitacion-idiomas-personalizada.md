@@ -8,7 +8,7 @@ categorySlug: "implementacion-del-programa"
 tags: []
 featuredImage: "/images/blog/capacitacion-idiomas-personalizada-portada.webp"
 seoTitle: "Capacitación de Idiomas Personalizada l Blog S-Peak"
-seoDescription: "Capacitación de idiomas personalizada para empresas. Ahorra tiempo en RH y mejora el ROI de tu equipo con el método S-Peak. ¡Descúbrelo!"
+seoDescription: "Capacitación de idiomas personalizada para empresas. Ahorre tiempo en RH y mejore el ROI de su equipo con el método S-Peak. ¡Descúbralo!"
 focusKeyword: "Capacitación de idiomas personalizada"
 readingTime: 3
 hasLeadForm: true
@@ -56,4 +56,4 @@ Piénselo: ¿Cómo cambiaría la dinámica de su equipo si el idioma dejara de s
 
 Si busca un [programa de capacitación de idiomas](https://s-peak.com/clases-de-idiomas-para-empresas/) que entienda las necesidades únicas de su empresa y le devuelva el tiempo a su equipo de RH, [S-Peak](https://www.linkedin.com/company/s-peak/) es su solución.
 
-¡[Contáctenos](#contacto) y descubre cómo podemos ayudarle a escalar globalmente!
+¡[Contáctenos](#contacto) y descubra cómo podemos ayudarle a escalar globalmente!

@@ -22,7 +22,7 @@ export default function Footer() {
             </Link>
           </p>
           <p className={styles.about}>
-            En S-Peak ofrecemos soluciones integrales de clases de idiomas para
+            En S-Peak ofrecemos soluciones integrales de capacitación en idiomas para
             empresas. Ayudamos a los líderes de Recursos Humanos a potenciar el
             talento de sus equipos mediante cursos corporativos, tecnología de
             seguimiento en tiempo real y resultados medibles.

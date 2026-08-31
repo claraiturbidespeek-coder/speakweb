@@ -30,7 +30,7 @@ Para que sus clases de inglés para empresas dejen de ser una fuga de presupuest
 
 Si revisamos la descripción de los niveles de inglés tradicional según el [Marco Común Europeo de Referencia (MCER)](https://www.cambridgeenglish.org/es/exams-and-tests/cefr/), la teoría nos dice qué estructuras gramaticales domina una persona. Pero en el día a día de una organización, las métricas cambian por completo.
 
-**Aquí te mostramos qué significa realmente cada nivel en la escala de productividad de tu negocio:**
+**Aquí le mostramos qué significa realmente cada nivel en la escala de productividad de su negocio:**
 
 -   **Bloque A1 y A2 (Principiante / Básico):** El colaborador entiende frases aisladas y vocabulario muy limitado.  
     En su empresa: Este nivel solo sirve para leer correos automatizados muy sencillos o dar instrucciones de cortesía básicas. No puede interactuar con clientes ni proveedores extranjeros.
@@ -39,7 +39,7 @@ Si revisamos la descripción de los niveles de inglés tradicional según el [Ma
 -   **Bloque C1 y C2 (Avanzado / Competente):** Dominio fluido, técnico y estratégico del idioma.  
     En su empresa: Perfiles capaces de liderar fusiones, defender auditorías internacionales complejas y gestionar crisis multiculturales bajo presión.
 
-### ¿Qué es B1 y B2 en inglés y cómo impacta en el día a día de tu negocio?
+### ¿Qué es B1 y B2 en inglés y cómo impacta en el día a día de su negocio?
 
 Esta es una de las dudas más comunes al evaluar personal. Académicamente, un alumno con certificación B2 lee fluidamente y redacta textos argumentativos.
 
@@ -72,7 +72,7 @@ Seguir contratando licencias masivas de autoaprendizaje o cursos genéricos pens
 
 Como exploramos en nuestro análisis sobre [cómo evaluar un proveedor de idiomas corporativos sin caer en las trampas de las escuelas masivas](https://s-peak.com/evaluar-proveedor-cursos-idiomas-empresas/), la única forma de garantizar el retorno de inversión es alineando el plan de estudios con las funciones operativas de cada puesto.
 
-En S-Peak, transformamos la manera en que las organizaciones abordan el desarrollo lingüístico. No vendemos programas rígidos ni planes de estudio escolares. Realizamos una consultoría profunda para auditar las necesidades específicas de tu empresa, definir las competencias clave por departamento y estructurar clases de ingles para empresas diseñadas para resolver problemas del mundo de los negocios.
+En S-Peak, transformamos la manera en que las organizaciones abordan el desarrollo lingüístico. No vendemos programas rígidos ni planes de estudio escolares. Realizamos una consultoría profunda para auditar las necesidades específicas de su empresa, definir las competencias clave por departamento y estructurar clases de ingles para empresas diseñadas para resolver problemas del mundo de los negocios.
 
 **Deje atrás las métricas escolares y tome el control de su capacitación.  
 **[Contacte hoy mismo a un especialista](#contacto) para diseñar un mapa de habilidades lingüísticas personalizado y adaptado a las metas comerciales de su negocio.

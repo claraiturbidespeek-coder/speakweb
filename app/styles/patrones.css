@@ -1182,6 +1182,32 @@
   color: var(--color-ink-2);
 }
 
+.sp-form-exito-prisa {
+  margin: 24px 0 12px;
+  font-size: 13px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-muted);
+}
+
+/* Verde de marca de WhatsApp, no del sistema de color del sitio: igual que
+   `.waSubmit` en /idioma/ingles-para-empresas/, que resuelve lo mismo con el
+   mismo literal en vez de un token. */
+.sp-btn--whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #25d366;
+  color: var(--color-white);
+  padding: 15px 28px;
+  font-size: 15px;
+  font-weight: var(--weight-bold);
+}
+
+.sp-btn--whatsapp:hover {
+  background: #1ebe5a;
+}
+
 /* ========== Acordeón ==========
    `<details>` y `<summary>`, sin JavaScript. Las tres páginas con FAQ usaban
    esto o un <div> con una clase que ponía un guion; ahora es lo mismo en todas.

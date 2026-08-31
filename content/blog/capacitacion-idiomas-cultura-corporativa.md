@@ -41,7 +41,7 @@ Es fundamental que la alta dirección apoye y promueva la capacitación en idiom
 
 Para que la capacitación en idiomas forme parte natural de la cultura organizacional, debe ser parte de un entorno de aprendizaje continuo:
 
--   Accesibilidad de cursos y recursos: Facilita a los empleados el acceso a cursos, aplicaciones, y materiales educativos relacionados con su trabajo.
+-   Accesibilidad de cursos y recursos: Facilite a los empleados el acceso a cursos, aplicaciones, y materiales educativos relacionados con su trabajo.
 -   Establecer horarios flexibles: Permitir a los colaboradores tomar las clases durante su jornada laboral u ofrecer alternativas de aprendizaje online para mejorar la accesibilidad.
 
 *Mejor práctica: Integrar la capacitación en idiomas dentro del día a día del trabajo, como sesiones breves durante la jornada laboral, para que sea parte del flujo natural de trabajo.*
@@ -59,8 +59,8 @@ Una manera efectiva de integrar la capacitación en idiomas dentro de la cultura
 
 Un programa de capacitación en idiomas bien integrado también fomenta la diversidad cultural dentro de la organización, lo que a su vez mejora la colaboración global:
 
--   Talleres interculturales: Además de la capacitación en idiomas, organiza talleres y eventos sobre competencias interculturales que ayuden a los empleados a comprender y respetar diferentes culturas y maneras de trabajar.
--   Equipos multiculturales: Fomenta la formación de equipos que trabajen en proyectos internacionales o con clientes globales, para que los empleados pongan en práctica lo aprendido y se beneficien de una experiencia cultural enriquecedora.
+-   Talleres interculturales: Además de la capacitación en idiomas, organice talleres y eventos sobre competencias interculturales que ayuden a los empleados a comprender y respetar diferentes culturas y maneras de trabajar.
+-   Equipos multiculturales: Fomente la formación de equipos que trabajen en proyectos internacionales o con clientes globales, para que los empleados pongan en práctica lo aprendido y se beneficien de una experiencia cultural enriquecedora.
 
 *Mejor práctica: Crear grupos de trabajo que utilicen los idiomas aprendidos para promover la inclusión y el entendimiento entre diferentes equipos multiculturales dentro de la empresa.*
 

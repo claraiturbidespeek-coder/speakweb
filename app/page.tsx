@@ -103,7 +103,7 @@ const FAQ = [
   {
     pregunta: "¿Cómo miden el progreso de mis colaboradores?",
     respuesta: [
-      "A diferencia de otras escuelas que usan exámenes de memoria, nosotros evaluamos el desempeño real. Al final de cada etapa, el colaborador debe entregar una evidencia técnica (como una simulación de junta o un correo negociando). Esto se califica con una rúbrica profesional y se entrega a RH en una Tarjeta de Resultados con enlaces para que puedas ver y escuchar el avance.",
+      "A diferencia de los exámenes de memoria tradicionales, evaluamos el desempeño real. Al final de cada etapa, el colaborador debe entregar una evidencia técnica (como una simulación de junta o un correo negociando). Esto se califica con una rúbrica profesional y se entrega a RH en una Tarjeta de Resultados con enlaces para que pueda ver y escuchar el avance.",
     ],
   },
   {
@@ -225,7 +225,7 @@ export default function Home() {
           />
           <div>
             <h2 className={styles.heading}>
-              Prepare a su talento con clases de idiomas para el mercado global
+              Prepare a su talento con programas de idiomas para el mercado global
             </h2>
             <p className={styles.lead}>
               Traducimos el desarrollo del idioma en métricas de negocio.
@@ -277,8 +277,8 @@ export default function Home() {
             Programas de idiomas diseñados para el mercado global
           </p>
           <h2 className={styles.heading}>
-            Compruebe lo que nos diferencia de otras compañías con clases de
-            idiomas para empresas
+            Compruebe lo que nos diferencia de otros proveedores de
+            capacitación en idiomas para empresas
           </h2>
           <ul className={styles.differentiators}>
             {DIFERENCIADORES.map((d) => (
@@ -354,7 +354,7 @@ export default function Home() {
             <h2 className={styles.bandTitle}>El Talento se Desarrolla</h2>
             <p className={styles.bandText}>
               Elimine las barreras de comunicación que detienen el crecimiento de
-              su empresa. Impulse el liderazgo de su equipo con clases diseñadas
+              su empresa. Impulse el liderazgo de su equipo con programas diseñados
               para resultados reales.
             </p>
           </div>
@@ -385,7 +385,7 @@ export default function Home() {
           >
             <div className={`${styles.caseCard} ${styles.caseCardNarrow}`}>
               <h3 className={styles.caseTitle}>
-                Clases de idiomas para el cierre de brechas lingüísticas y
+                Programas de idiomas para el cierre de brechas lingüísticas y
                 técnicas
               </h3>
               <p className={styles.caseQuote}>
@@ -501,7 +501,7 @@ export default function Home() {
         <div className={`sp-inner ${styles.faqGrid}`}>
           <div>
             <h2 className={styles.faqTitle}>
-              Preguntas frecuentes sobre nuestra clases de idiomas para empresas
+              Preguntas frecuentes sobre nuestros programas de idiomas para empresas
             </h2>
             <p className={styles.lead}>
               Hemos recopilado las dudas más comunes de nuestros clientes para

@@ -75,7 +75,7 @@ export default function CentroDeRecursos({ className }: { className?: string }) 
             <div className="sp-recursos-intro">
               <h2 className="sp-recursos-titulo">Centro de Recursos</h2>
               <p className="sp-recursos-lead">
-                Guías y Recursos sobre Clases de Idiomas para Empresas
+                Guías y Recursos sobre Capacitación en Idiomas para Empresas
               </p>
             </div>
             <div className="sp-recursos-acciones">

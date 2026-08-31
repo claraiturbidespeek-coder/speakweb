@@ -3,12 +3,21 @@
 import { useEffect, useRef, useState } from "react";
 import type { FormEvent, MouseEvent } from "react";
 import { usePathname } from "next/navigation";
+import Icono from "@/app/components/Icono";
 import {
   enviarLead,
   idiomaDeRuta,
   recogerAtribucion,
   type PayloadLead,
 } from "@/lib/atribucion";
+
+// Mismo evento que ya dispara el modal de WhatsApp de /idioma/ingles-para-empresas/
+// al enviar su mini-formulario (lo recoge GTM, trigger Custom Event "conversion_whatsapp").
+const CONTACTO_WHATSAPP = "https://wa.me/525585265520";
+function registrarConversionWhatsapp() {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: "conversion_whatsapp" });
+}
 
 /* Modal de contacto del sitio. Uno solo, montado por ProveedorContacto.
 
@@ -134,6 +143,21 @@ export default function ModalContacto({
               Nuestro equipo está atendiendo su solicitud. Le contactaremos muy
               pronto.
             </p>
+            <p className="sp-form-exito-prisa">
+              ¿Tiene prisa? Le atendemos de inmediato.
+            </p>
+            <a
+              className="sp-btn sp-btn--whatsapp"
+              href={CONTACTO_WHATSAPP}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={registrarConversionWhatsapp}
+            >
+              <span className="sp-icono sp-icono--sm">
+                <Icono nombre="whatsapp" />
+              </span>
+              Escríbanos por WhatsApp
+            </a>
           </div>
         ) : (
           <>

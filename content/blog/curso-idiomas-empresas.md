@@ -8,8 +8,8 @@ categorySlug: "seleccion-de-proveedor"
 tags: []
 featuredImage: "/images/blog/curso-idiomas-empresas-portada.webp"
 featuredImageAlt: "Sesión interactiva de capacitación de idiomas para empresas con un instructor corporativo y un pizarrón de checklist."
-seoTitle: "Curso de idiomas para empresas: Elige el ideal | Blog S-Peak"
-seoDescription: "Elige el mejor curso de idiomas para empresas. Maximiza la productividad y el ROI de tu equipo con nuestra guía estratégica."
+seoTitle: "Curso de idiomas para empresas: Elija el ideal | Blog S-Peak"
+seoDescription: "Elija el mejor curso de idiomas para empresas. Maximice la productividad y el ROI de su equipo con nuestra guía estratégica."
 focusKeyword: "Curso de idiomas para empresas"
 readingTime: 4
 hasLeadForm: true

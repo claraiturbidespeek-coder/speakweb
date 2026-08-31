@@ -1,5 +1,5 @@
 ---
-title: "5 errores de comunicación en tu primer año de Nearshoring"
+title: "5 errores de comunicación en su primer año de Nearshoring"
 slug: "errores-comunicacion-nearshoring-en-mexico"
 date: "2026-06-05T17:15:42"
 author: "ANDREA RIOS"

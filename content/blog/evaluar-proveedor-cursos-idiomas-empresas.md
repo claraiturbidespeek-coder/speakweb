@@ -10,7 +10,7 @@ tags: []
 featuredImage: "/images/blog/evaluar-proveedor-cursos-idiomas-empresas-portada.webp"
 featuredImageAlt: "Profesora profesional impartiendo cursos de idiomas para empresas en vivo a través de una plataforma corporativa interactiva."
 seoTitle: "Cursos de idiomas para empresas: Lo qué ocultan I %%sitename%%"
-seoDescription: "Lo que las academias te ocultan al venderte cursos de idiomas para empresas. 10 preguntas clave para auditarlas."
+seoDescription: "Lo que las academias le ocultan al venderle cursos de idiomas para empresas. 10 preguntas clave para auditarlas."
 focusKeyword: "Cursos de idiomas para empresas"
 readingTime: 5
 hasLeadForm: true

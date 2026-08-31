@@ -201,10 +201,13 @@
 }
 
 /* ---------- 5. Contadores ----------
-   Cierran la sección anterior: sin hueco arriba. */
+   Cierran la sección anterior: sin hueco arriba. Tampoco abajo el estándar
+   de sección (88px): sumado al padding superior de Diferenciadores dejaba
+   176px de hueco entre los dos bloques. */
 
 .countersSection {
   padding-top: 0;
+  padding-bottom: var(--space-section-mobile);
 }
 
 .counters {

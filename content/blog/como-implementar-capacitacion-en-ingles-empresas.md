@@ -34,7 +34,7 @@ Estructurar un proyecto de formación bilingüe exitoso requiere seguir una meto
 
 ### 1\. Auditoría de necesidades para la capacitación en inglés
 
-**Antes de evaluar a las personas, evalúe las posiciones.** Define qué puestos interactúan directamente con clientes extranjeros, cuáles redactan reportes técnicos y cuáles solo leen correos automatizados. Esto le permitirá segmentar a su plantilla en grupos de prioridad estratégica, asegurando que los recursos atiendan primero a las áreas críticas para la facturación.
+**Antes de evaluar a las personas, evalúe las posiciones.** Defina qué puestos interactúan directamente con clientes extranjeros, cuáles redactan reportes técnicos y cuáles solo leen correos automatizados. Esto le permitirá segmentar a su plantilla en grupos de prioridad estratégica, asegurando que los recursos atiendan primero a las áreas críticas para la facturación.
 
 ### 2\. Evaluación situacional del nivel real
 
@@ -44,7 +44,7 @@ Por otra parte, sustituya los exámenes de opción múltiple por evaluaciones or
 
 Dependiendo del diseño de su espacio de trabajo (Home Office, presencial o mixto), debe elegir el formato que mitigue el ausentismo formativo. Le sugerimos analizar a fondo las ventajas operativas de cada modelo en nuestra guía sobre [clases de inglés para empresas: presencial, en línea o híbrido](https://s-peak.com/modalidad-capacitacion-idiomas-empresas/) para elegir la opción que mejor se adapte a los turnos de su equipo.
 
-**TIP:** No obligue a un equipo que opera 100% en home office a asistir a clases sabatinas presenciales, ni satures con plataformas de elearning automáticas a personal operativo que prefiere la interacción directa de un profesor en vivo.
+**TIP:** No obligue a un equipo que opera 100% en home office a asistir a clases sabatinas presenciales, ni sature con plataformas de elearning automáticas a personal operativo que prefiere la interacción directa de un profesor en vivo.
 
 ### 4\. Definición de KPIs operativos en el inglés empresarial
 
@@ -60,11 +60,11 @@ Finalmente, recuerde que la capacitación es un esfuerzo compartido. Vincule el 
 
 ![inglés empresarial con S-Peak](/images/blog/como-implementar-capacitacion-en-ingles-empresas-01.webp)
 
-## Lanza tu estrategia de idiomas corporativa con S-Peak
+## Lance su estrategia de idiomas corporativa con S-Peak
 
 Diseñar e implementar una capacitación en inglés institucional que realmente mueva las agujas de la productividad de su organización requiere un socio estratégico que entienda de negocios tanto como de pedagogía. En S-Peak, nos alejamos de los programas escolares rígidos y el autoaprendizaje pasivo que solo generan frustración laboral.
 
-Somos la consultoría corporativa de idiomas de confianza para las empresas líderes en México. Nos encargamos de todo el proceso: desde la auditoría situacional inicial de sus perfiles de puesto hasta el diseño de rutas de aprendizaje personalizadas con profesores nativos en vivo y glosarios técnicos específicos para tu sector industrial. Te entregamos tableros de control transparentes para que audites cada centavo de tu inversión formativa.
+Somos la consultoría corporativa de idiomas de confianza para las empresas líderes en México. Nos encargamos de todo el proceso: desde la auditoría situacional inicial de sus perfiles de puesto hasta el diseño de rutas de aprendizaje personalizadas con profesores nativos en vivo y glosarios técnicos específicos para su sector industrial. Le entregamos tableros de control transparentes para que audite cada centavo de su inversión formativa.
 
 ### Simplifique la gestión de su talento y asegure resultados desde el primer trimestre
 
