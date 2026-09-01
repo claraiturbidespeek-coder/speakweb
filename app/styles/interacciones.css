@@ -143,6 +143,10 @@ html.lenis {
    para el dashboard y el botón de WhatsApp, equipo para los hover que mueven
    tarjetas, y el 404 para congelar su escena. Esos no son duplicados. */
 
+/* DESACTIVADO TEMPORAL — prueba para confirmar con Nicolás si esta regla es
+   la causa de que el carrusel de logos se vea congelado. Restaurar quitando
+   el comentario en cuanto se confirme. Mientras esté así, TODO el sitio
+   pierde la protección de "reducir movimiento", no solo el carrusel.
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -153,3 +157,4 @@ html.lenis {
     scroll-behavior: auto !important;
   }
 }
+*/
