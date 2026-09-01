@@ -60,9 +60,21 @@
     var(--color-blue-gradient) 0%,
     var(--color-off-white) 55%
   );
-  height: calc(100vh - var(--header-height));
+  height: calc(90vh - var(--header-height));
+  /* 40px: valor ajustado a ojo para este hero en construcción, no hay token
+     de tokens.css que lo cubra (el más próximo, --space-inset, es 28px). */
+  padding-block: 40px;
   display: flex;
   align-items: center;
+}
+
+/* La franja de logos (`.sp-logos`, patrones.css) trae -60px de margin-top
+   para montar sobre la sección anterior — aquí se cancela: la tarjeta se
+   queda en su lugar en vez de subir sobre el hero. El patrón no se toca
+   porque también lo usan las siete páginas de equipo y
+   /idioma/ingles-para-empresas/; ahí sigue igual. */
+.logos {
+  margin-top: 0;
 }
 
 /* El doble del gutter lateral de sp-seccion, solo en desktop (>960px, el
@@ -86,6 +98,14 @@
   min-width: 0;
 }
 
+/* El segundo párrafo deja "colaborador" solo en su propia línea a varios
+   anchos de viewport — una viuda. Se ensancha un poco más que la columna,
+   hacia el hueco de 80px que la separa de la media, para que la palabra
+   suba a la línea anterior. */
+.heroNuevoText p:last-of-type {
+  width: calc(100% + 40px);
+}
+
 /* Ancho al contenido, centrada en su columna: si el video queda más angosto
    que la columna por el tope de alto de abajo, esta caja se ajusta a su
    tamaño real en vez de quedarse al ancho completo — así las tarjetas, que
@@ -98,14 +118,16 @@
 }
 
 /* Sin recorte, sin object-fit: el ancho y el alto los pone su propia
-   relación de aspecto — se ve el cuadro entero. El tope de alto le da al
-   video el mismo aire vertical que ya tiene el texto de al lado. */
+   relación de aspecto — se ve el cuadro entero. El tope de alto es el
+   espacio real que le queda al hero después de su propio padding-block
+   (misma cuenta que su height, arriba), no un vh suelto: así el video
+   siempre cabe entero en la caja y nunca queda debajo del header. */
 .heroNuevoVideo {
   display: block;
   width: auto;
   height: auto;
   max-width: 100%;
-  max-height: 60vh;
+  max-height: calc(90vh - var(--header-height) - (40px * 2));
 }
 
 /* ---------- 3. Claim + idiomas ---------- */

@@ -197,7 +197,7 @@ export default function Home() {
       </section>
 
       {/* 2. Confianza */}
-      <BandaLogos />
+      <BandaLogos className={styles.logos} />
 
       {/* 3. Claim + idiomas */}
       <section className={`sp-seccion ${styles.claim}`}>
