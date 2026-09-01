@@ -94,6 +94,13 @@
   font-weight: var(--weight-black);
 }
 
+/* `.sp-hero-sub` trae un tope de 540px pensado para heros más angostos: aquí
+   deja un hueco a la derecha del párrafo porque la columna del titular es más
+   ancha. Se libera solo en este hero; el patrón no se toca porque también lo
+   usa /idioma/ingles-para-empresas/. */
+.hero :global(.sp-hero-sub) {
+  max-width: none;
+}
 
 .heroVisual {
   position: relative;
