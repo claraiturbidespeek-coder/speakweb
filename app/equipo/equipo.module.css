@@ -26,33 +26,35 @@
    bloques responsive). Están en el historial si hacen falta. */
 
 /* ---------- Breadcrumb ----------
+   Primera línea del hero, sobre el eyebrow: texto plano, sin barra, sin fondo
+   ni borde propios. Antes era una franja entre el header y el hero, con su
+   propio contenedor y su propio gutter; ahora hereda los del hero, así que se
+   queda solo con la tipografía y la separación.
+
+   `flex-wrap` porque dentro de la columna del hero, más angosta que la franja
+   de antes, los tres niveles pueden no caber en una línea.
+
    Solo lo tiene esta página. Sube a patrones.css cuando una segunda lo pida. */
 
 .breadcrumb {
-  background: var(--color-off-white);
-  border-bottom: 1px solid var(--color-border);
-  padding: 10px var(--space-gutter);
-}
-
-.breadcrumbInner {
-  max-width: var(--container-max);
-  margin: 0 auto;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 6px;
+  margin-bottom: 16px;
   font-size: 12px;
   color: var(--color-muted);
 }
 
-.breadcrumbInner a {
+.breadcrumb a {
   color: var(--color-muted);
 }
 
-.breadcrumbInner a:hover {
+.breadcrumb a:hover {
   color: var(--color-navy);
 }
 
-.breadcrumbInner span {
+.breadcrumb span {
   color: var(--color-navy);
   font-weight: var(--weight-semibold);
 }

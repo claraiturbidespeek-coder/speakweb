@@ -175,7 +175,7 @@ const datos: DatosEquipo = {
       },
       {
         icono: "globo",
-        titulo: "El idioma de su corporativo, no solo inglés",
+        titulo: "El idioma correcto para su tablero directivo",
         texto:
           "Inglés para consejos internacionales, además de francés, alemán, italiano, portugués o español para extranjeros, alineados al origen de su casa matriz o socios.",
       },

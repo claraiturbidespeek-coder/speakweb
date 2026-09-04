@@ -89,17 +89,6 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
     <>
       <AnimacionesEntrada threshold={0.08} />
       <main>
-        {/* BREADCRUMB */}
-        <div className={styles.breadcrumb}>
-          <div className={styles.breadcrumbInner}>
-            <Link href="/">Inicio</Link>
-            <span aria-hidden="true">›</span>
-            <span>Soluciones por Equipo</span>
-            <span aria-hidden="true">›</span>
-            <span>{datos.nombre}</span>
-          </div>
-        </div>
-
         {/* HERO */}
         <section className={styles.hero}>
           <img
@@ -111,6 +100,16 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
           />
           <div className={styles.heroInner}>
             <div className="reveal">
+              {/* Primera línea del hero, no barra propia. El BreadcrumbList del
+                  JSON-LD sigue en su sitio, arriba: no depende de este marcado. */}
+              <div className={styles.breadcrumb}>
+                <Link href="/">Inicio</Link>
+                <span aria-hidden="true">›</span>
+                <span>Soluciones por Equipo</span>
+                <span aria-hidden="true">›</span>
+                <span>{datos.nombre}</span>
+              </div>
+
               <div className="sp-etiqueta">{datos.hero.etiqueta}</div>
               <h1>{datos.hero.titulo}</h1>
               <p className="sp-hero-sub">{datos.hero.sub}</p>

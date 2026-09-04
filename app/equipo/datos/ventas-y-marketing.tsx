@@ -9,10 +9,10 @@ import { IDIOMAS, type DatosEquipo } from "../tipos";
    Una diferencia con las otras seis áreas, del propio original:
    - Ocho tarjetas de competencias en vez de seis.
 
-   La franja de idiomas se agregó después para igualar a las otras seis: el
-   documento del cliente no trae ese texto para esta página, así que el párrafo
-   está escrito con el criterio de las áreas hermanas y queda pendiente de que
-   el cliente lo valide o lo sustituya por el suyo.
+   La franja de idiomas se agregó después para igualar a las otras seis. El
+   texto que lleva es el del cliente: no estaba en el documento original y lo
+   entregó más tarde, así que sustituyó al párrafo provisional que se había
+   escrito con el criterio de las áreas hermanas.
 
    También es la única con imagen de hero propia; las otras seis usan de momento
    la del mosaico del home. */
@@ -108,9 +108,9 @@ const datos: DatosEquipo = {
   },
 
   franja: {
-    titulo: "El idioma de su mercado, no solo inglés",
+    titulo: "El idioma de su cliente, no solo inglés",
     texto:
-      "El inglés abre la mayoría de los mercados, pero no todos. Si su equipo prospecta en Brasil, presenta ante un cliente alemán o negocia con una matriz francesa o italiana, lo capacitamos en la lengua en la que ocurre esa conversación. A través de un diagnóstico previo, definimos el idioma idóneo según el origen de sus clientes y los mercados donde compite.",
+      "La mayoría de nuestros programas son en inglés, porque es el idioma de la mayoría de los negocios internacionales. Pero si su equipo vende en Brasil, Alemania, Francia o Italia, lo capacitamos en la lengua en que su cliente decide la compra. En el diagnóstico definimos cuál.",
     idiomas: IDIOMAS,
   },
 
@@ -153,9 +153,17 @@ const datos: DatosEquipo = {
       {
         icono: "birrete",
         titulo: "El talento bilingüe es escaso y caro de retener",
-        texto:
-          "Menos del 15% de los profesionales en México son verdaderamente bilingües. Capacitar al equipo que ya conoce su operación reduce la dependencia externa.",
-        fuente: "Fuente: SEP",
+        texto: (
+          <>
+            Alrededor de 8 de cada 100 personas ocupadas en México hablan
+            inglés.{" "}
+            <strong>
+              Capacitar al equipo que ya conoce su operación y su cartera
+            </strong>{" "}
+            reduce la dependencia de un solo vendedor bilingüe.
+          </>
+        ),
+        fuente: "Fuente: ENOE, INEGI",
       },
       {
         icono: "flecha",
@@ -201,7 +209,7 @@ const datos: DatosEquipo = {
       },
       {
         icono: "globo",
-        titulo: "El idioma de su mercado, no solo inglés",
+        titulo: "El idioma de su cliente, no solo inglés",
         texto:
           "Inglés para Norteamérica y negocios globales, así como francés, alemán, italiano, portugués o español según sus metas estratégicas.",
       },
