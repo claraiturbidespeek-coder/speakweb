@@ -62,7 +62,7 @@ export type DatosEquipo = {
     titulo: string;
     texto: ReactNode;
     etiquetaCarrusel: string;
-    tarjetas: (TarjetaEquipo & { fuente: string })[];
+    tarjetas: (TarjetaEquipo & { fuente?: string })[];
   };
 
   diferenciadores: {

@@ -25,7 +25,6 @@ const CIFRAS = [
   { icono: "premio", num: "+20", label: "Años de experiencia" },
 ];
 
-const AVATARES = ["MG", "FH", "AV", "RC"];
 
 const TESTIMONIOS = [
   {
@@ -117,18 +116,15 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
               <BotonContacto className="sp-btn sp-btn--rojo">
                 {datos.hero.cta}
               </BotonContacto>
-              <div className="sp-hero-social">
-                <div className="sp-avatares">
-                  {AVATARES.map((a) => (
-                    <span key={a} className="sp-avatar-apilado">
-                      {a}
-                    </span>
-                  ))}
-                </div>
-                <div>
-                  <div className="sp-estrellas">★★★★★</div>
-                  <p>{datos.hero.prueba}</p>
-                </div>
+              <div className={styles.heroSello}>
+                <img
+                  className={styles.heroSelloLogo}
+                  src="/images/stps-logo.webp"
+                  alt="Secretaría del Trabajo y Previsión Social"
+                  width="101"
+                  height="28"
+                />
+                <p>Registro oficial ante la STPS · Entregamos constancia DC-3</p>
               </div>
             </div>
 
@@ -256,7 +252,9 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
                     </div>
                     <h3>{t.titulo}</h3>
                     <p>{t.texto}</p>
-                    <span className={styles.mercadoCardSource}>{t.fuente}</span>
+                    {t.fuente ? (
+                      <span className={styles.mercadoCardSource}>{t.fuente}</span>
+                    ) : null}
                   </article>
                 ))}
               </Carrusel>

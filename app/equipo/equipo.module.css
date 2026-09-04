@@ -102,6 +102,35 @@
   max-width: none;
 }
 
+/* Sello de registro del hero. Ocupa el sitio de la prueba social y hereda su
+   tipografía y su separación (13px sobre --color-ink-2, 24px bajo el botón);
+   el patrón .sp-hero-social no se toca porque también lo usa
+   /idioma/ingles-para-empresas/. El logotipo se mide por la altura de la línea
+   y deja libre el ancho, para que conserve su proporción. */
+.heroSello {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.heroSelloLogo {
+  flex-shrink: 0;
+  height: 28px;
+  width: auto;
+}
+
+/* `margin: 0 0 16px` de base.css se aplica también a este párrafo, y flex
+   centra la caja con su margen: el texto quedaba 8px por encima del logotipo.
+   Se anula aquí para que ambos compartan eje. */
+.heroSello p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: var(--weight-semibold);
+  color: var(--color-ink-2);
+}
+
 .heroVisual {
   position: relative;
 }
