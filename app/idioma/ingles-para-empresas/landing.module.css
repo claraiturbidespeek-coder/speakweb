@@ -53,7 +53,7 @@
 .hero h1 {
   margin-bottom: 20px;
   font-size: clamp(28px, 3.2vw, 42px);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   line-height: 1.1;
   letter-spacing: -0.03em;
   color: var(--color-navy);
@@ -61,7 +61,7 @@
 
 .hero h1 strong {
   color: var(--color-red);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
 }
 
 .hero :global(.sp-hero-sub) {
@@ -185,7 +185,7 @@
 .areasLeft h2 {
   margin-bottom: 18px;
   font-size: clamp(26px, 2.6vw, 36px);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   line-height: 1.18;
   letter-spacing: -0.025em;
   color: var(--color-navy);
@@ -225,7 +225,7 @@
 .evidenciaLeft h2 {
   margin-bottom: 18px;
   font-size: var(--text-title-lg);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   line-height: 1.12;
   letter-spacing: -0.025em;
   color: var(--color-navy);
@@ -573,7 +573,7 @@
 
 .procesoLeft h2 {
   font-size: var(--text-title-lg);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   line-height: 1.12;
   letter-spacing: -0.025em;
   color: var(--color-navy);
@@ -756,7 +756,7 @@
 .faqLeft h2 {
   margin: 14px 0 16px;
   font-size: clamp(28px, 3vw, 38px);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   line-height: 1.12;
   letter-spacing: -0.025em;
   color: var(--color-navy);
@@ -790,7 +790,7 @@
   z-index: 1;
   margin-bottom: 16px;
   font-size: clamp(30px, 4vw, 52px);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   line-height: 1.08;
   letter-spacing: -0.03em;
 }

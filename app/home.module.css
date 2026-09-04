@@ -23,7 +23,7 @@
 .heroTitle {
   margin: 0 0 24px;
   font-size: var(--text-title-lg);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   line-height: 1.1;
   letter-spacing: -0.03em;
   color: var(--color-navy);
@@ -42,9 +42,12 @@
   box-shadow: 0 10px 30px rgba(26, 60, 77, 0.14);
 }
 
+/* Sale del video hacia el hueco de 80px que separa las dos columnas del hero:
+   -80px es lo que cabe sin invadir la columna de texto. Deja 170px de tarjeta
+   sobre el video en vez de 210px. */
 .calloutTop {
   top: 24px;
-  left: -40px;
+  left: -80px;
 }
 
 .calloutBottom {
@@ -140,7 +143,7 @@
   width: 80%;
   margin: 0 auto 42px;
   font-size: var(--text-title-md);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: var(--color-navy);
@@ -186,7 +189,7 @@
 .heading {
   margin: 0 0 16px;
   font-size: var(--text-title-md);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: var(--color-navy);
@@ -430,7 +433,7 @@
 .bandTitle {
   margin: 0 0 14px;
   font-size: var(--text-title-md);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   letter-spacing: -0.025em;
   color: var(--color-white);
 }
@@ -582,7 +585,7 @@
 .faqTitle {
   margin: 0 0 14px;
   font-size: var(--text-title-md);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: var(--color-navy);

@@ -14,17 +14,19 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <MenuCompleto />
+        <div className={styles.izquierda}>
+          <MenuCompleto />
 
-        <Link href="/" className={styles.logo}>
-          <Image
-            className="site-logo"
-            src="/brand/logo_white.svg"
-            alt="S-Peak"
-            width={1776}
-            height={492}
-          />
-        </Link>
+          <Link href="/" className={styles.logo}>
+            <Image
+              className="site-logo"
+              src="/brand/logo_white.svg"
+              alt="S-Peak"
+              width={1776}
+              height={492}
+            />
+          </Link>
+        </div>
 
         <Navegacion />
 

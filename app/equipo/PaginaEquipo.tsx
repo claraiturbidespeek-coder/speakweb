@@ -4,6 +4,7 @@ import BandaLogos from "@/app/components/BandaLogos";
 import Carrusel from "@/app/components/Carrusel";
 import CentroDeRecursos from "@/app/components/CentroDeRecursos";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
+import SelloSTPS from "@/app/components/SelloSTPS";
 import Icono from "@/app/components/Icono";
 import type { DatosEquipo } from "./tipos";
 import styles from "./equipo.module.css";
@@ -116,16 +117,7 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
               <BotonContacto className="sp-btn sp-btn--rojo">
                 {datos.hero.cta}
               </BotonContacto>
-              <div className={styles.heroSello}>
-                <img
-                  className={styles.heroSelloLogo}
-                  src="/images/stps-logo.webp"
-                  alt="Secretaría del Trabajo y Previsión Social"
-                  width="101"
-                  height="28"
-                />
-                <p>Registro oficial ante la STPS · Entregamos constancia DC-3</p>
-              </div>
+              <SelloSTPS />
             </div>
 
             <div className={`${styles.heroVisual} reveal`}>

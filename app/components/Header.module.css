@@ -5,35 +5,63 @@
    donde están sus componentes. Los valores de los desplegables se movieron allí
    sin cambios; venían de app/idioma/ingles-para-empresas (nav, líneas 63-85). */
 
+/* La barra es de ancho completo y pone el gutter; la fila de dentro es la que
+   se topa en el contenedor. Es la misma composición que `.sp-seccion` +
+   `.sp-inner` (patrones.css), y por eso el logo cae en el mismo margen
+   izquierdo que los titulares y el botón en el borde derecho del contenido.
+
+   Antes el tope y el gutter iban los dos en la fila: con `box-sizing:
+   border-box` el relleno se comía por dentro los 1360px, así que la fila
+   arrancaba un gutter más adentro que el contenido de las páginas — 40px de
+   desfase a 1440 de viewport, 80px a 2000. */
 .header {
   position: sticky;
   top: 0;
   z-index: 100;
+  padding-inline: var(--space-gutter);
   background: var(--color-navy);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Tres columnas y no una fila flex: las laterales miden lo mismo (1fr cada
+   una), así que la del medio queda centrada en el header pase lo que pase a los
+   lados. Importa porque los lados no son iguales en todas las páginas: en las
+   comerciales el botón de menú se ve también en escritorio (.toggleSiempre, en
+   nav.module.css) y ensancha la izquierda. Con márgenes automáticos el menú se
+   habría centrado en el hueco libre, y habría caído en distinto sitio según la
+   página; así cae en el mismo.
+
+   `minmax(0, 1fr)` en vez de `1fr` para que las laterales puedan encogerse por
+   debajo de su contenido en lugar de desbordar la fila. */
 .inner {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 var(--space-gutter);
   min-height: var(--header-height);
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   gap: 20px;
 }
 
-/* El margen automático empuja la navegación y el botón de contacto a la
-   derecha, y deja el logo junto al botón de menú cuando ese se muestra. */
+/* El botón de menú y el logo, juntos en la columna izquierda. */
+.izquierda {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-width: 0;
+}
+
 .logo {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  margin-right: auto;
 }
 
+/* Contra el borde derecho de su columna: sin esto se quedaría al principio,
+   pegado al menú. */
 .cta {
   flex-shrink: 0;
+  justify-self: end;
 }
 
 /* Las dos etiquetas del botón de contacto conviven en el marcado y el ancho
@@ -47,7 +75,11 @@
    debajo de 960px la navegación es el botón de menú, en nav.module.css. */
 @media (max-width: 960px) {
   .inner {
-    padding: 14px var(--space-gutter);
+    padding-block: 14px;
+    gap: 16px;
+  }
+
+  .izquierda {
     gap: 16px;
   }
 

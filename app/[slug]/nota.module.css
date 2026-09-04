@@ -58,7 +58,7 @@
   max-width: 900px;
   text-align: center;
   font-size: var(--text-title-lg);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   line-height: 1.1;
   letter-spacing: -0.03em;
   color: var(--color-navy);
@@ -260,7 +260,7 @@
 .relacionadosTitulo {
   margin: 0 0 8px;
   font-size: var(--text-title-md);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: var(--color-navy);

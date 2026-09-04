@@ -22,7 +22,7 @@ export default function AvisoDePrivacidad() {
   return (
     <main>
       <section className={`sp-seccion ${styles.cabecera}`}>
-        <div className="sp-inner">
+        <div className={`sp-inner ${styles.documento}`}>
           <h1 className={styles.titulo}>Aviso de Privacidad</h1>
           <p className={styles.actualizacion}>
             Última Actualización: Abril 28, 2026
@@ -31,7 +31,7 @@ export default function AvisoDePrivacidad() {
       </section>
 
       <section className={`sp-seccion ${styles.cuerpo}`}>
-        <div className={`sp-inner ${styles.cuerpoInner}`}>
+        <div className={`sp-inner ${styles.documento}`}>
           <div className={styles.contenido}>
             <h3>
               1.1 Mecanismos y procedimiento para que, en su caso, el titular
@@ -43,19 +43,19 @@ export default function AvisoDePrivacidad() {
               En todo momento usted podrá revocar el consentimiento que nos ha
               otorgado para el tratamiento de sus datos personales, a fin de
               que dejemos de hacer uso de los mismos.
-              <br />
+            </p>
+
+            <p>
               Para ello, es necesario que presente su petición en{" "}
               <a href="mailto:privacidad@s-peak.com">privacidad@s-peak.com</a>.
               Su petición deberá ir acompañada de la siguiente información:
             </p>
 
-            <p>
-              Nombre completo
-              <br />
-              Teléfono fijo y/o celular
-              <br />
-              Correo electrónico
-            </p>
+            <ul>
+              <li>Nombre completo</li>
+              <li>Teléfono fijo y/o celular</li>
+              <li>Correo electrónico</li>
+            </ul>
 
             <p>
               Es importante informarle que usted tiene derecho al Acceso,
@@ -63,7 +63,9 @@ export default function AvisoDePrivacidad() {
               oponerse al tratamiento de los mismos o a revocar el
               consentimiento que para dicho fin nos haya otorgado en los
               términos que marca la Ley en su Art. 29.
-              <br />
+            </p>
+
+            <p>
               Tendremos un plazo máximo de 30 días para atender su petición y a
               través de un correo electrónico se le notificará que S-Peak ha
               revocado el tratamiento de sus datos personales.
@@ -87,17 +89,13 @@ export default function AvisoDePrivacidad() {
               datos que obtenemos por este medio pueden ser, entre otros:
             </p>
 
-            <p>
-              Nombre completo
-              <br />
-              Compañia
-              <br />
-              Puesto
-              <br />
-              Teléfono
-              <br />
-              Correo Electrónico
-            </p>
+            <ul>
+              <li>Nombre completo</li>
+              <li>Compañia</li>
+              <li>Puesto</li>
+              <li>Teléfono</li>
+              <li>Correo Electrónico</li>
+            </ul>
 
             <h3>1.3 Las finalidades del tratamiento de los datos personales</h3>
 
@@ -114,7 +112,9 @@ export default function AvisoDePrivacidad() {
               S-Peak, responsable del manejo de la información se localiza en
               Avenida Masaryk, No. 18, Piso 2, Col Polanco V Sección, Ciudad
               de México.
-              <br />
+            </p>
+
+            <p>
               Cómo contactarnos: vía email{" "}
               <a href="mailto:privacidad@s-peak.com">privacidad@s-peak.com</a>{" "}
               o si requiere comunicación directa con nosotros puede consultar

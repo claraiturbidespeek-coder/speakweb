@@ -68,7 +68,7 @@
 .sp-seccion-top h2 {
   margin-bottom: 16px;
   font-size: var(--text-title-md);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: var(--color-navy);
@@ -504,6 +504,37 @@
   margin-bottom: 3px;
 }
 
+/* ========== Sello de registro STPS ==========
+   Bajo el CTA del hero: logotipo y línea de constancia. Lo montan la home y la
+   plantilla de /equipo/ a través de app/components/SelloSTPS.tsx; en /equipo/
+   ocupa el lugar que tenía la prueba social de aquí arriba.
+
+   El logotipo se mide por la altura de la línea y deja libre el ancho, para que
+   conserve su proporción. El párrafo anula el `margin: 0 0 16px` de base.css:
+   flex centra la caja con su margen, y con él el texto no comparte eje con el
+   logotipo. */
+
+.sp-sello-stps {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.sp-sello-stps-logo {
+  flex-shrink: 0;
+  height: 28px;
+  width: auto;
+}
+
+.sp-sello-stps p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: var(--weight-semibold);
+  color: var(--color-ink-2);
+}
+
 /* ========== Franja de logos ==========
    Monta sobre la sección anterior: de ahí el margen negativo y el z-index. */
 
@@ -544,7 +575,7 @@
 .sp-testi-top h2 {
   margin-bottom: 12px;
   font-size: var(--text-title-md);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   letter-spacing: -0.025em;
   color: var(--color-white);
   text-wrap: balance;
@@ -723,7 +754,7 @@
 .sp-franja-texto h2 {
   margin-bottom: 16px;
   font-size: clamp(22px, 2.4vw, 32px);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--color-white);
@@ -927,7 +958,7 @@
 .sp-recursos-titulo {
   margin: 0 0 10px;
   font-size: var(--text-title-md);
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: var(--color-navy);
@@ -1013,7 +1044,7 @@
 .sp-modal-head h2 {
   margin-bottom: 6px;
   font-size: 22px;
-  font-weight: var(--weight-black);
+  font-weight: var(--weight-bold);
   line-height: 1.2;
 }
 

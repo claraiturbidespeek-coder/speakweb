@@ -3,6 +3,7 @@ import Link from "next/link";
 import BandaLogos from "@/app/components/BandaLogos";
 import CentroDeRecursos from "@/app/components/CentroDeRecursos";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
+import SelloSTPS from "@/app/components/SelloSTPS";
 import Icono from "@/app/components/Icono";
 import styles from "./home.module.css";
 
@@ -174,6 +175,7 @@ export default function Home() {
             <BotonContacto className="sp-btn sp-btn--rojo">
               Solicite una Cotización
             </BotonContacto>
+            <SelloSTPS />
           </div>
 
           <div className={styles.heroNuevoMedia}>

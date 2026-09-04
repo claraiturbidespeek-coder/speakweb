@@ -98,9 +98,6 @@ export default function Footer() {
             <Link className={styles.legalLink} href="/aviso-de-privacidad/">
               Aviso de privacidad
             </Link>
-            <Link className={styles.legalLink} href="/terminos-y-condiciones/">
-              Términos y condiciones
-            </Link>
           </nav>
           <p>S-Peak 2026 | Copyright Todos los Derechos Reservados</p>
         </div>
