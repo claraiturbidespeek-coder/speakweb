@@ -5,6 +5,7 @@ import Script from "next/script";
 import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BandaLogos from "@/app/components/BandaLogos";
 import FranjaIdiomas from "@/app/components/FranjaIdiomas";
+import Icono from "@/app/components/Icono";
 import SelloSTPS from "@/app/components/SelloSTPS";
 import { useContacto } from "@/app/components/contacto/useContacto";
 // La lista de las seis páginas de idioma vive con la plantilla de equipo.
@@ -245,17 +246,23 @@ export default function Page() {
       </div>
       <div className="sp-stats-row">
         <div className="sp-stat">
-          <span className="sp-icono sp-icono--sm sp-icono--rojo">🎓</span>
+          <span className="sp-icono sp-icono--sm sp-icono--rojo">
+            <Icono nombre="birrete" />
+          </span>
           <span className="sp-stat-num">+40K</span>
           <span className="sp-stat-label">Profesionales formados</span>
         </div>
         <div className="sp-stat">
-          <span className="sp-icono sp-icono--sm sp-icono--rojo">🏢</span>
+          <span className="sp-icono sp-icono--sm sp-icono--rojo">
+            <Icono nombre="edificio" />
+          </span>
           <span className="sp-stat-num">+500</span>
           <span className="sp-stat-label">Empresas atendidas</span>
         </div>
         <div className="sp-stat">
-          <span className="sp-icono sp-icono--sm sp-icono--rojo">🌐</span>
+          <span className="sp-icono sp-icono--sm sp-icono--rojo">
+            <Icono nombre="globo" />
+          </span>
           <span className="sp-stat-num">+30</span>
           <span className="sp-stat-label">Industrias</span>
         </div>

@@ -162,6 +162,23 @@
   color: var(--color-navy);
 }
 
+/* La bandera ocupa lo mismo que ocupaba el emoji —un cuadratín— y se sienta
+   sobre la misma línea base, con el espacio de siempre entre ella y el nombre.
+
+   Radio propio y no heredado: el rectángulo de la bandera llega al borde del
+   lienzo y un radio se le comería las esquinas. Escrito aquí para que tampoco
+   le afecte la prueba de superficies del final de este archivo. */
+.langFlag {
+  /* `display` explícito: base.css pone `img { display: block }` en todo el
+     sitio, y eso mandaba la bandera a su propia línea. En línea vuelve al flujo
+     del texto, y solo así surte efecto el vertical-align. */
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  border-radius: 0;
+}
+
 /* ---------- 4. Prepare a su talento ---------- */
 
 .programGrid {
@@ -719,5 +736,91 @@
 
   .counterNum {
     font-size: 56px;
+  }
+}
+
+/* ==========================================================================
+   PRUEBA DE LENGUAJE VISUAL — superficies redondeadas y glass
+   ==========================================================================
+
+   Prueba para el cliente, acotada a la home y reversible en dos pasos: borrar
+   este bloque y quitar la clase `pruebaSuperficies` del <main> en page.tsx. No
+   se tocó ningún token global ni ningún patrón compartido, así que el resto del
+   sitio no se entera.
+
+   OJO con lo que esta prueba contradice: `--radius: 0` está en tokens.css como
+   decisión de marca, con una única excepción aprobada (la escena 404). Esto la
+   contradice a propósito y solo aquí, mientras dure la prueba.
+
+   Cómo funciona el acotado: base.css aplica `border-radius: var(--radius)` en
+   el selector universal, así que basta redefinir esa variable en el <main> de
+   la home para que herede todo lo que cuelga de él —cajas, botones, píldoras,
+   imágenes— sin escribir una regla por elemento. El header y el pie quedan
+   fuera del <main> y siguen a 0. Los círculos declarados con `border-radius:
+   50%` mandan sobre esto y siguen siendo círculos.
+
+   La escala: el sistema no tiene escala de radios que seguir —solo el 0—, así
+   que los dos escalones salen del ritmo de 4px que ya usa el espaciado, con la
+   relación de siempre entre control pequeño y superficie grande. */
+
+.pruebaSuperficies {
+  /* Controles y cajas pequeñas: botones, píldoras, iconos, campos, avisos. */
+  --radius: 8px;
+
+  /* Superficies grandes: tarjetas, medios con contenedor, bloques de color. */
+  --radius-grande: 20px;
+
+  /* Glass. La opacidad es alta a propósito: por debajo de 0.7 el texto navy
+     sobre foto pierde contraste, y esto es una prueba de superficie, no un
+     cambio de jerarquía ni de legibilidad. */
+  --glass-fondo: rgba(255, 255, 255, 0.72);
+  --glass-borde: rgba(255, 255, 255, 0.55);
+  --glass-desenfoque: 18px;
+}
+
+/* ---------- Radio grande: las superficies que sí son superficie ---------- */
+
+.pruebaSuperficies .callout,
+.pruebaSuperficies .heroNuevoVideo,
+.pruebaSuperficies .programImage,
+.pruebaSuperficies .diffCard,
+.pruebaSuperficies .diffMedia,
+.pruebaSuperficies .tile,
+.pruebaSuperficies .band,
+.pruebaSuperficies .case,
+.pruebaSuperficies .caseCard,
+.pruebaSuperficies :global(.sp-cta-card),
+.pruebaSuperficies :global(.sp-logos-card),
+.pruebaSuperficies :global(.sp-recursos-tarjeta) {
+  border-radius: var(--radius-grande);
+}
+
+/* La imagen del post llega al borde de su tarjeta: se recorta con la tarjeta
+   en vez de redondearse por su cuenta, que dejaría la esquina doble. */
+.pruebaSuperficies :global(.sp-recursos-tarjeta) {
+  overflow: hidden;
+}
+
+/* ---------- Glass: solo donde hay algo detrás ----------
+
+   Dos sitios, y no más: los callouts del hero, que flotan sobre el video, y la
+   tarjeta de los casos, que se apoya sobre la foto o sobre el color del
+   artículo. En el resto de la home el fondo es blanco u off-white plano: ahí el
+   desenfoque no se percibe y solo cuesta pintado. */
+
+.pruebaSuperficies .callout,
+.pruebaSuperficies .caseCard {
+  background: var(--glass-fondo);
+  border: 1px solid var(--glass-borde);
+  backdrop-filter: blur(var(--glass-desenfoque));
+  -webkit-backdrop-filter: blur(var(--glass-desenfoque));
+}
+
+/* Sin soporte de backdrop-filter no hay desenfoque que valga: se vuelve al
+   fondo opaco para no dejar el texto sobre la foto a medio velar. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .pruebaSuperficies .callout,
+  .pruebaSuperficies .caseCard {
+    background: var(--color-white);
   }
 }

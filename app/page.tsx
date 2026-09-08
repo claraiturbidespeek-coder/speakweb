@@ -13,13 +13,17 @@ export const metadata: Metadata = {
     "Transforme el dominio de idiomas en métricas de negocio. Capacitación para empresas con evidencias de desempeño y reportes para RRHH.",
 };
 
+/* Banderas en SVG y no como emoji nativo: Windows no trae glifo para las
+   secuencias regionales y pintaba el par de letras (GB, FR, DE…) en su sitio.
+   Los archivos son de Twemoji 14.0.2, el set abierto de Twitter, servidos desde
+   public/images/banderas/ y no desde un CDN. Los gráficos son CC-BY 4.0. */
 const IDIOMAS = [
-  "🇬🇧 Inglés",
-  "🇫🇷 Francés",
-  "🇩🇪 Alemán",
-  "🇵🇹 Portugués",
-  "🇮🇹 Italiano",
-  "🇪🇸 Español",
+  { nombre: "Inglés", bandera: "ingles" },
+  { nombre: "Francés", bandera: "frances" },
+  { nombre: "Alemán", bandera: "aleman" },
+  { nombre: "Portugués", bandera: "portugues" },
+  { nombre: "Italiano", bandera: "italiano" },
+  { nombre: "Español", bandera: "espanol" },
 ];
 
 const FEATURES = [
@@ -152,7 +156,10 @@ const FAQ = [
 
 export default function Home() {
   return (
-    <main>
+    /* `pruebaSuperficies`: prueba de lenguaje visual acotada a la home
+       —redondeos y glass—. Reversible quitando esta clase y su bloque al final
+       de home.module.css. */
+    <main className={styles.pruebaSuperficies}>
       {/* Hero nuevo — en construcción */}
       <section className={`sp-seccion ${styles.heroNuevo}`}>
         <div className={`sp-inner ${styles.heroNuevoInner}`}>
@@ -210,7 +217,18 @@ export default function Home() {
           </h2>
           <ul className={styles.langs}>
             {IDIOMAS.map((idioma) => (
-              <li key={idioma}>{idioma}</li>
+              <li key={idioma.nombre}>
+                {/* Decorativa: el nombre del idioma va al lado. */}
+                <img
+                  className={styles.langFlag}
+                  src={`/images/banderas/${idioma.bandera}.svg`}
+                  alt=""
+                  width="20"
+                  height="20"
+                  loading="lazy"
+                />{" "}
+                {idioma.nombre}
+              </li>
             ))}
           </ul>
         </div>

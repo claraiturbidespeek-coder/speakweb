@@ -134,6 +134,13 @@
   color: var(--color-white);
 }
 
+/* Los créditos bajan a su propia línea en vez de disputarle el sitio al aviso
+   legal y al copyright: mismo tamaño y color que el resto del bloque, que es
+   el tratamiento del sitio para esta letra pequeña. */
+.creditos {
+  flex-basis: 100%;
+}
+
 @media (max-width: 900px) {
   .inner {
     grid-template-columns: 1fr 1fr;

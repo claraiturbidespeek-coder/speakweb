@@ -61,8 +61,9 @@ function datosEstructurados(datos: DatosEquipo) {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Inicio", item: "https://s-peak.com/" },
-          { "@type": "ListItem", position: 2, name: "Soluciones por Equipo", item: "https://s-peak.com/equipo/" },
-          { "@type": "ListItem", position: 3, name: datos.nombre, item: url },
+          /* Dos escalones y no tres: el intermedio apuntaba a /equipo/, que no
+             es una ruta del sitio y devolvía 404. */
+          { "@type": "ListItem", position: 2, name: datos.nombre, item: url },
         ],
       },
       {
@@ -105,8 +106,6 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
                   JSON-LD sigue en su sitio, arriba: no depende de este marcado. */}
               <div className={styles.breadcrumb}>
                 <Link href="/">Inicio</Link>
-                <span aria-hidden="true">›</span>
-                <span>Soluciones por Equipo</span>
                 <span aria-hidden="true">›</span>
                 <span>{datos.nombre}</span>
               </div>

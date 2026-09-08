@@ -22,10 +22,9 @@ export default function Footer() {
             </Link>
           </p>
           <p className={styles.about}>
-            En S-Peak ofrecemos soluciones integrales de capacitación en idiomas para
-            empresas. Ayudamos a los líderes de Recursos Humanos a potenciar el
-            talento de sus equipos mediante cursos corporativos, tecnología de
-            seguimiento en tiempo real y resultados medibles.
+            Capacitación en idiomas para empresas. Acompañamos a las áreas de
+            Recursos Humanos con programas a la medida, seguimiento en tiempo
+            real y resultados medibles.
           </p>
           <BotonContacto className={`sp-btn sp-btn--rojo ${styles.cta}`}>
             Solicite una Cotización
@@ -100,6 +99,31 @@ export default function Footer() {
             </Link>
           </nav>
           <p>S-Peak 2026 | Copyright Todos los Derechos Reservados</p>
+
+          {/* Atribución que pide la licencia CC BY de los gráficos de Twemoji:
+              autor, enlace al original y enlace a la licencia. Los SVG de las
+              banderas de la home se sirven sin modificar. */}
+          <p className={styles.creditos}>
+            Banderas de{" "}
+            <a
+              className={styles.legalLink}
+              href="https://github.com/twitter/twemoji"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Twemoji
+            </a>{" "}
+            de Twitter, sin modificar, con licencia{" "}
+            <a
+              className={styles.legalLink}
+              href="https://creativecommons.org/licenses/by/4.0/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CC BY 4.0
+            </a>
+            .
+          </p>
         </div>
       </div>
     </footer>
