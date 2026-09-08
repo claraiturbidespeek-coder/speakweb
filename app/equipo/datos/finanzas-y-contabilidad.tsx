@@ -57,10 +57,22 @@ const datos: DatosEquipo = {
           "Comunicación clara de escenarios financieros ante el corporativo, defendiendo cifras y supuestos sin perder impacto estratégico.",
       },
       {
+        icono: "escudo",
+        titulo: "Preguntas difíciles en vivo",
+        texto:
+          "Defender una variación cuando el comité pregunta sin avisar. Entender la pregunta a la primera, con acento y a ritmo real, y responder sin que la duda parezca del número.",
+      },
+      {
         icono: "lista",
         titulo: "Comunicación en auditorías",
         texto:
           "Capacidad para explicar soportes y responder a auditores internacionales a su mismo ritmo, eliminando retrasos en las revisiones. El criterio contable es de su equipo; nosotros quitamos la barrera del idioma.",
+      },
+      {
+        icono: "documento",
+        titulo: "Vocabulario contable y normativo",
+        texto:
+          "Los términos con los que su matriz lee las cifras, accruals, deferrals, impairment, las diferencias entre marcos contables, para que el reporte se entienda igual de los dos lados.",
       },
       {
         icono: "mensaje",
@@ -85,8 +97,15 @@ const datos: DatosEquipo = {
 
   franja: {
     titulo: "El idioma de su corporativo, no solo inglés",
-    texto:
-      "El inglés es el estándar de negocios global, pero si su matriz financiera está en Francia, Alemania, Italia o Brasil, capacitamos a su equipo en la lengua exacta con la que reporta y consolida. Definimos el idioma idóneo mediante un diagnóstico alineado al origen de su corporativo y sus auditores.",
+    texto: (
+      <>
+        La mayoría de nuestros programas son en inglés, porque es el idioma de
+        la mayoría de los corporativos. Pero si su matriz financiera está en
+        otro país, capacitamos a su equipo en{" "}
+        <strong>la lengua exacta con la que reporta y consolida</strong>. En el
+        diagnóstico definimos cuál.
+      </>
+    ),
     idiomas: IDIOMAS,
   },
 
@@ -129,14 +148,31 @@ const datos: DatosEquipo = {
       {
         icono: "alerta",
         titulo: "Un dato mal comunicado se evalúa como un mal resultado",
-        texto:
-          "Si la casa matriz no comprende la explicación de una variación o cierre, la filial queda mal calificada aunque las cifras sean correctas. Cerrar esta brecha protege la credibilidad de la operación local.",
+        texto: (
+          <>
+            Si la casa matriz no comprende la explicación de una variación o
+            cierre,{" "}
+            <strong>
+              la filial queda mal calificada aunque las cifras sean correctas
+            </strong>.
+            Cerrar esta brecha protege la credibilidad de la operación local.
+          </>
+        ),
       },
       {
         icono: "usuarios",
         titulo: "El talento financiero bilingüe es escaso y de alta demanda",
-        texto:
-          "Alrededor de 8 de cada 100 personas ocupadas en México hablan inglés, y en cualquier otro idioma la disponibilidad es todavía menor. Desarrollar a los controllers, analistas y contadores que ya conocen sus números es más rentable que competir en el mercado laboral por estos perfiles.",
+        texto: (
+          <>
+            Alrededor de 8 de cada 100 personas ocupadas en México hablan
+            inglés, y el perfil financiero con idioma es de los más disputados.{" "}
+            <strong>
+              Desarrollar a los controllers, analistas y contadores que ya
+              conocen sus números
+            </strong>{" "}
+            es más rentable que competir por ellos en el mercado laboral.
+          </>
+        ),
         fuente: "Fuente: ENOE, INEGI",
       },
       {
@@ -149,8 +185,16 @@ const datos: DatosEquipo = {
       {
         icono: "reloj",
         titulo: "Auditorías internacionales lentas arriesgan la reputación",
-        texto:
-          "Las revisiones corporativas se realizan en el idioma de la casa matriz. No poder explicar soportes al ritmo del auditor genera observaciones innecesarias derivadas únicamente de la barrera lingüística.",
+        texto: (
+          <>
+            Las revisiones corporativas se realizan en el idioma de la casa
+            matriz. No poder explicar soportes al ritmo del auditor genera{" "}
+            <strong>
+              observaciones innecesarias derivadas únicamente de la barrera
+              lingüística
+            </strong>.
+          </>
+        ),
       },
     ],
   },
