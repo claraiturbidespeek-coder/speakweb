@@ -56,10 +56,22 @@ const datos: DatosEquipo = {
           "Participar en reuniones, dar y recibir seguimiento y coordinar acuerdos internos con el corporativo en su idioma, al ritmo real de la conversación.",
       },
       {
+        icono: "apreton",
+        titulo: "Negociación de cláusulas",
+        texto:
+          "Objetar, proponer una redacción alterna y sostener una posición en la llamada, sin depender de mandar todo por escrito después.",
+      },
+      {
         icono: "enlace",
         titulo: "Relación con despachos internacionales",
         texto:
           "Instruir, dar seguimiento y coordinar con despachos extranjeros directamente, sin que un intermediario agregue tiempo ni diluya el mensaje.",
+      },
+      {
+        icono: "lista",
+        titulo: "Vocabulario contractual",
+        texto:
+          "Los términos que cambian el riesgo de un contrato, indemnity, warranty, liability cap, governing law, en el idioma en que se firma.",
       },
       {
         icono: "mensaje",
@@ -134,14 +146,28 @@ const datos: DatosEquipo = {
       {
         icono: "reloj",
         titulo: "Coordinar a través de un intermediario cuesta tiempo y dinero",
-        texto:
-          "Cuando el área legal depende de un traductor para coordinar con el corporativo o instruir a un despacho extranjero, cada interacción se alarga y encarece. Cerrar esa brecha de idioma libera agilidad en un área donde el tiempo es costo.",
+        texto: (
+          <>
+            Cuando el área legal depende de un traductor para coordinar con el
+            corporativo o instruir a un despacho extranjero,{" "}
+            <strong>cada interacción se alarga y encarece</strong>. Cerrar esa
+            brecha de idioma libera agilidad en un área donde el tiempo es
+            costo.
+          </>
+        ),
       },
       {
         icono: "usuarios",
         titulo: "El perfil legal bilingüe es escaso y caro de reemplazar",
-        texto:
-          "Alrededor de 8 de cada 100 personas ocupadas en México hablan inglés, y el perfil legal con dominio real del idioma es de los más difíciles de contratar. Formar al equipo que ya conoce su negocio es más rentable que depender del mercado laboral.",
+        texto: (
+          <>
+            Alrededor de 8 de cada 100 personas ocupadas en México hablan
+            inglés, y el perfil legal con dominio real del idioma es de los más
+            difíciles de contratar.{" "}
+            <strong>Formar al equipo que ya conoce su negocio</strong> cuesta
+            menos que buscarlo afuera.
+          </>
+        ),
         fuente: "Fuente: ENOE, INEGI",
       },
       {
@@ -151,6 +177,19 @@ const datos: DatosEquipo = {
         texto:
           "La Secretaría de Economía proyecta 500,000 empleos nuevos y 50,000 millones de dólares de inversión en los 3 próximos años. Más inversión extranjera significa más coordinación del área legal con corporativos que operan en inglés —y en alemán, italiano o portugués según el origen del grupo—. El equipo legal que coordina con fluidez sostiene la relación; el que depende de traducción reacciona tarde.",
         fuente: "Fuente: Secretaría de Economía",
+      },
+      {
+        icono: "alerta",
+        titulo: "Un contrato mal entendido se firma igual",
+        texto: (
+          <>
+            Cuando el área legal revisa en un idioma que no domina del todo, el
+            riesgo no aparece:{" "}
+            <strong>se firma sin verlo y se descubre cuando ya obliga</strong>.
+            Leer y objetar directamente, sin intermediario, es lo que evita que
+            una cláusula pase inadvertida.
+          </>
+        ),
       },
     ],
   },
