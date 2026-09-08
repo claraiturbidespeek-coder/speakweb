@@ -46,10 +46,22 @@ const datos: DatosEquipo = {
           "Comprensión exacta de especificaciones, instrucciones de trabajo, cambios de ingeniería y procedimientos en su idioma original, eliminando interpretaciones erróneas en el piso de producción.",
       },
       {
+        icono: "diadema",
+        titulo: "Escucha en piso y en llamada",
+        texto:
+          "Entender una instrucción con ruido de máquina, por radio o en una llamada con la matriz, y confirmar que se entendió antes de ejecutar.",
+      },
+      {
         icono: "lista",
         titulo: "Auditorías y aseguramiento de calidad",
         texto:
           "Capacidad para sustentar procesos, responder a auditores internacionales y dominar la terminología técnica (no conformidades, planes de acción) bajo los estándares del cliente o del corporativo.",
+      },
+      {
+        icono: "fabrica",
+        titulo: "Incidencias y paros de línea",
+        texto:
+          "Explicar qué pasó, qué se hizo y qué se necesita, en el momento y sin ambigüedad. Un paro se alarga cuando la explicación no llega clara a quien decide.",
       },
       {
         icono: "enlace",
@@ -80,8 +92,15 @@ const datos: DatosEquipo = {
 
   franja: {
     titulo: "El idioma de su operación, no solo inglés",
-    texto:
-      "El inglés es el estándar técnico global, pero si su planta reporta a una matriz alemana, opera maquinaria italiana o exporta a Brasil, capacitamos a su equipo en la lengua exacta que elimina errores. Definimos el idioma idóneo mediante un diagnóstico alineado al origen de su corporativo, proveedores y mercados.",
+    texto: (
+      <>
+        La mayoría de nuestros programas son en inglés, porque es el idioma
+        técnico estándar. Pero si su planta reporta a una matriz alemana, opera
+        maquinaria italiana o exporta a Brasil, capacitamos a su equipo en{" "}
+        <strong>la lengua exacta que evita el error</strong>. En el diagnóstico
+        definimos cuál.
+      </>
+    ),
     idiomas: IDIOMAS,
   },
 
@@ -124,14 +143,29 @@ const datos: DatosEquipo = {
       {
         icono: "alerta",
         titulo: "Un error técnico cuesta más que cualquier capacitación",
-        texto:
-          "Malinterpretar especificaciones o instrucciones de embarque genera retrabajo, scrap, costos de almacenaje o penalizaciones. Una sola incidencia operativa evitable supera por mucho el costo anual de formar al equipo.",
+        texto: (
+          <>
+            Malinterpretar especificaciones o instrucciones de embarque genera{" "}
+            <strong>
+              retrabajo, scrap, costos de almacenaje o penalizaciones
+            </strong>.
+            Una sola incidencia operativa evitable supera por mucho el costo
+            anual de formar al equipo.
+          </>
+        ),
       },
       {
         icono: "usuarios",
         titulo: "El talento técnico bilingüe es escaso y difícil de reemplazar",
-        texto:
-          "Alrededor de 8 de cada 100 personas ocupadas en México hablan inglés, y en cualquier otro idioma la disponibilidad es todavía menor: el perfil técnico-lingüístico es uno de los más difíciles de reclutar. Desarrollar al personal que ya conoce sus procesos es la estrategia más rentable y segura.",
+        texto: (
+          <>
+            Alrededor de 8 de cada 100 personas ocupadas en México hablan
+            inglés, y el perfil técnico con idioma es de los más difíciles de
+            reclutar.{" "}
+            <strong>Desarrollar al personal que ya conoce sus procesos</strong>{" "}
+            es la estrategia más rentable y más segura.
+          </>
+        ),
         fuente: "Fuente: ENOE, INEGI",
       },
       {
@@ -144,8 +178,15 @@ const datos: DatosEquipo = {
       {
         icono: "lista",
         titulo: "Auditorías mal sustentadas arriesgan contratos clave",
-        texto:
-          "En sectores como el automotriz, aeroespacial, farmacéutico o alimentario, las auditorías globales se realizan en el idioma de la casa matriz. No poder explicar un proceso genera no conformidades que ponen en riesgo certificaciones críticas y cuentas completas.",
+        texto: (
+          <>
+            En sectores como el automotriz, aeroespacial, farmacéutico o
+            alimentario, las auditorías globales se realizan en el idioma de la
+            casa matriz. No poder explicar un proceso genera{" "}
+            <strong>no conformidades</strong> que ponen en riesgo
+            certificaciones críticas y cuentas completas.
+          </>
+        ),
       },
     ],
   },
