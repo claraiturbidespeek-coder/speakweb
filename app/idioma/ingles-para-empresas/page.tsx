@@ -10,7 +10,7 @@ import SelloSTPS from "@/app/components/SelloSTPS";
 import { useContacto } from "@/app/components/contacto/useContacto";
 // La lista de las seis páginas de idioma vive con la plantilla de equipo.
 import { IDIOMAS } from "@/app/equipo/tipos";
-import styles from "./landing.module.css";
+import styles from "../landing.module.css";
 
 // Las funciones del original viven en scope global, definidas por los <Script> de abajo.
 declare global {

@@ -1,4 +1,10 @@
-/* Inglés para empresas: lo propio de esta página.
+/* La plantilla de las landings de idioma: lo propio de /idioma/*.
+
+   Nació como el módulo de inglés y subió aquí cuando francés pidió la misma
+   estructura. No es vocabulario de sitio —por eso no está en patrones.css—,
+   sino el molde de una plantilla que hoy comparten dos páginas y mañana las
+   seis. Un cambio aquí las alcanza a todas: lo que solo quiera una va en un
+   módulo propio de esa página.
 
    Lo compartido vive en app/styles/patrones.css con nombres sp-*. Aquí queda el
    hero con su retrato sobre el círculo, el tablero de evidencia, el ciclo

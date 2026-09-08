@@ -99,31 +99,6 @@ export default function Footer() {
             </Link>
           </nav>
           <p>S-Peak 2026 | Copyright Todos los Derechos Reservados</p>
-
-          {/* Atribución que pide la licencia CC BY de los gráficos de Twemoji:
-              autor, enlace al original y enlace a la licencia. Los SVG de las
-              banderas de la home se sirven sin modificar. */}
-          <p className={styles.creditos}>
-            Banderas de{" "}
-            <a
-              className={styles.legalLink}
-              href="https://github.com/twitter/twemoji"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Twemoji
-            </a>{" "}
-            de Twitter, sin modificar, con licencia{" "}
-            <a
-              className={styles.legalLink}
-              href="https://creativecommons.org/licenses/by/4.0/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              CC BY 4.0
-            </a>
-            .
-          </p>
         </div>
       </div>
     </footer>
