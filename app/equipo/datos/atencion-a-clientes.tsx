@@ -42,48 +42,119 @@ const datos: DatosEquipo = {
     sub: "No formamos a un agente de soporte como a un vendedor: entrenamos las situaciones reales donde se define la confianza del cliente en la posventa.",
     tarjetas: [
       {
-        icono: "mensaje",
-        titulo: "Atención y resolución en vivo",
-        texto:
-          "Comprensión del problema a la primera, formulación de preguntas correctas y resolución por teléfono, chat o videollamada sin alargar la interacción por barreras lingüísticas.",
+        icono: "diadema",
+        titulo: "Llamadas y videollamadas",
+        texto: (
+          <>
+            Entender a un cliente con acento, con ruido o hablando rápido, y
+            responder en el momento. Sin pedir que repita tres veces ni pasar la
+            llamada a un compañero que traduzca:{" "}
+            <strong>cada repetición se paga en tiempo de atención.</strong>
+          </>
+        ),
       },
       {
-        icono: "enlace",
-        titulo: "Soporte técnico claro",
-        texto:
-          "Explicación precisa de pasos, configuraciones y soluciones. Capacidad para traducir procesos técnicos complejos a un lenguaje accesible sin perder exactitud.",
+        icono: "mensaje",
+        titulo: "Chat y mensajería",
+        texto: (
+          <>
+            Resolver por escrito y en vivo, con varias conversaciones abiertas a
+            la vez, sin que la prisa produzca un mensaje que el cliente no
+            entiende.{" "}
+            <strong>Es el canal más barato, y solo si no rebota.</strong>
+          </>
+        ),
+      },
+      {
+        icono: "lista",
+        titulo: "Datos y confirmaciones",
+        texto: (
+          <>
+            Deletrear y confirmar nombres, correos, direcciones y números de
+            orden a la primera.{" "}
+            <strong>
+              Un dígito mal tomado es un pedido a otra ciudad y un caso que se
+              vuelve a abrir.
+            </strong>
+          </>
+        ),
+      },
+      {
+        icono: "lectura",
+        titulo: "Vocabulario y explicación técnica",
+        texto: (
+          <>
+            El nombre real de su producto, sus procesos y sus fallas en el
+            idioma del cliente, y la capacidad de explicarlos sin jerga y sin
+            perder exactitud.{" "}
+            <strong>
+              Es lo que decide si se resuelve en el primer contacto.
+            </strong>
+          </>
+        ),
       },
       {
         icono: "escudo",
-        titulo: "Manejo de quejas y clientes molestos",
-        texto:
-          "Técnicas para desactivar la tensión, validar la incidencia y guiar la conversación con el tono adecuado a la cultura del cliente, asegurando la retención de la cuenta.",
+        titulo: "Quejas y clientes molestos",
+        texto: (
+          <>
+            Desactivar la tensión, validar la incidencia y sostener la política
+            cuando la respuesta es no, con el tono adecuado a la cultura del
+            cliente.{" "}
+            <strong>Ahí se retiene o se pierde la cuenta.</strong>
+          </>
+        ),
+      },
+      {
+        icono: "enlace",
+        titulo: "Espera y transferencia",
+        texto: (
+          <>
+            Avisar antes de poner en espera, dar un tiempo estimado y transferir
+            con contexto, para que el cliente no cuente su historia otra vez.{" "}
+            <strong>Es la diferencia entre cerrar y escalar.</strong>
+          </>
+        ),
       },
       {
         icono: "correo",
-        titulo: "Comunicación escrita de soporte",
-        texto:
-          "Redacción clara de correos, tickets y mensajes de seguimiento, evitando ambigüedades que generen segundos contactos innecesarios.",
+        titulo: "Correos y tickets",
+        texto: (
+          <>
+            Redactar sin ambigüedades y entender el mensaje del cliente
+            extranjero aunque venga mal escrito.{" "}
+            <strong>
+              Cada malentendido es un segundo contacto que nadie presupuestó.
+            </strong>
+          </>
+        ),
       },
       {
-        icono: "diana",
-        titulo: "Seguimiento y posventa",
-        texto:
-          "Confirmación de soluciones y anticipación de necesidades. Mantener el contacto en su idioma es lo que transforma una incidencia operativa en una renovación.",
-      },
-      {
-        icono: "usuarios",
-        titulo: "Comunicación interna y de cuenta",
-        texto:
-          "Reporte de incidencias, escalación correcta y coordinación fluida con equipos globales o el cliente final, evitando que la información se pierda entre niveles.",
+        icono: "apreton",
+        titulo: "Seguimiento y cuenta",
+        texto: (
+          <>
+            Confirmar que quedó resuelto, anticipar lo siguiente y presentar
+            resultados a la cuenta.{" "}
+            <strong>Es la conversación donde se decide la renovación.</strong>
+          </>
+        ),
       },
     ],
   },
 
   franja: {
     titulo: "El idioma de su cliente, no solo inglés",
-    texto:
-      "El inglés domina el soporte global y las cuentas internacionales, pero no siempre es suficiente. Si su empresa atiende a clientes en Brasil, da soporte a usuarios alemanes o gestiona cuentas con consumidores franceses o italianos, capacitamos a su equipo en la lengua que realmente retiene la cuenta. A través de un diagnóstico previo, definimos el idioma idóneo según el origen de sus clientes y las operaciones que maneja.",
+    texto: (
+      <>
+        La mayoría de nuestros programas de atención son en inglés, porque es el
+        idioma de la mayoría de las cuentas internacionales. Pero si su equipo
+        atiende clientes en Brasil, Alemania, Francia o Italia, lo capacitamos
+        en <strong>la lengua que realmente retiene la cuenta</strong>. En el
+        diagnóstico definimos cuál, según el origen de sus clientes y las
+        operaciones que maneja.
+      </>
+    ),
     idiomas: IDIOMAS,
   },
 
@@ -91,7 +162,7 @@ const datos: DatosEquipo = {
     eyebrow: "El costo real de la barrera del idioma",
     titulo:
       "Su equipo ya sabe resolver. Le falta hacerlo en el idioma de su cliente.",
-    sub: "Más que una molestia operativa, es un costo financiero directo que se refleja en tres frentes, tanto en cuentas propias como de terceros:",
+    sub: "Más que una molestia operativa, es un costo financiero directo, y se refleja en tres frentes:",
     tarjetas: [
       {
         icono: "alerta",
@@ -102,14 +173,27 @@ const datos: DatosEquipo = {
       {
         icono: "reloj",
         titulo: "El nivel de servicio incumplido",
-        texto:
-          "Para contact centers o BPOs, las llamadas mal comprendidas elevan el tiempo de resolución y reducen la satisfacción. Un indicador de calidad (SLA) fuera de rango pone en riesgo contratos y cuentas completas.",
+        texto: (
+          <>
+            Para contact centers o BPOs, las llamadas mal comprendidas elevan el
+            tiempo de resolución y reducen la satisfacción. Un indicador de
+            calidad (SLA) fuera de rango{" "}
+            <strong>pone en riesgo contratos y cuentas completas</strong>.
+          </>
+        ),
       },
       {
         icono: "balanza",
         titulo: "La queja que escala innecesariamente",
-        texto:
-          "Incidentes que un agente capacitado cerraría en la primera interacción se transfieren a supervisores o a bilingües internos saturados. Esto consume tiempo costoso y daña la percepción del cliente sobre la capacidad de resolución de la empresa.",
+        texto: (
+          <>
+            Incidentes que un agente capacitado cerraría en la primera
+            interacción se transfieren a supervisores o a{" "}
+            <strong>bilingües internos saturados</strong>. Esto consume tiempo
+            costoso y le enseña al cliente que su empresa no puede resolverle
+            sola.
+          </>
+        ),
       },
     ],
     cta: "Solicite una Cotización",
@@ -126,15 +210,32 @@ const datos: DatosEquipo = {
       {
         icono: "diana",
         titulo: "Retener cuesta menos que adquirir un nuevo cliente",
-        texto:
-          "Captar un cliente es entre 5 y 7 veces más costoso que mantenerlo. La renovación se define en la posventa; capacitar al equipo que ya conoce su producto es la opción más rentable para asegurar la permanencia de las cuentas.",
+        texto: (
+          <>
+            Adquirir un cliente nuevo cuesta varias veces más que conservar uno.{" "}
+            <strong>La renovación se define en la posventa</strong>: capacitar
+            al equipo que ya conoce su producto es la vía más rentable para
+            asegurar la permanencia de las cuentas.
+          </>
+        ),
+        fuente: "Fuente: Harvard Business Review (Bain & Company)",
       },
       {
         icono: "usuarios",
         titulo: "El talento bilingüe es escaso y de alta rotación",
-        texto:
-          "Menos del 15% de los profesionales en México son bilingües, un perfil crítico y muy disputado en centros de contacto. Desarrollar a su personal actual reduce la dependencia del mercado laboral y protege la continuidad del servicio.",
-        fuente: "Fuente: Secretaría de Educación Pública",
+        texto: (
+          <>
+            Alrededor de 8 de cada 100 personas ocupadas en México hablan
+            inglés, y en centros de contacto es de los perfiles más
+            disputados.{" "}
+            <strong>
+              Desarrollar a su personal actual reduce la dependencia del mercado
+              laboral
+            </strong>{" "}
+            y protege la continuidad del servicio.
+          </>
+        ),
+        fuente: "Fuente: ENOE, INEGI",
       },
       {
         icono: "globo",
@@ -146,8 +247,20 @@ const datos: DatosEquipo = {
       {
         icono: "alerta",
         titulo: "Un nivel de servicio incumplido arriesga contratos enteros",
-        texto:
-          "Las barreras de idioma elevan los tiempos de resolución y deterioran los indicadores de calidad (SLAs), exponiendo a la operación a penalizaciones o a la pérdida de la cuenta completa. Resolver directamente protege los ingresos del negocio.",
+        texto: (
+          <>
+            Los contratos con niveles de servicio incluyen{" "}
+            <strong>
+              créditos por incumplimiento y derecho de terminación cuando las
+              fallas se repiten
+            </strong>.
+            Las barreras de idioma elevan los tiempos de resolución y deterioran
+            esos indicadores, exponiendo a la operación a{" "}
+            <strong>
+              penalizaciones o a la pérdida de la cuenta completa
+            </strong>.
+          </>
+        ),
       },
     ],
   },

@@ -3,17 +3,17 @@ import PaginaEquipo from "../PaginaEquipo";
 import datos from "../datos/atencion-a-clientes";
 
 export const metadata: Metadata = {
-  title: "Capacitación de Idiomas para Atención a Clientes y Contact Center | S-Peak",
+  title: "Idiomas para Atención a Clientes y Contact Center | S-Peak",
   description:
-    "Inglés y otros idiomas para equipos de soporte, posventa y contact center. Atención sin fricción, retención de clientes y cumplimiento de niveles de servicio. Cotice ahora.",
+    "Inglés y otros idiomas para soporte, posventa y contact center. Menos escalaciones, más cuentas retenidas y niveles de servicio cumplidos. Cotice ahora.",
   alternates: { canonical: "https://s-peak.com/equipo/atencion-a-clientes/" },
   openGraph: {
     type: "website",
     locale: "es_MX",
     siteName: "S-Peak",
-    title: "Capacitación de Idiomas para Atención a Clientes y Contact Center | S-Peak",
+    title: "Idiomas para Atención a Clientes y Contact Center | S-Peak",
     description:
-      "Inglés y otros idiomas para equipos de soporte, posventa y contact center. Atención sin fricción, retención de clientes y cumplimiento de niveles de servicio.",
+      "Inglés y otros idiomas para soporte, posventa y contact center. Menos escalaciones, más cuentas retenidas y niveles de servicio cumplidos. Cotice ahora.",
     url: "https://s-peak.com/equipo/atencion-a-clientes/",
     images: [
       {

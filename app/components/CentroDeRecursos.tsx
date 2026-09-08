@@ -47,7 +47,7 @@ const POSTS = [
       "¿Alemán, francés o inglés? Cómo identificar qué idiomas para empresas necesita su equipo",
     url: "/mejores-idiomas-para-empresas/",
     imagen: "blog-idiomas-para-empresas.webp",
-    alt: "os ejecutivos corporativos analizando la estrategia de idiomas para empresas frente a un mapa mundial.",
+    alt: "Dos ejecutivos corporativos analizando la estrategia de idiomas para empresas frente a un mapa mundial.",
   },
   {
     titulo:

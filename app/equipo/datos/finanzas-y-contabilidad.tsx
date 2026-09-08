@@ -136,8 +136,8 @@ const datos: DatosEquipo = {
         icono: "usuarios",
         titulo: "El talento financiero bilingüe es escaso y de alta demanda",
         texto:
-          "Menos del 15% de los profesionales en México dominan otro idioma. Desarrollar a los controllers, analistas y contadores que ya conocen sus números es más rentable que competir en el mercado laboral por estos perfiles.",
-        fuente: "Fuente: Secretaría de Educación Pública",
+          "Alrededor de 8 de cada 100 personas ocupadas en México hablan inglés, y en cualquier otro idioma la disponibilidad es todavía menor. Desarrollar a los controllers, analistas y contadores que ya conocen sus números es más rentable que competir en el mercado laboral por estos perfiles.",
+        fuente: "Fuente: ENOE, INEGI",
       },
       {
         icono: "globo",

@@ -51,6 +51,12 @@ const datos: DatosEquipo = {
           "Participación activa en comités y reuniones corporativas globales, interviniendo con precisión técnica en lugar de solo escuchar de forma pasiva.",
       },
       {
+        icono: "diadema",
+        titulo: "Escucha y respuesta en vivo",
+        texto:
+          "Entender a un consejero con acento fuerte, en una videollamada con mala línea o a alguien que habla rápido, y responder en el momento sin pedir que repita ni esperar a que alguien traduzca.",
+      },
+      {
         icono: "balanza",
         titulo: "Negociación de alto nivel",
         texto:
@@ -69,6 +75,12 @@ const datos: DatosEquipo = {
           "Reporte de resultados y defensa de presupuestos de forma directa, eliminando intermediarios que diluyan el mensaje o su liderazgo.",
       },
       {
+        icono: "apreton",
+        titulo: "Conversación informal y relación",
+        texto:
+          "La cena previa, el pasillo entre sesiones, la llamada corta. Es donde un directivo construye la confianza que después sostiene la negociación, y donde el idioma se nota más.",
+      },
+      {
         icono: "mensaje",
         titulo: "Conversación ejecutiva y relación institucional",
         texto:
@@ -84,9 +96,16 @@ const datos: DatosEquipo = {
   },
 
   franja: {
-    titulo: "El idioma correcto para su tablero directivo",
-    texto:
-      "El inglés domina los consejos internacionales, pero si su casa matriz está en Francia, Alemania, Italia o Brasil, o si su empresa atrae inversión y talento extranjero a México, formamos a su dirección en la lengua que realmente mueve al negocio. A través de un diagnóstico previo, definimos el idioma ideal según el origen de su corporativo, socios y mercados estratégicos.",
+    titulo: "El idioma de su corporativo, no solo inglés",
+    texto: (
+      <>
+        La mayoría de nuestros programas son en inglés, porque es el idioma de
+        la mayoría de los consejos internacionales. Pero si su casa matriz está
+        en otro país, o si su empresa atrae inversión extranjera, formamos a su
+        dirección en <strong>la lengua que realmente mueve al negocio</strong>.
+        En el diagnóstico definimos cuál.
+      </>
+    ),
     idiomas: IDIOMAS,
   },
 
@@ -128,15 +147,34 @@ const datos: DatosEquipo = {
       {
         icono: "usuarios",
         titulo: "El directivo bilingüe es escaso y su reemplazo es costoso",
-        texto:
-          "Menos del 15% de los profesionales en México son verdaderamente bilingües, una proporción que se reduce aún más en puestos de alta gerencia. Reemplazar a un líder debido a la barrera del idioma es un proceso lento, costoso y arriesgado; desarrollar al ejecutivo que ya conoce la operación y la cultura interna es la decisión más rentable.",
-        fuente: "Fuente: Secretaría de Educación Pública",
+        texto: (
+          <>
+            Alrededor de 8 de cada 100 personas ocupadas en México hablan
+            inglés, y la proporción se estrecha aún más en puestos de alta
+            dirección.{" "}
+            <strong>
+              Reemplazar a un líder por la barrera del idioma es lento, costoso
+              y arriesgado
+            </strong>: formar al que ya conoce el negocio es la vía segura.
+          </>
+        ),
+        fuente: "Fuente: ENOE, INEGI",
       },
       {
         icono: "grafico",
         titulo: "La casa matriz asigna autonomía a quien comunica directamente",
-        texto:
-          "México es el primer socio comercial de Estados Unidos desde 2023. Las organizaciones cuya dirección negocia y reporta sin intermediarios obtienen mayor presupuesto, más proyectos y mayor autonomía. La barrera del idioma de un solo directivo limita el peso estratégico de toda la operación local.",
+        texto: (
+          <>
+            México es el primer socio comercial de Estados Unidos desde 2023.
+            Las organizaciones cuya dirección negocia y reporta sin
+            intermediarios{" "}
+            <strong>
+              obtienen mayor presupuesto, más proyectos y mayor autonomía
+            </strong>.
+            La barrera del idioma de un solo directivo limita el peso
+            estratégico de toda la operación local.
+          </>
+        ),
         fuente: "Fuente: Secretaría de Economía e INEGI",
       },
       {
@@ -150,8 +188,16 @@ const datos: DatosEquipo = {
         icono: "alerta",
         titulo:
           "Una negociación mal interpretada cuesta más que cualquier programa",
-        texto:
-          "Un matiz perdido en un acuerdo con un socio internacional o con el corporativo puede traducirse en pérdida de margen o en cláusulas desfavorables. Cuando su directivo entiende y negocia directamente, protege decisiones financieras que valen mucho más que la inversión en su formación.",
+        texto: (
+          <>
+            Un matiz perdido en un acuerdo con un socio internacional o con el
+            corporativo puede traducirse en{" "}
+            <strong>pérdida de margen o en cláusulas desfavorables</strong>.
+            Cuando su directivo entiende y negocia directamente, protege
+            decisiones financieras que valen mucho más que la inversión en su
+            formación.
+          </>
+        ),
       },
     ],
   },

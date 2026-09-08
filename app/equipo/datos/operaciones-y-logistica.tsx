@@ -131,8 +131,8 @@ const datos: DatosEquipo = {
         icono: "usuarios",
         titulo: "El talento técnico bilingüe es escaso y difícil de reemplazar",
         texto:
-          "Menos del 15% de los profesionales en México dominan otro idioma, siendo el perfil técnico-lingüístico uno de los más difíciles de reclutar. Desarrollar al personal que ya conoce sus procesos es la estrategia más rentable y segura.",
-        fuente: "Fuente: Secretaría de Educación Pública",
+          "Alrededor de 8 de cada 100 personas ocupadas en México hablan inglés, y en cualquier otro idioma la disponibilidad es todavía menor: el perfil técnico-lingüístico es uno de los más difíciles de reclutar. Desarrollar al personal que ya conoce sus procesos es la estrategia más rentable y segura.",
+        fuente: "Fuente: ENOE, INEGI",
       },
       {
         icono: "globo",

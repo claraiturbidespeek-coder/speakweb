@@ -141,8 +141,8 @@ const datos: DatosEquipo = {
         icono: "usuarios",
         titulo: "El perfil legal bilingüe es escaso y caro de reemplazar",
         texto:
-          "Distintos estudios ubican a los profesionistas verdaderamente bilingües por debajo del 15% en México, y el perfil legal con dominio real del idioma es de los más difíciles de contratar. Formar al equipo que ya conoce su negocio es más rentable que depender del mercado laboral.",
-        fuente: "Fuente: Secretaría de Educación Pública",
+          "Alrededor de 8 de cada 100 personas ocupadas en México hablan inglés, y el perfil legal con dominio real del idioma es de los más difíciles de contratar. Formar al equipo que ya conoce su negocio es más rentable que depender del mercado laboral.",
+        fuente: "Fuente: ENOE, INEGI",
       },
       {
         icono: "globo",

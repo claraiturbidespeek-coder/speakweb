@@ -133,8 +133,8 @@ const datos: DatosEquipo = {
         icono: "usuarios",
         titulo: "El talento técnico bilingüe es escaso y de los más disputados",
         texto:
-          "Distintos estudios ubican a los profesionistas verdaderamente bilingües por debajo del 15% en México, y el perfil técnico con idioma —desarrollo, ingeniería, datos— es de los más difíciles de contratar y retener. Formar al equipo que ya conoce su operación es más rentable y menos arriesgado que depender del mercado laboral.",
-        fuente: "Fuente: Secretaría de Educación Pública",
+          "Alrededor de 8 de cada 100 personas ocupadas en México hablan inglés, y el perfil técnico con idioma —desarrollo, ingeniería, datos— es de los más difíciles de contratar y retener. Formar al equipo que ya conoce su operación es más rentable y menos arriesgado que depender del mercado laboral.",
+        fuente: "Fuente: ENOE, INEGI",
       },
       {
         icono: "globo",
