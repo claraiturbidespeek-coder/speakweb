@@ -47,10 +47,22 @@ const datos: DatosEquipo = {
           "Participar en reuniones de proyecto, dar y recibir seguimiento y coordinar entregables con casa matriz o equipos en otros países, al ritmo real de la conversación.",
       },
       {
+        icono: "diadema",
+        titulo: "Escucha en equipos multiculturales",
+        texto:
+          "Entender a colegas de India, Alemania o Brasil hablando inglés, cada uno con su acento, en la misma llamada. Es el escenario diario de un equipo global y el que más agota.",
+      },
+      {
         icono: "usuarios",
         titulo: "Reuniones técnicas internacionales",
         texto:
           "Exponer avances, plantear bloqueos y aportar su criterio en reuniones de equipo global, con la soltura para no quedar fuera de la conversación.",
+      },
+      {
+        icono: "escudo",
+        titulo: "Defender una decisión técnica",
+        texto:
+          "Sostener un criterio ante un arquitecto o un proveedor que no comparte la propuesta, sin ceder por no encontrar la palabra.",
       },
       {
         icono: "enlace",
@@ -81,8 +93,16 @@ const datos: DatosEquipo = {
 
   franja: {
     titulo: "El idioma de su proyecto, no solo inglés",
-    texto:
-      "La mayoría de nuestros programas técnicos son en inglés, porque es el idioma de la mayoría de los equipos globales de tecnología e ingeniería. Pero si su casa matriz está en Alemania, recibe ingeniería de Italia, coordina con un equipo francés o trabaja con un proveedor en Brasil, formamos a su equipo en el idioma con que realmente coordina. En el diagnóstico definimos cuál —o cuáles— según el origen de su corporativo, sus proveedores y sus equipos globales.",
+    texto: (
+      <>
+        La mayoría de nuestros programas son en inglés, porque es el idioma de
+        la mayoría de los equipos globales de tecnología. Pero si su matriz, su
+        proveedor o su equipo de ingeniería están en otro país, formamos a su
+        equipo en{" "}
+        <strong>el idioma en que se toman las decisiones técnicas</strong>. En
+        el diagnóstico definimos cuál.
+      </>
+    ),
     idiomas: IDIOMAS,
   },
 
@@ -124,16 +144,30 @@ const datos: DatosEquipo = {
     tarjetas: [
       {
         icono: "reloj",
-        titulo:
-          "Un proyecto que pierde ritmo en la coordinación cuesta más que cualquier programa",
-        texto:
-          "En proyectos técnicos, una reunión donde el equipo no participa al ritmo real o un detalle perdido con un proveedor se traduce en retrabajo, reprocesos y retrasos. Una sola incidencia evitable puede costar más que la inversión anual en formar al equipo. No es un problema de criterio técnico: es de idioma.",
+        titulo: "Un proyecto que pierde ritmo cuesta más que el programa",
+        texto: (
+          <>
+            En proyectos técnicos, una reunión donde el equipo no participa al
+            ritmo real o un detalle perdido con un proveedor se traduce en{" "}
+            <strong>retrabajo, reprocesos y retrasos</strong>. Una sola
+            incidencia evitable puede costar más que la inversión anual en
+            formar al equipo. No es un problema de criterio técnico: es de
+            idioma.
+          </>
+        ),
       },
       {
         icono: "usuarios",
         titulo: "El talento técnico bilingüe es escaso y de los más disputados",
-        texto:
-          "Alrededor de 8 de cada 100 personas ocupadas en México hablan inglés, y el perfil técnico con idioma —desarrollo, ingeniería, datos— es de los más difíciles de contratar y retener. Formar al equipo que ya conoce su operación es más rentable y menos arriesgado que depender del mercado laboral.",
+        texto: (
+          <>
+            Alrededor de 8 de cada 100 personas ocupadas en México hablan
+            inglés, y el perfil técnico con idioma (desarrollo, ingeniería,
+            datos) es de los más difíciles de contratar{" "}
+            <strong>y de retener</strong>. Formar al equipo que ya conoce su
+            arquitectura cuesta menos que perseguirlo en el mercado.
+          </>
+        ),
         fuente: "Fuente: ENOE, INEGI",
       },
       {
@@ -148,8 +182,15 @@ const datos: DatosEquipo = {
         icono: "grafico",
         titulo:
           "El talento local sin voz pierde en las decisiones técnicas globales",
-        texto:
-          "Cuando su equipo conoce la operación a fondo pero no logra exponer su criterio en las reuniones globales, las decisiones técnicas se toman sin su aporte. Cuando participa directamente en el idioma, su criterio pesa en las decisiones —y la operación local gana relevancia dentro del grupo.",
+        texto: (
+          <>
+            Cuando su equipo conoce la operación a fondo pero no logra exponer
+            su criterio en las reuniones globales,{" "}
+            <strong>las decisiones técnicas se toman sin su aporte</strong>.
+            Cuando participa directamente en el idioma, su criterio pesa en las
+            decisiones —y la operación local gana relevancia dentro del grupo.
+          </>
+        ),
       },
     ],
   },
