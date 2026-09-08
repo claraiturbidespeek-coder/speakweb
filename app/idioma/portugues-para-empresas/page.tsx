@@ -1,97 +1,22 @@
 "use client";
 
-import type { FormEvent, MouseEvent } from "react";
 import Script from "next/script";
 import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BandaLogos from "@/app/components/BandaLogos";
 import FranjaIdiomas from "@/app/components/FranjaIdiomas";
 import Icono from "@/app/components/Icono";
 import SelloSTPS from "@/app/components/SelloSTPS";
+import FlotanteWhatsApp from "@/app/components/whatsapp/FlotanteWhatsApp";
 import { useContacto } from "@/app/components/contacto/useContacto";
 // La lista de las seis páginas de idioma vive con la plantilla de equipo.
 import { IDIOMAS } from "@/app/equipo/tipos";
 import styles from "../landing.module.css";
 
-// Las funciones del original viven en scope global, definidas por los <Script> de abajo.
-declare global {
-  interface Window {
-    openWaModal: (e: MouseEvent) => void;
-    closeWaModal: () => void;
-    closeWaModalOnOverlay: (e: MouseEvent) => void;
-    submitWaForm: (e: FormEvent) => void;
-  }
-}
-
-// Misma pareja de guiones que el resto de las landings de idioma: el ciclo
-// radial del método, el carrusel de testimonios y el modal de WhatsApp. Lo
-// único que cambia entre páginas es el idioma que se manda en la atribución
-// del lead y el texto del mensaje de WhatsApp.
+// El guion de los dos comportamientos que siguen siendo DOM suelto: el ciclo
+// radial del método y el carrusel de testimonios. El envío de leads y el modal
+// de WhatsApp salieron de aquí a React —lib/atribucion.ts y
+// components/whatsapp/FlotanteWhatsApp.tsx—, así que esto ya no toca window.
 const SCRIPT_PRINCIPAL = `
-  // ---- Envío de leads vía función serverless (Resend) ----
-  // Endpoint de la función. Si el sitio y la función viven en el mismo dominio de Vercel,
-  // déjalo relativo ('/api/lead'). Si la función está en otro dominio, pon la URL absoluta aquí.
-  window.LEAD_ENDPOINT = 'https://s-peak-landings.vercel.app/api/lead';
-
-  // Atribución del lead: UTMs de la URL más el idioma de esta página.
-  //
-  // OJO: ESTA LÓGICA ESTÁ DUPLICADA, A PROPÓSITO.
-  // La copia buena vive en lib/atribucion.ts y la usa el modal de contacto
-  // compartido. Esta se queda porque el formulario del modal de WhatsApp, que
-  // sigue siendo un guion inline, no puede importar un módulo. Exponer las
-  // funciones de React en window crearía una dependencia de orden de carga que
-  // enviaría leads sin atribución sin que nada lo delatara.
-  // Las dos copias tienen que cambiar juntas, y esta desaparece el día que el
-  // modal de WhatsApp pase a React.
-  window.collectLeadTags = function () {
-    let params;
-    try { params = new URLSearchParams(window.location.search); } catch (_) { params = null; }
-    let stored = {};
-    try { stored = JSON.parse(sessionStorage.getItem('speak_attribution') || '{}') || {}; } catch (_) { stored = {}; }
-    // Prioridad por campo: 1) query actual en la URL, 2) valor persistido en la sesión, 3) vacío.
-    const raw = function (key) {
-      const live = params ? (params.get(key) || '').trim() : '';
-      if (live) return live;
-      return (stored[key] || '').toString().trim();
-    };
-    let utmSource = raw('utm_source');
-    let utmMedium = raw('utm_medium');
-    let utmCampaign = raw('utm_campaign');
-    let utmContent = raw('utm_content');
-    const gclid = raw('gclid');
-    // Respaldo Google Ads: si NO hubo utm_source (ni en URL ni persistido) pero sí hay gclid,
-    // marcamos origen google/cpc y guardamos el gclid en utm_content para no perder el rastro.
-    // Si los UTM sí vienen, mandan ellos; el gclid es solo respaldo.
-    if (!utmSource && gclid) {
-      utmSource = 'google';
-      if (!utmMedium) utmMedium = 'cpc';
-      if (!utmContent) utmContent = 'gclid:' + gclid;
-    }
-    const NA = 'No especificado';
-    return {
-      utm_source: utmSource || NA,
-      utm_medium: utmMedium || NA,
-      utm_campaign: utmCampaign || NA,
-      utm_content: utmContent || NA,
-      idioma: 'Portugués',
-      // Dirección completa de la página desde la que se envió el formulario.
-      pagina: (function () { try { return window.location.href; } catch (_) { return ''; } })(),
-    };
-  };
-
-  // Devuelve una promesa. Lanza si la respuesta no es ok.
-  window.sendLead = function (payload) {
-    return fetch(window.LEAD_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      keepalive: true,
-    }).then(function (res) {
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      return res.json().catch(function () { return {}; });
-    });
-  };
-
-
   // Ciclo radial del método (centro muestra el paso activo, auto-rota)
   (function () {
     const nodes = document.querySelectorAll('.cycle-node');
@@ -150,67 +75,6 @@ const SCRIPT_PRINCIPAL = `
       }
     }
     setInterval(advance, 3500);
-  })();
-`;
-
-const SCRIPT_WHATSAPP = `
-  (function () {
-    const overlay = document.getElementById('waModal');
-
-    window.openWaModal = function (e) {
-      if (e) e.preventDefault();
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      const first = document.getElementById('waNombre');
-      if (first) setTimeout(function () { first.focus(); }, 50);
-    };
-
-    window.closeWaModal = function () {
-      overlay.classList.remove('open');
-      document.body.style.overflow = '';
-    };
-
-    window.closeWaModalOnOverlay = function (e) {
-      if (e.target === overlay) window.closeWaModal();
-    };
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && overlay.classList.contains('open')) window.closeWaModal();
-    });
-
-    window.submitWaForm = function (e) {
-      e.preventDefault();
-      const nombre = document.getElementById('waNombre').value.trim();
-      const correo = document.getElementById('waCorreo').value.trim();
-      const telefono = document.getElementById('waTelefono').value.trim();
-
-      const msg = 'Hola, soy ' + nombre + ' (' + telefono + '). Me interesa conocer más sobre los programas de portugués para empresas de S-Peak. Mi correo es ' + correo + '.';
-      const url = 'https://wa.me/525585265520?text=' + encodeURIComponent(msg);
-
-      // Registro del lead por correo (fire-and-forget): NO se espera para no retrasar WhatsApp.
-      try {
-        const payload = Object.assign({
-          nombre: nombre,
-          empresa: '',
-          correo: correo,
-          telefono: telefono,
-          puesto: '',
-          mensaje: '',
-          origen: 'WhatsApp',
-        }, window.collectLeadTags());
-        window.sendLead(payload).catch(function () {});
-      } catch (_) {}
-
-      // Conversión de WhatsApp → la recoge GTM (trigger: Custom Event "conversion_whatsapp")
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'conversion_whatsapp' });
-
-      window.open(url, '_blank', 'noopener,noreferrer');
-
-      window.closeWaModal();
-      document.getElementById('waForm').reset();
-      return false;
-    };
   })();
 `;
 
@@ -574,56 +438,12 @@ export default function Page() {
   <button className="sp-btn sp-btn--blanco" onClick={abrir}>Solicite una Cotización</button>
 </section>
 </main>
-{/* Botón flotante de WhatsApp */}
-<a href="https://wa.me/525585265520"
-   className={styles.whatsappFloat}
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="Escríbanos por WhatsApp"
-   aria-haspopup="dialog"
-   onClick={(e) => window.openWaModal(e)}>
-  <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
-</a>
-
-{/* Modal de pre-registro WhatsApp */}
-<div className={`sp-modal-overlay ${styles.waModalOverlay}`} id="waModal" role="dialog" aria-modal="true" aria-labelledby="waModalTitle" onClick={(e) => window.closeWaModalOnOverlay(e)}>
-  <div className={`sp-modal ${styles.waModal}`}>
-    <div className={styles.waModalHead}>
-      <button type="button" className={styles.waModalClose} aria-label="Cerrar" onClick={() => window.closeWaModal()}>&times;</button>
-      <h3 id="waModalTitle">Un paso antes de conectar</h3>
-      <p>Le atenderemos de inmediato</p>
-    </div>
-    <div className={styles.waModalBody}>
-      <form id="waForm" onSubmit={(e) => window.submitWaForm(e)}>
-        <div className="sp-form-group">
-          <label htmlFor="waNombre">Nombre *</label>
-          <input type="text" id="waNombre" name="nombre" autoComplete="name" required />
-        </div>
-        <div className="sp-form-group">
-          <label htmlFor="waCorreo">Correo electrónico *</label>
-          <input type="email" id="waCorreo" name="correo" autoComplete="email" required />
-        </div>
-        <div className="sp-form-group">
-          <label htmlFor="waTelefono">Teléfono *</label>
-          <input type="tel" id="waTelefono" name="telefono" autoComplete="tel" required />
-        </div>
-        <button type="submit" className={`sp-form-submit ${styles.waSubmit}`}>Continuar a WhatsApp &rarr;</button>
-      </form>
-    </div>
-  </div>
-</div>
+<FlotanteWhatsApp />
 
       <Script
         id="lp-portugues-principal"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: SCRIPT_PRINCIPAL }}
-      />
-      <Script
-        id="lp-portugues-whatsapp"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: SCRIPT_WHATSAPP }}
       />
     </>
   );

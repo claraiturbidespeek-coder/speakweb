@@ -13,8 +13,11 @@
    Las tarjetas pasan a las del sistema. El filtro por categorías y la carga
    progresiva no existen en la referencia y siguen siendo de aquí. */
 
+/* Ancho completo: radio cero explícito, por lo mismo que el resto de las
+   bandas. Ver el token --radius en tokens.css. */
 .cabecera {
   background: var(--color-navy);
+  border-radius: 0;
 }
 
 .titulo {
@@ -44,6 +47,7 @@
 /* El panel enmarca el listado sobre el fondo de la página. */
 .panel {
   background: var(--color-off-white);
+  border-radius: 0;
   padding: var(--space-inset);
 }
 

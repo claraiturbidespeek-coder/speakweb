@@ -14,6 +14,9 @@
    border-box` el relleno se comía por dentro los 1360px, así que la fila
    arrancaba un gutter más adentro que el contenido de las páginas — 40px de
    desfase a 1440 de viewport, 80px a 2000. */
+/* Ancho completo: radio cero explícito. El selector universal de base.css
+   reparte `--radius` a todo, y contra el borde del viewport una esquina de 8px
+   se lee como error, no como intención. */
 .header {
   position: sticky;
   top: 0;
@@ -21,6 +24,7 @@
   padding-inline: var(--space-gutter);
   background: var(--color-navy);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0;
 }
 
 /* Tres columnas y no una fila flex: las laterales miden lo mismo (1fr cada

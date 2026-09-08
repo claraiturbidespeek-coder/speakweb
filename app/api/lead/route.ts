@@ -308,6 +308,10 @@ export async function POST(request: Request): Promise<Response> {
   const utmMedium = campo(body.utm_medium) || noEspecificado;
   const utmCampaign = campo(body.utm_campaign) || noEspecificado;
   const utmContent = campo(body.utm_content) || noEspecificado;
+  /* Identificador de clic de Google Ads. Llega en su propio campo y no dentro
+     de utm_content: los dos formularios lo mandan siempre que exista, con UTM
+     o sin ellos, para poder cerrar el círculo con Ads desde el CRM. */
+  const gclid = campo(body.gclid) || noEspecificado;
   const idioma = campo(body.idioma) || "Inglés";
 
   // Validación mínima: nombre y correo son indispensables para un lead útil.
@@ -333,7 +337,12 @@ export async function POST(request: Request): Promise<Response> {
     ["UTM Medium", utmMedium],
     ["UTM Campaign", utmCampaign],
     ["UTM Content", utmContent],
+    ["GCLID", gclid],
   ];
+
+  /* `rows` alimenta los dos destinos: la tabla del correo de Resend y, como
+     texto plano, la nota que se cuelga del lead en Kommo. Añadir una fila aquí
+     la propaga a ambos; no hay que tocar nada más. */
 
   const text = rows.map(([k, v]) => `${k}: ${v}`).join("\n");
 

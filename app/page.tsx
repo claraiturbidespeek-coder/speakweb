@@ -156,10 +156,7 @@ const FAQ = [
 
 export default function Home() {
   return (
-    /* `pruebaSuperficies`: prueba de lenguaje visual acotada a la home
-       —redondeos y glass—. Reversible quitando esta clase y su bloque al final
-       de home.module.css. */
-    <main className={styles.pruebaSuperficies}>
+    <main>
       {/* Hero nuevo — en construcción */}
       <section className={`sp-seccion ${styles.heroNuevo}`}>
         <div className={`sp-inner ${styles.heroNuevoInner}`}>

@@ -148,9 +148,35 @@
 
   /* ---------- Bordes y sombras ---------- */
 
-  /* Radio cero: decisión de marca. La escena 404 tiene la única excepción
-     aprobada (burbujas de diálogo), documentada en su propio archivo. */
-  --radius: 0;
+  /* Superficies redondeadas: decisión de marca vigente. Sustituye al
+     `--radius: 0` que rigió hasta ahora, y que la escena 404 era la única
+     excepción aprobada en contradecir. Viene de la prueba de lenguaje visual
+     que corrió acotada a la home; aprobada, sube aquí y alcanza a todo el
+     sitio.
+
+     Dos escalones, sacados del ritmo de 4px que ya usa el espaciado:
+
+       --radius         controles y cajas pequeñas: botones, píldoras, iconos,
+                        campos, avisos. Lo aplica base.css en el selector
+                        universal, así que llega a todo sin escribir una regla.
+       --radius-grande  superficies que sí son superficie: tarjetas, medios con
+                        contenedor, bloques de color, modales. Se pide a mano
+                        en el patrón o el módulo que la declara.
+
+     Un `border-radius: 50%` declarado en un módulo manda sobre esto y sigue
+     siendo un círculo. La escena 404 conserva sus propios radios, documentados
+     en su archivo. */
+  --radius: 8px;
+  --radius-grande: 20px;
+
+  /* Glass. Solo para superficies apoyadas sobre una foto, un video o un color:
+     sobre fondo plano el desenfoque no se percibe y solo cuesta pintado. La
+     opacidad es alta a propósito: por debajo de 0.7 el texto navy sobre foto
+     pierde contraste, y esto es un tratamiento de superficie, no un cambio de
+     jerarquía ni de legibilidad. */
+  --glass-fondo: rgba(255, 255, 255, 0.72);
+  --glass-borde: rgba(255, 255, 255, 0.55);
+  --glass-desenfoque: 18px;
 
   --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.07);
   --shadow-panel: 0 20px 50px rgba(0, 0, 0, 0.1);

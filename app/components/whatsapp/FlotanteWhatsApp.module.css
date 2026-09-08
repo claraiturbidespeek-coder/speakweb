@@ -1,0 +1,186 @@
+/* Lo propio del flotante de WhatsApp y su modal.
+
+   El grueso viene de landing.module.css, donde vivía cuando el flotante era
+   markup suelto de las seis landings. Al pasar a componente, su estilo viaja
+   con él: la plantilla de landing ya no tiene por qué saber de esto.
+
+   Lo compartido no se copia: la caja del modal, el formulario y el estado de
+   éxito son .sp-modal, .sp-form y .sp-form-exito de patrones.css. Aquí queda
+   el botón, la cabecera propia de este modal y los dos ajustes de caja. */
+
+/* ---------- Botón flotante ---------- */
+
+.flotante {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #25d366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  animation: wa-pulse 2s ease-in-out infinite;
+}
+
+.flotante:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 22px rgba(37, 211, 102, 0.55);
+}
+
+.flotante svg {
+  width: 32px;
+  height: 32px;
+  fill: #fff;
+}
+
+@keyframes wa-pulse {
+  0% {
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4),
+      0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  70% {
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4),
+      0 0 0 14px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4),
+      0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* ---------- Caja ----------
+
+   El glass va en el velo, no en el panel: detrás del velo está la página, que
+   es justo el caso que pide el tratamiento, mientras que el panel lleva un
+   formulario y necesita el blanco opaco. Es la lectura literal del token, que
+   dice que el glass es tratamiento de superficie y no un cambio de
+   legibilidad. */
+
+.overlay {
+  padding: 20px;
+  background: rgba(17, 24, 39, 0.6);
+  backdrop-filter: blur(var(--glass-desenfoque));
+  -webkit-backdrop-filter: blur(var(--glass-desenfoque));
+}
+
+/* El filo rojo superior es un borde, así que se recorta con la esquina en vez
+   de asomar por fuera de la curva del radio grande. */
+.modal {
+  max-width: 380px;
+  border-top: 4px solid var(--color-red);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- Cabecera propia ----------
+   No usa .sp-modal-head, que es la barra azul del modal de contacto: este es
+   más corto y la barra lo desequilibraba. */
+
+.cabecera {
+  position: relative;
+  padding: 26px 28px 18px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cabecera h3 {
+  margin-bottom: 6px;
+  font-size: 21px;
+  font-weight: var(--weight-black);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-navy);
+}
+
+.cabecera p {
+  font-size: 14px;
+  font-weight: var(--weight-medium);
+  line-height: 1.4;
+  color: var(--color-muted);
+}
+
+.cerrar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--color-muted);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.cerrar:hover {
+  color: var(--color-navy);
+}
+
+.cuerpo {
+  padding: 22px 28px 28px;
+}
+
+.enviar {
+  background: #25d366;
+  margin-top: 6px;
+}
+
+.enviar:hover {
+  background: #1ebe5a;
+}
+
+.enviar:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+/* ---------- Confirmación ----------
+   El respaldo se separa del mensaje con un filete, para que se lea como lo que
+   es: la salida por si la apertura automática no ocurrió, no el paso normal. */
+
+.respaldo {
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+.avisoEnvio {
+  margin-top: 20px;
+  text-align: left;
+}
+
+/* ---------- Responsive ---------- */
+
+/* En móvil el botón crece un poco y se acerca al borde: el pulgar lo alcanza
+   mejor y compite menos con el contenido. Venía así de la plantilla. */
+@media (max-width: 768px) {
+  .flotante {
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .flotante svg {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flotante {
+    animation: none;
+  }
+}

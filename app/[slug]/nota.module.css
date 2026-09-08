@@ -8,8 +8,11 @@
    Los tres contenedores de la nota usan el tope de lectura, no el del sitio:
    con 1360 la columna del artículo se iría a 980px. Ver tokens.css. */
 
+/* Ancho completo: radio cero explícito, por lo mismo que el resto de las
+   bandas. Ver el token --radius en tokens.css. */
 .cabecera {
   background: var(--color-blue-hero);
+  border-radius: 0;
 }
 
 .cabeceraInner {
@@ -251,6 +254,7 @@
 
 .relacionados {
   background: var(--color-off-white);
+  border-radius: 0;
 }
 
 .relacionadosInner {

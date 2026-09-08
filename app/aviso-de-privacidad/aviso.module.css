@@ -8,8 +8,11 @@
    del blog que este documento no tiene. Si algún día un segundo documento
    largo pide lo mismo, ahí sí conviene subir esto a patrones.css. */
 
+/* Ancho completo: radio cero explícito, por lo mismo que el resto de las
+   bandas. Ver el token --radius en tokens.css. */
 .cabecera {
   background: var(--color-navy);
+  border-radius: 0;
 }
 
 .titulo {

@@ -24,7 +24,7 @@ export default function Header() {
         <BotonContacto
           className={`sp-btn sp-btn--rojo sp-btn--plano ${styles.cta}`}
         >
-          <span className={styles.ctaLargo}>Solicite Información</span>
+          <span className={styles.ctaLargo}>Solicite una Cotización</span>
           <span className={styles.ctaCorto}>Cotizar</span>
         </BotonContacto>
       </div>

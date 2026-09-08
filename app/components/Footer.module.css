@@ -1,9 +1,13 @@
 /* Patrones tomados de app/idioma/ingles-para-empresas/landing.css (footer, líneas 574-602). */
 
+/* Ancho completo: radio cero explícito. El selector universal de base.css
+   reparte `--radius` a todo, y contra el borde del viewport una esquina de 8px
+   se lee como error, no como intención. */
 .footer {
   background: var(--color-navy);
   padding: 64px 0 0;
   font-family: inherit;
+  border-radius: 0;
 }
 
 .inner {
@@ -91,9 +95,11 @@
   color: var(--color-red-hover);
 }
 
+/* La banda inferior también llega a los dos bordes, y además al de abajo. */
 .bottom {
   background: var(--color-navy-dark);
   padding: 20px var(--space-gutter);
+  border-radius: 0;
 }
 
 .bottomInner {

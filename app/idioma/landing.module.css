@@ -35,6 +35,9 @@
 
 /* ---------- Hero ---------- */
 
+/* Ancho completo: radio cero explícito. El selector universal de base.css
+   reparte `--radius` a todo, y contra el borde del viewport una esquina de 8px
+   se lee como error, no como intención. */
 .hero {
   position: relative;
   background: linear-gradient(
@@ -42,6 +45,7 @@
     var(--color-blue-gradient) 0%,
     var(--color-off-white) 55%
   );
+  border-radius: 0;
   padding: 80px var(--space-gutter) 120px;
 }
 
@@ -207,6 +211,7 @@
 .areasMedia {
   width: 100%;
   min-height: 420px;
+  border-radius: var(--radius-grande);
   overflow: hidden;
 }
 
@@ -280,6 +285,7 @@
 .dash {
   background: var(--color-white);
   border: 1px solid var(--color-border);
+  border-radius: var(--radius-grande);
   box-shadow: 0 24px 56px rgba(26, 60, 77, 0.16);
   overflow: hidden;
 }
@@ -563,6 +569,7 @@
 
 .proceso {
   background: var(--color-off-white);
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -600,6 +607,7 @@
   background: var(--color-navy);
   color: var(--color-white);
   padding: 26px 30px 26px 56px;
+  border-radius: var(--radius-grande);
   overflow: hidden;
 }
 
@@ -729,6 +737,7 @@
 
 .testimonials {
   background: var(--color-navy);
+  border-radius: 0;
 }
 
 .testiCarousel {
@@ -787,6 +796,7 @@
 .finalCta {
   background: var(--color-red);
   color: var(--color-white);
+  border-radius: 0;
   text-align: center;
   overflow: hidden;
 }
@@ -857,134 +867,9 @@
 
 /* ---------- Formulario ---------- */
 
-/* ---------- WhatsApp ---------- */
-
-.whatsappFloat {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 999;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #25d366;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-  animation: wa-pulse 2s ease-in-out infinite;
-}
-
-.whatsappFloat:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 22px rgba(37, 211, 102, 0.55);
-}
-
-.whatsappFloat svg {
-  width: 32px;
-  height: 32px;
-  fill: #fff;
-}
-
-@keyframes wa-pulse {
-  0% {
-    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4),
-      0 0 0 0 rgba(37, 211, 102, 0.5);
-  }
-  70% {
-    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4),
-      0 0 0 14px rgba(37, 211, 102, 0);
-  }
-  100% {
-    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4),
-      0 0 0 0 rgba(37, 211, 102, 0);
-  }
-}
-
-/* El modal de WhatsApp usa la caja del sistema con su propia entrada: se funde
-   y sube un poco, en vez de aparecer de golpe. */
-.waModalOverlay {
-  padding: 20px;
-  background: rgba(17, 24, 39, 0.6);
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-
-.waModalOverlay:global(.open) {
-  opacity: 1;
-}
-
-.waModal {
-  max-width: 380px;
-  max-height: none;
-  overflow-y: visible;
-  border-top: 4px solid var(--color-red);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-  transform: translateY(12px);
-  transition: transform 0.25s ease;
-}
-
-.waModalOverlay:global(.open) .waModal {
-  transform: translateY(0);
-}
-
-.waModalHead {
-  position: relative;
-  padding: 26px 28px 18px;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.waModalHead h3 {
-  margin-bottom: 6px;
-  font-size: 21px;
-  font-weight: var(--weight-black);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: var(--color-navy);
-}
-
-.waModalHead p {
-  font-size: 14px;
-  font-weight: var(--weight-medium);
-  line-height: 1.4;
-  color: var(--color-muted);
-}
-
-.waModalClose {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  color: var(--color-muted);
-  font-size: 22px;
-  line-height: 1;
-  cursor: pointer;
-  transition: color var(--transition-fast);
-}
-
-.waModalClose:hover {
-  color: var(--color-navy);
-}
-
-.waModalBody {
-  padding: 22px 28px 28px;
-}
-
-.waSubmit {
-  background: #25d366;
-  margin-top: 6px;
-}
-
-.waSubmit:hover {
-  background: #1ebe5a;
-}
+/* El flotante de WhatsApp y su modal salieron de aquí: ahora son
+   app/components/whatsapp/FlotanteWhatsApp.tsx, con su propio módulo. La
+   plantilla ya no tiene por qué saber de ellos. */
 
 /* El botón de volver arriba salió de aquí: ahora es global
    (VolverArriba.tsx, montado en el layout raíz), con su estilo en
@@ -1016,18 +901,6 @@
 }
 
 @media (max-width: 768px) {
-  .whatsappFloat {
-    width: 60px;
-    height: 60px;
-    bottom: 20px;
-    right: 20px;
-  }
-
-  .whatsappFloat svg {
-    width: 34px;
-    height: 34px;
-  }
-
   /* Los círculos del ciclo se achican para no empalmarse con el centro. */
   .cycle {
     max-width: 320px;
@@ -1114,10 +987,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .whatsappFloat {
-    animation: none;
-  }
-
   .wBar span,
   .dashChart polyline,
   .dashChart polygon,

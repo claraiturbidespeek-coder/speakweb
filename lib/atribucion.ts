@@ -1,18 +1,12 @@
-/* Atribución de leads: de dónde viene quien envía el formulario de contacto.
-   Portado literalmente de window.collectLeadTags, el guion que traía la landing
-   de inglés, para que el payload no cambie ni un campo.
+/* Atribución de leads: de dónde viene quien envía cualquiera de los dos
+   formularios del sitio.
 
-   OJO: HAY UNA SEGUNDA COPIA DE ESTA LÓGICA.
-   Vive en el guion inline de app/idioma/ingles-para-empresas/page.tsx, como
-   window.collectLeadTags, y la usa el formulario del modal de WhatsApp. Un
-   guion inline no puede importar este módulo, y exponer estas funciones en
-   window desde React crearía una dependencia de orden de carga: si el guion
-   corriera antes de que el componente monte, el lead se enviaría sin
-   atribución y sin que nada lo delatara. Perder el rastro de un lead en
-   silencio es peor que duplicar cuarenta líneas a la vista.
-
-   Las dos copias tienen que cambiar juntas. La duplicación desaparece el día
-   que el modal de WhatsApp pase a React. */
+   Nació como port de window.collectLeadTags, el guion inline de la landing de
+   inglés, y durante un tiempo convivió con esa copia porque el modal de
+   WhatsApp seguía siendo DOM suelto y no podía importar un módulo. Ya no:
+   FlotanteWhatsApp.tsx es React y usa esta pieza, así que la copia se borró y
+   esta es la única. El formulario de contacto y el de WhatsApp mandan el mismo
+   payload y se distinguen solo por `origen`. */
 
 const NO_ESPECIFICADO = "No especificado";
 const CLAVE_SESION = "speak_attribution";
@@ -47,6 +41,7 @@ export type Atribucion = {
   utm_medium: string;
   utm_campaign: string;
   utm_content: string;
+  gclid: string;
   idioma: string;
   pagina: string;
 };
@@ -77,16 +72,20 @@ export function recogerAtribucion(idioma: string): Atribucion {
   let utmSource = crudo("utm_source");
   let utmMedium = crudo("utm_medium");
   const utmCampaign = crudo("utm_campaign");
-  let utmContent = crudo("utm_content");
+  const utmContent = crudo("utm_content");
   const gclid = crudo("gclid");
 
-  // Respaldo Google Ads: si NO hubo utm_source (ni en URL ni persistido) pero sí
-  // hay gclid, marcamos origen google/cpc y guardamos el gclid en utm_content
-  // para no perder el rastro. Si los UTM sí vienen, mandan ellos.
+  /* El gclid viaja en su propio campo y se manda SIEMPRE que exista, vengan o
+     no los UTM. Antes se colaba en utm_content solo cuando no había utm_source,
+     así que una campaña con UTM completos perdía el identificador de clic: lo
+     que llegaba al CRM no permitía cerrar el círculo con Google Ads.
+
+     Lo que sí se conserva del comportamiento anterior es marcar origen
+     google/cpc cuando hay gclid y no hay UTM: eso es atribución de fuente, no
+     transporte del gclid, y sin ello ese lead entraría como "No especificado". */
   if (!utmSource && gclid) {
     utmSource = "google";
     if (!utmMedium) utmMedium = "cpc";
-    if (!utmContent) utmContent = "gclid:" + gclid;
   }
 
   return {
@@ -94,6 +93,7 @@ export function recogerAtribucion(idioma: string): Atribucion {
     utm_medium: utmMedium || NO_ESPECIFICADO,
     utm_campaign: utmCampaign || NO_ESPECIFICADO,
     utm_content: utmContent || NO_ESPECIFICADO,
+    gclid: gclid || NO_ESPECIFICADO,
     idioma,
     // Dirección completa de la página desde la que se envió el formulario.
     pagina: (() => {
