@@ -3,12 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import {
-  ENLACES_EQUIPOS,
-  ENLACES_IDIOMAS,
-  ENLACES_SUELTOS,
-  seccionesDe,
-} from "./secciones";
+import { ENLACES_EQUIPOS, ENLACES_IDIOMAS, ENLACES_SUELTOS } from "./secciones";
+import useModoLanding from "./useModoLanding";
 import styles from "./nav.module.css";
 
 /* El botón de menú y el panel a pantalla completa que abre.
@@ -18,8 +14,8 @@ import styles from "./nav.module.css";
    se escribe el cierre al hacer clic fuera y el cierre al navegar, y todos los
    caminos de cierre pasan por el evento `close`.
 
-   Cuándo se ve el botón lo decide el CSS: en escritorio solo en las páginas con
-   menú de secciones, y por debajo de 960px en todas.
+   Cuándo se ve el botón lo decide el CSS: por debajo de 960px. En modo landing
+   no se pinta en ninguna medida.
 
    ---------- La composición ----------
 
@@ -48,21 +44,9 @@ export default function MenuCompleto() {
   const [seleccion, setSeleccion] = useState("");
   const [enDetalle, setEnDetalle] = useState(false);
   const ruta = usePathname();
-  const secciones = seccionesDe(ruta);
+  const landing = useModoLanding();
 
   const grupos: Grupo[] = [
-    ...(secciones
-      ? [
-          {
-            clave: "pagina",
-            etiqueta: "En esta página",
-            enlaces: secciones.map((s) => ({
-              nombre: s.etiqueta,
-              ruta: `#${s.id}`,
-            })),
-          },
-        ]
-      : []),
     { clave: "idiomas", etiqueta: "Idiomas", enlaces: ENLACES_IDIOMAS },
     { clave: "equipos", etiqueta: "Equipos", enlaces: ENLACES_EQUIPOS },
   ];
@@ -113,11 +97,15 @@ export default function MenuCompleto() {
 
   const cerrar = () => dialogo.current?.close();
 
+  // Sin menú en modo landing: el botón se va con el panel. Va después de los
+  // hooks, que no pueden quedar detrás de un return condicional.
+  if (landing) return null;
+
   return (
     <>
       <button
         type="button"
-        className={`${styles.toggle} ${secciones ? styles.toggleSiempre : ""}`}
+        className={`${styles.toggle} sp-menu`}
         onClick={() => setAbierto(true)}
         aria-label="Abrir el menú"
         aria-haspopup="dialog"
@@ -194,21 +182,13 @@ export default function MenuCompleto() {
 
             <h2 className={styles.contenidoTitulo}>{activo.etiqueta}</h2>
             <ul className={styles.contenidoLista}>
-              {activo.enlaces.map((e) =>
-                e.ruta.startsWith("#") ? (
-                  <li key={e.ruta}>
-                    <a className={styles.panelEnlace} href={e.ruta} onClick={cerrar}>
-                      {e.nombre}
-                    </a>
-                  </li>
-                ) : (
-                  <li key={e.ruta}>
-                    <Link className={styles.panelEnlace} href={e.ruta}>
-                      {e.nombre}
-                    </Link>
-                  </li>
-                )
-              )}
+              {activo.enlaces.map((e) => (
+                <li key={e.ruta}>
+                  <Link className={styles.panelEnlace} href={e.ruta}>
+                    {e.nombre}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

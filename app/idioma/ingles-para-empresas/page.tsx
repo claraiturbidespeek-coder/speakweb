@@ -4,6 +4,7 @@ import type { FormEvent, MouseEvent } from "react";
 import Script from "next/script";
 import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BandaLogos from "@/app/components/BandaLogos";
+import SelloSTPS from "@/app/components/SelloSTPS";
 import { useContacto } from "@/app/components/contacto/useContacto";
 import styles from "./landing.module.css";
 
@@ -230,18 +231,7 @@ export default function Page() {
         <span className={styles.fakeFormText}>¿Cuántos colaboradores necesitan capacitación?</span>
         <button className={styles.fakeFormBtn} type="button">Solicite Información</button>
       </div>
-      <div className="sp-hero-social">
-        <div className="sp-avatares">
-          <span className="sp-avatar-apilado">MG</span>
-          <span className="sp-avatar-apilado">FH</span>
-          <span className="sp-avatar-apilado">AV</span>
-          <span className="sp-avatar-apilado">RC</span>
-        </div>
-        <div>
-          <div className="sp-estrellas">★★★★★</div>
-          <p>Más de <strong>500 empresas</strong> capacitan a sus equipos con <strong>S-Peak</strong></p>
-        </div>
-      </div>
+      <SelloSTPS />
     </div>
 
     {/* COLUMNA DERECHA (40%) */}

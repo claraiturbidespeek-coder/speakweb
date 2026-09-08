@@ -25,11 +25,11 @@
 
 /* Tres columnas y no una fila flex: las laterales miden lo mismo (1fr cada
    una), así que la del medio queda centrada en el header pase lo que pase a los
-   lados. Importa porque los lados no son iguales en todas las páginas: en las
-   comerciales el botón de menú se ve también en escritorio (.toggleSiempre, en
-   nav.module.css) y ensancha la izquierda. Con márgenes automáticos el menú se
-   habría centrado en el hueco libre, y habría caído en distinto sitio según la
-   página; así cae en el mismo.
+   lados. Importa porque los lados no siempre miden igual: el botón de menú
+   aparece por debajo de 960px y ensancha la izquierda, y en modo landing no hay
+   menú en medio. Con márgenes automáticos el menú se habría centrado en el
+   hueco libre, y habría caído en distinto sitio según la página; así cae en el
+   mismo.
 
    `minmax(0, 1fr)` en vez de `1fr` para que las laterales puedan encogerse por
    debajo de su contenido en lugar de desbordar la fila. */

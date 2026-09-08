@@ -55,6 +55,24 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="es" className={montserrat.variable}>
       <body>
+        {/* Modo landing, antes del primer pintado.
+
+            El fragmento no viaja al servidor, así que el HTML sale siempre con
+            el menú: si el modo se decidiera solo al hidratar, el menú se vería
+            —y sería clicable— durante ese frame, que es justo lo que una
+            landing de campaña no puede permitirse. Este guion marca el <html>
+            mientras el navegador todavía no ha parseado el header, y la regla
+            de interacciones.css lo esconde desde el primer pintado.
+
+            Va inline y como primer hijo del <body> a propósito: un <Script> de
+            Next se carga después y llegaría tarde. useModoLanding.ts mantiene
+            el atributo al navegar dentro del sitio. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{if(location.pathname.indexOf('/idioma/')===0&&location.hash==='#landing'){document.documentElement.setAttribute('data-landing','')}}catch(e){}",
+          }}
+        />
         {/* Etiqueta nativa: con next/script el JSON-LD se inyectaría desde el
             cliente y no estaría en el HTML que lee Google. */}
         <script

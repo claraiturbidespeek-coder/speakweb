@@ -1,14 +1,13 @@
-import Image from "next/image";
-import Link from "next/link";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
+import Logotipo from "@/app/components/nav/Logotipo";
 import MenuCompleto from "@/app/components/nav/MenuCompleto";
 import Navegacion from "@/app/components/nav/Navegacion";
 import styles from "./Header.module.css";
 
 /* El header sigue siendo componente de servidor. Lo que cruza a cliente son
-   dos islas: la navegación, que necesita saber la ruta para elegir entre el
-   menú general y el de secciones, y el botón de menú con su panel. El logo y
-   el botón de contacto no dependen de la ruta y se quedan fuera. */
+   tres islas, y las tres por el modo landing: la navegación, el botón de menú
+   con su panel y el logotipo, que ahí deja de ser enlace. El botón de contacto
+   no depende de la ruta y se queda fuera. */
 
 export default function Header() {
   return (
@@ -17,15 +16,7 @@ export default function Header() {
         <div className={styles.izquierda}>
           <MenuCompleto />
 
-          <Link href="/" className={styles.logo}>
-            <Image
-              className="site-logo"
-              src="/brand/logo_white.svg"
-              alt="S-Peak"
-              width={1776}
-              height={492}
-            />
-          </Link>
+          <Logotipo />
         </div>
 
         <Navegacion />

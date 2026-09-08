@@ -411,24 +411,6 @@
   color: var(--color-ink-2);
 }
 
-.sp-hero-social {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.sp-hero-social p {
-  font-size: 13px;
-  line-height: 1.4;
-  color: var(--color-ink-2);
-}
-
-.sp-hero-social strong {
-  color: var(--color-navy);
-  font-weight: var(--weight-bold);
-}
-
 /* ========== Cifras destacadas ==========
    Copia literal en las dos páginas migradas. */
 
@@ -469,34 +451,6 @@
 }
 
 /* ========== Prueba social ========== */
-
-.sp-avatares {
-  display: flex;
-}
-
-.sp-avatar-apilado {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: var(--color-navy);
-  color: var(--color-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 11px;
-  font-weight: var(--weight-black);
-  border: 2px solid var(--color-white);
-  margin-left: -10px;
-  flex-shrink: 0;
-}
-
-.sp-avatar-apilado:first-child {
-  margin-left: 0;
-}
-
-.sp-avatar-apilado:nth-child(2) {
-  background: var(--color-red);
-}
 
 .sp-estrellas {
   font-size: 13px;

@@ -1,48 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import Desplegable from "./Desplegable";
-import {
-  ENLACES_EQUIPOS,
-  ENLACES_IDIOMAS,
-  ENLACES_SUELTOS,
-  seccionesDe,
-} from "./secciones";
+import { ENLACES_EQUIPOS, ENLACES_IDIOMAS, ENLACES_SUELTOS } from "./secciones";
+import useModoLanding from "./useModoLanding";
 import styles from "./nav.module.css";
 
 /* La navegación en línea del header.
 
-   Es la única isla de cliente del header, y lo es por una razón concreta: en
-   App Router un componente de servidor no conoce la ruta, y la única forma de
-   saberla en el servidor —headers()— volvería dinámicas las 54 páginas del
-   sitio. Un menú no justifica perder la generación estática.
-
-   El logo y el botón de contacto siguen fuera de esta isla. */
+   Es una isla de cliente por el modo landing: el fragmento de la URL no llega
+   al servidor y decide si esta navegación se pinta o no. El logo y el botón de
+   contacto siguen fuera de la isla. */
 
 export default function Navegacion() {
-  const ruta = usePathname();
-  const secciones = seccionesDe(ruta);
+  const landing = useModoLanding();
 
-  if (secciones) {
-    return (
-      <nav className={styles.nav} aria-label="Secciones de esta página">
-        <ul className={styles.list}>
-          {secciones.map((s) => (
-            <li key={s.id} className={styles.item}>
-              {/* Ancla de la misma página: <a>, no <Link>. */}
-              <a className={styles.link} href={`#${s.id}`}>
-                {s.etiqueta}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    );
-  }
+  if (landing) return null;
 
   return (
-    <nav className={styles.nav} aria-label="Principal">
+    <nav className={`${styles.nav} sp-menu`} aria-label="Principal">
       <ul className={styles.list}>
         <li className={styles.item}>
           <Desplegable etiqueta="Idiomas" enlaces={ENLACES_IDIOMAS} />

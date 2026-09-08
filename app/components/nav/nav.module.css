@@ -152,10 +152,6 @@
   stroke-linecap: round;
 }
 
-.toggleSiempre {
-  display: inline-flex;
-}
-
 /* ---------- Panel a pantalla completa ----------
    Dos columnas en escritorio: la lista a la izquierda, el contenido del
    elemento seleccionado a la derecha. Por debajo de 768px se colapsa a una

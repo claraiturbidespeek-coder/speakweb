@@ -22,6 +22,28 @@
    Aquí viven solo los que estaban duplicados o son de sitio. Los específicos de
    una página siguen en su hoja hasta que esa página se convierta en módulo. */
 
+/* ---------- Modo landing ----------
+   `data-landing` lo pone en <html> el guion inline del layout, antes de que el
+   navegador parsee el header, y lo mantiene useModoLanding.ts al navegar. Va
+   aquí y no en un módulo por lo mismo que las clases de Lenis: un módulo
+   hashea el nombre y quien lo escribe es JavaScript, con el literal.
+
+   El HTML del servidor trae siempre el menú, porque el fragmento no llega al
+   servidor. Estas reglas son las que evitan que llegue a pintarse en el frame
+   anterior a la hidratación; después, las islas del header directamente no lo
+   montan. `display: none` y no `visibility`: así tampoco entra en el orden de
+   tabulación ni se puede clicar. */
+
+html[data-landing] .sp-menu {
+  display: none;
+}
+
+/* El logotipo se queda visible, pero sin llevar a ninguna parte. Al hidratar
+   deja de ser un <a>; hasta entonces esto le quita el clic. */
+html[data-landing] .sp-logo-enlace {
+  pointer-events: none;
+}
+
 /* ---------- Lenis ----------
    Clases que la librería de scroll suave pone en <html> desde JavaScript, sitio
    completo. No pueden vivir en un módulo: un módulo hashea los nombres y la

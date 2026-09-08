@@ -1,50 +1,5 @@
-/* Qué menú lleva cada ruta.
-
-   Un mapa aquí, y no un registro desde cada página, porque registrar hacia
-   arriba exige un efecto y eso hace parpadear el menú general en la primera
-   pintura.
-
-   Solo entran las rutas que tienen secciones de verdad. Las cinco páginas de
-   idioma que siguen siendo placeholder, y las tres rutas de landing que se van
-   a eliminar, no están aquí: reciben el menú general, que es lo correcto para
-   una página sin secciones. Las de idioma entran cuando se construyan. */
-
-export type Seccion = { id: string; etiqueta: string };
-
-/* Las siete páginas de equipo comparten plantilla, así que comparten anclas.
-
-   Cuatro entradas, no seis. Las secciones #dolor y #diferenciadores conservan
-   su id y se puede enlazar a ellas desde donde sea, pero no están en el menú a
-   propósito: no son destinos que alguien busque, y con seis el header quedaba
-   cargado. No las devuelvas sin decidirlo. */
-const EQUIPO: Seccion[] = [
-  { id: "competencias", etiqueta: "Competencias" },
-  { id: "mercado", etiqueta: "Por qué ahora" },
-  { id: "resultados", etiqueta: "Testimonios" },
-  { id: "faq", etiqueta: "Preguntas" },
-];
-
-const INGLES: Seccion[] = [
-  { id: "enfoque", etiqueta: "Nuestro enfoque" },
-  { id: "metodo", etiqueta: "El método" },
-  { id: "resultados", etiqueta: "Casos de éxito" },
-  { id: "faq", etiqueta: "Preguntas" },
-];
-
-/* Lista explícita, no por prefijo: activar una página es agregar su ruta
-   aquí apuntando al conjunto de secciones que le corresponde; desactivarla es
-   quitar la entrada. Las siete páginas de /equipo/ están fuera hoy, pero
-   EQUIPO se queda arriba lista para volver a apuntarlas. */
-const RUTAS_CONTEXTUALES: Record<string, Seccion[]> = {
-  "/idioma/ingles-para-empresas": INGLES,
-};
-
-export function seccionesDe(ruta: string): Seccion[] | null {
-  const limpia = ruta.replace(/\/+$/, "");
-  return RUTAS_CONTEXTUALES[limpia] ?? null;
-}
-
-/* ---------- El menú general ---------- */
+/* Los enlaces del menú del header, compartidos por la navegación en línea y
+   por el panel a pantalla completa. */
 
 export const ENLACES_IDIOMAS = [
   { nombre: "Alemán", ruta: "/idioma/aleman-para-empresas/" },
