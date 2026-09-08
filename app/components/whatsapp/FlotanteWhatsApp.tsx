@@ -6,12 +6,19 @@ import Icono from "@/app/components/Icono";
 import {
   enviarLead,
   idiomaDeRuta,
+  NO_ESPECIFICADO,
   recogerAtribucion,
   type PayloadLead,
 } from "@/lib/atribucion";
 import styles from "./FlotanteWhatsApp.module.css";
 
 /* El botón flotante de WhatsApp y su modal de pre-registro.
+
+   Va montado una sola vez en el layout raíz, junto a ProveedorContacto: el
+   flotante es de todo el sitio, no de las seis landings de idioma que lo
+   estrenaron. El contexto de cada página lo resuelve al enviar —usePathname
+   para el idioma cuando la ruta es una de /idioma/, y la URL de origen desde
+   lib/atribucion.ts—, así que no necesita que la página le pase nada.
 
    Sustituye al guion inline que traían las seis landings de idioma. Aquello
    definía window.collectLeadTags y window.sendLead por su cuenta, apuntando a
@@ -29,11 +36,29 @@ import styles from "./FlotanteWhatsApp.module.css";
 
 const TELEFONO = "525585265520";
 
-// El mismo mensaje que el botón mandaba antes de que hubiera modal.
-function mensajeWhatsapp(nombre: string, telefono: string, correo: string) {
+/* El texto con el que se abre la conversación.
+
+   En las seis rutas de /idioma/ nombra el idioma de la página; en el resto del
+   sitio se queda la frase genérica con la que nació el botón. Antes el contexto
+   lo daba el lugar —el flotante solo existía en esas seis landings—, y desde
+   que es global quien atiende el chat necesita leerlo en el propio mensaje.
+
+   El idioma llega como lo escribe IDIOMA_POR_RUTA, en mayúscula inicial porque
+   así viaja al CRM; aquí va en mitad de la frase y baja a minúscula. */
+function mensajeWhatsapp(
+  nombre: string,
+  telefono: string,
+  correo: string,
+  idioma: string,
+) {
+  const programas =
+    idioma === NO_ESPECIFICADO
+      ? "los programas de idiomas para empresas"
+      : `los programas de ${idioma.toLocaleLowerCase("es")} para empresas`;
+
   return (
-    `Hola, soy ${nombre} (${telefono}). Me interesa conocer más sobre los ` +
-    `programas de idiomas para empresas de S-Peak. Mi correo es ${correo}.`
+    `Hola, soy ${nombre} (${telefono}). Me interesa conocer más sobre ` +
+    `${programas} de S-Peak. Mi correo es ${correo}.`
   );
 }
 
@@ -97,6 +122,9 @@ export default function FlotanteWhatsApp() {
     const telefono = texto("telefono");
     const correo = texto("correo");
 
+    // Una sola lectura de la ruta para los dos usos: el mensaje y el payload.
+    const idioma = idiomaDeRuta(ruta);
+
     const payload: PayloadLead = {
       nombre,
       // El modal corto no los pide; van vacíos, como en el formulario largo
@@ -108,10 +136,12 @@ export default function FlotanteWhatsApp() {
       mensaje: "",
       // La marca que separa este lead del formulario en Resend y en Kommo.
       origen: "WhatsApp",
-      ...recogerAtribucion(idiomaDeRuta(ruta)),
+      ...recogerAtribucion(idioma),
     };
 
-    const url = enlaceWhatsapp(mensajeWhatsapp(nombre, telefono, correo));
+    const url = enlaceWhatsapp(
+      mensajeWhatsapp(nombre, telefono, correo, idioma),
+    );
 
     /* ORDEN DELIBERADO. window.open tiene que ejecutarse en el mismo tic
        síncrono que el submit: en cuanto se cede el turno a un await, el

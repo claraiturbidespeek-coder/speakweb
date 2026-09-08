@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ScrollSuave from "./components/ScrollSuave";
 import VolverArriba from "./components/VolverArriba";
+import FlotanteWhatsApp from "./components/whatsapp/FlotanteWhatsApp";
 import "./globals.css";
 
 const montserrat = localFont({
@@ -89,6 +90,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Footer />
         </ProveedorContacto>
         <VolverArriba />
+        {/* El flotante de WhatsApp, global: antes lo montaba cada una de las
+            seis landings de idioma. Montado aquí una vez aparece en todo el
+            sitio, y sigue leyendo el contexto de cada página por su cuenta
+            —la URL de origen y, cuando la ruta es una de /idioma/, el idioma—
+            porque lo resuelve al enviar con usePathname y lib/atribucion.ts. */}
+        <FlotanteWhatsApp />
       </body>
     </html>
   );

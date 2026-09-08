@@ -8,7 +8,10 @@
    esta es la única. El formulario de contacto y el de WhatsApp mandan el mismo
    payload y se distinguen solo por `origen`. */
 
-const NO_ESPECIFICADO = "No especificado";
+/* El valor con el que se rellena cualquier campo de atribución que no venga.
+   Se exporta porque el modal de WhatsApp lo consulta: es como distingue una
+   ruta de /idioma/ del resto del sitio para redactar su mensaje. */
+export const NO_ESPECIFICADO = "No especificado";
 const CLAVE_SESION = "speak_attribution";
 
 /* El endpoint propio del proyecto, en app/api/lead/route.ts.

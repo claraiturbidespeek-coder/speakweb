@@ -6,7 +6,6 @@ import BandaLogos from "@/app/components/BandaLogos";
 import FranjaIdiomas from "@/app/components/FranjaIdiomas";
 import Icono from "@/app/components/Icono";
 import SelloSTPS from "@/app/components/SelloSTPS";
-import FlotanteWhatsApp from "@/app/components/whatsapp/FlotanteWhatsApp";
 import { useContacto } from "@/app/components/contacto/useContacto";
 // La lista de las seis páginas de idioma vive con la plantilla de equipo.
 import { IDIOMAS } from "@/app/equipo/tipos";
@@ -501,7 +500,6 @@ export default function Page() {
   <button className="sp-btn sp-btn--blanco" onClick={abrir}>Solicite una Cotización</button>
 </section>
 </main>
-<FlotanteWhatsApp />
 
       <Script
         id="lp-ingles-principal"
