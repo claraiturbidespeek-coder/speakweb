@@ -42,7 +42,7 @@ const datos: DatosEquipo = {
     eyebrow: "Las competencias lingüísticas de la dirección",
     titulo:
       "Las competencias lingüísticas que su dirección necesita para liderar en cualquier idioma",
-    sub: "No formamos a un líder como a un perfil junior: entrenamos las situaciones reales donde un ejecutivo se juega la influencia de la empresa.",
+    sub: "No necesita más gramática: necesita el idioma dentro de las situaciones que ya maneja, del comité de dirección a la negociación. En inglés o en el idioma de su corporativo.",
     tarjetas: [
       {
         icono: "usuarios",

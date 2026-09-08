@@ -38,7 +38,7 @@ const datos: DatosEquipo = {
     eyebrow: "Las competencias lingüísticas del equipo técnico",
     titulo:
       "El idioma de negocios que su equipo técnico necesita para coordinar sin barreras",
-    sub: "No enseñamos ingeniería ni el lenguaje técnico de cada especialidad: su equipo ya tiene el criterio. Trabajamos el idioma de negocios con que coordina proyectos, participa en reuniones y se comunica con casa matriz y equipos globales.",
+    sub: "No necesita más gramática: necesita el idioma dentro de las situaciones que ya maneja, de la reunión de arranque a la entrega. En inglés o en el idioma de su proyecto.",
     tarjetas: [
       {
         icono: "diana",

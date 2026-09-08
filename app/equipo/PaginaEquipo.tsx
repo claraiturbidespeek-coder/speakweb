@@ -3,6 +3,7 @@ import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BandaLogos from "@/app/components/BandaLogos";
 import Carrusel from "@/app/components/Carrusel";
 import CentroDeRecursos from "@/app/components/CentroDeRecursos";
+import FranjaIdiomas from "@/app/components/FranjaIdiomas";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
 import SelloSTPS from "@/app/components/SelloSTPS";
 import Icono from "@/app/components/Icono";
@@ -180,21 +181,11 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
 
         {/* FRANJA DE IDIOMAS — solo las áreas que traen su texto */}
         {datos.franja ? (
-        <section className="sp-franja">
-          <div className="sp-franja-inner">
-            <div className="sp-franja-texto reveal">
-              <h2>{datos.franja.titulo}</h2>
-              <p>{datos.franja.texto}</p>
-            </div>
-            <div className="sp-franja-idiomas reveal">
-              {datos.franja.idiomas.map((i) => (
-                <a key={i.ruta} className="sp-pill" href={i.ruta}>
-                  {i.nombre}
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
+          <FranjaIdiomas
+            titulo={datos.franja.titulo}
+            texto={datos.franja.texto}
+            idiomas={datos.franja.idiomas}
+          />
         ) : null}
 
         {/* DOLOR */}

@@ -4,8 +4,11 @@ import type { FormEvent, MouseEvent } from "react";
 import Script from "next/script";
 import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BandaLogos from "@/app/components/BandaLogos";
+import FranjaIdiomas from "@/app/components/FranjaIdiomas";
 import SelloSTPS from "@/app/components/SelloSTPS";
 import { useContacto } from "@/app/components/contacto/useContacto";
+// La lista de las seis páginas de idioma vive con la plantilla de equipo.
+import { IDIOMAS } from "@/app/equipo/tipos";
 import styles from "./landing.module.css";
 
 // Las funciones del original viven en scope global, definidas por los <Script> de abajo.
@@ -229,7 +232,7 @@ export default function Page() {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
         </span>
         <span className={styles.fakeFormText}>¿Cuántos colaboradores necesitan capacitación?</span>
-        <button className={styles.fakeFormBtn} type="button">Solicite Información</button>
+        <button className={styles.fakeFormBtn} type="button">Solicite una Cotización</button>
       </div>
       <SelloSTPS />
     </div>
@@ -281,10 +284,26 @@ export default function Page() {
       <div className="sp-eyebrow">Inglés de negocios</div>
       <h2>Prepare a su talento con un programa de inglés para el mercado global</h2>
       <p>Cada departamento enfrenta retos distintos en inglés: ventas negocia, finanzas reporta a casa matriz, operaciones coordina con proveedores. Por eso cada programa de inglés empresarial <strong>se adapta al rol y al contexto real del puesto</strong>. Medimos el avance con <strong>indicadores verificables</strong> y entregamos reportes que le permiten <strong>decidir sobre su inversión</strong>.</p>
-      <button className="sp-btn sp-btn--rojo" onClick={abrir}>Solicite Información</button>
+      <button className="sp-btn sp-btn--rojo" onClick={abrir}>Solicite una Cotización</button>
     </div>
   </div>
 </section>
+
+{/* FRANJA DE IDIOMAS — se esconde en modo landing */}
+<FranjaIdiomas
+  className="sp-oculto-landing"
+  titulo="No solo inglés"
+  texto={
+    <>
+      El inglés es el idioma con el que más nos buscan, porque es el estándar de
+      la mayoría de las operaciones internacionales. Pero si su equipo trata con
+      Brasil, Alemania, Francia o Italia, capacitamos en{" "}
+      <strong>la lengua que realmente usa esa relación</strong>. En el
+      diagnóstico definimos cuál.
+    </>
+  }
+  idiomas={IDIOMAS}
+/>
 
 {/* EVIDENCIA */}
 <section className="sp-seccion" id="enfoque">
@@ -298,7 +317,7 @@ export default function Page() {
         <span className={styles.evidenciaTag}>Métricas de avance y asistencia</span>
         <span className={styles.evidenciaTag}>Reportes de desempeño</span>
       </div>
-      <button className="sp-btn sp-btn--rojo" onClick={abrir}>Solicite Información</button>
+      <button className="sp-btn sp-btn--rojo" onClick={abrir}>Solicite una Cotización</button>
     </div>
     <div className={`${styles.evidenciaRight} reveal`}>
       <div className={styles.dash} role="img" aria-label="Panel de progreso del equipo en el programa de inglés para empresas de S-Peak">
@@ -539,7 +558,7 @@ export default function Page() {
       <p>Hemos recopilado las dudas más comunes de nuestros clientes para brindarle claridad desde el primer momento.</p>
       <div className={`sp-cta-card ${styles.faqCtaCard}`}>
         <p>¿Tiene una pregunta que no está aquí?</p>
-        <button className="sp-btn sp-btn--rojo" onClick={abrir}>Solicite Información</button>
+        <button className="sp-btn sp-btn--rojo" onClick={abrir}>Solicite una Cotización</button>
       </div>
     </div>
     <div className="sp-faq-lista reveal">
@@ -608,7 +627,7 @@ export default function Page() {
   <img className={`${styles.deco} ${styles.decoCta}`} src="/images/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy" />
   <h2>Lleve a su equipo al nivel que<br />su operación necesita</h2>
   <p>Permítanos diseñar un programa de inglés que su equipo sí termine, con avance medible y evidencia para Dirección.</p>
-  <button className="sp-btn sp-btn--blanco" onClick={abrir}>Solicite Información</button>
+  <button className="sp-btn sp-btn--blanco" onClick={abrir}>Solicite una Cotización</button>
 </section>
 </main>
 {/* Botón flotante de WhatsApp */}

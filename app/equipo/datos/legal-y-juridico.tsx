@@ -47,7 +47,7 @@ const datos: DatosEquipo = {
     eyebrow: "Las competencias lingüísticas del área legal",
     titulo:
       "El idioma de negocios que su equipo legal necesita para coordinar sin barreras",
-    sub: "No enseñamos derecho ni el lenguaje técnico de los contratos: eso es competencia de su equipo. Trabajamos el idioma de negocios con que se comunica y coordina con el corporativo, la matriz legal y los despachos.",
+    sub: "No necesita más gramática: necesita el idioma dentro de las situaciones que ya maneja, del requerimiento de la matriz al cierre del asunto. En inglés o en el idioma de su corporativo.",
     tarjetas: [
       {
         icono: "usuarios",

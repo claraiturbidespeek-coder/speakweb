@@ -34,7 +34,8 @@
    montan. `display: none` y no `visibility`: así tampoco entra en el orden de
    tabulación ni se puede clicar. */
 
-html[data-landing] .sp-menu {
+html[data-landing] .sp-menu,
+html[data-landing] .sp-oculto-landing {
   display: none;
 }
 

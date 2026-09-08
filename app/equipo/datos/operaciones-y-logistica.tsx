@@ -37,7 +37,7 @@ const datos: DatosEquipo = {
     eyebrow: "Las competencias lingüísticas del equipo de operaciones",
     titulo:
       "Las competencias lingüísticas que su equipo de operaciones necesita para trabajar sin error",
-    sub: "No formamos a un ingeniero o a un especialista en comercio exterior como a un vendedor: entrenamos los escenarios reales donde un error lingüístico se traduce en costos operativos directos.",
+    sub: "No necesita más gramática: necesita el idioma dentro de las situaciones que ya maneja, de la instrucción en planta al embarque en aduana. En inglés o en el idioma de su operación.",
     tarjetas: [
       {
         icono: "documento",

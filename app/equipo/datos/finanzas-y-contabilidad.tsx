@@ -42,7 +42,7 @@ const datos: DatosEquipo = {
     eyebrow: "Las competencias lingüísticas del equipo de finanzas",
     titulo:
       "El idioma de negocios que su equipo financiero necesita para comunicar los números",
-    sub: "No enseñamos contabilidad: su equipo ya la domina. Entrenamos el idioma con el que reporta, presenta y coordina ante el corporativo y los auditores.",
+    sub: "No necesita más gramática: necesita el idioma dentro de las situaciones que ya maneja, del cierre mensual a la auditoría. En inglés o en el idioma de su corporativo.",
     tarjetas: [
       {
         icono: "grafico",

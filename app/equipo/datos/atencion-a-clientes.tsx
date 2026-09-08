@@ -39,7 +39,7 @@ const datos: DatosEquipo = {
     eyebrow: "Las competencias lingüísticas del equipo de atención a clientes",
     titulo:
       "Las competencias lingüísticas que su equipo necesita para resolver en cualquier idioma",
-    sub: "No formamos a un agente de soporte como a un vendedor: entrenamos las situaciones reales donde se define la confianza del cliente en la posventa.",
+    sub: "No necesita más gramática: necesita el idioma dentro de las situaciones que ya maneja, de la primera llamada al caso cerrado. En inglés o en el idioma de su cliente.",
     tarjetas: [
       {
         icono: "diadema",
