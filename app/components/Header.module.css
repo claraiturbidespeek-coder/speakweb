@@ -68,6 +68,22 @@
   justify-self: end;
 }
 
+/* La columna, fijada, y solo en modo landing.
+
+   La colocación automática cuenta hijos, no columnas: cuando la navegación no
+   está, el botón deja de ser el tercer hijo y se coloca solo en la del medio
+   —entre dos laterales iguales—, que es leerlo centrado. En modo landing la
+   barra de anclas está siempre, a cualquier ancho, así que queda un solo
+   momento en que falta: el frame anterior a la hidratación, donde el HTML del
+   servidor trae el menú general y la regla de interacciones.css lo esconde.
+   Dura un frame y se ve, porque el botón salta de sitio.
+
+   Acotado a `html[data-landing]` a propósito: el mismo atributo del guion del
+   layout, y así el resto del sitio se queda exactamente como está. */
+html[data-landing] .cta {
+  grid-column: 3;
+}
+
 /* Las dos etiquetas del botón de contacto conviven en el marcado y el ancho
    decide cuál se ve. No hay JavaScript detrás: se renderiza en el servidor y
    no hay un estado intermedio en el que se lea la otra. */
@@ -104,5 +120,20 @@
 
   .ctaCorto {
     display: inline;
+  }
+
+  /* En modo landing la columna del medio deja de medirse por su contenido.
+
+     Con `auto` se sirve primero: una pista intrínseca crece hasta su
+     max-content antes de que las de `1fr` reciban nada, así que una barra de
+     anclas que a este ancho no cabe entera se llevaría todo el sitio y dejaría
+     al logo y al botón con pistas de cero, desbordados. Es al revés de lo que
+     tiene que pasar: los que miden lo suyo son el logo y el botón, y la barra
+     se queda con el resto y arrastra lo que no le entre.
+
+     Se pierde el centrado exacto que dan las dos laterales de `1fr`. No hay
+     nada que centrar: la barra ya no cabe entera. */
+  html[data-landing] .inner {
+    grid-template-columns: auto minmax(0, 1fr) auto;
   }
 }

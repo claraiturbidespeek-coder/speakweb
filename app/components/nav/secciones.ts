@@ -26,3 +26,22 @@ export const ENLACES_SUELTOS = [
   { nombre: "Clientes", ruta: "/clientes/" },
   { nombre: "Recursos", ruta: "/blog/" },
 ];
+
+/* Las anclas del header en modo landing, en el orden en que las secciones
+   aparecen en el documento.
+
+   Es una sola lista para las seis landings de idioma y no una por página
+   porque las seis salen de la misma plantilla y llevan los mismos `id` en las
+   mismas cuatro secciones: se comprobó en las seis páginas antes de escribir
+   esto. Si una landing futura se saliera de la plantilla, esto deja de servir
+   y habría que pasar la lista por prop desde la página.
+
+   La etiqueta no repite el `id`: la sección de testimonios es `#resultados` y
+   en el menú se llama Casos de éxito. El `id` viene de la página migrada y no
+   se toca; el texto es el del header. */
+export const ANCLAS_LANDING = [
+  { nombre: "Nuestro enfoque", ancla: "#enfoque" },
+  { nombre: "El método", ancla: "#metodo" },
+  { nombre: "Casos de éxito", ancla: "#resultados" },
+  { nombre: "Preguntas", ancla: "#faq" },
+];

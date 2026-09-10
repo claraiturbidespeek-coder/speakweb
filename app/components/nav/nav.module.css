@@ -10,6 +10,22 @@
   align-items: center;
 }
 
+/* ---------- Barra de anclas del modo landing ----------
+   Ocupa el mismo sitio que `.nav` y comparte con ella `.list`, `.item` y
+   `.link`: es la misma barra de enlaces con otro contenido. Tiene clase propia
+   solo por lo que pasa por debajo de 960px, donde las dos hacen lo contrario:
+   el menú general se retira y esta se queda.
+
+   `min-width: 0` es lo que le permite medir menos que su contenido cuando la
+   columna del medio del header se estrecha; sin eso no habría nada que
+   arrastrar, la barra empujaría la fila. */
+
+.anclas {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
 .list {
   list-style: none;
   margin: 0;
@@ -394,7 +410,13 @@
 /* ---------- Responsive ----------
    Por debajo de 960px el menú en línea desaparece y el botón lo sustituye en
    todas las páginas. Esto reemplaza la solución provisional que bajaba los
-   enlaces a una segunda fila del header. */
+   enlaces a una segunda fila del header.
+
+   La barra de anclas no sigue ese camino: en modo landing no hay botón de menú
+   que la sustituya, y este es el ancho por el que entra la mayor parte del
+   tráfico de campaña. Se queda en la fila, con las anclas en línea, y lo que no
+   cabe se alcanza arrastrando. No baja a una segunda fila: esa era justamente
+   la solución provisional que se quitó. */
 
 @media (max-width: 960px) {
   .nav {
@@ -403,6 +425,58 @@
 
   .toggle {
     display: inline-flex;
+  }
+
+  /* Lo que no cabe se arrastra. La barra no se retira ni se parte.
+
+     La barra de scroll se esconde: en móvil el navegador ya la superpone y se
+     desvanece sola, y en un header de 68px una barra nativa permanente se lee
+     como un fallo de maquetación. Lo que dice que hay más es que la ancla
+     siguiente se ve cortada en el borde.
+
+     El relleno vertical no es aire: `overflow-x` vuelve `auto` también el eje
+     vertical, y sin él el foco —outline de 2px a 3px de distancia— se
+     recortaría contra la caja al tabular por las anclas.
+
+     El desvanecido del borde derecho es la señal de que hay más: la máscara se
+     aplica a la caja y no al contenido, así que se queda quieta en el borde
+     mientras las anclas pasan por debajo. Es fija, no sabe por dónde va el
+     arrastre: al llegar al final la última ancla queda con el degradado
+     encima. Se puede hacer que se retire con una animación de línea de tiempo
+     de scroll, pero eso pide soporte que no está en todos los navegadores del
+     sitio; esto funciona en todos.
+
+     `scroll-padding-inline-end` existe por el mismo degradado: al tabular, el
+     navegador trae el enlace enfocado justo hasta el borde, que es donde no se
+     lee. Con esos 24px de margen de parada aterriza antes del desvanecido. */
+  .anclas {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-block: 6px;
+    scrollbar-width: none;
+    mask-image: linear-gradient(to left, transparent, #000 24px);
+    scroll-padding-inline-end: 24px;
+  }
+
+  .anclas::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Cada ancla entera o nada: sin `nowrap` los elementos se encogen hasta la
+     palabra más larga y "Nuestro enfoque" se parte en dos líneas en lugar de
+     desbordar, que es lo que tiene que hacer para poder arrastrarse. El hueco
+     baja de 32 a 20: a este ancho cada píxel del hueco es un píxel que no ve
+     de la ancla siguiente. */
+  .anclas .list {
+    gap: 20px;
+  }
+
+  .anclas .item {
+    flex-shrink: 0;
+  }
+
+  .anclas .link {
+    white-space: nowrap;
   }
 }
 

@@ -54,7 +54,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es" className={montserrat.variable}>
+    /* `suppressHydrationWarning` está aquí por el guion de modo landing de más
+       abajo: escribe `data-landing` en este mismo elemento antes de que React
+       hidrate, así que el atributo está en el DOM y no en el HTML del
+       servidor, y React lo cantaba como desajuste. Es el aviso el que sobra,
+       no el atributo: el guion tiene que correr antes del primer pintado.
+
+       El silencio no se extiende: React solo lo aplica al elemento que lo
+       lleva —sus atributos y su texto—, no a los hijos. Cualquier otro
+       desajuste del árbol se sigue avisando. */
+    <html lang="es" className={montserrat.variable} suppressHydrationWarning>
       <body>
         {/* Modo landing, antes del primer pintado.
 
