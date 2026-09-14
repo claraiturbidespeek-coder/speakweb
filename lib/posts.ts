@@ -239,7 +239,7 @@ function marcarEnlacesExternos() {
           const props = (hijo.properties ??= {});
           if (esEnlaceExterno(String(props.href ?? ""))) {
             props.target = "_blank";
-            props.rel = "noopener noreferrer";
+            props.rel = ["noopener", "noreferrer"];
           }
         }
         visitar(hijo);
