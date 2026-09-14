@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import ProveedorContacto from "./components/contacto/ProveedorContacto";
 import Footer from "./components/Footer";
+import GoogleTagManager from "./components/GoogleTagManager";
 import Header from "./components/Header";
 import ScrollSuave from "./components/ScrollSuave";
 import VolverArriba from "./components/VolverArriba";
@@ -83,6 +84,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               "try{if(location.pathname.indexOf('/idioma/')===0&&location.hash==='#landing'){document.documentElement.setAttribute('data-landing','')}}catch(e){}",
           }}
         />
+        {/* GTM. Va después del guion de modo landing, que necesita ser el
+            primero, y no pinta nada si NEXT_PUBLIC_GTM_ID no está definida:
+            así las vistas previas quedan sin medición. Ver el componente. */}
+        <GoogleTagManager />
+
         {/* Etiqueta nativa: con next/script el JSON-LD se inyectaría desde el
             cliente y no estaría en el HTML que lee Google. */}
         <script

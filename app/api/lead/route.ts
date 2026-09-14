@@ -1,8 +1,10 @@
 /* Endpoint de leads. Réplica de api/lead.js del repo s-peak-landings, portada a
    un Route Handler de App Router.
 
-   Recibe el lead del modal de contacto, lo manda por correo con Resend y lo crea
-   en Kommo. Sin dependencias: las dos APIs se llaman con fetch.
+   Recibe el lead de los dos formularios del sitio y lo reparte a tres destinos:
+   correo con Resend, alta en Kommo y envío al CRM de SCNDAL. Sin dependencias:
+   las tres APIs se llaman con fetch. Los tres son independientes entre sí: que
+   uno falle no impide a los otros dos, y ninguno cambia lo que ve el visitante.
 
    Las claves NUNCA se escriben aquí: salen de process.env. Ver el bloque de
    variables al final de este comentario.
@@ -27,6 +29,10 @@
      RESEND_API_KEY    sin ella el endpoint responde 500 y no envía nada
      KOMMO_TOKEN       sin ella se omite el lead de Kommo; el correo se manda igual
      KOMMO_SUBDOMAIN   el {x} de {x}.kommo.com; misma consecuencia que la anterior
+     CRM_WEBHOOK_SECRET_FORMULARIO  secreto del CRM de SCNDAL para el
+                       formulario principal; si falta, la petición se manda
+                       igual y el CRM responde 401
+     CRM_WEBHOOK_SECRET_WHATSAPP    lo mismo para el modal de WhatsApp
 
    FILTROS ANTIBOT (añadidos después del porteo): un campo trampa invisible
    (`sitio_web`) que una persona nunca rellena, y el rango reservado de ficción
@@ -55,6 +61,47 @@ const ALLOWED_ORIGINS = ["https://s-peak.com", "https://www.s-peak.com"];
 // y el subdominio SOLO se leen de variables de entorno, nunca del código.
 const KOMMO_PIPELINE_ID = 7648487;
 const KOMMO_REQUEST_TIMEOUT_MS = 7000;
+
+/* CRM de SCNDAL — tercer destino, en paralelo al correo y a Kommo.
+
+   Las URLs van como constantes y no en variables de entorno a propósito: no son
+   secretas, y una variable que falta produciría una URL rota sin avisar.
+
+   El mapeo origen → destino y origen → secreto es rígido y vive en dos tablas
+   separadas, sin recurso de una fuente a la otra: si un secreto se filtra, se
+   revoca esa integración y la otra sigue en pie. Un `origen` que no esté en las
+   tablas no se envía a ninguna parte. */
+const CRM_SCNDAL_URLS: Record<string, string> = {
+  "Formulario principal": "https://api.scndal.com/leads/s-peak?source=formulario",
+  WhatsApp: "https://api.scndal.com/leads/s-peak?source=whatsapp",
+};
+
+const CRM_SCNDAL_VARIABLES: Record<string, string> = {
+  "Formulario principal": "CRM_WEBHOOK_SECRET_FORMULARIO",
+  WhatsApp: "CRM_WEBHOOK_SECRET_WHATSAPP",
+};
+
+const CRM_SCNDAL_TIMEOUT_MS = 7000;
+
+/* Las catorce claves que viajan al CRM: las mismas con que llegan del
+   navegador, sin renombrar ni quitar acentos. `sitio_web`, el señuelo antibot,
+   no entra aquí: no es un dato del lead y no debe salir del endpoint. */
+type LeadCrm = {
+  nombre: string;
+  empresa: string;
+  correo: string;
+  telefono: string;
+  puesto: string;
+  mensaje: string;
+  origen: string;
+  pagina: string;
+  idioma: string;
+  utm_source: string;
+  utm_medium: string;
+  utm_campaign: string;
+  utm_content: string;
+  gclid: string;
+};
 
 function escapeHtml(value: unknown): string {
   return String(value == null ? "" : value)
@@ -272,6 +319,70 @@ async function sendLeadToKommo({
   }
 }
 
+/* Envío al CRM de SCNDAL. Aislado como el de Kommo: no lanza nunca, tiene su
+   propio timeout y su resultado no altera la respuesta al visitante. Si esto
+   falla, el correo y Kommo salen igual y el navegador ve éxito. */
+async function enviarLeadACrmScndal(lead: LeadCrm): Promise<void> {
+  const url = CRM_SCNDAL_URLS[lead.origen];
+  const variable = CRM_SCNDAL_VARIABLES[lead.origen];
+
+  /* Sin entrada en el mapeo no hay destino ni secreto que usar, y no se
+     improvisa uno: no enviar y dejar constancia. Hoy no debería ocurrir —los
+     dos formularios mandan siempre uno de los dos literales—, pero la ruta pone
+     "Desconocido" si el campo llega vacío y un tercer formulario futuro caería
+     aquí sin que nadie se enterase. */
+  if (!url || !variable) {
+    console.error(
+      "CRM SCNDAL: origen sin destino en el mapeo; el lead no se envía",
+      { origen: lead.origen }
+    );
+    return;
+  }
+
+  /* Si falta el secreto se manda igual, con la cabecera presente y vacía: el
+     CRM responderá 401 y ese 401 queda en el log, que es rastreable. Un envío
+     que nunca ocurre no lo es. El console.error nombra la variable para que en
+     el log se vea la causa y no solo el síntoma. */
+  const secreto = process.env[variable] ?? "";
+  if (!secreto) {
+    console.error(
+      `CRM SCNDAL: falta la variable ${variable}; se envía igual para que el 401 quede registrado`,
+      { origen: lead.origen }
+    );
+  }
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), CRM_SCNDAL_TIMEOUT_MS);
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${secreto}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(lead),
+      signal: controller.signal,
+    });
+    if (!res.ok) {
+      const detalle = await res.text().catch(() => "");
+      console.error(
+        "CRM SCNDAL: el destino rechazó el lead:",
+        res.status,
+        detalle.slice(0, 300),
+        { origen: lead.origen }
+      );
+    }
+  } catch (err) {
+    console.error(
+      "CRM SCNDAL: excepción al enviar el lead:",
+      String((err as Error)?.message || err),
+      { origen: lead.origen }
+    );
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 // Preflight CORS.
 export async function OPTIONS(request: Request): Promise<Response> {
   return new Response(null, { status: 204, headers: cabecerasCors(request) });
@@ -425,6 +536,34 @@ export async function POST(request: Request): Promise<Response> {
     );
   });
 
+  /* CRM de SCNDAL, tercer destino y mismo trato que Kommo: arranca en paralelo
+     al correo y su resultado no cambia lo que ve el visitante. Los valores son
+     los ya normalizados, los mismos que alimentan el correo y la nota; los
+     campos opcionales que el visitante no llenó viajan como cadena vacía, que
+     es el dato real. El "No proporcionado" del correo es presentación de la
+     tabla, no un valor, y no sale de ahí. */
+  const crmScndalDone = enviarLeadACrmScndal({
+    nombre,
+    empresa,
+    correo,
+    telefono,
+    puesto,
+    mensaje,
+    origen,
+    pagina,
+    idioma,
+    utm_source: utmSource,
+    utm_medium: utmMedium,
+    utm_campaign: utmCampaign,
+    utm_content: utmContent,
+    gclid,
+  }).catch((err) => {
+    console.error(
+      "CRM SCNDAL: excepción no controlada:",
+      String((err as Error)?.message || err)
+    );
+  });
+
   let emailStatus: "ok" | "failed" | "error";
   try {
     const resendRes = await fetch("https://api.resend.com/emails", {
@@ -456,9 +595,10 @@ export async function POST(request: Request): Promise<Response> {
     emailStatus = "error";
   }
 
-  // Esperamos a que Kommo termine dentro del ciclo de vida de la función (nunca
-  // lanza), pero su resultado no altera el status que devolvemos.
-  await kommoDone;
+  /* Esperamos a que Kommo y el CRM de SCNDAL terminen dentro del ciclo de vida
+     de la función —ninguno lanza—, para que la serverless no muera con una
+     petición a medias. Sus resultados no alteran el status que devolvemos. */
+  await Promise.all([kommoDone, crmScndalDone]);
 
   if (emailStatus === "ok") {
     return Response.json({ ok: true }, { status: 200, headers });
