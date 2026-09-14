@@ -502,6 +502,42 @@
   background-position: center;
 }
 
+/* ---------- Velo de los casos con foto ----------
+   Entre la fotografía y la tarjeta de cristal: sin él la foto compite con el
+   texto, y tapándola del todo se perdería el contexto que aporta. Cuelga de su
+   propia clase y no de `.case` porque los otros dos casos (.caseYellow y
+   .caseRed) son color plano y no lo necesitan.
+
+   Es un ::before y no una capa más dentro de `background-image` porque la foto
+   la declara el JSX en un style en línea, y un fondo desde el CSS lo pisaría.
+   Así el encuadre —el cover y el center de `.case`— se queda intacto. */
+.caseFoto {
+  /* El navy de tokens.css (--color-navy, #1a3c4d) con alfa. La intensidad del
+     velo se ajusta aquí, y solo aquí: los dos bloques la heredan. En rgba y no
+     en color-mix porque es como el proyecto escribe el color con alfa; ver
+     --glass-fondo en tokens.css. */
+  --velo-caso: rgba(26, 60, 77, 0.55);
+
+  position: relative;
+}
+
+.caseFoto::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--velo-caso);
+  /* Recortado con la curva del artículo, para no asomar por las esquinas. */
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* La tarjeta, por delante del velo. Sin esto quedaría por debajo: el ::before
+   está posicionado y la tarjeta no, así que se pintaría encima de ella. */
+.caseFoto .caseCard {
+  position: relative;
+  z-index: 1;
+}
+
 .caseYellow {
   background-color: var(--color-yellow);
   background-image: none;

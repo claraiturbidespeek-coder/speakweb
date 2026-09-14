@@ -395,7 +395,7 @@ export default function Home() {
 
         <div className={`sp-inner sp-inner--ancho ${styles.cases}`}>
           <article
-            className={styles.case}
+            className={`${styles.case} ${styles.caseFoto}`}
             style={{
               backgroundImage: `url("/images/home/caso-brechas-linguisticas.webp")`,
             }}
@@ -481,7 +481,7 @@ export default function Home() {
           </article>
 
           <article
-            className={styles.case}
+            className={`${styles.case} ${styles.caseFoto}`}
             style={{
               backgroundImage: `url("/images/home/caso-seguimiento-calidad.webp")`,
             }}
