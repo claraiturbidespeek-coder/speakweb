@@ -5,6 +5,17 @@ import BotonContacto from "@/app/components/contacto/BotonContacto";
 import Icono from "@/app/components/Icono";
 import styles from "./Footer.module.css";
 
+/* Modo landing: en /idioma/ con el fragmento #landing, el footer se reduce a la
+   marca, la descripción, el botón de cotización y el aviso de privacidad. Las
+   tres columnas de enlaces y el LinkedIn llevan `sp-oculto-landing`, la clase
+   global que `interacciones.css` apaga bajo `html[data-landing]` — el mismo
+   atributo y la misma clase con que el header se queda sin menú.
+
+   No hay lógica de React aquí a propósito: el HTML del servidor sale siempre
+   completo, con todos los enlaces, así que el rastreador los ve igual que en el
+   resto del sitio. Quien decide es el guion inline del layout, que marca el
+   <html> antes del primer pintado, y useModoLanding.ts lo mantiene al navegar.
+   Ese `display: none` deja los enlaces fuera del tabulador y sin clic. */
 export default function Footer() {
   /* El año del copyright, para no tener que acordarse cada enero. Este es un
      componente de servidor y las páginas se prerrenderizan, así que el valor se
@@ -36,7 +47,7 @@ export default function Footer() {
             Solicite una Cotización
           </BotonContacto>
           <a
-            className={styles.social}
+            className={`${styles.social} sp-oculto-landing`}
             href="https://www.linkedin.com/company/s-peak"
             target="_blank"
             rel="noopener noreferrer"
@@ -48,7 +59,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <nav aria-labelledby="footer-idiomas">
+        <nav className="sp-oculto-landing" aria-labelledby="footer-idiomas">
           <h2 className={styles.title} id="footer-idiomas">
             Idiomas
           </h2>
@@ -63,7 +74,7 @@ export default function Footer() {
           </ul>
         </nav>
 
-        <nav aria-labelledby="footer-equipo">
+        <nav className="sp-oculto-landing" aria-labelledby="footer-equipo">
           <h2 className={styles.title} id="footer-equipo">
             Soluciones por Equipo
           </h2>
@@ -78,7 +89,7 @@ export default function Footer() {
           </ul>
         </nav>
 
-        <nav aria-labelledby="footer-recursos">
+        <nav className="sp-oculto-landing" aria-labelledby="footer-recursos">
           <h2 className={styles.title} id="footer-recursos">
             Recursos
           </h2>

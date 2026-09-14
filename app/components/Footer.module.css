@@ -20,6 +20,16 @@
   color: var(--color-white);
 }
 
+/* En modo landing las tres columnas de enlaces se apagan y la marca se queda
+   sola: sin esto ocuparía solo la primera pista del grid, un tercio del ancho,
+   con tres huecos vacíos al lado. El atributo lo pone el guion inline del
+   layout antes del primer pintado, así que el reparto ya sale bien de origen.
+   Va aquí y no en interacciones.css porque `.inner` es una clase de módulo y
+   el nombre viene hasheado. */
+:global(html[data-landing]) .inner {
+  grid-template-columns: 1fr;
+}
+
 .brand {
   display: flex;
   flex-direction: column;
