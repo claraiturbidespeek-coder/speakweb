@@ -88,18 +88,6 @@
 
 /* ---------- Cuerpo ---------- */
 
-.cuerpoInner {
-  max-width: var(--container-lectura);
-  display: grid;
-  grid-template-columns: 1fr 340px;
-  gap: 40px;
-  align-items: start;
-}
-
-.columnaPrincipal {
-  min-width: 0;
-}
-
 .lectura {
   display: flex;
   align-items: center;
@@ -218,23 +206,6 @@
 
 /* ---------- Columna lateral ---------- */
 
-/* El grid usa align-items: start, que encogería esta columna a la altura de su
-   contenido. El hijo sticky se desplaza dentro de su bloque contenedor, así que
-   con esa altura no le quedaría recorrido: necesita que la columna ocupe toda
-   la fila. */
-.lateral {
-  min-width: 0;
-  align-self: stretch;
-}
-
-.lateralSticky {
-  position: sticky;
-  top: 92px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
 .ctaTitulo {
   margin: 0 0 10px;
   font-size: 18px;
@@ -294,20 +265,6 @@
     text-align: start;
     font-size: 16px;
     line-height: 28px;
-  }
-
-  .cuerpoInner {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  /* El índice pasa delante del artículo, plegado. */
-  .lateral {
-    order: -1;
-  }
-
-  .lateralSticky {
-    position: static;
   }
 
   .contenido {

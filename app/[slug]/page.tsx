@@ -126,8 +126,8 @@ export default async function Nota(props: PageProps<"/[slug]">) {
         ) : null}
 
         <div className="sp-seccion">
-          <div className={`sp-inner ${styles.cuerpoInner}`}>
-            <div className={styles.columnaPrincipal}>
+          <div className="sp-inner sp-lectura">
+            <div className="sp-lectura-principal">
               {post.readingTime ? (
                 <p className={styles.lectura}>
                   <svg
@@ -153,8 +153,8 @@ export default async function Nota(props: PageProps<"/[slug]">) {
               />
             </div>
 
-            <aside className={styles.lateral}>
-              <div className={styles.lateralSticky}>
+            <aside className="sp-lectura-lateral">
+              <div className="sp-lectura-sticky">
                 <IndiceContenidos encabezados={post.encabezados} />
 
                 <div className="sp-cta-card">

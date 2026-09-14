@@ -1,22 +1,341 @@
+import { Fragment } from "react";
 import type { Metadata } from "next";
-import Link from "next/link";
+import IndiceContenidos from "@/app/components/IndiceContenidos";
+import type { Encabezado } from "@/lib/posts";
 import styles from "./aviso.module.css";
 
-/* Migrado verbatim de https://s-peak.com/aviso-de-privacidad/ (fuente
-   WordPress). El texto no se reescribió, resumió ni corrigió: se conservó
-   tal cual, incluidas erratas del original (p. ej. "Compañia" sin acento) y
-   el registro en usted que ya traía. Lo único que cambió es el marcado: los
-   apartados "1.1", "1.2.1", etc. eran <p> sueltos en el original y aquí se
-   volvieron encabezados (h3/h4) reales, según su propia numeración —
-   presentación, no contenido.
+/* Contenido de la versión que envió el cliente (documento «Comunicación
+   integral», 13/09/2026), que sustituye por completo al aviso migrado de
+   WordPress. El texto legal va literal: no se reescribió, resumió ni
+   corrigió, y se conservan sus comillas angulares, sus referencias cruzadas
+   («ver sección 7») y la fecha de actualización que trae el propio
+   documento.
 
-   Dos fechas de actualización conviven en el original y no coinciden entre
-   sí: el aviso lo señala al equipo, no se resolvió por cuenta propia. */
+   Lo único que es marcado y no contenido:
+   - Los ocho apartados numerados son <h3>, el nivel que ya usaba el cuerpo
+     de esta página. El documento los trae como Heading3, así que la
+     jerarquía coincide.
+   - Las enumeraciones del documento (listas con viñeta en Word) son <ul>.
+   - Las negritas del documento se conservan con <strong>, en los mismos
+     fragmentos.
+   - El apartado 8 viene como un solo párrafo con un salto de línea manual
+     en medio; aquí son dos <p>. En el documento las dos frases quedan
+     pegadas sin espacio ("iniciar la clase.Las grabaciones").
+   - Los correos van enlazados como mailto, que es el tratamiento que esta
+     página ya daba a privacidad@s-peak.com. Las tres direcciones del apartado
+     7, que el documento escribe sin esquema, van enlazadas con https:// y
+     abriendo en pestaña nueva, con el rel del resto de enlaces externos del
+     sitio; el texto visible es el del documento, sin esquema.
+
+   El índice lateral no se deduce del marcado: los ocho apartados se declaran
+   abajo en APARTADOS, que es de donde salen a la vez el id y el texto del h3 y
+   los que recibe IndiceContenidos. Un solo origen, así que no pueden
+   desajustarse. En el blog el índice sí es automático, pero porque sus notas
+   son Markdown y pasan por rehype-slug; este documento es JSX escrito a mano y
+   no hay tal árbol que recorrer. */
 
 export const metadata: Metadata = {
   title: "Aviso de Privacidad | S-Peak",
   alternates: { canonical: "https://s-peak.com/aviso-de-privacidad/" },
 };
+
+/* Los ocho apartados del documento. De aquí salen a la vez el id y el texto de
+   cada h3 y las entradas del índice lateral, así que no pueden desajustarse.
+   Los id son cortos y estables a propósito: son los anclajes que alguien puede
+   citar de un aviso de privacidad, y no deben moverse si cambia la redacción
+   de un titular. */
+const APARTADOS = [
+  {
+    id: "responsable",
+    titulo: "1. ¿Quién es responsable de sus datos?",
+    cuerpo: (
+      <>
+        <p>
+          Proactive Strategies SC, que opera las marcas S-Peak y
+          ResponSable, con domicilio en Av. Río Churubusco 124 PH, Col. El
+          Prado, Alcaldía Iztapalapa, C.P. 09480, Ciudad de México. Nuestro
+          Departamento de Datos Personales le atiende en{" "}
+          <a href="mailto:privacidad@s-peak.com">privacidad@s-peak.com</a>.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "datos",
+    titulo: "2. ¿Qué datos usamos?",
+    cuerpo: (
+      <>
+        <ul>
+          <li>
+            <strong>Si nos contacta</strong> (formularios, WhatsApp, correo
+            o teléfono): nombre, empresa, puesto, correo, teléfono y su
+            mensaje.
+          </li>
+          <li>
+            <strong>Si toma un curso que contrató su empresa:</strong>{" "}
+            nombre, correo, teléfono, empresa, área o puesto, idioma,
+            nivel, resultados de exámenes, asistencia, avance, y las
+            grabaciones y transcripciones de las clases (imagen y voz).
+          </li>
+          <li>
+            <strong>Si visita el sitio:</strong> dirección IP, dispositivo,
+            navegador, páginas que visita, cómo navega en ellas y de qué
+            anuncio o campaña llegó (ver sección 7).
+          </li>
+          <li>
+            <strong>Si es profesor de S-Peak:</strong> nombre, correo, sus
+            planeaciones de clase y las calificaciones que reciben, su
+            ubicación al iniciar la clase, y su imagen y voz en las
+            grabaciones y transcripciones de las clases (ver sección 8).
+          </li>
+        </ul>
+
+        <p>
+          No pedimos datos sensibles (como salud, religión u origen
+          étnico); por favor no los incluya en sus mensajes. En este sitio
+          no pedimos datos bancarios.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "finalidades",
+    titulo: "3. ¿Para qué los usamos?",
+    cuerpo: (
+      <>
+        <p>
+          <strong>Necesarios</strong> (sin ellos no podemos atenderle):
+        </p>
+
+        <ul>
+          <li>Responder su solicitud y enviarle una propuesta.</li>
+          <li>
+            Dar el curso que contrató su empresa: evaluar su nivel,
+            organizar grupos y clases, entregarle la grabación de la clase
+            para repasar o reponerla, y enviar a su empresa un reporte
+            mensual de asistencia y calificaciones.
+          </li>
+          <li>
+            Revisar la calidad de las clases, analizando las
+            transcripciones con herramientas de inteligencia artificial.
+          </li>
+          <li>Facturar a su empresa y cumplir obligaciones legales.</li>
+        </ul>
+
+        <p>
+          <strong>Opcionales</strong> (puede negarse y eso no afecta lo
+          anterior):
+        </p>
+
+        <ul>
+          <li>
+            Enviarle promociones e invitaciones a eventos de S-Peak y de
+            ResponSable, nuestra otra marca (consultoría en
+            responsabilidad social y sostenibilidad). Para negarse, escriba
+            a{" "}
+            <a href="mailto:privacidad@s-peak.com">privacidad@s-peak.com</a>{" "}
+            con el asunto «Baja» (puede indicar si es de una sola marca o
+            de las dos); no necesita enviar identificación.
+          </li>
+          <li>
+            Medir nuestros anuncios y mostrarle publicidad de S-Peak en
+            otros sitios. Para negarse, vea la sección 7.
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    id: "comparticion",
+    titulo: "4. ¿Con quién compartimos sus datos?",
+    cuerpo: (
+      <>
+        <ul>
+          <li>
+            Con la empresa que contrató su curso: el reporte mensual de
+            asistencia y calificaciones.
+          </li>
+          <li>Con autoridades, cuando la ley lo exija.</li>
+        </ul>
+
+        <p>Estas dos no requieren su consentimiento.</p>
+
+        <ul>
+          <li>
+            Con Google y Microsoft: reciben datos de su visita a través de
+            las herramientas del sitio y pueden usarlos también para sus
+            propios fines (sección 7). Si no lo limita con los medios de la
+            sección 7, entendemos que acepta que reciban estos datos; puede
+            limitarlo en cualquier momento con esos mismos medios.
+          </li>
+        </ul>
+
+        <p>
+          Además nos apoyamos en proveedores para operar: alojamiento del
+          sitio y de nuestra plataforma, correo, sistema de clientes,
+          WhatsApp e inteligencia artificial.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "derechos",
+    titulo: "5. Sus derechos y cómo retirar su consentimiento",
+    cuerpo: (
+      <>
+        <p>
+          Puede pedir{" "}
+          <strong>acceso, rectificación, cancelación u oposición</strong>{" "}
+          de sus datos, o <strong>retirar su consentimiento</strong>,
+          escribiendo a{" "}
+          <a href="mailto:privacidad@s-peak.com">privacidad@s-peak.com</a>.
+          Incluya:
+        </p>
+
+        <ul>
+          <li>Su nombre y un correo u otro medio para responderle.</li>
+          <li>
+            Copia de una identificación oficial (si es representante,
+            también el documento que lo acredite).
+          </li>
+          <li>
+            Qué pide y sobre qué datos (si solo pide acceso, basta con
+            decirlo). Si pide corregirlos, indique la corrección y adjunte
+            el documento que la respalde.
+          </li>
+          <li>Cualquier dato que nos ayude a encontrarlos.</li>
+        </ul>
+
+        <p>
+          Le respondemos en un máximo de 20 días hábiles y, si procede, lo
+          aplicamos en los 15 días hábiles siguientes. Si el caso lo
+          justifica, estos plazos pueden ampliarse una sola vez por un
+          periodo igual, y se lo avisaremos. El trámite es gratuito. Si
+          pide acceso, le enviamos sus datos en un archivo electrónico.
+        </p>
+
+        <p>
+          Algunas evaluaciones se hacen de forma automática (ver sección
+          8); puede pedir que una persona las revise u oponerse a ellas.
+        </p>
+
+        <p>
+          Retirar su consentimiento no tiene efectos hacia atrás, y algunos
+          datos debemos conservarlos por ley (por ejemplo, las facturas).
+        </p>
+
+        <p>
+          Si no le respondemos o no está de acuerdo con la respuesta, puede
+          acudir a la Secretaría Anticorrupción y Buen Gobierno.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "cambios",
+    titulo: "6. Cambios a este aviso",
+    cuerpo: (
+      <>
+        <p>
+          Publicaremos cualquier cambio en esta página, con su fecha. Si
+          agregamos usos que requieran su consentimiento, se lo pediremos
+          antes de aplicarlos: por correo si lo tenemos y, si no, en esta
+          página.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "cookies",
+    titulo: "7. Cookies y herramientas del sitio",
+    cuerpo: (
+      <>
+        <p>El sitio usa:</p>
+
+        <ul>
+          <li>
+            <strong>Google reCAPTCHA:</strong> evitar spam en los
+            formularios.
+          </li>
+          <li>
+            <strong>Google Tag Manager y Google Analytics:</strong> medir
+            visitas.
+          </li>
+          <li>
+            <strong>Google Ads:</strong> medir nuestros anuncios y
+            mostrarle publicidad de S-Peak.
+          </li>
+          <li>
+            <strong>Microsoft Clarity:</strong> entender cómo se usa la
+            página para mejorarla; graba cómo navega (clics, desplazamiento
+            y movimientos) y no guarda lo que escribe en los formularios.
+          </li>
+        </ul>
+
+        <p>
+          Cómo limitarlo: bloquee o borre las cookies en la configuración
+          de su navegador (esto reduce lo que registran estas herramientas,
+          aunque no lo elimina del todo) y limite los anuncios
+          personalizados de Google en{" "}
+          <a
+            href="https://adssettings.google.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            adssettings.google.com
+          </a>
+          . Cómo usan los datos Google y Microsoft:{" "}
+          <a
+            href="https://policies.google.com/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            policies.google.com/privacy
+          </a>{" "}
+          y{" "}
+          <a
+            href="https://privacy.microsoft.com/privacystatement"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            privacy.microsoft.com/privacystatement
+          </a>
+          .
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "profesores",
+    titulo: "8. Profesores",
+    cuerpo: (
+      <>
+        <p>
+          Si es profesor de S-Peak, nuestra app usa su ubicación (GPS)
+          únicamente para validar que está en el lugar donde imparte la
+          clase. Esta validación es obligatoria: sin ella, la app no
+          permite iniciar la clase.
+        </p>
+
+        <p>
+          Las grabaciones y transcripciones de las clases incluyen su
+          imagen y voz. Nuestra plataforma califica de forma automática,
+          con inteligencia artificial, sus planeaciones y sus clases; puede
+          pedir que una persona revise cualquier calificación.
+        </p>
+      </>
+    ),
+  },
+];
+
+/* El índice los quiere todos al mismo nivel. `nivel: 3` es el que el componente
+   sangra y encoge, para los subapartados de una nota; estos ocho son de primer
+   nivel. */
+const ENCABEZADOS: Encabezado[] = APARTADOS.map(({ id, titulo }) => ({
+  id,
+  texto: titulo,
+  nivel: 2,
+}));
 
 export default function AvisoDePrivacidad() {
   return (
@@ -25,232 +344,29 @@ export default function AvisoDePrivacidad() {
         <div className={`sp-inner ${styles.documento}`}>
           <h1 className={styles.titulo}>Aviso de Privacidad</h1>
           <p className={styles.actualizacion}>
-            Última Actualización: Abril 28, 2026
+            Última actualización: 13/09/2026
           </p>
         </div>
       </section>
 
       <section className={`sp-seccion ${styles.cuerpo}`}>
-        <div className={`sp-inner ${styles.documento}`}>
-          <div className={styles.contenido}>
-            <h3>
-              1.1 Mecanismos y procedimiento para que, en su caso, el titular
-              pueda revocar su consentimiento al tratamiento de sus datos
-              personales.
-            </h3>
-
-            <p>
-              En todo momento usted podrá revocar el consentimiento que nos ha
-              otorgado para el tratamiento de sus datos personales, a fin de
-              que dejemos de hacer uso de los mismos.
-            </p>
-
-            <p>
-              Para ello, es necesario que presente su petición en{" "}
-              <a href="mailto:privacidad@s-peak.com">privacidad@s-peak.com</a>.
-              Su petición deberá ir acompañada de la siguiente información:
-            </p>
-
-            <ul>
-              <li>Nombre completo</li>
-              <li>Teléfono fijo y/o celular</li>
-              <li>Correo electrónico</li>
-            </ul>
-
-            <p>
-              Es importante informarle que usted tiene derecho al Acceso,
-              Rectificación, Cancelación y Objeción de sus datos personales, a
-              oponerse al tratamiento de los mismos o a revocar el
-              consentimiento que para dicho fin nos haya otorgado en los
-              términos que marca la Ley en su Art. 29.
-            </p>
-
-            <p>
-              Tendremos un plazo máximo de 30 días para atender su petición y a
-              través de un correo electrónico se le notificará que S-Peak ha
-              revocado el tratamiento de sus datos personales.
-            </p>
-
-            <h3>1.2 Datos personales recabados.</h3>
-
-            <h4>1.2.1 ¿Qué datos personales recabamos?</h4>
-
-            <p>
-              Para las finalidades señaladas en el presente aviso de
-              privacidad, podemos recabar sus datos personales de distintas
-              formas: cuando usted nos los proporciona directamente; cuando
-              visita nuestro sitio de Internet o utiliza nuestros servicios en
-              línea, y cuando obtenemos información a través de otras fuentes
-              que están permitidas por la ley. Datos personales que recabamos
-              de forma directa. Recabamos sus datos personales de forma
-              directa cuando usted mismo nos los proporciona por diversos
-              medios, como cuando participa en nuestras promociones o nos da
-              información con objeto de que le prestemos un servicio. Los
-              datos que obtenemos por este medio pueden ser, entre otros:
-            </p>
-
-            <ul>
-              <li>Nombre completo</li>
-              <li>Compañia</li>
-              <li>Puesto</li>
-              <li>Teléfono</li>
-              <li>Correo Electrónico</li>
-            </ul>
-
-            <h3>1.3 Las finalidades del tratamiento de los datos personales</h3>
-
-            <h4>1.3.1 ¿Para qué fines utilizamos sus datos personales?</h4>
-
-            <p>
-              Sus datos personales serán utilizados para proveer los
-              servicios y productos requeridos, así como actividades afines.
-            </p>
-
-            <h3>1.4 La identidad y domicilio del responsable</h3>
-
-            <p>
-              S-Peak, responsable del manejo de la información se localiza en
-              Avenida Masaryk, No. 18, Piso 2, Col Polanco V Sección, Ciudad
-              de México.
-            </p>
-
-            <p>
-              Cómo contactarnos: vía email{" "}
-              <a href="mailto:privacidad@s-peak.com">privacidad@s-peak.com</a>{" "}
-              o si requiere comunicación directa con nosotros puede consultar
-              las direcciones de email y teléfonos correspondientes haciendo
-              click <a href="https://s-peak.com/">aquí</a>.
-            </p>
-
-            <h3>
-              1.5 Opciones y medios para limitar el uso o divulgación de sus
-              datos personales
-            </h3>
-
-            <p>
-              Usted puede dejar de recibir mensajes promocionales realizando
-              la solicitud correspondiente a{" "}
-              <a href="mailto:privacidad@s-peak.com">privacidad@s-peak.com</a>
-            </p>
-
-            <h3>
-              1.6 Los medios para ejercer los derechos de acceso,
-              rectificación, cancelación u oposición
-            </h3>
-
-            <p>
-              Usted tiene el derecho de acceder a sus datos personales que
-              poseemos y a los detalles del tratamiento de los mismos, así
-              como a rectificarlos en caso de ser inexactos o instruirnos
-              cancelarlos cuando considere que resulten ser excesivos o
-              innecesarios para las finalidades que justificaron su obtención
-              u oponerse al tratamiento de los mismos para fines específicos.
-              Los mecanismos que se han implementado para el ejercicio de
-              dichos derechos son a través de la presentación de la solicitud
-              respectiva a la dirección electrónica{" "}
-              <a href="mailto:privacidad@s-peak.com">privacidad@s-peak.com</a>,
-              en caso de contar con mecanismos para acreditar su identidad,
-              como la firma electrónica o cualquier otro medio para hacerlo.
-              Para mayor información, favor de comunicarse a{" "}
-              <a href="mailto:privacidad@s-peak.com">privacidad@s-peak.com</a>{" "}
-              o visitar nuestra página de Internet{" "}
-              <Link href="/aviso-de-privacidad/">
-                https://s-peak.com/aviso-de-privacidad-s-peak/
-              </Link>
-            </p>
-
-            <h3>1.7 Transferencias de datos personales</h3>
-
-            <h4>1.7.1 Sus datos pueden ser comunicados a terceros</h4>
-
-            <p>
-              Hacemos de su conocimiento que sus datos podrán ser transferidos
-              a entidades del mismo grupo de interés de la empresa, nacionales
-              o extranjeras, con el objetivo general de cumplir con las
-              finalidades para las cuales ha proporcionado sus datos.
-              Propósitos específicos: CFD, CFDI, información fiscal, correo
-              electrónico masivo, promociones a clientes.
-            </p>
-
-            <h3>1.8 Cambios al aviso de privacidad</h3>
-
-            <p>
-              Nos reservamos el derecho de efectuar en cualquier momento
-              modificaciones o actualizaciones al presente aviso de
-              privacidad, para la atención de novedades legislativas o
-              jurisprudenciales, políticas internas, nuevos requerimientos
-              para la prestación u ofrecimiento de nuestros servicios o
-              productos y prácticas del mercado. Estas modificaciones estarán
-              disponibles al público a través de nuestra página de Internet{" "}
-              <Link href="/aviso-de-privacidad/">
-                https://s-peak.com/aviso-de-privacidad-s-peak/
-              </Link>{" "}
-              o se las haremos llegar al último correo electrónico que nos
-              haya proporcionado. La fecha de la última actualización al
-              presente aviso de privacidad: 08/06/2020
-            </p>
-
-            <h3>1.9 La declaración de datos personales sensibles</h3>
-
-            <p>
-              Le informamos que, para cumplir con las finalidades previstas en
-              este aviso, serán recabados y tratados datos personales
-              sensibles, como aquéllos que refieren a nombre, apellidos,
-              teléfono dirección de email y teléfono. Nos comprometemos a que
-              los mismos serán tratados bajo medidas de seguridad, siempre
-              garantizando su confidencialidad.
-            </p>
-
-            <h3>Uso de GPS en la aplicación S-Peak para profesores</h3>
-
-            <h4>1.9.1 Recolección y uso de datos de ubicación GPS</h4>
-
-            <p>
-              La aplicación S-Peak para profesores podrá solicitar acceso a su
-              información de ubicación GPS con el único propósito de facilitar
-              el proceso de inicio de clases con sus alumnos. Esta
-              funcionalidad se basa en la siguiente premisa:
-            </p>
-
-            <p>
-              Ubicación precisa para la coincidencia profesor-alumno: Al
-              activar la función GPS, la aplicación podrá identificar la
-              ubicación actual del profesor con mayor precisión. Esto permite
-              emparejar al profesor con sus alumnos que se encuentren en la
-              misma área cercana, facilitando la conexión y el inicio de la
-              clase.
-            </p>
-
-            <h4>1.9.2 No compartimos su ubicación GPS</h4>
-
-            <p>
-              Es importante destacar que la información de ubicación GPS no
-              se almacena ni se comparte con terceros bajo ninguna
-              circunstancia. Únicamente se utiliza en el momento preciso para
-              la coincidencia profesor-alumno y luego se elimina de forma
-              segura.
-            </p>
-
-            <h4>1.9.3 Control sobre el uso de GPS</h4>
-
-            <p>
-              Usted tiene el control total sobre el uso de su información de
-              GPS dentro de la aplicación S-Peak para profesores. Puede
-              otorgar o revocar el acceso a su ubicación GPS en cualquier
-              momento a través de la configuración de la aplicación o de su
-              dispositivo móvil.
-            </p>
-
-            <h4>1.9.4 Compromiso con la privacidad</h4>
-
-            <p>
-              En S-Peak nos comprometemos a proteger la privacidad de nuestros
-              usuarios. El uso de la información de ubicación GPS se limita
-              estrictamente al propósito descrito anteriormente y se
-              implementa con las medidas de seguridad adecuadas para
-              garantizar su confidencialidad.
-            </p>
+        <div className="sp-inner sp-lectura">
+          <div className="sp-lectura-principal">
+            <div className={styles.contenido}>
+              {APARTADOS.map((a) => (
+                <Fragment key={a.id}>
+                  <h3 id={a.id}>{a.titulo}</h3>
+                  {a.cuerpo}
+                </Fragment>
+              ))}
+            </div>
           </div>
+
+          <aside className="sp-lectura-lateral">
+            <div className="sp-lectura-sticky">
+              <IndiceContenidos encabezados={ENCABEZADOS} />
+            </div>
+          </aside>
         </div>
       </section>
     </main>

@@ -23,7 +23,10 @@ export const ENLACES_EQUIPOS = [
 ];
 
 export const ENLACES_SUELTOS = [
-  { nombre: "Clientes", ruta: "/clientes/" },
+  // Clientes, oculta. La página sigue en app/clientes/ y en pie; solo se retiró
+  // del menú. Para reactivarla, descomentar esta línea: la consumen a la vez la
+  // navegación en línea y el panel a pantalla completa.
+  // { nombre: "Clientes", ruta: "/clientes/" },
   { nombre: "Recursos", ruta: "/blog/" },
 ];
 

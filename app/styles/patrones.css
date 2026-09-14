@@ -277,7 +277,17 @@
 }
 
 /* Barra que crece desde la esquina al pasar el cursor. El -1px y el +2px tapan
-   el borde de la tarjeta: la barra debe montarse encima, no encajar dentro. */
+   el borde de la tarjeta: la barra debe montarse encima, no encajar dentro.
+
+   La barra es un rectángulo recto y la tarjeta tiene el radio grande, así que
+   sin recorte asoma por fuera de las dos esquinas de arriba. `overflow: hidden`
+   la recorta con la curva, el mismo criterio que en `.sp-cta-card` y en el
+   modal de WhatsApp. Va en `.sp-barra` y no en `.sp-tarjeta` porque el defecto
+   es de la barra: una tarjeta sin ella no necesita recortar nada. */
+.sp-barra {
+  overflow: hidden;
+}
+
 .sp-barra::before {
   content: "";
   position: absolute;
@@ -291,6 +301,12 @@
 
 .sp-barra:hover::before {
   width: calc(100% + 2px);
+}
+
+/* La misma barra, girada: crece hacia abajo desde la esquina superior
+   izquierda. Y el mismo recorte, por lo mismo — sin él asoma por esa esquina. */
+.sp-barra-lateral {
+  overflow: hidden;
 }
 
 .sp-barra-lateral::before {
@@ -786,6 +802,66 @@
   border-top: 4px solid var(--color-red);
   border-radius: var(--radius-grande);
   overflow: hidden;
+}
+
+/* ========== Lectura a dos columnas ==========
+   El cuerpo de un documento largo con su índice al lado: la nota del blog y el
+   aviso de privacidad. Sube aquí porque ya son dos las páginas que lo piden;
+   antes vivía en `.cuerpoInner`, `.columnaPrincipal`, `.lateral` y
+   `.lateralSticky` de app/[slug]/nota.module.css, y el aviso lo llevaba
+   copiado. Los valores son los de la nota, sin cambios.
+
+   Va después de `.sp-inner` a propósito: comparten capa y esta medida de
+   lectura tiene que ganarle la suya.
+
+   El índice en sí no está aquí: es un componente con su propio módulo, en
+   app/components/IndiceContenidos.tsx. */
+
+.sp-lectura {
+  max-width: var(--container-lectura);
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 40px;
+  align-items: start;
+}
+
+.sp-lectura-principal {
+  min-width: 0;
+}
+
+/* El grid usa align-items: start, que encogería esta columna a la altura de su
+   contenido. El hijo sticky se desplaza dentro de su bloque contenedor, así que
+   con esa altura no le quedaría recorrido: necesita que la columna ocupe toda
+   la fila. */
+.sp-lectura-lateral {
+  min-width: 0;
+  align-self: stretch;
+}
+
+/* Flex en columna para las páginas que cuelgan algo más del índice, como la
+   tarjeta de contacto de la nota. Con un solo hijo no cambia nada. */
+.sp-lectura-sticky {
+  position: sticky;
+  top: 92px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Una columna, y el índice delante del texto en vez de al lado. */
+@media (max-width: 960px) {
+  .sp-lectura {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .sp-lectura-lateral {
+    order: -1;
+  }
+
+  .sp-lectura-sticky {
+    position: static;
+  }
 }
 
 /* ========== Tarjeta de artículo ==========

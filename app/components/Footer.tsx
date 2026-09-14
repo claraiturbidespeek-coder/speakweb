@@ -82,11 +82,15 @@ export default function Footer() {
                 Centro de Recursos
               </Link>
             </li>
+            {/* Casos de éxito (/clientes/), oculta. Descomentar para
+                reactivarla; la página sigue en su sitio. */}
+            {/*
             <li>
               <Link className={styles.link} href="/clientes/">
                 Casos de éxito
               </Link>
             </li>
+            */}
           </ul>
         </nav>
       </div>

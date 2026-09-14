@@ -42,13 +42,11 @@
    titular y el texto arrancan en el mismo margen izquierdo y el conjunto se lee
    como una sola hoja centrada.
 
-   `sp-inner` da 1360px, demasiado para una línea de 17px. 880px es la medida
-   cómoda de lectura (unos 80 caracteres) y deja margen ancho a los dos lados
-   dentro del contenedor del sitio. El token --container-lectura (1160px) no
-   sirve aquí: es el del blog, que reparte ese ancho entre el texto y su columna
-   lateral, y este documento no la tiene. */
+   Es --container-lectura, el mismo token que usa `.sp-lectura` para el cuerpo:
+   la cabecera no es un grid, pero tiene que arrancar en el mismo margen que
+   él. Antes eran 880px, la medida de una columna sola. */
 .documento {
-  max-width: 880px;
+  max-width: var(--container-lectura);
   margin-inline: auto;
 }
 
@@ -81,6 +79,10 @@
   font-weight: 600;
   line-height: 1.25;
   color: var(--color-navy);
+  /* Los 80px de --anchor-offset (base.css) dejan el encabezado justo pegado al
+     header; 92px es el valor con el que la nota del blog cuadra el salto con
+     la banda que usa el observador del índice. */
+  scroll-margin-top: 92px;
 }
 
 .contenido h4 {
