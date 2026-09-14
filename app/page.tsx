@@ -384,7 +384,7 @@ export default function Home() {
       {/* 9. Casos de éxito */}
       <section className="sp-seccion sp-seccion--ancha">
         <div className={`sp-inner ${styles.centered}`}>
-          <p className="sp-eyebrow">Casos de Éxito</p>
+          <p className="sp-eyebrow">Lo que dicen nuestros clientes</p>
           <h2 className={styles.heading}>
             Resultados reales en equipos nacionales e internacionales
           </h2>

@@ -319,7 +319,7 @@ export default function Page() {
 {/* TESTIMONIOS */}
 <section className={`sp-seccion ${styles.testimonials}`} id="resultados">
   <div className="sp-testi-top reveal">
-    <div className="sp-eyebrow" style={{ color: "rgba(255,255,255,0.4)", justifyContent: "center" }}>Casos de éxito</div>
+    <div className="sp-eyebrow" style={{ color: "rgba(255,255,255,0.4)", justifyContent: "center" }}>Lo que dicen nuestros clientes</div>
     <h2>Resultados reales en equipos nacionales e internacionales</h2>
     <p>En <strong>S-Peak</strong>, el éxito no se supone: se mide en números.</p>
   </div>

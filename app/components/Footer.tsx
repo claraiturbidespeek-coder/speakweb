@@ -6,6 +6,12 @@ import Icono from "@/app/components/Icono";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
+  /* El año del copyright, para no tener que acordarse cada enero. Este es un
+     componente de servidor y las páginas se prerrenderizan, así que el valor se
+     fija en el build: se actualiza con el primer despliegue del año, no al dar
+     la medianoche en el navegador del visitante. */
+  const anio = new Date().getFullYear();
+
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
@@ -102,7 +108,7 @@ export default function Footer() {
               Aviso de privacidad
             </Link>
           </nav>
-          <p>S-Peak 2026 | Copyright Todos los Derechos Reservados</p>
+          <p>© {anio} S-Peak. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

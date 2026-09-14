@@ -304,6 +304,22 @@ export default function FlotanteWhatsApp() {
                   >
                     Continuar a WhatsApp &rarr;
                   </button>
+
+                  {/* La misma nota, con el mismo tratamiento, que cierra el
+                      formulario principal en ModalContacto.tsx. */}
+                  <p className="sp-form-nota">
+                    Al enviar acepto recibir comunicaciones de{" "}
+                    <strong>S-Peak</strong>. Consulte nuestro{" "}
+                    <a
+                      href="/aviso-de-privacidad/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: "var(--color-muted)", textDecoration: "underline" }}
+                    >
+                      Aviso de privacidad
+                    </a>
+                    .
+                  </p>
                 </form>
               </div>
             </>
