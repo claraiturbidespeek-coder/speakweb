@@ -185,6 +185,18 @@
   color: var(--color-ink-2);
 }
 
+/* `.sp-logos` trae -60px de margin-top para montar sobre la sección anterior
+   (patrones.css). Eso funciona cuando la banda va justo tras el hero, que
+   reserva 100px de padding abajo; pero las áreas que traen nota de encuadre
+   la intercalan entre el hero y la banda, y esa nota solo tiene 22px de
+   padding: la banda se le come el párrafo. Se cancela el montaje solo en ese
+   caso. El patrón no se toca: en las áreas sin encuadre la banda sigue tras
+   el hero y ahí el solape sí es el previsto, igual que en las landings de
+   idioma. */
+.encuadre + :global(.sp-logos) {
+  margin-top: 0;
+}
+
 /* ---------- Competencias ---------- */
 
 .competencias {

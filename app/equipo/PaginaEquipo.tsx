@@ -144,12 +144,20 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
           </div>
         </section>
 
-        {/* NOTA DE ENCUADRE — solo las áreas cuyo contenido la trae */}
+        {/* NOTA DE ENCUADRE — desactivada. Solo se deja de pintar: el campo
+            `encuadre` sigue en tipos.ts y el texto sigue en los datos de
+            legal-y-juridico, finanzas-y-contabilidad y tecnologia-e-ingenieria,
+            que son las tres áreas que lo traen. Para reactivarla, descomentar
+            el bloque de abajo y no hace falta nada más: sus estilos
+            (`.encuadre`, `.encuadreTexto`) y la regla que impide que la banda
+            de logos se le monte encima siguen en equipo.module.css. */}
+        {/*
         {datos.encuadre ? (
           <div className={styles.encuadre}>
             <p className={`sp-inner ${styles.encuadreTexto}`}>{datos.encuadre}</p>
           </div>
         ) : null}
+        */}
 
         {/* LOGOS */}
         <BandaLogos />
