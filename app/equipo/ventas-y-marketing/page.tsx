@@ -3,7 +3,7 @@ import PaginaEquipo from "../PaginaEquipo";
 import datos from "../datos/ventas-y-marketing";
 
 export const metadata: Metadata = {
-  title: "Cursos de Idiomas para Equipos de Ventas y Marketing | S-Peak",
+  title: "Capacitación de Idiomas para Ventas y Marketing | S-Peak",
   description:
     "Inglés y otros idiomas para vendedores y equipos de marketing B2B. Vocabulario comercial, presentaciones ejecutivas y conversación con clientes internacionales. Cotice ahora.",
   alternates: { canonical: "https://s-peak.com/equipo/ventas-y-marketing/" },
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_MX",
     siteName: "S-Peak",
-    title: "Cursos de Idiomas para Equipos de Ventas y Marketing | S-Peak",
+    title: "Capacitación de Idiomas para Ventas y Marketing | S-Peak",
     description:
       "Inglés y otros idiomas para vendedores y equipos de marketing B2B. Vocabulario comercial, presentaciones ejecutivas y conversación con clientes internacionales.",
     url: "https://s-peak.com/equipo/ventas-y-marketing/",
