@@ -391,9 +391,14 @@
 
 /* ---------- Mercado ---------- */
 
+/* El carrusel pide algo más de ancho que el titular: las tarjetas llevan
+   icono, título, texto y a veces la fuente, y a mitades exactas se estrechan de
+   más. La proporción es la misma que ya usa el FAQ de esta plantilla más abajo
+   (`.faqInner`), que resuelve este mismo reparto —titular a la izquierda,
+   contenido a la derecha— y que la landing repite en `.procesoInner`. */
 .mercadoInner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.85fr 1.15fr;
   gap: 64px;
   align-items: center;
 }
@@ -403,9 +408,20 @@
   min-width: 0;
 }
 
+/* Más pequeño que el resto de titulares de sección, que van con
+   `--text-title-md` (26-38px). No es un capricho: la columna del titular mide
+   unos 551px con el contenedor a tope, y medido con la métrica real de
+   Montserrat 700, a 38px estos siete titulares caen en tres y cuatro líneas.
+   El tope de 24px es el tamaño con el que los siete entran en dos a ese ancho;
+   el término en vw lo baja en proporción cuando el contenedor se estrecha,
+   porque la columna encoge con él. Por debajo de 960px el grid se apila y el
+   titular pasa a ancho completo, así que ahí la restricción desaparece.
+
+   El que manda es el de ventas y marketing, de 85 caracteres, once más que el
+   siguiente: si algún día se acorta, este tope puede volver a subir. */
 .mercadoLeft h2 {
   margin-bottom: 8px;
-  font-size: var(--text-title-md);
+  font-size: clamp(18px, 1.6vw, 24px);
   font-weight: var(--weight-bold);
   line-height: 1.15;
   letter-spacing: -0.025em;
@@ -427,11 +443,26 @@
    patrones.css (.sp-carrusel-*) vía Carrusel.tsx. Aquí solo queda lo propio
    de esta tarjeta. */
 
+/* Dos tarjetas completas y el filo de la tercera asomando: ese asomo es lo que
+   dice que el carrusel sigue a la derecha. La cuenta descuenta del ancho del
+   track los dos huecos de 16px (el `gap` de `.sp-carrusel-track`) y los 28px
+   del asomo —`--space-inset`, la medida de aire del sistema— y reparte el resto
+   entre dos.
+
+   El `max()` es el suelo para cuando el grid se apila y el track se estrecha:
+   por debajo de unos 620px de track la cuenta daría tarjetas demasiado
+   angostas para un icono, un título y su texto, así que se queda en los 246px
+   de antes y vuelve a verse una tarjeta con el filo de la siguiente. */
 .mercadoCard {
-  flex: 0 0 min(74%, 246px);
+  flex: 0 0 max(246px, calc((100% - 2 * 16px - 28px) / 2));
   display: flex;
   flex-direction: column;
   padding: 24px 22px;
+  /* `.sp-tarjeta` las pone blancas, y esta sección va sobre el blanco del body:
+     el filo de --color-border era lo único que las separaba del fondo. Con la
+     superficie secundaria del sistema se leen como tarjeta sin depender del
+     borde. */
+  background: var(--color-off-white);
 }
 
 .mercadoCard h3 {
