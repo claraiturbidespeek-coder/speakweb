@@ -75,17 +75,3 @@ Complete el formulario, un asesor se pondrá en contacto.
 **Solicitar mi cotización**
 
 Siga nuestro canal en LinkedIn para más consejos de capital humano. [LinkedIn](https://www.linkedin.com/company/s-peak/?originalSubdomain=mx)
-
-## Notas de auditoría
-
-### Relación con contenido existente
-
-### AEO
-
-### GEO
-
-### SEO
-
-### SEO técnico
-
-### Posicionamiento general / arquitectura de la web
