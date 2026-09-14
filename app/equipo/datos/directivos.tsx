@@ -41,7 +41,7 @@ const datos: DatosEquipo = {
   competencias: {
     eyebrow: "Las competencias lingüísticas de la dirección",
     titulo:
-      "Las competencias lingüísticas que su dirección necesita para liderar en cualquier idioma",
+      "El idioma de negocios que su dirección necesita para liderar en cualquier idioma",
     sub: "No necesita más gramática: necesita el idioma dentro de las situaciones que ya maneja, del comité de dirección a la negociación. En inglés o en el idioma de su corporativo.",
     tarjetas: [
       {
@@ -76,13 +76,13 @@ const datos: DatosEquipo = {
       },
       {
         icono: "apreton",
-        titulo: "Conversación informal y relación",
+        titulo: "Fuera de la sala: pasillo, cena y llamada corta",
         texto:
           "La cena previa, el pasillo entre sesiones, la llamada corta. Es donde un directivo construye la confianza que después sostiene la negociación, y donde el idioma se nota más.",
       },
       {
         icono: "mensaje",
-        titulo: "Conversación ejecutiva y relación institucional",
+        titulo: "Networking con pares internacionales",
         texto:
           "Construcción de redes de networking con pares internacionales, dominando el contexto cultural y el registro formal idóneo.",
       },
@@ -216,8 +216,14 @@ const datos: DatosEquipo = {
       {
         icono: "escudo",
         titulo: "Confidencialidad y flexibilidad de agenda",
-        texto:
-          "Esquema confidencial con horarios adaptados a la alta dirección y reportes con el nivel de detalle que el propio ejecutivo autorice.",
+        texto: (
+          <>
+            Esquema confidencial,{" "}
+            <strong>en línea o presencial en sus oficinas</strong>, con horarios
+            adaptados a la alta dirección y reportes con el nivel de detalle que
+            el propio ejecutivo autorice.
+          </>
+        ),
       },
       {
         icono: "globo",
