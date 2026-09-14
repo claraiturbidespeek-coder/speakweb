@@ -19,7 +19,7 @@ Actualmente, lograr la expansión global de empresas depende de un factor que mu
 
 ## Estrategias para una expansión global de empresas exitosa
 
-#### **El valor de la inteligencia cultural en los negocios**
+### **El valor de la inteligencia cultural en los negocios**
 
 Entender las costumbres locales evita errores costosos. Por ejemplo, una empresa de alimentos en Japón debe dominar no solo el idioma, sino las tradiciones culinarias locales. Los puntos clave a investigar son:
 
@@ -30,7 +30,7 @@ Entender las costumbres locales evita errores costosos. Por ejemplo, una empresa
   
 ***Ejemplo práctico: Una empresa de alimentos que se expande a Japón debe entender no solo el idioma japonés, sino también las preferencias culinarias y las costumbres alimenticias locales.***
 
-#### **Desarrollo de una estrategia de expansión global integral**
+### **Desarrollo de una estrategia de expansión global integral**
 
 Una estrategia ganadora considera cómo la empresa puede mejorar su comunicación en diferentes frentes. Dominar el idioma local facilita la gestión de la cadena de suministro y refuerza las redes de distribución, permitiendo operar con mayor eficacia.
 
@@ -46,7 +46,7 @@ Para que la expansión global de empresas sea sostenible, debe definir:
   
 ***Ejemplo práctico: Una empresa de tecnología que se expande a Brasil puede beneficiarse enormemente si sus empleados dominan el portugués, lo que les permitirá negociar mejores contratos y entender mejor las necesidades del cliente brasileño.***  
 
-#### **Gestión y cohesión de equipos multiculturales**
+### **Gestión y cohesión de equipos multiculturales**
 
 Al expandir su negocio, enfrentará el desafío de gestionar equipos multilingües. Aquí, la formación en idiomas mejora la cultura corporativa y permite que los empleados colaboren más eficientemente, fomentando un entorno inclusivo.
 

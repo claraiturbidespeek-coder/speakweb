@@ -17,31 +17,31 @@ readingTime: 2
 
 ## Pasos para diseñar un programa de capacitación en idiomas efectivo
 
-#### 1\. Diagnóstico inicial
+### 1\. Diagnóstico inicial
 
 Realice encuestas o pruebas para evaluar el nivel de competencia lingüística actual de sus empleados. Identifique no solo las áreas de mejora, sino también las fortalezas para potenciarlas dentro del plan de formación.
 
-#### 2\. Establezca objetivos claros
+### 2\. Establezca objetivos claros
 
 Defina qué metas busca alcanzar. Un programa de capacitación en idiomas para empresas debe tener objetivos medibles, como mejorar la fluidez en llamadas de ventas o la redacción técnica de correos internacionales.
 
-#### 3\. Personalice el programa
+### 3\. Personalice el programa
 
 Cada empresa es única. Considere la industria y cultura corporativa para diseñar un currículo que se adapte a los roles específicos de su personal según sus necesidades diarias.
 
-#### 4\. Fomente una cultura de aprendizaje
+### 4\. Fomente una cultura de aprendizaje
 
 Cree un ambiente donde el aprendizaje sea valorado. Organice clubes de conversación o talleres temáticos que refuercen la importancia del conocimiento lingüístico en la organización.
 
-#### 5\. Monitoree y evalúe
+### 5\. Monitoree y evalúe
 
 Utilice herramientas y plataformas para rastrear el progreso de cada empleado. Solicite feedback regularmente para hacer ajustes y garantizar que el programa de capacitación en idiomas para empresas sea realmente efectivo y genere resultados.
 
-#### 6\. Integre la capacitación en la rutina diaria
+### 6\. Integre la capacitación en la rutina diaria
 
 Anime a los empleados a usar el idioma en situaciones reales, como reuniones o presentaciones. Considere tener mentores lingüísticos dentro de la empresa para practicar de forma natural.
 
-#### 7\. Celebre los logros
+### 7\. Celebre los logros
 
 Organice ceremonias de reconocimiento o entrega de certificados. Destacar los logros individuales y de equipo motiva a los demás a seguir avanzando en su formación.
 

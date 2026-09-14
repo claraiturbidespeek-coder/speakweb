@@ -64,13 +64,16 @@
   margin: 0 0 24px;
 }
 
+/* Los ocho apartados son h2: van justo bajo el h1 de la cabecera, y como h3
+   dejaban un salto en la jerarquía. Conservan el aspecto que tenían como h3
+   —22px, 56px de aire arriba— para que el cambio sea solo de estructura. */
 .contenido h2 {
-  margin: 0 0 24px;
-  font-size: 30px;
+  margin: 56px 0 16px;
+  font-size: 22px;
   font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: -1px;
+  line-height: 1.25;
   color: var(--color-navy);
+  scroll-margin-top: 92px;
 }
 
 .contenido h3 {

@@ -375,7 +375,7 @@ export default function AvisoDePrivacidad() {
             <div className={styles.contenido}>
               {APARTADOS.map((a) => (
                 <Fragment key={a.id}>
-                  <h3 id={a.id}>{a.titulo}</h3>
+                  <h2 id={a.id}>{a.titulo}</h2>
                   {a.cuerpo}
                 </Fragment>
               ))}

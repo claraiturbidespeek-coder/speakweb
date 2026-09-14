@@ -81,7 +81,7 @@ export default function CentroDeRecursos({ className }: { className?: string }) 
             </div>
             <div className="sp-recursos-acciones">
               <Link className="sp-recursos-link" href="/blog/">
-                Más Información
+                Centro de Recursos
               </Link>
               <CarruselFlechas />
             </div>

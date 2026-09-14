@@ -241,6 +241,7 @@ export default function Home() {
                   className={styles.langFlag}
                   src={`/images/banderas/${idioma.bandera}.svg`}
                   alt=""
+                  aria-hidden="true"
                   width="20"
                   height="20"
                   loading="lazy"
@@ -438,6 +439,7 @@ export default function Home() {
                   src="/images/home/testimonio-braskem.webp"
                   {...atributosDimension("/images/home/testimonio-braskem.webp")}
                   alt=""
+                  aria-hidden="true"
                   loading="lazy"
                 />
                 <span>
@@ -463,6 +465,7 @@ export default function Home() {
                   src="/images/home/testimonio-fernanda.webp"
                   {...atributosDimension("/images/home/testimonio-fernanda.webp")}
                   alt=""
+                  aria-hidden="true"
                   loading="lazy"
                 />
                 <span>
@@ -494,6 +497,7 @@ export default function Home() {
                   src="/images/home/testimonio-anabel.webp"
                   {...atributosDimension("/images/home/testimonio-anabel.webp")}
                   alt=""
+                  aria-hidden="true"
                   loading="lazy"
                 />
                 <span>
@@ -526,6 +530,7 @@ export default function Home() {
                   src="/images/home/testimonio-erika.webp"
                   {...atributosDimension("/images/home/testimonio-erika.webp")}
                   alt=""
+                  aria-hidden="true"
                   loading="lazy"
                 />
                 <span>
