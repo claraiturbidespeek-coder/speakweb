@@ -42,6 +42,12 @@ Esta relocalización geográfica implica una integración operativa inmediata. S
 
 Muchos directivos cometen el error de asumir que el idioma es un "beneficio secundario" o una habilidad que el colaborador puede desarrollar sobre la marcha. La realidad de los negocios internacionales es mucho más exigente. **El inglés corporativo es la infraestructura invisible que determina la viabilidad de un contrato.**
 
+Esta infraestructura se pone a prueba en escenarios muy concretos del día a día operativo:
+
+-   **Videollamadas y reuniones de seguimiento:** cuando un ingeniero de planta debe explicar en tiempo real una falla de calidad o justificar un cambio de diseño ante la casa matriz, no hay margen para la ambigüedad.
+-   **Correos y minutas ejecutivas:** la redacción de reportes de avance y solicitudes de compras (procurement) exige precisión técnica; un correo mal estructurado puede retrasar una orden de compra crítica.
+-   **Negociación de contratos y SLA:** comprender a fondo las cláusulas de nivel de servicio y los términos de pago es lo que separa a un proveedor confiable de uno que arriesga la relación comercial.
+
 ### La eliminación de fricciones operativas
 
 Cuando una empresa estadounidense o europea traslada sus operaciones a México, busca replicar la eficiencia de su casa matriz. Esto exige que los ingenieros de planta, directores de logística y gerentes de compras locales participen diariamente en juntas virtuales de seguimiento (daily standups), entiendan manuales técnicos de alta complejidad y redacten reportes de incidencias con absoluta precisión.
@@ -57,6 +63,12 @@ El nearshoring abre la puerta a licitaciones internacionales de alto valor. Para
 ## Cómo preparar a su organización para la llegada de capital extranjero
 
 Esperar a que los contratos internacionales estén firmados para comenzar a capacitar a su personal es un error táctico que puede costar el crecimiento de su negocio. **La preparación del talento debe ser proactiva y estructurada desde la dirección de recursos humanos.**
+
+Cuando la capacitación no es proactiva, las consecuencias no tardan en manifestarse:
+
+-   **Paros operativos por mala interpretación:** una instrucción mal entendida en planta se traduce en retrabajos, mermas de producción y líneas detenidas que erosionan el margen del proyecto.
+-   **Pérdida de credibilidad ante clientes globales:** un reporte de avance o un pitch comercial con errores gramaticales básicos pone en duda la seriedad de toda la operación, sin importar la calidad técnica detrás.
+-   **Desgaste y rotación de personal:** los colaboradores que no pueden defender su punto de vista en juntas internacionales terminan frustrados, y ese desgaste se convierte en renuncias que la organización debe volver a capacitar desde cero.
 
 ### Paso 1: Auditar las competencias lingüísticas reales del equipo
 
