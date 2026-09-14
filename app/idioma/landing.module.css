@@ -28,7 +28,7 @@
      pasaron a interacciones.css: son clases que pone una librería en <html>, no
      estilos de esta página.
 
-   Las clases que el JavaScript consulta (cycle-node, testi-track, back-to-top,
+   Las clases que el JavaScript consulta (testi-track, back-to-top,
    y los estados active, open e is-visible) siguen en el markup como nombres
    sueltos, sin estilo propio: son puntos de anclaje del guion. El estilo lo
    ponen las clases de este módulo sobre el mismo elemento. */
@@ -724,13 +724,42 @@
   color: var(--color-red);
 }
 
-/* `active` la pone el guion al cambiar de paso. */
-.cycleNode:global(.active) {
+/* La pone CicloMetodo.tsx al cambiar de paso. */
+.cycleNode.cycleNodeActivo {
   background: var(--color-red);
   border-color: var(--color-red);
   color: var(--color-white);
   box-shadow: 0 0 0 6px rgba(181, 30, 64, 0.12);
   transform: translate(-50%, -50%) scale(1.08);
+}
+
+/* El número del paso, en la esquina del nodo: dice el orden del recorrido sin
+   pelearse con el 32px rojo del centro, que es el que manda. De ahí que sea
+   pequeño, gris y sobre la superficie clara del sistema. */
+.cycleNodeNum {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-off-white);
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Sobre el nodo activo, que es rojo, el gris se apaga: el número pasa al rojo
+   de marca sobre blanco. */
+.cycleNodeActivo .cycleNodeNum {
+  background: var(--color-white);
+  border-color: var(--color-red);
+  color: var(--color-red);
 }
 
 /* ---------- Testimonios ---------- */
@@ -934,6 +963,12 @@
   .cycleNode svg {
     width: 22px;
     height: 22px;
+  }
+
+  .cycleNodeNum {
+    width: 16px;
+    height: 16px;
+    font-size: 9px;
   }
 
   /* La franja de logos deja de montar sobre el hero. */

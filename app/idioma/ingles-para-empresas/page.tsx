@@ -9,44 +9,65 @@ import SelloSTPS from "@/app/components/SelloSTPS";
 import { useContacto } from "@/app/components/contacto/useContacto";
 // La lista de las seis páginas de idioma vive con la plantilla de equipo.
 import { IDIOMAS } from "@/app/equipo/tipos";
+import CicloMetodo, { type PasoMetodo } from "../CicloMetodo";
 import styles from "../landing.module.css";
 
 // Scripts copiados textualmente de ingles-para-empresas.html (líneas 1633-1872, 1917-1974, 1985-1998).
 // El bloque de Lenis que iba aquí se retiró: ahora es global, montado por
 // <ScrollSuave /> en el layout raíz. El botón "volver arriba" más abajo
 // sigue usando window.__lenis, que esa instancia expone igual.
+
+/* Los cinco pasos del método, en el orden del recorrido. La posición de cada
+   uno en el círculo y el comportamiento del ciclo los pone CicloMetodo.tsx. */
+const PASOS: PasoMetodo[] = [
+  {
+    titulo: "Diagnóstico antes de proponer nada.",
+    descripcion:
+      "Evaluamos el nivel real de cada colaborador y las situaciones concretas en que usa el inglés en su puesto. No asumimos, medimos.",
+    etiqueta: "Diagnóstico antes de proponer nada",
+    icono: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="6" y1="20" x2="6" y2="14"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="18" y1="20" x2="18" y2="10"/></svg>
+    ),
+  },
+  {
+    titulo: "Programa por rol y por nivel.",
+    descripcion:
+      "Un director financiero no aprende lo mismo que un ejecutivo de ventas, ni al mismo ritmo. Cada programa se diseña según el puesto, el nivel actual y los retos reales del día a día.",
+    etiqueta: "Programa por rol y por nivel",
+    icono: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="7" r="3"/><path d="M3.5 20a6.5 6.5 0 0 1 10-5.4"/><circle cx="17.5" cy="16.5" r="2.5"/><path d="M17.5 12.9v-1.4M17.5 21.5v-1.4M21.3 16.5h-1.4M15.1 16.5h-1.4"/></svg>
+    ),
+  },
+  {
+    titulo: "Inglés aplicado, no inglés teórico.",
+    descripcion:
+      "Cada sesión replica situaciones reales: una junta con casa matriz, un correo de negociación, una presentación ante inversores. Sus colaboradores practican lo que van a usar al día siguiente.",
+    etiqueta: "Inglés aplicado, no inglés teórico",
+    icono: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8A8.5 8.5 0 0 1 12.5 20a8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6A8.4 8.4 0 0 1 12.5 3h.5a8.5 8.5 0 0 1 8 8z"/></svg>
+    ),
+  },
+  {
+    titulo: "Evidencia para tomar decisiones.",
+    descripcion:
+      "Entregamos reportes de asistencia, progreso y nivel a la Dirección de RH. Usted sabe exactamente en qué está invirtiendo y qué resultados está obteniendo.",
+    etiqueta: "Evidencia para tomar decisiones",
+    icono: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    ),
+  },
+  {
+    titulo: "Flexibilidad que respeta la operación.",
+    descripcion:
+      "Nos adaptamos a la agenda de su equipo. Cancelaciones, reposiciones y material compartido después de cada sesión. Sin fricciones, sin excusas.",
+    etiqueta: "Flexibilidad que respeta la operación",
+    icono: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="0"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    ),
+  },
+];
+
 const SCRIPT_PRINCIPAL = `
-  // Ciclo radial del método (centro muestra el paso activo, auto-rota)
-  (function () {
-    const nodes = document.querySelectorAll('.cycle-node');
-    const numEl = document.getElementById('cycle-num');
-    const titleEl = document.getElementById('cycle-title');
-    const descEl = document.getElementById('cycle-desc');
-    if (!nodes.length || !numEl) return;
-    let active = 0, timer = null;
-    function show(i) {
-      active = i;
-      nodes.forEach((n, j) => n.classList.toggle('active', j === i));
-      const n = nodes[i];
-      numEl.textContent = n.dataset.num;
-      titleEl.textContent = n.dataset.title;
-      descEl.textContent = n.dataset.desc;
-    }
-    function start() { stop(); timer = setInterval(() => show((active + 1) % nodes.length), 2000); }
-    function stop() { clearInterval(timer); }
-    nodes.forEach((n, i) => {
-      n.addEventListener('mouseenter', () => { stop(); show(i); });
-      n.addEventListener('click', () => { stop(); show(i); });
-    });
-    // Pausa al pasar el mouse por el círculo del método; reanuda al salir
-    const cycle = document.querySelector('.cycle');
-    if (cycle) {
-      cycle.addEventListener('mouseenter', stop);
-      cycle.addEventListener('mouseleave', start);
-    }
-    show(0);
-    start();
-  })();
 
   // Carrusel testimonios: avance automático tarjeta por tarjeta
   (function () {
@@ -286,28 +307,7 @@ export default function Page() {
       <p className={styles.procesoIntro}>México ocupa el puesto 87 de 116 en dominio del inglés. Esta brecha lingüística representa hoy la mayor desventaja competitiva nacional. Así es como <strong>S-Peak</strong> la cierra.</p>
     </div>
     <div className="reveal">
-      <div className={styles.cycle}>
-        <div className={styles.cycleCenter}>
-          <div className={styles.cycleNum} id="cycle-num">01</div>
-          <div className={styles.cycleTitle} id="cycle-title">Diagnóstico antes de proponer nada.</div>
-          <div className={styles.cycleDesc} id="cycle-desc">Evaluamos el nivel real de cada colaborador y las situaciones concretas en que usa el inglés en su puesto. No asumimos, medimos.</div>
-        </div>
-        <button className={`${styles.cycleNode} cycle-node`} aria-label="Diagnóstico antes de proponer nada" style={{ left: "13.9%", top: "61.7%" }} data-num="01" data-title="Diagnóstico antes de proponer nada." data-desc="Evaluamos el nivel real de cada colaborador y las situaciones concretas en que usa el inglés en su puesto. No asumimos, medimos.">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="6" y1="20" x2="6" y2="14"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="18" y1="20" x2="18" y2="10"/></svg>
-        </button>
-        <button className={`${styles.cycleNode} cycle-node`} aria-label="Programa por rol y por nivel" style={{ left: "50%", top: "88%" }} data-num="02" data-title="Programa por rol y por nivel." data-desc="Un director financiero no aprende lo mismo que un ejecutivo de ventas, ni al mismo ritmo. Cada programa se diseña según el puesto, el nivel actual y los retos reales del día a día.">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="7" r="3"/><path d="M3.5 20a6.5 6.5 0 0 1 10-5.4"/><circle cx="17.5" cy="16.5" r="2.5"/><path d="M17.5 12.9v-1.4M17.5 21.5v-1.4M21.3 16.5h-1.4M15.1 16.5h-1.4"/></svg>
-        </button>
-        <button className={`${styles.cycleNode} cycle-node`} aria-label="Inglés aplicado, no inglés teórico" style={{ left: "86.1%", top: "61.7%" }} data-num="03" data-title="Inglés aplicado, no inglés teórico." data-desc="Cada sesión replica situaciones reales: una junta con casa matriz, un correo de negociación, una presentación ante inversores. Sus colaboradores practican lo que van a usar al día siguiente.">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8A8.5 8.5 0 0 1 12.5 20a8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6A8.4 8.4 0 0 1 12.5 3h.5a8.5 8.5 0 0 1 8 8z"/></svg>
-        </button>
-        <button className={`${styles.cycleNode} cycle-node`} aria-label="Evidencia para tomar decisiones" style={{ left: "72.3%", top: "19.3%" }} data-num="04" data-title="Evidencia para tomar decisiones." data-desc="Entregamos reportes de asistencia, progreso y nivel a la Dirección de RH. Usted sabe exactamente en qué está invirtiendo y qué resultados está obteniendo.">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        </button>
-        <button className={`${styles.cycleNode} cycle-node`} aria-label="Flexibilidad que respeta la operación" style={{ left: "27.7%", top: "19.3%" }} data-num="05" data-title="Flexibilidad que respeta la operación." data-desc="Nos adaptamos a la agenda de su equipo. Cancelaciones, reposiciones y material compartido después de cada sesión. Sin fricciones, sin excusas.">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="0"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        </button>
-      </div>
+      <CicloMetodo pasos={PASOS} />
     </div>
   </div>
   <div className={`${styles.procesoQuote} reveal`}>
