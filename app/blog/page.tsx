@@ -3,6 +3,7 @@ import Link from "next/link";
 import ListadoBlog from "@/app/components/ListadoBlog";
 import { obtenerCategorias, obtenerPosts } from "@/lib/posts";
 import styles from "./blog.module.css";
+import { atributosDimension } from "@/lib/dimensiones";
 
 /* La descripción nombra lo que el centro de recursos tiene de verdad —26
    artículos repartidos en cinco categorías— y no guías, tutoriales ni
@@ -62,6 +63,7 @@ export default function Blog() {
                       className="sp-post-img"
                       src={post.featuredImage}
                       alt={post.featuredImageAlt ?? ""}
+                      {...atributosDimension(post.featuredImage)}
                       loading="lazy"
                     />
                   ) : null}

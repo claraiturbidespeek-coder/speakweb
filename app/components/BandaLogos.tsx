@@ -50,7 +50,8 @@ export default function BandaLogos({
                 src={`/images/logos/${encodeURIComponent(l.archivo)}`}
                 alt={i < LOGOS_CLIENTES.length ? l.marca : ""}
                 aria-hidden={i >= LOGOS_CLIENTES.length}
-                height="44"
+                width={l.ancho}
+                height={l.alto}
                 loading="lazy"
               />
             ))}

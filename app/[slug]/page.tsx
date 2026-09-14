@@ -10,6 +10,7 @@ import {
   renderizarPost,
   type PostRenderizado,
 } from "@/lib/posts";
+import { atributosDimension } from "@/lib/dimensiones";
 import styles from "./nota.module.css";
 
 const SITIO = "https://s-peak.com";
@@ -182,10 +183,14 @@ export default async function Nota(props: PageProps<"/[slug]">) {
         </header>
 
         {post.featuredImage ? (
+          /* Es el LCP de la nota: carga inmediata y prioridad alta. Las
+             dimensiones reservan su sitio antes de que llegue. */
           <img
             className={styles.destacada}
             src={post.featuredImage}
             alt={post.featuredImageAlt ?? ""}
+            {...atributosDimension(post.featuredImage)}
+            loading="eager"
             fetchPriority="high"
           />
         ) : null}
@@ -250,6 +255,7 @@ export default async function Nota(props: PageProps<"/[slug]">) {
                         className="sp-post-img"
                         src={r.featuredImage}
                         alt={r.featuredImageAlt ?? ""}
+                        {...atributosDimension(r.featuredImage)}
                         loading="lazy"
                       />
                     ) : null}

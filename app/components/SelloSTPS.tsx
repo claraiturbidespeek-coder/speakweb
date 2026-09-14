@@ -17,6 +17,12 @@ export default function SelloSTPS() {
         alt="Secretaría del Trabajo y Previsión Social"
         width="101"
         height="28"
+        /* Carga inmediata a propósito, aunque no sea el LCP: el sello va en el
+           hero, bajo el botón principal, dentro de la primera pantalla. Diferir
+           una imagen que ya está a la vista es contraproducente —el navegador
+           la descubre tarde y la pinta después que el resto del hero—. */
+        loading="eager"
+        decoding="async"
       />
       <p>Registro oficial ante la STPS · Entregamos constancia DC-3</p>
     </div>

@@ -8,6 +8,7 @@ import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import type { Root, Element } from "hast";
+import { dimensionesDe } from "./dimensiones";
 
 const DIR_CONTENIDO = path.join(process.cwd(), "content/blog");
 const DIR_APP = path.join(process.cwd(), "app");
@@ -154,6 +155,40 @@ export function obtenerPosts(): Post[] {
   return cache;
 }
 
+/* Las imágenes del cuerpo de la nota, preparadas para no mover el contenido.
+
+   El markdown solo sabe decir `![alt](src)`: sin width ni height, el navegador
+   no reserva sitio y el texto salta cuando la imagen termina de bajar. Aquí se
+   leen las dimensiones del archivo real y se escriben en el árbol, antes de
+   convertirlo en HTML, así que cualquier imagen que se añada a una nota queda
+   cubierta sin tocar el .md.
+
+   `loading="lazy"` y `decoding="async"` porque ninguna de estas es el LCP: van
+   siempre debajo del titular y de la imagen destacada, que sí lo es y se sirve
+   aparte desde la plantilla. Si una imagen no se puede leer —externa o de un
+   formato que no es WebP ni SVG— se deja sin dimensiones en vez de inventarlas. */
+function prepararImagenes() {
+  return () => (arbol: Root) => {
+    const visitar = (nodo: Root | Element) => {
+      for (const hijo of nodo.children) {
+        if (hijo.type !== "element") continue;
+        if (hijo.tagName === "img") {
+          const props = (hijo.properties ??= {});
+          const dim = dimensionesDe(String(props.src ?? ""));
+          if (dim && props.width == null && props.height == null) {
+            props.width = dim.width;
+            props.height = dim.height;
+          }
+          props.loading ??= "lazy";
+          props.decoding ??= "async";
+        }
+        visitar(hijo);
+      }
+    };
+    visitar(arbol);
+  };
+}
+
 // Recoge los encabezados del mismo árbol que produce el HTML, después de
 // rehype-slug: los id del índice y los del artículo son los mismos por
 // construcción, no por recalcularlos con otro slugificador.
@@ -197,6 +232,7 @@ export async function renderizarPost(slug: string): Promise<PostRenderizado | nu
     .use(remarkGfm)
     .use(remarkRehype)
     .use(rehypeSlug)
+    .use(prepararImagenes())
     .use(recogerEncabezados(encabezados))
     .use(rehypeStringify)
     .process(content);

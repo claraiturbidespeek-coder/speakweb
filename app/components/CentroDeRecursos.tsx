@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CarruselFlechas, CarruselProvider, CarruselTrack } from "@/app/components/Carrusel";
+import { atributosDimension } from "@/lib/dimensiones";
 
 /* Compartida por la home y las siete páginas de Soluciones por Equipo. Con
    ocho páginas deja de ser "propia de una página": el estilo vive en
@@ -96,6 +97,7 @@ export default function CentroDeRecursos({ className }: { className?: string }) 
                   className="sp-post-img"
                   src={`/images/home/${p.imagen}`}
                   alt={p.alt}
+                  {...atributosDimension(`/images/home/${p.imagen}`)}
                   loading="lazy"
                 />
                 <h3 className="sp-post-titulo">

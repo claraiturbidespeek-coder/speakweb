@@ -6,6 +6,7 @@ import BotonContacto from "@/app/components/contacto/BotonContacto";
 import SelloSTPS from "@/app/components/SelloSTPS";
 import Icono from "@/app/components/Icono";
 import styles from "./home.module.css";
+import { atributosDimension } from "@/lib/dimensiones";
 
 export const metadata: Metadata = {
   title: "Cursos de Idiomas para Empresas | ROI y Resultados - S-Peak",
@@ -257,6 +258,7 @@ export default function Home() {
           <img
             className={styles.programImage}
             src="/images/home/programa-metricas.webp"
+            {...atributosDimension("/images/home/programa-metricas.webp")}
             alt="Colaboradora en una sesión de idiomas con burbujas de conversación"
             loading="lazy"
           />
@@ -323,6 +325,7 @@ export default function Home() {
                 <img
                   className={styles.diffMedia}
                   src={`/images/home/${d.imagen}`}
+                  {...atributosDimension(`/images/home/${d.imagen}`)}
                   alt={d.alt}
                   loading="lazy"
                 />
@@ -433,6 +436,7 @@ export default function Home() {
               <div className={styles.person}>
                 <img
                   src="/images/home/testimonio-braskem.webp"
+                  {...atributosDimension("/images/home/testimonio-braskem.webp")}
                   alt=""
                   loading="lazy"
                 />
@@ -457,6 +461,7 @@ export default function Home() {
               <div className={styles.person}>
                 <img
                   src="/images/home/testimonio-fernanda.webp"
+                  {...atributosDimension("/images/home/testimonio-fernanda.webp")}
                   alt=""
                   loading="lazy"
                 />
@@ -487,6 +492,7 @@ export default function Home() {
               <div className={`${styles.person} ${styles.personNarrow}`}>
                 <img
                   src="/images/home/testimonio-anabel.webp"
+                  {...atributosDimension("/images/home/testimonio-anabel.webp")}
                   alt=""
                   loading="lazy"
                 />
@@ -518,6 +524,7 @@ export default function Home() {
               <div className={`${styles.person} ${styles.personNarrow}`}>
                 <img
                   src="/images/home/testimonio-erika.webp"
+                  {...atributosDimension("/images/home/testimonio-erika.webp")}
                   alt=""
                   loading="lazy"
                 />

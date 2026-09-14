@@ -46,9 +46,22 @@ body {
   scroll-margin-top: var(--anchor-offset);
 }
 
+/* `height: auto` es lo que hace seguros los atributos width y height.
+
+   Esos atributos existen para que el navegador reserve el hueco de la imagen
+   antes de descargarla y el contenido no salte (CLS). Pero además de la
+   proporción, fijan una altura en píxeles como indicación de estilo: sin este
+   `auto`, cualquier imagen cuyo CSS le dé solo el ancho —las tarjetas de nota,
+   la portada, los isotipos— se quedaría con la altura del archivo, y una
+   tarjeta de 345px de ancho medía 1066 de alto. Con `auto` el atributo aporta
+   solo la proporción, que es lo que se busca.
+
+   No cambia nada donde el CSS ya fija la altura (la marquesina, los medios del
+   home): una regla de clase gana a esta, que está en la capa base. */
 img {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 a {

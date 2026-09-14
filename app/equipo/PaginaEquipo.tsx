@@ -9,6 +9,7 @@ import SelloSTPS from "@/app/components/SelloSTPS";
 import Icono from "@/app/components/Icono";
 import type { DatosEquipo } from "./tipos";
 import styles from "./equipo.module.css";
+import { atributosDimension } from "@/lib/dimensiones";
 
 /* Plantilla de las páginas de Soluciones por Equipo.
 
@@ -98,6 +99,7 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
             src="/images/isotype.svg"
             alt=""
             aria-hidden="true"
+            {...atributosDimension("/images/isotype.svg")}
             loading="lazy"
           />
           <div className={styles.heroInner}>
@@ -121,11 +123,13 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
 
             <div className={`${styles.heroVisual} reveal`}>
               <div className={styles.heroImgWrap}>
+                {/* Dimensiones leídas del archivo, no escritas a mano: el 600×420
+                    que había no coincidía con ninguna de las siete imágenes. El
+                    hueco visible lo fija .heroImgWrap; esto da la proporción. */}
                 <img
                   src={datos.hero.imagen.src}
                   alt={datos.hero.imagen.alt}
-                  width="600"
-                  height="420"
+                  {...atributosDimension(datos.hero.imagen.src)}
                   loading="eager"
                 />
               </div>
@@ -286,6 +290,8 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
             src="/images/isotype.svg"
             alt=""
             aria-hidden="true"
+            {...atributosDimension("/images/isotype.svg")}
+            loading="lazy"
           />
           <h2>{datos.banda.titulo}</h2>
           <p>{datos.banda.texto}</p>
