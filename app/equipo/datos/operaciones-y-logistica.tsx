@@ -11,7 +11,7 @@ const datos: DatosEquipo = {
   nombre: "Operaciones y Logística",
 
   hero: {
-    etiqueta: "Idioma técnico · Operaciones y Logística",
+    etiqueta: "Idioma de negocios · Operaciones y Logística",
     titulo: (
       <>
         Capacitación de idiomas para equipos de{" "}
@@ -36,7 +36,7 @@ const datos: DatosEquipo = {
   competencias: {
     eyebrow: "Las competencias lingüísticas del equipo de operaciones",
     titulo:
-      "Las competencias lingüísticas que su equipo de operaciones necesita para trabajar sin error",
+      "El idioma de negocios que su equipo de operaciones necesita para trabajar sin error",
     sub: "No necesita más gramática: necesita el idioma dentro de las situaciones que ya maneja, de la instrucción en planta al embarque en aduana. En inglés o en el idioma de su operación.",
     tarjetas: [
       {
