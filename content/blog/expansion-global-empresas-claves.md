@@ -2,7 +2,7 @@
 title: "Expansión global de empresas: 4 claves para triunfar con idiomas"
 slug: "expansion-global-empresas-claves"
 date: "2026-05-05T19:53:06"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 category: "Nearshoring y expansión"
 categorySlug: "nearshoring-y-expansion"
 tags: []

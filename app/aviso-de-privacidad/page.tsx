@@ -36,7 +36,27 @@ import styles from "./aviso.module.css";
 
 export const metadata: Metadata = {
   title: "Aviso de Privacidad | S-Peak",
+  /* La descripción resume los apartados del propio documento —responsable,
+     datos, finalidades, con quién se comparten y derechos— en el registro de
+     usted del resto del sitio. */
+  description:
+    "Aviso de privacidad de S-Peak: qué datos personales recabamos, para qué los usamos, con quién los compartimos y cómo ejercer sus derechos.",
   alternates: { canonical: "https://s-peak.com/aviso-de-privacidad/" },
+  openGraph: {
+    type: "website",
+    locale: "es_MX",
+    siteName: "S-Peak",
+    title: "Aviso de Privacidad | S-Peak",
+    description:
+      "Aviso de privacidad de S-Peak: qué datos personales recabamos, para qué los usamos, con quién los compartimos y cómo ejercer sus derechos.",
+    url: "https://s-peak.com/aviso-de-privacidad/",
+    images: [
+      {
+        url: "https://s-peak.com/images/og-links.jpg",
+        alt: "Aviso de privacidad de S-Peak",
+      },
+    ],
+  },
 };
 
 /* Los ocho apartados del documento. De aquí salen a la vez el id y el texto de

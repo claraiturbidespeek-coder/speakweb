@@ -2,7 +2,7 @@
 title: "De cero a bilingüe: Cómo estructurar una capacitación en inglés que su equipo no abandone"
 slug: "como-implementar-capacitacion-en-ingles-empresas"
 date: "2026-06-15T12:37:29"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 excerpt: "Diseñar un plan de idiomas institucional requiere más que contratar licencias masivas. Conozca el mapa de ruta exacto para auditar, estructurar y medir una capacitación en inglés alineada a los objetivos de rendimiento de su organización."
 category: "Implementación del programa"
 categorySlug: "implementacion-del-programa"

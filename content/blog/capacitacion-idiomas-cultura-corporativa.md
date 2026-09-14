@@ -2,7 +2,7 @@
 title: "Mejores prácticas para integrar la capacitación en idiomas en la cultura corporativa"
 slug: "capacitacion-idiomas-cultura-corporativa"
 date: "2026-05-06T12:45:44"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 category: "Resultados y ROI"
 categorySlug: "resultados-y-roi"
 tags: []

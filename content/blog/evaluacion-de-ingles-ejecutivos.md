@@ -2,7 +2,7 @@
 title: "Inglés para ejecutivos: 6 situaciones clave donde urge una evaluación de inglés"
 slug: "evaluacion-de-ingles-ejecutivos"
 date: "2026-07-06T12:45:23"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 excerpt: "El liderazgo global exige comunicación impecable. Conozca las situaciones cotidianas donde se evidencia la falta de dominio y cómo medir a sus líderes."
 category: "Diagnóstico de necesidades"
 categorySlug: "diagnostico-de-necesidades"

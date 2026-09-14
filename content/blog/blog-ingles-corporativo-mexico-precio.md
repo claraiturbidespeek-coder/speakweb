@@ -2,7 +2,7 @@
 title: "¿Cuánto cuesta un curso de inglés corporativo? La guía definitiva para auditar proveedores en México"
 slug: "blog-ingles-corporativo-mexico-precio"
 date: "2026-06-02T18:04:49"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 excerpt: "Evaluar el costo de la capacitación lingüística va más allá de comparar cotizaciones por hora. Conozca cuánto cuesta realmente un curso de inglés corporativo en México, qué servicios clave debe exigir a su proveedor y cómo demostrar un retorno de inversión (ROI) tangible ante la alta dirección."
 category: "Selección de proveedor"
 categorySlug: "seleccion-de-proveedor"

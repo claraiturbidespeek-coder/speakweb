@@ -2,7 +2,7 @@
 title: "Por qué el 70% de los programas de capacitación en idiomas fracasan antes de los 6 meses"
 slug: "negocios-en-ingles-porque-fracasan-cursos"
 date: "2026-06-24T11:40:14"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 excerpt: "Evite perder su presupuesto de capital humano. Conozca las razones reales por las que la mayoría de los programas fallan rápido y cómo proteger su inversión."
 category: "Resultados y ROI"
 categorySlug: "resultados-y-roi"

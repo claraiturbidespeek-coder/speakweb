@@ -2,7 +2,7 @@
 title: "8 claves para poner en marcha su capacitación de idiomas para empresas"
 slug: "capacitacion-de-idiomas-para-empresas"
 date: "2026-04-30T13:35:59"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 category: "Implementación del programa"
 categorySlug: "implementacion-del-programa"
 tags: []

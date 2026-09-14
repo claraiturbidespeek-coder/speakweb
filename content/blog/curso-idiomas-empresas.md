@@ -2,7 +2,7 @@
 title: "Cómo elegir el curso de idiomas ideal para su empresa"
 slug: "curso-idiomas-empresas"
 date: "2026-05-06T12:44:20"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 category: "Selección de proveedor"
 categorySlug: "seleccion-de-proveedor"
 tags: []

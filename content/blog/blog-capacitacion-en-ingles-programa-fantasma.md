@@ -2,7 +2,7 @@
 title: "Capacitación en inglés: ¿Por qué su equipo abandonó el curso de idiomas de la empresa?"
 slug: "blog-capacitacion-en-ingles-programa-fantasma"
 date: "2026-06-02T16:46:47"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 excerpt: "Invertir en un programa de idiomas y descubrir que la tasa de abandono roza el 80% es uno de los dolores de cabeza más comunes para recursos humanos. Descubra las 5 causas reales detrás del \"programa fantasma\" en la capacitación en inglés y cómo rescatar su presupuesto antes de que sea tarde."
 category: "Resultados y ROI"
 categorySlug: "resultados-y-roi"

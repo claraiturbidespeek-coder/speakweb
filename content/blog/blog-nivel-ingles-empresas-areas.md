@@ -2,7 +2,7 @@
 title: "Inglés para empresas: ¿Qué nivel necesita cada área de su organización?"
 slug: "blog-nivel-ingles-empresas-areas"
 date: "2026-05-26T13:16:02"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 excerpt: "¿Qué nivel necesita cada área de su organización? Extracto: Exigir el mismo nivel de inglés a toda la compañía es un error operativo costoso. Aprenda a mapear las necesidades lingüísticas reales de cada departamento (desde Ventas hasta TI y Dirección) para estructurar grupos eficientes que impulsen la productividad del negocio."
 category: "Diagnóstico de necesidades"
 categorySlug: "diagnostico-de-necesidades"

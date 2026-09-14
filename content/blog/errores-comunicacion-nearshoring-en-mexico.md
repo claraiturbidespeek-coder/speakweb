@@ -2,7 +2,7 @@
 title: "5 errores de comunicación en su primer año de Nearshoring"
 slug: "errores-comunicacion-nearshoring-en-mexico"
 date: "2026-06-05T17:15:42"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 excerpt: "El auge comercial exige más que proximidad geográfica. Conozca los 5 errores de comunicación intercultural y lingüística más comunes que cometen las empresas mexicanas en su primer año de nearshoring y cómo evitarlos con la consultoría de S-Peak."
 category: "Nearshoring y expansión"
 categorySlug: "nearshoring-y-expansion"

@@ -2,7 +2,7 @@
 title: "Por qué pedir nivel B2 está arruinando el presupuesto de sus clases de inglés para empresas"
 slug: "clases-ingles-empresas-niveles-puesto"
 date: "2026-06-05T14:45:05"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 excerpt: "Clasificar las necesidades de su plantilla bajo etiquetas genéricas como A1 o B2 es un error costoso. Descubra cómo mapear las competencias lingüísticas reales que exige cada perfil en su organización a través de verdaderas clases de ingles para empresas alineadas a objetivos de negocio."
 category: "Diagnóstico de necesidades"
 categorySlug: "diagnostico-de-necesidades"

@@ -2,7 +2,7 @@
 title: "Cómo aprende inglés un ejecutivo ocupado: metodología, tiempos y expectativas reales"
 slug: "como-aprende-ingles-un-ejecutivo-ocupado-metodologia-tiempos-y-expectativas-reales"
 date: "2026-05-27T13:28:19"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 excerpt: "La falta de tiempo es la barrera número uno en la capacitación directiva. Descubra cómo los líderes de alta presión pueden dominar el idioma de los negocios sin colapsar sus agendas, utilizando metodologías ágiles como el microlearning y simulaciones reales."
 category: "Implementación del programa"
 categorySlug: "implementacion-del-programa"

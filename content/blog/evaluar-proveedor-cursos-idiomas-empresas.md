@@ -2,7 +2,7 @@
 title: "Lo que las academias masivas ocultan al venderle cursos de idiomas para empresas"
 slug: "evaluar-proveedor-cursos-idiomas-empresas"
 date: "2026-06-05T13:32:10"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 excerpt: "Contratar capacitación no debe ser un acto de fe. Descubra los secretos comerciales que las escuelas tradicionales intentan ocultar y conozca las 10 preguntas críticas de auditoría para evaluar un proveedor de cursos de idiomas para empresas sin arriesgar su presupuesto."
 category: "Selección de proveedor"
 categorySlug: "seleccion-de-proveedor"

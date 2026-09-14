@@ -2,7 +2,7 @@
 title: "En línea vs presencial: cuál modalidad de capacitación se adapta mejor a su empresa"
 slug: "modalidad-capacitacion-idiomas-empresas"
 date: "2026-05-06T12:46:43"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 category: "Implementación del programa"
 categorySlug: "implementacion-del-programa"
 tags: []

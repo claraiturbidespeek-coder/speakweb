@@ -2,7 +2,7 @@
 title: "Capacitación de idiomas personalizada: El éxito corporativo a su medida"
 slug: "capacitacion-idiomas-personalizada"
 date: "2026-05-06T12:43:07"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 category: "Implementación del programa"
 categorySlug: "implementacion-del-programa"
 tags: []

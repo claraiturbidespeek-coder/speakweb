@@ -2,7 +2,7 @@
 title: "¿Cómo implementar un programa de capacitación en idiomas desde cero?"
 slug: "programa-capacitacion-idiomas-desde-cero"
 date: "2026-05-05T19:52:57"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 category: "Implementación del programa"
 categorySlug: "implementacion-del-programa"
 tags: []

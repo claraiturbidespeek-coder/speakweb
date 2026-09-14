@@ -2,7 +2,7 @@
 title: "La capacitación en idiomas potencia la retención y desempeño del talento en empresas"
 slug: "capacitacion-idiomas-retencion-desempeno-talento"
 date: "2026-05-06T12:45:05"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 category: "Resultados y ROI"
 categorySlug: "resultados-y-roi"
 tags: []

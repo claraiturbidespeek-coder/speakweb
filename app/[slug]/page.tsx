@@ -8,10 +8,69 @@ import {
   obtenerPosts,
   obtenerRelacionados,
   renderizarPost,
+  type PostRenderizado,
 } from "@/lib/posts";
 import styles from "./nota.module.css";
 
 const SITIO = "https://s-peak.com";
+
+/* Datos estructurados de la nota.
+
+   Hasta ahora las 26 notas solo heredaban el Organization y el LocalBusiness
+   del layout, que son datos del sitio. Aquí aportan lo suyo, igual que las
+   páginas de equipo aportan su Service y su FAQPage.
+
+   BlogPosting y no Article a secas: es el tipo específico para una entrada de
+   blog, y Google lo trata igual a efectos de resultado enriquecido.
+
+   `publisher` referencia por @id al Organization que ya declara el layout en
+   esta misma página, en vez de duplicarlo. Es lo que hace el LocalBusiness con
+   `parentOrganization`, y para eso se le puso @id.
+
+   `dateModified` va igual que `datePublished` porque el frontmatter no guarda
+   fecha de modificación: no se inventa una posterior, que le diría a Google que
+   el contenido se revisó cuando no es cierto.
+
+   La miga de pan lleva tres escalones —Inicio › Centro de Recursos › la nota—
+   y no cuatro: el nivel de categoría existe como ruta, pero hoy es un esqueleto
+   con noindex, y una miga no debe apuntar a una página que pedimos no indexar. */
+function datosEstructurados(post: PostRenderizado) {
+  const url = `${SITIO}/${post.slug}/`;
+  const imagen = post.featuredImage ? `${SITIO}${post.featuredImage}` : undefined;
+
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": `${url}#articulo`,
+        mainEntityOfPage: { "@type": "WebPage", "@id": url },
+        headline: post.title,
+        description: post.seoDescription ?? post.resumen,
+        datePublished: post.date,
+        dateModified: post.date,
+        author: { "@type": "Person", name: post.author },
+        publisher: { "@id": `${SITIO}/#organizacion` },
+        articleSection: post.category,
+        inLanguage: "es-MX",
+        ...(imagen ? { image: imagen } : {}),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Inicio", item: `${SITIO}/` },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Centro de Recursos",
+            item: `${SITIO}/blog/`,
+          },
+          { "@type": "ListItem", position: 3, name: post.title, item: url },
+        ],
+      },
+    ],
+  });
+}
 
 export function generateStaticParams() {
   return obtenerPosts().map((p) => ({ slug: p.slug }));
@@ -66,6 +125,12 @@ export default async function Nota(props: PageProps<"/[slug]">) {
 
   return (
     <main>
+      {/* Etiqueta nativa: con next/script el JSON-LD se inyectaría desde el
+          cliente y no estaría en el HTML que lee Google. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: datosEstructurados(post) }}
+      />
       <article>
         <header className={`sp-seccion ${styles.cabecera}`}>
           <div className={`sp-inner ${styles.cabeceraInner}`}>

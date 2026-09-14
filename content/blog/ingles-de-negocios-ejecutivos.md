@@ -2,7 +2,7 @@
 title: "Inglés de negocios: habilidades clave según su rol ejecutivo"
 slug: "ingles-de-negocios-ejecutivos"
 date: "2026-06-16T15:23:51"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 excerpt: "Optimice el desarrollo de su equipo global. Descubra qué habilidades específicas de inglés de negocios debe priorizar cada rol ejecutivo dentro de su empresa."
 category: "Diagnóstico de necesidades"
 categorySlug: "diagnostico-de-necesidades"

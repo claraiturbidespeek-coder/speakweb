@@ -2,7 +2,7 @@
 title: "Los 5 errores más comunes al contratar cursos de idiomas para empresas en México (y cómo evitarlos)"
 slug: "blog-errores-cursos-idiomas-empresas"
 date: "2026-05-26T12:41:58"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 excerpt: "¿Está invirtiendo en capacitación de idiomas sin ver resultados claros? Descubra los errores críticos que cometen las áreas de Recursos Humanos en México al contratar proveedores tradicionales y aprenda cómo proteger su presupuesto garantizando un retorno de inversión real."
 category: "Selección de proveedor"
 categorySlug: "seleccion-de-proveedor"

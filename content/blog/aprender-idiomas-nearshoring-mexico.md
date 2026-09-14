@@ -2,7 +2,7 @@
 title: "Aprender idiomas en la era del nearshoring: Las lenguas más demandadas en México"
 slug: "aprender-idiomas-nearshoring-mexico"
 date: "2026-07-06T16:21:22"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 excerpt: "El inglés ya no es suficiente para la alta competencia en México. Conozca los idiomas más demandados por las empresas globales y acelere su negocio."
 category: "Nearshoring y expansión"
 categorySlug: "nearshoring-y-expansion"

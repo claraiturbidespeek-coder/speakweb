@@ -11,6 +11,26 @@ export const metadata: Metadata = {
   title: "Cursos de Idiomas para Empresas | ROI y Resultados - S-Peak",
   description:
     "Transforme el dominio de idiomas en métricas de negocio. Capacitación para empresas con evidencias de desempeño y reportes para RRHH.",
+  /* El canonical importa más aquí que en ninguna otra página: la home es la que
+     acumula variantes de URL —?gclid=, ?utm_*, ?fbclid=, con y sin www— y sin
+     él cada una puede indexarse por separado y repartir la autoridad del
+     dominio. Autorreferencial, como en el resto del sitio. */
+  alternates: { canonical: "https://s-peak.com/" },
+  openGraph: {
+    type: "website",
+    locale: "es_MX",
+    siteName: "S-Peak",
+    title: "Cursos de Idiomas para Empresas | ROI y Resultados - S-Peak",
+    description:
+      "Transforme el dominio de idiomas en métricas de negocio. Capacitación para empresas con evidencias de desempeño y reportes para RRHH.",
+    url: "https://s-peak.com/",
+    images: [
+      {
+        url: "https://s-peak.com/images/og-links.jpg",
+        alt: "Capacitación de idiomas para empresas de S-Peak",
+      },
+    ],
+  },
 };
 
 /* Banderas en SVG y no como emoji nativo: Windows no trae glifo para las

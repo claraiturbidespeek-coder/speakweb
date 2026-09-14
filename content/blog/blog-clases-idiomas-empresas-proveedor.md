@@ -2,7 +2,7 @@
 title: "Clases de idiomas para empresas: ¿Proveedor genérico o aliado corporativo?"
 slug: "blog-clases-idiomas-empresas-proveedor"
 date: "2026-05-27T11:32:06"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 excerpt: "Comprar \"horas de clase\" en escuelas tradicionales de idiomas suele terminar en aulas vacías y presupuestos diluidos. Conozca las diferencias estratégicas entre una academia comercial y un verdadero aliado de negocios enfocado en métricas corporativas y ROI."
 category: "Selección de proveedor"
 categorySlug: "seleccion-de-proveedor"

@@ -2,7 +2,7 @@
 title: "Capacitación de personal: cómo diseñar un programa de idiomas que sí completen"
 slug: "capacitacion-personal-programa-idiomas"
 date: "2026-07-06T14:00:18"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 category: "Implementación del programa"
 categorySlug: "implementacion-del-programa"
 tags: []

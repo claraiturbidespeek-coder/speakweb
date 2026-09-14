@@ -2,7 +2,7 @@
 title: "¿Alemán, francés o inglés? Cómo identificar qué idiomas para empresas necesita su equipo"
 slug: "mejores-idiomas-para-empresas"
 date: "2026-06-16T10:16:15"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 excerpt: "¿Cómo saber qué idiomas para empresas necesita realmente su organización? Descubra cómo auditar las necesidades de su plantilla para elegir la mejor opción estratégica según su sector comercial."
 category: "Diagnóstico de necesidades"
 categorySlug: "diagnostico-de-necesidades"

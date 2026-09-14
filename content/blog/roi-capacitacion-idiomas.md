@@ -2,7 +2,7 @@
 title: "Beneficios y ROI de la capacitación de idiomas para empresas"
 slug: "roi-capacitacion-idiomas"
 date: "2026-05-06T12:46:14"
-author: "ANDREA RIOS"
+author: "Andrea Ríos"
 category: "Resultados y ROI"
 categorySlug: "resultados-y-roi"
 tags: []
