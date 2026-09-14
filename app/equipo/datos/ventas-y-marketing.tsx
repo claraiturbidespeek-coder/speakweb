@@ -238,8 +238,7 @@ const datos: DatosEquipo = {
   },
 
   testimonios: {
-    titulo:
-      "Lo que dicen los equipos de ventas que ya se capacitaron con S-Peak",
+    titulo: "Lo que dicen las empresas que ya se capacitaron con S-Peak",
   },
 
   faq: {

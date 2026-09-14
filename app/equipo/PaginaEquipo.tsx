@@ -301,7 +301,7 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
               className="sp-eyebrow"
               style={{ color: "rgba(255,255,255,0.4)", justifyContent: "center" }}
             >
-              Lo que dicen los equipos
+              Lo que dicen las empresas
             </div>
             <h2>{datos.testimonios.titulo}</h2>
             <p>En S-Peak, el éxito no se supone: se mide en números.</p>
