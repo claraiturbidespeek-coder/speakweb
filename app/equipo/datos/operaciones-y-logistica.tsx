@@ -171,9 +171,18 @@ const datos: DatosEquipo = {
       {
         icono: "globo",
         titulo: "El nearshoring exige integración técnica multilingüe",
-        texto:
-          "Ante la proyección de 50,000 millones de dólares en inversión en los 3 próximos años, las nuevas cadenas operan bajo estándares en inglés, alemán, italiano o portugués. Los equipos preparados aseguran la proveeduría aprobada; los que dependen de traductores quedan fuera.",
-        fuente: "Fuente: Secretaría de Economía",
+        texto: (
+          <>
+            Ante los 50,000 millones de dólares de inversión que proyecta la
+            Secretaría de Economía, las nuevas cadenas operan bajo estándares en
+            inglés, alemán, italiano o portugués.{" "}
+            <strong>
+              Los equipos preparados aseguran la proveeduría aprobada; los que
+              dependen de traductores llegan tarde
+            </strong>
+            .
+          </>
+        ),
       },
       {
         icono: "lista",

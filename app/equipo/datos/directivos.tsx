@@ -179,10 +179,21 @@ const datos: DatosEquipo = {
       },
       {
         icono: "globo",
-        titulo: "El nearshoring exige interlocución directa en otros idiomas",
-        texto:
-          "Con proyecciones de 500,000 nuevos empleos y 50,000 millones de dólares en inversión en los 3 próximos años, las decisiones de corporativos extranjeros se toman en inglés y, según su origen, en alemán, italiano o portugués. La empresa cuya dirección participa activamente en esa conversación define las reglas; la que depende de traductores, las acata.",
-        fuente: "Fuente: Secretaría de Economía",
+        titulo:
+          "Con Estados Unidos como primer socio, la matriz decide más cerca",
+        texto: (
+          <>
+            México es el primer socio comercial de Estados Unidos desde 2023 (
+            <em>Secretaría de Economía</em>). Eso pone a su dirección en más
+            juntas con el corporativo y en menos conversaciones filtradas por un
+            intermediario.{" "}
+            <strong>
+              Cuando un solo directivo necesita traducción para intervenir, la
+              operación local pierde voz en decisiones que le tocan
+            </strong>
+            .
+          </>
+        ),
       },
       {
         icono: "alerta",

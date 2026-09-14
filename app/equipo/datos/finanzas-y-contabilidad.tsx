@@ -178,9 +178,17 @@ const datos: DatosEquipo = {
       {
         icono: "globo",
         titulo: "El nearshoring exige reportes globales inmediatos",
-        texto:
-          "Ante la proyección de 50,000 millones de dólares en inversión en los 3 próximos años, las filiales deben consolidar datos en inglés, alemán, italiano o portugués. Comunicar con fluidez asegura la autonomía ante la matriz.",
-        fuente: "Fuente: Secretaría de Economía",
+        texto: (
+          <>
+            Ante los 50,000 millones de dólares de inversión que proyecta la
+            Secretaría de Economía, las filiales deben consolidar datos en
+            inglés, alemán, italiano o portugués.{" "}
+            <strong>
+              Comunicar con fluidez asegura la autonomía ante la matriz
+            </strong>
+            .
+          </>
+        ),
       },
       {
         icono: "reloj",

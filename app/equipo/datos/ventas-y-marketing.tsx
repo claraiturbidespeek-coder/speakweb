@@ -185,9 +185,18 @@ const datos: DatosEquipo = {
         icono: "fabrica",
         titulo:
           "El nearshoring trae a sus próximos clientes y no hablan español",
-        texto:
-          "Se proyectan 500,000 empleos y 50,000 millones en inversión en 3 años. El proveedor que negocia directamente en el idioma del inversionista entra primero.",
-        fuente: "Fuente: Secretaría de Economía",
+        texto: (
+          <>
+            Según la proyección vigente de la Secretaría de Economía, el
+            nearshoring traerá 500,000 empleos manufactureros nuevos y 50,000
+            millones de dólares de inversión.{" "}
+            <strong>
+              El proveedor que negocia directamente en el idioma del
+              inversionista entra primero
+            </strong>
+            .
+          </>
+        ),
       },
       {
         icono: "alerta",

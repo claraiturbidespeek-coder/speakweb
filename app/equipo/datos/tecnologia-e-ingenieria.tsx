@@ -174,9 +174,19 @@ const datos: DatosEquipo = {
         icono: "globo",
         titulo:
           "El nearshoring está integrando a sus equipos en proyectos globales en otro idioma",
-        texto:
-          "La Secretaría de Economía proyecta 500,000 empleos nuevos y 50,000 millones de dólares de inversión en los 3 próximos años. México se consolida como centro de desarrollo de tecnología e ingeniería para corporativos globales que coordinan en inglés —y en alemán, italiano o portugués según el origen del grupo—. El equipo técnico que coordina a la altura entra a los proyectos clave; el que depende de traducción queda en tareas de ejecución.",
-        fuente: "Fuente: Secretaría de Economía",
+        texto: (
+          <>
+            Según la proyección vigente de la Secretaría de Economía, el
+            nearshoring traerá 500,000 empleos manufactureros nuevos y 50,000
+            millones de dólares de inversión. México se consolida como centro de
+            desarrollo para corporativos globales que coordinan en otro idioma.{" "}
+            <strong>
+              Las decisiones técnicas se toman sin su aporte cuando su equipo no
+              puede intervenir al ritmo de la junta
+            </strong>
+            .
+          </>
+        ),
       },
       {
         icono: "grafico",

@@ -250,9 +250,14 @@ const datos: DatosEquipo = {
       {
         icono: "globo",
         titulo: "El nearshoring exige soporte multilingüe inmediato",
-        texto:
-          "Con 50,000 millones de dólares en inversión proyectados para los 3 próximos años, se requieren equipos listos para dar soporte en inglés, alemán, italiano o portugués. Las empresas preparadas conservan las cuentas; las demás las pierden en la primera auditoría de calidad.",
-        fuente: "Fuente: Secretaría de Economía",
+        texto: (
+          <>
+            Ante los 50,000 millones de dólares de inversión que proyecta la
+            Secretaría de Economía, se requieren equipos listos para dar soporte
+            en inglés, alemán, italiano o portugués.{" "}
+            <strong>Las empresas preparadas conservan las cuentas</strong>.
+          </>
+        ),
       },
       {
         icono: "alerta",

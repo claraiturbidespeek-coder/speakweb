@@ -196,9 +196,20 @@ const datos: DatosEquipo = {
         icono: "globo",
         titulo:
           "El nearshoring multiplica la coordinación legal con corporativos extranjeros",
-        texto:
-          "La Secretaría de Economía proyecta 500,000 empleos nuevos y 50,000 millones de dólares de inversión en los 3 próximos años. Más inversión extranjera significa más coordinación del área legal con corporativos que operan en inglés —y en alemán, italiano o portugués según el origen del grupo—. El equipo legal que coordina con fluidez sostiene la relación; el que depende de traducción reacciona tarde.",
-        fuente: "Fuente: Secretaría de Economía",
+        texto: (
+          <>
+            Según la proyección vigente de la Secretaría de Economía, el
+            nearshoring traerá 500,000 empleos manufactureros nuevos y 50,000
+            millones de dólares de inversión. Más inversión extranjera significa
+            más coordinación del área legal con corporativos que operan en
+            inglés, y en alemán, italiano o portugués según el origen del grupo.{" "}
+            <strong>
+              El equipo legal que coordina con fluidez sostiene la relación; el
+              que depende de traducción reacciona tarde
+            </strong>
+            .
+          </>
+        ),
       },
       {
         icono: "alerta",
