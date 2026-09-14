@@ -38,7 +38,7 @@ const datos: DatosEquipo = {
   competencias: {
     eyebrow: "Las competencias lingüísticas del equipo de atención a clientes",
     titulo:
-      "Las competencias lingüísticas que su equipo necesita para resolver en cualquier idioma",
+      "El idioma de negocios que su equipo de atención necesita para resolver en cualquier idioma",
     sub: "No necesita más gramática: necesita el idioma dentro de las situaciones que ya maneja, de la primera llamada al caso cerrado. En inglés o en el idioma de su cliente.",
     tarjetas: [
       {
@@ -167,8 +167,18 @@ const datos: DatosEquipo = {
       {
         icono: "alerta",
         titulo: "El cliente que no renueva",
-        texto:
-          "Un problema simple mal resuelto por la barrera del idioma provoca que el cliente extranjero no renueve. Retener a un cliente cuesta entre 5 y 7 veces menos que adquirir uno nuevo; la raíz de la pérdida suele ser la última conversación de soporte, no el producto.",
+        texto: (
+          <>
+            Un problema simple mal resuelto por la barrera del idioma provoca
+            que el cliente extranjero no renueve. Retener a un cliente cuesta
+            entre 5 y 7 veces menos que adquirir uno nuevo;{" "}
+            <strong>
+              la raíz de la pérdida suele ser la última conversación de soporte,
+              no el producto
+            </strong>
+            .
+          </>
+        ),
       },
       {
         icono: "reloj",
@@ -212,13 +222,13 @@ const datos: DatosEquipo = {
         titulo: "Retener cuesta menos que adquirir un nuevo cliente",
         texto: (
           <>
-            Adquirir un cliente nuevo cuesta varias veces más que conservar uno.{" "}
-            <strong>La renovación se define en la posventa</strong>: capacitar
-            al equipo que ya conoce su producto es la vía más rentable para
-            asegurar la permanencia de las cuentas.
+            Adquirir un cliente nuevo cuesta varias veces más que conservar uno
+            (Harvard Business Review, Bain & Company).{" "}
+            <strong>La renovación se define en la posventa</strong>. Por eso en
+            S-Peak recomendamos capacitar al equipo que ya conoce su producto:
+            es quien sostiene la cuenta después de la venta.
           </>
         ),
-        fuente: "Fuente: Harvard Business Review (Bain & Company)",
       },
       {
         icono: "usuarios",
@@ -279,8 +289,13 @@ const datos: DatosEquipo = {
       {
         icono: "reloj",
         titulo: "Horarios adaptados a turnos operativos",
-        texto:
-          "Nos ajustamos a picos de demanda y turnos rotativos para capacitar al personal sin interrumpir la continuidad del servicio.",
+        texto: (
+          <>
+            Nos ajustamos a picos de demanda y turnos rotativos para capacitar
+            al personal sin interrumpir la continuidad del servicio,{" "}
+            <strong>en línea o presencial en sus instalaciones</strong>.
+          </>
+        ),
       },
       {
         icono: "globo",

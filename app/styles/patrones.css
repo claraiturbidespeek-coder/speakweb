@@ -58,14 +58,21 @@
 
 /* Encabezado centrado de sección. Unifica `.section-top` y `.dolor-top`, que
    eran idénticos salvo que solo uno equilibraba el corte de línea del título.
-   Se conserva el equilibrado: es el más reciente de los dos. */
+   Se conserva el equilibrado: es el más reciente de los dos.
+
+   El contenedor se libera al ancho estándar del sitio y la medida de línea
+   vive en cada hijo: el titular más ancho que la bajada. Antes el tope de
+   760px estaba aquí y las tres secciones que usan el patrón lo sobrescribían
+   por separado con estos mismos valores. */
 .sp-seccion-top {
-  max-width: 760px;
+  max-width: var(--container-max);
   margin: 0 auto 56px;
   text-align: center;
 }
 
 .sp-seccion-top h2 {
+  max-width: 48ch;
+  margin-inline: auto;
   margin-bottom: 16px;
   font-size: var(--text-title-md);
   font-weight: var(--weight-bold);
@@ -80,7 +87,12 @@
   color: var(--color-red);
 }
 
+/* La bajada conserva los 760px que el contenedor le daba antes: a 16px es la
+   medida con la que ya venía rompiendo, y queda por debajo del titular, que
+   escala con su propio tamaño de tipografía. */
 .sp-seccion-top p {
+  max-width: 760px;
+  margin-inline: auto;
   font-size: 16px;
   line-height: 1.7;
   color: var(--color-ink-2);
