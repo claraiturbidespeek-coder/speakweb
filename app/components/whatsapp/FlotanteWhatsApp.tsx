@@ -134,6 +134,7 @@ export default function FlotanteWhatsApp() {
       telefono,
       puesto: "",
       mensaje: "",
+      sitio_web: texto("sitio_web"),
       // La marca que separa este lead del formulario en Resend y en Kommo.
       origen: "WhatsApp",
       ...recogerAtribucion(idioma),
@@ -283,6 +284,19 @@ export default function FlotanteWhatsApp() {
                       required
                     />
                   </div>
+                  {/* Campo trampa: invisible para una persona, irresistible
+                      para un bot que rellena todo lo que encuentra. Si llega con
+                      contenido, /api/lead/ descarta el envío. No lleva label ni
+                      entra en el tabulador a propósito. */}
+                  <input
+                    type="text"
+                    name="sitio_web"
+                    className="sp-trampa"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                  />
+
                   <button
                     type="submit"
                     className={`sp-form-submit ${styles.enviar}`}

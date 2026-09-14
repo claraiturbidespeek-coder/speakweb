@@ -28,6 +28,12 @@
      KOMMO_TOKEN       sin ella se omite el lead de Kommo; el correo se manda igual
      KOMMO_SUBDOMAIN   el {x} de {x}.kommo.com; misma consecuencia que la anterior
 
+   FILTROS ANTIBOT (añadidos después del porteo): un campo trampa invisible
+   (`sitio_web`) que una persona nunca rellena, y el rango reservado de ficción
+   555-0100 a 555-0199. Los dos descartan el envío antes de tocar Kommo y
+   Resend, y los dos responden 200 con `ok: true` para no darle al bot la señal
+   de qué lo detuvo. El motivo se registra con console.warn.
+
    OJO CON trailingSlash: el proyecto lo tiene activado, así que este endpoint
    responde en /api/lead/ y una llamada a /api/lead se redirige con un 308. Al
    repuntar el modal hay que apuntar a /api/lead/, con barra. */
@@ -57,6 +63,15 @@ function escapeHtml(value: unknown): string {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
+}
+
+/* Rango reservado para ficción de Norteamérica (NANP): los números locales
+   555-0100 a 555-0199 no se asignan a nadie, así que un lead con uno es
+   inventado. Se mira solo el número local de siete dígitos, sin lada, que es
+   lo que define el rango. */
+function esTelefonoFicticio(telefono: string): boolean {
+  const digitos = telefono.replace(/\D/g, "");
+  return /55501\d{2}$/.test(digitos);
 }
 
 // Mismo juego de cabeceras que aplicaba applyCors en el original.
@@ -313,6 +328,31 @@ export async function POST(request: Request): Promise<Response> {
      o sin ellos, para poder cerrar el círculo con Ads desde el CRM. */
   const gclid = campo(body.gclid) || noEspecificado;
   const idioma = campo(body.idioma) || "Inglés";
+
+  /* FILTROS ANTIBOT. Van antes que la validación de campos obligatorios para
+     que el descarte sea siempre la misma respuesta, pase lo que pase con el
+     resto del formulario: al bot se le contesta 200 y `ok: true`, igual que a
+     un envío bueno, para no decirle qué lo delató. Ni Kommo ni Resend llegan a
+     enterarse; el motivo queda en el log del servidor. */
+  const trampa = campo(body.sitio_web);
+  if (trampa) {
+    console.warn("Lead descartado: campo trampa relleno", {
+      origen,
+      pagina,
+      // Recortado: solo interesa ver que venía algo y de qué pinta.
+      sitio_web: trampa.slice(0, 80),
+    });
+    return Response.json({ ok: true }, { status: 200, headers });
+  }
+
+  if (telefono && esTelefonoFicticio(telefono)) {
+    console.warn("Lead descartado: teléfono en el rango ficticio 555-01XX", {
+      origen,
+      pagina,
+      telefono,
+    });
+    return Response.json({ ok: true }, { status: 200, headers });
+  }
 
   // Validación mínima: nombre y correo son indispensables para un lead útil.
   if (!nombre || !correo) {

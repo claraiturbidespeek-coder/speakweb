@@ -117,6 +117,10 @@ export type PayloadLead = {
   puesto: string;
   mensaje: string;
   origen: string;
+  /* Campo trampa. Va siempre, y siempre vacío desde una persona: los dos
+     formularios lo pintan invisible (clase `sp-trampa`) y el endpoint descarta
+     el envío si llega con algo. Ver app/api/lead/route.ts. */
+  sitio_web: string;
 } & Atribucion;
 
 // Lanza si la respuesta no es ok.

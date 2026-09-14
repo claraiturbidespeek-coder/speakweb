@@ -99,6 +99,7 @@ export default function ModalContacto({
       telefono: texto("telefono"),
       puesto: texto("puesto"),
       mensaje: texto("mensaje"),
+      sitio_web: texto("sitio_web"),
       origen: "Formulario principal",
       ...recogerAtribucion(idiomaDeRuta(ruta)),
     };
@@ -250,6 +251,19 @@ export default function ModalContacto({
                   placeholder="Número de colaboradores, área, nivel actual de inglés…"
                 />
               </div>
+
+{/* Campo trampa: invisible para una persona, irresistible para un
+                  bot que rellena todo lo que encuentra. Si llega con contenido,
+                  /api/lead/ descarta el envío. No lleva label ni entra en el
+                  tabulador a propósito. */}
+              <input
+                type="text"
+                name="sitio_web"
+                className="sp-trampa"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+              />
 
               <button
                 className="sp-form-submit"

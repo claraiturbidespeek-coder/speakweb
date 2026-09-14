@@ -324,6 +324,24 @@
   height: calc(100% + 2px);
 }
 
+/* ========== Campo trampa ==========
+   El señuelo antibots de los formularios que escriben en /api/lead/. Se saca
+   del flujo en vez de ocultarse con `display: none` o `hidden`, porque a esos
+   dos los bots los reconocen y saltan el campo: aquí queda invisible pero
+   presente en el DOM. El `aria-hidden` y el `tabindex="-1"` del propio input
+   lo dejan fuera del lector de pantalla y del tabulador, así que una persona
+   no puede rellenarlo ni por accidente. */
+
+.sp-trampa {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* ========== Cuadros de icono ==========
    Sustituyen a los seis cuadros que había, con cuatro tamaños y tres fondos.
    El tamaño del svg va con el del cuadro. */
