@@ -52,6 +52,8 @@ Para facilitar el análisis de su departamento de compras, el mercado actual en 
 -   **Enfoque de servicio:** Diseño curricular por departamentos, simulaciones de casos de negocio reales en vivo, flexibilidad total de agenda y la figura de un Customer Success Manager dedicado a auditar métricas.
 -   **Idoneidad operativa:** Indispensable para posiciones C-Level, Directivos, áreas comerciales internacionales y equipos técnicos bajo dinámicas de alta presión.
 
+Si además necesita comparar estas cifras corporativas contra el costo de licencias individuales para armar su presupuesto, consulte nuestra guía sobre [cuánto cuesta un curso de inglés para empresas](https://s-peak.com/precio-curso-ingles-empresas/), donde desglosamos la diferencia entre capacitación individual y grupal.
+
 ## Cómo auditar a un proveedor de idiomas: Las cláusulas ocultas
 
 Para evitar sorpresas presupuestales a mitad del año fiscal, Recursos Humanos debe aprender a leer "las letras chiquitas" de las cotizaciones de inglés corporativo.

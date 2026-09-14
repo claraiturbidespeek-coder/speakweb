@@ -8,15 +8,15 @@ category: "Resultados y ROI"
 categorySlug: "resultados-y-roi"
 tags: []
 featuredImage: "/images/blog/precio-curso-ingles-empresas-portada.webp"
-featuredImageAlt: "Guía comparativa de cursos de inglés precios y ROI para la capacitación corporativa en empresas." # REVISAR - tomado del caption del JSON-LD, no existe un alt de <img> real en el origen
-seoTitle: "Cursos de inglés precios: cuánto cuesta capacitar a tu equipo"
+featuredImageAlt: "Profesor de inglés grabando una clase virtual con una bandera del Reino Unido, frente a un pizarrón con conjugaciones verbales."
+seoTitle: "Cursos de inglés precios: cuánto cuesta capacitar a tu equipo | %%sitename%%"
 seoDescription: "Conozca sobre cursos de inglés precios y rangos para empresas. Compare opciones individuales vs. corporativas y evalúe su ROI."
-focusKeyword: "cursos de inglés precios" # REVISAR
+focusKeyword: "cuánto cuesta un curso de inglés para empresas"
 readingTime: 5
 hasLeadForm: true
 ---
 
-Analizar en cursos de inglés precios e inversión requerida es el primer paso para cualquier departamento de Recursos Humanos o Dirección que busque elevar la competitividad de su plantilla. En este sentido, según análisis de [Deloitte](https://www.deloitte.com/latam/es/about/story/nuestros-marketplaces/deloitte-mexico.html) sobre desarrollo de talento y presupuestos de capacitación corporativa, las empresas que estructuran programas de aprendizaje continuo con métricas financieras claras logran una retención de personal significativamente mayor y una optimización eficiente de sus recursos operacionales. Por lo tanto, calcular el presupuesto necesario no debe entenderse como un gasto superficial, sino como una decisión de negocio con retorno medible.
+Analizar en cursos de inglés precios e inversión requerida es el primer paso para cualquier departamento de Recursos Humanos o Dirección que busque elevar la competitividad de su plantilla. En este sentido, según el [Workplace Learning Report de LinkedIn Learning](https://business.linkedin.com/learn/resources/workplace-learning-report), ofrecer oportunidades de aprendizaje estructurado se ha consolidado como la principal estrategia de retención de talento para las organizaciones. Por lo tanto, calcular el presupuesto necesario no debe entenderse como un gasto superficial, sino como una decisión de negocio con retorno medible.
 
 Por esta razón, en esta guía revisamos las variables que determinan las tarifas en el mercado, la diferencia operativa entre contratar soluciones individuales versus programas grupales para empresas y cómo medir el retorno de inversión real.
 
@@ -26,9 +26,17 @@ Para entender los cursos de inglés precios y sus fluctuaciones en el mercado co
 
 En el mercado actual, los rangos generales suelen clasificarse en tres modalidades principales:
 
-- **Plataformas autodidactas o apps de suscripción:** Suelen costar entre $300 y $1,500 MXN mensuales por usuario. Sin embargo, carecen de acompañamiento docente y presentan tasas de deserción superiores al 80%.
-- **Escuelas académicas tradicionales (Clases abiertas al público):** Oscilan entre $2,000 y $5,000 MXN mensuales por colaborador. No obstante, sus temarios son genéricos y no adaptados al entorno de negocios.
-- **Programas corporativos especializados (B2B):** Se estructuran mediante esquemas por hora de instrucción o paquetes grupales que van desde los $15,000 hasta los $45,000 MXN por grupo mensual. Ciertamente, representan la opción más rentable por usuario cuando se busca personalización y seguimiento ejecutivo.
+### 1. Plataformas autodidactas o apps de suscripción
+
+Suelen costar entre $300 y $1,500 MXN mensuales por usuario. Sin embargo, carecen de acompañamiento docente y presentan tasas de deserción superiores al 80%.
+
+### 2. Escuelas académicas tradicionales (clases abiertas al público)
+
+Oscilan entre $2,000 y $5,000 MXN mensuales por colaborador. No obstante, sus temarios son genéricos y no adaptados al entorno de negocios.
+
+### 3. Programas corporativos especializados (B2B)
+
+Se estructuran mediante esquemas por hora de instrucción o paquetes grupales que van desde los $15,000 hasta los $45,000 MXN por grupo mensual. Ciertamente, representan la opción más rentable por usuario cuando se busca personalización y seguimiento ejecutivo.
 
 En consecuencia, factores como la intensidad horaria, el alcance sectorial (por ejemplo, vocabulario financiero, médico o de ingeniería) y la metodología aplicada impactarán directamente en la cotización final.
 
@@ -74,4 +82,4 @@ Complete el formulario, un asesor se pondrá en contacto.
 
 **Solicitar mi cotización**
 
-Siga nuestro canal en LinkedIn para más consejos de capital humano. [LinkedIn](https://www.linkedin.com/company/s-peak/?originalSubdomain=mx)
+Siga nuestro canal en [LinkedIn](https://www.linkedin.com/company/s-peak/?originalSubdomain=mx) para más consejos de capital humano.
