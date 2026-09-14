@@ -163,9 +163,9 @@ const datos: DatosEquipo = {
           <>
             Alrededor de 8 de cada 100 personas ocupadas en México hablan
             inglés, y el perfil técnico con idioma (desarrollo, ingeniería,
-            datos) es de los más difíciles de contratar{" "}
-            <strong>y de retener</strong>. Formar al equipo que ya conoce su
-            arquitectura cuesta menos que perseguirlo en el mercado.
+            datos) es de los más difíciles de contratar y de retener.{" "}
+            <strong>Formar al equipo que ya conoce su arquitectura</strong>{" "}
+            cuesta menos que perseguirlo en el mercado.
           </>
         ),
         fuente: "Fuente: ENOE, INEGI",
