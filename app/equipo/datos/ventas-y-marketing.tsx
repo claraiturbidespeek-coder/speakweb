@@ -22,10 +22,11 @@ const datos: DatosEquipo = {
   nombre: "Ventas y Marketing",
 
   hero: {
-    etiqueta: "Inglés corporativo · Ventas y Marketing",
+    etiqueta: "Idioma de negocios · Ventas y Marketing",
     titulo: (
       <>
-        Cursos de idiomas para equipos de <strong>Ventas y Marketing</strong>
+        Capacitación de idiomas para equipos de{" "}
+        <strong>Ventas y Marketing</strong>
       </>
     ),
     sub: (
@@ -117,7 +118,7 @@ const datos: DatosEquipo = {
   dolor: {
     eyebrow: "El costo real de la barrera del idioma",
     titulo:
-      "Su equipo ya sabe vender. Le falta hacerlo en el idioma de su cliente.",
+      "El idioma de negocios que su equipo comercial necesita para cerrar en el idioma de su cliente.",
     sub: "No es una métrica abstracta; es un costo medible y silencioso que se refleja en tres escenarios:",
     tarjetas: [
       {
@@ -169,8 +170,15 @@ const datos: DatosEquipo = {
         icono: "flecha",
         titulo:
           "Su mercado más grande exige inglés ($534,874 M en exportaciones a EE.UU.)",
-        texto:
-          "México es el primer socio comercial de Estados Unidos desde 2023. Depender de un solo colaborador bilingüe crea un cuello de botella.",
+        texto: (
+          <>
+            México es el primer socio comercial de Estados Unidos desde 2023.{" "}
+            <strong>
+              Depender de un solo colaborador bilingüe crea un cuello de botella
+            </strong>
+            .
+          </>
+        ),
         fuente: "Fuente: Secretaría de Economía e INEGI",
       },
       {
@@ -193,7 +201,8 @@ const datos: DatosEquipo = {
 
   diferenciadores: {
     eyebrow: "Por qué S-Peak",
-    titulo: "Empresas como Braskem Idesa, Chedraui y +500 más eligen S-Peak",
+    titulo:
+      "Empresas como Braskem Idesa, Chedraui y +500 más eligen S-Peak para su equipo comercial",
     tarjetas: [
       {
         icono: "diana",
@@ -366,7 +375,7 @@ const datos: DatosEquipo = {
   },
 
   servicio: {
-    nombre: "Cursos de idiomas para equipos de Ventas y Marketing",
+    nombre: "Capacitación de idiomas para equipos de Ventas y Marketing",
     tipo: "Capacitación corporativa de idiomas para equipos comerciales",
     descripcion:
       "Inglés y otros idiomas para vendedores y equipos de marketing B2B. Vocabulario comercial, presentaciones ejecutivas y conversación con clientes internacionales.",

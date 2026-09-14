@@ -196,7 +196,8 @@ const datos: DatosEquipo = {
 
   diferenciadores: {
     eyebrow: "Por qué S-Peak",
-    titulo: "Empresas como Braskem Idesa, Chedraui y +500 más eligen S-Peak",
+    titulo:
+      "Empresas como Braskem Idesa, Chedraui y +500 más eligen S-Peak para su equipo legal",
     tarjetas: [
       {
         icono: "diana",
