@@ -886,7 +886,21 @@
    Tres implementaciones: los teasers del home, los relacionados de una nota y
    las tarjetas del índice del blog. Ninguna de las dos páginas de referencia
    tiene una, así que manda la coincidencia: dos de las tres usaban proporción
-   5:4, título de 16px y subrayado al pasar el cursor. */
+   5:4, título de 16px y subrayado al pasar el cursor.
+
+   La caja es una tarjeta de verdad, con la misma receta que `.sp-tarjeta`:
+   superficie blanca, `--radius-grande` (el radio de las superficies, ver
+   tokens.css) y el filo de `--color-border`, que es la definición mínima con
+   que el sistema despega una superficie blanca del off-white. El `--space-inset`
+   rodea todo el contenido por igual, imagen incluida, así que no hace falta
+   recortar nada con `overflow`: nada llega al borde. */
+
+.sp-post-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-grande);
+  padding: var(--space-inset);
+}
 
 .sp-post-img {
   display: block;
@@ -894,6 +908,14 @@
   aspect-ratio: 5 / 4;
   object-fit: cover;
   background: rgba(26, 60, 77, 0.06);
+}
+
+/* Dentro del inset y con radio propio en las cuatro esquinas: `--radius`, el de
+   las cajas pequeñas, que es menor que el `--radius-grande` de la tarjeta. Las
+   dos curvas se leen como una pieza dentro de otra, no como una esquina doble,
+   porque entre ellas hay aire. */
+.sp-post-card .sp-post-img {
+  border-radius: var(--radius);
 }
 
 .sp-post-titulo {
@@ -1066,13 +1088,13 @@
   gap: 30px;
 }
 
-/* La imagen del post llega al borde de la tarjeta: se recorta con ella en vez
-   de redondearse por su cuenta, que dejaría la esquina doble. */
+/* Solo la medida dentro del track: la caja (superficie, filo, radio y padding)
+   la pone `.sp-post-card`, que esta tarjeta lleva también. Antes el radio y el
+   `overflow` vivían aquí, sin padding que los acompañara, y la curva se comía
+   el arranque del título. */
 .sp-recursos-tarjeta {
   flex: 0 0 calc((100% - 3 * 30px) / 4);
   min-width: 0;
-  border-radius: var(--radius-grande);
-  overflow: hidden;
 }
 
 /* ========== Modal ==========

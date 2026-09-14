@@ -243,7 +243,7 @@ const datos: DatosEquipo = {
         icono: "sello",
         titulo: "Registro STPS y beneficio fiscal",
         texto:
-          "Contamos con registro oficial ante la STPS. La inversión aplica para la deducción adicional del 25% bajo el decreto del Plan México (DOF 2023 y 2025).",
+          "Contamos con registro oficial ante la STPS. La inversión puede calificar para la deducción adicional del 25% del Plan México (DOF 2025); confírmelo con su área contable.",
       },
     ],
   },

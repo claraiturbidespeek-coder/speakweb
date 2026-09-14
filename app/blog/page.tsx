@@ -35,7 +35,7 @@ export default function Blog() {
             {posts.map((post) => (
               <li
                 key={post.slug}
-                className={styles.tarjeta}
+                className={`sp-post-card ${styles.tarjeta}`}
                 data-categoria={post.categorySlug}
               >
                 <Link className="sp-post-enlace" href={`/${post.slug}/`}>

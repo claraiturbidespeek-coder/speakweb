@@ -88,7 +88,10 @@ export default function CentroDeRecursos({ className }: { className?: string }) 
 
           <CarruselTrack etiqueta="Artículos del blog" className="sp-recursos-track">
             {POSTS.map((p) => (
-              <article key={p.url} className="sp-recursos-tarjeta">
+              <article
+                key={p.url}
+                className="sp-recursos-tarjeta sp-post-card"
+              >
                 <img
                   className="sp-post-img"
                   src={`/images/home/${p.imagen}`}

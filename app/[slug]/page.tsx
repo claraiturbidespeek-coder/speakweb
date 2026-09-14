@@ -178,7 +178,7 @@ export default async function Nota(props: PageProps<"/[slug]">) {
             <h2 className={styles.relacionadosTitulo}>Artículos Relacionados</h2>
             <ul className={styles.relacionadosLista}>
               {relacionados.map((r) => (
-                <li key={r.slug}>
+                <li key={r.slug} className="sp-post-card">
                   <Link className="sp-post-enlace" href={`/${r.slug}/`}>
                     {r.featuredImage ? (
                       <img
