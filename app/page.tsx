@@ -85,7 +85,7 @@ const MOSAICO = [
       imagen: "area-finanzas-y-contabilidad.webp",
     },
     {
-      nombre: "Legal y Jurídico",
+      nombre: "Legal y Cumplimiento",
       ruta: "/equipo/legal-y-juridico/",
       imagen: "area-legal-y-juridico.webp",
     },

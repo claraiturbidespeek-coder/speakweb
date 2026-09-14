@@ -17,7 +17,7 @@ export const ENLACES_EQUIPOS = [
   { nombre: "Atención a Clientes", ruta: "/equipo/atencion-a-clientes/" },
   { nombre: "Directivos", ruta: "/equipo/directivos/" },
   { nombre: "Finanzas y Contabilidad", ruta: "/equipo/finanzas-y-contabilidad/" },
-  { nombre: "Legal y Jurídico", ruta: "/equipo/legal-y-juridico/" },
+  { nombre: "Legal y Cumplimiento", ruta: "/equipo/legal-y-juridico/" },
   { nombre: "Operaciones y Logística", ruta: "/equipo/operaciones-y-logistica/" },
   { nombre: "Tecnología e Ingeniería", ruta: "/equipo/tecnologia-e-ingenieria/" },
 ];

@@ -14,17 +14,29 @@ import { IDIOMAS, type DatosEquipo } from "../tipos";
 
 const datos: DatosEquipo = {
   slug: "legal-y-juridico",
-  nombre: "Legal y Jurídico",
+  nombre: "Legal y Cumplimiento",
 
   hero: {
     etiqueta: "Idioma de negocios · Legal y Cumplimiento",
     titulo: (
       <>
         Capacitación de idiomas para equipos{" "}
-        <strong>Legales y de Cumplimiento</strong>
+        <strong>Legales y Cumplimiento</strong>
       </>
     ),
-    sub: "Su área legal coordina con el corporativo, la matriz legal y despachos en otros países. Cuando el idioma se interpone —inglés, francés, alemán, italiano o portugués—, las reuniones se alargan, los acuerdos internos se diluyen y su equipo pierde agilidad. S-Peak forma a su equipo legal en el idioma de negocios con que se comunica y coordina, para que esa interacción fluya sin intermediarios.",
+    sub: (
+      <>
+        <strong>Sus áreas legal y de cumplimiento</strong> coordinan con el
+        corporativo, la matriz y despachos en otros países. Cuando el idioma se
+        interpone, inglés, francés, alemán, italiano o portugués, las reuniones
+        se alargan,{" "}
+        <strong>las revisiones del corporativo se responden tarde</strong> y su
+        equipo pierde agilidad. S-Peak forma a su equipo{" "}
+        <strong>legal y de cumplimiento</strong> en el idioma de negocios con
+        que se comunica y coordina, para que esa interacción fluya sin
+        intermediarios.
+      </>
+    ),
     cta: "Solicite una Cotización",
     prueba: (
       <>
@@ -59,7 +71,7 @@ const datos: DatosEquipo = {
         icono: "apreton",
         titulo: "Negociación de cláusulas",
         texto:
-          "Objetar, proponer una redacción alterna y sostener una posición en la llamada, sin depender de mandar todo por escrito después.",
+          "Sostener su posición en la llamada cuando se discute una cláusula, sin tener que dejar todo por escrito para después.",
       },
       {
         icono: "enlace",
@@ -71,13 +83,13 @@ const datos: DatosEquipo = {
         icono: "lista",
         titulo: "Vocabulario contractual",
         texto:
-          "Los términos que cambian el riesgo de un contrato, indemnity, warranty, liability cap, governing law, en el idioma en que se firma.",
+          "Reconocer los términos que su contraparte usa en la llamada (indemnity, liability cap, governing law) para seguir la conversación sin perder el hilo. La interpretación jurídica es de su equipo.",
       },
       {
-        icono: "mensaje",
-        titulo: "Conversación profesional e institucional",
+        icono: "usuarioCheck",
+        titulo: "Revisiones y auditorías del corporativo",
         texto:
-          "Sostener conversaciones de trabajo con pares legales y contrapartes en el idioma del interlocutor, con el registro profesional adecuado.",
+          "Presentar el estatus de su área, responder las preguntas en la misma sesión y acordar el seguimiento cuando el equipo global de auditoría o de cumplimiento revisa su operación, en el idioma del corporativo.",
       },
       {
         icono: "presentacion",
@@ -102,8 +114,16 @@ const datos: DatosEquipo = {
 
   franja: {
     titulo: "El idioma de su corporativo, no solo inglés",
-    texto:
-      "La mayoría de nuestros programas son en inglés, porque es el idioma de la mayoría de los corporativos. Pero si su matriz legal está en Francia, Alemania, Italia o Brasil, formamos a su equipo en el idioma con que realmente coordina. En el diagnóstico definimos cuál —o cuáles— según el origen de su corporativo y sus despachos.",
+    texto: (
+      <>
+        La mayoría de nuestros programas son en inglés, porque es el idioma de
+        la mayoría de los corporativos. Pero si su matriz legal está en Francia,
+        Alemania, Italia o Brasil, formamos a su equipo en{" "}
+        <strong>el idioma con que realmente coordina</strong>. En el diagnóstico
+        definimos cuál —o cuáles— según el origen de su corporativo y sus
+        despachos.
+      </>
+    ),
     idiomas: IDIOMAS,
   },
 
@@ -140,7 +160,7 @@ const datos: DatosEquipo = {
     eyebrow: "Por qué urge ahora",
     titulo: "Por qué su empresa no puede esperar a formar a su equipo legal",
     texto:
-      "Cada mes que su área legal coordina a través de un intermediario es tiempo y presupuesto que se van en algo que el idioma resuelve. Estos son los datos que explican por qué actuar ahora.",
+      "Formar a un equipo en otro idioma toma meses, y la coordinación con corporativos extranjeros no espera. Estas son las razones, y los datos que las respaldan, para empezar ahora.",
     etiquetaCarrusel: "Razones para capacitar al equipo legal ahora",
     tarjetas: [
       {
@@ -161,14 +181,16 @@ const datos: DatosEquipo = {
         titulo: "El perfil legal bilingüe es escaso y caro de reemplazar",
         texto: (
           <>
-            Alrededor de 8 de cada 100 personas ocupadas en México hablan
-            inglés, y el perfil legal con dominio real del idioma es de los más
-            difíciles de contratar.{" "}
-            <strong>Formar al equipo que ya conoce su negocio</strong> cuesta
-            menos que buscarlo afuera.
+            Alrededor de 8 de cada 100 personas ocupadas en México hablan inglés
+            (ENOE, INEGI). En un área que además necesita el idioma del
+            corporativo, ese universo se estrecha todavía más.{" "}
+            <strong>
+              En S-Peak recomendamos formar al equipo que ya conoce el negocio
+              antes que buscarlo en el mercado
+            </strong>
+            .
           </>
         ),
-        fuente: "Fuente: ENOE, INEGI",
       },
       {
         icono: "globo",
@@ -186,8 +208,8 @@ const datos: DatosEquipo = {
             Cuando el área legal revisa en un idioma que no domina del todo, el
             riesgo no aparece:{" "}
             <strong>se firma sin verlo y se descubre cuando ya obliga</strong>.
-            Leer y objetar directamente, sin intermediario, es lo que evita que
-            una cláusula pase inadvertida.
+            Leer y responder directamente evita el ida y vuelta con un
+            intermediario, que en un despacho que cobra por hora se paga.
           </>
         ),
       },
@@ -327,7 +349,7 @@ const datos: DatosEquipo = {
   },
 
   servicio: {
-    nombre: "Capacitación de idiomas para equipos legales y de cumplimiento",
+    nombre: "Capacitación de idiomas para equipos legales y cumplimiento",
     tipo: "Capacitación corporativa de idiomas para equipos legales",
     descripcion:
       "Inglés y otros idiomas para áreas legales y de cumplimiento. El idioma de negocios con que su equipo coordina con corporativo, matriz legal y despachos.",
