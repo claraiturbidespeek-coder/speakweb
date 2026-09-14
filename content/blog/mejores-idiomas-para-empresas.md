@@ -28,7 +28,7 @@ En consecuencia, base su proyecto en datos duros y evite las suposiciones acadé
 
 ## ¿Qué idiomas piden las empresas hoy en día?
 
-La demanda de lenguas extranjeras cambia constantemente en México debido al fenómeno del [**nearshoring**](https://s-peak.com/blog-nearshoring-mexico-ingles-empresas/). Asimismo, la respuesta a esta pregunta depende de la naturaleza de su sector industrial.
+La demanda de lenguas extranjeras cambia constantemente en México debido al fenómeno del [**nearshoring**](https://s-peak.com/nearshoring-mexico-ingles-empresas/). Asimismo, la respuesta a esta pregunta depende de la naturaleza de su sector industrial.
 
 Por ejemplo, **el desarrollo de software requiere principalmente inglés.** Por otra parte, **la industria manufacturera automotriz o de componentes avanzados puede necesitar alemán o japonés.** Analice siempre la procedencia de sus inversionistas estratégicos. Hacer este análisis previo evitará que usted gaste recursos valiosos en formaciones poco rentables para el negocio.
 

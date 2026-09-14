@@ -32,7 +32,7 @@ En términos sencillos, es **la estrategia de transferir operaciones comerciales
 
 Si analizamos nearshoring ejemplos de éxito en industrias como la automotriz, aeroespacial o de tecnologías de la información, el modelo sirve para sincronizar cadenas de valor bajo husos horarios idénticos o muy similares. Sin embargo, **esta cercanía física suele generar una falsa sensación de confianza, haciendo que las empresas mexicanas descuiden el entrenamiento lingüístico de sus mandos medios e ingenieros durante el crítico primer año de integración.**
 
-*Si quiere saber más sobre nearshoring, puede visitar nuestro blog "[Nearshoring: ¿Qué es y por qué exige inglés empresarial?](https://s-peak.com/blog-nearshoring-mexico-ingles-empresas/)"*
+*Si quiere saber más sobre nearshoring, puede visitar nuestro blog "[Nearshoring: ¿Qué es y por qué exige inglés empresarial?](https://s-peak.com/nearshoring-mexico-ingles-empresas/)"*
 
 ![Planeación estratégica de nearshoring en México](/images/blog/errores-comunicacion-nearshoring-en-mexico-01.webp)
 

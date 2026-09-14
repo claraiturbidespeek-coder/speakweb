@@ -76,7 +76,7 @@ Presentar una cotización de cursos de inglés corporativo argumentando simpleme
 
 Si su compañía está buscando capitalizar la llegada de inversión extranjera directa, la falta de comunicación fluida es una fuga constante de dinero.
 
-Como analizamos en nuestro reporte sobre [el impacto del nearshoring en las empresas mexicanas](https://s-peak.com/blog-nearshoring-mexico-ingles-empresas/), el dominio lingüístico de sus ingenieros, gerentes y líderes técnicos es el activo indispensable para aprobar auditorías internacionales y cerrar contratos de proveeduría con transnacionales.
+Como analizamos en nuestro reporte sobre [el impacto del nearshoring en las empresas mexicanas](https://s-peak.com/nearshoring-mexico-ingles-empresas/), el dominio lingüístico de sus ingenieros, gerentes y líderes técnicos es el activo indispensable para aprobar auditorías internacionales y cerrar contratos de proveeduría con transnacionales.
 
 ### Reducción del costo de rotación ejecutiva
 

@@ -156,6 +156,20 @@ const nextConfig: NextConfig = {
         destination: "/capacitacion-de-idiomas-para-empresas/",
         statusCode: 301,
       },
+      // El slug del post de nearshoring perdió el prefijo "blog-"; la URL vieja
+      // ya pudo haber sido indexada antes de este cambio.
+      {
+        source: "/blog-nearshoring-mexico-ingles-empresas",
+        destination: "/nearshoring-mexico-ingles-empresas/",
+        statusCode: 301,
+      },
+      // Slug viejo de WordPress para la misma nota (ver _wp_old_slug); apunta
+      // directo al slug nuevo para no encadenar dos redirecciones.
+      {
+        source: "/nearshoring-que-es",
+        destination: "/nearshoring-mexico-ingles-empresas/",
+        statusCode: 301,
+      },
     ];
   },
 };

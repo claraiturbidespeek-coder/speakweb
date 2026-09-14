@@ -1,6 +1,6 @@
 ---
 title: "Nearshoring: ¿Qué es y por qué exige inglés empresarial?"
-slug: "blog-nearshoring-mexico-ingles-empresas"
+slug: "nearshoring-mexico-ingles-empresas"
 date: "2026-05-27T14:34:46"
 author: "Andrea Ríos"
 excerpt: "El auge del nearshoring en México representa una oportunidad histórica de crecimiento, pero también un reto operativo inmediato. Descubra qué es este fenómeno de relocalización y por qué el dominio del inglés empresarial en su plantilla es el activo crítico indispensable para cerrar contratos con corporaciones transnacionales."
