@@ -211,33 +211,23 @@ function recogerEncabezados(destino: Encabezado[]) {
   };
 }
 
-const DOMINIO_PROPIO = "s-peak.com";
-
-// Los enlaces del cuerpo apuntan a rutas propias como URL absoluta
-// (`https://s-peak.com/...`), no relativa, así que "interno" se decide por
-// dominio y no por si empieza con "/". Un enlace externo abre en pestaña
-// nueva; `rel="noopener noreferrer"` evita que esa pestaña controle esta vía
-// `window.opener` y que el destino reciba el referrer de la nota.
-function esEnlaceExterno(href: string): boolean {
-  if (!href || href.startsWith("#")) return false;
-  let url: URL;
-  try {
-    url = new URL(href, `https://${DOMINIO_PROPIO}`);
-  } catch {
-    return false;
-  }
-  if (url.protocol !== "http:" && url.protocol !== "https:") return false;
-  return url.hostname !== DOMINIO_PROPIO && !url.hostname.endsWith(`.${DOMINIO_PROPIO}`);
+// Todo enlace del cuerpo abre en pestaña nueva, sea interno o externo. La
+// única excepción es un anchor a la propia página (`#contacto`): ese solo
+// hace scroll dentro de la nota que ya se está leyendo, no tiene sentido
+// abrirlo aparte. `rel="noopener noreferrer"` evita que esa pestaña controle
+// esta vía `window.opener` y que el destino reciba el referrer de la nota.
+function abreEnPestanaNueva(href: string): boolean {
+  return !!href && !href.startsWith("#");
 }
 
-function marcarEnlacesExternos() {
+function marcarEnlacesPestanaNueva() {
   return () => (arbol: Root) => {
     const visitar = (nodo: Root | Element) => {
       for (const hijo of nodo.children) {
         if (hijo.type !== "element") continue;
         if (hijo.tagName === "a") {
           const props = (hijo.properties ??= {});
-          if (esEnlaceExterno(String(props.href ?? ""))) {
+          if (abreEnPestanaNueva(String(props.href ?? ""))) {
             props.target = "_blank";
             props.rel = ["noopener", "noreferrer"];
           }
@@ -272,7 +262,7 @@ export async function renderizarPost(slug: string): Promise<PostRenderizado | nu
     .use(rehypeSlug)
     .use(prepararImagenes())
     .use(recogerEncabezados(encabezados))
-    .use(marcarEnlacesExternos())
+    .use(marcarEnlacesPestanaNueva())
     .use(rehypeStringify)
     .process(content);
 

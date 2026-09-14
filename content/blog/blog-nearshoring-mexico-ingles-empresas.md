@@ -8,11 +8,11 @@ category: "Nearshoring y expansión"
 categorySlug: "nearshoring-y-expansion"
 tags: []
 featuredImage: "/images/blog/blog-nearshoring-mexico-ingles-empresas-portada.webp"
-featuredImageAlt: "Mapa conceptual o entorno industrial que ilustra de forma clara el nearshoring qué es y cómo impacta a las empresas en México."
+featuredImageAlt: "Profesionista sonriente sosteniendo banderas de distintos países —Canadá, Italia, Estados Unidos, Reino Unido, Alemania y Francia— que representa la diversidad de mercados que exige el nearshoring."
 seoTitle: "Nearshoring: ¿Qué es y por qué exige inglés empresarial? | %%sitename%%"
 seoDescription: "¿Su empresa está lista para el nearshoring? Descubra qué es y por qué el inglés empresarial es clave para captar inversiones internacionales."
 focusKeyword: "Nearshoring que es"
-readingTime: 5
+readingTime: 6
 hasLeadForm: true
 ---
 
@@ -26,17 +26,17 @@ De nada sirve contar con naves industriales o plantas de producción impecables 
 
 Para definir el nearshoring que es una de las estrategias comerciales más adoptadas en la actualidad, debemos comprenderlo como **la relocalización que realizan las empresas de sus cadenas de producción y servicios hacia países cercanos a su mercado de consumo final.** Este modelo surge como respuesta a las interrupciones logísticas globales y la necesidad de reducir costos de transporte y tiempos de entrega.
 
-De acuerdo con datos oficiales de la [Secretaría de Economía de México](https://www.gob.mx/se/acciones-y-programas/competitividad-y-normatividad-inversion-extranjera-directa):
+De acuerdo con datos oficiales de la [Secretaría de Economía de México](https://www.gob.mx/se/prensa/mexico-alcanza-cifra-historica-de-inversion-extranjera-directa-en-2025-40-871-millones-de-dolares-crecio-un-10-8-anual):
 
-> La llegada de inversión extranjera directa impulsada por este fenómeno ha alcanzado cifras récord, consolidando al país como el principal socio comercial de economías como la de Estados Unidos.
+> México cerró 2025 con una cifra histórica de Inversión Extranjera Directa: 40,871 millones de dólares, un crecimiento de 10.8% anual, con Estados Unidos como su principal país inversionista, al concentrar el 38.8% del total.
 
-Asimismo, estudios de[l Banco Interamericano de Desarrollo (BID)](https://www.iadb.org/es/noticias/nearshoring-agregaria-us78000-millones-en-exportaciones-de-america-latina-y-caribe)
+Asimismo, estudios del [Banco Interamericano de Desarrollo (BID)](https://www.iadb.org/es/noticias/nearshoring-agregaria-us78000-millones-en-exportaciones-de-america-latina-y-caribe)
 
 > Estiman que el potencial de ganancias por exportaciones derivadas del nearshoring en América Latina podría añadir miles de millones de dólares anuales al comercio de la región, siendo México el receptor del mayor porcentaje de este beneficio.
 
 Esta relocalización geográfica implica una integración operativa inmediata. Su organización ya no competirá únicamente con proveedores locales; ahora estará bajo el escrutinio de auditorías internacionales, comités de calidad norteamericanos y juntas de planeación con corporaciones asiáticas y europeas que utilizan el inglés como idioma vehicular exclusivo para sus operaciones.
 
-![Una profesionista corporativa en un entorno multicultural rodeada de banderas de diferentes países, representando la comunicación global requerida por el nearshoring.](/images/blog/blog-nearshoring-mexico-ingles-empresas-01.webp)
+![Dos personas señalando un mapa mundial en una infografía de negocios, representando la relocalización de cadenas de producción propia del nearshoring.](/images/blog/blog-nearshoring-mexico-ingles-empresas-01.webp)
 
 ## El idioma como infraestructura humana en la era del nearshoring
 
@@ -66,9 +66,11 @@ Esperar a que los contratos internacionales estén firmados para comenzar a capa
 
 Cuando la capacitación no es proactiva, las consecuencias no tardan en manifestarse:
 
--   **Paros operativos por mala interpretación:** una instrucción mal entendida en planta se traduce en retrabajos, mermas de producción y líneas detenidas que erosionan el margen del proyecto.
+-   **Paros operativos por mala interpretación:** una instrucción malinterpretada en piso de planta detiene la línea en el acto — minutos u horas de producción parada mientras el equipo reconstruye qué se quiso decir, antes de que el error llegue siquiera a un reporte de calidad.
 -   **Pérdida de credibilidad ante clientes globales:** un reporte de avance o un pitch comercial con errores gramaticales básicos pone en duda la seriedad de toda la operación, sin importar la calidad técnica detrás.
 -   **Desgaste y rotación de personal:** los colaboradores que no pueden defender su punto de vista en juntas internacionales terminan frustrados, y ese desgaste se convierte en renuncias que la organización debe volver a capacitar desde cero.
+
+💡 Si su organización ya enfrentó alguno de estos tropiezos, revise nuestra guía sobre [los errores de comunicación más comunes durante el primer año de nearshoring](https://s-peak.com/errores-comunicacion-nearshoring-en-mexico/) para corregir el rumbo antes de que escale.
 
 ### Paso 1: Auditar las competencias lingüísticas reales del equipo
 
