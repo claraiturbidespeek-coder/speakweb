@@ -9,7 +9,7 @@ categorySlug: "nearshoring-y-expansion"
 tags: []
 featuredImage: "/images/blog/blog-nearshoring-mexico-ingles-empresas-portada.webp"
 featuredImageAlt: "Mapa conceptual o entorno industrial que ilustra de forma clara el nearshoring qué es y cómo impacta a las empresas en México."
-seoTitle: "Nearshoring: ¿Qué es y por qué exige inglés empresarial? I %%sitename%%"
+seoTitle: "Nearshoring: ¿Qué es y por qué exige inglés empresarial? | %%sitename%%"
 seoDescription: "¿Su empresa está lista para el nearshoring? Descubra qué es y por qué el inglés empresarial es clave para captar inversiones internacionales."
 focusKeyword: "Nearshoring que es"
 readingTime: 5

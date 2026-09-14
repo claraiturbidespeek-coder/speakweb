@@ -8,7 +8,7 @@ categorySlug: "resultados-y-roi"
 tags: []
 featuredImage: "/images/blog/roi-capacitacion-idiomas-portada.webp"
 featuredImageAlt: "ROI de capacitación de idiomas en una reunión de ejecutivos analizando documentos estratégicos."
-seoTitle: "ROI de capacitación de idiomas: Beneficios | Blog S-Peak"
+seoTitle: "ROI de capacitación de idiomas: Beneficios | S-Peak"
 seoDescription: "Mejore el ROI de capacitación de idiomas: reduzca un 20% los errores y potencie su equipo con S-Peak. ¡Maximice su inversión hoy!"
 focusKeyword: "ROI de capacitación de idiomas"
 readingTime: 3

@@ -9,7 +9,7 @@ categorySlug: "seleccion-de-proveedor"
 tags: []
 featuredImage: "/images/blog/blog-errores-cursos-idiomas-empresas-portada.webp"
 featuredImageAlt: "Colaboradores de una oficina en México en una sesión de capacitación en idiomas para empresas organizada por S-Peak."
-seoTitle: "Cursos de idiomas para empresas: ¡Evite estos 5 errores! I %%sitename%%"
+seoTitle: "Cursos de idiomas para empresas: ¡Evite estos 5 errores! | %%sitename%%"
 seoDescription: "¿Busca cursos de idiomas para empresas? Evite perder presupuesto. Descubra los 5 errores más comunes en México y su solución."
 focusKeyword: "Cursos de idiomas para empresas"
 readingTime: 6

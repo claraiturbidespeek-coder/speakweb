@@ -9,7 +9,7 @@ categorySlug: "implementacion-del-programa"
 tags: []
 featuredImage: "/images/blog/como-aprende-ingles-un-ejecutivo-ocupado-metodologia-tiempos-y-expectativas-reales-portada.webp"
 featuredImageAlt: "Una profesionista ejecutiva en su oficina expresando seguridad y fluidez gracias al programa de inglés para ejecutivos de S-Peak."
-seoTitle: "Inglés para ejecutivos: ¡Aprenda sin perder tiempo! I %%sitename%%"
+seoTitle: "Inglés para ejecutivos: ¡Aprenda sin perder tiempo! | %%sitename%%"
 seoDescription: "¿Busca inglés para ejecutivos? Conozca la metodología ideal para agendas saturadas y optimice el tiempo de sus líderes."
 focusKeyword: "Inglés para ejecutivos"
 readingTime: 4

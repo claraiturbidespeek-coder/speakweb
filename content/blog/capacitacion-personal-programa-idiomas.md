@@ -8,7 +8,7 @@ categorySlug: "implementacion-del-programa"
 tags: []
 featuredImage: "/images/blog/capacitacion-personal-programa-idiomas-portada.webp"
 featuredImageAlt: "Capacitación de personal corporativo participando activamente en un taller de idiomas dinámico."
-seoTitle: "Capacitación de personal: diseña programas de idiomas | %%sitename%%"
+seoTitle: "Capacitación de personal: diseñe programas de idiomas | %%sitename%%"
 seoDescription: "La capacitación de personal en idiomas suele fracasar. Diseñe un programa efectivo que su equipo complete con éxito hoy."
 focusKeyword: "capacitación de personal"
 readingTime: 4

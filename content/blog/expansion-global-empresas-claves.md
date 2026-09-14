@@ -8,7 +8,7 @@ categorySlug: "nearshoring-y-expansion"
 tags: []
 featuredImage: "/images/blog/expansion-global-empresas-claves-portada.webp"
 featuredImageAlt: "Colaboración departamental en capacitación en idiomas para la expansión global de empresas."
-seoTitle: "Expansión global de empresas: 4 claves para triunfar | Blog S-Peak"
+seoTitle: "Expansión global de empresas: 4 claves para triunfar | S-Peak"
 seoDescription: "Logre la expansión global de empresas con estas 4 claves. Domine idiomas y cultura para asegurar el éxito de su negocio internacional."
 focusKeyword: "Expansión global de empresas"
 readingTime: 3

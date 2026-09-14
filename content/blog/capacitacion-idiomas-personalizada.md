@@ -7,7 +7,7 @@ category: "Implementación del programa"
 categorySlug: "implementacion-del-programa"
 tags: []
 featuredImage: "/images/blog/capacitacion-idiomas-personalizada-portada.webp"
-seoTitle: "Capacitación de Idiomas Personalizada l Blog S-Peak"
+seoTitle: "Capacitación de Idiomas Personalizada | S-Peak"
 seoDescription: "Capacitación de idiomas personalizada para empresas. Ahorre tiempo en RH y mejore el ROI de su equipo con el método S-Peak. ¡Descúbralo!"
 focusKeyword: "Capacitación de idiomas personalizada"
 readingTime: 3

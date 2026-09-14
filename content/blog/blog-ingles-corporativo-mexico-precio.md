@@ -9,7 +9,7 @@ categorySlug: "seleccion-de-proveedor"
 tags: []
 featuredImage: "/images/blog/blog-ingles-corporativo-mexico-precio-portada.webp"
 featuredImageAlt: "Directivos y líderes de Recursos Humanos evaluando una propuesta y un presupuesto estratégico de inglés corporativo en una oficina moderna."
-seoTitle: "¿Cuánto cuesta un curso de inglés corporativo en México? I %%sitename%%"
+seoTitle: "¿Cuánto cuesta un curso de inglés corporativo en México? | %%sitename%%"
 seoDescription: "Descubra cuánto cuesta un curso de inglés corporativo en México, qué servicios exigir por su dinero y cómo justificar el ROI ante dirección."
 focusKeyword: "Inglés corporativo"
 readingTime: 6

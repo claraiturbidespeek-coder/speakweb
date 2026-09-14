@@ -9,7 +9,7 @@ categorySlug: "resultados-y-roi"
 tags: []
 featuredImage: "/images/blog/blog-capacitacion-en-ingles-programa-fantasma-portada.webp"
 featuredImageAlt: "Una profesionista en su oficina revisando el progreso de un programa de capacitación en inglés en su computadora, representando la gestión del talento corporativo."
-seoTitle: "Capacitación en inglés: Por qué fallan los cursos corporativos I %%sitename%%"
+seoTitle: "Capacitación en inglés: Por qué fallan los cursos corporativos | %%sitename%%"
 seoDescription: "¿Nadie usa el curso de idiomas de su empresa? Conozca las causas del programa fantasma en la capacitación en inglés corporativa."
 focusKeyword: "Capacitación en inglés"
 readingTime: 5

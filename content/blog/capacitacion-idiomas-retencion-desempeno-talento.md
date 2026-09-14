@@ -8,7 +8,7 @@ categorySlug: "resultados-y-roi"
 tags: []
 featuredImage: "/images/blog/capacitacion-idiomas-retencion-desempeno-talento-portada.webp"
 featuredImageAlt: "Profesionales en una empresa donde la capacitación en idiomas potencia la retención y el desempeño del talento."
-seoTitle: "Capacitación en idiomas y retención de talento | Blog S-Peak"
+seoTitle: "Capacitación en idiomas y retención de talento | S-Peak"
 seoDescription: "La capacitación en idiomas y retención de talento potencia el desempeño de su equipo. Reduzca la rotación y mejore resultados ahora."
 focusKeyword: "Capacitación en idiomas y retención de talento"
 readingTime: 3

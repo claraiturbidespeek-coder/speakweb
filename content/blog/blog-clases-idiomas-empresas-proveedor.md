@@ -9,7 +9,7 @@ categorySlug: "seleccion-de-proveedor"
 tags: []
 featuredImage: "/images/blog/blog-clases-idiomas-empresas-proveedor-portada.webp"
 featuredImageAlt: "Un grupo de profesionales ejecutivos en una sala de juntas participando en clases de idiomas para empresas impartidas por S-Peak."
-seoTitle: "Clases de idiomas para empresas: ¡Elija al aliado ideal! I %%sitename%%"
+seoTitle: "Clases de idiomas para empresas: ¡Elija al aliado ideal! | %%sitename%%"
 seoDescription: "¿Busca clases de idiomas para empresas? No tire su dinero en escuelas genéricas. Conozca cómo elegir un verdadero aliado corporativo."
 focusKeyword: "Clases de idiomas para empresas"
 readingTime: 5

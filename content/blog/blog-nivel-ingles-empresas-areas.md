@@ -9,7 +9,7 @@ categorySlug: "diagnostico-de-necesidades"
 tags: []
 featuredImage: "/images/blog/blog-nivel-ingles-empresas-areas-portada.webp"
 featuredImageAlt: "Dos profesionales ejecutivos en una oficina moderna revisando un diagnóstico de nivelación de inglés para empresas organizado por S-Peak."
-seoTitle: "Inglés para empresas: ¡Defina el nivel de cada área! I %%sitename%%"
+seoTitle: "Inglés para empresas: ¡Defina el nivel de cada área! | %%sitename%%"
 seoDescription: "¿Qué nivel de inglés para empresas requiere su equipo? Evite pérdidas. Aprenda a evaluar cada área y optimice su presupuesto."
 focusKeyword: "Inglés para empresas"
 readingTime: 6

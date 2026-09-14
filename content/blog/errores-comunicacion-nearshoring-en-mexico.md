@@ -9,7 +9,7 @@ categorySlug: "nearshoring-y-expansion"
 tags: []
 featuredImage: "/images/blog/errores-comunicacion-nearshoring-en-mexico-portada.webp"
 featuredImageAlt: "Directivo analizando mapas de comercio global y estrategias de nearshoring en mexico usando una tableta en su oficina."
-seoTitle: "Nearshoring en México: 5 errores de comunicación I %%sitename%%"
+seoTitle: "Nearshoring en México: 5 errores de comunicación | %%sitename%%"
 seoDescription: "Nearshoring en mexico: descubra los 5 errores críticos de comunicación que amenazan sus contratos en el primer año."
 focusKeyword: "Nearshoring en México"
 readingTime: 5
