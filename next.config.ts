@@ -4,6 +4,34 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   async redirects() {
     return [
+      /* Rutas heredadas sin destino propio. Las cuatro son permanentes: la URL
+         vieja debe salir del índice y cederle el sitio a la nueva. La query se
+         conserva sola —Next la arrastra cuando el destino no declara la suya—,
+         así que el gclid y los utm de una campaña llegan íntegros al destino.
+
+         La quinta, /landing/ingles-para-empresas/, no está aquí: necesita
+         añadir el fragmento #landing además de la query, y eso se compone a
+         mano en su propio route handler. */
+      {
+        source: "/italiano-lp-aterrizaje-google-ads",
+        destination: "/idioma/italiano-para-empresas/",
+        statusCode: 301,
+      },
+      {
+        source: "/portugues-lp-aterrizaje-google-ads",
+        destination: "/idioma/portugues-para-empresas/",
+        statusCode: 301,
+      },
+      {
+        source: "/mcer",
+        destination: "/",
+        statusCode: 301,
+      },
+      {
+        source: "/convenios",
+        destination: "/",
+        statusCode: 301,
+      },
       {
         source: "/idioma/frances",
         destination: "/idioma/frances-para-empresas/",

@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+
+/* Los cinco listados por categoría son esqueletos: noindex y fuera del sitemap
+   hasta que estén construidos. Al terminarlos, quitar este bloque y darlos de
+   alta en app/sitemap.ts. */
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
 
 const SLUGS_VALIDOS = [
   "diagnostico-de-necesidades",

@@ -9,7 +9,7 @@ tags: []
 featuredImage: "/images/blog/capacitacion-idiomas-cultura-corporativa-portada.webp"
 featuredImageAlt: "Sesión de trabajo sobre las mejores prácticas para integrar la capacitación en idiomas en la cultura corporativa con instructora de S-Peak."
 seoTitle: "Capacitación en idiomas en la cultura corporativa | Blog S-Peak"
-seoDescription: "Aprende a integrar la capacitación en idiomas en la cultura corporativa. Mejora la comunicación y el compromiso con estas mejores prácticas."
+seoDescription: "Aprenda a integrar la capacitación en idiomas en la cultura corporativa. Mejore la comunicación y el compromiso con estas mejores prácticas."
 focusKeyword: "Capacitación en idiomas en la cultura corporativa"
 readingTime: 4
 hasLeadForm: true

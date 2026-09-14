@@ -55,7 +55,7 @@ El ROI de la capacitación en idiomas se mide en ahorro de costos, productividad
 -   Incremento de ventas y eficiencia en negociaciones.
 -   Clientes más satisfechos y fidelizados.
 
-En el primer año, puedes tener un ROI positivo con un retorno de hasta 3x el valor invertido.
+En el primer año, puede tener un ROI positivo con un retorno de hasta 3x el valor invertido.
 
 Invertir en capacitación en idiomas genera beneficios claros y medibles: mejor comunicación, mayor productividad, retención de talento y competitividad global.
 
