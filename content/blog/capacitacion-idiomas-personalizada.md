@@ -54,6 +54,6 @@ Un programa que no se adapta a la agenda del equipo está destinado al abandono.
 
 Piénselo: ¿Cómo cambiaría la dinámica de su equipo si el idioma dejara de ser una barrera y se convirtiera en una herramienta de cierre de ventas? ¿Están sus colaboradores obteniendo lo máximo de su inversión actual?
 
-Si busca un [programa de capacitación de idiomas](https://s-peak.com/clases-de-idiomas-para-empresas/) que entienda las necesidades únicas de su empresa y le devuelva el tiempo a su equipo de RH, [S-Peak](https://www.linkedin.com/company/s-peak/) es su solución.
+Si busca un [programa de capacitación de idiomas](https://s-peak.com/capacitacion-de-idiomas-para-empresas/) que entienda las necesidades únicas de su empresa y le devuelva el tiempo a su equipo de RH, [S-Peak](https://www.linkedin.com/company/s-peak/) es su solución.
 
 ¡[Contáctenos](#contacto) y descubra cómo podemos ayudarle a escalar globalmente!

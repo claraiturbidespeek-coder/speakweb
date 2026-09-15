@@ -75,7 +75,7 @@ En resumen, la comunicación es el puente entre ideas, culturas y negocios. Por 
 
 ### Impulse su crecimiento internacional con S-Peak
 
-Si busca un [programa de capacitación en idiomas](https://s-peak.com/clases-de-idiomas-para-empresas/) que se adapte a las necesidades únicas de su empresa, [¡S-Peak es su solución!](https://www.linkedin.com/company/s-peak/)
+Si busca un [programa de capacitación en idiomas](https://s-peak.com/capacitacion-de-idiomas-para-empresas/) que se adapte a las necesidades únicas de su empresa, [¡S-Peak es su solución!](https://www.linkedin.com/company/s-peak/)
 
 [Contáctenos y descubra cómo podemos ayudarle.](#contacto)
 
