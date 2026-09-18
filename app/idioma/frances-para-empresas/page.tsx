@@ -112,8 +112,8 @@ export default function Page() {
     {/* COLUMNA IZQUIERDA (60%) */}
     <div className="reveal">
       <div className="sp-etiqueta">Francés corporativo · México</div>
-      <h1><strong>Cursos de francés para empresas</strong> con operación internacional.</h1>
-      <p className="sp-hero-sub">Cuando la matriz está en París, el cliente en Montreal o el contrato se firma en Quebec, el inglés de en medio deja de alcanzar. En <strong>S-Peak</strong> diseñamos programas de francés para empresas por puesto, para que sus colaboradores <strong>reporten, negocien y coordinen</strong> directamente en francés, con seguimiento continuo y evidencia verificable del avance.</p>
+      <h1><strong>Cursos de francés para empresas</strong> que operan con Francia y Canadá.</h1>
+      <p className="sp-hero-sub">Cuando la matriz está en París, el cliente en Montreal o el contrato se firma en francés, el inglés de en medio deja de alcanzar. En <strong>S-Peak</strong> diseñamos programas de francés para empresas por puesto, para que sus colaboradores <strong>reporten, negocien y coordinen</strong> directamente en francés, con seguimiento continuo y evidencia verificable del avance.</p>
       <div className={styles.fakeForm} onClick={abrir} role="button" tabIndex={0}>
         <span className={styles.fakeFormIcon}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
@@ -240,7 +240,7 @@ export default function Page() {
           México en el índice de dominio del inglés. No hay una cifra
           equivalente verificada para el francés, así que esta bajada va sin
           número. Si el equipo aporta una fuente, se cita aquí. */}
-      <p className={styles.procesoIntro}>El francés no se resuelve con el inglés de por medio. El contrato, la auditoría y la junta con la matriz llegan en francés, y quien no lo domina negocia a través de un intermediario. Así es como <strong>S-Peak</strong> cierra esa brecha.</p>
+      <p className={styles.procesoIntro}>Quien no domina el francés negocia con la matriz y con el cliente a través de un intermediario. Así es como <strong>S-Peak</strong> cierra esa brecha.</p>
     </div>
     <div className="reveal">
       <CicloMetodo pasos={PASOS} />
