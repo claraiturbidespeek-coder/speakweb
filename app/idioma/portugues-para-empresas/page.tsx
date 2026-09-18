@@ -242,7 +242,7 @@ export default function Page() {
           equivalente verificada para el portugués —ni de dominio del idioma ni
           del peso del intercambio comercial con Brasil—, así que esta bajada va
           sin número. Si el equipo aporta una fuente, se cita aquí. */}
-      <p className={styles.procesoIntro}>El portugués no se resuelve con el parecido al español. El contrato, el reporte de la filial y la junta del comité regional se sostienen en portugués, y quien solo lo entiende a medias termina aprobando lo que creyó entender. Así es como <strong>S-Peak</strong> cierra esa brecha.</p>
+      <p className={styles.procesoIntro}>En el contrato y en el reporte de la filial, entender el portugués a medias no alcanza. Así es como <strong>S-Peak</strong> cierra esa brecha.</p>
     </div>
     <div className="reveal">
       <CicloMetodo pasos={PASOS} />
