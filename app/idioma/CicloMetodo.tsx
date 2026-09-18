@@ -25,8 +25,10 @@ export type PasoMetodo = {
 
 const INTERVALO_MS = 2000;
 
-/* Geometría del círculo, en porcentaje del contenedor y desde su centro. */
-const RADIO = 38;
+/* Geometría del círculo, en porcentaje del contenedor y desde su centro. El
+   radio va a la par del anillo punteado de landing.module.css (.cycle::before,
+   82% de diámetro): si cambia uno, cambia el otro. */
+const RADIO = 41;
 const PASO_GRADOS = 72;
 
 /* El paso 01 arriba, a las 12, y los siguientes cada 72° en sentido horario.
@@ -65,38 +67,58 @@ export default function CicloMetodo({ pasos }: { pasos: PasoMetodo[] }) {
   const numero = (i: number) => String(i + 1).padStart(2, "0");
 
   return (
-    <div
-      className={styles.cycle}
-      onMouseEnter={() => setPausado(true)}
-      onMouseLeave={() => setPausado(false)}
-    >
-      <div className={styles.cycleCenter}>
-        <div className={styles.cycleNum}>{numero(activo)}</div>
-        <div className={styles.cycleTitle}>{paso.titulo}</div>
-        <div className={styles.cycleDesc}>{paso.descripcion}</div>
+    <>
+      <div
+        className={styles.cycle}
+        onMouseEnter={() => setPausado(true)}
+        onMouseLeave={() => setPausado(false)}
+      >
+        <div className={styles.cycleCenter}>
+          <div className={styles.cycleNum}>{numero(activo)}</div>
+          <div className={styles.cycleTitle}>{paso.titulo}</div>
+          <div className={styles.cycleDesc}>{paso.descripcion}</div>
+        </div>
+
+        {pasos.map((p, i) => (
+          <button
+            key={p.titulo}
+            type="button"
+            className={`${styles.cycleNode}${
+              i === activo ? ` ${styles.cycleNodeActivo}` : ""
+            }`}
+            style={posicion(i)}
+            aria-label={`Paso ${i + 1} de ${pasos.length}: ${p.etiqueta}`}
+            aria-current={i === activo ? "step" : undefined}
+            onMouseEnter={() => setActivo(i)}
+            onClick={() => setActivo(i)}
+          >
+            {p.icono}
+            {/* El número va marcado como decorativo: el orden ya se lo dice el
+                aria-label al lector de pantalla, y repetirlo sobra. */}
+            <span className={styles.cycleNodeNum} aria-hidden="true">
+              {i + 1}
+            </span>
+          </button>
+        ))}
       </div>
 
-      {pasos.map((p, i) => (
-        <button
-          key={p.titulo}
-          type="button"
-          className={`${styles.cycleNode}${
-            i === activo ? ` ${styles.cycleNodeActivo}` : ""
-          }`}
-          style={posicion(i)}
-          aria-label={`Paso ${i + 1} de ${pasos.length}: ${p.etiqueta}`}
-          aria-current={i === activo ? "step" : undefined}
-          onMouseEnter={() => setActivo(i)}
-          onClick={() => setActivo(i)}
-        >
-          {p.icono}
-          {/* El número va marcado como decorativo: el orden ya se lo dice el
-              aria-label al lector de pantalla, y repetirlo sobra. */}
-          <span className={styles.cycleNodeNum} aria-hidden="true">
-            {i + 1}
-          </span>
-        </button>
-      ))}
-    </div>
+      {/* En móvil la descripción sale del círculo y va debajo, a ancho completo:
+          dentro no cabe a un tamaño legible. En escritorio este bloque no se
+          pinta y la descripción sigue en el centro.
+
+          Van las cinco, apiladas en la misma celda, y solo se ve la del paso
+          activo: así el bloque siempre mide lo que la más larga, a cualquier
+          ancho, y el contenido de debajo no sube y baja al cambiar de paso. */}
+      <div className={styles.cycleDescMovil}>
+        {pasos.map((p, i) => (
+          <p
+            key={p.titulo}
+            className={i === activo ? styles.cycleDescMovilActivo : undefined}
+          >
+            {p.descripcion}
+          </p>
+        ))}
+      </div>
+    </>
   );
 }

@@ -295,12 +295,24 @@
 
 /* ---------- Ciclo radial ---------- */
 
+/* El módulo llena su columna de la rejilla de .procesoInner, sin tope propio.
+   El techo lo pone la propia rejilla: con --container-max de 1360, el hueco de
+   56 y el reparto 0.85fr / 1.15fr, la columna llega a 750px. Frente a los 560
+   del tope anterior es un ×1,34 en el máximo, ×1,30 a 1440 y ×1,15 a 1280;
+   entre 961 y 1279 ya llenaba la columna y no crece.
+
+   Todo lo de dentro se mide contra el módulo: los nodos en % y la tipografía en
+   cqi (1cqi = 1% del ancho del módulo), para que letra y círculo crezcan a la
+   vez. Los coeficientes salen de los tamaños de antes sobre los 560px de
+   entonces (26px de relleno = 4,64cqi, 70px de nodo = 12,5%…); los de la
+   tipografía, de los tamaños objetivo a 700px (38 / 17 / 13px). Los max() son
+   los tamaños de antes: por debajo de ellos no baja nada. */
 .cycle {
   position: relative;
   width: 100%;
-  max-width: 560px;
   aspect-ratio: 1 / 1;
   margin: 0 auto;
+  container-type: inline-size;
 }
 
 .cycle::before {
@@ -309,8 +321,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 76%;
-  height: 76%;
+  width: 82%;
+  height: 82%;
   border-radius: 50%;
   border: 2px dashed var(--color-border);
 }
@@ -320,8 +332,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60%;
-  height: 60%;
+  width: 66%;
+  height: 66%;
   border-radius: 50%;
   background: var(--color-white);
   border: 1px solid var(--color-border);
@@ -331,40 +343,46 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 26px;
+  padding: max(16px, 4.64cqi);
 }
 
 .cycleNum {
-  font-size: 32px;
+  font-size: max(32px, 5.43cqi);
   font-weight: var(--weight-black);
   line-height: 1;
   color: var(--color-red);
 }
 
 .cycleTitle {
-  margin: 8px 0 6px;
-  font-size: 14px;
+  margin: max(8px, 1.43cqi) 0 max(6px, 1.07cqi);
+  font-size: max(14px, 2.43cqi);
   font-weight: var(--weight-bold);
   line-height: 1.25;
   color: var(--color-navy);
 }
 
 .cycleDesc {
-  font-size: 11px;
+  font-size: max(11px, 1.86cqi);
   line-height: 1.45;
   color: var(--color-muted);
+}
+
+/* La descripción fuera del círculo, solo en móvil: ver CicloMetodo.tsx. */
+.cycleDescMovil {
+  display: none;
 }
 
 .cycleNode {
   position: absolute;
   transform: translate(-50%, -50%);
-  width: 70px;
-  height: 70px;
+  /* 44px de suelo: el mínimo de un objetivo táctil. */
+  width: max(44px, 12.5%);
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   background: var(--color-white);
   border: 2px solid var(--color-border);
   color: var(--color-muted);
-  font-size: 21px;
+  font-size: max(16px, 3.75cqi);
   font-weight: var(--weight-black);
   display: flex;
   align-items: center;
@@ -376,8 +394,8 @@
 }
 
 .cycleNode svg {
-  width: 30px;
-  height: 30px;
+  width: max(22px, 5.36cqi);
+  height: max(22px, 5.36cqi);
 }
 
 .cycleNode:hover {
@@ -401,13 +419,13 @@
   position: absolute;
   top: -3px;
   right: -3px;
-  width: 20px;
-  height: 20px;
+  width: max(16px, 3.57cqi);
+  height: max(16px, 3.57cqi);
   border-radius: 50%;
   background: var(--color-off-white);
   border: 1px solid var(--color-border);
   color: var(--color-muted);
-  font-size: 11px;
+  font-size: max(9px, 1.96cqi);
   font-weight: var(--weight-bold);
   line-height: 1;
   display: flex;
@@ -586,45 +604,32 @@
 }
 
 @media (max-width: 768px) {
-  /* Los círculos del ciclo se achican para no empalmarse con el centro. */
-  .cycle {
-    max-width: 320px;
+  /* En móvil el centro solo lleva el número y el título; la descripción sale
+     debajo del círculo, a ancho completo. */
+  .cycleCenter .cycleDesc {
+    display: none;
   }
 
-  .cycleCenter {
-    width: 54%;
-    height: 54%;
-    padding: 16px;
+  .cycleDescMovil {
+    display: grid;
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.7;
+    text-align: center;
+    color: var(--color-ink-2);
   }
 
-  .cycleNum {
-    font-size: 24px;
+  /* Las cinco en la misma celda: la rejilla toma el alto de la más larga. Las
+     demás quedan ocultas con visibility, que conserva su alto y las saca del
+     lector de pantalla. */
+  .cycleDescMovil p {
+    grid-area: 1 / 1;
+    margin: 0;
+    visibility: hidden;
   }
 
-  .cycleTitle {
-    font-size: 12px;
-    margin: 6px 0 4px;
-  }
-
-  .cycleDesc {
-    font-size: 10px;
-    line-height: 1.4;
-  }
-
-  .cycleNode {
-    width: 48px;
-    height: 48px;
-  }
-
-  .cycleNode svg {
-    width: 22px;
-    height: 22px;
-  }
-
-  .cycleNodeNum {
-    width: 16px;
-    height: 16px;
-    font-size: 9px;
+  .cycleDescMovil .cycleDescMovilActivo {
+    visibility: visible;
   }
 
   /* La franja de logos deja de montar sobre el hero. */
