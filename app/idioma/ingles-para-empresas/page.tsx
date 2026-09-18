@@ -230,7 +230,7 @@ export default function Page() {
     <div className={`${styles.procesoLeft} reveal`}>
       <div className="sp-eyebrow">El método S‑Peak</div>
       <h2>5 razones por las que las empresas líderes en México eligen S‑Peak</h2>
-      <p className={styles.procesoIntro}>La brecha de dominio del inglés representa hoy la mayor desventaja competitiva nacional. Así es como <strong>S-Peak</strong> la cierra.</p>
+      <p className={styles.procesoIntro}>El inglés de un curso general no alcanza para negociar, reportar y presentar en el puesto. Así es como <strong>S-Peak</strong> cierra esa brecha.</p>
     </div>
     <div className="reveal">
       <CicloMetodo pasos={PASOS} />
@@ -264,7 +264,7 @@ export default function Page() {
         </div>
       </div>
       <div className={`sp-testi-card sp-testi-card--acento ${styles.testiCard}`}>
-        <div className="sp-estrellas">★★★★★</div>
+        <div className="sp-estrellas" style={{ color: "var(--color-navy)" }}>★★★★★</div>
         <p className="sp-testi-quote">"<strong>S-Peak</strong> es una organización sumamente dinámica. Su capacidad para entender nuestras necesidades específicas y adaptar sus mejores recursos a nuestros objetivos de negocio es su gran diferencial."</p>
         <div className="sp-testi-autor">
           <div className="sp-avatar">FD</div>
@@ -309,7 +309,7 @@ export default function Page() {
         </div>
       </div>
       <div className={`sp-testi-card sp-testi-card--acento ${styles.testiCard}`} aria-hidden="true">
-        <div className="sp-estrellas">★★★★★</div>
+        <div className="sp-estrellas" style={{ color: "var(--color-navy)" }}>★★★★★</div>
         <p className="sp-testi-quote">"<strong>S-Peak</strong> es una organización sumamente dinámica. Su capacidad para entender nuestras necesidades específicas y adaptar sus mejores recursos a nuestros objetivos de negocio es su gran diferencial."</p>
         <div className="sp-testi-autor">
           <div className="sp-avatar">FD</div>
@@ -370,7 +370,7 @@ export default function Page() {
           2. ¿En cuánto tiempo veo un cambio real?
           <span className="sp-faq-icono">+</span>
         </summary>
-        <div className="sp-faq-respuesta">Depende del punto de partida y la constancia del equipo. Como referencia, pasar de un dominio al siguiente (de B1 a B2) toma <strong>alrededor de 9 meses</strong> con dos sesiones semanales de hora y media. En el diagnóstico inicial le damos una proyección realista para su caso. <em>Cotice y le estimamos el plan.</em></div>
+        <div className="sp-faq-respuesta">Depende del punto de partida y la constancia del equipo. Como referencia, pasar de un nivel al siguiente (de B1 a B2) toma <strong>alrededor de 9 meses</strong> con dos sesiones semanales de hora y media. En el diagnóstico inicial le damos una proyección realista para su caso. <em>Cotice y le estimamos el plan.</em></div>
       </details>
       <details className="sp-faq-item" name="faq-ingles">
         <summary className="sp-faq-pregunta">
