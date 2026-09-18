@@ -176,7 +176,7 @@ export default function Page() {
     <div className={`${styles.areasLeft} reveal`}>
       <div className="sp-eyebrow">Italiano de negocios</div>
       <h2>Prepare a su talento para el italiano que exige su operación</h2>
-      <p>Cada área trata con un interlocutor distinto: mantenimiento resuelve una falla con el servicio técnico del fabricante, producción recibe al técnico que pone la línea en marcha, compras negocia refacciones y tiempos de entrega, y dirección sostiene la relación con la matriz o el socio. Su equipo ya domina la máquina y el proceso: <strong>no enseñamos mantenimiento industrial ni diseño de producto, enseñamos el italiano con el que su equipo los resuelve</strong>. Cada programa se adapta al rol y al contexto real del puesto, con <strong>indicadores verificables</strong> y reportes que le permiten <strong>decidir sobre su inversión</strong>.</p>
+      <p>Cada área trata con un interlocutor distinto: mantenimiento resuelve una falla con el servicio técnico del fabricante, producción arranca equipo nuevo con personal enviado desde Italia, compras negocia refacciones y tiempos de entrega, y dirección sostiene la relación con la matriz o el socio. Su equipo ya domina la máquina y el proceso: <strong>no enseñamos mantenimiento industrial ni diseño de producto, enseñamos el italiano con el que su equipo los resuelve</strong>. Cada programa se adapta al rol y al contexto real del puesto, con <strong>indicadores verificables</strong> y reportes que le permiten <strong>decidir sobre su inversión</strong>.</p>
       <button className="sp-btn sp-btn--rojo" onClick={abrir}>Solicite una Cotización</button>
     </div>
   </div>
@@ -242,7 +242,7 @@ export default function Page() {
           equivalente verificada para el italiano —ni de dominio del idioma ni
           de peso de la maquinaria italiana instalada en el país—, así que esta
           bajada va sin número. Si el equipo aporta una fuente, se cita aquí. */}
-      <p className={styles.procesoIntro}>El italiano no se resuelve con el inglés de por medio. El manual, la interfaz del equipo y el técnico que lo pone a punto llegan en italiano, y quien no lo domina resuelve a través de un intermediario, con la línea detenida. Así es como <strong>S-Peak</strong> cierra esa brecha.</p>
+      <p className={styles.procesoIntro}>Cuando la línea está detenida, quien no domina el italiano resuelve a través de un intermediario. Así es como <strong>S-Peak</strong> cierra esa brecha.</p>
     </div>
     <div className="reveal">
       <CicloMetodo pasos={PASOS} />
@@ -406,7 +406,7 @@ export default function Page() {
           4. ¿No basta con el inglés? Nuestro proveedor italiano lo habla.
           <span className="sp-faq-icono">+</span>
         </summary>
-        <div className="sp-faq-respuesta">En la mesa de negociación, casi siempre sí. El inglés se cae en otro lado: en el manual y la interfaz del equipo, que llegan en italiano; en la llamada al servicio técnico con la línea parada, donde del otro lado contesta quien resuelve, no quien fue asignado a la cuenta; y en el trato diario con el técnico que viene a la puesta en marcha. Por eso no proponemos italiano para toda la empresa: <strong>lo enfocamos en los puestos donde el inglés ya le está costando tiempo</strong>, que suelen ser mantenimiento, producción y compras. Y enseñamos el italiano con el que su equipo resuelve, no la ingeniería del equipo, que ya la domina. <em>Díganos dónde se le atora y lo acotamos en el diagnóstico.</em></div>
+        <div className="sp-faq-respuesta">Con el ejecutivo que lleva su cuenta, casi siempre sí. El inglés se cae en otro lado: en el manual y la interfaz del equipo, que llegan en italiano; en la llamada al servicio técnico con la línea parada, donde del otro lado contesta quien resuelve, no quien fue asignado a la cuenta; y en el trato diario con el técnico que viene a la puesta en marcha. Por eso no proponemos italiano para toda la empresa: <strong>lo enfocamos en los puestos donde el inglés ya le está costando tiempo</strong>, que suelen ser mantenimiento, producción y compras. <em>Díganos dónde se le atora y lo acotamos en el diagnóstico.</em></div>
       </details>
       <details className="sp-faq-item" name="faq-italiano">
         <summary className="sp-faq-pregunta">
