@@ -174,9 +174,9 @@ export default function Page() {
       </div>
     </div>
     <div className={`${styles.areasLeft} reveal`}>
-      <div className="sp-eyebrow">Español para extranjeros</div>
+      <div className="sp-eyebrow">Español para el puesto</div>
       <h2>Prepare a su personal extranjero para operar en México</h2>
-      <p>Cada asignación enfrenta una situación distinta: el director dirige a un equipo que no habla su idioma, el gerente de planta necesita entender lo que se dice en piso y no lo que alguien decide traducirle, el técnico de arranque coordina con contratistas y proveedores locales, y todos, tarde o temprano, tratan con una autoridad. Su gente ya sabe hacer su trabajo: <strong>no enseñamos su operación ni la normativa mexicana, enseñamos el español con el que la ejerce aquí</strong>. Cada programa se adapta al rol y al contexto real del puesto, con <strong>indicadores verificables</strong> y reportes que le permiten <strong>decidir sobre su inversión</strong>.</p>
+      <p>Cada asignación enfrenta una situación distinta: el director de planta dirige a un equipo que no habla su idioma, el gerente de calidad necesita entender lo que se dice en piso y no lo que alguien decide traducirle, el técnico de arranque coordina con contratistas y proveedores locales, y todos, tarde o temprano, tratan con una autoridad. Su gente ya sabe hacer su trabajo: <strong>no enseñamos su operación ni la normativa mexicana, enseñamos el español con el que la ejerce aquí</strong>. Cada programa se adapta al rol y al contexto real del puesto, con <strong>indicadores verificables</strong> y reportes que le permiten <strong>decidir sobre su inversión</strong>.</p>
       <button className="sp-btn sp-btn--rojo" onClick={abrir}>Solicite una Cotización</button>
     </div>
   </div>
@@ -193,7 +193,7 @@ export default function Page() {
       camino inverso: su equipo mexicano reportando a la matriz en inglés,
       alemán, francés, italiano o portugués. Capacitamos{" "}
       <strong>las dos direcciones de la misma relación</strong>. En el
-      diagnóstico definimos cuáles.
+      diagnóstico definimos qué idiomas necesita cada lado.
     </>
   }
   idiomas={IDIOMAS}
@@ -245,7 +245,7 @@ export default function Page() {
           es la tasa de asignaciones internacionales que se interrumpen antes de
           tiempo, y no tenemos fuente para citarla, así que esta bajada va sin
           número. Si el equipo aporta una, se cita aquí. */}
-      <p className={styles.procesoIntro}>El español no se resuelve con un intérprete ni con el inglés del comité directivo. Lo que se dice en piso, lo que advierte un proveedor y lo que pide una autoridad ocurre en español, y quien no lo entiende dirige a partir de lo que alguien más decidió traducirle. Así es como <strong>S-Peak</strong> cierra esa brecha.</p>
+      <p className={styles.procesoIntro}>El español no se resuelve con un intérprete ni con el inglés del comité directivo. Así es como <strong>S-Peak</strong> cierra esa brecha.</p>
     </div>
     <div className="reveal">
       <CicloMetodo pasos={PASOS} />
@@ -384,7 +384,7 @@ export default function Page() {
           1. ¿Cómo sé que de verdad funciona? ¿Qué recibe Recursos Humanos?
           <span className="sp-faq-icono">+</span>
         </summary>
-        <div className="sp-faq-respuesta">Cada programa avanza por Sprints, 26 horas enfocadas en un dominio del puesto, que cierran con evidencia real (una junta con el equipo, un recorrido por piso, una llamada con un proveedor), evaluada con rúbrica y documentada en una <strong>Tarjeta de Resultados</strong> que usted presenta a Dirección. Cada asignación avanza por dominio comprobado, no por horas cursadas. <em>Solicite una propuesta y le mostramos un ejemplo de Tarjeta.</em></div>
+        <div className="sp-faq-respuesta">Cada programa avanza por Sprints, 26 horas enfocadas en un dominio del puesto, que cierran con evidencia real (una junta con el equipo, un recorrido por piso, una llamada con un proveedor), evaluada con rúbrica y documentada en una <strong>Tarjeta de Resultados</strong> que usted presenta a Dirección. Cada participante avanza por dominio comprobado, no por horas cursadas. <em>Solicite una propuesta y le mostramos un ejemplo de Tarjeta.</em></div>
       </details>
       {/* TODO (datos): la respuesta 2 de la landing de inglés cita una
           referencia de tiempo para pasar de B1 a B2. Esa cifra es del programa

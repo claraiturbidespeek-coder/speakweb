@@ -242,7 +242,7 @@ export default function Page() {
           equivalente verificada para el alemán —ni de dominio del idioma ni de
           peso de la inversión alemana en el país—, así que esta bajada va sin
           número. Si el equipo aporta una fuente, se cita aquí. */}
-      <p className={styles.procesoIntro}>El alemán no se resuelve con el inglés de por medio. La auditoría, la especificación y la junta con la matriz llegan en alemán, y quien no lo domina defiende su planta a través de un intermediario. Así es como <strong>S-Peak</strong> cierra esa brecha.</p>
+      <p className={styles.procesoIntro}>Quien no domina el alemán defiende su planta ante la matriz a través de un intermediario. Así es como <strong>S-Peak</strong> cierra esa brecha.</p>
     </div>
     <div className="reveal">
       <CicloMetodo pasos={PASOS} />
