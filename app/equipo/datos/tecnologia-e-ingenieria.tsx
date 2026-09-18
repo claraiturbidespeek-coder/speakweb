@@ -18,12 +18,6 @@ const datos: DatosEquipo = {
     ),
     sub: "Sus equipos técnicos coordinan proyectos, reuniones y entregables con casa matriz, proveedores de tecnología y equipos en otros países. Cuando el idioma se interpone —inglés, francés, alemán, italiano o portugués—, las reuniones se alargan, los proyectos pierden ritmo y el talento técnico local queda fuera de las decisiones globales. S-Peak forma a su equipo en el idioma de negocios con que coordina y comunica su trabajo.",
     cta: "Solicite una Cotización",
-    prueba: (
-      <>
-        +<strong>500 empresas</strong> confían en S-Peak para capacitar a sus
-        equipos.
-      </>
-    ),
     imagen: {
       // Provisional: la del mosaico del home.
       src: "/images/home/area-tecnologia-e-ingenieria.webp",

@@ -20,12 +20,6 @@ const datos: DatosEquipo = {
     ),
     sub: "En la planta o cadena de suministro, un malentendido cuesta retrasos, embarques detenidos o auditorías perdidas. Capacitamos a sus equipos en inglés, francés, alemán, italiano o portugués para comunicarse con precisión y eliminar el margen de error.",
     cta: "Solicite una Cotización",
-    prueba: (
-      <>
-        +<strong>500 empresas</strong> confían en S-Peak para capacitar a sus
-        equipos de operaciones.
-      </>
-    ),
     imagen: {
       // Provisional: la del mosaico del home.
       src: "/images/home/area-operaciones-y-logistica.webp",

@@ -27,7 +27,6 @@ export type DatosEquipo = {
     titulo: ReactNode;
     sub: ReactNode;
     cta: string;
-    prueba: ReactNode;
     imagen: { src: string; alt: string };
   };
 

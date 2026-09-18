@@ -26,11 +26,6 @@ const datos: DatosEquipo = {
     ),
     sub: "Cuando un líder no comunica con soltura en inglés, francés, alemán, italiano, portugués o español, las decisiones se retrasan y la relación con casa matriz se debilita. S-Peak ofrece un programa confidencial, a la medida y adaptado a las exigentes agendas de la alta dirección.",
     cta: "Solicite una Cotización",
-    prueba: (
-      <>
-        +<strong>500 empresas</strong> confían en S-Peak.
-      </>
-    ),
     imagen: {
       // Provisional: la del mosaico del home.
       src: "/images/home/area-directivos.webp",

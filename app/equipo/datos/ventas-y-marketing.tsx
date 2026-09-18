@@ -31,20 +31,14 @@ const datos: DatosEquipo = {
     ),
     sub: (
       <>
-        Negocie, presente y comunique con confianza en el idioma de su cliente,
-        y <strong>que nunca sea la razón de una oportunidad perdida</strong>:
-        una sola cuesta más que todo un programa anual de capacitación. Inglés,
+        Negocie, presente y dé seguimiento en el idioma de su cliente.{" "}
+        <strong>Que la barrera nunca le cueste una oportunidad</strong>: una
+        sola cuesta más que todo un programa anual de capacitación. Inglés,
         francés, alemán, italiano, portugués o español: su equipo es la cara de
         la empresa.
       </>
     ),
     cta: "Solicite una Cotización",
-    prueba: (
-      <>
-        +<strong>500 empresas</strong> confían en S-Peak para capacitar a sus
-        equipos comerciales
-      </>
-    ),
     imagen: {
       src: "/images/equipo/hero-ventas-y-marketing.webp",
       alt: "Equipo comercial en cursos de inglés de negocios",

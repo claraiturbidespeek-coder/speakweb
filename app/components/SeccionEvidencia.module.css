@@ -37,7 +37,7 @@
 
 .evidenciaTags {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 7px;
   margin-bottom: 28px;
 }
@@ -356,10 +356,6 @@
 }
 
 @media (max-width: 600px) {
-  .evidenciaTags {
-    flex-wrap: wrap;
-  }
-
   .dashGrid {
     grid-template-columns: 1fr;
   }

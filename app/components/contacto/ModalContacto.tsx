@@ -270,7 +270,7 @@ export default function ModalContacto({
                 type="submit"
                 disabled={estado.enviando}
               >
-                {estado.enviando ? "Enviando…" : "Solicite Información"}
+                {estado.enviando ? "Enviando…" : "Solicite Cotización"}
               </button>
 
               <p

@@ -233,7 +233,7 @@ export default async function Nota(props: PageProps<"/[slug]">) {
                     Un asesor le responde en menos de 24 horas, sin compromiso.
                   </p>
                   <BotonContacto className="sp-btn sp-btn--rojo">
-                    Solicite Información
+                    Solicite Cotización
                   </BotonContacto>
                 </div>
               </div>

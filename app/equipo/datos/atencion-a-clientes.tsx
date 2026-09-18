@@ -22,12 +22,6 @@ const datos: DatosEquipo = {
     ),
     sub: "Su equipo de atención es la voz posventa de la empresa. Capacitamos a soporte, posventa y contact centers en inglés, francés, alemán, italiano o portugués para resolver dudas sin fricciones y evitar la pérdida de clientes internacionales.",
     cta: "Solicite una Cotización",
-    prueba: (
-      <>
-        +<strong>500 empresas</strong> confían en S-Peak para capacitar a sus
-        equipos de atención.
-      </>
-    ),
     imagen: {
       // Provisional: la del mosaico del home.
       src: "/images/home/area-atencion-a-clientes.webp",

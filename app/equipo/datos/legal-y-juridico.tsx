@@ -38,12 +38,6 @@ const datos: DatosEquipo = {
       </>
     ),
     cta: "Solicite una Cotización",
-    prueba: (
-      <>
-        +<strong>500 empresas</strong> confían en S-Peak para capacitar a sus
-        equipos.
-      </>
-    ),
     imagen: {
       // Provisional: la del mosaico del home. No existe una imagen de hero
       // propia para esta área.

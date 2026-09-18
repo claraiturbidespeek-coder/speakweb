@@ -1,10 +1,10 @@
 import { LOGOS_CLIENTES } from "./logos-clientes";
 
-/* Franja de confianza compartida por las 9 páginas que la llevan: home, las
-   siete de Soluciones por Equipo y /idioma/ingles-para-empresas.
+/* Franja de confianza compartida por las 14 páginas que la llevan: home, las
+   siete de Soluciones por Equipo y las seis landings de idioma.
 
    El encabezado y la lista de logos son fijos — no hay props para variarlos,
-   porque el objetivo es que las 9 páginas se vean idénticas. Lo único que
+   porque el objetivo es que las 14 páginas se vean idénticas. Lo único que
    cambia entre páginas es si llevan la imagen decorativa del isotipo detrás
    de la tarjeta, y eso trae consigo ajustes de posicionamiento que solo esa
    página necesita: se reciben como clases desde fuera en vez de vivir aquí,
@@ -40,7 +40,7 @@ export default function BandaLogos({
       ) : null}
       <div className={`sp-logos-card${claseTarjeta ? ` ${claseTarjeta}` : ""}`}>
         <p className="sp-logos-label">
-          Más de 500 empresas confían en <strong>S-Peak</strong>
+          Algunas de las empresas que confían en <strong>S-Peak</strong>
         </p>
         <div className="sp-marquesina">
           <div className="sp-marquesina-track">

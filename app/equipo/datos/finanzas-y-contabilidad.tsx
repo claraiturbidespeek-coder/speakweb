@@ -4,9 +4,10 @@ import { IDIOMAS, type DatosEquipo } from "../tipos";
    Correcciones del buscar y reemplazar mal hecho y slugs canónicos: ver la
    cabecera de legal-y-juridico.tsx.
 
-   OJO: la línea de prueba social de esta área no dice "+500 empresas" como las
-   otras seis, sino "Empresas como Braskem Idesa y Chedraui". Viene así del
-   documento y se respeta; queda anotado por si el cliente lo quiere alineado. */
+   El documento trae para esta área una línea de prueba social distinta a la
+   de las otras seis ("Empresas como Braskem Idesa y Chedraui" en vez de "+500
+   empresas"). No está aquí porque la plantilla ya no pinta esa línea: el sello
+   STPS ocupa su lugar bajo el CTA del hero. */
 
 const datos: DatosEquipo = {
   slug: "finanzas-y-contabilidad",
@@ -22,12 +23,6 @@ const datos: DatosEquipo = {
     ),
     sub: "En finanzas, un dato mal comunicado altera decisiones corporativas. Capacitamos a su equipo en inglés, francés, alemán, italiano o portugués para reportar cierres, presentar resultados y coordinar con la casa matriz con claridad.",
     cta: "Solicite una Cotización",
-    prueba: (
-      <>
-        Empresas como <strong>Braskem Idesa</strong> y <strong>Chedraui</strong>{" "}
-        confían en S-Peak para capacitar a sus equipos.
-      </>
-    ),
     imagen: {
       // Provisional: la del mosaico del home.
       src: "/images/home/area-finanzas-y-contabilidad.webp",
