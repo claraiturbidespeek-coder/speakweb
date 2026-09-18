@@ -51,7 +51,7 @@ const PASOS: PasoMetodo[] = [
   {
     titulo: "Evidencia para tomar decisiones.",
     descripcion:
-      "Entregamos reportes de asistencia, progreso y nivel a la Dirección de RH. Usted sabe exactamente en qué está invirtiendo y cómo avanza cada asignación.",
+      "Entregamos a la Dirección de RH reportes de progreso y nivel, no solo de asistencia. Usted sabe exactamente en qué está invirtiendo y qué resultados está obteniendo.",
     etiqueta: "Evidencia para tomar decisiones",
     icono: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
@@ -303,7 +303,7 @@ export default function Page() {
           2. ¿En cuánto tiempo veo un cambio real?
           <span className="sp-faq-icono">+</span>
         </summary>
-        <div className="sp-faq-respuesta">Depende del punto de partida, de la constancia del participante y de cuánto español necesite ya en su puesto. En el diagnóstico inicial medimos el nivel real de cada colaborador y le damos <strong>una proyección concreta para su caso</strong>, con las fechas en que puede esperar cada salto de dominio. <em>Cotice y le estimamos el plan.</em></div>
+        <div className="sp-faq-respuesta">Depende del punto de partida, de la constancia del participante y de cuánto español necesite ya en su puesto. En el diagnóstico inicial medimos el nivel real de cada colaborador y le damos <strong>una proyección concreta para su caso</strong>. <em>Cotice y le estimamos el plan.</em></div>
       </details>
       <details className="sp-faq-item" name="faq-espanol">
         <summary className="sp-faq-pregunta">
@@ -324,7 +324,7 @@ export default function Page() {
           5. ¿Quién imparte y qué respaldo tienen?
           <span className="sp-faq-icono">+</span>
         </summary>
-        <div className="sp-faq-respuesta">Instructores certificados con experiencia en entornos corporativos, no profesores de escuela. Cada uno se asigna según el puesto y el nivel de partida de cada participante, y si alguno no resulta el adecuado, <strong>lo cambiamos.</strong> La calidad no se deja al azar. <em>Pregúntenos por el perfil de quienes trabajarían con su equipo.</em></div>
+        <div className="sp-faq-respuesta">Instructores especialistas en idioma de negocios, nativos o bilingües, con experiencia en entornos corporativos, no profesores de escuela. Cada uno se asigna según el puesto y el nivel de partida de cada participante, y si alguno no resulta el adecuado, <strong>lo cambiamos.</strong> La calidad no se deja al azar. <em>Pregúntenos por el perfil de quienes trabajarían con su equipo.</em></div>
       </details>
       <details className="sp-faq-item" name="faq-espanol">
         <summary className="sp-faq-pregunta">

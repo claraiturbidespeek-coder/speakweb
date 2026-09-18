@@ -51,7 +51,7 @@ const PASOS: PasoMetodo[] = [
   {
     titulo: "Evidencia para tomar decisiones.",
     descripcion:
-      "Entregamos reportes de asistencia, progreso y nivel a la Dirección de RH. Usted sabe exactamente en qué está invirtiendo y qué resultados está obteniendo.",
+      "Entregamos a la Dirección de RH reportes de progreso y nivel, no solo de asistencia. Usted sabe exactamente en qué está invirtiendo y qué resultados está obteniendo.",
     etiqueta: "Evidencia para tomar decisiones",
     icono: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
@@ -229,7 +229,7 @@ export default function Page() {
     <div className={`${styles.procesoLeft} reveal`}>
       <div className="sp-eyebrow">El método S‑Peak</div>
       <h2>5 razones por las que las empresas líderes en México eligen S‑Peak</h2>
-      <p className={styles.procesoIntro}>México ocupa el puesto 87 de 116 en dominio del inglés. Esta brecha lingüística representa hoy la mayor desventaja competitiva nacional. Así es como <strong>S-Peak</strong> la cierra.</p>
+      <p className={styles.procesoIntro}>La brecha de dominio del inglés representa hoy la mayor desventaja competitiva nacional. Así es como <strong>S-Peak</strong> la cierra.</p>
     </div>
     <div className="reveal">
       <CicloMetodo pasos={PASOS} />
@@ -383,7 +383,7 @@ export default function Page() {
           4. ¿Quién imparte y qué respaldo tienen?
           <span className="sp-faq-icono">+</span>
         </summary>
-        <div className="sp-faq-respuesta">Instructores certificados con experiencia en entornos corporativos, no profesores de escuela. Cada uno se asigna según el dominio y el puesto de su equipo, y si alguno no resulta el adecuado, <strong>lo cambiamos.</strong> La calidad no se deja al azar. <em>Pregúntenos por el perfil de quienes trabajarían con su equipo.</em></div>
+        <div className="sp-faq-respuesta">Instructores especialistas en idioma de negocios, nativos o bilingües, con experiencia en entornos corporativos, no profesores de escuela. Cada uno se asigna según el dominio y el puesto de su equipo, y si alguno no resulta el adecuado, <strong>lo cambiamos.</strong> La calidad no se deja al azar. <em>Pregúntenos por el perfil de quienes trabajarían con su equipo.</em></div>
       </details>
       <details className="sp-faq-item" name="faq-ingles">
         <summary className="sp-faq-pregunta">
