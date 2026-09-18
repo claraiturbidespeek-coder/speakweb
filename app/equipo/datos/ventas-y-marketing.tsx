@@ -48,7 +48,7 @@ const datos: DatosEquipo = {
   competencias: {
     eyebrow: "Las competencias lingüísticas del equipo de ventas y marketing",
     titulo:
-      "Su equipo ya sabe su trabajo. Le falta hacerlo en el idioma de su cliente.",
+      "El idioma de negocios que su equipo comercial necesita para cerrar en el idioma de su cliente",
     sub: "No necesita más gramática: necesita el idioma dentro de las situaciones que ya maneja, del primer contacto al seguimiento. En inglés o en el idioma de su mercado.",
     tarjetas: [
       {
@@ -105,7 +105,7 @@ const datos: DatosEquipo = {
   franja: {
     titulo: "El idioma de su cliente, no solo inglés",
     texto:
-      "La mayoría de nuestros programas son en inglés, porque es el idioma de la mayoría de los negocios internacionales. Pero si su equipo vende en Brasil, Alemania, Francia o Italia, lo capacitamos en la lengua en que su cliente decide la compra. En el diagnóstico definimos cuál.",
+      "La mayoría de nuestros programas son en inglés, porque es el idioma de casi todos los negocios internacionales. Pero si su equipo vende en Brasil, Alemania, Francia o Italia, lo capacitamos en la lengua en que su cliente decide la compra. En el diagnóstico definimos cuál.",
     idiomas: IDIOMAS,
   },
 
@@ -128,7 +128,7 @@ const datos: DatosEquipo = {
   dolor: {
     eyebrow: "El costo real de la barrera del idioma",
     titulo:
-      "El idioma de negocios que su equipo comercial necesita para cerrar en el idioma de su cliente.",
+      "Su equipo ya sabe vender. Le falta hacerlo en el idioma de su cliente.",
     sub: "No es una métrica abstracta; es un costo medible y silencioso que se refleja en tres escenarios:",
     tarjetas: [
       {
@@ -141,7 +141,7 @@ const datos: DatosEquipo = {
         icono: "correoX",
         titulo: "El correo de prospección sin respuesta",
         texto:
-          "Su equipo envía 200 correos al mes a Estados Unidos, Europa o Latinoamérica, pero la tasa de respuesta es del 1%. Un correo con errores de gramática o tono se descarta en el primer párrafo.",
+          "Su equipo envía correos de prospección a Estados Unidos, Europa o Brasil. Un correo con errores de gramática o tono se descarta en el primer párrafo.",
       },
       {
         icono: "usuarioX",
@@ -262,7 +262,7 @@ const datos: DatosEquipo = {
 
   faq: {
     titulo:
-      "Preguntas frecuentes sobre capacitación para equipos de ventas y marketing",
+      "Preguntas frecuentes sobre capacitación de idiomas para Ventas y Marketing",
     texto: "Resolvemos las dudas más comunes antes de que tenga que buscarlas.",
     ctaTitulo: "¿Tiene una pregunta que no está aquí?",
     ctaBoton: "Solicite una Cotización",

@@ -1,0 +1,297 @@
+/* Lo propio de /diagnostico/.
+
+   El hero, el FAQ, el CTA final y los isotipos decorativos repiten los valores
+   de app/idioma/landing.module.css, que es el molde de las landings de idioma:
+   esta página sigue su sistema visual, pero ese módulo es la plantilla de
+   /idioma/ y no se importa desde otra ruta. Si una tercera página pide lo
+   mismo, es el momento de subirlo a patrones.css.
+
+   Las tarjetas de "Qué recibe" toman el tamaño de texto de las tarjetas de
+   competencias de /equipo/. */
+
+/* ---------- Hero ---------- */
+
+/* Ancho completo: radio cero explícito, como en las landings. Sin foto ni
+   banda de logos debajo, así que el hero va a una columna y cierra con el
+   ritmo de sección normal en lugar de los 120px que dejan sitio a los logos. */
+.hero {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    var(--color-blue-gradient) 0%,
+    var(--color-off-white) 55%
+  );
+  border-radius: 0;
+  padding: 80px var(--space-gutter) var(--space-section);
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  max-width: 22ch;
+  margin-bottom: 14px;
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: var(--weight-bold);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-navy);
+}
+
+.heroIdiomas {
+  margin-bottom: 20px;
+  font-size: 15px;
+  font-weight: var(--weight-semibold);
+  line-height: 1.5;
+  color: var(--color-red);
+}
+
+.hero :global(.sp-hero-sub) {
+  /* El patrón tope a 540px; aquí el hero es de una columna y el párrafo es
+     largo, así que se le deja la medida de lectura de las bajadas de sección. */
+  max-width: 760px;
+}
+
+/* ---------- Qué recibe ---------- */
+
+.recibeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  list-style: none;
+}
+
+.recibeCard {
+  padding: 24px 20px;
+}
+
+.recibeCard p {
+  font-size: 14px;
+  font-weight: var(--weight-semibold);
+  line-height: 1.55;
+  color: var(--color-navy);
+}
+
+/* ---------- Cómo funciona ---------- */
+
+.pasosSeccion {
+  background: var(--color-off-white);
+}
+
+.pasos {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+  list-style: none;
+}
+
+.paso {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 20px;
+  align-items: start;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-grande);
+  padding: 22px 24px;
+}
+
+.pasoNum {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-red);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: var(--weight-black);
+  line-height: 1;
+}
+
+.paso p {
+  align-self: center;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-ink-2);
+}
+
+/* ---------- Qué mide ---------- */
+
+.mideInner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.mideInner h2 {
+  margin-bottom: 18px;
+  font-size: var(--text-title-md);
+  font-weight: var(--weight-bold);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--color-navy);
+}
+
+.mideInner p {
+  margin-bottom: 16px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-ink-2);
+}
+
+.mideLista {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+}
+
+.mideLista li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-navy);
+  font-weight: var(--weight-semibold);
+}
+
+.mideLista li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-red);
+}
+
+/* ---------- Franja de idiomas ---------- */
+
+/* La franja compartida reparte dos columnas, texto e idiomas. Aquí solo van
+   las etiquetas: una columna, centradas. */
+.franjaInner {
+  grid-template-columns: 1fr;
+}
+
+.franjaInner :global(.sp-franja-idiomas) {
+  justify-content: center;
+}
+
+/* ---------- FAQ ---------- */
+
+.faqInner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.faqLeft h2 {
+  margin: 14px 0 16px;
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: var(--weight-bold);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: var(--color-navy);
+}
+
+.faqLeft > p {
+  margin-bottom: 28px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-ink-2);
+}
+
+.faqCtaCard p {
+  margin-bottom: 18px;
+  font-size: 18px;
+  font-weight: var(--weight-bold);
+  line-height: 1.4;
+}
+
+/* ---------- CTA final ---------- */
+
+.finalCta {
+  background: var(--color-red);
+  color: var(--color-white);
+  border-radius: 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.finalCta h2 {
+  position: relative;
+  z-index: 1;
+  max-width: 28ch;
+  margin: 0 auto 36px;
+  font-size: clamp(26px, 3.2vw, 42px);
+  font-weight: var(--weight-bold);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.finalCta :global(.sp-btn) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Isotipo decorativo ---------- */
+
+.decoHero,
+.decoCta {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.decoHero {
+  top: 24px;
+  right: 24px;
+  width: 60px;
+  opacity: 0.08;
+  transform: rotate(15deg);
+}
+
+.decoCta {
+  top: 50%;
+  right: 40px;
+  width: 120px;
+  opacity: 0.1;
+  transform: translateY(-50%) rotate(30deg);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 960px) {
+  .faqInner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 48px var(--space-gutter) var(--space-section-mobile);
+  }
+
+  .paso {
+    grid-template-columns: 40px 1fr;
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .pasoNum {
+    width: 40px;
+    height: 40px;
+    font-size: 17px;
+  }
+}
