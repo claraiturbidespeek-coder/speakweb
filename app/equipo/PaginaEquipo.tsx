@@ -5,6 +5,7 @@ import Carrusel from "@/app/components/Carrusel";
 import CentroDeRecursos from "@/app/components/CentroDeRecursos";
 import FranjaIdiomas from "@/app/components/FranjaIdiomas";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
+import SeccionEvidencia from "@/app/components/SeccionEvidencia";
 import SelloSTPS from "@/app/components/SelloSTPS";
 import Icono from "@/app/components/Icono";
 import type { DatosEquipo } from "./tipos";
@@ -198,6 +199,18 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
             idiomas={datos.franja.idiomas}
           />
         ) : null}
+
+        {/* EVIDENCIA */}
+        <SeccionEvidencia
+          etiqueta={`Panel de progreso del equipo en el programa de S-Peak para ${datos.nombre}`}
+          tablero={{
+            ...datos.tablero,
+            competencias: datos.competencias.tarjetas.slice(0, 4).map((t, i) => ({
+              nombre: t.titulo,
+              pct: datos.tablero.competencias[i],
+            })),
+          }}
+        />
 
         {/* DOLOR */}
         <section className={`sp-seccion ${styles.dolor}`} id="dolor">

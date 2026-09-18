@@ -109,6 +109,22 @@ const datos: DatosEquipo = {
     idiomas: IDIOMAS,
   },
 
+  tablero: {
+    mejora: 17,
+    activos: 8,
+    sesiones: 33,
+    aprobadas: 93,
+    alza: 4,
+    curva: [67, 62, 57, 53, 42, 31, 23],
+    competencias: [74, 70, 81, 77],
+    colaboradores: [
+      { nivel: "C1", pct: 94 },
+      { nivel: "B2", pct: 86 },
+      { nivel: "B2", pct: 80 },
+      { nivel: "B1", pct: 68 },
+    ],
+  },
+
   dolor: {
     eyebrow: "El costo real de la barrera del idioma",
     titulo:

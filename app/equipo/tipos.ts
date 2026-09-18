@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import type { TableroEvidencia } from "@/app/components/SeccionEvidencia";
 
 /* Forma del contenido de una página de Soluciones por Equipo.
 
@@ -48,6 +49,13 @@ export type DatosEquipo = {
     texto: ReactNode;
     idiomas: { nombre: string; ruta: string }[];
   };
+
+  /* Las cifras del tablero de la sección de evidencia. Son ilustrativas y
+     distintas en cada área para que las páginas no se vean calcadas. Las
+     competencias no se escriben aquí: el tablero toma los títulos de las
+     cuatro primeras tarjetas de `competencias`, y estos porcentajes van con
+     ellas en el mismo orden. */
+  tablero: Omit<TableroEvidencia, "competencias"> & { competencias: number[] };
 
   dolor: {
     eyebrow: string;

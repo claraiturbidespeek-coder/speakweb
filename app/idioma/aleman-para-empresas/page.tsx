@@ -5,6 +5,7 @@ import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BandaLogos from "@/app/components/BandaLogos";
 import FranjaIdiomas from "@/app/components/FranjaIdiomas";
 import Icono from "@/app/components/Icono";
+import SeccionEvidencia from "@/app/components/SeccionEvidencia";
 import SelloSTPS from "@/app/components/SelloSTPS";
 import { useContacto } from "@/app/components/contacto/useContacto";
 // La lista de las seis páginas de idioma vive con la plantilla de equipo.
@@ -200,111 +201,35 @@ export default function Page() {
 />
 
 {/* EVIDENCIA */}
-<section className="sp-seccion" id="enfoque">
-  <div className={styles.evidenciaInner}>
-    <div className={`${styles.evidenciaLeft} reveal`}>
-      <div className="sp-eyebrow">Nuestro enfoque</div>
-      <h2>No le entregamos listas de asistencia.<br /><em>Le entregamos evidencia.</em></h2>
-      <p>A la dirección de <strong>Recursos Humanos</strong> le entregamos <strong>tableros</strong> que detallan el <strong>avance, la adopción y el impacto real</strong> del programa, para una <strong>decisión basada en datos</strong> y la optimización de su presupuesto.</p>
-      <div className={styles.evidenciaTags}>
-        <span className={styles.evidenciaTag}>Evidencias demostrables</span>
-        <span className={styles.evidenciaTag}>Métricas de avance y asistencia</span>
-        <span className={styles.evidenciaTag}>Reportes de desempeño</span>
-      </div>
-      <button className="sp-btn sp-btn--rojo" onClick={abrir}>Solicite una Cotización</button>
-    </div>
-    <div className={`${styles.evidenciaRight} reveal`}>
-      {/* Tablero ilustrativo: la misma estructura que el resto de las landings
-          de idioma, con otras cifras. Ni los números ni los colaboradores son
-          datos de un cliente: las etiquetas son genéricas a propósito, para que
-          nadie las lea como personas, y los valores no coinciden con los de
-          inglés ni con los de francés, para que las páginas no se vean
-          calcadas una al lado de la otra. */}
-      <div className={styles.dash} role="img" aria-label="Panel de progreso del equipo en el programa de alemán para empresas de S-Peak">
-        <div className={styles.dashTopbar}>
-          <div className={styles.dashTopbarTitle}>
-            <span className={styles.dashDots}><i></i><i></i><i></i></span>
-            Panel de Progreso del Equipo
-          </div>
-          <span className={styles.dashTopbarTag}>S-Peak Analytics</span>
-        </div>
-        <div className={styles.dashContent}>
-          <div className={styles.dashChips}>
-            <span className={styles.dashChip}><b>+16%</b> mejora</span>
-            <span className={styles.dashChip}><b>15</b> colaboradores activos</span>
-            <span className={styles.dashChip}><b>28</b> sesiones</span>
-          </div>
-          <div className={styles.dashGrid}>
-            {/* Métrica destacada */}
-            <div className={`${styles.dashWidget} ${styles.dashMetric}`}>
-              <div className={styles.wMetric}>85<span>%</span></div>
-              <div className={styles.wMetricLabel}>Evidencias aprobadas con rúbrica</div>
-              <div className={styles.wMetricSub}>↑ 5 pts vs. trimestre anterior</div>
-            </div>
-            {/* Gráfica de línea */}
-            <div className={`${styles.dashWidget} ${styles.dashChart}`}>
-              <div className={styles.wTitle}>Progreso del equipo · Trimestre</div>
-              <svg viewBox="0 0 300 86" preserveAspectRatio="none" aria-hidden="true">
-                <polygon fill="#B51E40" fillOpacity="0.08" points="0,75 50,64 100,61 150,50 200,47 250,31 300,26 300,86 0,86"/>
-                <polyline fill="none" stroke="#B51E40" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" pathLength="1" points="0,75 50,64 100,61 150,50 200,47 250,31 300,26"/>
-                <circle cx="300" cy="26" r="4" fill="#B51E40"/>
-              </svg>
-              <div className={styles.dashChartX}><span>Mes 1</span><span>Mes 2</span><span>Mes 3</span></div>
-            </div>
-            {/* Competencias del equipo */}
-            <div className={`${styles.dashWidget} ${styles.dashSkills}`}>
-              <div className={styles.wTitle}>Competencias del equipo</div>
-              <div className={styles.wSkill}>
-                <div className={styles.wSkillTop}><span>Comunicación oral</span><span className={styles.wSkillPct}>79%</span></div>
-                <div className={styles.wBar}><span style={{ width: "79%" }}></span></div>
-              </div>
-              <div className={styles.wSkill}>
-                <div className={styles.wSkillTop}><span>Comprensión auditiva</span><span className={styles.wSkillPct}>68%</span></div>
-                <div className={styles.wBar}><span style={{ width: "68%" }}></span></div>
-              </div>
-              <div className={styles.wSkill}>
-                <div className={styles.wSkillTop}><span>Redacción corporativa</span><span className={styles.wSkillPct}>77%</span></div>
-                <div className={styles.wBar}><span style={{ width: "77%" }}></span></div>
-              </div>
-              <div className={styles.wSkill}>
-                <div className={styles.wSkillTop}><span>Negociación</span><span className={styles.wSkillPct}>70%</span></div>
-                <div className={styles.wBar}><span style={{ width: "70%" }}></span></div>
-              </div>
-            </div>
-            {/* Lista de colaboradores */}
-            <div className={styles.dashWidget}>
-              <div className={styles.wTitle}>Colaboradores</div>
-              <div className={styles.wPerson}>
-                <span className={styles.wPersonAv}>A</span>
-                <span className={styles.wPersonName}>Colaborador A</span>
-                <span className={styles.wPersonLvl}>B2</span>
-                <span className={styles.wPersonPct}>87%</span>
-              </div>
-              <div className={styles.wPerson}>
-                <span className={styles.wPersonAv}>B</span>
-                <span className={styles.wPersonName}>Colaborador B</span>
-                <span className={styles.wPersonLvl}>B1</span>
-                <span className={styles.wPersonPct}>76%</span>
-              </div>
-              <div className={styles.wPerson}>
-                <span className={styles.wPersonAv}>C</span>
-                <span className={styles.wPersonName}>Colaborador C</span>
-                <span className={styles.wPersonLvl}>B1</span>
-                <span className={styles.wPersonPct}>70%</span>
-              </div>
-              <div className={styles.wPerson}>
-                <span className={styles.wPersonAv}>D</span>
-                <span className={styles.wPersonName}>Colaborador D</span>
-                <span className={styles.wPersonLvl}>A2</span>
-                <span className={styles.wPersonPct}>61%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+{/* Tablero ilustrativo: la misma estructura que el resto de las landings
+    de idioma, con otras cifras. Ni los números ni los colaboradores son
+    datos de un cliente: las etiquetas son genéricas a propósito, para que
+    nadie las lea como personas, y los valores no coinciden con los de
+    inglés ni con los de francés, para que las páginas no se vean
+    calcadas una al lado de la otra. */}
+<SeccionEvidencia
+  etiqueta="Panel de progreso del equipo en el programa de alemán para empresas de S-Peak"
+  tablero={{
+    mejora: 16,
+    activos: 15,
+    sesiones: 28,
+    aprobadas: 85,
+    alza: 5,
+    curva: [75, 64, 61, 50, 47, 31, 26],
+    competencias: [
+      { nombre: "Comunicación oral", pct: 79 },
+      { nombre: "Comprensión auditiva", pct: 68 },
+      { nombre: "Redacción corporativa", pct: 77 },
+      { nombre: "Negociación", pct: 70 },
+    ],
+    colaboradores: [
+      { nivel: "B2", pct: 87 },
+      { nivel: "B1", pct: 76 },
+      { nivel: "B1", pct: 70 },
+      { nivel: "A2", pct: 61 },
+    ],
+  }}
+/>
 
 {/* PROCESO INFOGRAFÍA */}
 <section className={`sp-seccion ${styles.proceso}`} id="metodo">

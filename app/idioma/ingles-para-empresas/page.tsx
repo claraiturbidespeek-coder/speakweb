@@ -5,6 +5,7 @@ import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BandaLogos from "@/app/components/BandaLogos";
 import FranjaIdiomas from "@/app/components/FranjaIdiomas";
 import Icono from "@/app/components/Icono";
+import SeccionEvidencia from "@/app/components/SeccionEvidencia";
 import SelloSTPS from "@/app/components/SelloSTPS";
 import { useContacto } from "@/app/components/contacto/useContacto";
 // La lista de las seis páginas de idioma vive con la plantilla de equipo.
@@ -197,105 +198,29 @@ export default function Page() {
 />
 
 {/* EVIDENCIA */}
-<section className="sp-seccion" id="enfoque">
-  <div className={styles.evidenciaInner}>
-    <div className={`${styles.evidenciaLeft} reveal`}>
-      <div className="sp-eyebrow">Nuestro enfoque</div>
-      <h2>No le entregamos listas de asistencia.<br /><em>Le entregamos evidencia.</em></h2>
-      <p>A la dirección de <strong>Recursos Humanos</strong> le entregamos <strong>tableros</strong> que detallan el <strong>avance, la adopción y el impacto real</strong> del programa, para una <strong>decisión basada en datos</strong> y la optimización de su presupuesto.</p>
-      <div className={styles.evidenciaTags}>
-        <span className={styles.evidenciaTag}>Evidencias demostrables</span>
-        <span className={styles.evidenciaTag}>Métricas de avance y asistencia</span>
-        <span className={styles.evidenciaTag}>Reportes de desempeño</span>
-      </div>
-      <button className="sp-btn sp-btn--rojo" onClick={abrir}>Solicite una Cotización</button>
-    </div>
-    <div className={`${styles.evidenciaRight} reveal`}>
-      <div className={styles.dash} role="img" aria-label="Panel de progreso del equipo en el programa de inglés para empresas de S-Peak">
-        <div className={styles.dashTopbar}>
-          <div className={styles.dashTopbarTitle}>
-            <span className={styles.dashDots}><i></i><i></i><i></i></span>
-            Panel de Progreso del Equipo
-          </div>
-          <span className={styles.dashTopbarTag}>S-Peak Analytics</span>
-        </div>
-        <div className={styles.dashContent}>
-          <div className={styles.dashChips}>
-            <span className={styles.dashChip}><b>+18%</b> mejora</span>
-            <span className={styles.dashChip}><b>12</b> colaboradores activos</span>
-            <span className={styles.dashChip}><b>26</b> sesiones</span>
-          </div>
-          <div className={styles.dashGrid}>
-            {/* Métrica destacada */}
-            <div className={`${styles.dashWidget} ${styles.dashMetric}`}>
-              <div className={styles.wMetric}>92<span>%</span></div>
-              <div className={styles.wMetricLabel}>Evidencias aprobadas con rúbrica</div>
-              <div className={styles.wMetricSub}>↑ 4 pts vs. trimestre anterior</div>
-            </div>
-            {/* Gráfica de línea */}
-            <div className={`${styles.dashWidget} ${styles.dashChart}`}>
-              <div className={styles.wTitle}>Progreso del equipo · Trimestre</div>
-              <svg viewBox="0 0 300 86" preserveAspectRatio="none" aria-hidden="true">
-                <polygon fill="#B51E40" fillOpacity="0.08" points="0,68 50,60 100,63 150,46 200,40 250,28 300,18 300,86 0,86"/>
-                <polyline fill="none" stroke="#B51E40" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" pathLength="1" points="0,68 50,60 100,63 150,46 200,40 250,28 300,18"/>
-                <circle cx="300" cy="18" r="4" fill="#B51E40"/>
-              </svg>
-              <div className={styles.dashChartX}><span>Mes 1</span><span>Mes 2</span><span>Mes 3</span></div>
-            </div>
-            {/* Competencias del equipo */}
-            <div className={`${styles.dashWidget} ${styles.dashSkills}`}>
-              <div className={styles.wTitle}>Competencias del equipo</div>
-              <div className={styles.wSkill}>
-                <div className={styles.wSkillTop}><span>Comunicación oral</span><span className={styles.wSkillPct}>76%</span></div>
-                <div className={styles.wBar}><span style={{ width: "76%" }}></span></div>
-              </div>
-              <div className={styles.wSkill}>
-                <div className={styles.wSkillTop}><span>Comprensión auditiva</span><span className={styles.wSkillPct}>81%</span></div>
-                <div className={styles.wBar}><span style={{ width: "81%" }}></span></div>
-              </div>
-              <div className={styles.wSkill}>
-                <div className={styles.wSkillTop}><span>Redacción corporativa</span><span className={styles.wSkillPct}>69%</span></div>
-                <div className={styles.wBar}><span style={{ width: "69%" }}></span></div>
-              </div>
-              <div className={styles.wSkill}>
-                <div className={styles.wSkillTop}><span>Negociación</span><span className={styles.wSkillPct}>73%</span></div>
-                <div className={styles.wBar}><span style={{ width: "73%" }}></span></div>
-              </div>
-            </div>
-            {/* Lista de colaboradores */}
-            <div className={styles.dashWidget}>
-              <div className={styles.wTitle}>Colaboradores</div>
-              <div className={styles.wPerson}>
-                <span className={styles.wPersonAv}>CM</span>
-                <span className={styles.wPersonName}>Carlos Mendoza</span>
-                <span className={styles.wPersonLvl}>B1</span>
-                <span className={styles.wPersonPct}>78%</span>
-              </div>
-              <div className={styles.wPerson}>
-                <span className={styles.wPersonAv}>AT</span>
-                <span className={styles.wPersonName}>Ana Torres</span>
-                <span className={styles.wPersonLvl}>B2</span>
-                <span className={styles.wPersonPct}>85%</span>
-              </div>
-              <div className={styles.wPerson}>
-                <span className={styles.wPersonAv}>LR</span>
-                <span className={styles.wPersonName}>Luis Ramírez</span>
-                <span className={styles.wPersonLvl}>A2</span>
-                <span className={styles.wPersonPct}>64%</span>
-              </div>
-              <div className={styles.wPerson}>
-                <span className={styles.wPersonAv}>MG</span>
-                <span className={styles.wPersonName}>María Gómez</span>
-                <span className={styles.wPersonLvl}>B1</span>
-                <span className={styles.wPersonPct}>72%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<SeccionEvidencia
+  etiqueta="Panel de progreso del equipo en el programa de inglés para empresas de S-Peak"
+  tablero={{
+    mejora: 18,
+    activos: 12,
+    sesiones: 26,
+    aprobadas: 92,
+    alza: 4,
+    curva: [68, 60, 63, 46, 40, 28, 18],
+    competencias: [
+      { nombre: "Comunicación oral", pct: 76 },
+      { nombre: "Comprensión auditiva", pct: 81 },
+      { nombre: "Redacción corporativa", pct: 69 },
+      { nombre: "Negociación", pct: 73 },
+    ],
+    colaboradores: [
+      { nivel: "B1", pct: 78 },
+      { nivel: "B2", pct: 85 },
+      { nivel: "A2", pct: 64 },
+      { nivel: "B1", pct: 72 },
+    ],
+  }}
+/>
 
 {/* PROCESO INFOGRAFÍA */}
 <section className={`sp-seccion ${styles.proceso}`} id="metodo">
