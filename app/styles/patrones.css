@@ -1270,6 +1270,11 @@
   color: var(--color-muted);
 }
 
+/* "S-Peak" no se parte por el guion entre dos líneas. */
+.sp-form-nota strong {
+  white-space: nowrap;
+}
+
 .sp-form-estado {
   margin-top: 12px;
   padding: 10px 12px;
