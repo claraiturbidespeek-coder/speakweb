@@ -1024,9 +1024,10 @@
 }
 
 /* ========== Centro de Recursos ==========
-   Compartida por la home y las siete páginas de Soluciones por Equipo (ver
-   CentroDeRecursos.tsx): con ocho páginas deja de ser "propia de una
-   página" y pasa a vocabulario sp-*, igual que ya hace BandaLogos.
+   Compartida por la home, las siete páginas de Soluciones por Equipo y las
+   seis landings de idioma (ver CentroDeRecursos.tsx): con catorce páginas deja
+   de ser "propia de una página" y pasa a vocabulario sp-*, igual que ya hace
+   BandaLogos.
 
    No va a sangre: el fondo deja un 2% a cada lado. El padding interno no es
    ese mismo 2% —con `sp-seccion--ancha` el contenido quedaba pegado al borde

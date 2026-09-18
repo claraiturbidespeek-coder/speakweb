@@ -1,19 +1,31 @@
 import Link from "next/link";
 import { CarruselFlechas, CarruselProvider, CarruselTrack } from "@/app/components/Carrusel";
-import { atributosDimension } from "@/lib/dimensiones";
 
-/* Compartida por la home y las siete páginas de Soluciones por Equipo. Con
-   ocho páginas deja de ser "propia de una página": el estilo vive en
-   patrones.css como vocabulario sp-recursos-*, igual que ya hace BandaLogos
-   con sp-logos. Las imágenes siguen en /images/home/ porque ahí es donde
+/* Compartida por las 14 páginas que la llevan: la home, las siete de
+   Soluciones por Equipo y las seis landings de idioma. Con catorce páginas
+   deja de ser "propia de una página": el estilo vive en patrones.css como
+   vocabulario sp-recursos-*, igual que ya hace BandaLogos con sp-logos. Las imágenes siguen en /images/home/ porque ahí es donde
    viven de verdad — no se movieron al promover el componente. */
 
+/* `ancho` y `alto` son las dimensiones intrínsecas de cada portada, para que la
+   <img> reserve su sitio y el carrusel no salte al cargar.
+
+   Van escritas aquí, y no leídas del archivo al renderizar como en el resto del
+   sitio (lib/dimensiones.ts), porque este componente lo montan también las seis
+   landings de idioma, que son componentes de cliente: ahí no hay `fs`. Es el
+   mismo criterio que logos-clientes.ts.
+
+   OJO: si se reexporta o se cambia una portada, hay que actualizar sus dos
+   números. Una proporción vieja es peor que ninguna: el hueco reservado no
+   coincidiría. */
 const POSTS = [
   {
     titulo:
       "Aprender idiomas en la era del nearshoring: Las lenguas más demandadas en México",
     url: "/aprender-idiomas-nearshoring-mexico/",
     imagen: "blog-nearshoring-idiomas.webp",
+    ancho: 1024,
+    alto: 683,
     alt: "Ejecutivos bilingües en México planeando estrategias comerciales para aprender idiomas corporativos.",
   },
   {
@@ -21,6 +33,8 @@ const POSTS = [
       "Capacitación de personal: cómo diseñar un programa de idiomas que sí completen",
     url: "/capacitacion-personal-programa-idiomas/",
     imagen: "blog-capacitacion-personal.webp",
+    ancho: 1024,
+    alto: 683,
     alt: "Capacitación de personal corporativo participando activamente en un taller de idiomas dinámico.",
   },
   {
@@ -28,6 +42,8 @@ const POSTS = [
       "Inglés para ejecutivos: 6 situaciones clave donde urge una evaluación de inglés",
     url: "/evaluacion-de-ingles-ejecutivos/",
     imagen: "blog-evaluacion-ingles.webp",
+    ancho: 1024,
+    alto: 549,
     alt: "Evaluación de inglés corporativa para ejecutivos y directores en una junta de negocios.",
   },
   {
@@ -35,12 +51,16 @@ const POSTS = [
       "Por qué el 70% de los programas de capacitación en idiomas fracasan antes de los 6 meses",
     url: "/negocios-en-ingles-porque-fracasan-cursos/",
     imagen: "blog-negocios-en-ingles.webp",
+    ancho: 700,
+    alto: 369,
     alt: "Grupo de profesionales en una oficina moderna colaborando y preparándose para hacer negocios en inglés con éxito.",
   },
   {
     titulo: "Inglés de negocios: habilidades clave según su rol ejecutivo",
     url: "/ingles-de-negocios-ejecutivos/",
     imagen: "blog-ingles-de-negocios.webp",
+    ancho: 1024,
+    alto: 683,
     alt: "Ejecutiva participando en una videollamada internacional y aplicando su inglés de negocios con un equipo de trabajo.",
   },
   {
@@ -48,6 +68,8 @@ const POSTS = [
       "¿Alemán, francés o inglés? Cómo identificar qué idiomas para empresas necesita su equipo",
     url: "/mejores-idiomas-para-empresas/",
     imagen: "blog-idiomas-para-empresas.webp",
+    ancho: 1024,
+    alto: 683,
     alt: "Dos ejecutivos corporativos analizando la estrategia de idiomas para empresas frente a un mapa mundial.",
   },
   {
@@ -55,12 +77,16 @@ const POSTS = [
       "De cero a bilingüe: Cómo estructurar una capacitación en inglés que su equipo no abandone",
     url: "/como-implementar-capacitacion-en-ingles-empresas/",
     imagen: "blog-capacitacion-en-ingles.webp",
+    ancho: 1024,
+    alto: 683,
     alt: "Capacitación en inglés empresarial para equipos de trabajo en una mesa de negociación con banderas internacionales.",
   },
   {
     titulo: "5 errores de comunicación en tu primer año de Nearshoring",
     url: "/errores-comunicacion-nearshoring-en-mexico/",
     imagen: "blog-errores-nearshoring.webp",
+    ancho: 1024,
+    alto: 683,
     alt: "Directivo analizando mapas de comercio global y estrategias de nearshoring en mexico usando una tableta en su oficina.",
   },
 ];
@@ -97,7 +123,8 @@ export default function CentroDeRecursos({ className }: { className?: string }) 
                   className="sp-post-img"
                   src={`/images/home/${p.imagen}`}
                   alt={p.alt}
-                  {...atributosDimension(`/images/home/${p.imagen}`)}
+                  width={p.ancho}
+                  height={p.alto}
                   loading="lazy"
                 />
                 <h3 className="sp-post-titulo">

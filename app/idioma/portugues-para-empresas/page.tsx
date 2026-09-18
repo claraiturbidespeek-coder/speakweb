@@ -3,6 +3,7 @@
 import Script from "next/script";
 import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BandaLogos from "@/app/components/BandaLogos";
+import CentroDeRecursos from "@/app/components/CentroDeRecursos";
 import FranjaIdiomas from "@/app/components/FranjaIdiomas";
 import Icono from "@/app/components/Icono";
 import SeccionEvidencia from "@/app/components/SeccionEvidencia";
@@ -275,7 +276,7 @@ export default function Page() {
   <div className={styles.faqInner}>
     <div className={`${styles.faqLeft} reveal`}>
       <div className="sp-eyebrow">Preguntas frecuentes</div>
-      <h2>Resolvamos sus dudas</h2>
+      <h2>Preguntas frecuentes sobre cursos de portugués para empresas</h2>
       <p>Hemos recopilado las dudas más comunes de nuestros clientes para brindarle claridad desde el primer momento.</p>
       <div className={`sp-cta-card ${styles.faqCtaCard}`}>
         <p>¿Tiene una pregunta que no está aquí?</p>
@@ -341,14 +342,14 @@ export default function Page() {
           8. ¿Cuánto cuesta y cómo se cobra?
           <span className="sp-faq-icono">+</span>
         </summary>
-        <div className="sp-faq-respuesta">Se cotiza <strong>por grupo completo, no por persona</strong>, de 1 a 10 colaboradores: a más participantes, menor el costo por colaborador. La frecuencia (sesiones por semana) define el ritmo de avance y la inversión mensual; más sesiones es avanzar más rápido, no pagar más caro por hora. Por eso no manejamos precio de lista: armamos la propuesta según cómo opere su empresa. <em>Solicite su cotización y le damos el número para su caso.</em></div>
+        <div className="sp-faq-respuesta">Se cotiza <strong>por grupo completo, no por persona</strong>. Cada grupo es de 1 a 10 colaboradores; si son más, armamos varios grupos. A más participantes, menor el costo por colaborador. La frecuencia (sesiones por semana) define el ritmo de avance y la inversión mensual; más sesiones significan avanzar más rápido, no pagar más caro por hora. Por eso no manejamos precio de lista: armamos la propuesta según cómo opere su empresa. <em>Solicite su cotización y le damos el número para su caso.</em></div>
       </details>
       <details className="sp-faq-item" name="faq-portugues">
         <summary className="sp-faq-pregunta">
           9. ¿Tiene registro ante la STPS y es deducible de impuestos?
           <span className="sp-faq-icono">+</span>
         </summary>
-        <div className="sp-faq-respuesta"><strong>Sí a ambas.</strong> El programa cuenta con registro oficial ante la STPS y emitimos la constancia de capacitación de cada colaborador. Además es deducible, y según el decreto del Plan México (DOF) pueden existir estímulos adicionales para la formación de personal; le entregamos la documentación de soporte y le recomendamos confirmar la aplicación a su caso con su área contable. <em>Solicite la información para su expediente.</em></div>
+        <div className="sp-faq-respuesta"><strong>Sí a ambas.</strong> Contamos con registro oficial ante la STPS y firmamos como agente capacitador externo la constancia de capacitación (DC-3) de cada colaborador. Además es deducible, y según el decreto del Plan México (DOF) pueden existir estímulos adicionales para la formación de personal; le entregamos la documentación de soporte y le recomendamos confirmar la aplicación a su caso con su área contable. <em>Solicite la información para su expediente.</em></div>
       </details>
     </div>
   </div>
@@ -361,6 +362,9 @@ export default function Page() {
   <p>Permítanos diseñar un programa de portugués que su equipo sí termine, con avance medible y evidencia para Dirección.</p>
   <button className="sp-btn sp-btn--blanco" onClick={abrir}>Solicite una Cotización</button>
 </section>
+
+{/* CENTRO DE RECURSOS — se esconde en modo landing */}
+<CentroDeRecursos className="sp-oculto-landing" />
 </main>
 
       <Script
