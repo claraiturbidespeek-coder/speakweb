@@ -11,12 +11,12 @@ import {
   type PayloadLead,
 } from "@/lib/atribucion";
 
-// Mismo evento que ya dispara el modal de WhatsApp de /idioma/ingles-para-empresas/
-// al enviar su mini-formulario (lo recoge GTM, trigger Custom Event "conversion_whatsapp").
+// Evento propio, distinto del conversion_whatsapp del flotante: este clic llega
+// después de un lead ya registrado y no debe contarse como otra conversión.
 const CONTACTO_WHATSAPP = "https://wa.me/525585265520";
-function registrarConversionWhatsapp() {
+function registrarWhatsappPostLead() {
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({ event: "conversion_whatsapp" });
+  window.dataLayer.push({ event: "whatsapp_post_lead" });
 }
 
 /* Modal de contacto del sitio. Uno solo, montado por ProveedorContacto.
@@ -152,7 +152,7 @@ export default function ModalContacto({
               href={CONTACTO_WHATSAPP}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={registrarConversionWhatsapp}
+              onClick={registrarWhatsappPostLead}
             >
               <span className="sp-icono sp-icono--sm">
                 <Icono nombre="whatsapp" />
