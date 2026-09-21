@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import ProveedorContacto from "./components/contacto/ProveedorContacto";
 import Footer from "./components/Footer";
 import GoogleTagManager from "./components/GoogleTagManager";
+import GuardarAtribucion from "./components/GuardarAtribucion";
 import Header from "./components/Header";
 import ScrollSuave from "./components/ScrollSuave";
 import VolverArriba from "./components/VolverArriba";
@@ -75,13 +76,24 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             mientras el navegador todavía no ha parseado el header, y la regla
             de interacciones.css lo esconde desde el primer pintado.
 
+            Se activa con #landing o con cualquier hash que empiece por
+            #landing-. Lo que sigue al guion es el id de una sección
+            (#landing-faq lleva a #faq): el navegador no salta solo porque no
+            existe un id "landing-faq", así que el guion vigila el DOM y hace
+            el scroll instantáneo en cuanto la sección aparece —scrollIntoView
+            respeta el scroll-margin-top de base.css— y lo repite en
+            DOMContentLoaded por si al aparecer la página aún no era lo bastante
+            alta para llegar. Si la sección no existe, se queda arriba.
+            #landing-contacto no hace scroll: abre el modal de contacto, y eso
+            lo hace ProveedorContacto al montar.
+
             Va inline y como primer hijo del <body> a propósito: un <Script> de
             Next se carga después y llegaría tarde. useModoLanding.ts mantiene
             el atributo al navegar dentro del sitio. */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{if(location.pathname.indexOf('/idioma/')===0&&location.hash==='#landing'){document.documentElement.setAttribute('data-landing','')}}catch(e){}",
+              "try{var h=location.hash;if(location.pathname.indexOf('/idioma/')===0&&(h==='#landing'||h.indexOf('#landing-')===0)){document.documentElement.setAttribute('data-landing','');var id=h.slice(9);if(id&&id!=='contacto'){var ir=function(){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'instant',block:'start'});return !!el};var mo=new MutationObserver(function(){if(ir())mo.disconnect()});mo.observe(document,{childList:true,subtree:true});document.addEventListener('DOMContentLoaded',function(){mo.disconnect();ir()})}}}catch(e){}",
           }}
         />
         {/* GTM. Va después del guion de modo landing, que necesita ser el
@@ -99,6 +111,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             sitio. `children` cruza esta frontera como prop, así que las páginas
             siguen renderizándose en el servidor. */}
         <ScrollSuave />
+        <GuardarAtribucion />
         <ProveedorContacto>
           <Header />
           {children}

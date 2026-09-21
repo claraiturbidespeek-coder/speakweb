@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { ReactNode } from "react";
 import ModalContacto from "./ModalContacto";
 import { ContextoContacto } from "./useContacto";
@@ -17,6 +17,18 @@ export default function ProveedorContacto({ children }: { children: ReactNode })
   const abrir = useCallback(() => setAbierto(true), []);
   const cerrar = useCallback(() => setAbierto(false), []);
   const valor = useMemo(() => ({ abrir }), [abrir]);
+
+  /* #landing-contacto en una página de /idioma/: modo landing (lo pone el
+     guion del layout) y el modal abierto al cargar. Se lee una sola vez, al
+     montar: el proveedor vive en el layout raíz y no se vuelve a montar al
+     navegar, así que si el visitante lo cierra no se reabre. */
+  useEffect(() => {
+    const { pathname, hash } = window.location;
+    const abrirAlCargar = () => {
+      if (pathname.startsWith("/idioma/") && hash === "#landing-contacto") abrir();
+    };
+    abrirAlCargar();
+  }, [abrir]);
 
   return (
     <ContextoContacto.Provider value={valor}>

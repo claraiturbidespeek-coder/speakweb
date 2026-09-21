@@ -28,8 +28,11 @@ export default function useModoLanding() {
   const [landing, setLanding] = useState(false);
 
   useEffect(() => {
+    // #landing o #landing-<seccion>, la misma condición que el guion del layout.
+    const hash = window.location.hash;
     const activo =
-      ruta.startsWith("/idioma/") && window.location.hash === "#landing";
+      ruta.startsWith("/idioma/") &&
+      (hash === "#landing" || hash.startsWith("#landing-"));
     const leerFragmento = () => setLanding(activo);
     leerFragmento();
 

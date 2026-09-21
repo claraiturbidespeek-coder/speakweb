@@ -49,6 +49,33 @@ export type Atribucion = {
   pagina: string;
 };
 
+const CLAVES_ATRIBUCION = [
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_content",
+  "gclid",
+] as const;
+
+/* Guarda en la sesión el gclid y los UTM de la URL, para que recogerAtribucion
+   los encuentre aunque el visitante navegue a otra página antes de enviar. Si
+   la URL trae alguno, reemplaza lo guardado entero: es una visita de campaña
+   nueva y no debe mezclarse con la anterior. Si no trae ninguno, no toca nada. */
+export function guardarAtribucion(): void {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const datos: Record<string, string> = {};
+    for (const clave of CLAVES_ATRIBUCION) {
+      const valor = (params.get(clave) || "").trim();
+      if (valor) datos[clave] = valor;
+    }
+    if (Object.keys(datos).length === 0) return;
+    sessionStorage.setItem(CLAVE_SESION, JSON.stringify(datos));
+  } catch {
+    // Sin sessionStorage (modo privado estricto): el envío sigue leyendo la URL.
+  }
+}
+
 export function recogerAtribucion(idioma: string): Atribucion {
   let params: URLSearchParams | null;
   try {
