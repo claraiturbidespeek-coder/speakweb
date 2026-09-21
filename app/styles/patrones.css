@@ -569,6 +569,15 @@
   color: var(--color-muted);
 }
 
+/* La tarjeta no tiene relleno lateral (la marquesina va de borde a borde), así
+   que en móvil, donde la etiqueta se parte en dos líneas, el texto tocaba el
+   borde de la tarjeta. El relleno va solo en la etiqueta. */
+@media (max-width: 600px) {
+  .sp-logos-label {
+    padding-inline: var(--space-gutter);
+  }
+}
+
 /* ========== Testimonios ========== */
 
 .sp-testi-top {
@@ -1233,6 +1242,20 @@
   box-shadow: 0 0 0 3px rgba(26, 60, 77, 0.08);
 }
 
+/* Flecha propia en vez de la nativa, que cambia de un navegador a otro. Es
+   un chevron dibujado en SVG: el trazo lleva el navy de --color-navy escrito
+   a mano, porque una imagen de fondo no puede leer una variable de CSS. */
+.sp-form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 36px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%231a3c4d' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 12px 8px;
+  cursor: pointer;
+}
+
 .sp-form-group textarea {
   resize: vertical;
   min-height: 80px;
@@ -1349,6 +1372,18 @@
 
 .sp-btn--whatsapp:hover {
   background: #1ebe5a;
+}
+
+/* En móvil la etiqueta larga ("Escríbanos por WhatsApp") se partía en dos
+   líneas: 28px de relleno por lado más el icono no dejaban sitio en el modal.
+   Con menos relleno y un punto menos de cuerpo cabe en una a 390px; más
+   angosto aún, se parte antes que desbordar el modal. Solo lo usan los dos
+   modales. */
+@media (max-width: 480px) {
+  .sp-btn--whatsapp {
+    padding-inline: 16px;
+    font-size: 14px;
+  }
 }
 
 /* ========== Acordeón ==========

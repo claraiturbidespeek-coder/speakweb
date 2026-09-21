@@ -103,6 +103,19 @@ html[data-landing] .cta {
     gap: 16px;
   }
 
+  /* Sin menú en medio, las dos laterales de 1fr partían la fila a la mitad y
+     la izquierda —botón de menú más logo— no cabía en su mitad: el logo se
+     metía debajo del botón de contacto. Las laterales miden lo suyo y el
+     botón se fija a la tercera columna, porque con el menú oculto dejaría de
+     ser el tercer hijo. Es la misma fila que ya usaba el modo landing. */
+  .inner {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  .cta {
+    grid-column: 3;
+  }
+
   /* La fila no encoge —el toggle, el logo y el botón son flex-shrink: 0— y a
      partir de aquí la suma de los tres supera el ancho disponible: a 440px de
      viewport se salía 16px, y más cuanto más estrecha la pantalla. Se recupera
@@ -122,18 +135,11 @@ html[data-landing] .cta {
     display: inline;
   }
 
-  /* En modo landing la columna del medio deja de medirse por su contenido.
-
-     Con `auto` se sirve primero: una pista intrínseca crece hasta su
-     max-content antes de que las de `1fr` reciban nada, así que una barra de
-     anclas que a este ancho no cabe entera se llevaría todo el sitio y dejaría
-     al logo y al botón con pistas de cero, desbordados. Es al revés de lo que
-     tiene que pasar: los que miden lo suyo son el logo y el botón, y la barra
-     se queda con el resto y arrastra lo que no le entre.
-
-     Se pierde el centrado exacto que dan las dos laterales de `1fr`. No hay
-     nada que centrar: la barra ya no cabe entera. */
+  /* En modo landing la barra de anclas se retira a este ancho (ver
+     nav.module.css) y las anclas pasan al panel de MenuAnclas, cuyo botón es
+     la cuarta columna, justo después de Cotizar. La del medio queda vacía y
+     absorbe el sobrante; el logo, Cotizar y el botón miden lo suyo. */
   html[data-landing] .inner {
-    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
   }
 }

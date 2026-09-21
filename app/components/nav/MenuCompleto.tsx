@@ -62,7 +62,11 @@ export default function MenuCompleto() {
       setSeleccion(grupos[0].clave);
       setEnDetalle(false);
       d.showModal();
+      // El fondo se bloquea por partida doble, como en el modal de contacto:
+      // overflow para el scroll nativo y Lenis detenido para el suave, que no
+      // se entera del overflow.
       document.body.style.overflow = "hidden";
+      window.__lenis?.stop();
     } else if (!abierto && d.open) {
       d.close();
     }
@@ -84,6 +88,7 @@ export default function MenuCompleto() {
     if (!d) return;
     const alCerrar = () => {
       document.body.style.overflow = "";
+      window.__lenis?.start();
       setAbierto(false);
     };
     d.addEventListener("close", alCerrar);

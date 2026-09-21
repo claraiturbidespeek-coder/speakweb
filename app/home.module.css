@@ -714,6 +714,25 @@
 }
 
 @media (max-width: 960px) {
+  /* El hero deja las dos columnas y el alto fijo: con 90vh de alto y el texto
+     en una columna angosta, el contenido desbordaba la caja por arriba (el
+     título quedaba bajo el header) y por abajo (la caja de logos tapaba el
+     botón). A una columna crece con su contenido. */
+  .heroNuevo {
+    height: auto;
+  }
+
+  .heroNuevoInner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  /* El ensanche contra la viuda mira hacia el hueco entre columnas, que a una
+     columna ya no existe: aquí sacaría el párrafo del viewport. */
+  .heroNuevoText p:last-of-type {
+    width: 100%;
+  }
+
   .programGrid,
   .areasGrid {
     grid-template-columns: 1fr;
@@ -767,6 +786,13 @@
   .counters,
   .differentiators {
     grid-template-columns: 1fr;
+  }
+
+  /* Tres columnas no caben: el icono más "Demostrables" mide más que un
+     tercio, y la fila empujaba el documento 37px fuera del viewport. */
+  .features {
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .mosaic {

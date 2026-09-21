@@ -33,14 +33,8 @@ import styles from "./nav.module.css";
    `#landing` de la URL no apaga el modo: useModoLanding lee el fragmento una
    sola vez por ruta, que es justo para lo que se escribió así.
 
-   `data-lenis-prevent-touch` es lo que hace posible arrastrar la barra por
-   debajo de 960px, donde no cabe entera. Lenis escucha el touchmove de la
-   ventana y lo consume para su scroll virtual; con este atributo lo ignora
-   dentro de la barra y el arrastre vuelve a ser el nativo del navegador. Es la
-   variante de touch y no `data-lenis-prevent` entero a propósito: la rueda
-   sobre el header se queda con el desplazamiento suave del sitio. Lo que sí
-   cambia es el gesto vertical que empieza sobre la barra, que a partir de aquí
-   mueve la página sin suavizado. */
+   Por debajo de 960px esta barra se retira y las mismas anclas se ofrecen en
+   el panel de MenuAnclas.tsx, junto a Cotizar. */
 
 export default function Navegacion() {
   const landing = useModoLanding();
@@ -50,7 +44,6 @@ export default function Navegacion() {
       <nav
         className={styles.anclas}
         aria-label="Secciones de esta página"
-        data-lenis-prevent-touch
       >
         <ul className={styles.list}>
           {ANCLAS_LANDING.map((s) => (
