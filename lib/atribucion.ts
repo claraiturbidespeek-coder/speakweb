@@ -30,8 +30,21 @@ const IDIOMA_POR_RUTA: Record<string, string> = {
   "/idioma/aleman-para-empresas": "Alemán",
   "/idioma/italiano-para-empresas": "Italiano",
   "/idioma/portugues-para-empresas": "Portugués",
-  "/idioma/espanol-para-empresas": "Español",
+  "/idioma/espanol-para-empresas": "Español para extranjeros",
 };
+
+/* Las opciones del campo de idioma de los dos formularios. Los valores de
+   IDIOMA_POR_RUTA están todos aquí, para que el de la página se pueda
+   preseleccionar. */
+export const OPCIONES_IDIOMA = [
+  "Inglés",
+  "Francés",
+  "Alemán",
+  "Portugués",
+  "Italiano",
+  "Español para extranjeros",
+  "Varios idiomas",
+];
 
 export function idiomaDeRuta(ruta: string): string {
   // El sitio usa trailingSlash, así que la ruta puede llegar con barra o sin ella.

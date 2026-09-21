@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Icono from "@/app/components/Icono";
+import CampoIdioma from "@/app/components/contacto/CampoIdioma";
 import {
   enviarLead,
   idiomaDeRuta,
@@ -38,27 +39,35 @@ const TELEFONO = "525585265520";
 
 /* El texto con el que se abre la conversación.
 
-   En las seis rutas de /idioma/ nombra el idioma de la página; en el resto del
-   sitio se queda la frase genérica con la que nació el botón. Antes el contexto
-   lo daba el lugar —el flotante solo existía en esas seis landings—, y desde
-   que es global quien atiende el chat necesita leerlo en el propio mensaje.
+   Nombra el idioma que eligió el visitante en el formulario (o el de la
+   página, en modo landing, donde el campo va oculto). Quien atiende el chat
+   necesita leerlo en el propio mensaje desde que el botón es de todo el sitio.
 
-   El idioma llega como lo escribe IDIOMA_POR_RUTA, en mayúscula inicial porque
-   así viaja al CRM; aquí va en mitad de la frase y baja a minúscula. */
+   El idioma llega en mayúscula inicial porque así viaja al CRM; aquí va en
+   mitad de la frase y baja a minúscula. Dos opciones no caben en la frase
+   general sin sonar raras: "Español para extranjeros" ya lleva su "para", y
+   "Varios idiomas" no es un idioma. El genérico queda solo de respaldo, por si
+   el idioma no llegara. */
 function mensajeWhatsapp(
   nombre: string,
   telefono: string,
   correo: string,
   idioma: string,
 ) {
-  const programas =
-    idioma === NO_ESPECIFICADO
-      ? "los programas de idiomas para empresas"
-      : `los programas de ${idioma.toLocaleLowerCase("es")} para empresas`;
+  let programas: string;
+  if (idioma === NO_ESPECIFICADO) {
+    programas = "los programas de idiomas para empresas de S-Peak";
+  } else if (idioma === "Varios idiomas") {
+    programas = "los programas de S-Peak para empresas en varios idiomas";
+  } else if (idioma === "Español para extranjeros") {
+    programas = "los programas de español para extranjeros de S-Peak";
+  } else {
+    programas = `los programas de ${idioma.toLocaleLowerCase("es")} para empresas de S-Peak`;
+  }
 
   return (
     `Hola, soy ${nombre} (${telefono}). Me interesa conocer más sobre ` +
-    `${programas} de S-Peak. Mi correo es ${correo}.`
+    `${programas}. Mi correo es ${correo}.`
   );
 }
 
@@ -122,8 +131,9 @@ export default function FlotanteWhatsApp() {
     const telefono = texto("telefono");
     const correo = texto("correo");
 
-    // Una sola lectura de la ruta para los dos usos: el mensaje y el payload.
-    const idioma = idiomaDeRuta(ruta);
+    // El idioma del campo, para el mensaje y el payload; el de la ruta solo
+    // de respaldo.
+    const idioma = texto("idioma") || idiomaDeRuta(ruta);
 
     const payload: PayloadLead = {
       nombre,
@@ -284,6 +294,7 @@ export default function FlotanteWhatsApp() {
                       required
                     />
                   </div>
+                  <CampoIdioma id={`${id}-idioma`} />
                   {/* Campo trampa: invisible para una persona, irresistible
                       para un bot que rellena todo lo que encuentra. Si llega con
                       contenido, /api/lead/ descarta el envío. No lleva label ni

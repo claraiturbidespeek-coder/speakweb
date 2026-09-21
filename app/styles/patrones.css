@@ -1213,6 +1213,7 @@
 }
 
 .sp-form-group input,
+.sp-form-group select,
 .sp-form-group textarea {
   width: 100%;
   border: 1.5px solid var(--color-border);
@@ -1226,6 +1227,7 @@
 }
 
 .sp-form-group input:focus,
+.sp-form-group select:focus,
 .sp-form-group textarea:focus {
   border-color: var(--color-navy);
   box-shadow: 0 0 0 3px rgba(26, 60, 77, 0.08);

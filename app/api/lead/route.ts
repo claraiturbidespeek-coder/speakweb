@@ -20,10 +20,11 @@
      que nadie consume; se acepta el nativo y no se exportan más métodos.
 
    Lo demás es idéntico a propósito, incluidas dos cosas que el original daba por
-   sentadas porque servía a una sola landing y que ahora sirven al sitio entero:
-   el asunto del correo dice "Landing Inglés para Empresas" siempre, y el campo
-   `idioma` cae por defecto a "Inglés" si el cliente no lo manda. Se ajustan
-   después de comprobar que este endpoint funciona, no a la vez.
+   sentadas porque servía a una sola landing y que ahora sirve al sitio entero:
+   el campo `idioma` cae por defecto a "Inglés" si el cliente no lo manda. Se
+   ajusta después de comprobar que este endpoint funciona, no a la vez. El
+   asunto ya no es fijo: lo arma asuntoCorreoLead con el origen, el nombre y
+   la empresa.
 
    VARIABLES DE ENTORNO (ninguna con prefijo NEXT_PUBLIC_: son secretas):
      RESEND_API_KEY    sin ella el endpoint responde 500 y no envía nada
@@ -44,6 +45,8 @@
    responde en /api/lead/ y una llamada a /api/lead se redirige con un 308. Al
    repuntar el modal hay que apuntar a /api/lead/, con barra. */
 
+import { asuntoCorreoLead, plantillaCorreoLead } from "@/lib/correoLead";
+
 const FROM = "S-Peak Landing <hello@mail.s-peak.com>";
 const TO = [
   "hola@scndal.com",
@@ -51,7 +54,6 @@ const TO = [
   "hola@s-peak.com",
   "michel.l@scndal.com",
 ];
-const SUBJECT = "Nuevo lead - Landing Inglés para Empresas";
 
 // Orígenes permitidos para CORS.
 const ALLOWED_ORIGINS = ["https://s-peak.com", "https://www.s-peak.com"];
@@ -102,15 +104,6 @@ type LeadCrm = {
   utm_content: string;
   gclid: string;
 };
-
-function escapeHtml(value: unknown): string {
-  return String(value == null ? "" : value)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
 
 /* Rango reservado para ficción de Norteamérica (NANP): los números locales
    555-0100 a 555-0199 no se asignan a nadie, así que un lead con uno es
@@ -497,22 +490,29 @@ export async function POST(request: Request): Promise<Response> {
 
   const text = rows.map(([k, v]) => `${k}: ${v}`).join("\n");
 
-  const html = `
-  <div style="font-family: Arial, Helvetica, sans-serif; color: #111827; max-width: 560px;">
-    <h2 style="color:#1A3C4D; margin:0 0 4px;">Nuevo lead — Landing Inglés para Empresas</h2>
-    <p style="margin:0 0 16px; color:#6b7280; font-size:14px;">Recibido desde: <strong>${escapeHtml(origen)}</strong></p>
-    <table style="border-collapse:collapse; width:100%; font-size:15px;">
-      ${rows
-        .map(
-          ([k, v]) => `
-        <tr>
-          <td style="padding:8px 12px; background:#F5F7FA; font-weight:bold; border:1px solid #e5e7eb; white-space:nowrap; vertical-align:top;">${escapeHtml(k)}</td>
-          <td style="padding:8px 12px; border:1px solid #e5e7eb;">${escapeHtml(v).replace(/\n/g, "<br>")}</td>
-        </tr>`
-        )
-        .join("")}
-    </table>
-  </div>`;
+  /* El cuerpo del correo sale de lib/correoLead.ts: solo presentación, con
+     los mismos valores que `rows`. `text` se queda como estaba porque es la
+     nota de Kommo; el correo lleva su propia versión en texto plano, en el
+     orden de la plantilla. */
+  const asunto = asuntoCorreoLead(origen, nombre, empresa);
+  const correoLead = plantillaCorreoLead({
+    origen,
+    pagina,
+    nombre,
+    empresa: empresa || noProporcionado,
+    puesto: puesto || noProporcionado,
+    correo,
+    telefono: telefono || noProporcionado,
+    mensaje: mensaje || noProporcionado,
+    idioma,
+    utmSource,
+    utmMedium,
+    utmCampaign,
+    utmContent,
+    gclid,
+    fecha: new Date(),
+    asunto,
+  });
 
   // Kommo (fire-and-forget): arrancamos la creación del lead en paralelo al
   // correo. Su resultado NUNCA cambia la respuesta al cliente: el correo se
@@ -575,9 +575,9 @@ export async function POST(request: Request): Promise<Response> {
       body: JSON.stringify({
         from: FROM,
         to: TO,
-        subject: SUBJECT,
-        html,
-        text,
+        subject: asunto,
+        html: correoLead.html,
+        text: correoLead.texto,
         // Responder al correo va directo al lead.
         reply_to: correo,
       }),

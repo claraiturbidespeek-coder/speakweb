@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { FormEvent, MouseEvent } from "react";
 import { usePathname } from "next/navigation";
 import Icono from "@/app/components/Icono";
+import CampoIdioma from "./CampoIdioma";
 import {
   enviarLead,
   idiomaDeRuta,
@@ -101,7 +102,8 @@ export default function ModalContacto({
       mensaje: texto("mensaje"),
       sitio_web: texto("sitio_web"),
       origen: "Formulario principal",
-      ...recogerAtribucion(idiomaDeRuta(ruta)),
+      // El del campo; el de la ruta solo por si el campo no llegara.
+      ...recogerAtribucion(texto("idioma") || idiomaDeRuta(ruta)),
     };
 
     setEstado({ enviando: true, error: false, exito: false });
@@ -242,6 +244,8 @@ export default function ModalContacto({
                   placeholder="Ej. Directora de Recursos Humanos"
                 />
               </div>
+
+              <CampoIdioma id="contactoIdioma" />
 
               <div className="sp-form-group">
                 <label htmlFor="contactoMensaje">Cuéntenos su necesidad</label>
