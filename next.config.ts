@@ -173,13 +173,6 @@ const nextConfig: NextConfig = {
         destination: "/blog/",
         statusCode: 301,
       },
-      // Post de vocabulario de negocios que ya no existe; la nota más cercana es
-      // la de inglés de negocios por rol ejecutivo.
-      {
-        source: "/vocabulario-negocios-ingles-equipos",
-        destination: "/ingles-de-negocios-ejecutivos/",
-        statusCode: 301,
-      },
       /* Exámenes del WordPress viejo. El mapa vive en redirects-examenes.json:
          sumar un examen es sumar una línea ahí. Como las de arriba, aceptan la
          ruta con y sin slash y conservan la query, también hacia el dominio
