@@ -1321,8 +1321,10 @@
   color: var(--color-ink-2);
 }
 
-.sp-form-exito-prisa {
-  margin: 24px 0 12px;
+/* Anidado para ganarle a `.sp-form-exito p`, que de otro modo le quitaba el
+   margen y dejaba el botón pegado al texto. */
+.sp-form-exito .sp-form-exito-prisa {
+  margin: 24px auto 12px;
   font-size: 13px;
   font-weight: var(--weight-semibold);
   color: var(--color-muted);

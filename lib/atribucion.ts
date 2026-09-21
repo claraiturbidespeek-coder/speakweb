@@ -57,10 +57,19 @@ const CLAVES_ATRIBUCION = [
   "gclid",
 ] as const;
 
-/* Guarda en la sesión el gclid y los UTM de la URL, para que recogerAtribucion
-   los encuentre aunque el visitante navegue a otra página antes de enviar. Si
-   la URL trae alguno, reemplaza lo guardado entero: es una visita de campaña
-   nueva y no debe mezclarse con la anterior. Si no trae ninguno, no toca nada. */
+/* PERSISTENCIA. El gclid y los UTM se guardan en localStorage, con la fecha en
+   que se guardaron, para que sobrevivan aunque el visitante cierre el navegador
+   y vuelva otro día. Vencen a los 90 días, la ventana máxima de conversión de
+   Google Ads: pasado ese plazo se borran y se tratan como si no existieran.
+   Si el navegador bloquea localStorage, todo sigue funcionando con lo que traiga
+   la URL, solo que sin memoria. */
+const VIGENCIA_MS = 90 * 24 * 60 * 60 * 1000;
+
+type Guardado = { datos: Record<string, string>; guardado: number };
+
+/* Si la URL trae alguno, reemplaza lo guardado entero y reinicia los 90 días:
+   es una visita de campaña nueva y no debe mezclarse con la anterior. Si no
+   trae ninguno, no toca nada. */
 export function guardarAtribucion(): void {
   try {
     const params = new URLSearchParams(window.location.search);
@@ -70,9 +79,47 @@ export function guardarAtribucion(): void {
       if (valor) datos[clave] = valor;
     }
     if (Object.keys(datos).length === 0) return;
-    sessionStorage.setItem(CLAVE_SESION, JSON.stringify(datos));
+    const registro: Guardado = { datos, guardado: Date.now() };
+    localStorage.setItem(CLAVE_SESION, JSON.stringify(registro));
   } catch {
-    // Sin sessionStorage (modo privado estricto): el envío sigue leyendo la URL.
+    // localStorage bloqueado: el envío sigue leyendo la URL.
+  }
+}
+
+// Lo guardado y vigente, o vacío. Si venció o no se entiende, se borra.
+function leerGuardado(): Record<string, string> {
+  try {
+    const crudo = localStorage.getItem(CLAVE_SESION);
+    if (!crudo) return {};
+    const registro = JSON.parse(crudo) as Partial<Guardado> | null;
+    const vigente =
+      registro &&
+      typeof registro.guardado === "number" &&
+      registro.datos &&
+      typeof registro.datos === "object" &&
+      Date.now() - registro.guardado <= VIGENCIA_MS;
+    if (!vigente) {
+      localStorage.removeItem(CLAVE_SESION);
+      return {};
+    }
+    return registro.datos as Record<string, string>;
+  } catch {
+    return {};
+  }
+}
+
+/* Respaldo para cuando no hay nada guardado: la cookie _gcl_aw que crea el
+   Vinculador de Conversiones de GTM. Su valor es GCL.<marca de tiempo>.<gclid>. */
+function gclidDeCookie(): string {
+  try {
+    const cookie = document.cookie
+      .split("; ")
+      .find((c) => c.startsWith("_gcl_aw="));
+    if (!cookie) return "";
+    const partes = decodeURIComponent(cookie.slice("_gcl_aw=".length)).split(".");
+    return partes.length >= 3 ? partes.slice(2).join(".").trim() : "";
+  } catch {
+    return "";
   }
 }
 
@@ -84,15 +131,14 @@ export function recogerAtribucion(idioma: string): Atribucion {
     params = null;
   }
 
-  let guardado: Record<string, unknown> = {};
-  try {
-    guardado = JSON.parse(sessionStorage.getItem(CLAVE_SESION) || "{}") || {};
-  } catch {
-    guardado = {};
+  let guardado: Record<string, string> = leerGuardado();
+  if (Object.keys(guardado).length === 0) {
+    const gclidCookie = gclidDeCookie();
+    if (gclidCookie) guardado = { gclid: gclidCookie };
   }
 
-  // Prioridad por campo: 1) query actual en la URL, 2) valor persistido en la
-  // sesión, 3) vacío.
+  // Prioridad por campo: 1) query actual en la URL, 2) valor guardado y
+  // vigente, o el gclid de la cookie _gcl_aw si no hay nada guardado, 3) vacío.
   const crudo = (clave: string): string => {
     const enVivo = params ? (params.get(clave) || "").trim() : "";
     if (enVivo) return enVivo;
