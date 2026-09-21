@@ -1,27 +1,19 @@
 import type { NextConfig } from "next";
+import redirectsExamenes from "./redirects-examenes.json";
 
 const nextConfig: NextConfig = {
   trailingSlash: true,
   async redirects() {
     return [
-      /* Rutas heredadas sin destino propio. Las cuatro son permanentes: la URL
+      /* Rutas heredadas sin destino propio. Las dos son permanentes: la URL
          vieja debe salir del índice y cederle el sitio a la nueva. La query se
          conserva sola —Next la arrastra cuando el destino no declara la suya—,
          así que el gclid y los utm de una campaña llegan íntegros al destino.
 
-         La quinta, /landing/ingles-para-empresas/, no está aquí: necesita
-         añadir el fragmento #landing además de la query, y eso se compone a
-         mano en su propio route handler. */
-      {
-        source: "/italiano-lp-aterrizaje-google-ads",
-        destination: "/idioma/italiano-para-empresas/",
-        statusCode: 301,
-      },
-      {
-        source: "/portugues-lp-aterrizaje-google-ads",
-        destination: "/idioma/portugues-para-empresas/",
-        statusCode: 301,
-      },
+         Las tres landings de Google Ads —/landing/ingles-para-empresas/,
+         /italiano-lp-aterrizaje-google-ads/ y /portugues-lp-aterrizaje-google-ads/—
+         no están aquí: necesitan añadir el fragmento #landing además de la
+         query, y eso se compone a mano en su propio route handler. */
       {
         source: "/mcer",
         destination: "/",
@@ -170,6 +162,15 @@ const nextConfig: NextConfig = {
         destination: "/nearshoring-mexico-ingles-empresas/",
         statusCode: 301,
       },
+      /* Exámenes del WordPress viejo. El mapa vive en redirects-examenes.json:
+         sumar un examen es sumar una línea ahí. Como las de arriba, aceptan la
+         ruta con y sin slash y conservan la query, también hacia el dominio
+         externo de exámenes. */
+      ...Object.entries(redirectsExamenes).map(([source, destination]) => ({
+        source,
+        destination,
+        statusCode: 301 as const,
+      })),
     ];
   },
 };
