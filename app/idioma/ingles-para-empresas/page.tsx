@@ -106,7 +106,7 @@ export default function Page() {
 <AnimacionesEntrada />
 <main>
 {/* HERO */}
-<section className={styles.hero}>
+<section className={styles.hero} data-hero>
   <img className={`${styles.deco} ${styles.decoHero}`} src="/images/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy" />
   <div className={styles.heroInner}>
     {/* COLUMNA IZQUIERDA (60%) */}
@@ -184,7 +184,7 @@ export default function Page() {
 
 {/* FRANJA DE IDIOMAS — se esconde en modo landing */}
 <FranjaIdiomas
-  className="sp-oculto-landing"
+  className={`sp-oculto-landing ${styles.franja}`}
   titulo="No solo inglés"
   texto={
     <>

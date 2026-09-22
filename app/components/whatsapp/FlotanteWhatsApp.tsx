@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Icono from "@/app/components/Icono";
+import useTrasHero from "@/app/components/useTrasHero";
 import CampoIdioma from "@/app/components/contacto/CampoIdioma";
 import {
   enviarLead,
@@ -83,6 +84,7 @@ export default function FlotanteWhatsApp() {
   const primerCampo = useRef<HTMLInputElement>(null);
   const ruta = usePathname();
   const id = useId();
+  const visible = useTrasHero();
 
   const [estado, setEstado] = useState(ESTADO_INICIAL);
   // Cuando hay enlace, el modal ya está en su estado de confirmación: es el
@@ -184,6 +186,7 @@ export default function FlotanteWhatsApp() {
       <button
         type="button"
         className={styles.flotante}
+        data-visible={visible || undefined}
         aria-label="Escríbanos por WhatsApp"
         aria-haspopup="dialog"
         onClick={abrir}

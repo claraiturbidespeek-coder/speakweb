@@ -19,6 +19,9 @@ import styles from "../Header.module.css";
 export default function Logotipo() {
   const landing = useModoLanding();
 
+  /* `preload` y no `priority`: Next 16 dejó `priority` como obsoleto y este es
+     su relevo. Está en la primera pantalla de todas las páginas, así que no
+     espera a la carga diferida. */
   const marca = (
     <Image
       className="site-logo"
@@ -26,6 +29,7 @@ export default function Logotipo() {
       alt="S-Peak"
       width={1776}
       height={492}
+      preload
     />
   );
 

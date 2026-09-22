@@ -1476,10 +1476,18 @@
    Ahora lo monta VolverArriba.tsx una vez en el layout raíz, así que pasa a
    vocabulario sp-*: lo ve el sitio completo. */
 
+/* Va en la esquina derecha, justo encima del flotante de WhatsApp: a la
+   izquierda pasaba por encima del texto en móvil, donde el margen lateral es
+   de 20px y no cabe nada al lado de la columna de lectura.
+
+   Las tres medidas se calculan contra ese botón (FlotanteWhatsApp.module.css:
+   56px a 24px del borde en escritorio, 48px a 20px por debajo de 960px):
+   `right` lo centra en la misma columna y `bottom` lo sube el alto del
+   flotante más la misma separación que este guarda con el borde inferior. */
 .sp-volver-arriba {
   position: fixed;
-  left: 20px;
-  bottom: 24px;
+  right: 32px;
+  bottom: 104px;
   width: 40px;
   height: 40px;
   display: flex;
@@ -1531,6 +1539,15 @@
   }
 }
 
+@media (max-width: 960px) {
+  /* El flotante de WhatsApp baja a 48px y se acerca a 20px del borde: este lo
+     sigue para seguir centrado en su columna y a la misma distancia de él. */
+  .sp-volver-arriba {
+    right: 24px;
+    bottom: 88px;
+  }
+}
+
 @media (max-width: 768px) {
   /* Tres cifras no caben en una fila estrecha sin quedar ilegibles. Las dos
      páginas migradas ocultan la tercera exactamente igual. */
@@ -1559,8 +1576,7 @@
   }
 
   .sp-volver-arriba {
-    left: 14px;
-    bottom: 18px;
+    right: 26px;
     width: 36px;
     height: 36px;
   }

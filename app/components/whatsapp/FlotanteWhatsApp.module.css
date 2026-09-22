@@ -171,19 +171,34 @@
 
 /* ---------- Responsive ---------- */
 
-/* En móvil el botón crece un poco y se acerca al borde: el pulgar lo alcanza
-   mejor y compite menos con el contenido. Venía así de la plantilla. */
-@media (max-width: 768px) {
+/* En móvil y tablet el botón se acerca al borde y baja de tamaño, y no está
+   en la primera pantalla: ahí tapaba el sello de la STPS, el primer campo del
+   formulario y los filtros del blog. Aparece cuando el visitante deja atrás el
+   hero, o tras 400px en las páginas sin hero; el cuándo lo decide useTrasHero,
+   y aquí queda solo el cómo, con la misma transición que el botón de volver
+   arriba (.sp-volver-arriba, patrones.css). En escritorio no cambia nada. */
+@media (max-width: 960px) {
   .flotante {
-    width: 60px;
-    height: 60px;
+    width: 48px;
+    height: 48px;
     bottom: 20px;
     right: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease,
+      box-shadow var(--transition-fast);
+  }
+
+  .flotante[data-visible] {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
 
   .flotante svg {
-    width: 34px;
-    height: 34px;
+    width: 28px;
+    height: 28px;
   }
 }
 

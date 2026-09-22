@@ -715,6 +715,16 @@
   }
 }
 
+/* La franja de idiomas no colapsaba: el patrón (.sp-franja, patrones.css) no
+   trae responsive, y a estos anchos el texto quedaba en una columna angosta
+   junto a las pastillas. Se apila aquí, acotado a las páginas de equipo: el
+   patrón lo comparte también /idioma/ingles-para-empresas/. */
+@media (max-width: 768px) {
+  .franja :global(.sp-franja-inner) {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 600px) {
   .hero {
     padding: 48px var(--space-gutter) 80px;

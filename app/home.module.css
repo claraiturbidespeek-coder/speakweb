@@ -756,8 +756,10 @@
     width: 100%;
   }
 
+  /* Una columna y no dos: con tres tarjetas, dos columnas dejaban la
+     tercera huérfana en su fila. */
   .differentiators {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 
   .band {
@@ -779,6 +781,33 @@
   .mosaicColumnSecond {
     padding-top: 0;
     padding-bottom: 0;
+  }
+}
+
+/* Tablet: los tres contadores y las seis banderas pasaban a la fila
+   siguiente de uno en uno y dejaban un elemento huérfano. Aquí se reparten en
+   filas completas: los contadores en una de tres, las banderas en dos de tres.
+   Por debajo de 600px se quedan como estaban, uno o dos por fila. */
+@media (min-width: 601px) and (max-width: 960px) {
+  .counters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .counter {
+    padding: 20px 16px;
+  }
+
+  .counterNum {
+    font-size: 56px;
+  }
+
+  .langs {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    justify-content: center;
+    gap: 20px 40px;
   }
 }
 

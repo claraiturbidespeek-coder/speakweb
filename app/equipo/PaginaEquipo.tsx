@@ -94,7 +94,7 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
       <AnimacionesEntrada threshold={0.08} />
       <main>
         {/* HERO */}
-        <section className={styles.hero}>
+        <section className={styles.hero} data-hero>
           <img
             className={styles.decoHero}
             src="/images/isotype.svg"
@@ -194,6 +194,7 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
         {/* FRANJA DE IDIOMAS — solo las áreas que traen su texto */}
         {datos.franja ? (
           <FranjaIdiomas
+            className={styles.franja}
             titulo={datos.franja.titulo}
             texto={datos.franja.texto}
             idiomas={datos.franja.idiomas}

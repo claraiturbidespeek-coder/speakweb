@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import useTrasHero from "./useTrasHero";
 
 /* Botón de volver arriba, global: antes vivía solo en
    /idioma/ingles-para-empresas/ como <Script> de esa página. Montado aquí
@@ -8,17 +8,13 @@ import { useEffect, useState } from "react";
 
    Usa window.__lenis (la instancia que monta ScrollSuave.tsx) para el
    desplazamiento suave; si no existe —Lenis no se monta con movimiento
-   reducido— cae a scrollTo nativo, igual que el guion original. */
+   reducido— cae a scrollTo nativo, igual que el guion original.
+
+   Aparece a la vez que el flotante de WhatsApp: los dos consultan
+   useTrasHero. */
 
 export default function VolverArriba() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setVisible(window.pageYOffset > 400);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const visible = useTrasHero();
 
   const irArriba = () => {
     if (window.__lenis) window.__lenis.scrollTo(0);

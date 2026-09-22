@@ -636,6 +636,14 @@
   .logos {
     margin-top: 0;
   }
+
+  /* La franja de idiomas se apila: el patrón (.sp-franja, patrones.css) no
+     trae responsive, y a estos anchos el texto quedaba en una columna angosta
+     junto a las pastillas. Mismo arreglo, acotado igual, que el de las páginas
+     de equipo. */
+  .franja :global(.sp-franja-inner) {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 600px) {

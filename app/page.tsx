@@ -3,6 +3,7 @@ import Link from "next/link";
 import BandaLogos from "@/app/components/BandaLogos";
 import CentroDeRecursos from "@/app/components/CentroDeRecursos";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
+import HeroHomeMedia from "@/app/components/HeroHomeMedia";
 import SelloSTPS from "@/app/components/SelloSTPS";
 import Icono from "@/app/components/Icono";
 import styles from "./home.module.css";
@@ -179,7 +180,7 @@ export default function Home() {
   return (
     <main>
       {/* Hero nuevo — en construcción */}
-      <section className={`sp-seccion ${styles.heroNuevo}`}>
+      <section className={`sp-seccion ${styles.heroNuevo}`} data-hero>
         <div className={`sp-inner ${styles.heroNuevoInner}`}>
           <div className={styles.heroNuevoText}>
             <h1 className={styles.heroTitle}>
@@ -204,14 +205,7 @@ export default function Home() {
           </div>
 
           <div className={styles.heroNuevoMedia}>
-            <video
-              className={styles.heroNuevoVideo}
-              src="/video/hero-speak.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-            />
+            <HeroHomeMedia className={styles.heroNuevoVideo} />
             <p className={`${styles.callout} ${styles.calloutTop}`}>
               Potencie las habilidades lingüísticas de su equipo y compita a
               nivel global
