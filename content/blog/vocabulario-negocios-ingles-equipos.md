@@ -143,7 +143,7 @@ No generan un estándar compartido: Cada persona del equipo aprende términos di
 
 No se adaptan a la industria ni al vocabulario específico de la empresa: Un vocabulario genérico no cubre los términos propios del sector en el que opera su negocio.
 
-Si busca estructurar una estrategia integral para su organización, revise las [8 claves para poner en marcha tu capacitación de idiomas](https://s-peak.com/capacitacion-de-idiomas-para-empresas/) para empresas y asegure un proyecto con verdadero impacto operativo.
+Si busca estructurar una estrategia integral para su organización, revise las [8 claves para poner en marcha su capacitación de idiomas](https://s-peak.com/capacitacion-de-idiomas-para-empresas/) para empresas y asegure un proyecto con verdadero impacto operativo.
 
 ## Domine el vocabulario de negocios en inglés de su equipo con S-Peak
 
