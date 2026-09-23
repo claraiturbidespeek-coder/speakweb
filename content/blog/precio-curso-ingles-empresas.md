@@ -1,5 +1,5 @@
 ---
-title: "Precio de un curso de inglés: cuánto cuesta capacitar a tu equipo"
+title: "Precio de un curso de inglés: cuánto cuesta capacitar a su equipo"
 slug: "precio-curso-ingles-empresas"
 date: "2026-09-01T00:44:25+00:00"
 author: "Andrea Ríos"
@@ -9,7 +9,7 @@ categorySlug: "resultados-y-roi"
 tags: []
 featuredImage: "/images/blog/precio-curso-ingles-empresas-portada.webp"
 featuredImageAlt: "Profesor de inglés grabando una clase virtual con una bandera del Reino Unido, frente a un pizarrón con conjugaciones verbales."
-seoTitle: "Cursos de inglés precios: cuánto cuesta capacitar a tu equipo | %%sitename%%"
+seoTitle: "Cursos de inglés precios: cuánto cuesta capacitar a su equipo | %%sitename%%"
 seoDescription: "Conozca sobre cursos de inglés precios y rangos para empresas. Compare opciones individuales vs. corporativas y evalúe su ROI."
 focusKeyword: "cuánto cuesta un curso de inglés para empresas"
 readingTime: 5
@@ -64,7 +64,7 @@ Tres riesgos financieros de elegir la opción más barata sin evaluar el impacto
 
 Por consiguiente, para evaluar el impacto real de cada peso invertido, le sugerimos revisar nuestro artículo sobre [el retorno de inversión en la capacitación de idiomas](https://s-peak.com/roi-capacitacion-idiomas/), el cual explica las fórmulas clave para calcular el ROI educativo en su organización.
 
-## Cotiza la capacitación de tu equipo con S-Peak
+## Cotice la capacitación de su equipo con S-Peak
 
 En S-Peak sabemos que al buscar en cursos de inglés precios transparentes y esquemas flexibles, las empresas necesitan soluciones que se adapten a sus techos presupuestales sin sacrificar la calidad académica. Por esta razón, diseñamos programas corporativos a la medida que garantizan el máximo aprovechamiento por cada grupo capacitado.
 

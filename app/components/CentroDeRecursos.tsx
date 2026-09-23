@@ -82,7 +82,7 @@ const POSTS = [
     alt: "Capacitación en inglés empresarial para equipos de trabajo en una mesa de negociación con banderas internacionales.",
   },
   {
-    titulo: "5 errores de comunicación en tu primer año de Nearshoring",
+    titulo: "5 errores de comunicación en su primer año de Nearshoring",
     url: "/errores-comunicacion-nearshoring-en-mexico/",
     imagen: "blog-errores-nearshoring.webp",
     ancho: 1024,
