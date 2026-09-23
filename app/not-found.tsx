@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import styles from "./not-found.module.css";
+import { imagenResponsiva } from "@/lib/imagenes";
 
 export const metadata: Metadata = {
   title: "Página no encontrada (404) | S-Peak",
@@ -127,9 +128,9 @@ export default function NoEncontrado() {
         </div>
       </div>
       <div className={`${styles.personaje} sp404-char`}>
-        <img src="/images/404/s2-m-calm.webp"   alt="" data-mood="calm" className="is-on" fetchPriority="high" />
-        <img src="/images/404/s2-m-stress.webp" alt="" data-mood="stress" />
-        <img src="/images/404/s2-m-mal.webp"    alt="" data-mood="mal" />
+        <img {...imagenResponsiva("/images/404/s2-m-calm.webp", "(max-width: 600px) 200px, 340px")} alt="" data-mood="calm" className="is-on" fetchPriority="high" />
+        <img {...imagenResponsiva("/images/404/s2-m-stress.webp", "(max-width: 600px) 200px, 340px")} alt="" data-mood="stress" />
+        <img {...imagenResponsiva("/images/404/s2-m-mal.webp", "(max-width: 600px) 200px, 340px")} alt="" data-mood="mal" />
       </div>
     </div>
 
@@ -143,9 +144,9 @@ export default function NoEncontrado() {
         </div>
       </div>
       <div className={`${styles.personaje} sp404-char`}>
-        <img src="/images/404/s2-w-calm.webp"   alt="" data-mood="calm" className="is-on" fetchPriority="high" />
-        <img src="/images/404/s2-w-stress.webp" alt="" data-mood="stress" />
-        <img src="/images/404/s2-w-mal.webp"    alt="" data-mood="mal" />
+        <img {...imagenResponsiva("/images/404/s2-w-calm.webp", "(max-width: 600px) 200px, 340px")} alt="" data-mood="calm" className="is-on" fetchPriority="high" />
+        <img {...imagenResponsiva("/images/404/s2-w-stress.webp", "(max-width: 600px) 200px, 340px")} alt="" data-mood="stress" />
+        <img {...imagenResponsiva("/images/404/s2-w-mal.webp", "(max-width: 600px) 200px, 340px")} alt="" data-mood="mal" />
       </div>
     </div>
   </div>

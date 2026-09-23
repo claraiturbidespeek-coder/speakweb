@@ -1,4 +1,5 @@
 import { LOGOS_CLIENTES } from "./logos-clientes";
+import { imagenResponsiva } from "@/lib/imagenes";
 
 /* Franja de confianza compartida por las 14 páginas que la llevan: home, las
    siete de Soluciones por Equipo y las seis landings de idioma.
@@ -47,7 +48,10 @@ export default function BandaLogos({
             {logos.map((l, i) => (
               <img
                 key={`${l.archivo}-${i}`}
-                src={`/images/logos/${encodeURIComponent(l.archivo)}`}
+                {...imagenResponsiva(
+                  `/images/logos/${encodeURIComponent(l.archivo)}`,
+                  "88px",
+                )}
                 alt={i < LOGOS_CLIENTES.length ? l.marca : ""}
                 aria-hidden={i >= LOGOS_CLIENTES.length}
                 inert={i >= LOGOS_CLIENTES.length}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { imagenResponsiva } from "@/lib/imagenes";
 
 /* La media del hero del home: el video en escritorio y su primer fotograma en
    móvil y tablet.
@@ -59,7 +60,7 @@ export default function HeroHomeMedia({ className }: { className?: string }) {
   return (
     <img
       className={className}
-      src={POSTER}
+      {...imagenResponsiva(POSTER, "(max-width: 960px) calc(100vw - 40px), 720px")}
       alt=""
       width={720}
       height={900}

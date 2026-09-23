@@ -37,6 +37,18 @@
 - Si un cambio toca un patrón compartido y afectaría a otras páginas, no lo
   toques: aplica el override acotado a la sección y repórtalo.
 
+## Imágenes
+- Toda <img> de una imagen WebP de public/images/ se sirve con srcset y sizes
+  mediante `imagenResponsiva` (lib/imagenes.ts). Nada de fondos CSS para fotos
+  o ilustraciones: van como <img> con object-fit, para poder llevar srcset.
+- Las variantes por ancho viven en public/images/variantes/ y van commiteadas.
+  Las genera `npm run imagenes` y solo a mano: al añadir o reexportar una
+  imagen, ejecútalo y deja en el working directory las variantes y los dos JSON
+  que escribe (lib/imagenes-variantes.json y
+  scripts/imagenes-responsivas.estado.json). El build no lo ejecuta.
+- El `sizes` de cada imagen se mide en el navegador, no se deduce del CSS. Si
+  un cambio altera el tamaño en que se muestra una imagen, revisa su sizes.
+
 ## Alcance
 - Haz solo lo que se pide. No agregues elementos, secciones ni mejoras no solicitadas.
 - Si algo se ve duplicado, mal escrito o mejorable fuera del alcance, repórtalo.

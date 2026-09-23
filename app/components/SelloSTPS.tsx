@@ -1,3 +1,5 @@
+import { imagenResponsiva } from "@/lib/imagenes";
+
 /* Sello de registro ante la STPS: el logotipo y la línea de constancia que van
    bajo el CTA del hero.
 
@@ -13,7 +15,7 @@ export default function SelloSTPS() {
     <div className="sp-sello-stps">
       <img
         className="sp-sello-stps-logo"
-        src="/images/stps-logo.webp"
+        {...imagenResponsiva("/images/stps-logo.webp", "101px")}
         alt="Secretaría del Trabajo y Previsión Social"
         width="101"
         height="28"

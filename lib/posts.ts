@@ -9,6 +9,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import type { Root, Element } from "hast";
 import { dimensionesDe } from "./dimensiones";
+import { imagenResponsiva } from "./imagenes";
 
 const DIR_CONTENIDO = path.join(process.cwd(), "content/blog");
 const DIR_APP = path.join(process.cwd(), "app");
@@ -178,6 +179,18 @@ function prepararImagenes() {
           if (dim && props.width == null && props.height == null) {
             props.width = dim.width;
             props.height = dim.height;
+          }
+          /* Ancho de la columna de lectura (.contenido): a toda la columna
+             hasta 960px y con tope de 780px en escritorio. */
+          if (props.srcSet == null) {
+            const { srcSet, sizes } = imagenResponsiva(
+              String(props.src ?? ""),
+              "(max-width: 960px) calc(100vw - 40px), (max-width: 1280px) 61vw, 780px",
+            );
+            if (srcSet) {
+              props.srcSet = srcSet;
+              props.sizes = sizes;
+            }
           }
           props.loading ??= "lazy";
           props.decoding ??= "async";

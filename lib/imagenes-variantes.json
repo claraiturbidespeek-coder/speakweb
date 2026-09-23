@@ -1,0 +1,1037 @@
+{
+  "/images/404/s2-m-calm.webp": {
+    "width": 602,
+    "height": 664,
+    "anchos": [
+      160,
+      320,
+      480
+    ]
+  },
+  "/images/404/s2-m-mal.webp": {
+    "width": 594,
+    "height": 671,
+    "anchos": [
+      160,
+      320,
+      480
+    ]
+  },
+  "/images/404/s2-m-stress.webp": {
+    "width": 534,
+    "height": 647,
+    "anchos": [
+      160,
+      320,
+      480
+    ]
+  },
+  "/images/404/s2-w-calm.webp": {
+    "width": 579,
+    "height": 630,
+    "anchos": [
+      160,
+      320,
+      480
+    ]
+  },
+  "/images/404/s2-w-mal.webp": {
+    "width": 562,
+    "height": 644,
+    "anchos": [
+      160,
+      320,
+      480
+    ]
+  },
+  "/images/404/s2-w-stress.webp": {
+    "width": 530,
+    "height": 635,
+    "anchos": [
+      160,
+      320,
+      480
+    ]
+  },
+  "/images/blog/aprender-idiomas-nearshoring-mexico-01.webp": {
+    "width": 1024,
+    "height": 684,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/aprender-idiomas-nearshoring-mexico-portada.webp": {
+    "width": 1600,
+    "height": 1066,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/blog-capacitacion-en-ingles-programa-fantasma-01.webp": {
+    "width": 1024,
+    "height": 681,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/blog-capacitacion-en-ingles-programa-fantasma-portada.webp": {
+    "width": 1600,
+    "height": 1067,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/blog-clases-idiomas-empresas-proveedor-01.webp": {
+    "width": 1024,
+    "height": 683,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/blog-clases-idiomas-empresas-proveedor-portada.webp": {
+    "width": 1600,
+    "height": 1067,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/blog-errores-cursos-idiomas-empresas-01.webp": {
+    "width": 1024,
+    "height": 681,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/blog-errores-cursos-idiomas-empresas-portada.webp": {
+    "width": 1600,
+    "height": 1067,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080
+    ]
+  },
+  "/images/blog/blog-ingles-corporativo-mexico-precio-01.webp": {
+    "width": 1024,
+    "height": 683,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/blog-ingles-corporativo-mexico-precio-portada.webp": {
+    "width": 1600,
+    "height": 1067,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/blog-nearshoring-mexico-ingles-empresas-01.webp": {
+    "width": 1024,
+    "height": 640,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/blog-nearshoring-mexico-ingles-empresas-portada.webp": {
+    "width": 1600,
+    "height": 806,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080
+    ]
+  },
+  "/images/blog/blog-nivel-ingles-empresas-areas-01.webp": {
+    "width": 1024,
+    "height": 683,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/blog-nivel-ingles-empresas-areas-portada.webp": {
+    "width": 1600,
+    "height": 1068,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/capacitacion-de-idiomas-para-empresas-portada.webp": {
+    "width": 1600,
+    "height": 1144,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/capacitacion-idiomas-cultura-corporativa-portada.webp": {
+    "width": 1200,
+    "height": 896,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080
+    ]
+  },
+  "/images/blog/capacitacion-idiomas-personalizada-portada.webp": {
+    "width": 1600,
+    "height": 1088,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/capacitacion-idiomas-retencion-desempeno-talento-portada.webp": {
+    "width": 1200,
+    "height": 896,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080
+    ]
+  },
+  "/images/blog/capacitacion-personal-programa-idiomas-01.webp": {
+    "width": 1024,
+    "height": 683,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/capacitacion-personal-programa-idiomas-portada.webp": {
+    "width": 1600,
+    "height": 1067,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/clases-ingles-empresas-niveles-puesto-01.webp": {
+    "width": 1024,
+    "height": 683,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/clases-ingles-empresas-niveles-puesto-portada.webp": {
+    "width": 1600,
+    "height": 1067,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/como-aprende-ingles-un-ejecutivo-ocupado-metodologia-tiempos-y-expectativas-reales-01.webp": {
+    "width": 1024,
+    "height": 683,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/como-aprende-ingles-un-ejecutivo-ocupado-metodologia-tiempos-y-expectativas-reales-portada.webp": {
+    "width": 1600,
+    "height": 844,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/como-implementar-capacitacion-en-ingles-empresas-01.webp": {
+    "width": 1024,
+    "height": 681,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/como-implementar-capacitacion-en-ingles-empresas-portada.webp": {
+    "width": 1600,
+    "height": 1067,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/curso-idiomas-empresas-portada.webp": {
+    "width": 1600,
+    "height": 1085,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/errores-comunicacion-nearshoring-en-mexico-01.webp": {
+    "width": 1024,
+    "height": 683,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/errores-comunicacion-nearshoring-en-mexico-portada.webp": {
+    "width": 1600,
+    "height": 1068,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/evaluacion-de-ingles-ejecutivos-01.webp": {
+    "width": 1024,
+    "height": 623,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/evaluacion-de-ingles-ejecutivos-portada.webp": {
+    "width": 1600,
+    "height": 859,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/evaluar-proveedor-cursos-idiomas-empresas-01.webp": {
+    "width": 1024,
+    "height": 683,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/evaluar-proveedor-cursos-idiomas-empresas-portada.webp": {
+    "width": 1600,
+    "height": 1068,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/expansion-global-empresas-claves-portada.webp": {
+    "width": 1200,
+    "height": 896,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080
+    ]
+  },
+  "/images/blog/ingles-de-negocios-ejecutivos-01.webp": {
+    "width": 1024,
+    "height": 576,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/ingles-de-negocios-ejecutivos-portada.webp": {
+    "width": 1600,
+    "height": 1067,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/mejores-idiomas-para-empresas-01.webp": {
+    "width": 1024,
+    "height": 648,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/mejores-idiomas-para-empresas-portada.webp": {
+    "width": 1600,
+    "height": 1068,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/modalidad-capacitacion-idiomas-empresas-portada.webp": {
+    "width": 1000,
+    "height": 667,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/negocios-en-ingles-porque-fracasan-cursos-01.webp": {
+    "width": 1024,
+    "height": 540,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/negocios-en-ingles-porque-fracasan-cursos-portada.webp": {
+    "width": 1000,
+    "height": 527,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/blog/precio-curso-ingles-empresas-portada.webp": {
+    "width": 2560,
+    "height": 1979,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440,
+      1920
+    ]
+  },
+  "/images/blog/programa-capacitacion-idiomas-desde-cero-portada.webp": {
+    "width": 1600,
+    "height": 1088,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/roi-capacitacion-idiomas-portada.webp": {
+    "width": 1600,
+    "height": 1096,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/blog/vocabulario-negocios-ingles-equipos-portada.webp": {
+    "width": 1600,
+    "height": 1069,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/ejecutiva-hero.webp": {
+    "width": 740,
+    "height": 1080,
+    "anchos": [
+      160,
+      320,
+      480,
+      640
+    ]
+  },
+  "/images/equipo/hero-ventas-y-marketing.webp": {
+    "width": 1000,
+    "height": 667,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/home/area-atencion-a-clientes.webp": {
+    "width": 768,
+    "height": 517,
+    "anchos": [
+      160,
+      320,
+      480,
+      640
+    ]
+  },
+  "/images/home/area-directivos.webp": {
+    "width": 768,
+    "height": 512,
+    "anchos": [
+      160,
+      320,
+      480,
+      640
+    ]
+  },
+  "/images/home/area-finanzas-y-contabilidad.webp": {
+    "width": 768,
+    "height": 513,
+    "anchos": [
+      160,
+      320,
+      480,
+      640
+    ]
+  },
+  "/images/home/area-legal-y-juridico.webp": {
+    "width": 768,
+    "height": 512,
+    "anchos": [
+      160,
+      320,
+      480,
+      640
+    ]
+  },
+  "/images/home/area-operaciones-y-logistica.webp": {
+    "width": 768,
+    "height": 512,
+    "anchos": [
+      160,
+      320,
+      480,
+      640
+    ]
+  },
+  "/images/home/area-tecnologia-e-ingenieria.webp": {
+    "width": 768,
+    "height": 512,
+    "anchos": [
+      160,
+      320,
+      480,
+      640
+    ]
+  },
+  "/images/home/area-ventas-y-marketing.webp": {
+    "width": 768,
+    "height": 512,
+    "anchos": [
+      160,
+      320,
+      480,
+      640
+    ]
+  },
+  "/images/home/banda-isotipo.webp": {
+    "width": 1920,
+    "height": 696,
+    "anchos": [
+      160,
+      320,
+      480,
+      640
+    ]
+  },
+  "/images/home/blog-capacitacion-en-ingles.webp": {
+    "width": 1024,
+    "height": 683,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/home/blog-capacitacion-personal.webp": {
+    "width": 1024,
+    "height": 683,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/home/blog-errores-nearshoring.webp": {
+    "width": 1024,
+    "height": 683,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/home/blog-evaluacion-ingles.webp": {
+    "width": 1024,
+    "height": 549,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/home/blog-idiomas-para-empresas.webp": {
+    "width": 1024,
+    "height": 683,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/home/blog-ingles-de-negocios.webp": {
+    "width": 1024,
+    "height": 683,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/home/blog-nearshoring-idiomas.webp": {
+    "width": 1024,
+    "height": 683,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/home/blog-negocios-en-ingles.webp": {
+    "width": 700,
+    "height": 369,
+    "anchos": [
+      160,
+      320,
+      480,
+      640
+    ]
+  },
+  "/images/home/caso-brechas-linguisticas.webp": {
+    "width": 1500,
+    "height": 912,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/home/caso-seguimiento-calidad.webp": {
+    "width": 1500,
+    "height": 844,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440
+    ]
+  },
+  "/images/home/diferenciador-agilidad-operativa.webp": {
+    "width": 2560,
+    "height": 2560,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440,
+      1920
+    ]
+  },
+  "/images/home/diferenciador-expansion-global.webp": {
+    "width": 2560,
+    "height": 966,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440,
+      1920
+    ]
+  },
+  "/images/home/diferenciador-retencion-talento.webp": {
+    "width": 2560,
+    "height": 1707,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440,
+      1920
+    ]
+  },
+  "/images/home/hero-speak-poster.webp": {
+    "width": 720,
+    "height": 900,
+    "anchos": [
+      160,
+      320,
+      480,
+      640
+    ]
+  },
+  "/images/home/programa-metricas.webp": {
+    "width": 2560,
+    "height": 2560,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080,
+      1440,
+      1920
+    ]
+  },
+  "/images/home/testimonio-anabel.webp": {
+    "width": 1000,
+    "height": 1000,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/home/testimonio-braskem.webp": {
+    "width": 1000,
+    "height": 1000,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/home/testimonio-erika.webp": {
+    "width": 1000,
+    "height": 1000,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/home/testimonio-fernanda.webp": {
+    "width": 1000,
+    "height": 1000,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/imagen-ejecutivo.webp": {
+    "width": 1024,
+    "height": 768,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800
+    ]
+  },
+  "/images/logos/axa.webp": {
+    "width": 600,
+    "height": 300,
+    "anchos": [
+      160,
+      320,
+      480
+    ]
+  },
+  "/images/logos/club med.webp": {
+    "width": 600,
+    "height": 300,
+    "anchos": [
+      160,
+      320,
+      480
+    ]
+  },
+  "/images/logos/gbm.webp": {
+    "width": 600,
+    "height": 300,
+    "anchos": [
+      160,
+      320
+    ]
+  },
+  "/images/logos/kio.webp": {
+    "width": 600,
+    "height": 300,
+    "anchos": [
+      160,
+      320,
+      480
+    ]
+  },
+  "/images/logos/loreal.webp": {
+    "width": 600,
+    "height": 300,
+    "anchos": [
+      160,
+      320
+    ]
+  },
+  "/images/logos/naturgy.webp": {
+    "width": 600,
+    "height": 300,
+    "anchos": [
+      160,
+      320,
+      480
+    ]
+  },
+  "/images/logos/paramount.webp": {
+    "width": 600,
+    "height": 300,
+    "anchos": [
+      160,
+      320
+    ]
+  },
+  "/images/logos/pepsico.webp": {
+    "width": 600,
+    "height": 300,
+    "anchos": [
+      160,
+      320,
+      480
+    ]
+  },
+  "/images/logos/reanult.webp": {
+    "width": 600,
+    "height": 300,
+    "anchos": [
+      160,
+      320,
+      480
+    ]
+  },
+  "/images/logos/santander.webp": {
+    "width": 600,
+    "height": 300,
+    "anchos": [
+      160,
+      320,
+      480
+    ]
+  },
+  "/images/logos/walmart.webp": {
+    "width": 600,
+    "height": 300,
+    "anchos": [
+      160,
+      320,
+      480
+    ]
+  },
+  "/images/stps-logo.webp": {
+    "width": 202,
+    "height": 56,
+    "anchos": [
+      160
+    ]
+  }
+}

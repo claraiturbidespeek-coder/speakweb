@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CarruselFlechas, CarruselProvider, CarruselTrack } from "@/app/components/Carrusel";
+import { imagenResponsiva } from "@/lib/imagenes";
 
 /* Compartida por las 14 páginas que la llevan: la home, las siete de
    Soluciones por Equipo y las seis landings de idioma. Con catorce páginas
@@ -121,7 +122,11 @@ export default function CentroDeRecursos({ className }: { className?: string }) 
               >
                 <img
                   className="sp-post-img"
-                  src={`/images/home/${p.imagen}`}
+                  {...imagenResponsiva(
+                    `/images/home/${p.imagen}`,
+                    "(max-width: 960px) 270px, (max-width: 1440px) 17vw, 18vw",
+                    5 / 4,
+                  )}
                   alt={p.alt}
                   width={p.ancho}
                   height={p.alto}

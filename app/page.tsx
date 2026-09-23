@@ -8,6 +8,19 @@ import SelloSTPS from "@/app/components/SelloSTPS";
 import Icono from "@/app/components/Icono";
 import styles from "./home.module.css";
 import { atributosDimension } from "@/lib/dimensiones";
+import { imagenResponsiva } from "@/lib/imagenes";
+
+/* sizes de las imágenes de los diferenciadores. La caja (.diffMedia) mide
+   220px de alto fijo con object-fit: cover, así que una imagen más apaisada
+   que la caja se recorta por los lados y ocupa 220 × su proporción de ancho,
+   más que la caja misma. */
+function sizesDiferenciador(src: string) {
+  const { width, height } = atributosDimension(src);
+  const recortada = width && height ? Math.ceil((220 * width) / height) : 0;
+  return recortada > 364
+    ? `(min-width: 768px) and (max-width: 960px) calc(100vw - 40px), ${recortada}px`
+    : "(max-width: 960px) calc(100vw - 40px), (max-width: 1440px) 25vw, 364px";
+}
 
 export const metadata: Metadata = {
   title: "Cursos de Idiomas para Empresas | ROI y Resultados - S-Peak",
@@ -252,7 +265,10 @@ export default function Home() {
         <div className={`sp-inner ${styles.programGrid}`}>
           <img
             className={styles.programImage}
-            src="/images/home/programa-metricas.webp"
+            {...imagenResponsiva(
+              "/images/home/programa-metricas.webp",
+              "(max-width: 480px) 480px, (max-width: 960px) calc(100vw - 40px), (max-width: 1100px) 480px, (max-width: 1440px) 46vw, 650px",
+            )}
             {...atributosDimension("/images/home/programa-metricas.webp")}
             alt="Colaboradora en una sesión de idiomas con burbujas de conversación"
             loading="lazy"
@@ -319,7 +335,10 @@ export default function Home() {
               <li key={d.titulo} className={styles.diffCard}>
                 <img
                   className={styles.diffMedia}
-                  src={`/images/home/${d.imagen}`}
+                  {...imagenResponsiva(
+                    `/images/home/${d.imagen}`,
+                    sizesDiferenciador(`/images/home/${d.imagen}`),
+                  )}
                   {...atributosDimension(`/images/home/${d.imagen}`)}
                   alt={d.alt}
                   loading="lazy"
@@ -365,13 +384,17 @@ export default function Home() {
               >
                 {columna.map((a) => (
                   <li key={a.ruta}>
-                    <Link
-                      className={styles.tile}
-                      href={a.ruta}
-                      style={{
-                        backgroundImage: `url("/images/home/${a.imagen}")`,
-                      }}
-                    >
+                    <Link className={styles.tile} href={a.ruta}>
+                      <img
+                        className={styles.tileImg}
+                        {...imagenResponsiva(
+                          `/images/home/${a.imagen}`,
+                          "(max-width: 600px) calc(100vw - 40px), 260px",
+                        )}
+                        {...atributosDimension(`/images/home/${a.imagen}`)}
+                        alt=""
+                        loading="lazy"
+                      />
                       <h3 className={styles.tileLabel}>{a.nombre}</h3>
                     </Link>
                   </li>
@@ -385,6 +408,16 @@ export default function Home() {
       {/* 8. Banda roja */}
       <section className={`sp-seccion ${styles.bandSection}`}>
         <div className={`sp-inner ${styles.band}`}>
+          <img
+            className={styles.bandImg}
+            {...imagenResponsiva(
+              "/images/home/banda-isotipo.webp",
+              "(max-width: 600px) calc(100vw - 40px), (max-width: 1440px) 650px, 730px",
+            )}
+            {...atributosDimension("/images/home/banda-isotipo.webp")}
+            alt=""
+            loading="lazy"
+          />
           <div>
             <h2 className={styles.bandTitle}>El Talento se Desarrolla</h2>
             <p className={styles.bandText}>
@@ -412,12 +445,17 @@ export default function Home() {
         </div>
 
         <div className={`sp-inner sp-inner--ancho ${styles.cases}`}>
-          <article
-            className={`${styles.case} ${styles.caseFoto}`}
-            style={{
-              backgroundImage: `url("/images/home/caso-brechas-linguisticas.webp")`,
-            }}
-          >
+          <article className={`${styles.case} ${styles.caseFoto}`}>
+            <img
+              className={styles.caseImg}
+              {...imagenResponsiva(
+                "/images/home/caso-brechas-linguisticas.webp",
+                "(max-width: 600px) 670px, (max-width: 960px) calc(100vw - 40px), (max-width: 1100px) 820px, 63vw",
+              )}
+              {...atributosDimension("/images/home/caso-brechas-linguisticas.webp")}
+              alt=""
+              loading="lazy"
+            />
             <div className={`${styles.caseCard} ${styles.caseCardNarrow}`}>
               <h3 className={styles.caseTitle}>
                 Programas de idiomas para el cierre de brechas lingüísticas y
@@ -430,7 +468,7 @@ export default function Home() {
               </p>
               <div className={styles.person}>
                 <img
-                  src="/images/home/testimonio-braskem.webp"
+                  {...imagenResponsiva("/images/home/testimonio-braskem.webp", "120px")}
                   {...atributosDimension("/images/home/testimonio-braskem.webp")}
                   alt=""
                   aria-hidden="true"
@@ -456,7 +494,7 @@ export default function Home() {
               </p>
               <div className={styles.person}>
                 <img
-                  src="/images/home/testimonio-fernanda.webp"
+                  {...imagenResponsiva("/images/home/testimonio-fernanda.webp", "120px")}
                   {...atributosDimension("/images/home/testimonio-fernanda.webp")}
                   alt=""
                   aria-hidden="true"
@@ -488,7 +526,7 @@ export default function Home() {
               </p>
               <div className={`${styles.person} ${styles.personNarrow}`}>
                 <img
-                  src="/images/home/testimonio-anabel.webp"
+                  {...imagenResponsiva("/images/home/testimonio-anabel.webp", "120px")}
                   {...atributosDimension("/images/home/testimonio-anabel.webp")}
                   alt=""
                   aria-hidden="true"
@@ -504,12 +542,17 @@ export default function Home() {
             </div>
           </article>
 
-          <article
-            className={`${styles.case} ${styles.caseFoto}`}
-            style={{
-              backgroundImage: `url("/images/home/caso-seguimiento-calidad.webp")`,
-            }}
-          >
+          <article className={`${styles.case} ${styles.caseFoto}`}>
+            <img
+              className={styles.caseImg}
+              {...imagenResponsiva(
+                "/images/home/caso-seguimiento-calidad.webp",
+                "(max-width: 600px) 770px, (max-width: 960px) calc(100vw - 40px), (max-width: 1100px) 770px, (max-width: 1440px) 690px, 48vw",
+              )}
+              {...atributosDimension("/images/home/caso-seguimiento-calidad.webp")}
+              alt=""
+              loading="lazy"
+            />
             <div className={`${styles.caseCard} ${styles.caseCardWide}`}>
               <h3 className={styles.caseTitle}>Seguimiento, calidad y valor</h3>
               <p className={styles.caseQuote}>
@@ -521,7 +564,7 @@ export default function Home() {
               </p>
               <div className={`${styles.person} ${styles.personNarrow}`}>
                 <img
-                  src="/images/home/testimonio-erika.webp"
+                  {...imagenResponsiva("/images/home/testimonio-erika.webp", "120px")}
                   {...atributosDimension("/images/home/testimonio-erika.webp")}
                   alt=""
                   aria-hidden="true"

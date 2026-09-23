@@ -410,10 +410,21 @@
   min-height: 169px;
   padding: 14%;
   background-color: var(--color-navy);
-  background-size: cover;
-  background-position: center;
   color: var(--color-white);
   overflow: hidden;
+}
+
+/* La foto de la tarjeta. Una <img> y no un fondo CSS para poder servirla con
+   srcset: ocupa la caja entera con el mismo encuadre que tenía el fondo (cover,
+   centrado). Va primera en el marcado, así que el velo de ::after, que viene
+   después, se pinta encima. */
+.tileImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .tile::after {
@@ -450,16 +461,28 @@
 
 .band {
   position: relative;
+  /* Contexto de apilamiento propio: el isotipo (.bandImg) se pinta con
+     z-index -1 sobre el rojo y por debajo del texto y del botón. */
+  isolation: isolate;
   background-color: var(--color-red);
-  background-image: url("/images/home/banda-isotipo.png");
-  background-repeat: no-repeat;
-  background-position: center right;
-  background-size: contain;
   color: var(--color-white);
   padding: 4% 6%;
   display: grid;
   grid-template-columns: 60% 40%;
   align-items: center;
+}
+
+/* El isotipo de fondo, como <img> para servirlo con srcset. Mismo encuadre que
+   el fondo CSS que sustituye: contain, pegado a la derecha y centrado en alto. */
+.bandImg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: right center;
+  border-radius: inherit;
 }
 
 .bandTitle {
@@ -510,8 +533,6 @@
   min-height: 376px;
   padding: 2%;
   background-color: var(--color-navy);
-  background-size: cover;
-  background-position: center;
 }
 
 /* ---------- Velo de los casos con foto ----------
@@ -520,9 +541,8 @@
    propia clase y no de `.case` porque los otros dos casos (.caseYellow y
    .caseRed) son color plano y no lo necesitan.
 
-   Es un ::before y no una capa más dentro de `background-image` porque la foto
-   la declara el JSX en un style en línea, y un fondo desde el CSS lo pisaría.
-   Así el encuadre —el cover y el center de `.case`— se queda intacto. */
+   Orden de capas, de abajo arriba: el color de `.case`, la foto (.caseImg, con
+   z-index -1 dentro del contexto que abre `isolation`), el velo y la tarjeta. */
 .caseFoto {
   /* El navy de tokens.css (--color-navy, #1a3c4d) con alfa. La intensidad del
      velo se ajusta aquí, y solo aquí: los dos bloques la heredan. En rgba y no
@@ -531,6 +551,20 @@
   --velo-caso: rgba(26, 60, 77, 0.55);
 
   position: relative;
+  isolation: isolate;
+}
+
+/* La foto del caso, como <img> para servirla con srcset. Mismo encuadre que el
+   fondo que sustituye: cover y centrada, con la curva del artículo. */
+.caseImg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: inherit;
 }
 
 .caseFoto::before {
@@ -552,12 +586,10 @@
 
 .caseYellow {
   background-color: var(--color-yellow);
-  background-image: none;
 }
 
 .caseRed {
   background-color: var(--color-red);
-  background-image: none;
   padding: 4%;
 }
 

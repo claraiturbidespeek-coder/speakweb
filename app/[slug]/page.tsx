@@ -12,6 +12,7 @@ import {
 } from "@/lib/posts";
 import { atributosDimension } from "@/lib/dimensiones";
 import styles from "./nota.module.css";
+import { imagenResponsiva } from "@/lib/imagenes";
 
 const SITIO = "https://s-peak.com";
 
@@ -186,7 +187,7 @@ export default async function Nota(props: PageProps<"/[slug]">) {
              dimensiones reservan su sitio antes de que llegue. */
           <img
             className={styles.destacada}
-            src={post.featuredImage}
+            {...imagenResponsiva(post.featuredImage, "100vw")}
             alt={post.featuredImageAlt ?? ""}
             {...atributosDimension(post.featuredImage)}
             loading="eager"
@@ -252,7 +253,11 @@ export default async function Nota(props: PageProps<"/[slug]">) {
                     {r.featuredImage ? (
                       <img
                         className="sp-post-img"
-                        src={r.featuredImage}
+                        {...imagenResponsiva(
+                          r.featuredImage,
+                          "(max-width: 600px) 85vw, (max-width: 960px) 290px, 310px",
+                          5 / 4,
+                        )}
                         alt={r.featuredImageAlt ?? ""}
                         {...atributosDimension(r.featuredImage)}
                         loading="lazy"

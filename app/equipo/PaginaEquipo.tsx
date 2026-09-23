@@ -11,6 +11,7 @@ import Icono from "@/app/components/Icono";
 import type { DatosEquipo } from "./tipos";
 import styles from "./equipo.module.css";
 import { atributosDimension } from "@/lib/dimensiones";
+import { imagenResponsiva } from "@/lib/imagenes";
 
 /* Plantilla de las páginas de Soluciones por Equipo.
 
@@ -128,10 +129,14 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
                     que había no coincidía con ninguna de las siete imágenes. El
                     hueco visible lo fija .heroImgWrap; esto da la proporción. */}
                 <img
-                  src={datos.hero.imagen.src}
+                  {...imagenResponsiva(
+                    datos.hero.imagen.src,
+                    "(min-width: 601px) and (max-width: 960px) calc(100vw - 40px), 630px",
+                  )}
                   alt={datos.hero.imagen.alt}
                   {...atributosDimension(datos.hero.imagen.src)}
                   loading="eager"
+                  fetchPriority="high"
                 />
               </div>
               <div className="sp-stats-row">

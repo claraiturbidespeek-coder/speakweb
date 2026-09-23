@@ -13,6 +13,7 @@ import { useContacto } from "@/app/components/contacto/useContacto";
 import { IDIOMAS } from "@/app/equipo/tipos";
 import CicloMetodo, { type PasoMetodo } from "../CicloMetodo";
 import styles from "../landing.module.css";
+import { imagenResponsiva } from "@/lib/imagenes";
 
 // El guion de los dos comportamientos que siguen siendo DOM suelto: el ciclo
 // radial del método y el carrusel de testimonios. El envío de leads y el modal
@@ -128,7 +129,7 @@ export default function Page() {
     <div className={`${styles.heroVisual} reveal`}>
       <div className={styles.heroCircle} aria-hidden="true"></div>
       <div className={styles.heroPhoto}>
-        <img src="/images/ejecutiva-hero.webp" alt="Ejecutiva en un curso de español para personal extranjero de S-Peak" width="1300" height="1898" loading="eager" fetchPriority="high" />
+        <img {...imagenResponsiva("/images/ejecutiva-hero.webp", "(max-width: 960px) calc(100vw - 40px), (max-width: 1280px) 34vw, 426px")} alt="Ejecutiva en un curso de español para personal extranjero de S-Peak" width="740" height="1080" loading="eager" fetchPriority="high" />
       </div>
       <div className="sp-stats-row">
         <div className="sp-stat">
@@ -170,7 +171,7 @@ export default function Page() {
   <div className={styles.areasInner}>
     <div className="reveal">
       <div className={styles.areasMedia}>
-        <img src="/images/imagen-ejecutivo.webp" alt="Ejecutivo extranjero en un programa de español de S-Peak" width="1024" height="768" loading="lazy" />
+        <img {...imagenResponsiva("/images/imagen-ejecutivo.webp", "(max-width: 600px) 560px, (max-width: 960px) calc(100vw - 40px), (max-width: 1200px) 560px, (max-width: 1440px) 48vw, 697px")} alt="Ejecutivo extranjero en un programa de español de S-Peak" width="1024" height="768" loading="lazy" />
       </div>
     </div>
     <div className={`${styles.areasLeft} reveal`}>
