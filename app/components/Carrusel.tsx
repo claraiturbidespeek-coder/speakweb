@@ -74,6 +74,9 @@ export function CarruselProvider({
       originals.forEach((node) => {
         const clone = node.cloneNode(true) as Element;
         clone.setAttribute("aria-hidden", "true");
+        // inert saca del orden de tabulación los enlaces del clon: sin él, un
+        // lector de pantalla o un agente llegaría por teclado a un enlace oculto.
+        clone.setAttribute("inert", "");
         clone.querySelectorAll("[id]").forEach((el) => el.removeAttribute("id"));
         car.appendChild(clone);
         clones.push(clone);

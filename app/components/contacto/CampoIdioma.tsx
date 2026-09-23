@@ -34,6 +34,7 @@ export default function CampoIdioma({ id }: { id: string }) {
         id={id}
         name="idioma"
         required
+        toolparamdescription={`Idioma que le interesa. Opciones: ${OPCIONES_IDIOMA.join(", ")}.`}
         defaultValue={dePagina ? idiomaPagina : ""}
       >
         <option value="" disabled>

@@ -2,10 +2,24 @@ import type { Metadata, Viewport } from "next";
 
 // La metadata vive aquí y no en page.tsx porque ese archivo es "use client",
 // y Next no permite exportar metadata desde un Client Component.
+const DESCRIPCION =
+  "Cursos de inglés para empresas en México, diseñados por puesto, con avance medible y evidencia para Dirección. Programa a la medida. Solicite su propuesta.";
+
+/* El Service de esta página. Organization va una sola vez en el layout raíz;
+   aquí solo lo propio de la ruta, con la misma descripción que la metadata. */
+const DATOS_PAGINA = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Cursos de inglés para empresas",
+  url: "https://s-peak.com/idioma/ingles-para-empresas/",
+  provider: { "@type": "Organization", name: "S-Peak", url: "https://s-peak.com" },
+  areaServed: { "@type": "Country", name: "México" },
+  description: DESCRIPCION,
+});
+
 export const metadata: Metadata = {
   title: "Inglés para Empresas en México – Programas Medibles | S-Peak",
-  description:
-    "Cursos de inglés para empresas en México, diseñado por puesto, con avance medible y evidencia para Dirección. Programa a la medida. Solicite su propuesta.",
+  description: DESCRIPCION,
   authors: [{ name: "S-Peak" }],
   alternates: {
     canonical: "https://s-peak.com/idioma/ingles-para-empresas/",
@@ -41,5 +55,15 @@ export const viewport: Viewport = {
 export default function Layout({
   children,
 }: LayoutProps<"/idioma/ingles-para-empresas">) {
-  return children;
+  return (
+    <>
+      {/* Etiqueta nativa: con next/script el JSON-LD se inyectaría desde el
+          cliente y no estaría en el HTML que lee Google. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: DATOS_PAGINA }}
+      />
+      {children}
+    </>
+  );
 }

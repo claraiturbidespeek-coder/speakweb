@@ -18,30 +18,18 @@ const montserrat = localFont({
   variable: "--font-montserrat",
 });
 
-/* Organization y LocalBusiness son datos del sitio, no de una página: van una
-   sola vez, aquí, y no repetidos en cada ruta. Cada página aporta lo suyo
-   —Breadcrumb, Service, FAQPage— desde su propio marcado. */
+/* Organization es dato del sitio, no de una página: va una sola vez, aquí, y
+   no repetido en cada ruta. Cada página aporta lo suyo —Breadcrumb, Service,
+   FAQPage— desde su propio marcado. No hay LocalBusiness: S-Peak no atiende en
+   un local. El @id lo usan las notas del blog como `publisher`. */
 const DATOS_SITIO = JSON.stringify({
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://s-peak.com/#organizacion",
-      name: "S-Peak",
-      url: "https://s-peak.com",
-      logo: "https://s-peak.com/brand/logo_white.svg",
-      sameAs: ["https://www.linkedin.com/company/s-peak"],
-    },
-    {
-      "@type": "LocalBusiness",
-      "@id": "https://s-peak.com/#negocio",
-      name: "S-Peak",
-      url: "https://s-peak.com",
-      image: "https://s-peak.com/images/og-links.jpg",
-      parentOrganization: { "@id": "https://s-peak.com/#organizacion" },
-      areaServed: { "@type": "Country", name: "México" },
-    },
-  ],
+  "@type": "Organization",
+  "@id": "https://s-peak.com/#organizacion",
+  name: "S-Peak",
+  url: "https://s-peak.com",
+  logo: "https://s-peak.com/brand/logo_white.svg",
+  sameAs: ["https://www.linkedin.com/company/s-peak"],
 });
 
 export const metadata: Metadata = {

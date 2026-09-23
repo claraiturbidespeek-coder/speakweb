@@ -41,6 +41,8 @@ export default function HeroHomeMedia({ className }: { className?: string }) {
         className={className}
         src={VIDEO}
         poster={POSTER}
+        width={720}
+        height={900}
         autoPlay
         muted
         loop

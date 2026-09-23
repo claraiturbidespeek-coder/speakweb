@@ -93,6 +93,8 @@
 
 .heroNuevoInner {
   width: 100%;
+  /* Contenedor de consulta: .heroNuevoVideo calcula su ancho con 100cqi. */
+  container-type: inline-size;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
@@ -130,10 +132,20 @@
    siempre cabe entero en la caja y nunca queda debajo del header. */
 .heroNuevoVideo {
   display: block;
-  width: auto;
+  /* El tamaño se calcula aquí y no se deja a `width: auto`: con auto la caja
+     depende de las dimensiones del archivo, que no existen hasta que carga, y
+     la media pasaba de 0 a su alto real empujando el hero entero (el CLS de
+     0.145 del home en escritorio). Es el mismo resultado de antes, sin esperar
+     al archivo: el menor entre su ancho natural (720px), la columna y el ancho
+     que le corresponde al tope de alto (el alto útil del hero × 720/900). La
+     columna se mide contra .heroNuevoInner, que es el contenedor. */
+  width: min(
+    720px,
+    (100cqi - 80px) / 2,
+    (90vh - var(--header-height) - (40px * 2)) * 0.8
+  );
   height: auto;
-  max-width: 100%;
-  max-height: calc(90vh - var(--header-height) - (40px * 2));
+  aspect-ratio: 720 / 900;
 }
 
 /* ---------- 3. Claim + idiomas ---------- */
@@ -725,6 +737,15 @@
   .heroNuevoInner {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+
+  /* A una columna, la columna es el contenedor entero. */
+  .heroNuevoVideo {
+    width: min(
+      720px,
+      100cqi,
+      (90vh - var(--header-height) - (40px * 2)) * 0.8
+    );
   }
 
   /* El ensanche contra la viuda mira hacia el hueco entre columnas, que a una

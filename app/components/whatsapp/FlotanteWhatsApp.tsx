@@ -265,7 +265,13 @@ export default function FlotanteWhatsApp() {
                 <p>Le atenderemos de inmediato</p>
               </div>
               <div className={styles.cuerpo}>
-                <form ref={formulario} className="sp-form" onSubmit={alEnviar}>
+                <form
+                  ref={formulario}
+                  className="sp-form"
+                  onSubmit={alEnviar}
+                  toolname="contactar_por_whatsapp"
+                  tooldescription="Deje sus datos para continuar la conversación con S-Peak por WhatsApp. Le atenderemos de inmediato. Una persona revisa y confirma el envío, que abre WhatsApp con el mensaje ya escrito."
+                >
                   <div className="sp-form-group">
                     <label htmlFor={`${id}-nombre`}>Nombre *</label>
                     <input
@@ -273,6 +279,7 @@ export default function FlotanteWhatsApp() {
                       type="text"
                       id={`${id}-nombre`}
                       name="nombre"
+                      toolparamdescription="Nombre de la persona que escribe."
                       autoComplete="name"
                       required
                     />
@@ -283,6 +290,7 @@ export default function FlotanteWhatsApp() {
                       type="tel"
                       id={`${id}-telefono`}
                       name="telefono"
+                      toolparamdescription="Teléfono de contacto."
                       autoComplete="tel"
                       required
                     />
@@ -293,6 +301,7 @@ export default function FlotanteWhatsApp() {
                       type="email"
                       id={`${id}-correo`}
                       name="correo"
+                      toolparamdescription="Correo electrónico de contacto."
                       autoComplete="email"
                       required
                     />

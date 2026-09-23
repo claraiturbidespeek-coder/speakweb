@@ -184,6 +184,8 @@ export default function ModalContacto({
               className="sp-form"
               onSubmit={alEnviar}
               noValidate
+              toolname="solicitar_cotizacion"
+              tooldescription="Solicite cotización de capacitación en idiomas para su empresa con S-Peak. Un asesor se pondrá en contacto en menos de 24 horas hábiles. Una persona revisa y confirma el envío."
             >
               <div className="sp-form-row">
                 <div className="sp-form-group">
@@ -192,6 +194,7 @@ export default function ModalContacto({
                     type="text"
                     id="contactoNombre"
                     name="nombre"
+                    toolparamdescription="Nombre y apellido de la persona que solicita la cotización."
                     autoComplete="name"
                     placeholder="María González"
                     required
@@ -203,6 +206,7 @@ export default function ModalContacto({
                     type="text"
                     id="contactoEmpresa"
                     name="empresa"
+                    toolparamdescription="Nombre de la empresa que solicita la capacitación."
                     autoComplete="organization"
                     placeholder="Grupo Industrial SA"
                     required
@@ -217,6 +221,7 @@ export default function ModalContacto({
                     type="email"
                     id="contactoCorreo"
                     name="correo"
+                    toolparamdescription="Correo electrónico de contacto."
                     autoComplete="email"
                     placeholder="maria@empresa.com"
                     required
@@ -228,6 +233,7 @@ export default function ModalContacto({
                     type="tel"
                     id="contactoTelefono"
                     name="telefono"
+                    toolparamdescription="Teléfono de contacto. Opcional."
                     autoComplete="tel"
                     placeholder="+52 55 0000 0000"
                   />
@@ -240,6 +246,7 @@ export default function ModalContacto({
                   type="text"
                   id="contactoPuesto"
                   name="puesto"
+                  toolparamdescription="Puesto que desempeña la persona en la empresa. Opcional."
                   autoComplete="organization-title"
                   placeholder="Ej. Directora de Recursos Humanos"
                 />
@@ -252,6 +259,7 @@ export default function ModalContacto({
                 <textarea
                   id="contactoMensaje"
                   name="mensaje"
+                  toolparamdescription="Necesidad de capacitación: número de colaboradores, área, nivel actual del idioma. Opcional."
                   placeholder="Número de colaboradores, área, nivel actual de inglés…"
                 />
               </div>

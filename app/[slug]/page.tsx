@@ -17,16 +17,15 @@ const SITIO = "https://s-peak.com";
 
 /* Datos estructurados de la nota.
 
-   Hasta ahora las 26 notas solo heredaban el Organization y el LocalBusiness
-   del layout, que son datos del sitio. Aquí aportan lo suyo, igual que las
+   Hasta ahora las 26 notas solo heredaban el Organization del layout, que es
+   dato del sitio. Aquí aportan lo suyo, igual que las
    páginas de equipo aportan su Service y su FAQPage.
 
    BlogPosting y no Article a secas: es el tipo específico para una entrada de
    blog, y Google lo trata igual a efectos de resultado enriquecido.
 
    `publisher` referencia por @id al Organization que ya declara el layout en
-   esta misma página, en vez de duplicarlo. Es lo que hace el LocalBusiness con
-   `parentOrganization`, y para eso se le puso @id.
+   esta misma página, en vez de duplicarlo; para eso lleva @id.
 
    `dateModified` va igual que `datePublished` porque el frontmatter no guarda
    fecha de modificación: no se inventa una posterior, que le diría a Google que

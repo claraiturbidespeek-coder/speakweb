@@ -313,7 +313,7 @@ export default function Page() {
         </div>
       </div>
       {/* Set 2 (duplicado para loop infinito) */}
-      <div className={`sp-testi-card ${styles.testiCard}`} aria-hidden="true">
+      <div className={`sp-testi-card ${styles.testiCard}`} aria-hidden="true" inert>
         <div className="sp-estrellas">★★★★★</div>
         <p className="sp-testi-quote">"El equipo de <strong>S-Peak</strong> tiene una gran actitud de servicio, sus cursos de idiomas son excelentes para nuestros equipos, se adaptan a las necesidades de sus perfiles de puesto."</p>
         <div className="sp-testi-autor">
@@ -324,7 +324,7 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <div className={`sp-testi-card sp-testi-card--acento ${styles.testiCard}`} aria-hidden="true">
+      <div className={`sp-testi-card sp-testi-card--acento ${styles.testiCard}`} aria-hidden="true" inert>
         <div className="sp-estrellas" style={{ color: "var(--color-navy)" }}>★★★★★</div>
         <p className="sp-testi-quote">"<strong>S-Peak</strong> es una organización sumamente dinámica. Su capacidad para entender nuestras necesidades específicas y adaptar sus mejores recursos a nuestros objetivos de negocio es su gran diferencial."</p>
         <div className="sp-testi-autor">
@@ -335,7 +335,7 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <div className={`sp-testi-card ${styles.testiCard}`} aria-hidden="true">
+      <div className={`sp-testi-card ${styles.testiCard}`} aria-hidden="true" inert>
         <div className="sp-estrellas">★★★★★</div>
         <p className="sp-testi-quote">"<strong>S-Peak</strong> ha sido un gran aliado para nosotros, ya que se adapta a nuestras necesidades y cuenta con un sistema robusto de seguimiento en asistencias. Valoramos también que siempre nos brinda una buena atención tanto a la empresa como a los alumnos."</p>
         <div className="sp-testi-autor">
@@ -346,7 +346,7 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <div className={`sp-testi-card ${styles.testiCard}`} aria-hidden="true">
+      <div className={`sp-testi-card ${styles.testiCard}`} aria-hidden="true" inert>
         <div className="sp-estrellas">★★★★★</div>
         <p className="sp-testi-quote">"Valoramos el seguimiento que <strong>S-Peak</strong> nos brinda, el feedback que piden a través de citas regulares y encuestas, así como reaccionan a lo que pedimos como cliente. Además, los profesores están muy bien preparados para asegurar el aprendizaje, y los precios son justos."</p>
         <div className="sp-testi-autor">
