@@ -30,6 +30,26 @@ export default function ProveedorContacto({ children }: { children: ReactNode })
     abrirAlCargar();
   }, [abrir]);
 
+  /* Las notas del blog traen enlaces `[...](#contacto)` escritos en Markdown:
+     llegan al DOM como HTML crudo (`dangerouslySetInnerHTML` en
+     `app/[slug]/page.tsx`), nunca pasan por el árbol de React y por lo tanto
+     no pueden llevar un onClick propio. Sin este listener, el navegador solo
+     intenta un scroll a un id que no existe. Delegado en `document` porque el
+     proveedor se monta una sola vez en el layout raíz, antes de que exista
+     ninguna nota. */
+  useEffect(() => {
+    const alHacerClic = (evento: MouseEvent) => {
+      const objetivo = evento.target;
+      if (!(objetivo instanceof Element)) return;
+      const enlace = objetivo.closest("a");
+      if (!enlace?.getAttribute("href")?.endsWith("#contacto")) return;
+      evento.preventDefault();
+      abrir();
+    };
+    document.addEventListener("click", alHacerClic);
+    return () => document.removeEventListener("click", alHacerClic);
+  }, [abrir]);
+
   return (
     <ContextoContacto.Provider value={valor}>
       {children}
