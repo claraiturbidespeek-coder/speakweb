@@ -57,12 +57,15 @@ const POSTS = [
     alt: "Grupo de profesionales en una oficina moderna colaborando y preparándose para hacer negocios en inglés con éxito.",
   },
   {
-    titulo: "Inglés de negocios: habilidades clave según su rol ejecutivo",
-    url: "/ingles-de-negocios-ejecutivos/",
-    imagen: "blog-ingles-de-negocios.webp",
-    ancho: 1024,
-    alto: 683,
-    alt: "Ejecutiva participando en una videollamada internacional y aplicando su inglés de negocios con un equipo de trabajo.",
+    titulo: "Inglés para empresas: ¿Qué nivel necesita cada área de su organización?",
+    url: "/blog-nivel-ingles-empresas-areas/",
+    // Excepción al resto de la lista: no hay copia propia en /images/home/
+    // para esta nota (antes apuntaba a otra, ya retirada), así que usa
+    // directamente la imagen destacada real del artículo.
+    imagen: "/images/blog/blog-nivel-ingles-empresas-areas-portada.webp",
+    ancho: 1600,
+    alto: 1068,
+    alt: "Dos mujeres frente a un pizarrón blanco comparando ortografía de inglés británico y americano en una clase de idiomas.",
   },
   {
     titulo:
@@ -123,7 +126,7 @@ export default function CentroDeRecursos({ className }: { className?: string }) 
                 <img
                   className="sp-post-img"
                   {...imagenResponsiva(
-                    `/images/home/${p.imagen}`,
+                    p.imagen.startsWith("/") ? p.imagen : `/images/home/${p.imagen}`,
                     "(max-width: 960px) 270px, (max-width: 1440px) 17vw, 18vw",
                     5 / 4,
                   )}

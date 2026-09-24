@@ -162,6 +162,20 @@ const nextConfig: NextConfig = {
         destination: "/nearshoring-mexico-ingles-empresas/",
         statusCode: 301,
       },
+      // clases-ingles-empresas-niveles-puesto e ingles-de-negocios-ejecutivos
+      // se fusionaron dentro de blog-nivel-ingles-empresas-areas: compartían el
+      // mismo argumento de segmentación de nivel por departamento/rol, y su
+      // contenido único ya se migró a la nota pilar.
+      {
+        source: "/clases-ingles-empresas-niveles-puesto",
+        destination: "/blog-nivel-ingles-empresas-areas/",
+        statusCode: 301,
+      },
+      {
+        source: "/ingles-de-negocios-ejecutivos",
+        destination: "/blog-nivel-ingles-empresas-areas/",
+        statusCode: 301,
+      },
       // URLs del WordPress viejo que daban 404 en producción.
       {
         source: "/terminos-y-condiciones",
