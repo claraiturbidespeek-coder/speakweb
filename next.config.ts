@@ -176,6 +176,15 @@ const nextConfig: NextConfig = {
         destination: "/blog-nivel-ingles-empresas-areas/",
         statusCode: 301,
       },
+      // negocios-en-ingles-porque-fracasan-cursos se fusionó dentro de
+      // blog-capacitacion-en-ingles-programa-fantasma: compartían el mismo
+      // inventario de causas de abandono de programas de capacitación, y su
+      // contenido único (la cita de Forbes) ya se migró a la nota pilar.
+      {
+        source: "/negocios-en-ingles-porque-fracasan-cursos",
+        destination: "/blog-capacitacion-en-ingles-programa-fantasma/",
+        statusCode: 301,
+      },
       // URLs del WordPress viejo que daban 404 en producción.
       {
         source: "/terminos-y-condiciones",

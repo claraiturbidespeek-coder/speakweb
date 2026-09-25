@@ -48,13 +48,17 @@ const POSTS = [
     alt: "Evaluación de inglés corporativa para ejecutivos y directores en una junta de negocios.",
   },
   {
-    titulo:
-      "Por qué el 70% de los programas de capacitación en idiomas fracasan antes de los 6 meses",
-    url: "/negocios-en-ingles-porque-fracasan-cursos/",
-    imagen: "blog-negocios-en-ingles.webp",
-    ancho: 700,
-    alto: 369,
-    alt: "Grupo de profesionales en una oficina moderna colaborando y preparándose para hacer negocios en inglés con éxito.",
+    titulo: "¿Por qué su equipo abandonó el curso de idiomas de la empresa?",
+    url: "/blog-capacitacion-en-ingles-programa-fantasma/",
+    // Excepción al resto de la lista, igual que en la tarjeta de
+    // blog-nivel-ingles-empresas-areas: no hay copia propia en
+    // /images/home/ para esta nota (la que había, blog-negocios-en-ingles.webp,
+    // era del artículo ya retirado y fusionado aquí), así que usa
+    // directamente la imagen destacada real del artículo.
+    imagen: "/images/blog/blog-capacitacion-en-ingles-programa-fantasma-portada.webp",
+    ancho: 1600,
+    alto: 1067,
+    alt: "Grupo de cinco profesionales en una clase presencial de inglés, con ejercicios de verbos irregulares en papel y banderas de Reino Unido y Estados Unidos sobre la mesa, mientras una instructora supervisa.",
   },
   {
     titulo: "Inglés para empresas: ¿Qué nivel necesita cada área de su organización?",

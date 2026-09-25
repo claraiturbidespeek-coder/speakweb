@@ -69,7 +69,7 @@ Coordinar células de trabajo en diferentes países requiere empatía y claridad
 
 ## ¿Por qué necesita una evaluación de inglés en su organización?
 
-La mayoría de los directores afirman en su entrevista que tienen un "80% de dominio". Sin embargo, la realidad operativa suele ser muy distinta. Para evitar sorpresas y no tirar el presupuesto de capacitación, usted debe auditar el talento actual con herramientas científicas. De lo contrario, formará parte de la estadística de riesgo; lo invitamos a revisar [por qué el 70% de los programas de capacitación en idiomas fracasan antes de los 6 meses](https://s-peak.com/negocios-en-ingles-porque-fracasan-cursos/) y cómo proteger su inversión.
+La mayoría de los directores afirman en su entrevista que tienen un "80% de dominio". Sin embargo, la realidad operativa suele ser muy distinta. Para evitar sorpresas y no tirar el presupuesto de capacitación, usted debe auditar el talento actual con herramientas científicas. De lo contrario, formará parte de la estadística de riesgo; lo invitamos a revisar [por qué los programas de capacitación en idiomas se abandonan antes de tiempo](https://s-peak.com/blog-capacitacion-en-ingles-programa-fantasma/) y cómo proteger su inversión.
 
 Además, estudios de la división de [People & Organizational Performance](https://www.mckinsey.com/capabilities/people-and-organizational-performance/how-we-help-clients) de McKinsey confirman:
 
