@@ -308,6 +308,9 @@
    tipografía, de los tamaños objetivo a 700px (38 / 17 / 13px). Los max() son
    los tamaños de antes: por debajo de ellos no baja nada. */
 .cycle {
+  /* El radio sobre el que van los nodos y el anillo punteado, en % del módulo.
+     CicloMetodo.tsx coloca los nodos con él. */
+  --ciclo-radio: 41%;
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -321,8 +324,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 82%;
-  height: 82%;
+  width: calc(var(--ciclo-radio) * 2);
+  height: calc(var(--ciclo-radio) * 2);
   border-radius: 50%;
   border: 2px dashed var(--color-border);
 }
@@ -584,6 +587,50 @@
    patrones.css (.sp-volver-arriba). */
 
 /* ---------- Responsive ---------- */
+
+/* El ciclo en escritorio, con tope. Llenando su columna llegaba a 645px a 1280
+   y la sección del método medía 966px: no cabía en una pantalla de 1280×800.
+   Al llegar por el ancla la sección arranca a 80px (--anchor-offset), así que
+   tiene 720px para caber, y lo que no es círculo —relleno de la sección, cita
+   de abajo— ya suma unos 320px: el círculo se queda en 392px y se centra en su
+   columna.
+
+   A ese tamaño, con las proporciones de siempre, el centro medía 259px y el
+   paso más largo de las siete páginas se salía de su borde. Por eso aquí cambia
+   el reparto: el centro pasa del 66% al 76%, los nodos del 12,5% al 11,5% y
+   salen hacia fuera con el radio, del 41% al 45,5%, para no montarse en él.
+   El relleno lateral estrecha la línea: en un círculo, una línea ancha arriba o
+   abajo se sale del borde aunque el bloque quepa de alto.
+
+   Los cqi de la tipografía caerían a sus mínimos, pensados para otro círculo, y
+   la descripción quedaría en 11px: aquí se fijan en px, con 12px de
+   descripción, lo que medía a 1280 antes del tope. Solo por encima de 960px: en
+   tablet y móvil el ciclo no cambia. */
+@media (min-width: 961px) {
+  .cycle {
+    --ciclo-radio: 45.5%;
+    max-width: 392px;
+  }
+
+  .cycleCenter {
+    width: 76%;
+    height: 76%;
+    padding: 16px 34px;
+  }
+
+  .cycleTitle {
+    margin: 8px 0 6px;
+    font-size: 15px;
+  }
+
+  .cycleDesc {
+    font-size: 12px;
+  }
+
+  .cycleNode {
+    width: max(44px, 11.5%);
+  }
+}
 
 @media (max-width: 960px) {
   .heroInner {

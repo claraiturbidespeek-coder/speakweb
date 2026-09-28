@@ -25,10 +25,10 @@ export type PasoMetodo = {
 
 const INTERVALO_MS = 2000;
 
-/* Geometría del círculo, en porcentaje del contenedor y desde su centro. El
-   radio va a la par del anillo punteado de landing.module.css (.cycle::before,
-   82% de diámetro): si cambia uno, cambia el otro. */
-const RADIO = 41;
+/* Geometría del círculo, desde su centro. El radio no vive aquí sino en
+   landing.module.css, como --ciclo-radio: el anillo punteado (.cycle::before)
+   lo usa para su diámetro, y en escritorio cambia para dejar más sitio al
+   centro. Aquí solo se pone cada nodo en su ángulo sobre ese radio. */
 const PASO_GRADOS = 72;
 
 /* El paso 01 arriba, a las 12, y los siguientes cada 72° en sentido horario.
@@ -37,8 +37,8 @@ const PASO_GRADOS = 72;
 function posicion(indice: number) {
   const rad = ((-90 + indice * PASO_GRADOS) * Math.PI) / 180;
   return {
-    left: `${(50 + RADIO * Math.cos(rad)).toFixed(1)}%`,
-    top: `${(50 + RADIO * Math.sin(rad)).toFixed(1)}%`,
+    left: `calc(50% + ${Math.cos(rad).toFixed(4)} * var(--ciclo-radio))`,
+    top: `calc(50% + ${Math.sin(rad).toFixed(4)} * var(--ciclo-radio))`,
   };
 }
 

@@ -85,7 +85,7 @@ const DIFERENCIADORES = [
   {
     titulo: "Agilidad Operativa y fluidez empresarial",
     texto:
-      "Evite retrasos causados por malentendidos al dotar a su equipo de la fluidez que su industria exige, optimiza tiempos de respuesta, agiliza procesos internos y elimina los cuellos de botella en la comunicación diaria.",
+      "Evite retrasos causados por malentendidos: con la fluidez que su industria exige, su equipo responde más rápido, agiliza procesos internos y elimina los cuellos de botella en la comunicación diaria.",
     imagen: "diferenciador-agilidad-operativa.webp",
     alt: "Sesión de formación intercultural con empleados de mercados internacionales",
   },
@@ -279,8 +279,8 @@ export default function Home() {
             </h2>
             <p className={styles.lead}>
               Traducimos el desarrollo del idioma en métricas de negocio.
-              Proporcionamos a las direcciones de Recursos Humanos cuadros de
-              mando integrales que detallan el rendimiento, el nivel de adopción
+              Proporcionamos a las direcciones de Recursos Humanos tableros que
+              detallan el rendimiento, el nivel de adopción
               y el impacto real del programa en su organización, permitiendo una
               toma de decisiones basada en datos y la optimización continua de su
               presupuesto.
@@ -311,7 +311,7 @@ export default function Home() {
           </li>
           <li className={styles.counter}>
             <span className={styles.counterNum}>+500</span>
-            <span className={styles.counterLabel}>Empresas / Clientes</span>
+            <span className={styles.counterLabel}>Empresas atendidas</span>
           </li>
           <li className={styles.counter}>
             <span className={styles.counterNum}>+20</span>
@@ -421,9 +421,8 @@ export default function Home() {
           <div>
             <h2 className={styles.bandTitle}>El Talento se Desarrolla</h2>
             <p className={styles.bandText}>
-              Elimine las barreras de comunicación que detienen el crecimiento de
-              su empresa. Impulse el liderazgo de su equipo con programas diseñados
-              para resultados reales.
+              Su equipo ya sabe su trabajo. Le falta hacerlo en el idioma de sus
+              clientes y de su corporativo.
             </p>
           </div>
           <BotonContacto className={`sp-btn sp-btn--amarillo ${styles.bandCta}`}>

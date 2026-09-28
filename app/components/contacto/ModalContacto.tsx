@@ -260,7 +260,7 @@ export default function ModalContacto({
                   id="contactoMensaje"
                   name="mensaje"
                   toolparamdescription="Necesidad de capacitación: número de colaboradores, área, nivel actual del idioma. Opcional."
-                  placeholder="Número de colaboradores, área, idioma y nivel actual…"
+                  placeholder="Número de colaboradores, idioma y nivel actual…"
                 />
               </div>
 
