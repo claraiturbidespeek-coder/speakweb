@@ -124,7 +124,7 @@ export default function IndiceIdiomas() {
     <div className="reveal">
       <div className="sp-etiqueta">Idiomas para empresas · México</div>
       <h1><strong>Cursos de idiomas para empresas</strong> que transforman la operación de su equipo.</h1>
-      <p className="sp-hero-sub">Sus colaboradores necesitan comunicarse con seguridad en el idioma de su operación: <strong>hablar, presentar, negociar y colaborar</strong> en situaciones reales de trabajo. En <strong>S-Peak</strong> diseñamos programas de inglés, francés, alemán, italiano, portugués y español para extranjeros por puesto, con seguimiento continuo, reportes claros y evidencia verificable del avance de cada colaborador.</p>
+      <p className="sp-hero-sub">Sus colaboradores necesitan comunicarse con seguridad en el idioma de su operación: <strong>hablar, presentar, negociar y colaborar</strong> en situaciones reales de trabajo. En <strong>S-Peak</strong> diseñamos por puesto programas de inglés, francés, alemán, italiano, portugués y español para extranjeros, con seguimiento continuo, reportes claros y evidencia verificable del avance de cada colaborador.</p>
       <div className={styles.fakeForm} onClick={abrir} role="button" tabIndex={0}>
         <span className={styles.fakeFormIcon}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
@@ -268,7 +268,7 @@ export default function IndiceIdiomas() {
     <div className={`${styles.procesoLeft} reveal`}>
       <div className="sp-eyebrow">El método S‑Peak</div>
       <h2>5 razones por las que las empresas líderes en México eligen S‑Peak</h2>
-      <p className={styles.procesoIntro}>El idioma de un curso general no alcanza para negociar, reportar y presentar en el puesto. Así es como <strong>S-Peak</strong> cierra esa brecha.</p>
+      <p className={styles.procesoIntro}>Lo que se aprende en un curso general de idiomas no alcanza para negociar, reportar y presentar en el puesto. Así es como <strong>S-Peak</strong> cierra esa brecha.</p>
     </div>
     <div className="reveal">
       <CicloMetodo pasos={PASOS} />
@@ -401,7 +401,7 @@ export default function IndiceIdiomas() {
           1. ¿Cómo sé qué idioma necesita mi equipo?
           <span className="sp-faq-icono">+</span>
         </summary>
-        <div className="sp-faq-respuesta">El inglés es el idioma con el que más nos buscan, porque es el estándar de la mayoría de las operaciones internacionales. Pero si su equipo trata con Brasil, Alemania, Francia o Italia, capacitamos en <strong>la lengua que realmente usa esa relación</strong>. Lo definimos juntos en el diagnóstico. <em>Cuéntenos con quién se comunica su equipo.</em></div>
+        <div className="sp-faq-respuesta">Lo definimos juntos en el diagnóstico: revisamos <strong>con quién se comunica cada área, en qué situaciones y con qué mercados</strong>. Por ejemplo, un área que reporta a una casa matriz en Alemania se capacita en alemán, y una que exporta a Brasil, en portugués. <em>Cuéntenos con quién se comunica su equipo.</em></div>
       </details>
       <details className="sp-faq-item" name="faq-indice">
         <summary className="sp-faq-pregunta">
@@ -415,7 +415,7 @@ export default function IndiceIdiomas() {
           3. ¿En cuánto tiempo veo un cambio real?
           <span className="sp-faq-icono">+</span>
         </summary>
-        <div className="sp-faq-respuesta">Depende del punto de partida y la constancia del equipo. Como referencia, en inglés pasar de un nivel al siguiente (de B1 a B2) toma <strong>alrededor de 9 meses</strong> con dos sesiones semanales de hora y media. En el diagnóstico inicial le damos una proyección realista para su caso. <em>Cotice y le estimamos el plan.</em></div>
+        <div className="sp-faq-respuesta">Depende del idioma, del punto de partida y de la constancia del equipo. En el diagnóstico inicial le damos <strong>una proyección realista para su caso</strong>. <em>Cotice y le estimamos el plan.</em></div>
       </details>
       <details className="sp-faq-item" name="faq-indice">
         <summary className="sp-faq-pregunta">
@@ -454,7 +454,7 @@ export default function IndiceIdiomas() {
       </details>
       <details className="sp-faq-item" name="faq-indice">
         <summary className="sp-faq-pregunta">
-          9. ¿Tiene registro ante la STPS y es deducible de impuestos?
+          9. ¿Tienen registro ante la STPS y es deducible de impuestos?
           <span className="sp-faq-icono">+</span>
         </summary>
         <div className="sp-faq-respuesta"><strong>Sí a ambas.</strong> Contamos con registro oficial ante la STPS y firmamos como agente capacitador externo la constancia de capacitación (DC-3) de cada colaborador. Además es deducible, y según el decreto del Plan México (DOF) pueden existir estímulos adicionales para la formación de personal; le entregamos la documentación de soporte y le recomendamos confirmar la aplicación a su caso con su área contable. <em>Solicite la información para su expediente.</em></div>
