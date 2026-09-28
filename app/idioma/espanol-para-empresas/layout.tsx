@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     url: "https://s-peak.com/idioma/espanol-para-empresas/",
     images: [
       {
-        url: "https://s-peak.com/img/ejecutiva-hero.webp",
+        url: "https://s-peak.com/images/ejecutiva-hero.webp",
         alt: "Ejecutiva en un curso de español para personal extranjero de S-Peak",
       },
     ],
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "Español para Extranjeros en Empresas de México | S-Peak",
     description:
       "Cursos de español para el personal extranjero de su operación en México, con avance medible y evidencia para Dirección. Solicite su propuesta.",
-    images: ["https://s-peak.com/img/ejecutiva-hero.webp"],
+    images: ["https://s-peak.com/images/ejecutiva-hero.webp"],
   },
 };
 

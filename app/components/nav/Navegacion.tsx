@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Desplegable from "./Desplegable";
 import {
-  ANCLAS_LANDING,
+  anclasDeRuta,
   ENLACES_EQUIPOS,
   ENLACES_IDIOMAS,
   ENLACES_SUELTOS,
@@ -38,6 +39,7 @@ import styles from "./nav.module.css";
 
 export default function Navegacion() {
   const landing = useModoLanding();
+  const anclas = anclasDeRuta(usePathname());
 
   if (landing) {
     return (
@@ -46,7 +48,7 @@ export default function Navegacion() {
         aria-label="Secciones de esta página"
       >
         <ul className={styles.list}>
-          {ANCLAS_LANDING.map((s) => (
+          {anclas.map((s) => (
             <li key={s.ancla} className={styles.item}>
               <a className={styles.link} href={s.ancla}>
                 {s.nombre}

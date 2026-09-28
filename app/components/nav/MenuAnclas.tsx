@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ANCLAS_LANDING } from "./secciones";
+import { usePathname } from "next/navigation";
+import { anclasDeRuta } from "./secciones";
 import useModoLanding from "./useModoLanding";
 import styles from "./nav.module.css";
 
@@ -34,6 +35,7 @@ export default function MenuAnclas() {
   const dialogo = useRef<HTMLDialogElement>(null);
   const [abierto, setAbierto] = useState(false);
   const landing = useModoLanding();
+  const anclas = anclasDeRuta(usePathname());
 
   useEffect(() => {
     const d = dialogo.current;
@@ -100,7 +102,7 @@ export default function MenuAnclas() {
 
           <nav className={styles.lista} aria-label="Secciones de esta página">
             <ul className={styles.listaItems}>
-              {ANCLAS_LANDING.map((s) => (
+              {anclas.map((s) => (
                 <li key={s.ancla}>
                   <a
                     className={styles.listaEnlace}

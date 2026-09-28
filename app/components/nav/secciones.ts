@@ -36,8 +36,10 @@ export const ENLACES_SUELTOS = [
    Es una sola lista para las seis landings de idioma y no una por página
    porque las seis salen de la misma plantilla y llevan los mismos `id` en las
    mismas cuatro secciones: se comprobó en las seis páginas antes de escribir
-   esto. Si una landing futura se saliera de la plantilla, esto deja de servir
-   y habría que pasar la lista por prop desde la página.
+   esto. El índice de idiomas, /idioma/, sí se sale: suma su sección de idiomas
+   y lleva su propia lista, ANCLAS_INDICE. Qué lista toca lo decide
+   anclasDeRuta, porque el header vive en el layout raíz y no recibe props de
+   la página.
 
    La etiqueta no repite el `id`: la sección de testimonios es `#resultados` y
    en el menú se llama Casos de éxito. El `id` viene de la página migrada y no
@@ -48,3 +50,15 @@ export const ANCLAS_LANDING = [
   { nombre: "Casos de éxito", ancla: "#resultados" },
   { nombre: "Preguntas", ancla: "#faq" },
 ];
+
+/* Las anclas del índice de idiomas: su sección de idiomas, que va justo
+   después de los logos, y detrás las cuatro de la plantilla. */
+export const ANCLAS_INDICE = [
+  { nombre: "Idiomas", ancla: "#idiomas" },
+  ...ANCLAS_LANDING,
+];
+
+export function anclasDeRuta(ruta: string) {
+  // El sitio usa trailingSlash, así que la ruta puede llegar con barra o sin ella.
+  return ruta.replace(/\/+$/, "") === "/idioma" ? ANCLAS_INDICE : ANCLAS_LANDING;
+}

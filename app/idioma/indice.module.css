@@ -1,0 +1,57 @@
+/* Lo propio del índice de idiomas, /idioma/. El resto de la página es la
+   plantilla de las landings de idioma, en landing.module.css.
+
+   La sección de idiomas: una tarjeta por idioma, con su bandera, en rejilla.
+   La tarjeta es `.sp-tarjeta`; aquí solo su contenido y la rejilla. */
+
+.idiomas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.idioma {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 100%;
+  padding: var(--space-inset);
+  font-size: 18px;
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+  text-decoration: none;
+}
+
+/* En modo landing la tarjeta no es enlace: sin el realce de `.sp-tarjeta` al
+   pasar el cursor, que promete un clic que no lleva a ningún sitio. */
+.idiomaFija:hover {
+  border-color: var(--color-border);
+  transform: none;
+  box-shadow: none;
+}
+
+.idioma:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 3px;
+}
+
+.bandera {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+}
+
+@media (max-width: 960px) {
+  .idiomas {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .idiomas {
+    grid-template-columns: 1fr;
+  }
+}

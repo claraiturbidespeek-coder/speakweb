@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     url: "https://s-peak.com/idioma/frances-para-empresas/",
     images: [
       {
-        url: "https://s-peak.com/img/ejecutiva-hero.webp",
+        url: "https://s-peak.com/images/ejecutiva-hero.webp",
         alt: "Ejecutiva en un curso de francés para empresas de S-Peak",
       },
     ],
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "Francés para Empresas en México – Programas Medibles | S-Peak",
     description:
       "Cursos de francés para empresas diseñados por puesto, con avance medible y evidencia para Dirección. Solicite su propuesta.",
-    images: ["https://s-peak.com/img/ejecutiva-hero.webp"],
+    images: ["https://s-peak.com/images/ejecutiva-hero.webp"],
   },
 };
 

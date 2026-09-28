@@ -8,8 +8,6 @@ import { obtenerPosts } from "@/lib/posts";
 
    - /clientes/ y /nosotros/, ocultas por decisión y ya con robots noindex.
    - /gracias/, que dispara la conversión y por su naturaleza no se indexa.
-   - /idiomas-para-empresas/, pendiente de contenido: será el índice de idiomas
-     y entra aquí cuando lo tenga.
    - Las cinco de /category/, hoy esqueletos. Entran cuando el listado por
      categoría esté construido.
    - Las cinco rutas heredadas que ahora redirigen —/landing/ingles-para-empresas/,

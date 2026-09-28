@@ -24,6 +24,12 @@ const nextConfig: NextConfig = {
         destination: "/",
         statusCode: 301,
       },
+      // Era el esqueleto del índice de idiomas; el índice vive ahora en /idioma/.
+      {
+        source: "/idiomas-para-empresas",
+        destination: "/idioma/",
+        statusCode: 301,
+      },
       {
         source: "/idioma/frances",
         destination: "/idioma/frances-para-empresas/",
