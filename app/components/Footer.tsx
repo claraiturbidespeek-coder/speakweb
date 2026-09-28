@@ -6,7 +6,8 @@ import Icono from "@/app/components/Icono";
 import styles from "./Footer.module.css";
 
 /* Modo landing: en /idioma/ con el fragmento #landing, el footer se reduce a la
-   marca, la descripción, el botón de cotización y el aviso de privacidad. Las
+   marca, la descripción, el teléfono, el botón de cotización y el aviso de
+   privacidad. Las
    tres columnas de enlaces y el LinkedIn llevan `sp-oculto-landing`, la clase
    global que `interacciones.css` apaga bajo `html[data-landing]` — el mismo
    atributo y la misma clase con que el header se queda sin menú.
@@ -42,6 +43,14 @@ export default function Footer() {
             Capacitación en idiomas para empresas. Acompañamos a las áreas de
             Recursos Humanos con programas a la medida, seguimiento en tiempo
             real y resultados medibles.
+          </p>
+          {/* El teléfono va en un solo elemento y siempre con este formato:
+              Google Ads lo detecta en la página y lo sustituye por su número de
+              desvío para medir las llamadas. No lo partas ni lo reformatees. Va
+              en la columna de la marca, que es la que sigue visible en modo
+              landing. */}
+          <p className={styles.telefono}>
+            <a className={styles.link} href="tel:+525585265520">+52 55 8526 5520</a>
           </p>
           <BotonContacto className={`sp-btn sp-btn--rojo ${styles.cta}`}>
             Solicite una Cotización

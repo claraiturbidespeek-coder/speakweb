@@ -48,6 +48,11 @@
   color: var(--color-white);
 }
 
+/* El enlace es `.link`, el mismo de las columnas; aquí solo su separación. */
+.telefono {
+  margin: 0 0 20px;
+}
+
 .cta {
   margin-bottom: 24px;
 }
