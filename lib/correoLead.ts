@@ -32,6 +32,7 @@ const BLOQUE = "#F5F7FA";
 const FILETE = "#E5E7EB";
 const FUENTE = "Montserrat, Arial, Helvetica, sans-serif";
 const NO_ESPECIFICADO = "No especificado";
+export const NO_DISPONIBLE = "No disponible";
 
 export type DatosCorreoLead = {
   origen: string;
@@ -48,6 +49,11 @@ export type DatosCorreoLead = {
   utmCampaign: string;
   utmContent: string;
   gclid: string;
+  /* Datos del envío, que la ruta lee de la petición: la IP del visitante y la
+     región que da la geolocalización de Vercel. Llegan ya con "No disponible"
+     si faltan. La hora de envío sale de `fecha`. */
+  ip: string;
+  region: string;
   fecha: Date;
   // El mismo asunto del envío, como <title> del documento.
   asunto: string;
@@ -131,9 +137,10 @@ export function plantillaCorreoLead(d: DatosCorreoLead): {
                   <td class="texto" style="padding:6px 0; font-family:${FUENTE}; font-size:15px; line-height:1.5; color:${TINTA}; vertical-align:top; word-break:break-word;">${valorHtml}</td>
                 </tr>`;
 
-  // Atribución: pequeña y gris; "No especificado" más tenue y en cursiva.
+  /* Atribución y datos del envío: pequeña y gris; "No especificado" y "No
+     disponible" más tenues y en cursiva. */
   const filaAtribucion = (etiqueta: string, valor: string) => {
-    const vacio = valor === NO_ESPECIFICADO;
+    const vacio = valor === NO_ESPECIFICADO || valor === NO_DISPONIBLE;
     return `
                 <tr>
                   <td style="padding:3px 16px 3px 0; width:96px; font-family:${FUENTE}; font-size:12px; color:${GRIS}; vertical-align:top;">${esc(etiqueta)}</td>
@@ -230,7 +237,7 @@ export function plantillaCorreoLead(d: DatosCorreoLead): {
 
         <!-- 5. Atribución -->
         <tr>
-          <td style="padding:16px 28px 24px;">
+          <td style="padding:16px 28px 8px;">
             <table role="presentation" class="filete" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${FILETE};">
               <tr><td style="height:12px; line-height:12px; font-size:0;">&nbsp;</td></tr>
             </table>
@@ -240,10 +247,16 @@ export function plantillaCorreoLead(d: DatosCorreoLead): {
           </td>
         </tr>
 
-        <!-- 6. Pie -->
+        <!-- 6. Datos del envío: mismo trato que la atribución. Cierra el
+             correo: la hora de envío va aquí y no en un pie aparte. -->
         <tr>
-          <td class="filete" style="padding:16px 28px 20px; border-top:1px solid ${FILETE};">
-            <p class="gris" style="margin:0; font-family:${FUENTE}; font-size:11px; line-height:1.5; color:${GRIS};">Recibido el ${esc(fecha)}</p>
+          <td style="padding:16px 28px 24px;">
+            <table role="presentation" class="filete" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:1px solid ${FILETE};">
+              <tr><td style="height:12px; line-height:12px; font-size:0;">&nbsp;</td></tr>
+            </table>
+            <p class="gris" style="margin:0 0 6px; font-family:${FUENTE}; font-size:11px; font-weight:bold; text-transform:uppercase; letter-spacing:0.06em; color:${GRIS};">Datos del envío</p>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">${filaAtribucion("IP", d.ip)}${filaAtribucion("Región", d.region)}${filaAtribucion("Hora de envío", fecha)}
+            </table>
           </td>
         </tr>
       </table>
@@ -280,7 +293,10 @@ export function plantillaCorreoLead(d: DatosCorreoLead): {
     `UTM Content: ${d.utmContent}`,
     `GCLID: ${d.gclid}`,
     "",
-    `Recibido el ${fecha}`,
+    "DATOS DEL ENVÍO",
+    `IP: ${d.ip}`,
+    `Región: ${d.region}`,
+    `Hora de envío: ${fecha}`,
   ].join("\n");
 
   return { html, texto };

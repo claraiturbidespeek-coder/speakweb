@@ -36,8 +36,9 @@
      CRM_WEBHOOK_SECRET_WHATSAPP    lo mismo para el modal de WhatsApp
 
    FILTROS ANTIBOT (añadidos después del porteo): un campo trampa invisible
-   (`sitio_web`) que una persona nunca rellena, y el rango reservado de ficción
-   555-0100 a 555-0199. Los dos descartan el envío antes de tocar Kommo y
+   (`sitio_web`) que una persona nunca rellena, una casilla trampa
+   (`recibir_novedades`) que una persona nunca marca, y el rango reservado de
+   ficción 555-0100 a 555-0199. Los tres descartan el envío antes de tocar Kommo y
    Resend, y los dos responden 200 con `ok: true` para no darle al bot la señal
    de qué lo detuvo. El motivo se registra con console.warn.
 
@@ -45,7 +46,11 @@
    responde en /api/lead/ y una llamada a /api/lead se redirige con un 308. Al
    repuntar el modal hay que apuntar a /api/lead/, con barra. */
 
-import { asuntoCorreoLead, plantillaCorreoLead } from "@/lib/correoLead";
+import {
+  asuntoCorreoLead,
+  NO_DISPONIBLE,
+  plantillaCorreoLead,
+} from "@/lib/correoLead";
 
 const FROM = "S-Peak Landing <hello@mail.s-peak.com>";
 const TO = [
@@ -86,8 +91,9 @@ const CRM_SCNDAL_VARIABLES: Record<string, string> = {
 const CRM_SCNDAL_TIMEOUT_MS = 7000;
 
 /* Las catorce claves que viajan al CRM: las mismas con que llegan del
-   navegador, sin renombrar ni quitar acentos. `sitio_web`, el señuelo antibot,
-   no entra aquí: no es un dato del lead y no debe salir del endpoint. */
+   navegador, sin renombrar ni quitar acentos. `sitio_web` y
+   `recibir_novedades`, los señuelos antibot, no entran aquí: no son datos del
+   lead y no deben salir del endpoint. */
 type LeadCrm = {
   nombre: string;
   empresa: string;
@@ -112,6 +118,47 @@ type LeadCrm = {
 function esTelefonoFicticio(telefono: string): boolean {
   const digitos = telefono.replace(/\D/g, "");
   return /55501\d{2}$/.test(digitos);
+}
+
+/* Datos del envío para el correo: la IP del visitante y su región.
+
+   La IP, con el mismo criterio que el lead de Kommo: la primera de
+   x-forwarded-for, que en Vercel es la del visitante.
+
+   La región sale de las cabeceras de geolocalización que Vercel añade a cada
+   petición: x-vercel-ip-city, x-vercel-ip-country-region y x-vercel-ip-country.
+   La ciudad llega codificada para URL ("Ciudad%20de%20M%C3%A9xico") y el país
+   como código ISO ("MX"), que aquí se pasa a su nombre en español. El estado es
+   el código de región ISO 3166-2 tal cual ("CMX", "JAL"): Vercel no da el
+   nombre. En local no hay ninguna de las tres y todo queda en "No disponible". */
+function datosDelEnvio(request: Request): { ip: string; region: string } {
+  const ip =
+    (request.headers.get("x-forwarded-for") || "").split(",")[0].trim() ||
+    NO_DISPONIBLE;
+
+  const decodificar = (valor: string) => {
+    try {
+      return decodeURIComponent(valor);
+    } catch {
+      return valor;
+    }
+  };
+  const ciudad = decodificar((request.headers.get("x-vercel-ip-city") || "").trim());
+  const estado = (request.headers.get("x-vercel-ip-country-region") || "").trim();
+  const codigoPais = (request.headers.get("x-vercel-ip-country") || "").trim();
+  let pais = codigoPais;
+  if (codigoPais) {
+    try {
+      pais =
+        new Intl.DisplayNames(["es"], { type: "region" }).of(codigoPais) ||
+        codigoPais;
+    } catch {
+      // Un código que Intl no reconoce se deja tal cual.
+    }
+  }
+  const region = [ciudad, estado, pais].filter(Boolean).join(", ") || NO_DISPONIBLE;
+
+  return { ip, region };
 }
 
 // Mismo juego de cabeceras que aplicaba applyCors en el original.
@@ -449,6 +496,16 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json({ ok: true }, { status: 200, headers });
   }
 
+  const casilla = campo(body.recibir_novedades);
+  if (casilla) {
+    console.warn("Lead descartado: casilla trampa marcada", {
+      origen,
+      pagina,
+      recibir_novedades: casilla.slice(0, 80),
+    });
+    return Response.json({ ok: true }, { status: 200, headers });
+  }
+
   if (telefono && esTelefonoFicticio(telefono)) {
     console.warn("Lead descartado: teléfono en el rango ficticio 555-01XX", {
       origen,
@@ -510,6 +567,7 @@ export async function POST(request: Request): Promise<Response> {
     utmCampaign,
     utmContent,
     gclid,
+    ...datosDelEnvio(request),
     fecha: new Date(),
     asunto,
   });

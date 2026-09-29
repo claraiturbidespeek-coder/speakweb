@@ -147,6 +147,7 @@ export default function FlotanteWhatsApp() {
       puesto: "",
       mensaje: "",
       sitio_web: texto("sitio_web"),
+      recibir_novedades: texto("recibir_novedades"),
       // La marca que separa este lead del formulario en Resend y en Kommo.
       origen: "WhatsApp",
       ...recogerAtribucion(idioma),
@@ -314,6 +315,18 @@ export default function FlotanteWhatsApp() {
                   <input
                     type="text"
                     name="sitio_web"
+                    className="sp-trampa"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                  />
+                  {/* Casilla trampa: la misma idea en casilla. Una persona no
+                      puede marcarla; un bot que marca todo, sí. Si llega
+                      marcada, /api/lead/ descarta el envío. */}
+                  <input
+                    type="checkbox"
+                    name="recibir_novedades"
+                    value="si"
                     className="sp-trampa"
                     tabIndex={-1}
                     autoComplete="off"

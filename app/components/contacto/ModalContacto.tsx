@@ -101,6 +101,7 @@ export default function ModalContacto({
       puesto: texto("puesto"),
       mensaje: texto("mensaje"),
       sitio_web: texto("sitio_web"),
+      recibir_novedades: texto("recibir_novedades"),
       origen: "Formulario principal",
       // El del campo; el de la ruta solo por si el campo no llegara.
       ...recogerAtribucion(texto("idioma") || idiomaDeRuta(ruta)),
@@ -271,6 +272,19 @@ export default function ModalContacto({
               <input
                 type="text"
                 name="sitio_web"
+                className="sp-trampa"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+              />
+              {/* Casilla trampa: la misma idea en casilla. Una persona no puede
+                  marcarla —fuera de pantalla, fuera del tabulador y oculta al
+                  lector de pantalla—; un bot que marca todo lo que encuentra,
+                  sí. Si llega marcada, /api/lead/ descarta el envío. */}
+              <input
+                type="checkbox"
+                name="recibir_novedades"
+                value="si"
                 className="sp-trampa"
                 tabIndex={-1}
                 autoComplete="off"

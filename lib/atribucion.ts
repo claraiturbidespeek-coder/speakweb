@@ -207,6 +207,10 @@ export type PayloadLead = {
      formularios lo pintan invisible (clase `sp-trampa`) y el endpoint descarta
      el envío si llega con algo. Ver app/api/lead/route.ts. */
   sitio_web: string;
+  /* Casilla trampa: "si" si llega marcada, vacía desde una persona. Misma
+     lógica que `sitio_web`, para el bot que marca casillas en vez de, o además
+     de, rellenar textos. */
+  recibir_novedades: string;
 } & Atribucion;
 
 // Lanza si la respuesta no es ok.
