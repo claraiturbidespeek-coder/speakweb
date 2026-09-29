@@ -156,9 +156,9 @@ const datos: DatosEquipo = {
   mercado: {
     eyebrow: "Por qué urge ahora",
     titulo:
-      "Por qué su empresa no puede esperar el año próximo para capacitar al equipo comercial",
+      "Por qué su empresa no puede esperar a formar a su equipo comercial",
     texto:
-      "Cada mes que su equipo comercial opera sin el idioma correcto es una ventana que se cierra frente a la competencia. Estos son los datos que explican por qué actuar ahora, no en el próximo trimestre, marca la diferencia.",
+      "Formar a un equipo en otro idioma toma meses, y su próximo cliente extranjero no espera. Estas son las razones para empezar ahora.",
     etiquetaCarrusel: "Razones para capacitar al equipo comercial ahora",
     tarjetas: [
       {

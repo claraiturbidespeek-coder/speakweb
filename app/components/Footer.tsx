@@ -50,7 +50,14 @@ export default function Footer() {
               en la columna de la marca, que es la que sigue visible en modo
               landing. */}
           <p className={styles.telefono}>
-            <a className={styles.link} href="tel:+525585265520">+52 55 8526 5520</a>
+            {/* Un solo enlace tel:, con el ícono fuera del texto: el número va
+                solo en su <span> para que Google Ads lo encuentre entero. */}
+            <a className={styles.telefonoEnlace} href="tel:+525585265520">
+              <span className={`sp-icono ${styles.telefonoIcono}`}>
+                <Icono nombre="telefono" />
+              </span>
+              <span>+52 55 8526 5520</span>
+            </a>
           </p>
           <BotonContacto className={`sp-btn sp-btn--rojo ${styles.cta}`}>
             Solicite una Cotización
@@ -62,8 +69,10 @@ export default function Footer() {
             rel="noopener noreferrer"
             aria-label="LinkedIn"
           >
-            <span className="sp-icono sp-icono--sm">
-              <Icono nombre="linkedin" />
+            {/* Solo las letras, en blanco: sin el cuadro del logotipo ni la
+                caja de ícono. */}
+            <span className={styles.socialIcono}>
+              <Icono nombre="linkedinLetras" />
             </span>
           </a>
         </div>

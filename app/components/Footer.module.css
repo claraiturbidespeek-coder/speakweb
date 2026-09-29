@@ -48,9 +48,37 @@
   color: var(--color-white);
 }
 
-/* El enlace es `.link`, el mismo de las columnas; aquí solo su separación. */
 .telefono {
   margin: 0 0 20px;
+}
+
+/* El teléfono destaca sobre los enlaces de las columnas: más grande y en
+   negrita, con el ícono de llamada delante. Mismo color y mismo hover que
+   `.link`. */
+.telefonoEnlace {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: var(--weight-bold);
+  color: var(--color-white);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.telefonoEnlace:hover {
+  color: var(--color-red-hover);
+}
+
+.telefonoEnlace:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 3px;
+}
+
+/* `.sp-icono` pone el trazo lineal del sitio; aquí solo el tamaño. */
+.telefonoIcono svg {
+  width: 20px;
+  height: 20px;
 }
 
 .cta {
@@ -72,6 +100,19 @@
 
 .social:hover {
   color: var(--color-red-hover);
+}
+
+/* Las letras del logotipo, sin caja. El radio a cero anula el que reparte
+   base.css a todo: sobre el svg recortaba el trazado. */
+.socialIcono {
+  display: flex;
+}
+
+.socialIcono svg {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 0;
 }
 
 .social:focus-visible,

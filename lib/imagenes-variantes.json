@@ -785,16 +785,13 @@
     ]
   },
   "/images/home/caso-brechas-linguisticas.webp": {
-    "width": 1500,
-    "height": 912,
+    "width": 1080,
+    "height": 720,
     "anchos": [
       160,
       320,
       480,
-      640,
-      800,
-      1080,
-      1440
+      640
     ]
   },
   "/images/home/caso-seguimiento-calidad.webp": {

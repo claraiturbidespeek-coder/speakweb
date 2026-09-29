@@ -284,8 +284,10 @@
     "descartados": []
   },
   "/images/home/caso-brechas-linguisticas.webp": {
-    "hash": "3de381362af4b2294f91d809ad877d0ff7a9b7e9",
-    "descartados": []
+    "hash": "319941353b2fde0759e769446673db4a2748710d",
+    "descartados": [
+      800
+    ]
   },
   "/images/home/caso-seguimiento-calidad.webp": {
     "hash": "f6efd41c250abf5c55832ec356fed60b223b8935",

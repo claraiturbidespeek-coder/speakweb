@@ -142,7 +142,7 @@ const datos: DatosEquipo = {
     texto: (
       <>
         La mayoría de nuestros programas de atención son en inglés, porque es el
-        idioma de la mayoría de las cuentas internacionales. Pero si su equipo
+        idioma más común entre las cuentas internacionales. Pero si su equipo
         atiende clientes en Brasil, Alemania, Francia o Italia, lo capacitamos
         en <strong>la lengua que realmente retiene la cuenta</strong>. En el
         diagnóstico definimos cuál, según el origen de sus clientes y las
