@@ -1,18 +1,19 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ENLACES_EQUIPOS, ENLACES_IDIOMAS } from "@/app/components/nav/secciones";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
 import Icono from "@/app/components/Icono";
+import LogotipoFooter from "@/app/components/LogotipoFooter";
 import styles from "./Footer.module.css";
 
 /* Modo landing: en /idioma/ con el fragmento #landing, el footer se reduce a la
-   marca, la descripción, el teléfono, el botón de cotización y el aviso de
+   marca —que ahí deja de ser enlace, como la del header: LogotipoFooter.tsx—,
+   la descripción, el teléfono, el botón de cotización y el aviso de
    privacidad. Las
    tres columnas de enlaces y el LinkedIn llevan `sp-oculto-landing`, la clase
    global que `interacciones.css` apaga bajo `html[data-landing]` — el mismo
    atributo y la misma clase con que el header se queda sin menú.
 
-   No hay lógica de React aquí a propósito: el HTML del servidor sale siempre
+   Fuera del logotipo no hay lógica de React aquí a propósito: el HTML del servidor sale siempre
    completo, con todos los enlaces, así que el rastreador los ve igual que en el
    resto del sitio. Quien decide es el guion inline del layout, que marca el
    <html> antes del primer pintado, y useModoLanding.ts lo mantiene al navegar.
@@ -29,15 +30,7 @@ export default function Footer() {
       <div className={styles.inner}>
         <div className={styles.brand}>
           <p className={styles.logoWrap}>
-            <Link href="/">
-              <Image
-                className="site-logo"
-                src="/brand/logo_white.svg"
-                alt="S-Peak"
-                width={1776}
-                height={492}
-              />
-            </Link>
+            <LogotipoFooter />
           </p>
           <p className={styles.about}>
             Capacitación en idiomas para empresas. Acompañamos a las áreas de

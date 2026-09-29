@@ -124,7 +124,8 @@ function datosEstructurados() {
         "@type": "Service",
         name: "Diagnóstico de nivel de idioma para equipos",
         serviceType: "Evaluación de nivel de idioma",
-        provider: { "@type": "Organization", name: "S-Peak", url: "https://s-peak.com" },
+        /* El Organization del layout raíz, por su @id. */
+        provider: { "@id": "https://s-peak.com/#organizacion" },
         areaServed: { "@type": "Country", name: "México" },
         description: DESCRIPCION,
       },

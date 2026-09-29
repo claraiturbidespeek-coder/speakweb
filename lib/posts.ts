@@ -224,13 +224,20 @@ function recogerEncabezados(destino: Encabezado[]) {
   };
 }
 
-// Todo enlace del cuerpo abre en pestaña nueva, sea interno o externo. La
-// única excepción es un anchor a la propia página (`#contacto`): ese solo
-// hace scroll dentro de la nota que ya se está leyendo, no tiene sentido
-// abrirlo aparte. `rel="noopener noreferrer"` evita que esa pestaña controle
-// esta vía `window.opener` y que el destino reciba el referrer de la nota.
+// Solo los enlaces a otros sitios abren en pestaña nueva. Los del propio
+// sitio —absolutos a https://s-peak.com/…, que es como los escriben las
+// notas, o relativos— navegan en la misma pestaña, como cualquier enlace
+// interno; y un anchor a la propia página (`#contacto`) solo hace scroll
+// dentro de la nota. `rel="noopener noreferrer"` evita que la pestaña externa
+// controle esta vía `window.opener` y que el destino reciba el referrer.
+const SITIO = /^https?:\/\/(www\.)?s-peak\.com(\/|$)/i;
+
 function abreEnPestanaNueva(href: string): boolean {
-  return !!href && !href.startsWith("#");
+  if (!href || href.startsWith("#")) return false;
+  // "//otro.com" empieza por barra pero es de otro sitio.
+  const relativo = href.startsWith("/") && !href.startsWith("//");
+  if (relativo || SITIO.test(href)) return false;
+  return true;
 }
 
 function marcarEnlacesPestanaNueva() {

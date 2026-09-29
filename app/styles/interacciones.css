@@ -39,8 +39,9 @@ html[data-landing] .sp-oculto-landing {
   display: none;
 }
 
-/* El logotipo se queda visible, pero sin llevar a ninguna parte. Al hidratar
-   deja de ser un <a>; hasta entonces esto le quita el clic. */
+/* Los logotipos del header y del footer se quedan visibles, pero sin llevar a
+   ninguna parte. Al hidratar dejan de ser un <a>; hasta entonces esto les quita
+   el clic. */
 html[data-landing] .sp-logo-enlace {
   pointer-events: none;
 }

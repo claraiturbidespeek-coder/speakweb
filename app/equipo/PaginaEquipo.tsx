@@ -73,7 +73,8 @@ function datosEstructurados(datos: DatosEquipo) {
         "@type": "Service",
         name: datos.servicio.nombre,
         serviceType: datos.servicio.tipo,
-        provider: { "@type": "Organization", name: "S-Peak", url: "https://s-peak.com" },
+        /* El Organization del layout raíz, por su @id. */
+        provider: { "@id": "https://s-peak.com/#organizacion" },
         areaServed: { "@type": "Country", name: "México" },
         description: datos.servicio.descripcion,
       },
