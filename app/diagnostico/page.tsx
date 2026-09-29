@@ -158,7 +158,7 @@ export default function Diagnostico() {
             height="907"
             loading="lazy"
           />
-          <div className={`${styles.heroInner} reveal`}>
+          <div className={styles.heroInner}>
             <div className="sp-etiqueta">Diagnóstico de Nivel para Equipos · Sin costo</div>
             <h1>Conozca el nivel de inglés de su equipo antes de invertir en capacitación</h1>
             <p className={styles.heroIdiomas}>

@@ -85,6 +85,10 @@ html.lenis {
 /* ---------- Aparición al hacer scroll ----------
    Copia idéntica en landing.css y equipo.css. */
 
+/* Nunca en el héroe: nacería invisible hasta que corra el JavaScript, y eso
+   retrasa el LCP y, si el JS falla, deja el título y el botón sin verse. El
+   héroe se pinta tal cual desde el HTML; solo las secciones de debajo aparecen
+   al hacer scroll. */
 .reveal {
   opacity: 0;
   transform: translateY(28px);

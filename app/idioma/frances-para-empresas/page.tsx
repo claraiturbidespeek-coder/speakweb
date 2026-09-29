@@ -111,7 +111,7 @@ export default function Page() {
   <img className={`${styles.deco} ${styles.decoHero}`} src="/images/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy" />
   <div className={styles.heroInner}>
     {/* COLUMNA IZQUIERDA (60%) */}
-    <div className="reveal">
+    <div>
       <div className="sp-etiqueta">Francés corporativo · México</div>
       <h1><strong>Cursos de francés para empresas</strong> que operan con Francia y Canadá.</h1>
       <p className="sp-hero-sub">Cuando la matriz está en París, el cliente en Montreal o el contrato se firma en francés, el inglés de en medio deja de alcanzar. En <strong>S-Peak</strong> diseñamos programas de francés para empresas por puesto, para que sus colaboradores <strong>reporten, negocien y coordinen</strong> directamente en francés, con seguimiento continuo y evidencia verificable del avance.</p>
@@ -126,7 +126,7 @@ export default function Page() {
     </div>
 
     {/* COLUMNA DERECHA (40%) */}
-    <div className={`${styles.heroVisual} reveal`}>
+    <div className={styles.heroVisual}>
       <div className={styles.heroCircle} aria-hidden="true"></div>
       <div className={styles.heroPhoto}>
         <img {...imagenResponsiva("/images/ejecutiva-hero.webp", "(max-width: 960px) calc(100vw - 40px), (max-width: 1280px) 34vw, 426px")} alt="Ejecutiva en un curso de francés para empresas de S-Peak" width="740" height="1080" loading="eager" fetchPriority="high" />

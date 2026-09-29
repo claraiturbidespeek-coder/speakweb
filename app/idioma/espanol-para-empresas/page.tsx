@@ -111,7 +111,7 @@ export default function Page() {
   <img className={`${styles.deco} ${styles.decoHero}`} src="/images/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy" />
   <div className={styles.heroInner}>
     {/* COLUMNA IZQUIERDA (60%) */}
-    <div className="reveal">
+    <div>
       <div className="sp-etiqueta">Español para extranjeros · México</div>
       <h1><strong>Cursos de español para empresas</strong> con personal extranjero en México.</h1>
       <p className="sp-hero-sub">Su director de planta llegó de Alemania, su gerente de calidad de Corea y su equipo de arranque de Estados Unidos. Todos dirigen personal mexicano, tratan con proveedores locales y responden ante autoridades, y todo eso ocurre en español. En <strong>S-Peak</strong> diseñamos programas de español para empresas por puesto, para que su personal extranjero <strong>dirija, entienda y resuelva</strong> sin intermediarios, con seguimiento continuo y evidencia verificable del avance.</p>
@@ -126,7 +126,7 @@ export default function Page() {
     </div>
 
     {/* COLUMNA DERECHA (40%) */}
-    <div className={`${styles.heroVisual} reveal`}>
+    <div className={styles.heroVisual}>
       <div className={styles.heroCircle} aria-hidden="true"></div>
       <div className={styles.heroPhoto}>
         <img {...imagenResponsiva("/images/ejecutiva-hero.webp", "(max-width: 960px) calc(100vw - 40px), (max-width: 1280px) 34vw, 426px")} alt="Ejecutiva en un curso de español para personal extranjero de S-Peak" width="740" height="1080" loading="eager" fetchPriority="high" />

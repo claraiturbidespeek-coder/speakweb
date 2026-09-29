@@ -121,7 +121,7 @@ export default function IndiceIdiomas() {
   <img className={`${styles.deco} ${styles.decoHero}`} src="/images/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy" />
   <div className={styles.heroInner}>
     {/* COLUMNA IZQUIERDA (60%) */}
-    <div className="reveal">
+    <div>
       <div className="sp-etiqueta">Idiomas para empresas · México</div>
       <h1><strong>Cursos de idiomas para empresas</strong> que transforman la operación de su equipo.</h1>
       <p className="sp-hero-sub">Sus colaboradores necesitan comunicarse con seguridad en el idioma de su operación: <strong>hablar, presentar, negociar y colaborar</strong> en situaciones reales de trabajo. En <strong>S-Peak</strong> diseñamos por puesto programas de inglés, francés, alemán, italiano, portugués y español para extranjeros, con seguimiento continuo, reportes claros y evidencia verificable del avance de cada colaborador.</p>
@@ -136,7 +136,7 @@ export default function IndiceIdiomas() {
     </div>
 
     {/* COLUMNA DERECHA (40%) */}
-    <div className={`${styles.heroVisual} reveal`}>
+    <div className={styles.heroVisual}>
       <div className={styles.heroCircle} aria-hidden="true"></div>
       <div className={styles.heroPhoto}>
         <img {...imagenResponsiva("/images/ejecutiva-hero.webp", "(max-width: 960px) calc(100vw - 40px), (max-width: 1280px) 34vw, 426px")} alt="Ejecutiva en un curso de idiomas para empresas de S-Peak" width="740" height="1080" loading="eager" fetchPriority="high" />

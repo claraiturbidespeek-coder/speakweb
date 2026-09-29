@@ -105,7 +105,7 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
             loading="lazy"
           />
           <div className={styles.heroInner}>
-            <div className="reveal">
+            <div>
               {/* Primera línea del hero, no barra propia. El BreadcrumbList del
                   JSON-LD sigue en su sitio, arriba: no depende de este marcado. */}
               <div className={styles.breadcrumb}>
@@ -123,7 +123,7 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
               <SelloSTPS />
             </div>
 
-            <div className={`${styles.heroVisual} reveal`}>
+            <div className={styles.heroVisual}>
               <div className={styles.heroImgWrap}>
                 {/* Dimensiones leídas del archivo, no escritas a mano: el 600×420
                     que había no coincidía con ninguna de las siete imágenes. El
