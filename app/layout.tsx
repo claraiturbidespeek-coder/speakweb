@@ -16,6 +16,12 @@ const montserrat = localFont({
   style: "normal",
   display: "swap",
   variable: "--font-montserrat",
+  /* Sin el respaldo automático: next/font genera uno solo, calculado para el
+     peso normal y sin declarar peso, así que en negrita el navegador sintetiza
+     la de Arial Regular, más estrecha que Montserrat Bold, y el titular del
+     héroe cambiaba de líneas al llegar la fuente. El respaldo, con un
+     @font-face por peso, está en base.css y entra en --font-sitio. */
+  adjustFontFallback: false,
 });
 
 /* Organization es dato del sitio, no de una página: va una sola vez, aquí, y

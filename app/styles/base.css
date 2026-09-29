@@ -31,6 +31,75 @@ html {
   border-radius: var(--radius);
 }
 
+/* El respaldo de Montserrat, mientras llega la woff2 (font-display: swap).
+
+   Es Arial escalada para que ocupe lo mismo que Montserrat: si el texto
+   cambia de ancho al llegar la fuente, cambia de líneas y empuja todo lo de
+   abajo, que es un salto de diseño (CLS). Un @font-face por cada peso que usa
+   el sitio, porque cada peso de Montserrat tiene su propio ancho: los normales
+   sobre Arial, los de 600 en adelante sobre Arial Bold. Sin la cara en negrita
+   el navegador engordaba Arial Regular con negrita sintética, que es más
+   estrecha.
+
+   Arimo y Liberation Sans tienen las métricas de Arial y la sustituyen donde
+   no está instalada (Linux, ChromeOS). `size-adjust` es el ancho medio de
+   Montserrat en ese peso entre el de Arial, medido sobre el texto de las
+   páginas del sitio; los tres overrides son las métricas verticales de
+   Montserrat (hhea 968/-251/0 sobre 1000) divididas por ese mismo factor. Si
+   cambia la fuente, se recalculan. */
+@font-face {
+  font-family: "Montserrat Respaldo";
+  src: local("Arial"), local("ArialMT"), local("Arimo"), local("Liberation Sans");
+  font-weight: 100 449;
+  size-adjust: 111.58%;
+  ascent-override: 86.75%;
+  descent-override: 22.49%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Montserrat Respaldo";
+  src: local("Arial"), local("ArialMT"), local("Arimo"), local("Liberation Sans");
+  font-weight: 450 549;
+  size-adjust: 113.3%;
+  ascent-override: 85.43%;
+  descent-override: 22.15%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Montserrat Respaldo";
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Arimo Bold"),
+    local("Arimo-Bold"), local("Liberation Sans Bold"), local("LiberationSans-Bold");
+  font-weight: 550 649;
+  size-adjust: 107.38%;
+  ascent-override: 90.15%;
+  descent-override: 23.37%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Montserrat Respaldo";
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Arimo Bold"),
+    local("Arimo-Bold"), local("Liberation Sans Bold"), local("LiberationSans-Bold");
+  font-weight: 650 749;
+  size-adjust: 109.28%;
+  ascent-override: 88.58%;
+  descent-override: 22.97%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Montserrat Respaldo";
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Arimo Bold"),
+    local("Arimo-Bold"), local("Liberation Sans Bold"), local("LiberationSans-Bold");
+  font-weight: 750 900;
+  size-adjust: 111.35%;
+  ascent-override: 86.93%;
+  descent-override: 22.54%;
+  line-gap-override: 0%;
+}
+
 body {
   font-family: var(--font-sitio);
   font-size: 16px;

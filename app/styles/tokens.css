@@ -69,7 +69,8 @@
 
   /* La familia se declaraba con dos pilas distintas: globals.css sin
      -apple-system y las páginas migradas con él. Manda la de la referencia. */
-  --font-sitio: var(--font-montserrat), -apple-system, sans-serif;
+  --font-sitio: var(--font-montserrat), "Montserrat Respaldo", -apple-system,
+    sans-serif;
 
   --weight-normal: 400;
   --weight-medium: 500;
