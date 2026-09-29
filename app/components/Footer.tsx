@@ -79,7 +79,8 @@ export default function Footer() {
 
         <nav className="sp-oculto-landing" aria-labelledby="footer-idiomas">
           <h2 className={styles.title} id="footer-idiomas">
-            Idiomas
+            {/* El título lleva al índice de idiomas, /idioma/. */}
+            <Link href="/idioma/">Idiomas</Link>
           </h2>
           <ul className={styles.list}>
             {ENLACES_IDIOMAS.map((e) => (

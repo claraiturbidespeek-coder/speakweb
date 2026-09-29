@@ -3,7 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { ENLACES_EQUIPOS, ENLACES_IDIOMAS, ENLACES_SUELTOS } from "./secciones";
+import {
+  ENLACE_INDICE_IDIOMAS,
+  ENLACES_EQUIPOS,
+  ENLACES_IDIOMAS,
+  ENLACES_SUELTOS,
+} from "./secciones";
 import useModoLanding from "./useModoLanding";
 import styles from "./nav.module.css";
 
@@ -47,7 +52,11 @@ export default function MenuCompleto() {
   const landing = useModoLanding();
 
   const grupos: Grupo[] = [
-    { clave: "idiomas", etiqueta: "Idiomas", enlaces: ENLACES_IDIOMAS },
+    {
+      clave: "idiomas",
+      etiqueta: "Idiomas",
+      enlaces: [ENLACE_INDICE_IDIOMAS, ...ENLACES_IDIOMAS],
+    },
     { clave: "equipos", etiqueta: "Equipos", enlaces: ENLACES_EQUIPOS },
   ];
 
@@ -185,7 +194,10 @@ export default function MenuCompleto() {
               Volver
             </button>
 
-            <h2 className={styles.contenidoTitulo}>{activo.etiqueta}</h2>
+            {/* Párrafo y no encabezado: el panel va en el header, antes del
+                <main>, y un encabezado aquí sería el primero de cada página,
+                por delante de su H1. El aspecto lo da la clase. */}
+            <p className={styles.contenidoTitulo}>{activo.etiqueta}</p>
             <ul className={styles.contenidoLista}>
               {activo.enlaces.map((e) => (
                 <li key={e.ruta}>

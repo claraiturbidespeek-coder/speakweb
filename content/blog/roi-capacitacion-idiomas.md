@@ -59,6 +59,6 @@ En el primer año, puede tener un ROI positivo con un retorno de hasta 3x el val
 
 Invertir en capacitación en idiomas genera beneficios claros y medibles: mejor comunicación, mayor productividad, retención de talento y competitividad global.
 
-En S‑Peak, ofrecemos [programas de idiomas](https://s-peak.com/#idiomas) diseñados para maximizar el ROI de su inversión, alineados con los objetivos estratégicos de su empresa y las necesidades reales de su equipo.
+En S-Peak, ofrecemos [programas de idiomas](https://s-peak.com/#idiomas) diseñados para maximizar el ROI de su inversión, alineados con los objetivos estratégicos de su empresa y las necesidades reales de su equipo.
 
 *Fuentes:[Harvard Business Review](https://hbr.org/), [Communicating Across Cultures McKinsey,](https://www.mckinsey.com/) The economic impact of improving communication skills, [LinkedIn](https://www.linkedin.com/company/s-peak/posts/?feedView=all).*

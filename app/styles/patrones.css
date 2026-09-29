@@ -791,6 +791,16 @@
   gap: 10px;
 }
 
+/* El enlace al índice de idiomas, en su propia línea debajo de las píldoras. */
+.sp-franja-todos {
+  flex-basis: 100%;
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-white);
+  text-decoration: underline;
+}
+
 .sp-pill {
   position: relative;
   background: rgba(255, 255, 255, 0.08);

@@ -63,6 +63,16 @@
 
 /* ---------- Tablero de evidencia ---------- */
 
+/* La etiqueta de encima del tablero: avisa que las cifras son de ejemplo. */
+.ejemplo {
+  margin: 0 0 10px;
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
 .dash {
   background: var(--color-white);
   border: 1px solid var(--color-border);

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Desplegable from "./Desplegable";
 import {
   anclasDeRuta,
+  ENLACE_INDICE_IDIOMAS,
   ENLACES_EQUIPOS,
   ENLACES_IDIOMAS,
   ENLACES_SUELTOS,
@@ -64,7 +65,10 @@ export default function Navegacion() {
     <nav className={`${styles.nav} sp-menu`} aria-label="Principal">
       <ul className={styles.list}>
         <li className={styles.item}>
-          <Desplegable etiqueta="Idiomas" enlaces={ENLACES_IDIOMAS} />
+          <Desplegable
+            etiqueta="Idiomas"
+            enlaces={[ENLACE_INDICE_IDIOMAS, ...ENLACES_IDIOMAS]}
+          />
         </li>
         <li className={styles.item}>
           <Desplegable etiqueta="Equipos" enlaces={ENLACES_EQUIPOS} />

@@ -72,7 +72,7 @@ Siga estos tres pasos sencillos para identificar cuál es el mejor idioma para s
 
 ## Diseñe su estrategia lingüística con S-Peak
 
-Diagnosticar las necesidades de comunicación de una organización requiere experiencia. En S-Peak, nosotros le ayudamos a evaluar a su personal con auditorías en vivo. No ofrecemos cursos escolares genéricos. Al contrario, diseñamos rutas de aprendizaje a la medida de su negocio.
+Diagnosticar las necesidades de comunicación de una organización requiere experiencia. En S-Peak, nosotros le ayudamos a evaluar a su personal con auditorías en vivo. No ofrecemos cursos escolares genéricos. Al contrario, diseñamos [programas de idiomas para empresas](https://s-peak.com/idioma/) a la medida de su negocio.
 
 Contamos con profesores nativos y tableros de control en tiempo real. Así, usted podrá auditar cada centavo invertido en sus idiomas para empresas.
 

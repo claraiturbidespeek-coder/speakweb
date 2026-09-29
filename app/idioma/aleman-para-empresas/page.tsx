@@ -236,8 +236,8 @@ export default function Page() {
   <img className={`${styles.deco} ${styles.decoProceso}`} src="/images/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy" />
   <div className={styles.procesoInner}>
     <div className={`${styles.procesoLeft} reveal`}>
-      <div className="sp-eyebrow">El método S‑Peak</div>
-      <h2>5 razones por las que las empresas líderes en México eligen S‑Peak</h2>
+      <div className="sp-eyebrow">El método <span className={styles.marca}>S-Peak</span></div>
+      <h2>5 razones por las que las empresas líderes en México eligen <span className={styles.marca}>S-Peak</span></h2>
       {/* TODO (datos): la landing de inglés abre este bloque con el lugar de
           México en el índice de dominio del inglés. No hay una cifra
           equivalente verificada para el alemán —ni de dominio del idioma ni de

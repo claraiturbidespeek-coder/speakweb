@@ -9,8 +9,8 @@ import styles from "./SeccionEvidencia.module.css";
    duplicarse. El texto es el mismo en las trece; lo que cambia por página son
    las cifras del tablero y su `aria-label`.
 
-   El tablero es ilustrativo. Ni los números ni los colaboradores son datos de
-   un cliente: los colaboradores van siempre como "Colaborador A" a "D" para que
+   El tablero es ilustrativo, y lo dice la etiqueta "Ejemplo de reporte" que
+   lleva encima. Ni los números ni los colaboradores son datos de un cliente: los colaboradores van siempre como "Colaborador A" a "D" para que
    nadie los lea como personas, y cada página trae sus propias cifras para que
    no se vean calcadas una al lado de la otra.
 
@@ -61,6 +61,9 @@ export default function SeccionEvidencia({
           <BotonContacto className="sp-btn sp-btn--rojo">Solicite una Cotización</BotonContacto>
         </div>
         <div className={`${styles.evidenciaRight} reveal`}>
+          {/* Fuera del tablero: dentro, el role="img" la escondería a los
+              lectores de pantalla. */}
+          <p className={styles.ejemplo}>Ejemplo de reporte</p>
           <div className={styles.dash} role="img" aria-label={etiqueta}>
             <div className={styles.dashTopbar}>
               <div className={styles.dashTopbarTitle}>

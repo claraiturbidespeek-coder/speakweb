@@ -194,6 +194,22 @@
   border-radius: 0;
 }
 
+.langLink:hover {
+  text-decoration: underline;
+}
+
+/* El enlace al índice de idiomas, /idioma/, debajo de las banderas. */
+.langsTodos {
+  margin: 32px 0 0;
+  font-size: 15px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-navy);
+}
+
+.langsTodos a {
+  text-decoration: underline;
+}
+
 /* ---------- 4. Prepare a su talento ---------- */
 
 .programGrid {

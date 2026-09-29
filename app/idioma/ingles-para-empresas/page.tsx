@@ -229,8 +229,8 @@ export default function Page() {
   <img className={`${styles.deco} ${styles.decoProceso}`} src="/images/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy" />
   <div className={styles.procesoInner}>
     <div className={`${styles.procesoLeft} reveal`}>
-      <div className="sp-eyebrow">El método S‑Peak</div>
-      <h2>5 razones por las que las empresas líderes en México eligen S‑Peak</h2>
+      <div className="sp-eyebrow">El método <span className={styles.marca}>S-Peak</span></div>
+      <h2>5 razones por las que las empresas líderes en México eligen <span className={styles.marca}>S-Peak</span></h2>
       <p className={styles.procesoIntro}>El inglés de un curso general no alcanza para negociar, reportar y presentar en el puesto. Así es como <strong>S-Peak</strong> cierra esa brecha.</p>
     </div>
     <div className="reveal">

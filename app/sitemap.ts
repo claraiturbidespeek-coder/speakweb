@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/",
     "/blog/",
     "/aviso-de-privacidad/",
+    "/idioma/",
     ...ENLACES_IDIOMAS.map((e) => e.ruta),
     ...ENLACES_EQUIPOS.map((e) => e.ruta),
   ].map((ruta) => ({ url: `${SITIO}${ruta}` }));

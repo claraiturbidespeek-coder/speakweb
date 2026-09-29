@@ -1,20 +1,28 @@
 import type { Metadata, Viewport } from "next";
+import { migasIdioma } from "../programas";
 
 // La metadata vive aquí y no en page.tsx porque ese archivo es "use client",
 // y Next no permite exportar metadata desde un Client Component.
 const DESCRIPCION =
   "Cursos de francés para empresas en México, diseñados por puesto para operar con Francia y Canadá, con avance medible y evidencia para Dirección.";
 
-/* El Service de esta página. Organization va una sola vez en el layout raíz;
-   aquí solo lo propio de la ruta, con la misma descripción que la metadata. */
+/* La miga y el Service de esta página. Organization va una sola vez en el
+   layout raíz y el Service lo referencia por su @id; aquí solo lo propio de la
+   ruta, con la misma descripción que la metadata. La miga pasa por el índice,
+   /idioma/. */
 const DATOS_PAGINA = JSON.stringify({
   "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Cursos de francés para empresas",
-  url: "https://s-peak.com/idioma/frances-para-empresas/",
-  provider: { "@type": "Organization", name: "S-Peak", url: "https://s-peak.com" },
-  areaServed: { "@type": "Country", name: "México" },
-  description: DESCRIPCION,
+  "@graph": [
+    migasIdioma("/idioma/frances-para-empresas/"),
+    {
+      "@type": "Service",
+      name: "Cursos de francés para empresas",
+      url: "https://s-peak.com/idioma/frances-para-empresas/",
+      provider: { "@id": "https://s-peak.com/#organizacion" },
+      areaServed: { "@type": "Country", name: "México" },
+      description: DESCRIPCION,
+    },
+  ],
 });
 
 export const metadata: Metadata = {

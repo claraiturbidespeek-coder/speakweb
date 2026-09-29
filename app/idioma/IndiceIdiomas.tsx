@@ -12,6 +12,7 @@ import Link from "next/link";
 import { ENLACES_IDIOMAS } from "@/app/components/nav/secciones";
 import useModoLanding from "@/app/components/nav/useModoLanding";
 import CicloMetodo, { type PasoMetodo } from "./CicloMetodo";
+import { PROGRAMAS } from "./programas";
 import styles from "./landing.module.css";
 import indice from "./indice.module.css";
 import { imagenResponsiva } from "@/lib/imagenes";
@@ -112,6 +113,16 @@ export default function IndiceIdiomas() {
   const { abrir } = useContacto();
   const landing = useModoLanding();
 
+  /* Los idiomas que nombra la segunda pregunta enlazan a su página, salvo en
+     modo landing, que no ofrece salidas: ahí quedan como texto, igual que las
+     tarjetas de la sección de idiomas. */
+  const enlaceFaq = (ruta: string, texto: string) =>
+    landing ? texto : (
+      <Link className={indice.faqEnlace} href={ruta}>
+        {texto}
+      </Link>
+    );
+
   return (
     <>
 <AnimacionesEntrada />
@@ -123,7 +134,7 @@ export default function IndiceIdiomas() {
     {/* COLUMNA IZQUIERDA (60%) */}
     <div>
       <div className="sp-etiqueta">Idiomas para empresas · México</div>
-      <h1><strong>Cursos de idiomas para empresas</strong> que transforman la operación de su equipo.</h1>
+      <h1><strong>Programas de idiomas para empresas</strong> que transforman la operación de su equipo.</h1>
       <p className="sp-hero-sub">Sus colaboradores necesitan comunicarse con seguridad en el idioma de su operación: <strong>hablar, presentar, negociar y colaborar</strong> en situaciones reales de trabajo. En <strong>S-Peak</strong> diseñamos por puesto programas de inglés, francés, alemán, italiano, portugués y español para extranjeros, con seguimiento continuo, reportes claros y evidencia verificable del avance de cada colaborador.</p>
       <div className={styles.fakeForm} onClick={abrir} role="button" tabIndex={0}>
         <span className={styles.fakeFormIcon}>
@@ -182,7 +193,7 @@ export default function IndiceIdiomas() {
 <section className="sp-seccion" id="idiomas">
   <div className="sp-seccion-top reveal">
     <div className="sp-eyebrow" style={{ justifyContent: "center" }}>Idiomas</div>
-    <h2>Capacitamos a su equipo en seis idiomas</h2>
+    <h2>Inglés, francés, alemán, italiano, portugués y español para empresas</h2>
     <p>Cada programa se diseña para el idioma que su operación realmente usa: inglés para la mayoría de las relaciones internacionales; francés, alemán, italiano o portugués cuando su equipo trabaja con esos mercados, y español para los colaboradores extranjeros que se integran a su operación en México. Si su empresa necesita más de un idioma, los coordinamos con la misma metodología, el mismo seguimiento y los mismos reportes para Dirección.</p>
   </div>
   <ul className={`sp-inner ${indice.idiomas} reveal`}>
@@ -199,15 +210,18 @@ export default function IndiceIdiomas() {
             height="40"
             loading="lazy"
           />
-          {e.nombre}
+          <div>
+            <h3 className={indice.titulo}>{PROGRAMAS[e.ruta].titulo}</h3>
+            <p className={indice.linea}>{PROGRAMAS[e.ruta].linea}</p>
+          </div>
         </>
       );
       return (
         <li key={e.ruta}>
           {landing ? (
-            <span className={`sp-tarjeta ${indice.idioma} ${indice.idiomaFija}`}>
+            <div className={`sp-tarjeta ${indice.idioma} ${indice.idiomaFija}`}>
               {contenido}
-            </span>
+            </div>
           ) : (
             <Link className={`sp-tarjeta ${indice.idioma}`} href={e.ruta}>
               {contenido}
@@ -266,8 +280,8 @@ export default function IndiceIdiomas() {
   <img className={`${styles.deco} ${styles.decoProceso}`} src="/images/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy" />
   <div className={styles.procesoInner}>
     <div className={`${styles.procesoLeft} reveal`}>
-      <div className="sp-eyebrow">El método S‑Peak</div>
-      <h2>5 razones por las que las empresas líderes en México eligen S‑Peak</h2>
+      <div className="sp-eyebrow">El método <span className={styles.marca}>S-Peak</span></div>
+      <h2>5 razones por las que las empresas líderes en México eligen <span className={styles.marca}>S-Peak</span></h2>
       <p className={styles.procesoIntro}>Lo que se aprende en un curso general de idiomas no alcanza para negociar, reportar y presentar en el puesto. Así es como <strong>S-Peak</strong> cierra esa brecha.</p>
     </div>
     <div className="reveal">
@@ -405,56 +419,70 @@ export default function IndiceIdiomas() {
       </details>
       <details className="sp-faq-item" name="faq-indice">
         <summary className="sp-faq-pregunta">
-          2. ¿Cómo sé que de verdad funciona? ¿Qué recibe Recursos Humanos?
+          2. ¿Qué idiomas ofrece S-Peak?
+          <span className="sp-faq-icono">+</span>
+        </summary>
+        <div className="sp-faq-respuesta">Seis: {enlaceFaq("/idioma/ingles-para-empresas/", "inglés")}, {enlaceFaq("/idioma/frances-para-empresas/", "francés")}, {enlaceFaq("/idioma/aleman-para-empresas/", "alemán")}, {enlaceFaq("/idioma/italiano-para-empresas/", "italiano")}, {enlaceFaq("/idioma/portugues-para-empresas/", "portugués")} y {enlaceFaq("/idioma/espanol-para-empresas/", "español para extranjeros")}. Cada uno tiene su propio programa para empresas, con la misma metodología por puesto, seguimiento continuo y evidencia de avance para Dirección. En la página de cada idioma encontrará el detalle de su enfoque.</div>
+      </details>
+      <details className="sp-faq-item" name="faq-indice">
+        <summary className="sp-faq-pregunta">
+          3. ¿En qué cambia el programa de un idioma a otro?
+          <span className="sp-faq-icono">+</span>
+        </summary>
+        <div className="sp-faq-respuesta">El método es el mismo; lo que cambia es el contexto. Cada programa se ancla a las situaciones reales en que su equipo usa ese idioma: la casa matriz, los clientes, los proveedores o la planta con la que trabaja. Por eso el diagnóstico define tanto el idioma como el contenido de cada Sprint.</div>
+      </details>
+      <details className="sp-faq-item" name="faq-indice">
+        <summary className="sp-faq-pregunta">
+          4. ¿Cómo sé que de verdad funciona? ¿Qué recibe Recursos Humanos?
           <span className="sp-faq-icono">+</span>
         </summary>
         <div className="sp-faq-respuesta">Cada programa avanza por Sprints, 26 horas enfocadas en un dominio del puesto, que cierran con evidencia real (una simulación, un correo, una presentación), evaluada con rúbrica y documentada en una <strong>Tarjeta de Resultados</strong> que usted presenta a Dirección. Su equipo avanza por dominio comprobado, no por horas cursadas. <em>Solicite una propuesta y le mostramos un ejemplo de Tarjeta.</em></div>
       </details>
       <details className="sp-faq-item" name="faq-indice">
         <summary className="sp-faq-pregunta">
-          3. ¿En cuánto tiempo veo un cambio real?
+          5. ¿En cuánto tiempo veo un cambio real?
           <span className="sp-faq-icono">+</span>
         </summary>
         <div className="sp-faq-respuesta">Depende del idioma, del punto de partida y de la constancia del equipo. En el diagnóstico inicial le damos <strong>una proyección realista para su caso</strong>. <em>Cotice y le estimamos el plan.</em></div>
       </details>
       <details className="sp-faq-item" name="faq-indice">
         <summary className="sp-faq-pregunta">
-          4. ¿Adaptan el idioma a mi industria y manejan equipos en varios países?
+          6. ¿Adaptan el idioma a mi industria y manejan equipos en varios países?
           <span className="sp-faq-icono">+</span>
         </summary>
         <div className="sp-faq-respuesta">Sí. Anclamos cada Sprint al lenguaje de su sector y a la función de cada equipo: comercial, operaciones, finanzas, atención a clientes, coordinación con casa matriz, con foco en que comuniquen y reporten en el idioma de trabajo en situaciones reales. Para multinacionales capacitamos <strong>México y filiales en simultáneo</strong>, con gestión central y resultados consolidados. <em>Indíquenos su industria y el alcance.</em></div>
       </details>
       <details className="sp-faq-item" name="faq-indice">
         <summary className="sp-faq-pregunta">
-          5. ¿Quién imparte y qué respaldo tienen?
+          7. ¿Quién imparte y qué respaldo tienen?
           <span className="sp-faq-icono">+</span>
         </summary>
         <div className="sp-faq-respuesta">Instructores especialistas en idioma de negocios, nativos o bilingües, con experiencia en entornos corporativos, no profesores de escuela. Cada uno se asigna según el dominio y el puesto de su equipo, y si alguno no resulta el adecuado, <strong>lo cambiamos.</strong> La calidad no se deja al azar. <em>Pregúntenos por el perfil de quienes trabajarían con su equipo.</em></div>
       </details>
       <details className="sp-faq-item" name="faq-indice">
         <summary className="sp-faq-pregunta">
-          6. ¿Qué pasa si un colaborador falta, se rezaga o deja la empresa?
+          8. ¿Qué pasa si un colaborador falta, se rezaga o deja la empresa?
           <span className="sp-faq-icono">+</span>
         </summary>
         <div className="sp-faq-respuesta">Cubierto en los tres casos. Si falta, le enviamos la grabación y los temas para que no pierda el ritmo. Si se rezaga, lo detectamos a tiempo y ajustamos. Y si deja la empresa, reasignamos su lugar a otro colaborador del mismo dominio, <strong>sin perder lo invertido</strong>. <em>Lo dejamos definido en la propuesta desde el inicio.</em></div>
       </details>
       <details className="sp-faq-item" name="faq-indice">
         <summary className="sp-faq-pregunta">
-          7. ¿Cómo encaja el programa sin frenar la operación?
+          9. ¿Cómo encaja el programa sin frenar la operación?
           <span className="sp-faq-icono">+</span>
         </summary>
         <div className="sp-faq-respuesta">Las sesiones se agendan en los horarios que le convengan a su equipo, en la modalidad que elija: en sus instalaciones, en línea en vivo o híbrida. Y como la operación trae imprevistos, manejamos reposición ágil: si se atraviesa una junta o una urgencia, <strong>la sesión se repone sin trámites</strong>, para que el avance no se detenga. <em>Cuéntenos cómo opera su equipo.</em></div>
       </details>
       <details className="sp-faq-item" name="faq-indice">
         <summary className="sp-faq-pregunta">
-          8. ¿Cuánto cuesta y cómo se cobra?
+          10. ¿Cuánto cuesta y cómo se cobra?
           <span className="sp-faq-icono">+</span>
         </summary>
         <div className="sp-faq-respuesta">Se cotiza <strong>por grupo completo, no por persona</strong>. Cada grupo es de 1 a 10 colaboradores; si son más, armamos varios grupos. A más participantes, menor el costo por colaborador. La frecuencia (sesiones por semana) define el ritmo de avance y la inversión mensual; más sesiones significan avanzar más rápido, no pagar más caro por hora. Por eso no manejamos precio de lista: armamos la propuesta según cómo opere su empresa. <em>Solicite su cotización y le damos el número para su caso.</em></div>
       </details>
       <details className="sp-faq-item" name="faq-indice">
         <summary className="sp-faq-pregunta">
-          9. ¿Tienen registro ante la STPS y es deducible de impuestos?
+          11. ¿Tienen registro ante la STPS y es deducible de impuestos?
           <span className="sp-faq-icono">+</span>
         </summary>
         <div className="sp-faq-respuesta"><strong>Sí a ambas.</strong> Contamos con registro oficial ante la STPS y firmamos como agente capacitador externo la constancia de capacitación (DC-3) de cada colaborador. Además es deducible, y según el decreto del Plan México (DOF) pueden existir estímulos adicionales para la formación de personal; le entregamos la documentación de soporte y le recomendamos confirmar la aplicación a su caso con su área contable. <em>Solicite la información para su expediente.</em></div>

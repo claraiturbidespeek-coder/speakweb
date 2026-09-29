@@ -58,4 +58,4 @@ No existe una modalidad universalmente superior. La decisión entre en línea en
 
 Lo que importa es que la modalidad elegida garantice interacción real, práctica constante y [resultados aplicables.](https://s-peak.com/#clientes)
 
-Con [S‑Peak,](https://www.linkedin.com/company/s-peak/posts/?feedView=all) su empresa puede aprovechar ambas modalidades, asegurando una capacitación flexible, guiada y alineada con los objetivos de su negocio.
+Con [S-Peak,](https://www.linkedin.com/company/s-peak/posts/?feedView=all) su empresa puede aprovechar ambas modalidades, asegurando una capacitación flexible, guiada y alineada con los objetivos de su negocio.

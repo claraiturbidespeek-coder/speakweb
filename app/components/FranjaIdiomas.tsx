@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 /* La franja de idiomas: el texto de "no solo inglés" y las píldoras a las seis
@@ -38,6 +39,10 @@ export default function FranjaIdiomas({
               {i.nombre}
             </a>
           ))}
+          {/* Después de las píldoras, el índice de idiomas. */}
+          <Link className="sp-franja-todos" href="/idioma/">
+            Ver todos los idiomas
+          </Link>
         </div>
       </div>
     </section>

@@ -53,12 +53,12 @@ export const metadata: Metadata = {
    Los archivos son de Twemoji 14.0.2, el set abierto de Twitter, servidos desde
    public/images/banderas/ y no desde un CDN. Los gráficos son CC-BY 4.0. */
 const IDIOMAS = [
-  { nombre: "Inglés", bandera: "ingles" },
-  { nombre: "Francés", bandera: "frances" },
-  { nombre: "Alemán", bandera: "aleman" },
-  { nombre: "Portugués", bandera: "portugues" },
-  { nombre: "Italiano", bandera: "italiano" },
-  { nombre: "Español", bandera: "espanol" },
+  { nombre: "Inglés", bandera: "ingles", ruta: "/idioma/ingles-para-empresas/" },
+  { nombre: "Francés", bandera: "frances", ruta: "/idioma/frances-para-empresas/" },
+  { nombre: "Alemán", bandera: "aleman", ruta: "/idioma/aleman-para-empresas/" },
+  { nombre: "Portugués", bandera: "portugues", ruta: "/idioma/portugues-para-empresas/" },
+  { nombre: "Italiano", bandera: "italiano", ruta: "/idioma/italiano-para-empresas/" },
+  { nombre: "Español", bandera: "espanol", ruta: "/idioma/espanol-para-empresas/" },
 ];
 
 const FEATURES = [
@@ -243,20 +243,26 @@ export default function Home() {
           <ul className={styles.langs}>
             {IDIOMAS.map((idioma) => (
               <li key={idioma.nombre}>
-                {/* Decorativa: el nombre del idioma va al lado. */}
-                <img
-                  className={styles.langFlag}
-                  src={`/images/banderas/${idioma.bandera}.svg`}
-                  alt=""
-                  aria-hidden="true"
-                  width="20"
-                  height="20"
-                  loading="lazy"
-                />{" "}
-                {idioma.nombre}
+                {/* Cada idioma lleva a su página. */}
+                <Link className={styles.langLink} href={idioma.ruta}>
+                  {/* Decorativa: el nombre del idioma va al lado. */}
+                  <img
+                    className={styles.langFlag}
+                    src={`/images/banderas/${idioma.bandera}.svg`}
+                    alt=""
+                    aria-hidden="true"
+                    width="20"
+                    height="20"
+                    loading="lazy"
+                  />{" "}
+                  {idioma.nombre}
+                </Link>
               </li>
             ))}
           </ul>
+          <p className={styles.langsTodos}>
+            <Link href="/idioma/">Ver todos los idiomas</Link>
+          </p>
         </div>
       </section>
 

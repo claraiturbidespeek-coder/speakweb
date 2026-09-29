@@ -21,7 +21,8 @@ const montserrat = localFont({
 /* Organization es dato del sitio, no de una página: va una sola vez, aquí, y
    no repetido en cada ruta. Cada página aporta lo suyo —Breadcrumb, Service,
    FAQPage— desde su propio marcado. No hay LocalBusiness: S-Peak no atiende en
-   un local. El @id lo usan las notas del blog como `publisher`. */
+   un local. El @id lo usan las notas del blog como `publisher` y los Service
+   del índice y de las seis páginas de idioma como `provider`. */
 const DATOS_SITIO = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -29,6 +30,17 @@ const DATOS_SITIO = JSON.stringify({
   name: "S-Peak",
   url: "https://s-peak.com",
   logo: "https://s-peak.com/brand/logo_white.svg",
+  description:
+    "S-Peak capacita a equipos de empresas en México en inglés, francés, alemán, italiano, portugués y español para extranjeros, con programas por puesto, registro ante la STPS y constancia DC-3.",
+  areaServed: { "@type": "Country", name: "México" },
+  /* El mismo número del footer y del llms.txt. */
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+52 55 8526 5520",
+    contactType: "sales",
+    areaServed: "MX",
+    availableLanguage: "es",
+  },
   sameAs: ["https://www.linkedin.com/company/s-peak"],
 });
 

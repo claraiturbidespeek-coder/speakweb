@@ -10,6 +10,12 @@ export const ENLACES_IDIOMAS = [
   { nombre: "Portugués", ruta: "/idioma/portugues-para-empresas/" },
 ];
 
+/* El índice de idiomas. Abre el desplegable de Idiomas y su columna en el panel
+   móvil, antes de los seis; no va dentro de ENLACES_IDIOMAS porque esa lista la
+   leen también el sitemap, el footer y las tarjetas del índice, que son solo
+   los seis idiomas. */
+export const ENLACE_INDICE_IDIOMAS = { nombre: "Todos los idiomas", ruta: "/idioma/" };
+
 /* En el orden del mosaico del home, no alfabético: el sitio cuenta la misma
    historia en los dos sitios y Ventas y Marketing abre en ambos. */
 export const ENLACES_EQUIPOS = [

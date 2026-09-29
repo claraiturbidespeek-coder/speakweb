@@ -728,3 +728,9 @@
     margin-right: 0;
   }
 }
+
+/* La marca, sin corte de línea entre "S-" y "Peak". Antes lo resolvía un guion
+   duro (U+2011) en el texto, que no es el guion con que se busca la marca. */
+.marca {
+  white-space: nowrap;
+}
