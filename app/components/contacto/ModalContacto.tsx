@@ -33,7 +33,7 @@ function registrarWhatsappPostLead() {
    así que el evento `close` es el único sitio donde se restaura el scroll y se
    avisa al proveedor.
 
-   PASOS. Es un solo <form> con los cuatro pasos siempre montados: el CSS
+   PASOS. Es un solo <form> con los tres pasos siempre montados: el CSS
    muestra el activo y oculta el resto. Así lo escrito sobrevive al ir y volver
    entre pasos, y al cerrar y reabrir el modal, porque el componente no se
    desmonta. Pasar de paso no envía nada ni dispara eventos: el envío y la
@@ -48,18 +48,30 @@ function registrarWhatsappPostLead() {
 
 const ESTADO_INICIAL = { enviando: false, error: false, exito: false };
 
-type Paso = "idioma" | "colaboradores" | "contacto" | "final";
-const PASOS: Paso[] = ["idioma", "colaboradores", "contacto", "final"];
+type Paso = "idioma" | "colaboradores" | "contacto";
+const PASOS: Paso[] = ["idioma", "colaboradores", "contacto"];
 
-// Etiqueta del chip y valor que se envía: los mismos del select actual.
+const PREGUNTAS: Record<Paso, string> = {
+  idioma: "¿Qué idioma le interesa?",
+  colaboradores: "¿Cuántas personas tomarían la capacitación?",
+  contacto: "¿A quién le enviamos la propuesta?",
+};
+
+/* Etiqueta del chip y valor que se envía: los mismos del select actual. La
+   bandera es la de Twemoji que usa la home (public/images/banderas/); "Varios
+   idiomas" lleva el globo del mismo set. */
 const CHIPS_IDIOMA = [
-  { etiqueta: "Inglés", valor: "Inglés" },
-  { etiqueta: "Francés", valor: "Francés" },
-  { etiqueta: "Alemán", valor: "Alemán" },
-  { etiqueta: "Italiano", valor: "Italiano" },
-  { etiqueta: "Portugués", valor: "Portugués" },
-  { etiqueta: "Español para extranjeros", valor: "Español para extranjeros" },
-  { etiqueta: "Varios idiomas", valor: "Varios idiomas" },
+  { etiqueta: "Inglés", valor: "Inglés", bandera: "ingles" },
+  { etiqueta: "Francés", valor: "Francés", bandera: "frances" },
+  { etiqueta: "Alemán", valor: "Alemán", bandera: "aleman" },
+  { etiqueta: "Italiano", valor: "Italiano", bandera: "italiano" },
+  { etiqueta: "Portugués", valor: "Portugués", bandera: "portugues" },
+  {
+    etiqueta: "Español para extranjeros",
+    valor: "Español para extranjeros",
+    bandera: "espanol",
+  },
+  { etiqueta: "Varios idiomas", valor: "Varios idiomas", bandera: "globo" },
 ];
 
 const RANGOS_COLABORADORES = ["1 a 10", "11 a 50", "51 a 200", "Más de 200"];
@@ -305,15 +317,11 @@ export default function ModalContacto({
     setErrores((previos) => ({ ...previos, correo: validarCampo("correo") }));
   };
 
-  const avanzar = () => {
-    if (paso === "contacto" && !validarContacto()) {
-      const primero = CAMPOS_CONTACTO.find((n) => validarCampo(n));
-      const campo = primero && formulario.current?.elements.namedItem(primero);
-      if (campo instanceof HTMLElement) campo.focus();
-      return;
-    }
-    const siguiente = visibles[visibles.indexOf(paso) + 1];
-    if (siguiente) setPaso(siguiente);
+  // Lleva el foco al primer campo de contacto con error.
+  const enfocarPrimerError = () => {
+    const primero = CAMPOS_CONTACTO.find((n) => validarCampo(n));
+    const campo = primero && formulario.current?.elements.namedItem(primero);
+    if (campo instanceof HTMLElement) campo.focus();
   };
 
   const regresar = () => {
@@ -336,12 +344,12 @@ export default function ModalContacto({
     setPaso("idioma");
   };
 
-  // Enter avanza en los pasos intermedios; en el final, envía como siempre.
+  /* Enter solo envía desde Contacto, que es el último paso. En los pasos de
+     chips no hay campos de texto: Enter sobre un chip lo elige y eso avanza. */
   const alPulsarTecla = (e: KeyboardEvent<HTMLFormElement>) => {
-    if (e.key !== "Enter" || e.nativeEvent.isComposing || paso === "final") return;
+    if (e.key !== "Enter" || e.nativeEvent.isComposing || paso === "contacto") return;
     if (!(e.target instanceof HTMLInputElement)) return;
     e.preventDefault();
-    avanzar();
   };
 
   const alEnviar = async (e: FormEvent<HTMLFormElement>) => {
@@ -352,16 +360,17 @@ export default function ModalContacto({
     const datos = new FormData(form);
     const texto = (clave: string) => (datos.get(clave)?.toString() ?? "").trim();
 
-    /* Un envío normal solo llega desde el paso final, con todo validado. Un
-       agente por el WebMCP puede enviar desde cualquiera: se revisa lo
-       obligatorio y, si falta algo, se lleva al visitante a ese paso. */
+    /* Un envío normal llega desde Contacto. Un agente por el WebMCP puede
+       enviar desde cualquier paso: se revisa lo obligatorio y, si falta algo,
+       se lleva al visitante a ese paso. */
     if (!idioma && !texto("idioma")) {
       setIdiomaOmitido(false);
       setPaso("idioma");
       return;
     }
     if (!validarContacto()) {
-      setPaso("contacto");
+      if (paso === "contacto") enfocarPrimerError();
+      else setPaso("contacto");
       return;
     }
 
@@ -463,13 +472,17 @@ export default function ModalContacto({
           </div>
         ) : (
           <>
-            <div className={`sp-modal-head ${styles.cabecera}`}>
+            <div className={styles.cabecera}>
               <div>
-                <h2 id="modal-contacto-titulo">Hable con un Experto</h2>
-                <p>Un asesor se pondrá en contacto en menos de 24 horas hábiles.</p>
+                <h2 id="modal-contacto-titulo" className={styles.titulo}>
+                  Hable con un Experto
+                </h2>
+                <p className={styles.subtitulo}>
+                  Un asesor se pondrá en contacto en menos de 24 horas hábiles.
+                </p>
               </div>
               <button
-                className="sp-modal-cerrar"
+                className={`sp-modal-cerrar ${styles.cerrar}`}
                 type="button"
                 onClick={() => dialogo.current?.close()}
                 aria-label="Cerrar"
@@ -489,289 +502,280 @@ export default function ModalContacto({
               toolname="solicitar_cotizacion"
               tooldescription="Solicite cotización de capacitación en idiomas para su empresa con S-Peak. Un asesor se pondrá en contacto en menos de 24 horas hábiles. Una persona revisa y confirma el envío."
             >
-              <div className={styles.progreso}>
-                <div className={styles.progresoFila}>
-                  {numeroPaso > 1 ? (
-                    <button type="button" className={styles.regresar} onClick={regresar}>
-                      ← Regresar
-                    </button>
-                  ) : (
-                    <span />
-                  )}
-                  <span aria-live="polite">
-                    Paso {numeroPaso} de {visibles.length}
-                  </span>
-                </div>
-                <div className={styles.barra} aria-hidden="true">
-                  <div
-                    className={styles.barraRelleno}
-                    style={{ width: `${(numeroPaso / visibles.length) * 100}%` }}
-                  />
-                </div>
-              </div>
-
-              {idiomaOmitido && (
-                <p className={styles.idiomaFijo}>
-                  Idioma: <strong>{etiquetaIdioma(idioma)}</strong> ·{" "}
-                  <button type="button" className={styles.enlace} onClick={cambiarIdioma}>
-                    cambiar
-                  </button>
+              {/* Cuerpo: lo único que hace scroll. */}
+              <div className={styles.cuerpo}>
+                <p className={styles.contador} aria-live="polite">
+                  Paso {numeroPaso} de {visibles.length}
                 </p>
-              )}
-
-              {/* Paso Idioma */}
-              <div
-                className={styles.paso}
-                data-paso="idioma"
-                data-activo={paso === "idioma" || undefined}
-                role="group"
-                aria-labelledby="contacto-idioma-titulo"
-              >
-                <h3 id="contacto-idioma-titulo" className={styles.pasoTitulo}>
-                  ¿Qué idioma le interesa?
-                </h3>
-                <div className={styles.chips}>
-                  {CHIPS_IDIOMA.map((chip) => (
-                    <button
-                      key={chip.valor}
-                      type="button"
-                      className={styles.chip}
-                      aria-pressed={idioma === chip.valor}
-                      onClick={() => elegirIdioma(chip.valor)}
-                    >
-                      {chip.etiqueta}
-                    </button>
+                <div className={styles.segmentos} aria-hidden="true">
+                  {visibles.map((p, i) => (
+                    <span key={p} data-hecho={i < numeroPaso || undefined} />
                   ))}
                 </div>
-                {/* El select de siempre, fuera de la vista: declara el
-                    parámetro `idioma` del WebMCP. Una persona elige con los
-                    chips. */}
-                <div className={styles.idiomaNativo} inert>
-                  <CampoIdioma id="contactoIdioma" />
-                </div>
-              </div>
-
-              {/* Paso Colaboradores */}
-              <div
-                className={styles.paso}
-                data-paso="colaboradores"
-                data-activo={paso === "colaboradores" || undefined}
-                role="group"
-                aria-labelledby="contacto-colaboradores-titulo"
-              >
-                <h3 id="contacto-colaboradores-titulo" className={styles.pasoTitulo}>
-                  ¿Cuántas personas tomarían la capacitación?
+                <h3 id="contacto-pregunta" className={styles.pregunta}>
+                  {PREGUNTAS[paso]}
                 </h3>
-                <div className={styles.chips}>
-                  {RANGOS_COLABORADORES.map((rango) => (
-                    <button
-                      key={rango}
-                      type="button"
-                      className={styles.chip}
-                      aria-pressed={colaboradores === rango}
-                      onClick={() => elegirColaboradores(rango)}
-                    >
-                      {rango}
+
+                {idiomaOmitido && (
+                  <p className={styles.idiomaFijo}>
+                    Idioma: <strong>{etiquetaIdioma(idioma)}</strong> ·{" "}
+                    <button type="button" className={styles.enlace} onClick={cambiarIdioma}>
+                      cambiar
                     </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Paso Contacto */}
-              <div
-                className={styles.paso}
-                data-paso="contacto"
-                data-activo={paso === "contacto" || undefined}
-                role="group"
-                aria-labelledby="contacto-contacto-titulo"
-              >
-                <h3 id="contacto-contacto-titulo" className={styles.pasoTitulo}>
-                  ¿A quién le enviamos la propuesta?
-                </h3>
-                <div className="sp-form-group">
-                  <label htmlFor="contactoNombre">Nombre y Apellido *</label>
-                  <input
-                    type="text"
-                    id="contactoNombre"
-                    name="nombre"
-                    toolparamdescription="Nombre y apellido de la persona que solicita la cotización."
-                    autoComplete="name"
-                    enterKeyHint="next"
-                    required
-                    {...conError("nombre")}
-                  />
-                  {mensajeError("nombre")}
-                </div>
-                <div className="sp-form-group">
-                  <label htmlFor="contactoEmpresa">Empresa *</label>
-                  <input
-                    type="text"
-                    id="contactoEmpresa"
-                    name="empresa"
-                    toolparamdescription="Nombre de la empresa que solicita la capacitación."
-                    autoComplete="organization"
-                    enterKeyHint="next"
-                    required
-                    {...conError("empresa")}
-                  />
-                  {mensajeError("empresa")}
-                </div>
-                <div className="sp-form-group">
-                  <label htmlFor="contactoCorreo">Correo Electrónico *</label>
-                  <input
-                    type="email"
-                    id="contactoCorreo"
-                    name="correo"
-                    toolparamdescription="Correo electrónico de contacto."
-                    autoComplete="email"
-                    enterKeyHint="next"
-                    required
-                    {...conError("correo")}
-                  />
-                  {mensajeError("correo")}
-                  {sugerencia && (
-                    <p className={styles.sugerencia}>
-                      ¿Quiso decir{" "}
-                      <button type="button" className={styles.enlace} onClick={aplicarSugerencia}>
-                        {sugerencia}
-                      </button>
-                      ?
-                    </p>
-                  )}
-                </div>
-
-                <div className={styles.acciones}>
-                  <button className="sp-form-submit" type="button" onClick={avanzar}>
-                    Continuar
-                  </button>
-                </div>
-              </div>
-
-              {/* Paso final */}
-              <div
-                className={styles.paso}
-                data-paso="final"
-                data-activo={paso === "final" || undefined}
-                role="group"
-                aria-labelledby="contacto-final-titulo"
-              >
-                <h3 id="contacto-final-titulo" className={styles.pasoTitulo}>
-                  Para afinar su propuesta
-                </h3>
-                <div className="sp-form-group">
-                  <label htmlFor="contactoTelefono">
-                    Teléfono <span className={styles.opcional}>(opcional)</span>
-                  </label>
-                  <input
-                    type="tel"
-                    id="contactoTelefono"
-                    name="telefono"
-                    toolparamdescription="Teléfono de contacto. Opcional."
-                    autoComplete="tel"
-                    enterKeyHint="send"
-                    placeholder="+52 55 0000 0000"
-                  />
-                </div>
-                <div className="sp-form-group">
-                  <label htmlFor="contactoPuesto">
-                    Puesto que desempeña <span className={styles.opcional}>(opcional)</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="contactoPuesto"
-                    name="puesto"
-                    toolparamdescription="Puesto que desempeña la persona en la empresa. Opcional."
-                    autoComplete="organization-title"
-                    enterKeyHint="send"
-                  />
-                </div>
-                <div className="sp-form-group">
-                  <label htmlFor="contactoMensaje">
-                    ¿Algo más que debamos saber?{" "}
-                    <span className={styles.opcional}>(opcional)</span>
-                  </label>
-                  <p id="contacto-mensaje-ayuda" className={styles.ayuda}>
-                    Por ejemplo, nivel actual del equipo, horarios o sedes.
                   </p>
-                  <textarea
-                    id="contactoMensaje"
-                    name="mensaje"
-                    rows={3}
-                    aria-describedby="contacto-mensaje-ayuda"
-                    toolparamdescription="Necesidad de capacitación: número de colaboradores, área, nivel actual del idioma. Opcional."
-                  />
+                )}
+
+                {/* Los tres pasos ocupan la misma celda: la caja mide siempre
+                    lo que el más alto, el de Contacto. */}
+                <div className={styles.pasos}>
+                  {/* Paso Idioma */}
+                  <div
+                    className={styles.paso}
+                    data-paso="idioma"
+                    data-activo={paso === "idioma" || undefined}
+                    role="group"
+                    aria-labelledby="contacto-pregunta"
+                  >
+                    <div className={`${styles.chips} ${styles.chipsIdioma}`}>
+                      {CHIPS_IDIOMA.map((chip) => (
+                        <button
+                          key={chip.valor}
+                          type="button"
+                          className={styles.chip}
+                          aria-pressed={idioma === chip.valor}
+                          onClick={() => elegirIdioma(chip.valor)}
+                        >
+                          <img
+                            className={styles.bandera}
+                            src={`/images/banderas/${chip.bandera}.svg`}
+                            alt=""
+                            aria-hidden="true"
+                            width="20"
+                            height="20"
+                          />
+                          {chip.etiqueta}
+                        </button>
+                      ))}
+                    </div>
+                    {/* El select de siempre, fuera de la vista: declara el
+                        parámetro `idioma` del WebMCP. Una persona elige con los
+                        chips. */}
+                    <div className={styles.idiomaNativo} inert>
+                      <CampoIdioma id="contactoIdioma" />
+                    </div>
+                  </div>
+
+                  {/* Paso Colaboradores */}
+                  <div
+                    className={styles.paso}
+                    data-paso="colaboradores"
+                    data-activo={paso === "colaboradores" || undefined}
+                    role="group"
+                    aria-labelledby="contacto-pregunta"
+                  >
+                    <div className={`${styles.chips} ${styles.chipsColaboradores}`}>
+                      {RANGOS_COLABORADORES.map((rango) => (
+                        <button
+                          key={rango}
+                          type="button"
+                          className={styles.chip}
+                          aria-pressed={colaboradores === rango}
+                          onClick={() => elegirColaboradores(rango)}
+                        >
+                          {rango}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Paso Contacto: todos los campos y el envío. */}
+                  <div
+                    className={styles.paso}
+                    data-paso="contacto"
+                    data-activo={paso === "contacto" || undefined}
+                    role="group"
+                    aria-labelledby="contacto-pregunta"
+                  >
+                    <div className={styles.campos}>
+                      <div className="sp-form-group">
+                        <label htmlFor="contactoNombre">Nombre y apellido *</label>
+                        <input
+                          type="text"
+                          id="contactoNombre"
+                          name="nombre"
+                          toolparamdescription="Nombre y apellido de la persona que solicita la cotización."
+                          autoComplete="name"
+                          enterKeyHint="next"
+                          required
+                          {...conError("nombre")}
+                        />
+                        {mensajeError("nombre")}
+                      </div>
+                      <div className="sp-form-group">
+                        <label htmlFor="contactoEmpresa">Empresa *</label>
+                        <input
+                          type="text"
+                          id="contactoEmpresa"
+                          name="empresa"
+                          toolparamdescription="Nombre de la empresa que solicita la capacitación."
+                          autoComplete="organization"
+                          enterKeyHint="next"
+                          required
+                          {...conError("empresa")}
+                        />
+                        {mensajeError("empresa")}
+                      </div>
+                      <div className="sp-form-group">
+                        <label htmlFor="contactoCorreo">Correo electrónico *</label>
+                        <input
+                          type="email"
+                          id="contactoCorreo"
+                          name="correo"
+                          toolparamdescription="Correo electrónico de contacto."
+                          autoComplete="email"
+                          enterKeyHint="next"
+                          required
+                          {...conError("correo")}
+                        />
+                        {mensajeError("correo")}
+                        {sugerencia && (
+                          <p className={styles.sugerencia}>
+                            ¿Quiso decir{" "}
+                            <button
+                              type="button"
+                              className={styles.enlace}
+                              onClick={aplicarSugerencia}
+                            >
+                              {sugerencia}
+                            </button>
+                            ?
+                          </p>
+                        )}
+                      </div>
+                      <div className="sp-form-group">
+                        <label htmlFor="contactoTelefono">
+                          Teléfono <span className={styles.opcional}>(opcional)</span>
+                        </label>
+                        <input
+                          type="tel"
+                          id="contactoTelefono"
+                          name="telefono"
+                          toolparamdescription="Teléfono de contacto. Opcional."
+                          autoComplete="tel"
+                          enterKeyHint="next"
+                          placeholder="+52 55 0000 0000"
+                        />
+                      </div>
+                      <div className={`sp-form-group ${styles.anchoCompleto}`}>
+                        <label htmlFor="contactoPuesto">
+                          Puesto que desempeña{" "}
+                          <span className={styles.opcional}>(opcional)</span>
+                        </label>
+                        <input
+                          type="text"
+                          id="contactoPuesto"
+                          name="puesto"
+                          toolparamdescription="Puesto que desempeña la persona en la empresa. Opcional."
+                          autoComplete="organization-title"
+                          enterKeyHint="send"
+                        />
+                      </div>
+                      <div className={`sp-form-group ${styles.anchoCompleto}`}>
+                        <label htmlFor="contactoMensaje">
+                          ¿Algo más que debamos saber?{" "}
+                          <span className={styles.opcional}>(opcional)</span>
+                        </label>
+                        <p id="contacto-mensaje-ayuda" className={styles.ayuda}>
+                          Por ejemplo, nivel actual del equipo, horarios o sedes.
+                        </p>
+                        <textarea
+                          id="contactoMensaje"
+                          name="mensaje"
+                          rows={2}
+                          aria-describedby="contacto-mensaje-ayuda"
+                          toolparamdescription="Necesidad de capacitación: número de colaboradores, área, nivel actual del idioma. Opcional."
+                        />
+                      </div>
+                    </div>
+
+                    <p
+                      className={`sp-form-estado${estado.error ? " is-error" : ""}`}
+                      role="status"
+                      aria-live="polite"
+                      hidden={!estado.enviando && !estado.error}
+                    >
+                      {estado.enviando
+                        ? "Enviando su solicitud…"
+                        : estado.error
+                          ? "No pudimos enviar su solicitud. Inténtelo de nuevo o escríbanos por WhatsApp."
+                          : ""}
+                    </p>
+
+                    <p className="sp-form-nota">
+                      Al enviar acepto recibir comunicaciones de <strong>S-Peak</strong>.
+                      Consulte nuestro{" "}
+                      <a
+                        href="/aviso-de-privacidad/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ color: "var(--color-muted)", textDecoration: "underline" }}
+                      >
+                        Aviso de privacidad
+                      </a>
+                      .
+                    </p>
+                  </div>
                 </div>
 
-                <div className={styles.acciones}>
+                {/* Campo trampa: invisible para una persona, irresistible para un
+                    bot que rellena todo lo que encuentra. Si llega con contenido,
+                    /api/lead/ descarta el envío. No lleva label ni entra en el
+                    tabulador a propósito. */}
+                <input
+                  type="text"
+                  name="sitio_web"
+                  className="sp-trampa"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
+                {/* Casilla trampa: la misma idea en casilla. Una persona no puede
+                    marcarla —fuera de pantalla, fuera del tabulador y oculta al
+                    lector de pantalla—; un bot que marca todo lo que encuentra,
+                    sí. Si llega marcada, /api/lead/ descarta el envío. */}
+                <input
+                  type="checkbox"
+                  name="recibir_novedades"
+                  value="si"
+                  className="sp-trampa"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
+              </div>
+
+              {/* Pie fijo: Atrás a la izquierda (oculto en el primer paso, sin
+                  dejar de ocupar su sitio) y el envío a la derecha, solo en
+                  Contacto. Los pasos de chips avanzan solos. */}
+              <div className={styles.pie}>
+                <button
+                  type="button"
+                  className={styles.atras}
+                  onClick={regresar}
+                  data-oculto={numeroPaso === 1 || undefined}
+                >
+                  Atrás
+                </button>
+                {paso === "contacto" && (
                   <button
-                    className="sp-form-submit"
+                    className={`sp-btn sp-btn--rojo ${styles.enviar}`}
                     type="submit"
                     disabled={estado.enviando}
                   >
                     {estado.enviando ? "Enviando…" : "Solicite Cotización"}
                   </button>
-                  <button
-                    className={`${styles.enlace} ${styles.enviarSinMas}`}
-                    type="submit"
-                    disabled={estado.enviando}
-                  >
-                    Enviar sin agregar más
-                  </button>
-                </div>
-
-                <p
-                  className={`sp-form-estado${estado.error ? " is-error" : ""}`}
-                  role="status"
-                  aria-live="polite"
-                  hidden={!estado.enviando && !estado.error}
-                >
-                  {estado.enviando
-                    ? "Enviando su solicitud…"
-                    : estado.error
-                      ? "No pudimos enviar su solicitud. Inténtelo de nuevo o escríbanos por WhatsApp."
-                      : ""}
-                </p>
-
-                <p className="sp-form-nota">
-                  Al enviar acepto recibir comunicaciones de <strong>S-Peak</strong>.
-                  Consulte nuestro{" "}
-                  <a
-                    href="/aviso-de-privacidad/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ color: "var(--color-muted)", textDecoration: "underline" }}
-                  >
-                    Aviso de privacidad
-                  </a>
-                  .
-                </p>
+                )}
               </div>
-
-              {/* Campo trampa: invisible para una persona, irresistible para un
-                  bot que rellena todo lo que encuentra. Si llega con contenido,
-                  /api/lead/ descarta el envío. No lleva label ni entra en el
-                  tabulador a propósito. */}
-              <input
-                type="text"
-                name="sitio_web"
-                className="sp-trampa"
-                tabIndex={-1}
-                autoComplete="off"
-                aria-hidden="true"
-              />
-              {/* Casilla trampa: la misma idea en casilla. Una persona no puede
-                  marcarla —fuera de pantalla, fuera del tabulador y oculta al
-                  lector de pantalla—; un bot que marca todo lo que encuentra,
-                  sí. Si llega marcada, /api/lead/ descarta el envío. */}
-              <input
-                type="checkbox"
-                name="recibir_novedades"
-                value="si"
-                className="sp-trampa"
-                tabIndex={-1}
-                autoComplete="off"
-                aria-hidden="true"
-              />
             </form>
           </>
         )}

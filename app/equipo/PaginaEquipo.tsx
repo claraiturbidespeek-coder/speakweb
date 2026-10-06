@@ -22,6 +22,10 @@ import { imagenResponsiva } from "@/lib/imagenes";
    Se renderiza en el servidor. Los únicos trozos de cliente son los botones
    de contacto y los componentes de interacción (AnimacionesEntrada, Carrusel). */
 
+/* Color de cada tarjeta de competencias, en orden. En la rejilla de cuatro
+   columnas nunca deja dos iguales contiguas, ni en horizontal ni en vertical. */
+const COLORES_COMPETENCIAS = ["navy", "rojo", "amarillo"] as const;
+
 // Comunes a las siete áreas: el documento de contenido no los trae y se
 // reutilizan de la referencia.
 const CIFRAS = [
@@ -184,8 +188,11 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
               <p>{datos.competencias.sub}</p>
             </div>
             <div className={`${styles.compGrid} reveal stagger`}>
-              {datos.competencias.tarjetas.map((t) => (
-                <div key={t.titulo} className={`sp-tarjeta sp-barra ${styles.compCard}`}>
+              {datos.competencias.tarjetas.map((t, i) => (
+                <div
+                  key={t.titulo}
+                  className={`sp-tarjeta sp-barra sp-tarjeta-color sp-tarjeta-color--${COLORES_COMPETENCIAS[i % 3]}`}
+                >
                   <div className="sp-icono sp-icono--xl sp-icono--rojo">
                     <Icono nombre={t.icono} />
                   </div>

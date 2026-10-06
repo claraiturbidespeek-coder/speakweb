@@ -170,6 +170,10 @@
   --radius: 8px;
   --radius-grande: 20px;
 
+  /* Píldora: extremos del todo redondos, sea cual sea el alto. Lo piden los
+     chips del modal de contacto. */
+  --radius-pildora: 999px;
+
   /* Glass. Solo para superficies apoyadas sobre una foto, un video o un color:
      sobre fondo plano el desenfoque no se percibe y solo cuesta pintado. La
      opacidad es alta a propósito: por debajo de 0.7 el texto navy sobre foto
@@ -178,6 +182,14 @@
   --glass-fondo: rgba(255, 255, 255, 0.72);
   --glass-borde: rgba(255, 255, 255, 0.55);
   --glass-desenfoque: 18px;
+
+  /* Vidrio casi opaco, para superficies que llevan un formulario: el texto y
+     los campos se tienen que leer igual sobre cualquier fondo, cosa que 0.72
+     no garantiza, y detrás solo deben adivinarse formas, nunca texto. Velo: el
+     tinte navy translúcido del fondo de un modal, que va con
+     --glass-desenfoque. Los dos los pide el modal de contacto. */
+  --glass-fondo-denso: rgba(255, 255, 255, 0.96);
+  --glass-velo: color-mix(in srgb, var(--color-navy) 55%, transparent);
 
   --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.07);
   --shadow-panel: 0 20px 50px rgba(0, 0, 0, 0.1);

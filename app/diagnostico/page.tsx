@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
+import Icono from "@/app/components/Icono";
+import SelloSTPS from "@/app/components/SelloSTPS";
 import styles from "./diagnostico.module.css";
 
 /* /diagnostico/: el diagnóstico de nivel sin costo.
@@ -47,14 +49,34 @@ export const metadata: Metadata = {
 
 const CTA = "Solicite su diagnóstico sin costo";
 
+/* Tarjetas de color (.sp-tarjeta-color), como Competencias de /equipo/. El
+   orden de colores es para la rejilla de tres columnas: ni en horizontal ni en
+   vertical quedan dos iguales contiguas, y tampoco al apilarse en una. */
 const RECIBE = [
-  "El nivel de cada colaborador.",
-  "Una propuesta de grupos, de 1 a 10 colaboradores cada uno.",
-  "Cuánto costaría cada grupo propuesto y en cuánto tiempo terminaría.",
-  "Una sesión muestra sin costo para todo el grupo.",
-  "Cuánto tardaría cada colaborador en llegar a un nivel intermedio (B1) o al siguiente (B2), según su nivel de partida.",
-  "La propuesta de afinar el nivel de algunos participantes con una evaluación oral.",
-  "Se lo presentamos en una junta de resultados.",
+  { texto: "El nivel de cada colaborador.", icono: "usuarioCheck", color: "navy" },
+  { texto: "Una propuesta de grupos por nivel.", icono: "usuarios", color: "rojo" },
+  {
+    texto: "Duración y presupuesto por grupo para alcanzar el objetivo.",
+    icono: "reloj",
+    color: "amarillo",
+  },
+  {
+    texto: "Una clase muestra sin costo para todo el grupo.",
+    icono: "presentacion",
+    color: "rojo",
+  },
+  {
+    texto:
+      "Cuánto tardaría cada colaborador en llegar a un nivel intermedio (B1) o al siguiente (B2), según su nivel de partida.",
+    icono: "tendencia",
+    color: "amarillo",
+  },
+  {
+    texto:
+      "La propuesta de afinar el nivel de algunos participantes con una evaluación oral.",
+    icono: "mensaje",
+    color: "navy",
+  },
 ];
 
 const PASOS = [
@@ -62,7 +84,7 @@ const PASOS = [
   "Damos de alta a su empresa y creamos su acceso al examen, en el idioma acordado.",
   "Le enviamos el enlace para que lo comparta con su equipo.",
   "Cada colaborador lo presenta en línea. Le toma de 5 minutos a una hora, según su nivel.",
-  "Unos días después de que su equipo termine, junta de resultados: el nivel de cada colaborador, la propuesta de grupos con su costo y en cuánto tiempo terminaría cada uno, cuánto tardaría cada colaborador en llegar a B1 o a B2, la propuesta de afinar con una evaluación oral el nivel de algunos participantes y una sesión muestra sin costo.",
+  "Unos días después de que su equipo termine, le presentamos los resultados en una junta: todo lo que se enlista en «Qué recibe».",
 ];
 
 /* En el orden en que los nombra esta página, no en el de secciones.ts. Las
@@ -82,7 +104,7 @@ const FAQ = [
   {
     pregunta: "¿Tiene costo?",
     respuesta:
-      "El examen escrito y la sesión muestra, no. La evaluación oral se cotiza, y no tiene costo si contrata el programa.",
+      "El examen escrito y la clase muestra, no. La evaluación oral se cotiza, y no tiene costo si contrata el programa.",
   },
   {
     pregunta: "¿Hacer el diagnóstico me obliga a contratar?",
@@ -105,7 +127,7 @@ const FAQ = [
   {
     pregunta: "¿En qué idiomas está disponible?",
     respuesta:
-      "Inglés, francés, español para extranjeros, italiano y portugués. En alemán, el examen escrito y la evaluación oral se los enviamos por correo electrónico (costo de la evaluación oral por confirmar).",
+      "Inglés, francés, español para extranjeros, italiano, portugués y alemán.",
   },
 ];
 
@@ -163,7 +185,7 @@ export default function Diagnostico() {
             <div className="sp-etiqueta">Diagnóstico de Nivel para Equipos · Sin costo</div>
             <h1>Conozca el nivel de inglés de su equipo antes de invertir en capacitación</h1>
             <p className={styles.heroIdiomas}>
-              También en francés, español para extranjeros, italiano, portugués y alemán.
+              También en portugués, francés, alemán, italiano y español para extranjeros.
             </p>
             <p className="sp-hero-sub">
               Cada colaborador presenta un examen en línea. Unos días después de que su
@@ -172,6 +194,7 @@ export default function Diagnostico() {
               (B1) o al siguiente (B2), según su nivel de partida. Sin costo.
             </p>
             <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
+            <SelloSTPS />
           </div>
         </section>
 
@@ -182,9 +205,15 @@ export default function Diagnostico() {
               <h2>Qué recibe</h2>
             </div>
             <ul className={`${styles.recibeGrid} reveal stagger`}>
-              {RECIBE.map((texto) => (
-                <li key={texto} className={`sp-tarjeta sp-barra ${styles.recibeCard}`}>
-                  <p>{texto}</p>
+              {RECIBE.map((r) => (
+                <li
+                  key={r.texto}
+                  className={`sp-tarjeta sp-barra sp-tarjeta-color sp-tarjeta-color--${r.color} ${styles.recibeCard}`}
+                >
+                  <div className="sp-icono sp-icono--xl">
+                    <Icono nombre={r.icono} />
+                  </div>
+                  <p>{r.texto}</p>
                 </li>
               ))}
             </ul>

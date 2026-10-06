@@ -6,8 +6,8 @@
    /idioma/ y no se importa desde otra ruta. Si una tercera página pide lo
    mismo, es el momento de subirlo a patrones.css.
 
-   Las tarjetas de "Qué recibe" toman el tamaño de texto de las tarjetas de
-   competencias de /equipo/. */
+   Las tarjetas de "Qué recibe" son el patrón .sp-tarjeta-color, el de
+   Competencias de /equipo/. */
 
 /* ---------- Hero ---------- */
 
@@ -58,22 +58,22 @@
 
 /* ---------- Qué recibe ---------- */
 
+/* Seis tarjetas en 3 × 2. Sin paso intermedio de dos columnas: con tres
+   colores no hay orden que evite dos iguales contiguas a la vez en tres, en
+   dos y en una columna. Por debajo de 768px se apilan en una. */
 .recibeGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   list-style: none;
 }
 
-.recibeCard {
-  padding: 24px 20px;
-}
-
+/* Sin titular en la tarjeta: el texto hace de titular, así que conserva el
+   cuerpo y el peso que tenía en vez de los 13px del texto del patrón. */
 .recibeCard p {
   font-size: 14px;
   font-weight: var(--weight-semibold);
   line-height: 1.55;
-  color: var(--color-navy);
 }
 
 /* ---------- Cómo funciona ---------- */
@@ -270,6 +270,12 @@
 }
 
 /* ---------- Responsive ---------- */
+
+@media (max-width: 768px) {
+  .recibeGrid {
+    grid-template-columns: 1fr;
+  }
+}
 
 @media (max-width: 960px) {
   .faqInner {

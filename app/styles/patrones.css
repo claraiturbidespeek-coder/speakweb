@@ -324,6 +324,99 @@
   height: calc(100% + 2px);
 }
 
+/* ========== Tarjeta de color ==========
+   Tarjeta llena de un color de marca, con icono arriba y texto debajo. Nació
+   en Competencias de /equipo/ y la pide también "Qué recibe" de /diagnostico/.
+   Va sobre .sp-tarjeta y .sp-barra: de ahí toma el radio, el filo que crece al
+   pasar el cursor y la transición.
+
+   El color va en una variante (--navy, --rojo, --amarillo) y no por posición,
+   porque el reparto que evita dos colores iguales contiguos depende de las
+   columnas de cada rejilla: lo decide la página que la usa. */
+
+.sp-tarjeta-color {
+  padding: 24px 20px;
+  border-color: transparent;
+}
+
+.sp-tarjeta-color:hover {
+  border-color: transparent;
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-hover-navy);
+}
+
+.sp-tarjeta-color h3 {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: var(--weight-bold);
+  line-height: 1.35;
+}
+
+.sp-tarjeta-color p {
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.sp-tarjeta-color .sp-icono {
+  margin-bottom: 20px;
+}
+
+.sp-tarjeta-color:hover .sp-icono {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+/* Navy y rojo: texto e icono en blanco. */
+.sp-tarjeta-color--navy {
+  background: var(--color-navy);
+}
+
+.sp-tarjeta-color--rojo {
+  background: var(--color-red);
+}
+
+.sp-tarjeta-color--navy :is(h3, p),
+.sp-tarjeta-color--rojo :is(h3, p) {
+  color: var(--color-white);
+}
+
+.sp-tarjeta-color--navy .sp-icono,
+.sp-tarjeta-color--rojo .sp-icono {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+}
+
+.sp-tarjeta-color--navy:hover .sp-icono,
+.sp-tarjeta-color--rojo:hover .sp-icono {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Amarillo: texto e icono en navy. */
+.sp-tarjeta-color--amarillo {
+  background: var(--color-yellow);
+}
+
+.sp-tarjeta-color--amarillo :is(h3, p) {
+  color: var(--color-navy);
+}
+
+.sp-tarjeta-color--amarillo .sp-icono {
+  background: rgba(26, 60, 77, 0.12);
+  color: var(--color-navy);
+}
+
+.sp-tarjeta-color--amarillo:hover .sp-icono {
+  background: rgba(26, 60, 77, 0.2);
+}
+
+/* El filo del hover, legible sobre cada fondo: sobre navy sigue el rojo. */
+.sp-tarjeta-color--rojo::before {
+  background: var(--color-white);
+}
+
+.sp-tarjeta-color--amarillo::before {
+  background: var(--color-navy);
+}
+
 /* ========== Campo trampa ==========
    El señuelo antibots de los formularios que escriben en /api/lead/. Se saca
    del flujo en vez de ocultarse con `display: none` o `hidden`, porque a esos
@@ -1597,6 +1690,7 @@
    sí, que con duración cero seguiría saltando de golpe. */
 @media (prefers-reduced-motion: reduce) {
   .sp-tarjeta:hover,
+  .sp-tarjeta-color:hover,
   .sp-testi-card:hover,
   .sp-btn:hover,
   .sp-pill:hover {
