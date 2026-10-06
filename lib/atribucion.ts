@@ -60,6 +60,11 @@ export type Atribucion = {
   gclid: string;
   idioma: string;
   pagina: string;
+  /* La fuente de tráfico ya clasificada ("Google Ads", "ChatGPT", "Google
+     orgánico"…): la de la primera visita y la de esta. Van al final a
+     propósito, después de las claves de siempre. Ver FUENTE DE TRÁFICO. */
+  fuente_original: string;
+  fuente_visita: string;
 };
 
 const CLAVES_ATRIBUCION = [
@@ -84,6 +89,7 @@ type Guardado = { datos: Record<string, string>; guardado: number };
    es una visita de campaña nueva y no debe mezclarse con la anterior. Si no
    trae ninguno, no toca nada. */
 export function guardarAtribucion(): void {
+  guardarFuentes();
   try {
     const params = new URLSearchParams(window.location.search);
     const datos: Record<string, string> = {};
@@ -134,6 +140,187 @@ function gclidDeCookie(): string {
   } catch {
     return "";
   }
+}
+
+/* FUENTE DE TRÁFICO. De dónde llegó el visitante, en una etiqueta legible para
+   el correo de leads. Dos lecturas:
+
+   - Original: la de la primera visita. Se guarda en localStorage y se conserva
+     90 días, la misma vigencia que el gclid; mientras esté vigente no se pisa.
+   - Visita: la de esta sesión. Se guarda en sessionStorage al llegar. Una
+     llegada externa posterior en la misma pestaña (otro clic de anuncio, otro
+     buscador) la reemplaza; recargar o llegar desde el propio sitio, no.
+
+   Se lee una sola vez por carga de documento: al navegar dentro del sitio,
+   document.referrer sigue siendo el de la llegada y volver a clasificar no
+   aporta nada. De la referencia se guarda solo el dominio, nunca la URL. */
+const CLAVE_FUENTE_ORIGINAL = "speak_fuente_original";
+const CLAVE_FUENTE_VISITA = "speak_fuente_visita";
+const DIRECTO = "Directo";
+
+// Dominios del sitio: una llegada desde aquí no es una fuente nueva.
+const DOMINIOS_PROPIOS = ["s-peak.com"];
+
+const ASISTENTES_IA: [string, string][] = [
+  ["chatgpt.com", "ChatGPT"],
+  ["openai.com", "ChatGPT"],
+  ["perplexity.ai", "Perplexity"],
+  ["gemini.google.com", "Gemini"],
+  ["copilot.microsoft.com", "Copilot"],
+  ["claude.ai", "Claude"],
+];
+
+const REDES: [string, string][] = [
+  ["linkedin.com", "LinkedIn"],
+  ["facebook.com", "Facebook"],
+  ["instagram.com", "Instagram"],
+  ["t.co", "X"],
+  ["x.com", "X"],
+];
+
+// El dominio o cualquiera de sus subdominios (www., l., m., search.…).
+function esDominio(host: string, dominio: string): boolean {
+  return host === dominio || host.endsWith(`.${dominio}`);
+}
+
+function buscarEn(lista: [string, string][], valor: string): string {
+  return lista.find(([dominio]) => esDominio(valor, dominio))?.[1] ?? "";
+}
+
+function buscadorOrganico(host: string): string {
+  // google.com, google.com.mx, google.co.uk…, con o sin www.
+  if (/(^|\.)google\.[a-z]{2,3}(\.[a-z]{2})?$/.test(host)) return "Google orgánico";
+  if (esDominio(host, "bing.com")) return "Bing orgánico";
+  if (esDominio(host, "duckduckgo.com")) return "DuckDuckGo orgánico";
+  if (esDominio(host, "yahoo.com")) return "Yahoo orgánico";
+  return "";
+}
+
+/* Clasifica una llegada. `referencia` es solo el dominio, ya sin "www." y sin
+   las visitas internas. Orden de prioridad: Google Ads, asistentes de IA, otra
+   campaña con UTM, buscadores, redes, otro sitio y directo. */
+export function clasificarFuente(
+  params: { utm_source: string; utm_medium: string; gclid: string },
+  referencia: string
+): string {
+  const fuente = params.utm_source.toLowerCase();
+  const medio = params.utm_medium.toLowerCase();
+
+  if (params.gclid || ((medio === "cpc" || medio === "ppc") && fuente === "google")) {
+    return "Google Ads";
+  }
+
+  const ia = buscarEn(ASISTENTES_IA, fuente) || buscarEn(ASISTENTES_IA, referencia);
+  if (ia) return ia;
+
+  if (params.utm_source || params.utm_medium) {
+    return [params.utm_source, params.utm_medium].filter(Boolean).join(" / ");
+  }
+
+  if (referencia) {
+    return buscadorOrganico(referencia) || buscarEn(REDES, referencia) || referencia;
+  }
+
+  return DIRECTO;
+}
+
+/* El dominio de document.referrer, sin "www.". Vacío si no hay referencia o si
+   es el propio sitio (o el mismo host, para que en local y en las vistas
+   previas tampoco cuente). */
+function dominioDeReferencia(): string {
+  try {
+    if (!document.referrer) return "";
+    const host = new URL(document.referrer).hostname.toLowerCase().replace(/^www\./, "");
+    const propio =
+      host === window.location.hostname.toLowerCase().replace(/^www\./, "") ||
+      DOMINIOS_PROPIOS.some((d) => esDominio(host, d));
+    return propio ? "" : host;
+  } catch {
+    return "";
+  }
+}
+
+// La llegada actual, clasificada, y si trae señal propia (UTM, gclid o una
+// referencia externa) o es solo una recarga o una visita interna.
+function llegadaActual(): { fuente: string; conSenal: boolean } {
+  let params: URLSearchParams;
+  try {
+    params = new URLSearchParams(window.location.search);
+  } catch {
+    params = new URLSearchParams();
+  }
+  const leer = (clave: string) => (params.get(clave) || "").trim();
+  const datos = {
+    utm_source: leer("utm_source"),
+    utm_medium: leer("utm_medium"),
+    gclid: leer("gclid"),
+  };
+  const referencia = dominioDeReferencia();
+  return {
+    fuente: clasificarFuente(datos, referencia),
+    conSenal: Boolean(datos.utm_source || datos.utm_medium || datos.gclid || referencia),
+  };
+}
+
+let fuenteLeida = false;
+
+/* Guarda las dos fuentes. La llama guardarAtribucion en cada carga y en cada
+   navegación, pero solo actúa una vez por documento. */
+function guardarFuentes(): void {
+  if (fuenteLeida) return;
+  fuenteLeida = true;
+  const { fuente, conSenal } = llegadaActual();
+
+  try {
+    const crudo = localStorage.getItem(CLAVE_FUENTE_ORIGINAL);
+    const registro = crudo ? (JSON.parse(crudo) as Partial<{ fuente: string; guardado: number }>) : null;
+    const vigente =
+      registro &&
+      typeof registro.fuente === "string" &&
+      typeof registro.guardado === "number" &&
+      Date.now() - registro.guardado <= VIGENCIA_MS;
+    if (!vigente) {
+      localStorage.setItem(
+        CLAVE_FUENTE_ORIGINAL,
+        JSON.stringify({ fuente, guardado: Date.now() })
+      );
+    }
+  } catch {
+    // localStorage bloqueado: recogerFuentes cae a la llegada actual.
+  }
+
+  try {
+    if (conSenal || !sessionStorage.getItem(CLAVE_FUENTE_VISITA)) {
+      sessionStorage.setItem(CLAVE_FUENTE_VISITA, fuente);
+    }
+  } catch {
+    // sessionStorage bloqueado: lo mismo.
+  }
+}
+
+/* Las dos fuentes para el envío. Sin almacenamiento, las dos son la llegada
+   actual: es lo único que se sabe. */
+function recogerFuentes(): { fuente_original: string; fuente_visita: string } {
+  let original = "";
+  let visita = "";
+  try {
+    const crudo = localStorage.getItem(CLAVE_FUENTE_ORIGINAL);
+    const registro = crudo ? (JSON.parse(crudo) as Partial<{ fuente: string }>) : null;
+    original = typeof registro?.fuente === "string" ? registro.fuente : "";
+  } catch {
+    original = "";
+  }
+  try {
+    visita = sessionStorage.getItem(CLAVE_FUENTE_VISITA) || "";
+  } catch {
+    visita = "";
+  }
+  if (!original || !visita) {
+    const actual = llegadaActual().fuente;
+    original = original || actual;
+    visita = visita || actual;
+  }
+  return { fuente_original: original, fuente_visita: visita };
 }
 
 export function recogerAtribucion(idioma: string): Atribucion {
@@ -192,6 +379,7 @@ export function recogerAtribucion(idioma: string): Atribucion {
         return "";
       }
     })(),
+    ...recogerFuentes(),
   };
 }
 

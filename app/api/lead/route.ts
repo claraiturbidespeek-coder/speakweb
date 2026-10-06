@@ -479,6 +479,12 @@ export async function POST(request: Request): Promise<Response> {
      o sin ellos, para poder cerrar el círculo con Ads desde el CRM. */
   const gclid = campo(body.gclid) || noEspecificado;
   const idioma = campo(body.idioma) || "Inglés";
+  /* Fuente de tráfico, ya clasificada en el navegador. Opcionales: si no
+     llegan, el lead se procesa igual que siempre y el correo sale sin la fila.
+     Solo van al correo: ni a `rows` (la nota de Kommo) ni al CRM de SCNDAL.
+     Recortadas por si alguien manda algo desmedido a mano. */
+  const fuenteOriginal = campo(body.fuente_original).slice(0, 120);
+  const fuenteVisita = campo(body.fuente_visita).slice(0, 120);
 
   /* FILTROS ANTIBOT. Van antes que la validación de campos obligatorios para
      que el descarte sea siempre la misma respuesta, pase lo que pase con el
@@ -541,9 +547,10 @@ export async function POST(request: Request): Promise<Response> {
     ["GCLID", gclid],
   ];
 
-  /* `rows` alimenta los dos destinos: la tabla del correo de Resend y, como
-     texto plano, la nota que se cuelga del lead en Kommo. Añadir una fila aquí
-     la propaga a ambos; no hay que tocar nada más. */
+  /* `rows` alimenta solo la nota que se cuelga del lead en Kommo, como texto
+     plano. El correo de Resend no sale de aquí: lo arma plantillaCorreoLead,
+     de lib/correoLead.ts. Una fila añadida aquí llega a la nota de Kommo y no
+     al correo; para el correo hay que añadirla en la plantilla. */
 
   const text = rows.map(([k, v]) => `${k}: ${v}`).join("\n");
 
@@ -567,6 +574,8 @@ export async function POST(request: Request): Promise<Response> {
     utmCampaign,
     utmContent,
     gclid,
+    fuenteOriginal,
+    fuenteVisita,
     ...datosDelEnvio(request),
     fecha: new Date(),
     asunto,

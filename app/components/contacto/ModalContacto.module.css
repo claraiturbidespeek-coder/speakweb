@@ -26,8 +26,9 @@
 
 /* Vidrio claro casi opaco: lleva un formulario y se tiene que leer igual sobre
    cualquier fondo. El brillo del borde superior es la sombra interior blanca.
-   Ancho fijo, el de .sp-modal. La caja no hace scroll: lo hace solo el cuerpo,
-   así que cabecera y pie quedan siempre en su sitio. */
+   Ancho fijo, el de .sp-modal. El alto es el del contenido de cada paso. La
+   caja no hace scroll: si no cabe, lo hace solo el cuerpo, así que cabecera y
+   pie quedan siempre a la vista. */
 .modal {
   position: relative;
   display: flex;
@@ -66,8 +67,9 @@
 }
 
 /* ---------- Cabecera ----------
-   Igual en todos los pasos y separada del contenido por una línea a todo el
-   ancho de la caja. */
+   Igual en todos los pasos: banda navy a todo el ancho. Las esquinas de arriba
+   las recorta el radio de la caja, que lleva overflow: hidden. La cruz es la
+   de .sp-modal-cerrar, blanca; su anillo de foco también va en blanco. */
 
 .cabecera {
   display: flex;
@@ -76,7 +78,7 @@
   justify-content: space-between;
   gap: 16px;
   padding: 22px 28px 18px;
-  border-bottom: 1px solid var(--color-border);
+  background: var(--color-navy);
 }
 
 .titulo {
@@ -84,40 +86,43 @@
   font-size: 22px;
   font-weight: var(--weight-bold);
   line-height: 1.2;
-  color: var(--color-navy);
+  color: var(--color-white);
 }
 
 .subtitulo {
   margin: 6px 0 0;
   font-size: 14px;
-  color: var(--color-muted);
+  color: color-mix(in srgb, var(--color-white) 75%, transparent);
 }
 
-.cerrar {
-  color: var(--color-muted);
-  opacity: 1;
-  transition: color var(--transition-fast);
-}
-
-.cerrar:hover {
-  color: var(--color-navy);
+.modal .cerrar:focus-visible {
+  outline-color: var(--color-white);
 }
 
 /* ---------- Cuerpo ---------- */
 
+/* `flex: 0 1 auto` y no `flex: 1`: con base 0 el navegador mediría el cuerpo
+   por su contenido e ignoraría el alto que le pone la animación. Encoger sí
+   puede, para que el cuerpo haga scroll cuando la caja llega a su tope. */
 .form {
   display: flex;
-  flex: 1;
+  flex: 0 1 auto;
   flex-direction: column;
   min-height: 0;
   padding: 0;
 }
 
 .cuerpo {
-  flex: 1;
+  flex: 0 1 auto;
   min-height: 0;
   overflow-y: auto;
   padding: 18px 28px 20px;
+}
+
+/* Al cambiar de paso el cuerpo pasa de su alto anterior al nuevo. El alto lo
+   fija el componente en línea; aquí solo va la transición. */
+.cuerpo[data-animando] {
+  transition: height 0.25s var(--ease-out-soft);
 }
 
 .contador {
@@ -146,6 +151,14 @@
   background: var(--color-red);
 }
 
+/* La pregunta de colaboradores, con la tipografía de las etiquetas. */
+.subpregunta {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-ink-2);
+}
+
 .pregunta {
   margin: 0 0 16px;
   font-size: 18px;
@@ -155,7 +168,7 @@
 }
 
 .idiomaFijo {
-  margin: 0 0 16px;
+  margin: 0 0 20px;
   font-size: 14px;
   color: var(--color-ink-2);
 }
@@ -165,23 +178,15 @@
 }
 
 /* ---------- Pasos ----------
-   Los tres en la misma celda de la rejilla, siempre montados: la caja mide
-   siempre lo que el más alto, el de Contacto, y la altura no salta al cambiar
-   de paso. Los inactivos van ocultos con visibility, que también los saca del
-   tabulador y del lector de pantalla. */
-
-.pasos {
-  display: grid;
-}
+   Siempre montados, pero solo el activo se muestra: cada paso mide lo que su
+   contenido y lo escrito se conserva al ir y volver. */
 
 .paso {
-  grid-area: 1 / 1;
-  align-self: start;
-  visibility: hidden;
+  display: none;
 }
 
 .paso[data-activo] {
-  visibility: visible;
+  display: block;
   animation: entrarPaso var(--transition-fast) var(--ease-out-soft);
 }
 
@@ -220,11 +225,13 @@
    contra el relleno y más de 3:1 contra la superficie aun en el peor caso.
    16px como mínimo: por debajo, Safari en iOS hace zoom al enfocar. El halo del
    foco es el del patrón. */
+/* background-color y no el atajo `background`: el atajo borraría el chevrón
+   que el patrón pinta como imagen de fondo del select. */
 .form input,
 .form select,
 .form textarea {
   border: 1px solid var(--color-navy-light);
-  background: var(--color-off-white);
+  background-color: var(--color-off-white);
   font-size: 16px;
 }
 
@@ -232,7 +239,13 @@
 .form select:focus,
 .form textarea:focus {
   border-color: var(--color-navy);
-  background: var(--color-white);
+  background-color: var(--color-white);
+}
+
+/* El selector de idioma: 48px de alto, con el relleno, el borde, el foco y el
+   chevrón de los demás campos. */
+.form select {
+  height: 48px;
 }
 
 .form [aria-invalid="true"] {
@@ -264,20 +277,12 @@
 
 /* ---------- Chips ---------- */
 
+/* Sin rejilla: cada chip mide lo que su texto y se acomodan en filas,
+   alineados a la izquierda. El texto nunca se parte. */
 .chips {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-
-@media (min-width: 601px) {
-  .chipsIdioma {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .chipsColaboradores {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .chip {
@@ -286,7 +291,8 @@
   justify-content: center;
   gap: 8px;
   height: 48px;
-  padding: 0 14px;
+  padding: 0 20px;
+  white-space: nowrap;
   border: 1px solid var(--color-navy-light);
   border-radius: var(--radius-pildora);
   background: var(--glass-fondo);
@@ -312,12 +318,6 @@
   color: var(--color-white);
 }
 
-.bandera {
-  flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-}
-
 /* La palomita del elegido, después del texto: el trazo toma el color del
    texto. */
 .chip[aria-pressed="true"]::after {
@@ -330,7 +330,14 @@
     center / contain no-repeat;
 }
 
-/* El select de CampoIdioma: presente para el WebMCP, fuera de la vista. */
+/* ---------- Idioma ---------- */
+
+.idioma {
+  margin-bottom: 8px;
+}
+
+/* El selector plegado, cuando la página trae el idioma: presente para el
+   WebMCP, fuera de la vista. */
 .idiomaNativo {
   position: absolute;
   width: 1px;
@@ -338,6 +345,13 @@
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
+}
+
+/* La nota de privacidad cierra el paso Contacto: sin el margen inferior que
+   base.css da a todo <p>, el espacio hasta el pie es el relleno del cuerpo,
+   igual que en los pasos de chips. */
+.form :global(.sp-form-nota) {
+  margin-bottom: 0;
 }
 
 /* ---------- Errores y sugerencia ---------- */
@@ -478,6 +492,10 @@
     animation: none;
   }
 
+  .cuerpo[data-animando] {
+    transition: none;
+  }
+
   .chip:hover {
     transform: none;
   }
@@ -486,8 +504,8 @@
 /* ---------- Móvil ----------
    Hoja a pantalla completa. Tapa toda la página, así que el desenfoque no
    tendría nada que mostrar y solo costaría pintado: se quita del velo y de la
-   hoja, que pasa a blanco sólido. El pie queda abajo por la propia estructura:
-   la hoja mide la pantalla y solo el cuerpo hace scroll. */
+   hoja, que pasa a blanco sólido. Aquí el pie sí va al fondo de la pantalla: la
+   hoja la mide entera y el cuerpo crece hasta llenarla. */
 
 @media (max-width: 600px) {
   .overlay {
@@ -506,5 +524,10 @@
     box-shadow: none;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
+  }
+
+  .form,
+  .cuerpo {
+    flex-grow: 1;
   }
 }

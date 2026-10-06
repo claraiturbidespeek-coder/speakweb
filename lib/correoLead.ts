@@ -49,6 +49,11 @@ export type DatosCorreoLead = {
   utmCampaign: string;
   utmContent: string;
   gclid: string;
+  /* Fuente de tráfico de la primera visita y de esta, ya clasificadas en el
+     navegador (lib/atribucion.ts). Opcionales: un lead que no las trae se
+     pinta exactamente como antes, sin la fila. */
+  fuenteOriginal?: string;
+  fuenteVisita?: string;
   /* Datos del envío, que la ruta lee de la petición: la IP del visitante y la
      región que da la geolocalización de Vercel. Llegan ya con "No disponible"
      si faltan. La hora de envío sale de `fecha`. */
@@ -103,6 +108,16 @@ function rutaLegible(pagina: string): string {
   }
 }
 
+/* La fila "Fuente": "Primera visita: ChatGPT · Esta visita: Google Ads". Si
+   las dos coinciden, o solo llega una, va un solo valor. Sin ninguna, vacío y
+   la fila no se pinta. */
+export function textoFuente(original = "", visita = ""): string {
+  const o = original.trim();
+  const v = visita.trim();
+  if (o && v && o !== v) return `Primera visita: ${o} · Esta visita: ${v}`;
+  return o || v;
+}
+
 function fechaLegible(fecha: Date): string {
   const dia = new Intl.DateTimeFormat("es-MX", {
     timeZone: "America/Mexico_City",
@@ -125,6 +140,7 @@ export function plantillaCorreoLead(d: DatosCorreoLead): {
 } {
   const numero = numeroInternacional(d.telefono);
   const fecha = fechaLegible(d.fecha);
+  const fuente = textoFuente(d.fuenteOriginal, d.fuenteVisita);
   const paginaEsUrl = /^https?:\/\//i.test(d.pagina);
 
   const enlace = (href: string, texto: string) =>
@@ -242,7 +258,7 @@ export function plantillaCorreoLead(d: DatosCorreoLead): {
               <tr><td style="height:12px; line-height:12px; font-size:0;">&nbsp;</td></tr>
             </table>
             <p class="gris" style="margin:0 0 6px; font-family:${FUENTE}; font-size:11px; font-weight:bold; text-transform:uppercase; letter-spacing:0.06em; color:${GRIS};">Atribución</p>
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">${filaAtribucion("UTM Source", d.utmSource)}${filaAtribucion("UTM Medium", d.utmMedium)}${filaAtribucion("UTM Campaign", d.utmCampaign)}${filaAtribucion("UTM Content", d.utmContent)}${filaAtribucion("GCLID", d.gclid)}
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">${fuente ? filaAtribucion("Fuente", fuente) : ""}${filaAtribucion("UTM Source", d.utmSource)}${filaAtribucion("UTM Medium", d.utmMedium)}${filaAtribucion("UTM Campaign", d.utmCampaign)}${filaAtribucion("UTM Content", d.utmContent)}${filaAtribucion("GCLID", d.gclid)}
             </table>
           </td>
         </tr>
@@ -287,6 +303,7 @@ export function plantillaCorreoLead(d: DatosCorreoLead): {
     `Idioma: ${d.idioma}`,
     "",
     "ATRIBUCIÓN",
+    ...(fuente ? [`Fuente: ${fuente}`] : []),
     `UTM Source: ${d.utmSource}`,
     `UTM Medium: ${d.utmMedium}`,
     `UTM Campaign: ${d.utmCampaign}`,

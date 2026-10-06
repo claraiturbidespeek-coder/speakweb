@@ -33,46 +33,26 @@ function registrarWhatsappPostLead() {
    así que el evento `close` es el único sitio donde se restaura el scroll y se
    avisa al proveedor.
 
-   PASOS. Es un solo <form> con los tres pasos siempre montados: el CSS
+   PASOS. Es un solo <form> con los dos pasos siempre montados: el CSS
    muestra el activo y oculta el resto. Así lo escrito sobrevive al ir y volver
    entre pasos, y al cerrar y reabrir el modal, porque el componente no se
    desmonta. Pasar de paso no envía nada ni dispara eventos: el envío y la
    conversión son los de siempre, al final.
 
-   El payload no cambia. El idioma y los colaboradores se eligen con chips que
-   viven en el estado, no en el formulario: el idioma sale con los mismos
-   valores que el select, y el rango de colaboradores se antepone al texto de
-   `mensaje`. El select de CampoIdioma sigue en el DOM, fuera de la vista,
-   porque es el que declara el parámetro `idioma` del WebMCP; si un agente lo
-   rellena, su valor entra al estado. */
+   El payload no cambia. El idioma se elige en el select de CampoIdioma, el de
+   siempre, que es también el que declara el parámetro `idioma` del WebMCP. El
+   rango de colaboradores se elige con chips que viven en el estado, no en el
+   formulario, y se antepone al texto de `mensaje`. */
 
 const ESTADO_INICIAL = { enviando: false, error: false, exito: false };
 
-type Paso = "idioma" | "colaboradores" | "contacto";
-const PASOS: Paso[] = ["idioma", "colaboradores", "contacto"];
+type Paso = "capacitacion" | "contacto";
+const PASOS: Paso[] = ["capacitacion", "contacto"];
 
 const PREGUNTAS: Record<Paso, string> = {
-  idioma: "¿Qué idioma le interesa?",
-  colaboradores: "¿Cuántas personas tomarían la capacitación?",
+  capacitacion: "Su capacitación",
   contacto: "¿A quién le enviamos la propuesta?",
 };
-
-/* Etiqueta del chip y valor que se envía: los mismos del select actual. La
-   bandera es la de Twemoji que usa la home (public/images/banderas/); "Varios
-   idiomas" lleva el globo del mismo set. */
-const CHIPS_IDIOMA = [
-  { etiqueta: "Inglés", valor: "Inglés", bandera: "ingles" },
-  { etiqueta: "Francés", valor: "Francés", bandera: "frances" },
-  { etiqueta: "Alemán", valor: "Alemán", bandera: "aleman" },
-  { etiqueta: "Italiano", valor: "Italiano", bandera: "italiano" },
-  { etiqueta: "Portugués", valor: "Portugués", bandera: "portugues" },
-  {
-    etiqueta: "Español para extranjeros",
-    valor: "Español para extranjeros",
-    bandera: "espanol",
-  },
-  { etiqueta: "Varios idiomas", valor: "Varios idiomas", bandera: "globo" },
-];
 
 const RANGOS_COLABORADORES = ["1 a 10", "11 a 50", "51 a 200", "Más de 200"];
 
@@ -110,10 +90,6 @@ function sugerirCorreo(valor: string): string {
   return corregido ? valor.slice(0, arroba + 1) + corregido : "";
 }
 
-function etiquetaIdioma(valor: string): string {
-  return CHIPS_IDIOMA.find((c) => c.valor === valor)?.etiqueta ?? valor;
-}
-
 declare global {
   interface Window {
     dataLayer?: Record<string, unknown>[];
@@ -131,14 +107,21 @@ export default function ModalContacto({
 }) {
   const dialogo = useRef<HTMLDialogElement>(null);
   const formulario = useRef<HTMLFormElement>(null);
+  const cuerpo = useRef<HTMLDivElement>(null);
+  // Último alto pintado del cuerpo, para animar desde ahí al cambiar de paso.
+  const altoCuerpo = useRef(0);
   const [estado, setEstado] = useState(ESTADO_INICIAL);
   const ruta = usePathname();
 
-  const [paso, setPaso] = useState<Paso>("idioma");
+  const [paso, setPaso] = useState<Paso>("capacitacion");
   const [idioma, setIdioma] = useState("");
-  // El idioma vino de la página o del botón y su paso no se muestra.
+  /* El idioma vino de la página o del botón: en vez del selector se muestra
+     "Idioma: X · cambiar". El select sigue en el DOM, fuera de la vista. */
   const [idiomaOmitido, setIdiomaOmitido] = useState(false);
   const [colaboradores, setColaboradores] = useState("");
+  // Errores del paso 1, que se muestran al intentar continuar.
+  const [faltaIdioma, setFaltaIdioma] = useState(false);
+  const [faltanColaboradores, setFaltanColaboradores] = useState(false);
   const [errores, setErrores] = useState<Partial<Record<CampoContacto, string>>>({});
   const [sugerencia, setSugerencia] = useState("");
   /* El último idioma de página o de botón que se aplicó. Si al reabrir sigue
@@ -152,8 +135,8 @@ export default function ModalContacto({
   const tocados = useRef(new Set<string>());
 
   /* Al abrir, el idioma de la página o del botón. Se ajusta durante el render
-     y no en un efecto, para no pintar un primer cuadro con el paso de idioma.
-     En home, /idioma/, /equipo/ y el resto no hay idioma que imponer. */
+     y no en un efecto, para no pintar un primer cuadro con el selector. En
+     home, /idioma/, /equipo/ y el resto no hay idioma que imponer. */
   if (abierto !== abiertoPrevio) {
     setAbiertoPrevio(abierto);
     const deRuta = idiomaDeRuta(ruta);
@@ -163,15 +146,13 @@ export default function ModalContacto({
       if (preset) {
         setIdioma(preset);
         setIdiomaOmitido(true);
-        if (paso === "idioma") setPaso("colaboradores");
       } else {
         setIdiomaOmitido(false);
       }
     }
   }
 
-  const visibles = idiomaOmitido ? PASOS.slice(1) : PASOS;
-  const numeroPaso = visibles.indexOf(paso) + 1;
+  const numeroPaso = PASOS.indexOf(paso) + 1;
 
   // Abrir. Se restablece el estado por si se reabre después de un envío.
   useEffect(() => {
@@ -188,30 +169,79 @@ export default function ModalContacto({
   }, [abierto]);
 
   /* Foco al abrir y en cada cambio de paso: el campo con error si lo hay, si
-     no el chip elegido, si no el primer control del paso. El foco natural sería
-     la cruz de cerrar. */
+     no el primer control del paso que se pueda enfocar (el select, cuando está
+     plegado, va dentro de un contenedor inerte). El foco natural sería la cruz
+     de cerrar. */
   useEffect(() => {
     const form = formulario.current;
     if (!abierto || !dialogo.current?.open || !form) return;
     const contenedor = form.querySelector(`[data-paso="${paso}"]`);
     const destino =
       contenedor?.querySelector<HTMLElement>('[aria-invalid="true"]') ??
-      contenedor?.querySelector<HTMLElement>('[aria-pressed="true"]') ??
-      contenedor?.querySelector<HTMLElement>("input, textarea, button");
+      [...(contenedor?.querySelectorAll<HTMLElement>("input, select, textarea, button") ?? [])].find(
+        (el) => !el.closest("[inert]")
+      );
     destino?.focus();
   }, [abierto, paso]);
 
-  /* El select oculto refleja siempre el idioma elegido, para que lo que lee un
-     agente por el WebMCP coincida con el chip marcado. El otro sentido lo cubre
-     alEscribir: al rellenarlo, el navegador dispara input y change. La ruta
-     está en las dependencias porque CampoIdioma remonta el select al navegar.
-     En modo landing el campo es un input oculto que React controla: no se toca. */
+  /* El select refleja siempre el idioma del estado. Hace falta por dos casos:
+     CampoIdioma remonta el select al navegar (llega vacío o con el idioma de
+     la nueva página) y un botón con idioma asignado lo impone sin que la
+     página lo traiga. El otro sentido lo cubre alEscribir: el cambio del
+     select, sea de una persona o de un agente por el WebMCP, entra al estado. */
   useLayoutEffect(() => {
     const campo = formulario.current?.elements.namedItem("idioma");
     if (campo instanceof HTMLSelectElement && campo.value !== idioma) {
       campo.value = idioma;
     }
   }, [idioma, ruta, estado.exito]);
+
+  /* El alto del cuerpo, al día: lo anota un ResizeObserver, que avisa después
+     de cada maquetado. Al cambiar de paso el efecto de abajo corre antes de que
+     llegue el aviso del paso nuevo, así que aquí queda el alto del anterior (o
+     el de un punto intermedio, si una animación seguía en curso). */
+  useEffect(() => {
+    const el = cuerpo.current;
+    if (!el) return;
+    const observador = new ResizeObserver(() => {
+      altoCuerpo.current = el.offsetHeight;
+    });
+    observador.observe(el);
+    return () => observador.disconnect();
+  }, [estado.exito]);
+
+  /* Al cambiar de paso, el cuerpo va de su alto anterior al nuevo. Se fija el
+     alto de partida, se fuerza el maquetado y se pasa al de llegada; la
+     transición la pone el CSS con [data-animando]. Al terminar se suelta el
+     alto para que el cuerpo vuelva a medir lo que su contenido. Sin animación
+     con movimiento reducido o si el modal está cerrado. */
+  useLayoutEffect(() => {
+    const el = cuerpo.current;
+    const desde = altoCuerpo.current;
+    if (!el || !dialogo.current?.open || !desde) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    el.style.height = "";
+    const hasta = el.offsetHeight;
+    if (hasta === desde) return;
+
+    el.removeAttribute("data-animando");
+    el.style.height = `${desde}px`;
+    void el.offsetHeight;
+    el.setAttribute("data-animando", "");
+    el.style.height = `${hasta}px`;
+
+    const soltar = (e?: TransitionEvent) => {
+      if (e && (e.target !== el || e.propertyName !== "height")) return;
+      el.removeAttribute("data-animando");
+      el.style.height = "";
+    };
+    el.addEventListener("transitionend", soltar);
+    return () => {
+      el.removeEventListener("transitionend", soltar);
+      soltar();
+    };
+  }, [paso, idiomaOmitido]);
 
   // Cerrar: un solo sitio, sea quien sea quien lo haya provocado.
   useEffect(() => {
@@ -295,9 +325,9 @@ export default function ModalContacto({
       return;
     }
     const nombre = objetivo.name;
-    // El select oculto solo cambia si lo rellena un agente por el WebMCP.
     if (nombre === "idioma") {
       setIdioma(objetivo.value);
+      if (objetivo.value) setFaltaIdioma(false);
       return;
     }
     tocados.current.add(nombre);
@@ -325,23 +355,45 @@ export default function ModalContacto({
   };
 
   const regresar = () => {
-    const anterior = visibles[visibles.indexOf(paso) - 1];
+    const anterior = PASOS[PASOS.indexOf(paso) - 1];
     if (anterior) setPaso(anterior);
   };
 
-  const elegirIdioma = (valor: string) => {
-    setIdioma(valor);
-    setPaso("colaboradores");
-  };
-
+  // Los chips ya no avanzan solos: se elige y se continúa con el botón.
   const elegirColaboradores = (valor: string) => {
     setColaboradores(valor);
-    setPaso("contacto");
+    setFaltanColaboradores(false);
   };
 
+  // Despliega el selector, con el idioma de la página ya elegido.
   const cambiarIdioma = () => {
     setIdiomaOmitido(false);
-    setPaso("idioma");
+    requestAnimationFrame(() => {
+      const campo = formulario.current?.elements.namedItem("idioma");
+      if (campo instanceof HTMLSelectElement) campo.focus();
+    });
+  };
+
+  // Continuar del paso 1: pide idioma y colaboradores.
+  const continuar = () => {
+    const sinIdioma = !idioma && !valorDe("idioma");
+    setFaltaIdioma(sinIdioma);
+    setFaltanColaboradores(!colaboradores);
+    if (sinIdioma) {
+      setIdiomaOmitido(false);
+      requestAnimationFrame(() => {
+        const campo = formulario.current?.elements.namedItem("idioma");
+        if (campo instanceof HTMLSelectElement) campo.focus();
+      });
+      return;
+    }
+    if (!colaboradores) {
+      formulario.current
+        ?.querySelector<HTMLElement>('[data-paso="capacitacion"] button[aria-pressed]')
+        ?.focus();
+      return;
+    }
+    setPaso("contacto");
   };
 
   /* Enter solo envía desde Contacto, que es el último paso. En los pasos de
@@ -365,7 +417,8 @@ export default function ModalContacto({
        se lleva al visitante a ese paso. */
     if (!idioma && !texto("idioma")) {
       setIdiomaOmitido(false);
-      setPaso("idioma");
+      setFaltaIdioma(true);
+      setPaso("capacitacion");
       return;
     }
     if (!validarContacto()) {
@@ -398,10 +451,12 @@ export default function ModalContacto({
       await enviarLead(payload);
       form.reset();
       // El siguiente formulario empieza de cero, con el idioma de su página.
-      setPaso("idioma");
+      setPaso("capacitacion");
       setIdioma("");
       setIdiomaOmitido(false);
       setColaboradores("");
+      setFaltaIdioma(false);
+      setFaltanColaboradores(false);
       setErrores({});
       setSugerencia("");
       setPresetAplicado(undefined);
@@ -503,12 +558,12 @@ export default function ModalContacto({
               tooldescription="Solicite cotización de capacitación en idiomas para su empresa con S-Peak. Un asesor se pondrá en contacto en menos de 24 horas hábiles. Una persona revisa y confirma el envío."
             >
               {/* Cuerpo: lo único que hace scroll. */}
-              <div className={styles.cuerpo}>
+              <div ref={cuerpo} className={styles.cuerpo}>
                 <p className={styles.contador} aria-live="polite">
-                  Paso {numeroPaso} de {visibles.length}
+                  Paso {numeroPaso} de {PASOS.length}
                 </p>
                 <div className={styles.segmentos} aria-hidden="true">
-                  {visibles.map((p, i) => (
+                  {PASOS.map((p, i) => (
                     <span key={p} data-hecho={i < numeroPaso || undefined} />
                   ))}
                 </div>
@@ -516,64 +571,45 @@ export default function ModalContacto({
                   {PREGUNTAS[paso]}
                 </h3>
 
-                {idiomaOmitido && (
-                  <p className={styles.idiomaFijo}>
-                    Idioma: <strong>{etiquetaIdioma(idioma)}</strong> ·{" "}
-                    <button type="button" className={styles.enlace} onClick={cambiarIdioma}>
-                      cambiar
-                    </button>
-                  </p>
-                )}
-
-                {/* Los tres pasos ocupan la misma celda: la caja mide siempre
-                    lo que el más alto, el de Contacto. */}
-                <div className={styles.pasos}>
-                  {/* Paso Idioma */}
+                {/* Solo el paso activo se muestra: cada uno mide lo suyo. */}
+                <div>
+                  {/* Paso 1, Su capacitación: idioma y colaboradores. */}
                   <div
                     className={styles.paso}
-                    data-paso="idioma"
-                    data-activo={paso === "idioma" || undefined}
+                    data-paso="capacitacion"
+                    data-activo={paso === "capacitacion" || undefined}
                     role="group"
                     aria-labelledby="contacto-pregunta"
                   >
-                    <div className={`${styles.chips} ${styles.chipsIdioma}`}>
-                      {CHIPS_IDIOMA.map((chip) => (
-                        <button
-                          key={chip.valor}
-                          type="button"
-                          className={styles.chip}
-                          aria-pressed={idioma === chip.valor}
-                          onClick={() => elegirIdioma(chip.valor)}
-                        >
-                          <img
-                            className={styles.bandera}
-                            src={`/images/banderas/${chip.bandera}.svg`}
-                            alt=""
-                            aria-hidden="true"
-                            width="20"
-                            height="20"
-                          />
-                          {chip.etiqueta}
+                    {/* Si la página trae el idioma, se muestra y el selector
+                        queda plegado: fuera de la vista e inerte, pero en el
+                        DOM, porque es el que declara `idioma` al WebMCP. */}
+                    {idiomaOmitido && (
+                      <p className={styles.idiomaFijo}>
+                        Idioma: <strong>{idioma}</strong> ·{" "}
+                        <button type="button" className={styles.enlace} onClick={cambiarIdioma}>
+                          cambiar
                         </button>
-                      ))}
+                      </p>
+                    )}
+                    <div
+                      className={idiomaOmitido ? styles.idiomaNativo : styles.idioma}
+                      inert={idiomaOmitido}
+                    >
+                      <CampoIdioma id="contactoIdioma" siempreSelector />
+                      {faltaIdioma && (
+                        <p className={styles.error}>Elija el idioma que le interesa.</p>
+                      )}
                     </div>
-                    {/* El select de siempre, fuera de la vista: declara el
-                        parámetro `idioma` del WebMCP. Una persona elige con los
-                        chips. */}
-                    <div className={styles.idiomaNativo} inert>
-                      <CampoIdioma id="contactoIdioma" />
-                    </div>
-                  </div>
 
-                  {/* Paso Colaboradores */}
-                  <div
-                    className={styles.paso}
-                    data-paso="colaboradores"
-                    data-activo={paso === "colaboradores" || undefined}
-                    role="group"
-                    aria-labelledby="contacto-pregunta"
-                  >
-                    <div className={`${styles.chips} ${styles.chipsColaboradores}`}>
+                    <p id="contacto-colaboradores" className={styles.subpregunta}>
+                      ¿Cuántas personas tomarían la capacitación? *
+                    </p>
+                    <div
+                      className={styles.chips}
+                      role="group"
+                      aria-labelledby="contacto-colaboradores"
+                    >
                       {RANGOS_COLABORADORES.map((rango) => (
                         <button
                           key={rango}
@@ -586,6 +622,9 @@ export default function ModalContacto({
                         </button>
                       ))}
                     </div>
+                    {faltanColaboradores && (
+                      <p className={styles.error}>Elija cuántas personas la tomarían.</p>
+                    )}
                   </div>
 
                   {/* Paso Contacto: todos los campos y el envío. */}
@@ -754,10 +793,9 @@ export default function ModalContacto({
                 />
               </div>
 
-              {/* Pie fijo: Atrás a la izquierda (en el primer paso, oculto sin
-                  dejar de ocupar su sitio, con una nota en su lugar) y el envío
-                  a la derecha, solo en Contacto. Los pasos de chips avanzan
-                  solos. */}
+              {/* Pie fijo. A la izquierda, Atrás; en el primer paso se oculta
+                  sin dejar de ocupar su sitio y en su lugar va una nota. A la
+                  derecha, Continuar en el paso 1 y el envío en Contacto. */}
               <div className={styles.pie}>
                 <div className={styles.pieInicio}>
                   <button
@@ -772,13 +810,34 @@ export default function ModalContacto({
                     <p className={styles.pieNota}>Le toma menos de un minuto.</p>
                   )}
                 </div>
-                {paso === "contacto" && (
+                {/* Una `key` distinta en cada botón para que React no reutilice el
+                    mismo elemento: si el clic en Continuar cambia el paso y el
+                    botón pasa a type="submit" antes de que el navegador termine
+                    el clic, el formulario se envía. */}
+                {paso === "contacto" ? (
                   <button
+                    key="enviar"
                     className={`sp-btn sp-btn--rojo ${styles.enviar}`}
                     type="submit"
+                    /* Ignora el segundo clic de un doble clic: Continuar y este
+                       botón ocupan el mismo sitio, y un doble clic en Continuar
+                       acababa enviando con el segundo clic. Un envío siempre
+                       arranca con un clic sencillo. */
+                    onClick={(e) => {
+                      if (e.detail > 1) e.preventDefault();
+                    }}
                     disabled={estado.enviando}
                   >
                     {estado.enviando ? "Enviando…" : "Solicite Cotización"}
+                  </button>
+                ) : (
+                  <button
+                    key="continuar"
+                    className={`sp-btn sp-btn--rojo ${styles.enviar}`}
+                    type="button"
+                    onClick={continuar}
+                  >
+                    Continuar
                   </button>
                 )}
               </div>

@@ -15,14 +15,25 @@ import { idiomaDeRuta, NO_ESPECIFICADO, OPCIONES_IDIOMA } from "@/lib/atribucion
 
    `key` con la ruta: el formulario vive en el layout y no se vuelve a montar
    al navegar, así que sin ella el select conservaría la elección de la página
-   anterior en vez de tomar el idioma de la nueva. */
-export default function CampoIdioma({ id }: { id: string }) {
+   anterior en vez de tomar el idioma de la nueva.
+
+   `siempreSelector` pide el selector también en modo landing, con el idioma de
+   la página preseleccionado. Lo usa el modal de contacto, que en landing
+   muestra el idioma con un "cambiar" y necesita un selector que desplegar. Sin
+   la prop, el comportamiento es el de arriba. */
+export default function CampoIdioma({
+  id,
+  siempreSelector = false,
+}: {
+  id: string;
+  siempreSelector?: boolean;
+}) {
   const ruta = usePathname();
   const landing = useModoLanding();
   const idiomaPagina = idiomaDeRuta(ruta);
   const dePagina = idiomaPagina !== NO_ESPECIFICADO;
 
-  if (landing && dePagina) {
+  if (landing && dePagina && !siempreSelector) {
     return <input type="hidden" name="idioma" value={idiomaPagina} />;
   }
 
