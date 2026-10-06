@@ -13,10 +13,19 @@ import { ContextoContacto } from "./useContacto";
    servidor y lo pasa ya resuelto a través de esta frontera. */
 export default function ProveedorContacto({ children }: { children: ReactNode }) {
   const [abierto, setAbierto] = useState(false);
+  // El idioma del botón que lo abrió, si lo trae. Manda sobre el de la ruta.
+  const [idiomaBoton, setIdiomaBoton] = useState<string | null>(null);
 
-  const abrir = useCallback(() => setAbierto(true), []);
+  const abrir = useCallback(() => {
+    setIdiomaBoton(null);
+    setAbierto(true);
+  }, []);
+  const abrirConIdioma = useCallback((idioma: string) => {
+    setIdiomaBoton(idioma);
+    setAbierto(true);
+  }, []);
   const cerrar = useCallback(() => setAbierto(false), []);
-  const valor = useMemo(() => ({ abrir }), [abrir]);
+  const valor = useMemo(() => ({ abrir, abrirConIdioma }), [abrir, abrirConIdioma]);
 
   /* #landing-contacto en una página de /idioma/: modo landing (lo pone el
      guion del layout) y el modal abierto al cargar. Se lee una sola vez, al
@@ -53,7 +62,7 @@ export default function ProveedorContacto({ children }: { children: ReactNode })
   return (
     <ContextoContacto.Provider value={valor}>
       {children}
-      <ModalContacto abierto={abierto} alCerrar={cerrar} />
+      <ModalContacto abierto={abierto} idiomaBoton={idiomaBoton} alCerrar={cerrar} />
     </ContextoContacto.Provider>
   );
 }

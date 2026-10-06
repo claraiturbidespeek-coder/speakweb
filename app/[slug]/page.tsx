@@ -230,7 +230,7 @@ export default async function Nota(props: PageProps<"/[slug]">) {
                 <div className="sp-cta-card">
                   <p className={styles.ctaTitulo}>¿Necesita un programa a la medida?</p>
                   <p className={styles.ctaTexto}>
-                    Un asesor le responde en menos de 24 horas, sin compromiso.
+                    Un asesor le responde en menos de 24 horas hábiles, sin compromiso.
                   </p>
                   <BotonContacto className="sp-btn sp-btn--rojo">
                     Solicite Cotización

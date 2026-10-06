@@ -99,7 +99,15 @@ const POSTS = [
   },
 ];
 
-export default function CentroDeRecursos({ className }: { className?: string }) {
+/* `textoEnlace` existe porque la home lo pide distinto ("Ver todos los
+   artículos"); las demás páginas siguen con el de siempre. */
+export default function CentroDeRecursos({
+  className,
+  textoEnlace = "Centro de Recursos",
+}: {
+  className?: string;
+  textoEnlace?: string;
+}) {
   return (
     <section
       className={`sp-seccion sp-seccion--ancha sp-recursos${className ? ` ${className}` : ""}`}
@@ -115,7 +123,7 @@ export default function CentroDeRecursos({ className }: { className?: string }) 
             </div>
             <div className="sp-recursos-acciones">
               <Link className="sp-recursos-link" href="/blog/">
-                Centro de Recursos
+                {textoEnlace}
               </Link>
               <CarruselFlechas />
             </div>

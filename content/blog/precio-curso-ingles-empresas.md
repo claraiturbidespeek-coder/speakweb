@@ -74,7 +74,7 @@ En conclusión, invertir en el desarrollo lingüístico de su personal con un so
 
 Enseñamos idiomas a los empleados de su empresa con metodologías comprobadas y métricas de seguimiento enfocadas a resultados medibles.
 
-- Respuesta en menos de 24 horas.
+- Respuesta en menos de 24 horas hábiles.
 - Asesoría sin compromiso
 - +500 empresas atendidas
 

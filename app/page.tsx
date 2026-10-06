@@ -463,8 +463,7 @@ export default function Home() {
             />
             <div className={`${styles.caseCard} ${styles.caseCardNarrow}`}>
               <h3 className={styles.caseTitle}>
-                Programas de idiomas para el cierre de brechas lingüísticas y
-                técnicas
+                Programas de idiomas adaptados a cada perfil de puesto
               </h3>
               <p className={styles.caseQuote}>
                 El equipo de S-Peak tiene una gran actitud de servicio, sus
@@ -490,7 +489,7 @@ export default function Home() {
           <article className={`${styles.case} ${styles.caseYellow}`}>
             <div className={styles.caseCard}>
               <h3 className={styles.caseTitle}>
-                Claridad y contexto corporativo en cada lección
+                Claridad y contexto corporativo en cada sesión
               </h3>
               <p className={styles.caseQuote}>
                 S-Peak es una organización sumamente dinámica. Su capacidad para
@@ -596,7 +595,7 @@ export default function Home() {
             </h2>
             <p className={styles.lead}>
               Hemos recopilado las dudas más comunes de nuestros clientes para
-              darte claridad desde el primer momento.
+              brindarle claridad desde el primer momento.
             </p>
             <div className={`sp-faq-lista ${styles.faqList}`}>
               {FAQ.map((f) => (
@@ -628,7 +627,10 @@ export default function Home() {
       </section>
 
       {/* 11. Centro de Recursos */}
-      <CentroDeRecursos className={styles.recursosCompacto} />
+      <CentroDeRecursos
+        className={styles.recursosCompacto}
+        textoEnlace="Ver todos los artículos"
+      />
     </main>
   );
 }

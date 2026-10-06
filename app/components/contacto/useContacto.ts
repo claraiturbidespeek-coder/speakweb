@@ -6,7 +6,11 @@ import { createContext, useContext } from "react";
    proyecto: no es estilo, es el contrato de React. Es lo que permite a
    react-hooks/rules-of-hooks verificar cada sitio donde se llama. */
 
-type Contacto = { abrir: () => void };
+/* `abrirConIdioma` es para un botón que ya sabe qué idioma le interesa al
+   visitante: el modal se salta el paso de idioma. `abrir` queda sin argumento
+   a propósito, porque muchas páginas lo pasan tal cual a onClick y recibiría
+   el evento. */
+type Contacto = { abrir: () => void; abrirConIdioma: (idioma: string) => void };
 
 export const ContextoContacto = createContext<Contacto | null>(null);
 
