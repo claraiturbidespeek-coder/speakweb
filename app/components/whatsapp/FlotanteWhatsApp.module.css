@@ -66,8 +66,8 @@
 
 .overlay {
   background: rgba(17, 24, 39, 0.6);
-  backdrop-filter: blur(var(--glass-desenfoque));
   -webkit-backdrop-filter: blur(var(--glass-desenfoque));
+  backdrop-filter: blur(var(--glass-desenfoque));
 }
 
 /* El filo rojo superior es un borde, así que se recorta con la esquina en vez

@@ -243,7 +243,8 @@
   min-height: 0;
 }
 
-/* Una columna en móvil; dos a partir de 640px, con puesto y mensaje a todo el
+/* Una columna en móvil; dos desde 601px, justo donde deja de ser hoja de
+   pantalla completa (corte del sistema, 600px), con puesto y mensaje a todo el
    ancho. El orden del DOM es el de lectura en los dos casos. */
 .campos {
   display: grid;
@@ -251,7 +252,7 @@
   column-gap: 16px;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 601px) {
   .campos {
     grid-template-columns: 1fr 1fr;
   }
@@ -269,7 +270,7 @@
   gap: 10px;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 601px) {
   .chipsIdioma {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -436,8 +437,26 @@
   color: var(--color-white);
 }
 
+/* Lado izquierdo del pie: Atrás y, en el primer paso, la nota en su lugar.
+   Comparten celda para que el pie mida lo mismo con uno o con otra. */
+.pieInicio {
+  display: grid;
+  align-items: center;
+}
+
+.pieInicio > * {
+  grid-area: 1 / 1;
+}
+
 .atras[data-oculto] {
   visibility: hidden;
+}
+
+.pieNota {
+  margin: 0;
+  font-size: 13px;
+  font-weight: var(--weight-normal);
+  color: var(--color-muted);
 }
 
 .enviar {

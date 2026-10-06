@@ -52,28 +52,48 @@ const CTA = "Solicite su diagnóstico sin costo";
 /* Tarjetas de color (.sp-tarjeta-color), como Competencias de /equipo/. El
    orden de colores es para la rejilla de tres columnas: ni en horizontal ni en
    vertical quedan dos iguales contiguas, y tampoco al apilarse en una. */
+/* Las descripciones solo repiten lo que la página ya explica en "Cómo
+   funciona", "Qué mide, y qué no", el FAQ y el cierre: no agregan alcance. */
 const RECIBE = [
-  { texto: "El nivel de cada colaborador.", icono: "usuarioCheck", color: "navy" },
-  { texto: "Una propuesta de grupos por nivel.", icono: "usuarios", color: "rojo" },
   {
-    texto: "Duración y presupuesto por grupo para alcanzar el objetivo.",
+    titulo: "El nivel de cada colaborador.",
+    descripcion:
+      "Según el examen en línea, que mide comprensión oral, comprensión escrita y expresión escrita.",
+    icono: "usuarioCheck",
+    color: "navy",
+  },
+  {
+    titulo: "Una propuesta de grupos por nivel.",
+    descripcion: "Los grupos se arman con el nivel que obtuvo cada colaborador en el examen.",
+    icono: "usuarios",
+    color: "rojo",
+  },
+  {
+    titulo: "Duración y presupuesto por grupo para alcanzar el objetivo.",
+    descripcion: "Cuánto costaría cada grupo propuesto y en cuánto tiempo terminaría.",
     icono: "reloj",
     color: "amarillo",
   },
   {
-    texto: "Una clase muestra sin costo para todo el grupo.",
+    titulo: "Una clase muestra sin costo para todo el grupo.",
+    descripcion:
+      "Para que su equipo conozca una clase antes de decidir. Sin costo, igual que el examen escrito.",
     icono: "presentacion",
     color: "rojo",
   },
   {
-    texto:
+    titulo:
       "Cuánto tardaría cada colaborador en llegar a un nivel intermedio (B1) o al siguiente (B2), según su nivel de partida.",
+    descripcion:
+      "Así sabe, antes de invertir, en cuánto tiempo su equipo llegaría al nivel que necesita.",
     icono: "tendencia",
     color: "amarillo",
   },
   {
-    texto:
+    titulo:
       "La propuesta de afinar el nivel de algunos participantes con una evaluación oral.",
+    descripcion:
+      "El examen no mide la expresión oral. Sin costo si contrata el programa; se cotiza si solo desea la evaluación.",
     icono: "mensaje",
     color: "navy",
   },
@@ -207,13 +227,14 @@ export default function Diagnostico() {
             <ul className={`${styles.recibeGrid} reveal stagger`}>
               {RECIBE.map((r) => (
                 <li
-                  key={r.texto}
-                  className={`sp-tarjeta sp-barra sp-tarjeta-color sp-tarjeta-color--${r.color} ${styles.recibeCard}`}
+                  key={r.titulo}
+                  className={`sp-tarjeta sp-barra sp-tarjeta-color sp-tarjeta-color--${r.color}`}
                 >
                   <div className="sp-icono sp-icono--xl">
                     <Icono nombre={r.icono} />
                   </div>
-                  <p>{r.texto}</p>
+                  <h3>{r.titulo}</h3>
+                  <p>{r.descripcion}</p>
                 </li>
               ))}
             </ul>

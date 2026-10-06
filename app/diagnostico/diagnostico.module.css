@@ -68,14 +68,6 @@
   list-style: none;
 }
 
-/* Sin titular en la tarjeta: el texto hace de titular, así que conserva el
-   cuerpo y el peso que tenía en vez de los 13px del texto del patrón. */
-.recibeCard p {
-  font-size: 14px;
-  font-weight: var(--weight-semibold);
-  line-height: 1.55;
-}
-
 /* ---------- Cómo funciona ---------- */
 
 .pasosSeccion {

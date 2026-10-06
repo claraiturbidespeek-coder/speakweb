@@ -754,18 +754,24 @@ export default function ModalContacto({
                 />
               </div>
 
-              {/* Pie fijo: Atrás a la izquierda (oculto en el primer paso, sin
-                  dejar de ocupar su sitio) y el envío a la derecha, solo en
-                  Contacto. Los pasos de chips avanzan solos. */}
+              {/* Pie fijo: Atrás a la izquierda (en el primer paso, oculto sin
+                  dejar de ocupar su sitio, con una nota en su lugar) y el envío
+                  a la derecha, solo en Contacto. Los pasos de chips avanzan
+                  solos. */}
               <div className={styles.pie}>
-                <button
-                  type="button"
-                  className={styles.atras}
-                  onClick={regresar}
-                  data-oculto={numeroPaso === 1 || undefined}
-                >
-                  Atrás
-                </button>
+                <div className={styles.pieInicio}>
+                  <button
+                    type="button"
+                    className={styles.atras}
+                    onClick={regresar}
+                    data-oculto={numeroPaso === 1 || undefined}
+                  >
+                    Atrás
+                  </button>
+                  {numeroPaso === 1 && (
+                    <p className={styles.pieNota}>Le toma menos de un minuto.</p>
+                  )}
+                </div>
                 {paso === "contacto" && (
                   <button
                     className={`sp-btn sp-btn--rojo ${styles.enviar}`}
