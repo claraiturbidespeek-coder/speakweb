@@ -290,6 +290,10 @@ const APARTADOS = [
             página para mejorarla; graba cómo navega (clics, desplazamiento
             y movimientos) y no guarda lo que escribe en los formularios.
           </li>
+          <li>
+            <strong>OpenAI Ads:</strong> medir nuestros anuncios en
+            ChatGPT.
+          </li>
         </ul>
 
         <p>
@@ -304,21 +308,29 @@ const APARTADOS = [
           >
             adssettings.google.com
           </a>
-          . Cómo usan los datos Google y Microsoft:{" "}
+          . Cómo usan los datos Google, Microsoft y OpenAI:{" "}
           <a
             href="https://policies.google.com/privacy"
             target="_blank"
             rel="noopener noreferrer"
           >
             policies.google.com/privacy
-          </a>{" "}
-          y{" "}
+          </a>
+          ,{" "}
           <a
             href="https://privacy.microsoft.com/privacystatement"
             target="_blank"
             rel="noopener noreferrer"
           >
             privacy.microsoft.com/privacystatement
+          </a>{" "}
+          y{" "}
+          <a
+            href="https://openai.com/policies/privacy-policy/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            openai.com/policies/privacy-policy
           </a>
           .
         </p>
