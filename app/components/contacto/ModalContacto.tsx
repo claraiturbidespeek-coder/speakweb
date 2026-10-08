@@ -13,6 +13,12 @@ import {
   recogerAtribucion,
   type PayloadLead,
 } from "@/lib/atribucion";
+import {
+  leerObref,
+  leerOppref,
+  medirLeadOpenAI,
+  nuevoIdEvento,
+} from "@/lib/pixelOpenAI";
 
 // Evento propio, distinto del conversion_whatsapp del flotante: este clic llega
 // después de un lead ya registrado y no debe contarse como otra conversión.
@@ -432,6 +438,9 @@ export default function ModalContacto({
       ? `Colaboradores: ${colaboradores}.${necesidad ? " " + necesidad : ""}`
       : necesidad;
 
+    // Uno por envío: viaja en el payload y en el píxel, para deduplicar.
+    const idEvento = nuevoIdEvento();
+
     const payload: PayloadLead = {
       nombre: texto("nombre"),
       empresa: texto("empresa"),
@@ -442,6 +451,9 @@ export default function ModalContacto({
       sitio_web: texto("sitio_web"),
       recibir_novedades: texto("recibir_novedades"),
       origen: "Formulario principal",
+      event_id: idEvento,
+      obref: leerObref(),
+      oppref: leerOppref(),
       // El elegido; el de la ruta solo por si no llegara ninguno.
       ...recogerAtribucion(idioma || texto("idioma") || idiomaDeRuta(ruta)),
     };
@@ -464,6 +476,7 @@ export default function ModalContacto({
       setEstado({ enviando: false, error: false, exito: true });
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: "lead_formulario_principal" });
+      medirLeadOpenAI(idEvento);
     } catch {
       setEstado({ enviando: false, error: true, exito: false });
     }

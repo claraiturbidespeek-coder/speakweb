@@ -399,6 +399,16 @@ export type PayloadLead = {
      lógica que `sitio_web`, para el bot que marca casillas en vez de, o además
      de, rellenar textos. */
   recibir_novedades: string;
+  /* El event_id del píxel de OpenAI Ads para este envío. El endpoint lo reenvía
+     a la Conversions API como `id`, para que OpenAI deduplique el evento del
+     navegador con el del servidor. Ver lib/pixelOpenAI.ts. */
+  event_id: string;
+  /* La cookie __obref del píxel, o vacía si no existe. El endpoint la manda en
+     el bloque `user` del mismo evento. */
+  obref: string;
+  /* El identificador de atribución de OpenAI (parámetro oppref o cookie
+     __oppref), o vacío. El endpoint lo manda a nivel de evento. */
+  oppref: string;
 } & Atribucion;
 
 // Lanza si la respuesta no es ok.

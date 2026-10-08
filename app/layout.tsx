@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import GoogleTagManager from "./components/GoogleTagManager";
 import GuardarAtribucion from "./components/GuardarAtribucion";
 import Header from "./components/Header";
+import PixelOpenAI from "./components/PixelOpenAI";
 import ScrollSuave from "./components/ScrollSuave";
 import VolverArriba from "./components/VolverArriba";
 import FlotanteWhatsApp from "./components/whatsapp/FlotanteWhatsApp";
@@ -106,6 +107,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             primero, y no pinta nada si NEXT_PUBLIC_GTM_ID no está definida:
             así las vistas previas quedan sin medición. Ver el componente. */}
         <GoogleTagManager />
+        {/* Píxel de OpenAI Ads: mismo criterio que GTM, no pinta nada si
+            NEXT_PUBLIC_OAIQ_PIXEL_ID no está definida. Ver el componente. */}
+        <PixelOpenAI />
 
         {/* Etiqueta nativa: con next/script el JSON-LD se inyectaría desde el
             cliente y no estaría en el HTML que lee Google. */}

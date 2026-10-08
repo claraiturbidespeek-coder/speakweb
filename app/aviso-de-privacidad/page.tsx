@@ -182,7 +182,7 @@ const APARTADOS = [
 
         <ul>
           <li>
-            Con Google y Microsoft: reciben datos de su visita a través de
+            Con Google, Microsoft y OpenAI: reciben datos de su visita a través de
             las herramientas del sitio y pueden usarlos también para sus
             propios fines (sección 7). Si no lo limita con los medios de la
             sección 7, entendemos que acepta que reciban estos datos; puede

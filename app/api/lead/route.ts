@@ -34,6 +34,8 @@
                        formulario principal; si falta, la petición se manda
                        igual y el CRM responde 401
      CRM_WEBHOOK_SECRET_WHATSAPP    lo mismo para el modal de WhatsApp
+     OAIQ_API_KEY      clave de la Conversions API de OpenAI Ads; sin ella
+                       (o sin NEXT_PUBLIC_OAIQ_PIXEL_ID) no se manda el evento
 
    FILTROS ANTIBOT (añadidos después del porteo): un campo trampa invisible
    (`sitio_web`) que una persona nunca rellena, una casilla trampa
@@ -46,6 +48,8 @@
    responde en /api/lead/ y una llamada a /api/lead se redirige con un 308. Al
    repuntar el modal hay que apuntar a /api/lead/, con barra. */
 
+import { after } from "next/server";
+import { EVENTO_WHATSAPP } from "@/lib/pixelOpenAI";
 import {
   asuntoCorreoLead,
   NO_DISPONIBLE,
@@ -423,6 +427,131 @@ async function enviarLeadACrmScndal(lead: LeadCrm): Promise<void> {
   }
 }
 
+/* OpenAI Ads — cuarto destino: el evento de la Conversions API.
+
+   Es el mismo evento que dispara el píxel en el navegador, con el mismo
+   event_id como `id`: OpenAI deduplica por Pixel ID, tipo de evento e id (y en
+   los personalizados, también custom_event_name), así que se cuenta una sola
+   conversión aunque lleguen las dos. Cuál de los dos eventos depende del
+   `origen`: ver eventoOpenAI.
+
+   Va fuera del ciclo del lead: la ruta lo programa con after(), que corre una
+   vez enviada la respuesta. Ni su resultado ni lo que tarde cambian lo que ve
+   el visitante, y el correo y Kommo no lo esperan. No lanza nunca.
+
+   La clave, OAIQ_API_KEY, solo se lee aquí y no lleva NEXT_PUBLIC_. El Pixel
+   ID es el mismo del píxel, NEXT_PUBLIC_OAIQ_PIXEL_ID. Si falta cualquiera de
+   los dos, no se envía nada. */
+const OAIQ_URL = "https://bzr.openai.com/v1/events";
+const OAIQ_TIMEOUT_MS = 7000;
+
+// El que genera lib/pixelOpenAI.ts es un UUID. Se acepta cualquier id corto y
+// sin caracteres raros; otra cosa no es nuestra y no se reenvía.
+const FORMATO_EVENT_ID = /^[A-Za-z0-9._-]{1,64}$/;
+
+/* La cookie __obref del píxel, que el navegador manda en el payload. OpenAI la
+   escribe como un UUID; con el mismo criterio que el event_id, lo que no tenga
+   esa pinta no se reenvía, y el evento sale igual sin el bloque `user`. */
+const FORMATO_OBREF = /^[A-Za-z0-9._-]{1,128}$/;
+
+/* El identificador de atribución oppref. Es opaco y se pasa sin modificar, así
+   que no se le impone formato: solo que no venga vacío ni desmedido, y sin
+   espacios ni caracteres de control. Si no pasa, el evento sale sin él. */
+const FORMATO_OPPREF = /^[\x21-\x7E]{1,512}$/;
+
+/* El tipo de evento por origen, el mismo que mide el píxel en cada formulario
+   (lib/pixelOpenAI.ts). El modal de WhatsApp manda un personalizado, con
+   custom_event_name a nivel de evento; el formulario de contacto, y cualquier
+   otro origen, lead_created. */
+function eventoOpenAI(origen: string) {
+  return origen === "WhatsApp"
+    ? {
+        type: "custom",
+        custom_event_name: EVENTO_WHATSAPP,
+        data: { type: "custom" },
+      }
+    : { type: "lead_created", data: { type: "customer_action" } };
+}
+
+async function enviarEventoOpenAI(
+  eventId: string,
+  origen: string,
+  oppref: string,
+  obref: string,
+  pagina: string
+): Promise<void> {
+  const apiKey = process.env.OAIQ_API_KEY;
+  const pixelId = process.env.NEXT_PUBLIC_OAIQ_PIXEL_ID;
+  if (!apiKey || !pixelId) return;
+
+  if (!FORMATO_EVENT_ID.test(eventId)) {
+    console.warn("OpenAI Ads: event_id ausente o inválido; no se envía", {
+      event_id: eventId.slice(0, 80),
+    });
+    return;
+  }
+
+  /* source_url es obligatorio en los eventos web. Es la página desde la que se
+     envió el formulario; si no es una URL completa, la portada del sitio. */
+  let sourceUrl = "https://s-peak.com/";
+  try {
+    const url = new URL(pagina);
+    if (url.protocol === "https:" || url.protocol === "http:") sourceUrl = url.href;
+  } catch {
+    // "No especificada" u otra cosa que no es URL: queda la portada.
+  }
+
+  const { data, ...evento } = eventoOpenAI(origen);
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), OAIQ_TIMEOUT_MS);
+  try {
+    const res = await fetch(`${OAIQ_URL}?pid=${encodeURIComponent(pixelId)}`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        events: [
+          {
+            id: eventId,
+            ...evento,
+            timestamp_ms: Date.now(),
+            // A nivel de evento, no en `user`. Sin él, el evento sale igual.
+            ...(FORMATO_OPPREF.test(oppref) ? { oppref } : {}),
+            source_url: sourceUrl,
+            action_source: "web",
+            /* Solo la referencia de navegador, sin hash y sin tocar, como pide
+               la documentación. Ningún otro dato del visitante va aquí. Sin
+               cookie no hay bloque `user`. */
+            ...(FORMATO_OBREF.test(obref) ? { user: { obref } } : {}),
+            data,
+          },
+        ],
+      }),
+      signal: controller.signal,
+    });
+    if (!res.ok) {
+      const detalle = await res.text().catch(() => "");
+      console.error(
+        "OpenAI Ads: la Conversions API rechazó el evento:",
+        res.status,
+        detalle.slice(0, 300),
+        { event_id: eventId }
+      );
+    }
+  } catch (err) {
+    console.error(
+      "OpenAI Ads: excepción al enviar el evento:",
+      String((err as Error)?.message || err),
+      { event_id: eventId }
+    );
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 // Preflight CORS.
 export async function OPTIONS(request: Request): Promise<Response> {
   return new Response(null, { status: 204, headers: cabecerasCors(request) });
@@ -528,6 +657,21 @@ export async function POST(request: Request): Promise<Response> {
       { status: 400, headers }
     );
   }
+
+  /* OpenAI Ads, después de la respuesta. Va aquí, pasados los filtros antibot
+     y la validación: un envío descartado no es una conversión. */
+  const eventId = campo(body.event_id);
+  const obref = campo(body.obref);
+  // Sin campo(): oppref es opaco y viaja tal cual, sin recortar.
+  const oppref = typeof body.oppref === "string" ? body.oppref : "";
+  after(() =>
+    enviarEventoOpenAI(eventId, origen, oppref, obref, pagina).catch((err) => {
+      console.error(
+        "OpenAI Ads: excepción no controlada:",
+        String((err as Error)?.message || err)
+      );
+    })
+  );
 
   const noProporcionado = "No proporcionado";
   const rows: [string, string][] = [

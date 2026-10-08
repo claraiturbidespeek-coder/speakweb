@@ -12,6 +12,12 @@ import {
   recogerAtribucion,
   type PayloadLead,
 } from "@/lib/atribucion";
+import {
+  leerObref,
+  leerOppref,
+  medirWhatsappOpenAI,
+  nuevoIdEvento,
+} from "@/lib/pixelOpenAI";
 import styles from "./FlotanteWhatsApp.module.css";
 
 /* El botón flotante de WhatsApp y su modal de pre-registro.
@@ -137,6 +143,9 @@ export default function FlotanteWhatsApp() {
     // de respaldo.
     const idioma = texto("idioma") || idiomaDeRuta(ruta);
 
+    // Uno por envío: viaja en el payload y en el píxel, para deduplicar.
+    const idEvento = nuevoIdEvento();
+
     const payload: PayloadLead = {
       nombre,
       // El modal corto no los pide; van vacíos, como en el formulario largo
@@ -150,6 +159,9 @@ export default function FlotanteWhatsApp() {
       recibir_novedades: texto("recibir_novedades"),
       // La marca que separa este lead del formulario en Resend y en Kommo.
       origen: "WhatsApp",
+      event_id: idEvento,
+      obref: leerObref(),
+      oppref: leerOppref(),
       ...recogerAtribucion(idioma),
     };
 
@@ -178,6 +190,7 @@ export default function FlotanteWhatsApp() {
     // Conversión de WhatsApp → la recoge GTM (Custom Event "conversion_whatsapp").
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: "conversion_whatsapp" });
+    medirWhatsappOpenAI(idEvento);
 
     setEnlace(url);
   };
