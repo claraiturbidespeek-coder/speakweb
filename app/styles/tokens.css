@@ -209,8 +209,10 @@
   /* ---------- Breakpoints ----------
      Los media queries no aceptan var(), así que estos valores se escriben
      literales en el CSS. Se declaran aquí para que exista un sitio donde
-     consultarlos y para que nadie invente un quinto.
+     consultarlos y para que nadie invente un sexto.
 
+       360px   móvil estrecho: por debajo, la fila de cifras (.sp-stats-row)
+               se apila para que las tres quepan sin desbordar
        600px   móvil
        768px   tablet vertical
        960px   tablet horizontal / colapso de rejillas

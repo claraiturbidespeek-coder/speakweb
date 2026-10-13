@@ -1652,14 +1652,30 @@
 }
 
 @media (max-width: 768px) {
-  /* Tres cifras no caben en una fila estrecha sin quedar ilegibles. Las dos
-     páginas migradas ocultan la tercera exactamente igual. */
-  .sp-stats-row .sp-stat:nth-child(3) {
-    display: none;
-  }
-
+  /* Las tres cifras se ven siempre. Hasta aquí se ocultaba la tercera, regla
+     heredada de la landing de inglés para quitar "+30 Industrias"; medido, las
+     tres caben en fila desde 360px (las etiquetas pasan a dos líneas). */
   .sp-stats-row {
     margin-top: 28px;
+  }
+}
+
+/* Por debajo de 360px las palabras largas de las etiquetas ("Profesionales",
+   "experiencia") desbordan la fila unos 4px. Ahí se apilan, cada cifra en una
+   línea: icono, cifra y etiqueta en horizontal. Mismos tamaños de letra; solo
+   cambia la disposición. */
+@media (max-width: 359px) {
+  .sp-stats-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sp-stat {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 10px 16px;
+    text-align: left;
   }
 }
 
