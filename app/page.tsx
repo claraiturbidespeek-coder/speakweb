@@ -617,10 +617,11 @@ export default function Home() {
           <aside className="sp-cta-card">
             <h3 className={styles.faqAsideTitle}>¿Quedan Dudas?</h3>
             <p className={styles.faqAsideText}>
-              Hable con un experto y resuelva sus dudas ahora.
+              Un asesor las resuelve y le prepara una cotización a la medida de su
+              equipo.
             </p>
             <BotonContacto className="sp-btn sp-btn--rojo">
-              Hablar con un Experto
+              Solicite una Cotización
             </BotonContacto>
           </aside>
         </div>
