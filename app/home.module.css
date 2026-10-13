@@ -283,14 +283,27 @@
   padding-bottom: var(--space-section-mobile);
 }
 
+/* Sin `margin` propio: el `margin: 0 auto` de `.sp-inner` es el que centra la
+   fila. Un `margin: 0` aquí lo pisaba (el módulo va fuera de capa) y, con el
+   contenedor a su tope de 1360px, la fila se quedaba pegada a la izquierda. */
 .counters {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 40px;
   list-style: none;
-  margin: 0;
   padding: 0;
+}
+
+/* Desktop: tres cajas del mismo ancho que llenan el contenedor, para que el
+   borde de la primera y el de la tercera caigan en los del resto de las
+   secciones. Por debajo de 961px manda la rejilla de tablet y, en móvil, el
+   reparto flexible de arriba. */
+@media (min-width: 961px) {
+  .counters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .counter {
