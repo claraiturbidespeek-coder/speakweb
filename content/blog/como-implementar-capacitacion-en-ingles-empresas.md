@@ -42,7 +42,7 @@ Por otra parte, sustituya los exámenes de opción múltiple por evaluaciones or
 
 ### 3\. Selección estratégica de la modalidad de entrega
 
-Dependiendo del diseño de su espacio de trabajo (Home Office, presencial o mixto), debe elegir el formato que mitigue el ausentismo formativo. Le sugerimos analizar a fondo las ventajas operativas de cada modelo en nuestra guía sobre [clases de inglés para empresas: presencial, en línea o híbrido](https://s-peak.com/modalidad-capacitacion-idiomas-empresas/) para elegir la opción que mejor se adapte a los turnos de su equipo.
+Dependiendo del diseño de su espacio de trabajo (Home Office, presencial o mixto), el formato de las sesiones influye en el ausentismo formativo. Le sugerimos conocer en qué consiste cada una en nuestra nota sobre [las tres modalidades en que se imparte la capacitación en idiomas: presencial, híbrida y en línea](https://s-peak.com/modalidad-capacitacion-idiomas-empresas/).
 
 **TIP:** No obligue a un equipo que opera 100% en home office a asistir a clases sabatinas presenciales, ni sature con plataformas de elearning automáticas a personal operativo que prefiere la interacción directa de un profesor en vivo.
 
