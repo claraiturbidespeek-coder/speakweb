@@ -5,6 +5,7 @@ import type { FocusEvent, FormEvent, KeyboardEvent, MouseEvent } from "react";
 import { usePathname } from "next/navigation";
 import Icono from "@/app/components/Icono";
 import CampoIdioma from "./CampoIdioma";
+import CampoTelefono, { telefonoInternacional } from "./CampoTelefono";
 import styles from "./ModalContacto.module.css";
 import {
   enviarLead,
@@ -445,7 +446,7 @@ export default function ModalContacto({
       nombre: texto("nombre"),
       empresa: texto("empresa"),
       correo: texto("correo"),
-      telefono: texto("telefono"),
+      telefono: telefonoInternacional(form.elements.namedItem("telefono")),
       puesto: texto("puesto"),
       mensaje,
       sitio_web: texto("sitio_web"),
@@ -708,14 +709,11 @@ export default function ModalContacto({
                         <label htmlFor="contactoTelefono">
                           Teléfono <span className={styles.opcional}>(opcional)</span>
                         </label>
-                        <input
-                          type="tel"
+                        <CampoTelefono
                           id="contactoTelefono"
-                          name="telefono"
+                          activo={abierto}
                           toolparamdescription="Teléfono de contacto. Opcional."
-                          autoComplete="tel"
                           enterKeyHint="next"
-                          placeholder="+52 55 0000 0000"
                         />
                       </div>
                       <div className={`sp-form-group ${styles.anchoCompleto}`}>

@@ -5,6 +5,9 @@ import { usePathname } from "next/navigation";
 import Icono from "@/app/components/Icono";
 import useTrasHero from "@/app/components/useTrasHero";
 import CampoIdioma from "@/app/components/contacto/CampoIdioma";
+import CampoTelefono, {
+  telefonoInternacional,
+} from "@/app/components/contacto/CampoTelefono";
 import {
   enviarLead,
   idiomaDeRuta,
@@ -96,10 +99,13 @@ export default function FlotanteWhatsApp() {
   // Cuando hay enlace, el modal ya está en su estado de confirmación: es el
   // mismo que abrimos automáticamente y el que ofrece el botón de respaldo.
   const [enlace, setEnlace] = useState<string | null>(null);
+  // Solo para que el teléfono cargue su selector de país al abrir.
+  const [abierto, setAbierto] = useState(false);
 
   const abrir = () => {
     setEstado(ESTADO_INICIAL);
     setEnlace(null);
+    setAbierto(true);
     dialogo.current?.showModal();
     // El foco al primer campo espera al frame en que el diálogo ya es visible.
     requestAnimationFrame(() => primerCampo.current?.focus());
@@ -116,6 +122,7 @@ export default function FlotanteWhatsApp() {
       formulario.current?.reset();
       setEstado(ESTADO_INICIAL);
       setEnlace(null);
+      setAbierto(false);
     };
     el.addEventListener("close", alCerrar);
     return () => el.removeEventListener("close", alCerrar);
@@ -136,7 +143,8 @@ export default function FlotanteWhatsApp() {
     const texto = (clave: string) => (datos.get(clave)?.toString() ?? "").trim();
 
     const nombre = texto("nombre");
-    const telefono = texto("telefono");
+    // Con + y lada; es también el que va en el mensaje de WhatsApp.
+    const telefono = telefonoInternacional(form.elements.namedItem("telefono"));
     const correo = texto("correo");
 
     // El idioma del campo, para el mensaje y el payload; el de la ruta solo
@@ -300,12 +308,10 @@ export default function FlotanteWhatsApp() {
                   </div>
                   <div className="sp-form-group">
                     <label htmlFor={`${id}-telefono`}>Teléfono *</label>
-                    <input
-                      type="tel"
+                    <CampoTelefono
                       id={`${id}-telefono`}
-                      name="telefono"
+                      activo={abierto}
                       toolparamdescription="Teléfono de contacto."
-                      autoComplete="tel"
                       required
                     />
                   </div>

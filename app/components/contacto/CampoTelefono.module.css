@@ -1,0 +1,84 @@
+/* El selector de país del teléfono, igual en los dos formularios.
+
+   Las clases .iti__* son de intl-tel-input y su hoja llega con la librería, al
+   abrir el formulario (ver cargarTelefono.ts). Aquí solo se ajusta a los
+   tokens del sitio. .iti es la clase que la librería pone, con containerClass,
+   tanto al envoltorio del input como a la lista a pantalla completa del móvil,
+   que cuelga del <dialog> y no de .campo: por eso las variables y las reglas
+   van colgadas de ella.
+
+   El input en sí no se toca: conserva el estilo de cada formulario. */
+
+.campo {
+  width: 100%;
+}
+
+.iti {
+  --iti-border-color: var(--color-border);
+  --iti-hover-color: var(--color-off-white);
+  --iti-icon-color: var(--color-navy);
+  --iti-country-selector-bg: var(--color-white);
+  --iti-spacer-horizontal: 12px;
+  color: var(--color-ink);
+  font-size: 14px;
+}
+
+/* La librería lo trae en inline-block; el campo ocupa todo el ancho. */
+.campo .iti {
+  display: block;
+  width: 100%;
+}
+
+.iti :global(.iti__selected-country) {
+  cursor: pointer;
+}
+
+.iti :global(.iti__selected-country):focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: -2px;
+}
+
+.iti :global(.iti__selected-dial-code) {
+  color: var(--color-ink-2);
+}
+
+/* La lista. */
+.iti :global(.iti__country-selector) {
+  border-color: var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+/* El buscador de la lista es un input dentro del grupo del formulario: sin
+   esto heredaría el borde y el relleno de los campos, distintos en cada
+   formulario. 16px para que Safari en iOS no haga zoom al enfocarlo. */
+.iti :global(.iti__search-input) {
+  border: 0;
+  border-radius: 0;
+  background-color: var(--color-white);
+  box-shadow: none;
+  font-size: 16px;
+}
+
+.iti :global(.iti__search-input):focus {
+  border: 0;
+  box-shadow: none;
+}
+
+.iti :global(.iti__country.iti__highlight) {
+  background-color: var(--iti-hover-color);
+}
+
+.iti :global(.iti__dial-code) {
+  margin-left: 6px;
+  color: var(--color-muted);
+}
+
+/* El aviso no es un error: no bloquea el envío. Mismo tono que la sugerencia
+   de correo del modal de contacto. */
+.aviso {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--color-ink-2);
+}
