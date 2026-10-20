@@ -55,6 +55,7 @@ import {
   NO_DISPONIBLE,
   plantillaCorreoLead,
 } from "@/lib/correoLead";
+import { telefonoParaKommo } from "@/lib/telefonoKommo";
 
 const FROM = "S-Peak Landing <hello@mail.s-peak.com>";
 const TO = [
@@ -258,7 +259,7 @@ async function sendLeadToKommo({
   if (telefono) {
     contactFields.push({
       field_code: "PHONE",
-      values: [{ value: telefono, enum_code: "WORK" }],
+      values: [{ value: telefonoParaKommo(telefono), enum_code: "WORK" }],
     });
   }
   const contact: { name: string; custom_fields_values?: CampoContacto[] } = {
