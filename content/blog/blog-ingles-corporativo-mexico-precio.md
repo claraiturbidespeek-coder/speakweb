@@ -34,7 +34,7 @@ Piense en un área de RH que debe capacitar a un grupo de vendedores y a tres di
 
 Fíjese que en el modelo a la medida no hay un precio de lista: cada propuesta se arma según el equipo y el alcance del programa. Por eso conviene comparar esas cotizaciones con los puntos de la siguiente sección y no solo con una cifra.
 
-¿Es el precio, entonces, lo que frena la capacitación? No necesariamente. Según la encuesta ENAPROCE del INEGI, entre las micro, pequeñas y medianas empresas que no capacitaron a su personal, pocas lo atribuyeron al costo. Es una encuesta sobre capacitación en general, no sobre idiomas, y el 97.3 % de las empresas que abarca son microempresas.
+¿Es el precio, entonces, lo que frena la capacitación? No necesariamente. Según la encuesta ENAPROCE del INEGI, entre las micro, pequeñas y medianas empresas que no capacitaron a su personal, pocas lo atribuyeron al costo. La encuesta abarca empresas de las cuales 97.3 % son microempresas.
 
 > **Dato clave:** De las micro, pequeñas y medianas empresas que no impartieron capacitación en 2017, solo **4.7 %** lo atribuyó a un costo elevado, y **7 de cada 10** dijeron que el conocimiento de su personal ya era adecuado ([INEGI, 2019](https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2019/especiales/ENAPROCE2018.pdf)).
 
@@ -58,11 +58,11 @@ Si además quiere identificar las señales de un curso deficiente, revise [las c
 
 Mostrando qué problema del negocio resuelve el programa y cómo se medirá, en lugar de presentarlo como una prestación para el personal.
 
-Piense en un área de RH que presenta su cotización a Finanzas diciendo que el curso es una prestación atractiva. Es probable que la conversación termine ahí, porque Finanzas necesita ver qué gasto evita o qué ingreso protege. Un análisis publicado en El Economista lo plantea desde otro ángulo.
+Piense en un área de RH que presenta su cotización a Finanzas diciendo que el curso es una prestación atractiva. Es probable que la conversación termine ahí, porque Finanzas necesita ver qué gasto evita o qué ingreso protege. Un análisis sobre capacitación en empresas, publicado en El Economista, lo plantea desde otro ángulo.
 
 > **Dato clave:** Los autores de un análisis del IMEF señalan que el reto es que la inversión en capacitación se perciba como una **contribución al éxito de la empresa** y no como un gasto innecesario ([Espinosa y García, El Economista, 2020](https://www.eleconomista.com.mx/revistaimef/Capacitacion-para-agregar-valor-20200209-0024.html)).
 
-El texto habla de capacitación en general y no de idiomas, pero el argumento se traslada bien a un programa de inglés. Dos situaciones suelen dar material para armarlo.
+El argumento se traslada bien a un programa de inglés. Dos situaciones suelen dar material para armarlo.
 
 ### Cuando la comunicación en inglés frena un negocio internacional
 
@@ -70,7 +70,7 @@ Imagine una empresa cuyos ingenieros y gerentes deben coordinarse con clientes o
 
 ### Cuando perder a una persona clave cuesta más que capacitarla
 
-Para argumentar ante el CFO, compare dos números de su propia empresa: el costo anual del programa para un líder y lo que costaría reclutar e incorporar a su reemplazo. Es una comparación que usted puede construir con sus datos; esta nota no ofrece cifras de rotación.
+Para argumentar ante el CFO, compare dos números de su propia empresa: el costo anual del programa para un líder y lo que costaría reclutar e incorporar a su reemplazo. Es una comparación que usted puede construir con sus datos.
 
 ## Preguntas frecuentes sobre el costo del inglés corporativo
 
