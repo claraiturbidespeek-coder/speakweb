@@ -91,7 +91,7 @@ Así suena un directivo que ya domina el inglés de negocios frente a uno que so
 -   En vez de decir **"I will think about it"**, dice: **"I need to evaluate the leverage of this deal"** (Necesito evaluar la ventaja de este acuerdo).
 -   En vez de decir **"We have a big problem"**, dice: **"We face a bottleneck in our workflow"** (Enfrentamos un cuello de botella en nuestro flujo).
 
-El vocabulario correcto transforma la percepción profesional de sus líderes ante clientes, inversionistas y socios internacionales. De hecho, como lo confirma nuestro análisis sobre [cómo la capacitación en idiomas potencia la retención y desempeño del talento en empresas globales](https://s-peak.com/capacitacion-idiomas-retencion-desempeno-talento/), invertir en este nivel de precisión también fortalece la permanencia de sus mejores perfiles.
+El vocabulario correcto transforma la percepción profesional de sus líderes ante clientes, inversionistas y socios internacionales. De hecho, como lo confirma nuestro análisis sobre [los beneficios y el ROI de la capacitación de idiomas](https://s-peak.com/roi-capacitacion-idiomas/), invertir en este nivel de precisión también fortalece la permanencia de sus mejores perfiles.
 
 ## Cómo realizar un diagnóstico de necesidades sin afectar su presupuesto
 

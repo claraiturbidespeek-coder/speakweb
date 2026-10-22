@@ -199,6 +199,14 @@ const nextConfig: NextConfig = {
         destination: "/blog-errores-cursos-idiomas-empresas/",
         statusCode: 301,
       },
+      // capacitacion-idiomas-retencion-desempeno-talento se fusionó dentro de
+      // roi-capacitacion-idiomas: repetía sus mismos beneficios y su contenido
+      // único (diseño del programa y errores comunes) ya se migró a la nota pilar.
+      {
+        source: "/capacitacion-idiomas-retencion-desempeno-talento",
+        destination: "/roi-capacitacion-idiomas/",
+        statusCode: 301,
+      },
       // URLs del WordPress viejo que daban 404 en producción.
       {
         source: "/terminos-y-condiciones",
