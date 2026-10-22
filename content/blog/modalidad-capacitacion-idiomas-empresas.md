@@ -25,11 +25,11 @@ Imagine un área de atención a clientes cuyo equipo trabaja junto, en la misma 
 
 Esa es la esencia de la modalidad: el grupo asiste junto, practica entre sí y recibe la corrección del instructor en el momento, como en cualquier clase en aula. En México, además, la Ley Federal del Trabajo contempla en su [artículo 153-A](https://www.diputados.gob.mx/LeyesBiblio/pdf/LFT.pdf) que la capacitación se proporcione dentro de la misma empresa o fuera de ella, con personal propio, instructores contratados o instituciones especializadas. Es un marco legal, no una ventaja de esta modalidad.
 
-¿Qué pasa cuando un equipo deja de coincidir en persona? Un [estudio publicado en 2021 en *Nature Human Behaviour*](https://www.nature.com/articles/s41562-021-01196-4) siguió a empleados de Microsoft en Estados Unidos durante los primeros seis meses de 2020 para medirlo. Habla de trabajo en general, no de capacitación ni de clases de idiomas.
+¿Qué pasa cuando un equipo deja de coincidir en persona? Un [estudio publicado en 2021 en *Nature Human Behaviour*](https://www.nature.com/articles/s41562-021-01196-4) siguió a empleados de Microsoft en Estados Unidos durante los primeros seis meses de 2020 para medirlo.
 
 > **Dato clave:** Cuando toda una empresa pasó al trabajo remoto, las redes de colaboración de sus **61,182 empleados** se volvieron más aisladas y con menos puentes entre áreas ([Yang et al., 2021](https://www.nature.com/articles/s41562-021-01196-4)).
 
-Reunirse en persona tiene, eso sí, la otra cara del traslado. Según la [Encuesta Origen-Destino del INEGI de 2017](https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2018/EstSociodemo/OrgenDest2018_02.pdf), de los viajes para ir al trabajo en la Zona Metropolitana del Valle de México, **36.6 %** duró hasta media hora, **58.1 %** entre 31 minutos y 2 horas, y **5.3 %** más de 2 horas. Es un dato de traslados al trabajo en esa zona metropolitana, no de capacitación.
+Reunirse en persona tiene, eso sí, la otra cara del traslado. Según la [Encuesta Origen-Destino del INEGI de 2017](https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2018/EstSociodemo/OrgenDest2018_02.pdf), de los viajes para ir al trabajo en la Zona Metropolitana del Valle de México, **36.6 %** duró hasta media hora, **58.1 %** entre 31 minutos y 2 horas, y **5.3 %** más de 2 horas.
 
 ## ¿Qué es la capacitación híbrida?
 
@@ -37,7 +37,7 @@ La capacitación híbrida es la modalidad que combina, dentro de un mismo progra
 
 Piense en un equipo con una oficina principal y varios colaboradores que trabajan desde casa algunos días de la semana. Reunirlos en una sala cada semana no siempre es viable, pero tampoco hay que renunciar a verse en persona. La modalidad híbrida parte de ahí: una parte de las sesiones se toma a distancia, otra en las instalaciones, y el equipo sigue un solo programa con dos formatos.
 
-¿Y cómo les va a las personas con un esquema así? Un [ensayo aleatorizado publicado en 2024 en *Nature*](https://www.nature.com/articles/s41586-024-07500-2) lo probó durante seis meses con empleados con título universitario de una empresa tecnológica china: a unos se les permitió trabajar desde casa dos días a la semana y a otros se les pidió ir a la oficina los cinco. Quienes tuvieron el esquema híbrido reportaron mayor satisfacción laboral y mencionaron que ahorraron tiempo y dinero de traslado. Es un estudio sobre la jornada de trabajo en una sola empresa, no sobre capacitación ni sobre idiomas.
+¿Y cómo les va a las personas con un esquema así? Un [ensayo aleatorizado publicado en 2024 en *Nature*](https://www.nature.com/articles/s41586-024-07500-2) lo probó durante seis meses con empleados con título universitario de una empresa tecnológica china: a unos se les permitió trabajar desde casa dos días a la semana y a otros se les pidió ir a la oficina los cinco. Quienes tuvieron el esquema híbrido reportaron mayor satisfacción laboral y mencionaron que ahorraron tiempo y dinero de traslado.
 
 > **Dato clave:** En un ensayo con **1,612 empleados**, el esquema híbrido de dos días en casa redujo las renuncias **una tercera parte**, sin afectar el desempeño ni los ascensos de los dos años siguientes ([Bloom, Han y Liang, 2024](https://www.nature.com/articles/s41586-024-07500-2)).
 
@@ -47,11 +47,11 @@ La capacitación en línea es la modalidad en la que las sesiones se toman **a d
 
 Imagine ahora un equipo con integrantes repartidos: algunos en la oficina, otros en casa, otros en otra ciudad. Con la modalidad en línea cada persona se conecta desde donde se encuentra, y nadie necesita desplazarse para coincidir en una misma sala. El grupo sigue reuniéndose a la misma hora con el instructor; lo que cambia es el lugar.
 
-¿Y qué dicen los estudios sobre aprender en línea? El [metaanálisis de Sitzmann y colaboradores, publicado en 2006 en *Personnel Psychology*](https://digitalcommons.memphis.edu/facpubs/12083), comparó la instrucción en web con la de aula en capacitación de adultos y encontró que, con los mismos métodos en ambos formatos, la eficacia fue equivalente. Reúne estudios con estudiantes universitarios y con empleados, tiene casi veinte años y no es específico de idiomas.
+¿Y qué dicen los estudios sobre aprender en línea? El [metaanálisis de Sitzmann y colaboradores, publicado en 2006 en *Personnel Psychology*](https://digitalcommons.memphis.edu/facpubs/12083), comparó la instrucción en web con la de aula en capacitación de adultos y encontró que, con los mismos métodos en ambos formatos, la eficacia fue equivalente. Reúne estudios con estudiantes universitarios y con empleados.
 
 > **Dato clave:** La instrucción en web fue **19 % más eficaz** que la de aula para enseñar conocimiento declarativo cuando las personas tenían control de su aprendizaje, en cursos largos y con práctica y retroalimentación ([Sitzmann et al., 2006](https://digitalcommons.memphis.edu/facpubs/12083)).
 
-La investigación también señala una desventaja. J. N. Bailenson, del Virtual Human Interaction Lab de la Universidad de Stanford, plantea en un [ensayo publicado en 2021 en *Technology, Mind, and Behavior*](https://vhil.stanford.edu/publications/social-interaction/nonverbal-overload-theoretical-argument-causes-zoom-fatigue) que pasar el día en videollamadas cansa, y propone cuatro posibles causas ligadas al diseño de las plataformas. Los propios argumentos aún no se han probado de forma directa, y el texto habla de reuniones de trabajo en general, no de clases de idiomas.
+La investigación también señala una desventaja. J. N. Bailenson, del Virtual Human Interaction Lab de la Universidad de Stanford, plantea en un [ensayo publicado en 2021 en *Technology, Mind, and Behavior*](https://vhil.stanford.edu/publications/social-interaction/nonverbal-overload-theoretical-argument-causes-zoom-fatigue) que pasar el día en videollamadas cansa, y propone cuatro posibles causas ligadas al diseño de las plataformas. Los propios argumentos aún no se han probado de forma directa.
 
 ## Las tres modalidades de capacitación en idiomas para empresas, de un vistazo
 
@@ -87,7 +87,7 @@ Ninguna es mejor en todos los casos: cada modalidad resuelve una necesidad disti
 -   **Si busca flexibilidad entre sedes y menos traslados:** la en línea permite que cada persona se conecte desde donde esté, y el INEGI registró que **58.1 %** de los viajes al trabajo en la Zona Metropolitana del Valle de México tardó entre 31 minutos y 2 horas ([INEGI, 2017](https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2018/EstSociodemo/OrgenDest2018_02.pdf)).
 -   **Si su equipo se reparte entre oficina y trabajo remoto:** la híbrida combina sesiones presenciales y en línea en un mismo programa, y en el ensayo de *Nature* el esquema híbrido de trabajo mejoró la satisfacción y redujo las renuncias sin afectar el desempeño ([Bloom, Han y Liang, 2024](https://www.nature.com/articles/s41586-024-07500-2)).
 
-Ninguna de esas fuentes habla de clases de idiomas, así que conviene leerlas como pistas y no como veredictos. Con eso en mente, en el cierre le contamos cómo conocerlas en acción.
+Esas fuentes dan pistas para orientar la decisión. Con eso en mente, en el cierre le contamos cómo conocerlas en acción.
 
 ## ¿Quiere conocer las tres modalidades en acción?
 
