@@ -191,6 +191,14 @@ const nextConfig: NextConfig = {
         destination: "/blog-capacitacion-en-ingles-programa-fantasma/",
         statusCode: 301,
       },
+      // curso-idiomas-empresas se fusionó dentro de blog-errores-cursos-idiomas-empresas:
+      // ambas explicaban cómo contratar un curso de idiomas corporativo, y su
+      // contenido único (el recorrido por idiomas) ya se migró a la nota pilar.
+      {
+        source: "/curso-idiomas-empresas",
+        destination: "/blog-errores-cursos-idiomas-empresas/",
+        statusCode: 301,
+      },
       // URLs del WordPress viejo que daban 404 en producción.
       {
         source: "/terminos-y-condiciones",

@@ -63,7 +63,7 @@ En resumen, así se distingue cada una:
 | Híbrida | En las instalaciones de la empresa y en línea | Los colaboradores participan en sesiones presenciales y en línea dentro de un mismo programa |
 | En línea | A distancia | Los colaboradores se conectan a sesiones en tiempo real con un instructor |
 
-La modalidad define dónde se toman las sesiones, no qué se aprende. De lo segundo se ocupa la [capacitación de idiomas personalizada](https://s-peak.com/capacitacion-idiomas-personalizada/), que adapta el contenido a las necesidades de cada equipo. Y si está comparando proveedores, estos [cinco pasos para contratar un curso de idiomas corporativo](https://s-peak.com/curso-idiomas-empresas/) incluyen la modalidad entre los puntos a revisar.
+La modalidad define dónde se toman las sesiones, no qué se aprende. De lo segundo se ocupa la [capacitación de idiomas personalizada](https://s-peak.com/capacitacion-idiomas-personalizada/), que adapta el contenido a las necesidades de cada equipo. Y si está comparando proveedores, estos [cinco errores comunes al contratar cursos de idiomas para empresas](https://s-peak.com/blog-errores-cursos-idiomas-empresas/) incluyen la modalidad entre los puntos a revisar.
 
 ## Preguntas frecuentes sobre las modalidades de capacitación en idiomas
 
