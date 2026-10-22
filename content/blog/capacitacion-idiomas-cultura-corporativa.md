@@ -66,7 +66,7 @@ Un programa de capacitación en idiomas bien integrado también fomenta la diver
 
 ## El impacto de la capacitación en idiomas en la cultura corporativa
 
-Integrar la capacitación en idiomas dentro de la cultura corporativa no solo mejora las habilidades lingüísticas de los empleados, sino que también fortalece el sentido de pertenencia, la comunicación efectiva y la competitividad. Es un proceso continuo que debe alinearse con los valores de la empresa y ser respaldado por la alta dirección.
+Integrar la capacitación en idiomas dentro de la cultura corporativa no solo mejora las habilidades lingüísticas de los empleados, sino que también fortalece el sentido de pertenencia, la comunicación efectiva y la competitividad. Es un proceso continuo que debe alinearse con los valores de la empresa y ser respaldado por la alta dirección. Para estructurar el programa paso a paso, consulte [cómo implementar una capacitación en inglés en una empresa](https://s-peak.com/como-implementar-capacitacion-en-ingles-empresas/).
 
 En [S-Peak](https://www.linkedin.com/company/s-peak/posts/?feedView=all), ofrecemos soluciones personalizadas de [capacitación en idiomas para empresas,](https://s-peak.com/#idiomas) diseñadas para alinearse perfectamente con la cultura organizacional de su equipo y garantizar un retorno tangible de su inversión, así como una mejora en el desempeño y la motivación de los empleados.
 

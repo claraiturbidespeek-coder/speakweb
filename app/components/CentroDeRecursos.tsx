@@ -82,7 +82,7 @@ const POSTS = [
   },
   {
     titulo:
-      "De cero a bilingüe: Cómo estructurar una capacitación en inglés que su equipo no abandone",
+      "Cómo implementar una capacitación en inglés en su empresa: 5 pasos para que su equipo no la abandone",
     url: "/como-implementar-capacitacion-en-ingles-empresas/",
     imagen: "blog-capacitacion-en-ingles.webp",
     ancho: 1024,

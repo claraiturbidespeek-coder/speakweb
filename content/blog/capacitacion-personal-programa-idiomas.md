@@ -35,7 +35,7 @@ Si el contenido no les ayuda a resolver sus problemas del lunes por la mañana, 
 
 ### 2\. Flexibilidad absoluta en la capacitación de personal clave
 
-Un gran error en la capacitación de personal directivo es exigir horarios rígidos. Los líderes tienen agendas impredecibles llenas de juntas imprevistas. Si quiere profundizar en cómo estructurar el proyecto completo de manera correcta, le sugerimos revisar nuestra guía sobre [¿Cómo implementar un programa de capacitación en idiomas desde cero?](https://s-peak.com/programa-capacitacion-idiomas-desde-cero/) para asegurar una base sólida y eficiente.
+Un gran error en la capacitación de personal directivo es exigir horarios rígidos. Los líderes tienen agendas impredecibles llenas de juntas imprevistas. Si quiere profundizar en cómo estructurar el proyecto completo de manera correcta, le sugerimos revisar nuestra guía sobre [cómo estructurar una capacitación en inglés que su equipo no abandone](https://s-peak.com/como-implementar-capacitacion-en-ingles-empresas/) para asegurar una base sólida y eficiente.
 
 ### Gamificación y métricas de avance visibles
 

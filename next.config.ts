@@ -207,6 +207,21 @@ const nextConfig: NextConfig = {
         destination: "/roi-capacitacion-idiomas/",
         statusCode: 301,
       },
+      // programa-capacitacion-idiomas-desde-cero se fusionó dentro de
+      // como-implementar-capacitacion-en-ingles-empresas: era la versión corta de
+      // la misma implementación y su contenido único (cultura de aprendizaje y
+      // reconocimiento de logros) ya se migró a la nota pilar. La segunda entrada
+      // es su dirección antigua de WordPress, que daba 404.
+      {
+        source: "/programa-capacitacion-idiomas-desde-cero",
+        destination: "/como-implementar-capacitacion-en-ingles-empresas/",
+        statusCode: 301,
+      },
+      {
+        source: "/2024/01/como-implementar-un-programa-de-capacitacion-de-idiomas-desde-cero",
+        destination: "/como-implementar-capacitacion-en-ingles-empresas/",
+        statusCode: 301,
+      },
       // URLs del WordPress viejo que daban 404 en producción.
       {
         source: "/terminos-y-condiciones",
