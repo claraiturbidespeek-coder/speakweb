@@ -5,10 +5,12 @@
    enum_id por ese nombre.
 
    Las etiquetas de UTM llegan como "utm_source / utm_medium", o solo una de
-   las dos si la otra no vino. De ellas se mira solo el utm_source, que es lo
-   primero. Una etiqueta sin " / " puede ser un utm_source suelto o un dominio
-   de referencia: se compara primero con las listas de utm_source, y si no
-   está en ellas y tiene forma de dominio, es un backlink.
+   las dos si la otra no vino. De ellas se mira el utm_source, que es lo
+   primero; el utm_medium solo cuenta para Google Maps ("google / maps"),
+   porque google suelto no dice el canal. Una etiqueta sin " / " puede ser un
+   utm_source suelto o un dominio de referencia: se compara primero con las
+   listas de utm_source, y si no está en ellas y tiene forma de dominio, es un
+   backlink.
 
    Nunca lanza: lo que no encaja devuelve null y deja constancia en el log. El
    lead se crea igual, sin el campo. */
@@ -44,9 +46,12 @@ export function canalWebKommo(fuenteVisita: string): string | null {
   if (fuente.endsWith(" orgánico")) return "Búsqueda orgánica";
 
   const conMedio = fuente.includes(" / ");
-  const utmSource = fuente.split(" / ")[0].trim().toLowerCase();
+  const [utmSource, utmMedium = ""] = fuente
+    .split(" / ")
+    .map((parte) => parte.trim().toLowerCase());
   if (UTM_LINKEDIN.includes(utmSource)) return "LinkedIn";
   if (UTM_OTRAS_REDES.includes(utmSource)) return "Otras redes";
+  if (utmSource === "google" && utmMedium === "maps") return "Google Maps";
 
   if (!conMedio && ES_DOMINIO.test(fuente)) return "Backlink";
 
