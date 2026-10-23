@@ -4,15 +4,18 @@ import BandaLogos from "@/app/components/BandaLogos";
 import CentroDeRecursos from "@/app/components/CentroDeRecursos";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
 import Icono from "@/app/components/Icono";
+import { TableroProgreso } from "@/app/components/SeccionEvidencia";
 import SelloSTPS from "@/app/components/SelloSTPS";
+// La lista de las seis páginas de idioma vive con la plantilla de equipo.
+import { IDIOMAS } from "@/app/equipo/tipos";
 import styles from "./nosotros.module.css";
 
 /* /nosotros/: quiénes somos, contado como la historia de una gerente de RH.
 
-   Sigue el sistema visual de /diagnostico/ —hero de una columna, secciones
-   sp-*, CTA final en rojo— y se renderiza en el servidor: los únicos trozos de
-   cliente son los botones de contacto, AnimacionesEntrada y el carrusel del
-   Centro de Recursos. Los tres botones abren el modal de contacto general. */
+   Hero de una columna, secciones sp-* y CTA final en rojo, como /diagnostico/.
+   Se renderiza en el servidor: los únicos trozos de cliente son los botones de
+   contacto, AnimacionesEntrada y el carrusel del Centro de Recursos. Todos los
+   botones abren el modal de contacto general. */
 
 const URL = "https://s-peak.com/nosotros/";
 const TITULO = "Capacitación en idiomas para empresas desde 2006 | S-Peak";
@@ -47,62 +50,187 @@ export const metadata: Metadata = {
 };
 
 const CTA = "Solicite una Cotización";
+const NOTA_CTA = "Un asesor se pondrá en contacto en menos de 24 horas hábiles.";
 
-/* Mismos iconos que las cifras de /equipo/. Ninguno se repite abajo en las
-   tarjetas: la regla del registro es no repetir icono dentro de una página. */
+/* Mismos iconos que las cifras de /equipo/. */
 const CIFRAS = [
   { icono: "premio", num: "+20", label: "Años de experiencia" },
   { icono: "edificio", num: "+500", label: "Empresas atendidas" },
   { icono: "birrete", num: "+40K", label: "Profesionales formados" },
 ];
 
-/* Tarjetas de color (.sp-tarjeta-color), como "Qué recibe" de /diagnostico/ y
-   con su mismo orden de colores: en la rejilla de 3 × 2 no quedan dos iguales
-   contiguas ni en horizontal ni en vertical, y tampoco al apilarse en una. */
 const DOLORES = [
   {
-    titulo: "«Tengo que justificar el presupuesto»",
+    titulo: "«Mi directora me está pidiendo el estatus»",
     descripcion:
-      "Cada mes recibe un reporte automático de asistencia y calificaciones. Al cerrar cada etapa de 26 horas, recibe una Tarjeta de Resultados con la evidencia de lo que su colaborador ya puede hacer en el idioma.",
-    icono: "grafico",
-    color: "navy",
+      "Cada mes recibe un reporte automático de asistencia y calificaciones.",
   },
   {
-    titulo: "«Empiezan con ganas y luego dejan de ir»",
+    titulo: "«Tengo que cuadrar las horas tomadas contra la factura»",
     descripcion:
-      "Damos seguimiento a cada falta y buscamos recuperar al colaborador o ajustar el grupo.",
-    icono: "usuarioX",
-    color: "rojo",
+      "El reporte mensual trae las horas tomadas contra las facturadas y las sesiones repuestas, y su programa incluye un margen de sesiones canceladas que no se cobran.",
   },
   {
-    titulo: "«Sus agendas cambian cada semana»",
-    descripcion: "Horarios, modalidad y reposiciones se ajustan a su operación.",
-    icono: "reloj",
-    color: "amarillo",
+    titulo: "«¿Qué día termina el nivel?»",
+    descripcion:
+      "Le damos por escrito la fecha en que termina cada nivel y cada etapa; si una sesión cancelada no se repone, la fecha se recorre.",
   },
   {
-    titulo: "«Coordinar al proveedor me quita horas»",
+    titulo: "«Están súper ocupados»",
+    descripcion:
+      "Horarios, modalidad y reposiciones se ajustan a su operación; damos seguimiento a cada falta.",
+  },
+  {
+    titulo: "«No puedo gestionar mi área y además este programa»",
     descripcion:
       "Cada cliente tiene un ejecutivo de cuentas que resuelve lo operativo por usted.",
-    icono: "diadema",
-    color: "rojo",
   },
   {
-    titulo: "«No practican lo que su puesto necesita»",
+    titulo: "«No buscamos el típico curso teórico»",
     descripcion:
-      "Su equipo ya sabe hacer su trabajo; le enseñamos a hacerlo en el idioma de sus clientes y de su corporativo.",
-    icono: "diana",
-    color: "amarillo",
-  },
-  {
-    titulo: "«Necesito cumplir con la STPS»",
-    descripcion:
-      "Somos agente capacitador registrado y entregamos la constancia DC-3.",
-    icono: "sello",
-    color: "navy",
+      "Su equipo practica en el idioma lo que hace en su puesto: hablar con sus clientes, sus proveedores y su corporativo.",
   },
 ];
 
+/* Los cinco pasos de la metodología, en orden: cada uno es un escalón más
+   alto que el anterior. */
+const PACTO = [
+  {
+    letra: "P",
+    nombre: "Planificación",
+    descripcion:
+      "Diagnosticamos el nivel de cada colaborador y definimos con usted qué debe poder hacer en el idioma en su puesto.",
+  },
+  {
+    letra: "A",
+    nombre: "Arranque",
+    descripcion:
+      "Sesión de arranque con el grupo: calendario, reglas del programa y metas de cada colaborador.",
+  },
+  {
+    letra: "C",
+    nombre: "Competencias",
+    descripcion:
+      "Etapas de 26 horas, cada una enfocada en un dominio del puesto, con práctica real: juntas, correos y presentaciones.",
+  },
+  {
+    letra: "T",
+    nombre: "Trazabilidad",
+    descripcion:
+      "Reportes por mes, trimestre, nivel y año; evidencia evaluada con rúbrica; Tarjeta de Resultados al cerrar cada etapa y constancia DC-3.",
+  },
+  {
+    letra: "O",
+    nombre: "Optimización",
+    descripcion:
+      "Con base en los resultados, decidimos con usted la siguiente etapa y ajustamos el programa.",
+  },
+];
+
+/* Las cifras son las del tablero de /idioma/aleman-para-empresas/, tal cual:
+   ilustrativas, como dice la etiqueta. */
+const TABLERO = {
+  mejora: 16,
+  activos: 15,
+  sesiones: 28,
+  aprobadas: 85,
+  alza: 5,
+  curva: [75, 64, 61, 50, 47, 31, 26],
+  competencias: [
+    { nombre: "Comunicación oral", pct: 79 },
+    { nombre: "Comprensión auditiva", pct: 68 },
+    { nombre: "Redacción corporativa", pct: 77 },
+    { nombre: "Negociación", pct: 70 },
+  ],
+  colaboradores: [
+    { nivel: "B2", pct: 87 },
+    { nivel: "B1", pct: 76 },
+    { nivel: "B1", pct: 70 },
+    { nivel: "A2", pct: 61 },
+  ],
+};
+
+const MCER = "https://www.coe.int/en/web/common-european-framework-reference-languages";
+
+const FAQ = [
+  {
+    pregunta: "¿Con qué escala miden el nivel de cada colaborador?",
+    respuesta: (
+      <>
+        Con la del{" "}
+        <a href={MCER} target="_blank" rel="noopener noreferrer">
+          Marco Común Europeo de Referencia
+        </a>{" "}
+        (A1 a C2), desde el examen del diagnóstico inicial.
+      </>
+    ),
+  },
+  {
+    pregunta: "¿Cuánto tiempo hay que contratar?",
+    respuesta:
+      "No hay plazo mínimo. Recomendamos un año para que el avance se vea en el puesto.",
+  },
+  {
+    pregunta: "¿Qué pasa si un colaborador deja la empresa a medio programa?",
+    respuesta:
+      "Reasignamos su lugar a otro colaborador del mismo dominio, sin perder lo invertido. Lo dejamos definido en la propuesta desde el inicio.",
+  },
+  {
+    pregunta: "¿Quién da las sesiones?",
+    respuesta:
+      "Especialistas en idioma de negocios, nativos o bilingües, con experiencia en entornos empresariales; si alguno no resulta el adecuado, lo cambiamos.",
+  },
+  {
+    pregunta: "¿Qué pasa si el instructor no puede dar una sesión?",
+    respuesta: "Se repone en un horario que acuerdan el colaborador y el instructor.",
+  },
+  {
+    pregunta: "¿Pueden darse de alta como proveedor en nuestra empresa?",
+    respuesta:
+      "Sí: entregamos la documentación para el alta y firmamos acuerdo de confidencialidad.",
+  },
+  {
+    pregunta: "¿El material tiene costo?",
+    respuesta: "El material se cotiza aparte; su costo depende del idioma y del nivel.",
+  },
+  {
+    pregunta: "¿Cómo se factura?",
+    respuesta: "Nos adaptamos a la forma de facturación de su empresa.",
+  },
+  {
+    pregunta: "¿De cuántas personas son los grupos?",
+    respuesta:
+      "De 1 a 10 colaboradores por grupo, y abrimos tantos grupos como necesite su empresa.",
+  },
+  {
+    pregunta: "¿Atienden fuera de la Ciudad de México?",
+    respuesta:
+      "Sí, en cualquier parte de México: presencial en la empresa, en línea en vivo o híbrida, en una o varias sedes.",
+  },
+  {
+    pregunta:
+      "¿La constancia DC-3 es una certificación de idioma, como Cambridge o IELTS?",
+    respuesta: (
+      <>
+        No. La DC-3 es la constancia de capacitación con formato de la{" "}
+        <a href="https://www.gob.mx/stps" target="_blank" rel="noopener noreferrer">
+          STPS
+        </a>
+        , que firmamos como agente capacitador externo; el nivel de idioma se mide
+        aparte, con la escala del Marco Común Europeo.
+      </>
+    ),
+  },
+];
+
+/* Los tres del Centro de Recursos, por su url en CentroDeRecursos.tsx. */
+const ARTICULOS = [
+  "/blog-capacitacion-en-ingles-programa-fantasma/",
+  "/blog-nivel-ingles-empresas-areas/",
+  "/capacitacion-personal-programa-idiomas/",
+];
+
+/* Sin FAQPage, a diferencia de las demás páginas con preguntas frecuentes. */
 function datosEstructurados() {
   return JSON.stringify({
     "@context": "https://schema.org",
@@ -145,16 +273,18 @@ export default function Nosotros() {
             loading="lazy"
           />
           <div className={styles.heroInner}>
+            <div className="sp-etiqueta">Capacitación en idiomas para empresas</div>
             <h1>
-              Usted no tiene que adaptarse a su proveedor. Desde 2006, nosotros nos
-              adaptamos a usted.
+              Desde 2006 ayudamos a equipos de trabajo a hablar, negociar y colaborar
+              con seguridad en otro idioma.
             </h1>
             <p className="sp-hero-sub">
-              Le facilitamos la vida y le quitamos fricciones, para que capacitar a su
-              equipo en idiomas deje de ser un pendiente y se convierta en un logro que
-              pueda presentar a Dirección.
+              Nos encargamos de coordinar horarios, reponer sesiones y entregar
+              reportes, para que capacitar a su equipo en idiomas deje de ser un
+              pendiente y se convierta en un logro que pueda presentar a Dirección.
             </p>
             <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
+            <p className={styles.nota}>{NOTA_CTA}</p>
             <SelloSTPS />
             <div className={`sp-stats-row ${styles.cifras}`}>
               {CIFRAS.map((c) => (
@@ -170,13 +300,40 @@ export default function Nosotros() {
           </div>
         </section>
 
-        {/* UNA HISTORIA */}
+        {/* LOGOS */}
+        <BandaLogos />
+
+        {/* PRESENTACIÓN E IDIOMAS */}
+        <section className={`sp-seccion ${styles.presentacion}`} id="presentacion">
+          <div className={`${styles.presentacionInner} reveal`}>
+            <p className={styles.presentacionLinea}>
+              S-Peak es una empresa mexicana de capacitación en idiomas para empresas,
+              <br className={styles.corte} /> fundada en 2006 y registrada ante la
+              STPS como agente capacitador.
+            </p>
+            <ul className={styles.idiomas}>
+              {IDIOMAS.map((i) => (
+                <li key={i.ruta}>
+                  <a className={`sp-pill ${styles.pill}`} href={i.ruta}>
+                    {i.nombre}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p className={styles.modalidades}>
+              Presencial, en línea en vivo o híbrida, en una o varias sedes en
+              cualquier parte de México.
+            </p>
+          </div>
+        </section>
+
+        {/* LO QUE SUELE FALLAR */}
         <section className="sp-seccion" id="historia">
           <div className={`${styles.lectura} reveal`}>
-            <h2>Una historia que quizá le suene</h2>
+            <h2>Lo que suele fallar con un proveedor de idiomas</h2>
             <p>
-              Imagine a una gerente de Recursos Humanos en 2006. Dirección le pide que,
-              en un año, sus gerentes dirijan las juntas con la casa matriz en inglés.
+              Imagine a una gerente de Recursos Humanos. Dirección le pide que, en un
+              año, sus gerentes dirijan las juntas con la casa matriz en inglés.
             </p>
             <p>
               Contrata a un proveedor y se acomoda a él: sus horarios, su sede, su
@@ -185,66 +342,80 @@ export default function Nosotros() {
             </p>
             <p>
               Al cerrar el año, Dirección le pregunta qué se logró. Ella solo tiene
-              listas de asistencia.
+              listas de asistencia. ¿Le suena conocido?
             </p>
           </div>
         </section>
 
-        {/* POR QUÉ NACIÓ S-PEAK */}
-        <section className={`sp-seccion ${styles.porQue}`} id="por-que">
-          <div className="sp-inner">
-            <div className={`sp-seccion-top ${styles.porQueTop} reveal`}>
-              <h2>Por qué nació S-Peak</h2>
+        {/* S-PEAK NACIÓ DE UNA INCONFORMIDAD */}
+        <section className={styles.origen} id="origen">
+          <div className={`sp-seccion ${styles.origenTop}`}>
+            <div className={`sp-seccion-top ${styles.origenIntro} reveal`}>
+              <h2>S-Peak nació de una inconformidad</h2>
               <p>
-                En 2006 decidimos que si alguien tenía que adaptarse, éramos nosotros.
+                En 2006, lo normal era que la empresa se acomodara a su proveedor.
+                Nosotros hicimos lo contrario.
+              </p>
+              <p>
                 Por eso fuimos de los primeros en México en llevar al instructor a la
                 empresa y en capacitar por videoconferencia. Desde el primer día
                 trabajamos para empresas, y conocemos de cerca lo que vive Recursos
                 Humanos:
               </p>
             </div>
-            <ul className={`${styles.doloresGrid} reveal stagger`}>
+          </div>
+
+          <div className={`sp-banda ${styles.confianza}`}>
+            <div className={`${styles.confianzaInner} reveal`}>
+              <h3>«Busco un proveedor confiable, con buenas referencias»</h3>
+              <p>
+                La primera empresa que confió en nosotros siguió con S-Peak durante
+                15 años.
+              </p>
+            </div>
+          </div>
+
+          <div className={`sp-seccion ${styles.origenGrid}`}>
+            <ul className={`sp-inner ${styles.dolores} reveal stagger`}>
               {DOLORES.map((d) => (
-                <li
-                  key={d.titulo}
-                  className={`sp-tarjeta sp-barra sp-tarjeta-color sp-tarjeta-color--${d.color}`}
-                >
-                  <div className="sp-icono sp-icono--xl">
-                    <Icono nombre={d.icono} />
-                  </div>
+                <li key={d.titulo} className={`sp-tarjeta sp-barra ${styles.dolor}`}>
                   <h3>{d.titulo}</h3>
                   <p>{d.descripcion}</p>
                 </li>
               ))}
             </ul>
-            <div className={`${styles.porQueCierre} reveal`}>
-              <p>
-                ¿Se identificó con alguna? Le proponemos un programa a la medida de su
-                equipo.
-              </p>
-              <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
-            </div>
           </div>
         </section>
 
-        {/* SU ÉXITO ES NUESTRO ÉXITO */}
-        <section className={`sp-seccion ${styles.exito}`} id="su-exito">
-          <div className={`sp-inner ${styles.exitoInner}`}>
-            <div className={`${styles.exitoTexto} reveal`}>
-              <h2>Su éxito es nuestro éxito</h2>
+        {/* METODOLOGÍA PACTO */}
+        <section className="sp-seccion" id="metodologia">
+          <div className="sp-inner">
+            <div className="sp-seccion-top reveal">
+              <h2>
+                Cómo trabajamos: metodología PACTO para programas de idiomas en
+                empresas
+              </h2>
               <p>
-                En todo proyecto aparecen imprevistos. Aprendimos que entre más pronto se
-                anticipan y se comunican, más rápido se resuelven y más chicos se quedan.
-                Por eso, en cuanto detectamos un riesgo, se lo avisamos y le proponemos
-                cómo resolverlo.
-              </p>
-              <p>
-                No le vendemos un paquete para luego desaparecer. Revisamos los avances
-                con usted, escuchamos a su equipo y ajustamos el programa conforme su
-                empresa cambia.
+                PACTO son cinco pasos para que su inversión se vea en el puesto, no
+                solo en la lista de asistencia.
               </p>
             </div>
-            <figure className="sp-testi-card sp-testi-card--acento sp-barra reveal">
+
+            <ol className={`${styles.escalera} reveal stagger`}>
+              {PACTO.map((p) => (
+                <li key={p.letra} className={`sp-tarjeta ${styles.escalon}`}>
+                  <span className={styles.letra} aria-hidden="true">
+                    {p.letra}
+                  </span>
+                  <h3>{p.nombre}</h3>
+                  <p>{p.descripcion}</p>
+                </li>
+              ))}
+            </ol>
+
+            <figure
+              className={`sp-testi-card sp-testi-card--acento ${styles.testiPacto} reveal`}
+            >
               <div className="sp-estrellas" style={{ color: "var(--color-navy)" }}>
                 ★★★★★
               </div>
@@ -264,11 +435,107 @@ export default function Nosotros() {
                 </div>
               </figcaption>
             </figure>
+
+            <TableroProgreso
+              amplio
+              className={styles.panel}
+              titulo="Así se ve la Trazabilidad"
+              ejemplo="Ejemplo de reporte · Datos ilustrativos"
+              etiqueta="Ejemplo de reporte de Trazabilidad de S-Peak, con datos ilustrativos"
+              tablero={TABLERO}
+            />
+
+            <div className={`${styles.panelCierre} reveal`}>
+              <p>
+                ¿Así quiere ver el avance de su equipo? Le proponemos un programa a la
+                medida.
+              </p>
+              <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
+              <p className={styles.nota}>{NOTA_CTA}</p>
+            </div>
           </div>
         </section>
 
-        {/* LOGOS */}
-        <BandaLogos />
+        {/* SI ALGO SE COMPLICA */}
+        <section className={`sp-seccion ${styles.aviso}`} id="aviso">
+          <div className={`sp-inner ${styles.avisoInner}`}>
+            <div className={`${styles.avisoTexto} reveal`}>
+              <h2>Si algo se complica, se lo avisamos primero</h2>
+              <p>
+                En todo proyecto aparecen imprevistos. Aprendimos que entre más pronto se
+                anticipan y se comunican, más rápido se resuelven y más chicos se quedan.
+                Por eso, si un cierre de mes obliga a cancelar sesiones, su ejecutivo de
+                cuentas se lo avisa en cuanto lo detecta y le propone cuándo reponerlas,
+                antes de que Dirección se lo pregunte.
+              </p>
+              <p>
+                No le vendemos un paquete para luego desaparecer. Revisamos los avances
+                con usted, escuchamos a su equipo y adaptamos el programa conforme su
+                empresa cambia.
+              </p>
+            </div>
+            {/* Los dos testimonios, con el texto de
+                app/idioma/ingles-para-empresas/page.tsx tal cual. */}
+            <div className={`${styles.avisoTestimonios} reveal stagger`}>
+              <figure className="sp-testi-card">
+                <div className="sp-estrellas">★★★★★</div>
+                <blockquote className="sp-testi-quote">
+                  &quot;Valoramos el seguimiento que <strong>S-Peak</strong> nos brinda,
+                  el feedback que piden a través de citas regulares y encuestas, así como
+                  reaccionan a lo que pedimos como cliente. Además, los profesores están
+                  muy bien preparados para asegurar el aprendizaje, y los precios son
+                  justos.&quot;
+                </blockquote>
+                <figcaption className="sp-testi-autor">
+                  <div className="sp-avatar">EC</div>
+                  <div>
+                    <div className="sp-autor-nombre">Erika C.</div>
+                    <div className="sp-autor-rol">
+                      People Development, Culture &amp; D&amp;I Expert
+                    </div>
+                  </div>
+                </figcaption>
+              </figure>
+              <figure className="sp-testi-card">
+                <div className="sp-estrellas">★★★★★</div>
+                <blockquote className="sp-testi-quote">
+                  &quot;El equipo de <strong>S-Peak</strong> tiene una gran actitud de
+                  servicio, sus cursos de idiomas son excelentes para nuestros equipos,
+                  se adaptan a las necesidades de sus perfiles de puesto.&quot;
+                </blockquote>
+                <figcaption className="sp-testi-autor">
+                  <div className="sp-avatar">BI</div>
+                  <div>
+                    <div className="sp-autor-nombre">Braskem Idesa</div>
+                    <div className="sp-autor-rol">Área de RRHH</div>
+                  </div>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        {/* PREGUNTAS FRECUENTES */}
+        <section className="sp-seccion" id="faq">
+          <div className="sp-inner">
+            <div className="sp-seccion-top reveal">
+              <h2>Preguntas frecuentes sobre la capacitación en idiomas para su empresa</h2>
+            </div>
+            <div className={`sp-faq-lista ${styles.faqLista} reveal`}>
+              {FAQ.map((f) => (
+                <details key={f.pregunta} className="sp-faq-item" name="faq-nosotros">
+                  <summary className="sp-faq-pregunta">
+                    {f.pregunta}
+                    <span className="sp-faq-icono">+</span>
+                  </summary>
+                  <div className={`sp-faq-respuesta ${styles.faqRespuesta}`}>
+                    {f.respuesta}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* CIERRE */}
         <section className={`sp-seccion ${styles.finalCta}`}>
@@ -282,24 +549,27 @@ export default function Nosotros() {
             loading="lazy"
           />
           <div className={`${styles.finalInner} reveal`}>
-            <h2>Ahora imagine a esa misma gerente hoy, con S-Peak</h2>
+            <h2>Ahora imagine a esa misma gerente, con S-Peak</h2>
             <p>
               Esta vez el proveedor trabaja para ella. Al cerrar el año no llega a
-              Dirección con listas de asistencia: llega con la evidencia del avance de
-              su equipo. Y deja de cargar el proyecto para empezar a presumirlo.
+              Dirección con listas de asistencia: llega con el avance de cada gerente en
+              la escala del Marco Común Europeo y su Tarjeta de Resultados. Y deja de
+              cargar el proyecto para empezar a presumirlo.
             </p>
             <p className={styles.finalPregunta}>
               ¿Qué historia quiere contarle a Dirección dentro de un año?
             </p>
             <BotonContacto className="sp-btn sp-btn--blanco">{CTA}</BotonContacto>
-            <p className={styles.finalNota}>
-              Un asesor se pondrá en contacto en menos de 24 horas hábiles.
+            <p className={styles.finalNota}>{NOTA_CTA}</p>
+            <p className={styles.finalGarantias}>
+              Sin plazo mínimo de contratación · presencial, en línea o híbrida en todo
+              México · reporte de horas contra factura · constancia DC-3
             </p>
           </div>
         </section>
 
         {/* CENTRO DE RECURSOS */}
-        <CentroDeRecursos />
+        <CentroDeRecursos articulos={ARTICULOS} />
       </main>
 
       {/* Etiqueta nativa, no next/script: con `afterInteractive` el JSON-LD se

@@ -356,6 +356,34 @@
   transform: scale(1);
 }
 
+/* ---------- Tablero suelto (`amplio`) ----------
+   El de /nosotros/, a todo el ancho y fuera de la sección de evidencia. El
+   título sube a 16px; en móvil, ningún texto baja de 12px y la lista se
+   queda en dos colaboradores para que el tablero no se alargue. */
+
+.amplio .dashTopbarTitle {
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  .amplio .ejemplo,
+  .amplio .dashTopbarTag,
+  .amplio .dashChip,
+  .amplio .wTitle,
+  .amplio .wMetricSub,
+  .amplio .dashChartX,
+  .amplio .wSkillTop,
+  .amplio .wPersonAv,
+  .amplio .wPersonLvl {
+    font-size: 12px;
+  }
+
+  /* Del tercero en adelante. */
+  .amplio .wPerson ~ .wPerson ~ .wPerson {
+    display: none;
+  }
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 960px) {

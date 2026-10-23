@@ -43,9 +43,6 @@ export default function SeccionEvidencia({
   etiqueta: string;
   tablero: TableroEvidencia;
 }) {
-  const puntos = tablero.curva.map((y, i) => `${i * 50},${y}`).join(" ");
-  const ultimo = tablero.curva[tablero.curva.length - 1];
-
   return (
     <section className="sp-seccion" id="enfoque">
       <div className={styles.evidenciaInner}>
@@ -60,68 +57,102 @@ export default function SeccionEvidencia({
           </div>
           <BotonContacto className="sp-btn sp-btn--rojo">Solicite una Cotización</BotonContacto>
         </div>
-        <div className={`${styles.evidenciaRight} reveal`}>
-          {/* Fuera del tablero: dentro, el role="img" la escondería a los
-              lectores de pantalla. */}
-          <p className={styles.ejemplo}>Ejemplo de reporte</p>
-          <div className={styles.dash} role="img" aria-label={etiqueta}>
-            <div className={styles.dashTopbar}>
-              <div className={styles.dashTopbarTitle}>
-                <span className={styles.dashDots}><i></i><i></i><i></i></span>
-                Panel de Progreso del Equipo
-              </div>
-              <span className={styles.dashTopbarTag}>S-Peak Analytics</span>
+        <TableroProgreso etiqueta={etiqueta} tablero={tablero} />
+      </div>
+    </section>
+  );
+}
+
+/* El tablero solo, sin el texto ni el botón de la sección. SeccionEvidencia lo
+   monta con los valores por defecto; /nosotros/ lo monta suelto, a todo el
+   ancho, con otro título y otra etiqueta.
+
+   `amplio` es esa versión suelta: título de 16px y, en móvil, letra de 12px
+   como mínimo y solo los dos primeros colaboradores. Sin él, el tablero es
+   idéntico al de las landings y las páginas de equipo. `className` va en la
+   raíz, para que quien lo monta le ponga su ancho. */
+export function TableroProgreso({
+  etiqueta,
+  tablero,
+  titulo = "Panel de Progreso del Equipo",
+  ejemplo = "Ejemplo de reporte",
+  amplio = false,
+  className,
+}: {
+  etiqueta: string;
+  tablero: TableroEvidencia;
+  titulo?: string;
+  ejemplo?: string;
+  amplio?: boolean;
+  className?: string;
+}) {
+  const puntos = tablero.curva.map((y, i) => `${i * 50},${y}`).join(" ");
+  const ultimo = tablero.curva[tablero.curva.length - 1];
+  const clases = [styles.evidenciaRight, amplio && styles.amplio, "reveal", className]
+    .filter(Boolean)
+    .join(" ");
+
+  return (
+    <div className={clases}>
+      {/* Fuera del tablero: dentro, el role="img" la escondería a los
+          lectores de pantalla. */}
+      <p className={styles.ejemplo}>{ejemplo}</p>
+      <div className={styles.dash} role="img" aria-label={etiqueta}>
+        <div className={styles.dashTopbar}>
+          <div className={styles.dashTopbarTitle}>
+            <span className={styles.dashDots}><i></i><i></i><i></i></span>
+            {titulo}
+          </div>
+          <span className={styles.dashTopbarTag}>S-Peak Analytics</span>
+        </div>
+        <div className={styles.dashContent}>
+          <div className={styles.dashChips}>
+            <span className={styles.dashChip}><b>+{tablero.mejora}%</b> mejora</span>
+            <span className={styles.dashChip}><b>{tablero.activos}</b> colaboradores activos</span>
+            <span className={styles.dashChip}><b>{tablero.sesiones}</b> sesiones</span>
+          </div>
+          <div className={styles.dashGrid}>
+            {/* Métrica destacada */}
+            <div className={`${styles.dashWidget} ${styles.dashMetric}`}>
+              <div className={styles.wMetric}>{tablero.aprobadas}<span>%</span></div>
+              <div className={styles.wMetricLabel}>Evidencias aprobadas con rúbrica</div>
+              <div className={styles.wMetricSub}>↑ {tablero.alza} pts vs. trimestre anterior</div>
             </div>
-            <div className={styles.dashContent}>
-              <div className={styles.dashChips}>
-                <span className={styles.dashChip}><b>+{tablero.mejora}%</b> mejora</span>
-                <span className={styles.dashChip}><b>{tablero.activos}</b> colaboradores activos</span>
-                <span className={styles.dashChip}><b>{tablero.sesiones}</b> sesiones</span>
-              </div>
-              <div className={styles.dashGrid}>
-                {/* Métrica destacada */}
-                <div className={`${styles.dashWidget} ${styles.dashMetric}`}>
-                  <div className={styles.wMetric}>{tablero.aprobadas}<span>%</span></div>
-                  <div className={styles.wMetricLabel}>Evidencias aprobadas con rúbrica</div>
-                  <div className={styles.wMetricSub}>↑ {tablero.alza} pts vs. trimestre anterior</div>
+            {/* Gráfica de línea */}
+            <div className={`${styles.dashWidget} ${styles.dashChart}`}>
+              <div className={styles.wTitle}>Progreso del equipo · Trimestre</div>
+              <svg viewBox="0 0 300 86" preserveAspectRatio="none" aria-hidden="true">
+                <polygon fill="#B51E40" fillOpacity="0.08" points={`${puntos} 300,86 0,86`}/>
+                <polyline fill="none" stroke="#B51E40" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" pathLength="1" points={puntos}/>
+                <circle cx="300" cy={ultimo} r="4" fill="#B51E40"/>
+              </svg>
+              <div className={styles.dashChartX}><span>Mes 1</span><span>Mes 2</span><span>Mes 3</span></div>
+            </div>
+            {/* Competencias del equipo */}
+            <div className={`${styles.dashWidget} ${styles.dashSkills}`}>
+              <div className={styles.wTitle}>Competencias del equipo</div>
+              {tablero.competencias.map((c) => (
+                <div key={c.nombre} className={styles.wSkill}>
+                  <div className={styles.wSkillTop}><span>{c.nombre}</span><span className={styles.wSkillPct}>{c.pct}%</span></div>
+                  <div className={styles.wBar}><span style={{ width: `${c.pct}%` }}></span></div>
                 </div>
-                {/* Gráfica de línea */}
-                <div className={`${styles.dashWidget} ${styles.dashChart}`}>
-                  <div className={styles.wTitle}>Progreso del equipo · Trimestre</div>
-                  <svg viewBox="0 0 300 86" preserveAspectRatio="none" aria-hidden="true">
-                    <polygon fill="#B51E40" fillOpacity="0.08" points={`${puntos} 300,86 0,86`}/>
-                    <polyline fill="none" stroke="#B51E40" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" pathLength="1" points={puntos}/>
-                    <circle cx="300" cy={ultimo} r="4" fill="#B51E40"/>
-                  </svg>
-                  <div className={styles.dashChartX}><span>Mes 1</span><span>Mes 2</span><span>Mes 3</span></div>
+              ))}
+            </div>
+            {/* Lista de colaboradores */}
+            <div className={styles.dashWidget}>
+              <div className={styles.wTitle}>Colaboradores</div>
+              {tablero.colaboradores.map((c, i) => (
+                <div key={LETRAS[i]} className={styles.wPerson}>
+                  <span className={styles.wPersonAv}>{LETRAS[i]}</span>
+                  <span className={styles.wPersonName}>Colaborador {LETRAS[i]}</span>
+                  <span className={styles.wPersonLvl}>{c.nivel}</span>
+                  <span className={styles.wPersonPct}>{c.pct}%</span>
                 </div>
-                {/* Competencias del equipo */}
-                <div className={`${styles.dashWidget} ${styles.dashSkills}`}>
-                  <div className={styles.wTitle}>Competencias del equipo</div>
-                  {tablero.competencias.map((c) => (
-                    <div key={c.nombre} className={styles.wSkill}>
-                      <div className={styles.wSkillTop}><span>{c.nombre}</span><span className={styles.wSkillPct}>{c.pct}%</span></div>
-                      <div className={styles.wBar}><span style={{ width: `${c.pct}%` }}></span></div>
-                    </div>
-                  ))}
-                </div>
-                {/* Lista de colaboradores */}
-                <div className={styles.dashWidget}>
-                  <div className={styles.wTitle}>Colaboradores</div>
-                  {tablero.colaboradores.map((c, i) => (
-                    <div key={LETRAS[i]} className={styles.wPerson}>
-                      <span className={styles.wPersonAv}>{LETRAS[i]}</span>
-                      <span className={styles.wPersonName}>Colaborador {LETRAS[i]}</span>
-                      <span className={styles.wPersonLvl}>{c.nivel}</span>
-                      <span className={styles.wPersonPct}>{c.pct}%</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
