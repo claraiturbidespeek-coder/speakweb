@@ -172,6 +172,7 @@ const ASISTENTES_IA: [string, string][] = [
 
 const REDES: [string, string][] = [
   ["linkedin.com", "LinkedIn"],
+  ["lnkd.in", "LinkedIn"],
   ["facebook.com", "Facebook"],
   ["instagram.com", "Instagram"],
   ["t.co", "X"],
@@ -197,10 +198,12 @@ function buscadorOrganico(host: string): string {
 }
 
 /* Clasifica una llegada. `referencia` es solo el dominio, ya sin "www." y sin
-   las visitas internas. Orden de prioridad: Google Ads, asistentes de IA, otra
-   campaña con UTM, buscadores, redes, otro sitio y directo. */
+   las visitas internas. Orden de prioridad: Google Ads, ChatGPT Ads, asistentes
+   de IA, otra campaña con UTM, buscadores, redes, otro sitio y directo.
+   ChatGPT Ads cuenta solo con el parámetro oppref en la URL de esta llegada,
+   no con la cookie __oppref, que sobrevive a visitas posteriores. */
 export function clasificarFuente(
-  params: { utm_source: string; utm_medium: string; gclid: string },
+  params: { utm_source: string; utm_medium: string; gclid: string; oppref: string },
   referencia: string
 ): string {
   const fuente = params.utm_source.toLowerCase();
@@ -209,6 +212,8 @@ export function clasificarFuente(
   if (params.gclid || ((medio === "cpc" || medio === "ppc") && fuente === "google")) {
     return "Google Ads";
   }
+
+  if (params.oppref) return "ChatGPT Ads";
 
   const ia = buscarEn(ASISTENTES_IA, fuente) || buscarEn(ASISTENTES_IA, referencia);
   if (ia) return ia;
@@ -240,8 +245,8 @@ function dominioDeReferencia(): string {
   }
 }
 
-// La llegada actual, clasificada, y si trae señal propia (UTM, gclid o una
-// referencia externa) o es solo una recarga o una visita interna.
+// La llegada actual, clasificada, y si trae señal propia (UTM, gclid, oppref o
+// una referencia externa) o es solo una recarga o una visita interna.
 function llegadaActual(): { fuente: string; conSenal: boolean } {
   let params: URLSearchParams;
   try {
@@ -254,11 +259,14 @@ function llegadaActual(): { fuente: string; conSenal: boolean } {
     utm_source: leer("utm_source"),
     utm_medium: leer("utm_medium"),
     gclid: leer("gclid"),
+    oppref: leer("oppref"),
   };
   const referencia = dominioDeReferencia();
   return {
     fuente: clasificarFuente(datos, referencia),
-    conSenal: Boolean(datos.utm_source || datos.utm_medium || datos.gclid || referencia),
+    conSenal: Boolean(
+      datos.utm_source || datos.utm_medium || datos.gclid || datos.oppref || referencia
+    ),
   };
 }
 

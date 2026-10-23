@@ -56,6 +56,7 @@ import {
   plantillaCorreoLead,
 } from "@/lib/correoLead";
 import { telefonoParaKommo } from "@/lib/telefonoKommo";
+import { canalWebKommo } from "@/lib/canalKommo";
 
 const FROM = "S-Peak Landing <hello@mail.s-peak.com>";
 const TO = [
@@ -73,6 +74,10 @@ const ALLOWED_ORIGINS = ["https://s-peak.com", "https://www.s-peak.com"];
 // y el subdominio SOLO se leen de variables de entorno, nunca del código.
 const KOMMO_PIPELINE_ID = 7648487;
 const KOMMO_REQUEST_TIMEOUT_MS = 7000;
+/* La consulta del campo "Canal web" tiene su propio límite, más corto: el POST
+   espera a Kommo antes de responder, y la conversión del navegador sale con
+   esa respuesta. Es el total de la consulta, no el de cada página. */
+const KOMMO_CAMPO_CANAL_WEB_TIMEOUT_MS = 3000;
 
 /* CRM de SCNDAL — tercer destino, en paralelo al correo y a Kommo.
 
@@ -186,10 +191,11 @@ async function kommoFetch(
   url: string,
   token: string,
   method: string,
-  body?: unknown
+  body?: unknown,
+  timeoutMs: number = KOMMO_REQUEST_TIMEOUT_MS
 ): Promise<Response> {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), KOMMO_REQUEST_TIMEOUT_MS);
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
   try {
     return await fetch(url, {
       method,
@@ -207,6 +213,97 @@ async function kommoFetch(
 
 type ValoresCampo = { value: string; enum_code: string };
 type CampoContacto = { field_code: string; values: ValoresCampo[] };
+type CampoLead = { field_id: number; values: { enum_id: number }[] };
+
+/* El campo de lista "Canal web" del lead: su id y el enum_id de cada opción por
+   su nombre exacto. Se consulta una vez por instancia y se guarda la promesa,
+   así que los envíos simultáneos comparten la misma consulta. Solo se conserva
+   si encontró el campo: si falta o la consulta falla, el siguiente lead vuelve
+   a intentarlo. Una opción añadida en Kommo después de la consulta no se ve
+   hasta la siguiente instancia. */
+const KOMMO_CAMPO_CANAL_WEB = "Canal web";
+
+type CampoCanalWeb = { id: number; opciones: Map<string, number> };
+let campoCanalWeb: Promise<CampoCanalWeb | null> | null = null;
+
+async function buscarCampoCanalWeb(
+  base: string,
+  token: string
+): Promise<CampoCanalWeb | null> {
+  const limite = Date.now() + KOMMO_CAMPO_CANAL_WEB_TIMEOUT_MS;
+  let url: string | null = `${base}/leads/custom_fields?limit=250`;
+  while (url) {
+    const restante = limite - Date.now();
+    if (restante <= 0) {
+      throw new Error(`timeout de ${KOMMO_CAMPO_CANAL_WEB_TIMEOUT_MS} ms agotado`);
+    }
+    const res = await kommoFetch(url, token, "GET", undefined, restante);
+    // 204: página vacía, ya no hay más campos.
+    if (res.status === 204) break;
+    if (!res.ok) {
+      const text = await res.text().catch(() => "");
+      throw new Error(`HTTP ${res.status} ${text}`);
+    }
+    const data = await res.json();
+    const campos: {
+      id: number;
+      name: string;
+      enums?: { id: number; value: string }[] | null;
+    }[] = data?._embedded?.custom_fields || [];
+    const campo = campos.find((c) => c.name === KOMMO_CAMPO_CANAL_WEB);
+    if (campo) {
+      return {
+        id: campo.id,
+        opciones: new Map((campo.enums || []).map((e) => [e.value, e.id])),
+      };
+    }
+    url = data?._links?.next?.href || null;
+  }
+  return null;
+}
+
+/* El valor de "Canal web" para custom_fields_values, o null. Nunca lanza: el
+   motivo de cualquier ausencia queda en el log y el lead se crea sin él. */
+async function valorCanalWeb(
+  base: string,
+  token: string,
+  fuenteVisita: string
+): Promise<CampoLead | null> {
+  const canal = canalWebKommo(fuenteVisita);
+  if (!canal) return null;
+
+  if (!campoCanalWeb) {
+    campoCanalWeb = buscarCampoCanalWeb(base, token);
+  }
+  let campo: CampoCanalWeb | null;
+  try {
+    campo = await campoCanalWeb;
+  } catch (err) {
+    campoCanalWeb = null;
+    console.error(
+      "Kommo: falló la consulta del campo Canal web; el lead va sin él:",
+      String((err as Error)?.message || err)
+    );
+    return null;
+  }
+  if (!campo) {
+    campoCanalWeb = null;
+    console.error(
+      `Kommo: no existe el campo de lead "${KOMMO_CAMPO_CANAL_WEB}"; el lead va sin él`
+    );
+    return null;
+  }
+
+  const enumId = campo.opciones.get(canal);
+  if (!enumId) {
+    console.error(
+      `Kommo: el campo "${KOMMO_CAMPO_CANAL_WEB}" no tiene la opción "${canal}"; el lead va sin él`,
+      { fuente_visita: fuenteVisita }
+    );
+    return null;
+  }
+  return { field_id: campo.id, values: [{ enum_id: enumId }] };
+}
 
 // Crea el lead en Kommo por la ruta Unsorted para que caiga en el buzón "Leads
 // Entrantes" del pipeline Leads B2B, con el contacto (y empresa si viene)
@@ -220,6 +317,7 @@ async function sendLeadToKommo({
   telefono,
   detalles,
   sourceName,
+  fuenteVisita,
   request,
 }: {
   nombre: string;
@@ -228,6 +326,7 @@ async function sendLeadToKommo({
   telefono: string;
   detalles: string;
   sourceName: string;
+  fuenteVisita: string;
   request: Request;
 }): Promise<void> {
   const token = process.env.KOMMO_TOKEN;
@@ -273,14 +372,24 @@ async function sendLeadToKommo({
     empresa ? ` (${empresa})` : ""
   }`;
 
+  const lead: {
+    name: string;
+    pipeline_id: number;
+    custom_fields_values?: CampoLead[];
+  } = { name: leadName, pipeline_id: KOMMO_PIPELINE_ID };
+  const canalWeb = await valorCanalWeb(base, token, fuenteVisita);
+  if (canalWeb) {
+    lead.custom_fields_values = [canalWeb];
+  }
+
   // NO enviamos responsable ni status_id: el lead entra al buzón de aceptación
   // tal cual.
   const embedded: {
-    leads: { name: string; pipeline_id: number }[];
+    leads: typeof lead[];
     contacts: typeof contact[];
     companies?: { name: string }[];
   } = {
-    leads: [{ name: leadName, pipeline_id: KOMMO_PIPELINE_ID }],
+    leads: [lead],
     contacts: [contact],
   };
   if (empresa) {
@@ -611,7 +720,8 @@ export async function POST(request: Request): Promise<Response> {
   const idioma = campo(body.idioma) || "Inglés";
   /* Fuente de tráfico, ya clasificada en el navegador. Opcionales: si no
      llegan, el lead se procesa igual que siempre y el correo sale sin la fila.
-     Solo van al correo: ni a `rows` (la nota de Kommo) ni al CRM de SCNDAL.
+     Van al correo, a `rows` (la nota de Kommo) y, la de la visita, al campo
+     "Canal web" del lead en Kommo. No van al CRM de SCNDAL.
      Recortadas por si alguien manda algo desmedido a mano. */
   const fuenteOriginal = campo(body.fuente_original).slice(0, 120);
   const fuenteVisita = campo(body.fuente_visita).slice(0, 120);
@@ -690,6 +800,8 @@ export async function POST(request: Request): Promise<Response> {
     ["UTM Campaign", utmCampaign],
     ["UTM Content", utmContent],
     ["GCLID", gclid],
+    ["Fuente de la visita", fuenteVisita || "No especificada"],
+    ["Fuente de la primera llegada", fuenteOriginal || "No especificada"],
   ];
 
   /* `rows` alimenta solo la nota que se cuelga del lead en Kommo, como texto
@@ -740,6 +852,7 @@ export async function POST(request: Request): Promise<Response> {
     telefono,
     detalles: text,
     sourceName,
+    fuenteVisita,
     request,
   }).catch((err) => {
     console.error(
