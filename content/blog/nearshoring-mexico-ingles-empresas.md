@@ -34,7 +34,7 @@ Asimismo, estudios del [Banco Interamericano de Desarrollo (BID)](https://www.ia
 
 > Estiman que el potencial de ganancias por exportaciones derivadas del nearshoring en América Latina podría añadir miles de millones de dólares anuales al comercio de la región, siendo México el receptor del mayor porcentaje de este beneficio.
 
-Esta relocalización geográfica implica una integración operativa inmediata. Su organización ya no competirá únicamente con proveedores locales; ahora estará bajo el escrutinio de auditorías internacionales, comités de calidad norteamericanos y juntas de planeación con corporaciones asiáticas y europeas que utilizan el inglés como idioma vehicular exclusivo para sus operaciones.
+Esta relocalización geográfica implica una integración operativa inmediata. Su organización ya no competirá únicamente con proveedores locales; ahora estará bajo el escrutinio de auditorías internacionales, comités de calidad norteamericanos y juntas de planeación con corporaciones asiáticas y europeas que utilizan el inglés como idioma vehicular exclusivo para sus operaciones. Si además planea llevar su oferta a otros países, consulte nuestra guía sobre las [claves de una estrategia de expansión global con idiomas](/expansion-global-empresas-claves/).
 
 ![Dos personas señalando un mapa mundial en una infografía de negocios, representando la relocalización de cadenas de producción propia del nearshoring.](/images/blog/blog-nearshoring-mexico-ingles-empresas-01.webp)
 
