@@ -1,11 +1,11 @@
 import { LOGOS_CLIENTES } from "./logos-clientes";
 import { imagenResponsiva } from "@/lib/imagenes";
 
-/* Franja de confianza compartida por las 14 páginas que la llevan: home, las
-   siete de Soluciones por Equipo y las seis landings de idioma.
+/* Franja de confianza compartida por la home, /nosotros/, las páginas de
+   Soluciones por Equipo, el índice /idioma/ y las landings de idioma.
 
    El encabezado y la lista de logos son fijos — no hay props para variarlos,
-   porque el objetivo es que las 14 páginas se vean idénticas. Lo único que
+   porque el objetivo es que todas las páginas que la llevan se vean idénticas. Lo único que
    cambia entre páginas es si llevan la imagen decorativa del isotipo detrás
    de la tarjeta, y eso trae consigo ajustes de posicionamiento que solo esa
    página necesita: se reciben como clases desde fuera en vez de vivir aquí,

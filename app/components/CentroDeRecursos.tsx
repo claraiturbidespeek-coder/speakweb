@@ -2,9 +2,9 @@ import Link from "next/link";
 import { CarruselFlechas, CarruselProvider, CarruselTrack } from "@/app/components/Carrusel";
 import { imagenResponsiva } from "@/lib/imagenes";
 
-/* Compartida por las 14 páginas que la llevan: la home, las siete de
-   Soluciones por Equipo y las seis landings de idioma. Con catorce páginas
-   deja de ser "propia de una página": el estilo vive en patrones.css como
+/* Compartida por la home, /nosotros/, las páginas de Soluciones por Equipo,
+   el índice /idioma/ y las landings de idioma. Al usarla varias páginas deja
+   de ser "propia de una página": el estilo vive en patrones.css como
    vocabulario sp-recursos-*, igual que ya hace BandaLogos con sp-logos. Las imágenes siguen en /images/home/ porque ahí es donde
    viven de verdad — no se movieron al promover el componente. */
 
@@ -99,19 +99,14 @@ const POSTS = [
   },
 ];
 
-/* `textoEnlace` existe porque la home lo pide distinto ("Ver todos los
-   artículos"); las demás páginas siguen con el de siempre.
-
-   `articulos` es una selección de POSTS por su `url`, en el orden en que se
+/* `articulos` es una selección de POSTS por su `url`, en el orden en que se
    pide: /nosotros/ lleva tres. Sin ella van los ocho, como en el resto de las
    páginas. Una url que no esté en POSTS se ignora. */
 export default function CentroDeRecursos({
   className,
-  textoEnlace = "Centro de Recursos",
   articulos,
 }: {
   className?: string;
-  textoEnlace?: string;
   articulos?: string[];
 }) {
   const posts = articulos
@@ -133,7 +128,7 @@ export default function CentroDeRecursos({
             </div>
             <div className="sp-recursos-acciones">
               <Link className="sp-recursos-link" href="/blog/">
-                {textoEnlace}
+                Ver todos los artículos
               </Link>
               <CarruselFlechas />
             </div>

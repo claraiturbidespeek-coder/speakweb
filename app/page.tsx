@@ -628,10 +628,7 @@ export default function Home() {
       </section>
 
       {/* 11. Centro de Recursos */}
-      <CentroDeRecursos
-        className={styles.recursosCompacto}
-        textoEnlace="Ver todos los artículos"
-      />
+      <CentroDeRecursos className={styles.recursosCompacto} />
     </main>
   );
 }

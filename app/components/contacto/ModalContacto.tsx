@@ -544,7 +544,7 @@ export default function ModalContacto({
             <div className={styles.cabecera}>
               <div>
                 <h2 id="modal-contacto-titulo" className={styles.titulo}>
-                  Hable con un Experto
+                  Solicite una Cotización
                 </h2>
                 <p className={styles.subtitulo}>
                   Un asesor se pondrá en contacto en menos de 24 horas hábiles.
