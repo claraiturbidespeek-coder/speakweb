@@ -18,9 +18,9 @@ import styles from "./nosotros.module.css";
    botones abren el modal de contacto general. */
 
 const URL = "https://s-peak.com/nosotros/";
-const TITULO = "Capacitación en idiomas para empresas desde 2006 | S-Peak";
+const TITULO = "S-Peak, capacitación en idiomas para empresas desde 2006";
 const DESCRIPCION =
-  "Desde 2006 nos adaptamos a su empresa: instructores en sus oficinas o por videoconferencia, un ejecutivo de cuentas y reportes automáticos. Constancia DC-3.";
+  "Capacitación en idiomas para empresas desde 2006: registro STPS, constancia DC-3 y metodología PACTO con reportes mensuales. Presencial, en línea o híbrida.";
 
 /* Página oculta mientras el cliente la aprueba: robots noindex/nofollow, fuera
    del sitemap y sin enlaces desde el menú ni desde ninguna otra página. Solo se
@@ -50,7 +50,6 @@ export const metadata: Metadata = {
 };
 
 const CTA = "Solicite una Cotización";
-const NOTA_CTA = "Un asesor se pondrá en contacto en menos de 24 horas hábiles.";
 
 /* Mismos iconos que las cifras de /equipo/. */
 const CIFRAS = [
@@ -168,12 +167,7 @@ const FAQ = [
   {
     pregunta: "¿Cuánto tiempo hay que contratar?",
     respuesta:
-      "No hay plazo mínimo. Recomendamos un año para que el avance se vea en el puesto.",
-  },
-  {
-    pregunta: "¿Qué pasa si un colaborador deja la empresa a medio programa?",
-    respuesta:
-      "Reasignamos su lugar a otro colaborador del mismo dominio, sin perder lo invertido. Lo dejamos definido en la propuesta desde el inicio.",
+      "Un año mínimo. Es el tiempo en que el avance alcanza a verse en el puesto.",
   },
   {
     pregunta: "¿Quién da las sesiones?",
@@ -196,11 +190,6 @@ const FAQ = [
   {
     pregunta: "¿Cómo se factura?",
     respuesta: "Nos adaptamos a la forma de facturación de su empresa.",
-  },
-  {
-    pregunta: "¿De cuántas personas son los grupos?",
-    respuesta:
-      "De 1 a 10 colaboradores por grupo, y abrimos tantos grupos como necesite su empresa.",
   },
   {
     pregunta: "¿Atienden fuera de la Ciudad de México?",
@@ -284,7 +273,6 @@ export default function Nosotros() {
               pendiente y se convierta en un logro que pueda presentar a Dirección.
             </p>
             <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
-            <p className={styles.nota}>{NOTA_CTA}</p>
             <SelloSTPS />
             <div className={`sp-stats-row ${styles.cifras}`}>
               {CIFRAS.map((c) => (
@@ -329,39 +317,52 @@ export default function Nosotros() {
 
         {/* LO QUE SUELE FALLAR */}
         <section className="sp-seccion" id="historia">
-          <div className={`${styles.lectura} reveal`}>
-            <h2>Lo que suele fallar con un proveedor de idiomas</h2>
-            <p>
-              Imagine a una gerente de Recursos Humanos. Dirección le pide que, en un
-              año, sus gerentes dirijan las juntas con la casa matriz en inglés.
-            </p>
-            <p>
-              Contrata a un proveedor y se acomoda a él: sus horarios, su sede, su
-              temario. Llegan los cierres de mes y los viajes, y las sesiones perdidas
-              no se reponen. Ella pasa las semanas persiguiendo asistencias.
-            </p>
-            <p>
-              Al cerrar el año, Dirección le pregunta qué se logró. Ella solo tiene
-              listas de asistencia. ¿Le suena conocido?
-            </p>
+          <div className={styles.dosColumnas}>
+            <div className={`${styles.lectura} reveal`}>
+              <h2>Lo que suele fallar con un proveedor de idiomas</h2>
+              <p>
+                Imagine a una gerente de Recursos Humanos. Dirección le pide que, en un
+                año, sus gerentes dirijan las juntas con la casa matriz en inglés.
+              </p>
+              <p>
+                Contrata a un proveedor y se acomoda a él: sus horarios, su sede, su
+                temario. Llegan los cierres de mes y los viajes, y las sesiones perdidas
+                no se reponen. Ella pasa las semanas persiguiendo asistencias.
+              </p>
+              <p>
+                Al cerrar el año, Dirección le pregunta qué se logró. Ella solo tiene
+                listas de asistencia.
+              </p>
+            </div>
+            {/* PLACEHOLDER: aquí va la imagen definitiva de «Lo que suele fallar». */}
+            <div className={`${styles.placeholderImagen} reveal`} aria-hidden="true">
+              Imagen
+            </div>
           </div>
         </section>
 
         {/* S-PEAK NACIÓ DE UNA INCONFORMIDAD */}
         <section className={styles.origen} id="origen">
           <div className={`sp-seccion ${styles.origenTop}`}>
-            <div className={`sp-seccion-top ${styles.origenIntro} reveal`}>
-              <h2>S-Peak nació de una inconformidad</h2>
-              <p>
-                En 2006, lo normal era que la empresa se acomodara a su proveedor.
-                Nosotros hicimos lo contrario.
-              </p>
-              <p>
-                Por eso fuimos de los primeros en México en llevar al instructor a la
-                empresa y en capacitar por videoconferencia. Desde el primer día
-                trabajamos para empresas, y conocemos de cerca lo que vive Recursos
-                Humanos:
-              </p>
+            <div className={`${styles.dosColumnas} ${styles.dosColumnasInvertido}`}>
+              <div className={`sp-seccion-top ${styles.origenIntro} reveal`}>
+                <h2>S-Peak nació de una inconformidad</h2>
+                <p>
+                  En 2006, lo normal era que la empresa se acomodara a su proveedor.
+                  Nosotros hicimos lo contrario.
+                </p>
+                <p>
+                  Por eso fuimos de los primeros en México en llevar al instructor a la
+                  empresa y en capacitar por videoconferencia. Desde el primer día
+                  trabajamos para empresas, y conocemos de cerca lo que vive Recursos
+                  Humanos:
+                </p>
+              </div>
+              {/* PLACEHOLDER: aquí va la imagen definitiva de «S-Peak nació de una
+                  inconformidad». */}
+              <div className={`${styles.placeholderImagen} reveal`} aria-hidden="true">
+                Imagen
+              </div>
             </div>
           </div>
 
@@ -451,7 +452,6 @@ export default function Nosotros() {
                 medida.
               </p>
               <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
-              <p className={styles.nota}>{NOTA_CTA}</p>
             </div>
           </div>
         </section>
@@ -469,7 +469,7 @@ export default function Nosotros() {
                 antes de que Dirección se lo pregunte.
               </p>
               <p>
-                No le vendemos un paquete para luego desaparecer. Revisamos los avances
+                Revisamos los avances
                 con usted, escuchamos a su equipo y adaptamos el programa conforme su
                 empresa cambia.
               </p>
@@ -553,18 +553,9 @@ export default function Nosotros() {
             <p>
               Esta vez el proveedor trabaja para ella. Al cerrar el año no llega a
               Dirección con listas de asistencia: llega con el avance de cada gerente en
-              la escala del Marco Común Europeo y su Tarjeta de Resultados. Y deja de
-              cargar el proyecto para empezar a presumirlo.
-            </p>
-            <p className={styles.finalPregunta}>
-              ¿Qué historia quiere contarle a Dirección dentro de un año?
+              la escala del Marco Común Europeo y su Tarjeta de Resultados.
             </p>
             <BotonContacto className="sp-btn sp-btn--blanco">{CTA}</BotonContacto>
-            <p className={styles.finalNota}>{NOTA_CTA}</p>
-            <p className={styles.finalGarantias}>
-              Sin plazo mínimo de contratación · presencial, en línea o híbrida en todo
-              México · reporte de horas contra factura · constancia DC-3
-            </p>
           </div>
         </section>
 
