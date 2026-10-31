@@ -342,25 +342,42 @@
   margin: 56px auto 40px;
 }
 
-/* El tablero de TableroProgreso, a todo el ancho del contenedor con el tope
-   que pidió el cliente. */
+/* El tablero de TableroProgreso, en su variante `rotativo`. En una columna
+   conserva el tope que pidió el cliente; en dos, manda la columna. */
 .panel {
   max-width: 960px;
   margin: 0 auto;
 }
 
+/* La columna de texto junto al tablero. Centrada en una columna, como hasta
+   ahora; a partir de 960px, alineada a la izquierda (ver Responsive). */
 .panelCierre {
-  margin-top: 28px;
   text-align: center;
 }
 
-.panelCierre p:first-child {
+/* Mismo tamaño y peso que el otro h3 de bloque de la página, el de la franja
+   de «S-Peak nació de una inconformidad». */
+.panelCierre h3 {
   max-width: 760px;
   margin: 0 auto 24px;
-  font-size: 18px;
+  font-size: clamp(22px, 2.4vw, 32px);
   font-weight: var(--weight-bold);
-  line-height: 1.4;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   color: var(--color-navy);
+  text-wrap: balance;
+}
+
+/* En dos columnas, alineada a la izquierda. Va después de las reglas base
+   porque la media query no suma especificidad. */
+@media (min-width: 960px) {
+  .panelCierre {
+    text-align: left;
+  }
+
+  .panelCierre h3 {
+    margin-inline: 0;
+  }
 }
 
 /* ---------- Si algo se complica ---------- */
@@ -533,6 +550,12 @@
 }
 
 @media (max-width: 600px) {
+  /* La etiqueta de ejemplo (.sp-etiqueta-ejemplo): en esta página ningún texto
+     del tablero baja de 12px en móvil. */
+  .ejemplo {
+    font-size: 12px;
+  }
+
   .hero {
     padding: 48px var(--space-gutter) 80px;
   }

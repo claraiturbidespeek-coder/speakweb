@@ -120,6 +120,20 @@
   background: var(--color-red);
 }
 
+/* ========== Etiqueta de ejemplo ==========
+   Avisa que las cifras de un tablero son ilustrativas. La usan el tablero de
+   SeccionEvidencia, encima del panel, y /nosotros/, que la pinta en su columna
+   de texto; allí sube a 12px en móvil desde su módulo. */
+
+.sp-etiqueta-ejemplo {
+  margin: 0 0 10px;
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
 /* ========== Botones ==========
    Un solo botón con variantes, en lugar de las diez implementaciones que había
    repartidas por el proyecto. El realce (brillo que barre y elevación al pasar

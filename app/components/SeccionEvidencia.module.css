@@ -63,15 +63,7 @@
 
 /* ---------- Tablero de evidencia ---------- */
 
-/* La etiqueta de encima del tablero: avisa que las cifras son de ejemplo. */
-.ejemplo {
-  margin: 0 0 10px;
-  font-size: 10px;
-  font-weight: var(--weight-bold);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-}
+/* La etiqueta de encima del tablero es .sp-etiqueta-ejemplo, de patrones.css. */
 
 .dash {
   background: var(--color-white);
@@ -366,7 +358,6 @@
 }
 
 @media (max-width: 600px) {
-  .amplio .ejemplo,
   .amplio .dashTopbarTag,
   .amplio .dashChip,
   .amplio .wTitle,
@@ -380,6 +371,96 @@
 
   /* Del tercero en adelante. */
   .amplio .wPerson ~ .wPerson ~ .wPerson {
+    display: none;
+  }
+}
+
+/* ---------- Tablero rotativo (`rotativo`) ----------
+   El de /nosotros/, en media pantalla: tarjetas a una columna, repartidas en
+   dos vistas que TableroRotativo.tsx alterna. Las vistas comparten la celda
+   del grid, así que el alto es siempre el de la más alta. */
+
+.rotativo .dashGrid {
+  grid-template-columns: 1fr;
+}
+
+.rotativo .vistas {
+  display: grid;
+}
+
+.rotativo .vista {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0s linear 0.6s;
+}
+
+.rotativo .vistaActiva {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.6s ease, visibility 0s;
+}
+
+/* Una vista que aún no se ha mostrado guarda sus barras en cero: crecen la
+   primera vez que aparece, no mientras está oculta. */
+@media (prefers-reduced-motion: no-preference) {
+  .rotativo:global(.visible) .vista:not(.vistaMostrada) .wBar span {
+    transform: scaleX(0);
+  }
+}
+
+.rotativo .indicadores {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 12px;
+}
+
+/* El botón mide 24px para que sea fácil de tocar; el punto, 10px. */
+.rotativo .indicador {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.rotativo .indicador::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-border);
+  transition: background 0.3s ease;
+}
+
+.rotativo .indicadorActivo::before {
+  background: var(--color-navy);
+}
+
+.rotativo .indicador:focus-visible {
+  outline: 2px solid var(--color-navy);
+  outline-offset: 2px;
+}
+
+/* Sin rotación: las dos vistas, una debajo de la otra, y sin puntos. */
+@media (prefers-reduced-motion: reduce) {
+  .rotativo .vistas {
+    gap: 10px;
+  }
+
+  .rotativo .vista {
+    grid-area: auto;
+    opacity: 1;
+    visibility: visible;
+    transition: none;
+  }
+
+  .rotativo .indicadores {
     display: none;
   }
 }

@@ -14,8 +14,9 @@ import styles from "./nosotros.module.css";
 
    Hero de una columna, secciones sp-* y CTA final en rojo, como /diagnostico/.
    Se renderiza en el servidor: los únicos trozos de cliente son los botones de
-   contacto, AnimacionesEntrada y el carrusel del Centro de Recursos. Todos los
-   botones abren el modal de contacto general. */
+   contacto, AnimacionesEntrada, el carrusel del Centro de Recursos y la
+   rotación del tablero de Trazabilidad. Todos los botones abren el modal de
+   contacto general. */
 
 const URL = "https://s-peak.com/nosotros/";
 const TITULO = "S-Peak, capacitación en idiomas para empresas desde 2006";
@@ -437,21 +438,27 @@ export default function Nosotros() {
               </figcaption>
             </figure>
 
-            <TableroProgreso
-              amplio
-              className={styles.panel}
-              titulo="Así se ve la Trazabilidad"
-              ejemplo="Ejemplo de reporte · Datos ilustrativos"
-              etiqueta="Ejemplo de reporte de Trazabilidad de S-Peak, con datos ilustrativos"
-              tablero={TABLERO}
-            />
-
-            <div className={`${styles.panelCierre} reveal`}>
-              <p>
-                ¿Así quiere ver el avance de su equipo? Le proponemos un programa a la
-                medida.
-              </p>
-              <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
+            {/* Con `rotativo` el tablero no pinta su etiqueta de ejemplo: va
+                aquí, encabezando la columna de texto. */}
+            <div className={styles.dosColumnas}>
+              <div className={`${styles.panelCierre} reveal`}>
+                <p className={`sp-etiqueta-ejemplo ${styles.ejemplo}`}>
+                  Ejemplo de reporte · Datos ilustrativos
+                </p>
+                <h3>
+                  ¿Así quiere ver el avance de su equipo? Le proponemos un programa a la
+                  medida.
+                </h3>
+                <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
+              </div>
+              <TableroProgreso
+                amplio
+                rotativo
+                className={styles.panel}
+                titulo="Así se ve la Trazabilidad"
+                etiqueta="Ejemplo de reporte de Trazabilidad de S-Peak, con datos ilustrativos"
+                tablero={TABLERO}
+              />
             </div>
           </div>
         </section>
