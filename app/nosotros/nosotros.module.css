@@ -27,15 +27,17 @@
   padding: 80px var(--space-gutter) 100px;
 }
 
+/* Página de identidad, no landing: el hero va centrado y con un ancho propio
+   para que el H1 no se estire a todo lo ancho en pantallas grandes. */
 .heroInner {
   position: relative;
   z-index: 1;
-  max-width: 1160px;
+  max-width: 800px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .hero h1 {
-  max-width: 24ch;
   margin-bottom: 20px;
   font-size: clamp(28px, 3.2vw, 42px);
   font-weight: var(--weight-bold);
@@ -47,15 +49,45 @@
 .hero :global(.sp-hero-sub) {
   /* El patrón tope a 540px, pensado para heros de dos columnas; aquí es de una
      y se le deja la medida de lectura de las bajadas de sección. */
-  max-width: 760px;
+  max-width: 680px;
+  margin-inline: auto;
+}
+
+/* El CTA del hero en contorno navy: aquí no es el elemento más llamativo de la
+   pantalla. Variante solo de esta página: .sp-btn--rojo la usan las demás y no
+   se toca. Mismo tamaño de letra y mismo alto que .sp-btn--rojo: el borde de
+   2px sale del padding (15px 32px). Sin brillo ni elevación al pasar el
+   cursor: solo se rellena en navy. */
+.ctaContorno {
+  background: transparent;
+  border: 2px solid var(--color-navy);
+  color: var(--color-navy);
+  padding: 13px 30px;
+  font-size: 15px;
+  font-weight: var(--weight-bold);
+  transition: background var(--transition-fast) ease,
+    color var(--transition-fast) ease;
+}
+
+.ctaContorno:hover {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+/* El sello es flex alineado a la izquierda; aquí va centrado bajo el CTA. */
+.hero :global(.sp-sello-stps) {
+  justify-content: center;
 }
 
 /* La fila de cifras trae -56px de margin-top para montarse sobre la foto del
    hero de /equipo/ y de las landings. Aquí no hay foto: va debajo del sello,
-   con aire propio, y acotada para que tres cifras no se estiren a 1160px. */
+   con aire propio, centrada y acotada para que tres cifras no se estiren.
+   En rejilla para que las tres columnas midan lo mismo sea cual sea su texto. */
 .cifras {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   max-width: 560px;
-  margin-top: 40px;
+  margin: 40px auto 0;
 }
 
 /* ---------- Presentación e idiomas ---------- */
@@ -561,6 +593,14 @@
   }
 
   .dolores {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* El mismo corte en que .sp-stats-row apila las cifras (patrones.css): con la
+   rejilla de .cifras hay que apilarlas aquí también. */
+@media (max-width: 359px) {
+  .cifras {
     grid-template-columns: 1fr;
   }
 }

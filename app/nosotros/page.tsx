@@ -273,7 +273,7 @@ export default function Nosotros() {
               reportes, para que capacitar a su equipo en idiomas deje de ser un
               pendiente y se convierta en un logro que pueda presentar a Dirección.
             </p>
-            <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
+            <BotonContacto className={`sp-btn ${styles.ctaContorno}`}>{CTA}</BotonContacto>
             <SelloSTPS />
             <div className={`sp-stats-row ${styles.cifras}`}>
               {CIFRAS.map((c) => (

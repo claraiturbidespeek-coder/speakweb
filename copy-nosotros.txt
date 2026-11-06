@@ -1,0 +1,274 @@
+COPY DE /nosotros/
+==================
+
+[TITLE] S-Peak, capacitación en idiomas para empresas desde 2006
+[DESCRIPTION] Capacitación en idiomas para empresas desde 2006: registro STPS, constancia DC-3 y metodología PACTO con reportes mensuales. Presencial, en línea o híbrida.
+
+
+------------------------------------------------------------
+SECCIÓN: HERO
+------------------------------------------------------------
+
+[ETIQUETA] Capacitación en idiomas para empresas
+
+[H1] Desde 2006 ayudamos a equipos de trabajo a hablar, negociar y colaborar con seguridad en otro idioma.
+
+[PÁRRAFO] Nos encargamos de coordinar horarios, reponer sesiones y entregar reportes, para que capacitar a su equipo en idiomas deje de ser un pendiente y se convierta en un logro que pueda presentar a Dirección.
+
+[BOTÓN] Solicite una Cotización
+
+[SELLO STPS — PÁRRAFO] Registro oficial ante la STPS · Entregamos constancia DC-3
+
+[CIFRA] +20
+[DESCRIPTOR] Años de experiencia
+
+[CIFRA] +500
+[DESCRIPTOR] Empresas atendidas
+
+[CIFRA] +40K
+[DESCRIPTOR] Profesionales formados
+
+
+------------------------------------------------------------
+SECCIÓN: BANDA DE LOGOS
+------------------------------------------------------------
+
+[PÁRRAFO — ETIQUETA DE LA BANDA] Algunas de las empresas que confían en S-Peak
+
+
+------------------------------------------------------------
+SECCIÓN: PRESENTACIÓN E IDIOMAS
+------------------------------------------------------------
+
+[PÁRRAFO] S-Peak es una empresa mexicana de capacitación en idiomas para empresas, fundada en 2006 y registrada ante la STPS como agente capacitador.
+
+[PÍLDORAS / ENLACES]
+- Inglés
+- Francés
+- Alemán
+- Italiano
+- Portugués
+- Español para extranjeros
+
+[PÁRRAFO] Presencial, en línea en vivo o híbrida, en una o varias sedes en cualquier parte de México.
+
+
+------------------------------------------------------------
+SECCIÓN: LO QUE SUELE FALLAR
+------------------------------------------------------------
+
+[H2] Lo que suele fallar con un proveedor de idiomas
+
+[PÁRRAFO] Imagine a una gerente de Recursos Humanos. Dirección le pide que, en un año, sus gerentes dirijan las juntas con la casa matriz en inglés.
+
+[PÁRRAFO] Contrata a un proveedor y se acomoda a él: sus horarios, su sede, su temario. Llegan los cierres de mes y los viajes, y las sesiones perdidas no se reponen. Ella pasa las semanas persiguiendo asistencias.
+
+[PÁRRAFO] Al cerrar el año, Dirección le pregunta qué se logró. Ella solo tiene listas de asistencia.
+
+[PLACEHOLDER DE IMAGEN] Imagen
+
+
+------------------------------------------------------------
+SECCIÓN: S-PEAK NACIÓ DE UNA INCONFORMIDAD
+------------------------------------------------------------
+
+[H2] S-Peak nació de una inconformidad
+
+[PÁRRAFO] En 2006, lo normal era que la empresa se acomodara a su proveedor. Nosotros hicimos lo contrario.
+
+[PÁRRAFO] Por eso fuimos de los primeros en México en llevar al instructor a la empresa y en capacitar por videoconferencia. Desde el primer día trabajamos para empresas, y conocemos de cerca lo que vive Recursos Humanos:
+
+[PLACEHOLDER DE IMAGEN] Imagen
+
+[BANDA]
+  [H3] «Busco un proveedor confiable, con buenas referencias»
+  [PÁRRAFO] La primera empresa que confió en nosotros siguió con S-Peak durante 15 años.
+
+[TARJETA 1]
+  [H3] «Mi directora me está pidiendo el estatus»
+  [PÁRRAFO] Cada mes recibe un reporte automático de asistencia y calificaciones.
+
+[TARJETA 2]
+  [H3] «Tengo que cuadrar las horas tomadas contra la factura»
+  [PÁRRAFO] El reporte mensual trae las horas tomadas contra las facturadas y las sesiones repuestas, y su programa incluye un margen de sesiones canceladas que no se cobran.
+
+[TARJETA 3]
+  [H3] «¿Qué día termina el nivel?»
+  [PÁRRAFO] Le damos por escrito la fecha en que termina cada nivel y cada etapa; si una sesión cancelada no se repone, la fecha se recorre.
+
+[TARJETA 4]
+  [H3] «Están súper ocupados»
+  [PÁRRAFO] Horarios, modalidad y reposiciones se ajustan a su operación; damos seguimiento a cada falta.
+
+[TARJETA 5]
+  [H3] «No puedo gestionar mi área y además este programa»
+  [PÁRRAFO] Cada cliente tiene un ejecutivo de cuentas que resuelve lo operativo por usted.
+
+[TARJETA 6]
+  [H3] «No buscamos el típico curso teórico»
+  [PÁRRAFO] Su equipo practica en el idioma lo que hace en su puesto: hablar con sus clientes, sus proveedores y su corporativo.
+
+
+------------------------------------------------------------
+SECCIÓN: METODOLOGÍA PACTO
+------------------------------------------------------------
+
+[H2] Cómo trabajamos: metodología PACTO para programas de idiomas en empresas
+
+[PÁRRAFO] PACTO son cinco pasos para que su inversión se vea en el puesto, no solo en la lista de asistencia.
+
+[TARJETA — PASO 1]
+  [LETRA] P
+  [H3] Planificación
+  [PÁRRAFO] Diagnosticamos el nivel de cada colaborador y definimos con usted qué debe poder hacer en el idioma en su puesto.
+
+[TARJETA — PASO 2]
+  [LETRA] A
+  [H3] Arranque
+  [PÁRRAFO] Sesión de arranque con el grupo: calendario, reglas del programa y metas de cada colaborador.
+
+[TARJETA — PASO 3]
+  [LETRA] C
+  [H3] Competencias
+  [PÁRRAFO] Etapas de 26 horas, cada una enfocada en un dominio del puesto, con práctica real: juntas, correos y presentaciones.
+
+[TARJETA — PASO 4]
+  [LETRA] T
+  [H3] Trazabilidad
+  [PÁRRAFO] Reportes por mes, trimestre, nivel y año; evidencia evaluada con rúbrica; Tarjeta de Resultados al cerrar cada etapa y constancia DC-3.
+
+[TARJETA — PASO 5]
+  [LETRA] O
+  [H3] Optimización
+  [PÁRRAFO] Con base en los resultados, decidimos con usted la siguiente etapa y ajustamos el programa.
+
+[TESTIMONIO]
+  [ESTRELLAS] ★★★★★
+  [CITA] “S-Peak ha sido un gran aliado para nosotros, ya que se adapta a nuestras necesidades y cuenta con un sistema robusto de seguimiento en asistencias. Valoramos también que siempre nos brinda una buena atención tanto a la empresa como a los alumnos.”
+  [AVATAR] AP
+  [ATRIBUCIÓN — NOMBRE] Anabel P.
+  [ATRIBUCIÓN — CARGO] Analista de Planeación y Desarrollo de RH
+
+[COLUMNA DE TEXTO JUNTO AL TABLERO]
+  [ETIQUETA] Ejemplo de reporte · Datos ilustrativos
+  [H3] ¿Así quiere ver el avance de su equipo? Le proponemos un programa a la medida.
+  [BOTÓN] Solicite una Cotización
+
+[TABLERO DE TRAZABILIDAD — PANEL ROTATIVO]
+  [BARRA — TÍTULO] Así se ve la Trazabilidad
+  [BARRA — ETIQUETA] S-Peak Analytics
+
+  [CHIP] +16% mejora
+  [CHIP] 15 colaboradores activos
+  [CHIP] 28 sesiones
+
+  [VISTA 1]
+    [WIDGET — CIFRA] 85%
+    [DESCRIPTOR] Evidencias aprobadas con rúbrica
+    [SUBTEXTO] ↑ 5 pts vs. trimestre anterior
+
+    [WIDGET — TÍTULO] Progreso del equipo · Trimestre
+    [EJE X] Mes 1 · Mes 2 · Mes 3
+
+  [VISTA 2]
+    [WIDGET — TÍTULO] Competencias del equipo
+    Comunicación oral — 79%
+    Comprensión auditiva — 68%
+    Redacción corporativa — 77%
+    Negociación — 70%
+
+    [WIDGET — TÍTULO] Colaboradores
+    A · Colaborador A · B2 · 87%
+    B · Colaborador B · B1 · 76%
+    C · Colaborador C · B1 · 70%
+    D · Colaborador D · A2 · 61%
+
+
+------------------------------------------------------------
+SECCIÓN: SI ALGO SE COMPLICA
+------------------------------------------------------------
+
+[H2] Si algo se complica, se lo avisamos primero
+
+[PÁRRAFO] En todo proyecto aparecen imprevistos. Aprendimos que entre más pronto se anticipan y se comunican, más rápido se resuelven y más chicos se quedan. Por eso, si un cierre de mes obliga a cancelar sesiones, su ejecutivo de cuentas se lo avisa en cuanto lo detecta y le propone cuándo reponerlas, antes de que Dirección se lo pregunte.
+
+[PÁRRAFO] Revisamos los avances con usted, escuchamos a su equipo y adaptamos el programa conforme su empresa cambia.
+
+[TESTIMONIO 1]
+  [ESTRELLAS] ★★★★★
+  [CITA] "Valoramos el seguimiento que S-Peak nos brinda, el feedback que piden a través de citas regulares y encuestas, así como reaccionan a lo que pedimos como cliente. Además, los profesores están muy bien preparados para asegurar el aprendizaje, y los precios son justos."
+  [AVATAR] EC
+  [ATRIBUCIÓN — NOMBRE] Erika C.
+  [ATRIBUCIÓN — CARGO] People Development, Culture & D&I Expert
+
+[TESTIMONIO 2]
+  [ESTRELLAS] ★★★★★
+  [CITA] "El equipo de S-Peak tiene una gran actitud de servicio, sus cursos de idiomas son excelentes para nuestros equipos, se adaptan a las necesidades de sus perfiles de puesto."
+  [AVATAR] BI
+  [ATRIBUCIÓN — NOMBRE] Braskem Idesa
+  [ATRIBUCIÓN — CARGO] Área de RRHH
+
+
+------------------------------------------------------------
+SECCIÓN: PREGUNTAS FRECUENTES
+------------------------------------------------------------
+
+[H2] Preguntas frecuentes sobre la capacitación en idiomas para su empresa
+
+[PREGUNTA] ¿Con qué escala miden el nivel de cada colaborador?
+[RESPUESTA] Con la del Marco Común Europeo de Referencia (A1 a C2), desde el examen del diagnóstico inicial.
+
+[PREGUNTA] ¿Cuánto tiempo hay que contratar?
+[RESPUESTA] Un año mínimo. Es el tiempo en que el avance alcanza a verse en el puesto.
+
+[PREGUNTA] ¿Quién da las sesiones?
+[RESPUESTA] Especialistas en idioma de negocios, nativos o bilingües, con experiencia en entornos empresariales; si alguno no resulta el adecuado, lo cambiamos.
+
+[PREGUNTA] ¿Qué pasa si el instructor no puede dar una sesión?
+[RESPUESTA] Se repone en un horario que acuerdan el colaborador y el instructor.
+
+[PREGUNTA] ¿Pueden darse de alta como proveedor en nuestra empresa?
+[RESPUESTA] Sí: entregamos la documentación para el alta y firmamos acuerdo de confidencialidad.
+
+[PREGUNTA] ¿El material tiene costo?
+[RESPUESTA] El material se cotiza aparte; su costo depende del idioma y del nivel.
+
+[PREGUNTA] ¿Cómo se factura?
+[RESPUESTA] Nos adaptamos a la forma de facturación de su empresa.
+
+[PREGUNTA] ¿Atienden fuera de la Ciudad de México?
+[RESPUESTA] Sí, en cualquier parte de México: presencial en la empresa, en línea en vivo o híbrida, en una o varias sedes.
+
+[PREGUNTA] ¿La constancia DC-3 es una certificación de idioma, como Cambridge o IELTS?
+[RESPUESTA] No. La DC-3 es la constancia de capacitación con formato de la STPS, que firmamos como agente capacitador externo; el nivel de idioma se mide aparte, con la escala del Marco Común Europeo.
+
+
+------------------------------------------------------------
+SECCIÓN: CIERRE (CTA FINAL)
+------------------------------------------------------------
+
+[H2] Ahora imagine a esa misma gerente, con S-Peak
+
+[PÁRRAFO] Esta vez el proveedor trabaja para ella. Al cerrar el año no llega a Dirección con listas de asistencia: llega con el avance de cada gerente en la escala del Marco Común Europeo y su Tarjeta de Resultados.
+
+[BOTÓN] Solicite una Cotización
+
+
+------------------------------------------------------------
+SECCIÓN: CENTRO DE RECURSOS
+------------------------------------------------------------
+
+[H2] Centro de Recursos
+
+[PÁRRAFO] Guías y Recursos sobre Capacitación en Idiomas para Empresas
+
+[ENLACE] Ver todos los artículos
+
+[TARJETA 1]
+  [H3] ¿Por qué su equipo abandonó el curso de idiomas de la empresa?
+
+[TARJETA 2]
+  [H3] Inglés para empresas: ¿Qué nivel necesita cada área de su organización?
+
+[TARJETA 3]
+  [H3] Capacitación de personal: cómo diseñar un programa de idiomas que sí completen
