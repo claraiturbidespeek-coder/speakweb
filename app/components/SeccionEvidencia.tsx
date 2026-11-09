@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
 import styles from "./SeccionEvidencia.module.css";
 import TableroRotativo from "./TableroRotativo";
@@ -107,7 +108,7 @@ export function TableroProgreso({
     .join(" ");
 
   const barra = (
-    <div className={styles.dashTopbar}>
+    <div key="barra" className={styles.dashTopbar}>
       <div className={styles.dashTopbarTitle}>
         <span className={styles.dashDots}><i></i><i></i><i></i></span>
         {titulo}
@@ -116,7 +117,7 @@ export function TableroProgreso({
     </div>
   );
   const chips = (
-    <div className={styles.dashChips}>
+    <div key="chips" className={styles.dashChips}>
       <span className={styles.dashChip}><b>+{tablero.mejora}%</b> mejora</span>
       <span className={styles.dashChip}><b>{tablero.activos}</b> colaboradores activos</span>
       <span className={styles.dashChip}><b>{tablero.sesiones}</b> sesiones</span>
@@ -176,15 +177,18 @@ export function TableroProgreso({
         etiqueta={etiqueta}
         barra={barra}
         chips={chips}
+        /* Las vistas, la barra y los chips llevan key propia: se crean aquí,
+           en el servidor, y TableroRotativo, de cliente, los coloca entre otros
+           hijos. Sin ella React avisa de un hijo sin key en una lista. */
         vistas={[
-          <>
+          <Fragment key="resultados">
             {metrica}
             {grafica}
-          </>,
-          <>
+          </Fragment>,
+          <Fragment key="equipo">
             {competencias}
             {colaboradores}
-          </>,
+          </Fragment>,
         ]}
       />
     );

@@ -4,9 +4,13 @@
    interna. */
 
 /* ---------- Rejilla ----------
-   Las celdas de una fila se estiran al alto de la más alta. El video no: con
-   aspect-ratio, su `align-self: normal` se comporta como `start` y conserva el
-   16:9, así que es él quien marca el alto de la fila. */
+   El alto lo manda la rejilla y las celdas llenan su fila.
+     - Hasta 600px: alto automático; cada celda a su contenido y el video en
+       16:9 (lo pone .celdaVideo).
+     - De 601 a 960px: cuatro filas, en el orden del HTML: video A, dos de
+       cifras y video B. Las de video a 260px y las de cifras a 230px.
+     - Desde 960px: dos filas de 240px; con el gap, unos 500px en total, para
+       que la sección con su titular quepa en una laptop de 720px de alto. */
 .rejilla {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -16,6 +20,7 @@
 @media (min-width: 601px) {
   .rejilla {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: 260px 230px 230px 260px;
   }
 
   .video {
@@ -26,17 +31,25 @@
 @media (min-width: 960px) {
   .rejilla {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(2, 240px);
   }
 }
 
 /* ---------- Tarjeta de cifra ----------
-   Contenido apilado desde arriba: icono, cifra, descriptor, filete y cliente. */
+   El contenido se reparte en el alto de la tarjeta: el icono arriba, la cifra
+   con su descriptor centrados en el espacio que queda (margin-block: auto) y
+   el filete con el cliente pegados abajo. Con alto automático (móvil), el gap
+   es lo único que los separa. */
 .cifra {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start;
-  padding: 28px 24px;
+  gap: 14px;
+  padding: 20px;
+}
+
+.cifraCentro {
+  margin-block: auto;
 }
 
 /* No son clicables: de .sp-tarjeta se quedan la superficie (fondo, borde y
@@ -49,7 +62,7 @@
 }
 
 .cifraNum {
-  margin: 18px 0 8px;
+  margin: 0 0 6px;
   font-size: var(--text-title-md);
   font-weight: var(--weight-black);
   line-height: 1;
@@ -68,8 +81,8 @@
    la tarjeta. */
 .cifraCliente {
   align-self: stretch;
-  margin: 16px 0 0;
-  padding-top: 14px;
+  margin: 0;
+  padding-top: 12px;
   border-top: 1px solid var(--color-border);
   font-size: 14px;
   font-weight: var(--weight-bold);
@@ -85,6 +98,14 @@
   overflow: hidden;
   border-radius: var(--radius-grande);
   background: var(--color-navy);
+}
+
+/* Desde 601px el video pierde el 16:9 y llena el alto de su fila; la portada
+   y el iframe ocupan la celda entera. */
+@media (min-width: 601px) {
+  .celdaVideo {
+    aspect-ratio: auto;
+  }
 }
 
 /* El anillo de foco va en la celda y no en el botón: el overflow de la celda

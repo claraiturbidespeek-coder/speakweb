@@ -6,6 +6,9 @@ import styles from "./ProyectosVideo.module.css";
    rejilla. Hoy la monta /nosotros/; está pensada para la home también, así que
    todo el contenido llega por props y el estilo vive en su propio módulo.
 
+   El alto lo marca la rejilla, no el video: desde 601px las filas tienen alto
+   fijo y las celdas de video lo llenan, con la portada en object-fit: cover.
+
    Las celdas van en el HTML en el orden de lectura —video A, las cuatro cifras,
    video B— y la rejilla hace el resto sin `order`:
      - desde 960px, 4 columnas: el video A ocupa dos y le siguen las cifras 1 y
@@ -39,8 +42,10 @@ function TarjetaCifra({ icono, cifra, descriptor, cliente }: CifraProyecto) {
       <span className="sp-icono sp-icono--md sp-icono--rojo">
         <Icono nombre={icono} />
       </span>
-      <p className={styles.cifraNum}>{cifra}</p>
-      <p className={styles.cifraDescriptor}>{descriptor}</p>
+      <div className={styles.cifraCentro}>
+        <p className={styles.cifraNum}>{cifra}</p>
+        <p className={styles.cifraDescriptor}>{descriptor}</p>
+      </div>
       <p className={styles.cifraCliente}>{cliente}</p>
     </div>
   );
