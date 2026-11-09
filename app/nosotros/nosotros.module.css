@@ -151,11 +151,11 @@
 }
 
 /* ---------- Texto e imagen a dos columnas ----------
-   Lo comparten «Lo que suele fallar» y la entradilla de «S-Peak nació de una
-   inconformidad». En el HTML el texto va siempre primero, así que por debajo
-   de 960px las dos quedan en una columna con el texto arriba y la imagen
-   debajo; a partir de 960px, el modificador --Invertido pasa la imagen a la
-   izquierda solo con `order`. */
+   Las sub-secciones del bloque de misión, cada una con su columna de texto
+   (.lectura) y su imagen. En el HTML el texto va siempre primero, así que por
+   debajo de 960px las dos quedan en una columna con el texto arriba y la
+   imagen debajo; a partir de 960px, el modificador --Invertido pasa la imagen
+   a la izquierda solo con `order`. */
 .dosColumnas {
   max-width: var(--container-max);
   margin: 0 auto;
@@ -194,20 +194,11 @@
   .dosColumnasInvertido .placeholderImagen {
     order: -1;
   }
-
-  /* El titular y la bajada de .sp-seccion-top vienen centrados; en dos
-     columnas se alinean a la izquierda, como «Lo que suele fallar». */
-  .origenIntro {
-    text-align: left;
-  }
-
-  .origenIntro h2,
-  .origenIntro p {
-    margin-inline: 0;
-  }
 }
 
-/* ---------- Lo que suele fallar ---------- */
+/* ---------- Columna de texto ----------
+   El texto que acompaña a la imagen en .dosColumnas: titular, párrafos de
+   lectura y el remate destacado. */
 
 .lectura {
   max-width: 760px;
@@ -230,6 +221,13 @@
   color: var(--color-ink-2);
 }
 
+/* El remate de la segunda sub-sección: mismo tamaño que el párrafo, en bold y
+   navy. */
+.lectura .remate {
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+}
+
 /* ---------- S-Peak nació de una inconformidad ---------- */
 
 /* Tres bloques seguidos: la entradilla, la franja navy a todo el ancho y la
@@ -244,8 +242,11 @@
   padding-bottom: 48px;
 }
 
-.origenIntro {
-  margin-bottom: 0;
+/* La entrada a las tarjetas, a todo lo ancho bajo la segunda sub-sección: la
+   bajada centrada de .sp-seccion-top, separada de las dos columnas con el
+   mismo aire que hay entre los bloques de esta sección. */
+.origenEntrada {
+  margin: 48px auto 0;
 }
 
 .confianza {

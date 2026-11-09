@@ -316,76 +316,98 @@ export default function Nosotros() {
           </div>
         </section>
 
-        {/* LO QUE SUELE FALLAR */}
-        <section className="sp-seccion" id="historia">
-          <div className={styles.dosColumnas}>
-            <div className={`${styles.lectura} reveal`}>
-              <h2>Lo que suele fallar con un proveedor de idiomas</h2>
-              <p>
-                Imagine a una gerente de Recursos Humanos. Dirección le pide que, en un
-                año, sus gerentes dirijan las juntas con la casa matriz en inglés.
-              </p>
-              <p>
-                Contrata a un proveedor y se acomoda a él: sus horarios, su sede, su
-                temario. Llegan los cierres de mes y los viajes, y las sesiones perdidas
-                no se reponen. Ella pasa las semanas persiguiendo asistencias.
-              </p>
-              <p>
-                Al cerrar el año, Dirección le pregunta qué se logró. Ella solo tiene
-                listas de asistencia.
-              </p>
-            </div>
-            {/* PLACEHOLDER: aquí va la imagen definitiva de «Lo que suele fallar». */}
-            <div className={`${styles.placeholderImagen} reveal`} aria-hidden="true">
-              Imagen
-            </div>
-          </div>
-        </section>
-
-        {/* S-PEAK NACIÓ DE UNA INCONFORMIDAD */}
-        <section className={styles.origen} id="origen">
-          <div className={`sp-seccion ${styles.origenTop}`}>
-            <div className={`${styles.dosColumnas} ${styles.dosColumnasInvertido}`}>
-              <div className={`sp-seccion-top ${styles.origenIntro} reveal`}>
+        {/* S-PEAK NACIÓ DE UNA INCONFORMIDAD: el bloque de misión, con un solo
+            encabezado. La primera sub-sección conserva el fondo de la página y el
+            resto el off-white de .origen. */}
+        <section id="origen">
+          <div className="sp-seccion">
+            <div className={styles.dosColumnas}>
+              <div className={`${styles.lectura} reveal`}>
                 <h2>S-Peak nació de una inconformidad</h2>
                 <p>
-                  En 2006, lo normal era que la empresa se acomodara a su proveedor.
-                  Nosotros hicimos lo contrario.
+                  En 2006 lo normal era que la empresa se acomodara a su proveedor: sus
+                  horarios, su sede, su temario. A nosotros nos parecía al revés. Quien
+                  contrata la capacitación es quien tiene el problema que resolver;
+                  quien debe acomodarse es quien cobra por resolverlo.
                 </p>
                 <p>
-                  Por eso fuimos de los primeros en México en llevar al instructor a la
-                  empresa y en capacitar por videoconferencia. Desde el primer día
-                  trabajamos para empresas, y conocemos de cerca lo que vive Recursos
-                  Humanos:
+                  Por eso fuimos de los primeros en México en llevar al instructor
+                  dentro de la empresa y en dar clases por videoconferencia, cuando las
+                  dos cosas sonaban raras. No lo hicimos por modernos: era la única
+                  forma de que el programa cupiera en la operación de nuestros
+                  clientes.
                 </p>
               </div>
-              {/* PLACEHOLDER: aquí va la imagen definitiva de «S-Peak nació de una
-                  inconformidad». */}
+              {/* PLACEHOLDER: aquí va la imagen definitiva de la primera
+                  sub-sección. */}
               <div className={`${styles.placeholderImagen} reveal`} aria-hidden="true">
                 Imagen
               </div>
             </div>
           </div>
 
-          <div className={`sp-banda ${styles.confianza}`}>
-            <div className={`${styles.confianzaInner} reveal`}>
-              <h3>«Busco un proveedor confiable, con buenas referencias»</h3>
-              <p>
-                La primera empresa que confió en nosotros siguió con S-Peak durante
-                15 años.
-              </p>
-            </div>
-          </div>
+          <div className={styles.origen}>
+            <div className={`sp-seccion ${styles.origenTop}`}>
+              <div className={`${styles.dosColumnas} ${styles.dosColumnasInvertido}`}>
+                <div className={`${styles.lectura} reveal`}>
+                  <p>
+                    Veinte años después, esto es lo que seguimos encontrando cuando una
+                    empresa nos llama.
+                  </p>
+                  <p>
+                    Imagine a una gerente de Recursos Humanos. Dirección le pide que, en
+                    un año, sus gerentes dirijan las juntas con la casa matriz en inglés.
+                  </p>
+                  <p>
+                    Contrata a un proveedor y se acomoda a él: sus horarios, su sede, su
+                    temario. Llegan los cierres de mes y los viajes, y las sesiones
+                    perdidas no se reponen. Ella pasa las semanas persiguiendo
+                    asistencias.
+                  </p>
+                  <p>
+                    Al cerrar el año, Dirección le pregunta qué se logró. Ella solo tiene
+                    listas de asistencia.
+                  </p>
+                  <p className={styles.remate}>
+                    El problema no fue el inglés. Fue que nadie se hizo cargo del
+                    programa.
+                  </p>
+                </div>
+                {/* PLACEHOLDER: aquí va la imagen definitiva de la segunda
+                    sub-sección. */}
+                <div className={`${styles.placeholderImagen} reveal`} aria-hidden="true">
+                  Imagen
+                </div>
+              </div>
 
-          <div className={`sp-seccion ${styles.origenGrid}`}>
-            <ul className={`sp-inner ${styles.dolores} reveal stagger`}>
-              {DOLORES.map((d) => (
-                <li key={d.titulo} className={`sp-tarjeta sp-barra ${styles.dolor}`}>
-                  <h3>{d.titulo}</h3>
-                  <p>{d.descripcion}</p>
-                </li>
-              ))}
-            </ul>
+              <div className={`sp-seccion-top ${styles.origenEntrada} reveal`}>
+                <p>
+                  Nosotros llevamos veinte años del otro lado de esa historia. Esto es lo
+                  que escuchamos de Recursos Humanos, y lo que hacemos con cada cosa:
+                </p>
+              </div>
+            </div>
+
+            <div className={`sp-banda ${styles.confianza}`}>
+              <div className={`${styles.confianzaInner} reveal`}>
+                <h3>«Busco un proveedor confiable, con buenas referencias»</h3>
+                <p>
+                  La primera empresa que confió en nosotros siguió con S-Peak durante
+                  15 años.
+                </p>
+              </div>
+            </div>
+
+            <div className={`sp-seccion ${styles.origenGrid}`}>
+              <ul className={`sp-inner ${styles.dolores} reveal stagger`}>
+                {DOLORES.map((d) => (
+                  <li key={d.titulo} className={`sp-tarjeta sp-barra ${styles.dolor}`}>
+                    <h3>{d.titulo}</h3>
+                    <p>{d.descripcion}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
 
