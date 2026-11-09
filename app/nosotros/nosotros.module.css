@@ -15,7 +15,12 @@
 
 /* Ancho completo: radio cero explícito, como en las landings. Sin foto, así que
    va a una columna. Abajo reserva los 100px que deja el hero de /equipo/ a la
-   banda de logos, que se monta 60px sobre él. */
+   banda de logos, que se monta 60px sobre él.
+
+   Sin padding lateral: el texto y la caja de video llevan cada uno el suyo. El
+   texto, el gutter normal (en .heroInner); la caja, el de las secciones
+   extendidas, para ir casi a todo lo ancho. Los porcentajes de los dos se
+   resuelven contra el ancho del hero, que es el de la página. */
 .hero {
   position: relative;
   background: linear-gradient(
@@ -24,7 +29,7 @@
     var(--color-off-white) 55%
   );
   border-radius: 0;
-  padding: 80px var(--space-gutter) 100px;
+  padding: 80px 0 100px;
 }
 
 /* Página de identidad, no landing: el hero va centrado y con un ancho propio
@@ -32,8 +37,10 @@
 .heroInner {
   position: relative;
   z-index: 1;
-  max-width: 800px;
+  /* 800px de texto más el gutter de cada lado, que va por dentro. */
+  max-width: calc(800px + 2 * var(--space-gutter));
   margin: 0 auto;
+  padding-inline: var(--space-gutter);
   text-align: center;
 }
 
@@ -53,41 +60,61 @@
   margin-inline: auto;
 }
 
-/* El CTA del hero en contorno navy: aquí no es el elemento más llamativo de la
-   pantalla. Variante solo de esta página: .sp-btn--rojo la usan las demás y no
-   se toca. Mismo tamaño de letra y mismo alto que .sp-btn--rojo: el borde de
-   2px sale del padding (15px 32px). Sin brillo ni elevación al pasar el
-   cursor: solo se rellena en navy. */
-.ctaContorno {
-  background: transparent;
-  border: 2px solid var(--color-navy);
-  color: var(--color-navy);
-  padding: 13px 30px;
-  font-size: 15px;
-  font-weight: var(--weight-bold);
-  transition: background var(--transition-fast) ease,
-    color var(--transition-fast) ease;
-}
-
-.ctaContorno:hover {
-  background: var(--color-navy);
-  color: var(--color-white);
-}
-
-/* El sello es flex alineado a la izquierda; aquí va centrado bajo el CTA. */
+/* El sello es flex alineado a la izquierda; aquí va centrado bajo el párrafo. */
 .hero :global(.sp-sello-stps) {
   justify-content: center;
 }
 
-/* La fila de cifras trae -56px de margin-top para montarse sobre la foto del
-   hero de /equipo/ y de las landings. Aquí no hay foto: va debajo del sello,
-   con aire propio, centrada y acotada para que tres cifras no se estiren.
-   En rejilla para que las tres columnas midan lo mismo sea cual sea su texto. */
-.cifras {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  max-width: 560px;
-  margin: 40px auto 0;
+/* La caja de video (HeroVideo.tsx): casi a todo lo ancho, separada de cada
+   borde por el gutter de las secciones extendidas (20px hasta 1000px de
+   ancho, 2% por encima), para que se lea como una caja y no como una banda a
+   sangre. Por eso lleva el radio grande. El alto es fijo por tramo y el video
+   o el poster la rellenan recortados. El gris de fondo es el de las celdas de
+   video vacías del bento de proyectos, y es lo que se ve mientras no hay
+   archivo. */
+.heroVideo {
+  position: relative;
+  z-index: 1;
+  height: 260px;
+  margin: 40px var(--space-gutter-ancho) 0;
+  overflow: hidden;
+  border-radius: var(--radius-grande);
+  background: var(--color-border);
+}
+
+@media (min-width: 600px) {
+  .heroVideo {
+    height: 360px;
+  }
+}
+
+@media (min-width: 960px) {
+  .heroVideo {
+    height: 560px;
+  }
+}
+
+.heroVideoMedia {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroVideoVacio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroVideoIcono {
+  color: var(--color-muted);
+}
+
+.heroVideoIcono svg {
+  width: 40px;
+  height: 40px;
 }
 
 /* ---------- Presentación e idiomas ---------- */
@@ -576,10 +603,6 @@
   .presentacionLinea {
     font-size: 18px;
   }
-
-  .cifras {
-    margin-top: 28px;
-  }
 }
 
 @media (max-width: 600px) {
@@ -590,18 +613,10 @@
   }
 
   .hero {
-    padding: 48px var(--space-gutter) 80px;
+    padding: 48px 0 80px;
   }
 
   .dolores {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* El mismo corte en que .sp-stats-row apila las cifras (patrones.css): con la
-   rejilla de .cifras hay que apilarlas aquí también. */
-@media (max-width: 359px) {
-  .cifras {
     grid-template-columns: 1fr;
   }
 }

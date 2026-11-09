@@ -3,13 +3,13 @@ import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BandaLogos from "@/app/components/BandaLogos";
 import CentroDeRecursos from "@/app/components/CentroDeRecursos";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
-import Icono from "@/app/components/Icono";
 import ProyectosVideo, { type CifraProyecto } from "@/app/components/proyectos/ProyectosVideo";
 import type { VideoProyecto } from "@/app/components/proyectos/CeldaVideo";
 import { TableroProgreso } from "@/app/components/SeccionEvidencia";
 import SelloSTPS from "@/app/components/SelloSTPS";
 // La lista de las seis páginas de idioma vive con la plantilla de equipo.
 import { IDIOMAS } from "@/app/equipo/tipos";
+import HeroVideo from "./HeroVideo";
 import styles from "./nosotros.module.css";
 
 /* /nosotros/: quiénes somos, contado como la historia de una gerente de RH.
@@ -53,13 +53,6 @@ export const metadata: Metadata = {
 };
 
 const CTA = "Solicite una Cotización";
-
-/* Mismos iconos que las cifras de /equipo/. */
-const CIFRAS = [
-  { icono: "premio", num: "+20", label: "Años de experiencia" },
-  { icono: "edificio", num: "+500", label: "Empresas atendidas" },
-  { icono: "birrete", num: "+40K", label: "Profesionales formados" },
-];
 
 const DOLORES = [
   {
@@ -293,30 +286,21 @@ export default function Nosotros() {
             loading="lazy"
           />
           <div className={styles.heroInner}>
-            <div className="sp-etiqueta">Capacitación en idiomas para empresas</div>
-            <h1>
-              Desde 2006 ayudamos a equipos de trabajo a hablar, negociar y colaborar
-              con seguridad en otro idioma.
-            </h1>
+            <div className="sp-etiqueta">Quiénes somos</div>
+            <h1>20 años preparando compañías para operar en varios idiomas</h1>
             <p className="sp-hero-sub">
-              Nos encargamos de coordinar horarios, reponer sesiones y entregar
-              reportes, para que capacitar a su equipo en idiomas deje de ser un
-              pendiente y se convierta en un logro que pueda presentar a Dirección.
+              Trabajamos para que el idioma deje de ser una frontera dentro de las
+              empresas: que quien tenga algo que decir pueda decirlo, y que ninguna
+              compañía crezca menos de lo que podría por un idioma que no habla.
             </p>
-            <BotonContacto className={`sp-btn ${styles.ctaContorno}`}>{CTA}</BotonContacto>
             <SelloSTPS />
-            <div className={`sp-stats-row ${styles.cifras}`}>
-              {CIFRAS.map((c) => (
-                <div key={c.num} className="sp-stat">
-                  <span className="sp-icono sp-icono--sm sp-icono--rojo">
-                    <Icono nombre={c.icono} />
-                  </span>
-                  <span className="sp-stat-num">{c.num}</span>
-                  <span className="sp-stat-label">{c.label}</span>
-                </div>
-              ))}
-            </div>
           </div>
+          {/* Fuera de .heroInner: la caja va casi a todo lo ancho, no al del
+              texto. Ruta del video y del poster cuando el equipo pase el
+              archivo:
+                video="/video/hero-nosotros.mp4"
+                poster="/images/nosotros/hero-nosotros-poster.webp" */}
+          <HeroVideo />
         </section>
 
         {/* LOGOS */}
