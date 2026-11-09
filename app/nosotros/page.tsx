@@ -4,6 +4,8 @@ import BandaLogos from "@/app/components/BandaLogos";
 import CentroDeRecursos from "@/app/components/CentroDeRecursos";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
 import Icono from "@/app/components/Icono";
+import ProyectosVideo, { type CifraProyecto } from "@/app/components/proyectos/ProyectosVideo";
+import type { VideoProyecto } from "@/app/components/proyectos/CeldaVideo";
 import { TableroProgreso } from "@/app/components/SeccionEvidencia";
 import SelloSTPS from "@/app/components/SelloSTPS";
 // La lista de las seis páginas de idioma vive con la plantilla de equipo.
@@ -89,6 +91,34 @@ const DOLORES = [
     titulo: "«No buscamos el típico curso teórico»",
     descripcion:
       "Su equipo practica en el idioma lo que hace en su puesto: hablar con sus clientes, sus proveedores y su corporativo.",
+  },
+];
+
+/* Sección de proyectos. Los videos esperan su ID de YouTube y su portada
+   (public/images/proyectos/, WebP 16:9 de 1920×1080): mientras no tengan
+   `id`, cada celda se ve como estado vacío. */
+const VIDEOS_PROYECTOS: [VideoProyecto, VideoProyecto] = [{}, {}];
+
+/* Datos reales de proyectos del cliente, literales. */
+const CIFRAS_PROYECTOS: [CifraProyecto, CifraProyecto, CifraProyecto, CifraProyecto] = [
+  {
+    icono: "usuarios",
+    cifra: "50",
+    descriptor: "grupos presenciales simultáneos",
+    cliente: "Braskem Idesa",
+  },
+  { icono: "fabrica", cifra: "10 plantas", descriptor: "a la vez", cliente: "PepsiCo" },
+  {
+    icono: "globo",
+    cifra: "5 países",
+    descriptor: "al mismo tiempo, en línea en vivo",
+    cliente: "Bolloré Logistics",
+  },
+  {
+    icono: "usuarioCheck",
+    cifra: "+1,000",
+    descriptor: "personas evaluadas en su nivel de idioma",
+    cliente: "Grupo Modelo",
   },
 ];
 
@@ -410,6 +440,15 @@ export default function Nosotros() {
             </div>
           </div>
         </section>
+
+        {/* PROYECTOS: el título es provisional, hasta definir los videos. */}
+        <ProyectosVideo
+          id="proyectos"
+          titulo="Proyectos que no caben en un salón"
+          bajada="Algunos de los programas más retadores que hemos operado."
+          videos={VIDEOS_PROYECTOS}
+          cifras={CIFRAS_PROYECTOS}
+        />
 
         {/* METODOLOGÍA PACTO */}
         <section className="sp-seccion" id="metodologia">

@@ -1,0 +1,178 @@
+/* ProyectosVideo y su celda de video (CeldaVideo.tsx), que comparten módulo.
+
+   Las tarjetas de cifra son .sp-tarjeta: de aquí solo sale su disposición
+   interna. */
+
+/* ---------- Rejilla ----------
+   Las celdas de una fila se estiran al alto de la más alta. El video no: con
+   aspect-ratio, su `align-self: normal` se comporta como `start` y conserva el
+   16:9, así que es él quien marca el alto de la fila. */
+.rejilla {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+}
+
+@media (min-width: 601px) {
+  .rejilla {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .video {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 960px) {
+  .rejilla {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Tarjeta de cifra ----------
+   Contenido apilado desde arriba: icono, cifra, descriptor, filete y cliente. */
+.cifra {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 28px 24px;
+}
+
+/* No son clicables: de .sp-tarjeta se quedan la superficie (fondo, borde y
+   radio), no su hover, que las haría pasar por interactivas y competiría con
+   el video, la única celda que se puede pulsar. */
+.cifra:hover {
+  border-color: var(--color-border);
+  transform: none;
+  box-shadow: none;
+}
+
+.cifraNum {
+  margin: 18px 0 8px;
+  font-size: var(--text-title-md);
+  font-weight: var(--weight-black);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-navy);
+}
+
+.cifraDescriptor {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-ink-2);
+}
+
+/* El filete es el borde de arriba del nombre del cliente, a todo el ancho de
+   la tarjeta. */
+.cifraCliente {
+  align-self: stretch;
+  margin: 16px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border);
+  font-size: 14px;
+  font-weight: var(--weight-bold);
+  line-height: 1.4;
+  color: var(--color-navy);
+}
+
+/* ---------- Celda de video ---------- */
+
+.celdaVideo {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-grande);
+  background: var(--color-navy);
+}
+
+/* El anillo de foco va en la celda y no en el botón: el overflow de la celda
+   recortaría el del botón. Mismo anillo que .sp-btn. */
+.celdaVideo:has(.botonPlay:focus-visible) {
+  outline: 2px solid var(--color-navy);
+  outline-offset: 3px;
+}
+
+.portada {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* El botón cubre toda la celda, así que cualquier punto de la portada
+   reproduce; el círculo es solo la señal. */
+.botonPlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.botonPlay:focus-visible {
+  outline: none;
+}
+
+.play {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-pildora);
+  background: var(--color-red);
+  color: var(--color-white);
+  box-shadow: var(--shadow-panel);
+}
+
+.play svg {
+  width: 26px;
+  height: 26px;
+  /* El triángulo pesa a la izquierda: se corre un poco para verse centrado. */
+  margin-left: 3px;
+}
+
+.botonPlay:hover .play,
+.botonPlay:focus-visible .play {
+  background: var(--color-red-dark);
+  transform: scale(1.06);
+}
+
+.iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Sin video todavía: la misma caja 16:9, en el gris del placeholder de imagen
+   y con el icono apagado. */
+.celdaVacia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-border);
+}
+
+.playVacio {
+  color: var(--color-muted);
+}
+
+.playVacio svg {
+  width: 40px;
+  height: 40px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .botonPlay:hover .play,
+  .botonPlay:focus-visible .play {
+    transform: none;
+  }
+}
