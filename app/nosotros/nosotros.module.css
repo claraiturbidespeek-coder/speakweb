@@ -423,6 +423,12 @@
   margin-bottom: 56px;
 }
 
+/* Con el tablero oculto (MOSTRAR_TABLERO en page.tsx), la escalera es lo
+   último de la sección y el margen de arriba sobraría: se suma al relleno. */
+.pactoSinTablero {
+  margin-bottom: 0;
+}
+
 .escalon,
 .marcador {
   display: none;
@@ -1139,6 +1145,21 @@
   font-size: 17px;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.85);
+}
+
+/* El Centro de Recursos (.sp-recursos) es una tarjeta off-white que en las
+   demás páginas va después de una sección blanca: el relleno de abajo de esa
+   sección deja blanco encima de la tarjeta, un relleno de sección (88px, 56px
+   en móvil). Aquí va justo después de la franja roja del cierre y quedaba
+   pegada a ella; el margen le devuelve ese mismo aire. */
+.recursosTrasCierre {
+  margin-top: var(--space-section);
+}
+
+@media (max-width: 600px) {
+  .recursosTrasCierre {
+    margin-top: var(--space-section-mobile);
+  }
 }
 
 /* ---------- Isotipo decorativo ---------- */

@@ -74,6 +74,13 @@ const MOSTRAR_OBJECIONES = false;
    y las preguntas frecuentes recuperan su relleno de arriba (.faqTrasMetodologia). */
 const MOSTRAR_AVISO = false;
 
+/* Oculto mientras tanto: el bloque del tablero de Trazabilidad al final de
+   #metodologia (la columna de texto con la etiqueta de ejemplo, el h3 y su
+   botón, y el panel rotativo). Para que vuelva a verse, ponerlo en true: el
+   código, los datos (TABLERO) y los estilos siguen en su sitio, y la escalera
+   recupera su margen de abajo (.pactoSinTablero deja de aplicarse). */
+const MOSTRAR_TABLERO = false;
+
 const DOLORES = [
   {
     titulo: "«Mi directora me está pidiendo el estatus»",
@@ -558,7 +565,11 @@ export default function Nosotros() {
                 párrafo, y cada columna sube un escalón más que la anterior.
                 La bolita va fuera de la lista, sobre las columnas. Por debajo
                 de 960px no hay peldaños: la lista lleva la letra al lado. */}
-            <div className={`${styles.pacto} reveal`}>
+            {/* Sin el tablero, la escalera cierra la sección: sin margen de
+                abajo, para que solo quede el relleno de la sección. */}
+            <div
+              className={`${styles.pacto}${MOSTRAR_TABLERO ? "" : ` ${styles.pactoSinTablero}`} reveal`}
+            >
               <ol className={styles.pasos}>
                 {PACTO.map((p) => (
                   <li key={p.letra} className={styles.paso}>
@@ -580,26 +591,28 @@ export default function Nosotros() {
 
             {/* Con `rotativo` el tablero no pinta su etiqueta de ejemplo: va
                 aquí, encabezando la columna de texto. */}
-            <div className={styles.dosColumnas}>
-              <div className={`${styles.panelCierre} reveal`}>
-                <p className={`sp-etiqueta-ejemplo ${styles.ejemplo}`}>
-                  Ejemplo de reporte · Datos ilustrativos
-                </p>
-                <h3>
-                  ¿Así quiere ver el avance de su equipo? Le proponemos un programa a la
-                  medida.
-                </h3>
-                <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
+            {MOSTRAR_TABLERO ? (
+              <div className={styles.dosColumnas}>
+                <div className={`${styles.panelCierre} reveal`}>
+                  <p className={`sp-etiqueta-ejemplo ${styles.ejemplo}`}>
+                    Ejemplo de reporte · Datos ilustrativos
+                  </p>
+                  <h3>
+                    ¿Así quiere ver el avance de su equipo? Le proponemos un programa a la
+                    medida.
+                  </h3>
+                  <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
+                </div>
+                <TableroProgreso
+                  amplio
+                  rotativo
+                  className={styles.panel}
+                  titulo="Así se ve la Trazabilidad"
+                  etiqueta="Ejemplo de reporte de Trazabilidad de S-Peak, con datos ilustrativos"
+                  tablero={TABLERO}
+                />
               </div>
-              <TableroProgreso
-                amplio
-                rotativo
-                className={styles.panel}
-                titulo="Así se ve la Trazabilidad"
-                etiqueta="Ejemplo de reporte de Trazabilidad de S-Peak, con datos ilustrativos"
-                tablero={TABLERO}
-              />
-            </div>
+            ) : null}
           </div>
         </section>
 
@@ -676,8 +689,9 @@ export default function Nosotros() {
           </div>
         </section>
 
-        {/* CENTRO DE RECURSOS */}
-        <CentroDeRecursos articulos={ARTICULOS} />
+        {/* CENTRO DE RECURSOS: aquí sigue a la franja roja del cierre, no a una
+            sección blanca, y necesita su propio aire arriba. */}
+        <CentroDeRecursos articulos={ARTICULOS} className={styles.recursosTrasCierre} />
       </main>
 
       {/* Etiqueta nativa, no next/script: con `afterInteractive` el JSON-LD se
