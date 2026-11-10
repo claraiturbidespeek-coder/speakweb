@@ -45,6 +45,8 @@ export type CeldaProyecto = { area: AreaProyecto } & (
 );
 
 type Props = {
+  /* Antetítulo opcional sobre el H2, con el patrón .sp-eyebrow. */
+  eyebrow?: string;
   titulo: string;
   bajada: string;
   celdas: CeldaProyecto[];
@@ -117,11 +119,19 @@ function TarjetaTestimonio({
   );
 }
 
-export default function ProyectosVideo({ titulo, bajada, celdas, id, className }: Props) {
+export default function ProyectosVideo({
+  eyebrow,
+  titulo,
+  bajada,
+  celdas,
+  id,
+  className,
+}: Props) {
   return (
     <section className={`sp-seccion${className ? ` ${className}` : ""}`} id={id}>
       <div className="sp-inner">
         <div className="sp-seccion-top reveal">
+          {eyebrow ? <div className={`sp-eyebrow ${styles.eyebrow}`}>{eyebrow}</div> : null}
           <h2>{titulo}</h2>
           <p>{bajada}</p>
         </div>

@@ -358,3 +358,9 @@
     transform: none;
   }
 }
+
+/* El antetítulo (.sp-eyebrow) va centrado, como el encabezado: el patrón es
+   flex y alinea a la izquierda. */
+.eyebrow {
+  justify-content: center;
+}

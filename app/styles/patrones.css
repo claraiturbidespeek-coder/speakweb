@@ -1588,6 +1588,84 @@
   color: var(--color-ink-2);
 }
 
+/* ========== Bloque de preguntas frecuentes ==========
+   El acordeón a la izquierda y la tarjeta navy de cierre (.sp-cta-card) a la
+   derecha. Nace en la home (.faqGrid, .faqTitle… en home.module.css) y sube
+   aquí cuando lo pide /nosotros/; lo monta PreguntasFrecuentes.tsx. Los
+   valores son los que tenía en la home. */
+
+.sp-faq-bloque {
+  display: grid;
+  grid-template-columns: 65% 30%;
+  gap: 60px;
+  align-items: start;
+}
+
+.sp-faq-bloque-titulo {
+  margin: 0 0 14px;
+  font-size: var(--text-title-md);
+  font-weight: var(--weight-bold);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--color-navy);
+}
+
+.sp-faq-bloque-bajada {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-navy);
+}
+
+/* La rejilla reparte 65/30, así que sin tope las respuestas llegarían a
+   884px: unos 126 caracteres a 14px. Se quedan en 760px. */
+.sp-faq-bloque-lista {
+  margin-top: 28px;
+  max-width: 760px;
+}
+
+.sp-faq-bloque-respuesta p {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--color-navy);
+}
+
+.sp-faq-bloque-respuesta p:last-child {
+  margin-bottom: 0;
+}
+
+/* base.css deja los enlaces sin subrayado y con el color del texto: dentro de
+   una respuesta no se distinguirían. */
+.sp-faq-bloque-respuesta a {
+  color: var(--color-red);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* La tipografía de la tarjeta: ocupa una columna entera, no un pie de
+   párrafo. */
+.sp-faq-bloque-tarjeta-titulo {
+  margin: 0 0 12px;
+  font-size: var(--text-title-md);
+  font-weight: var(--weight-black);
+  letter-spacing: -0.025em;
+  color: var(--color-white);
+}
+
+.sp-faq-bloque-tarjeta-texto {
+  margin: 0 0 22px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media (max-width: 960px) {
+  .sp-faq-bloque {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
 /* ========== Volver arriba ==========
    Nace de /idioma/ingles-para-empresas/, la única página que lo tenía.
    Ahora lo monta VolverArriba.tsx una vez en el layout raíz, así que pasa a

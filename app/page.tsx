@@ -6,6 +6,7 @@ import BotonContacto from "@/app/components/contacto/BotonContacto";
 import HeroHomeMedia from "@/app/components/HeroHomeMedia";
 import SelloSTPS from "@/app/components/SelloSTPS";
 import Icono from "@/app/components/Icono";
+import PreguntasFrecuentes from "@/app/components/PreguntasFrecuentes";
 import styles from "./home.module.css";
 import { atributosDimension } from "@/lib/dimensiones";
 import { imagenResponsiva } from "@/lib/imagenes";
@@ -138,6 +139,13 @@ const MOSAICO = [
     },
   ],
 ];
+
+/* La tarjeta navy al lado de las preguntas frecuentes. */
+const TARJETA_FAQ = {
+  titulo: "¿Quedan Dudas?",
+  texto: "Un asesor las resuelve y le prepara una cotización a la medida de su equipo.",
+  boton: "Solicite una Cotización",
+};
 
 const FAQ = [
   {
@@ -587,45 +595,14 @@ export default function Home() {
       </section>
 
       {/* 10. FAQ */}
-      <section className="sp-seccion" id="faq">
-        <div className={`sp-inner ${styles.faqGrid}`}>
-          <div>
-            <h2 className={styles.faqTitle}>
-              Preguntas frecuentes sobre nuestros programas de idiomas para empresas
-            </h2>
-            <p className={styles.lead}>
-              Hemos recopilado las dudas más comunes de nuestros clientes para
-              brindarle claridad desde el primer momento.
-            </p>
-            <div className={`sp-faq-lista ${styles.faqList}`}>
-              {FAQ.map((f) => (
-                <details key={f.pregunta} className="sp-faq-item" name="faq-home">
-                  <summary className="sp-faq-pregunta">
-                    {f.pregunta}
-                    <span className="sp-faq-icono">+</span>
-                  </summary>
-                  <div className={`sp-faq-respuesta ${styles.faqAnswer}`}>
-                    {f.respuesta.map((parrafo) => (
-                      <p key={parrafo}>{parrafo}</p>
-                    ))}
-                  </div>
-                </details>
-              ))}
-            </div>
-          </div>
-
-          <aside className="sp-cta-card">
-            <h3 className={styles.faqAsideTitle}>¿Quedan Dudas?</h3>
-            <p className={styles.faqAsideText}>
-              Un asesor las resuelve y le prepara una cotización a la medida de su
-              equipo.
-            </p>
-            <BotonContacto className="sp-btn sp-btn--rojo">
-              Solicite una Cotización
-            </BotonContacto>
-          </aside>
-        </div>
-      </section>
+      <PreguntasFrecuentes
+        id="faq"
+        titulo="Preguntas frecuentes sobre nuestros programas de idiomas para empresas"
+        bajada="Hemos recopilado las dudas más comunes de nuestros clientes para brindarle claridad desde el primer momento."
+        preguntas={FAQ}
+        nombre="faq-home"
+        tarjeta={TARJETA_FAQ}
+      />
 
       {/* 11. Centro de Recursos */}
       <CentroDeRecursos className={styles.recursosCompacto} />

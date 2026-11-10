@@ -182,8 +182,10 @@
   text-align: center;
 }
 
+/* Título, modalidades e idiomas, en ese orden y con la misma separación
+   entre los tres: 24px. */
 .presentacionLinea {
-  margin: 0 auto 32px;
+  margin: 0 auto 24px;
   font-size: 20px;
   font-weight: var(--weight-semibold);
   line-height: 1.5;
@@ -201,7 +203,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  margin: 0 0 20px;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
@@ -222,7 +224,7 @@
 }
 
 .modalidades {
-  margin: 0;
+  margin: 0 0 24px;
   font-size: 15px;
   line-height: 1.6;
   color: var(--color-ink-2);
@@ -287,6 +289,18 @@
   line-height: 1.15;
   letter-spacing: -0.025em;
   color: var(--color-navy);
+}
+
+/* El título de la segunda sub-sección. Mismo tratamiento que los demás h3 de
+   bloque de la página (.panelCierre h3, .confianzaInner h3), en navy. */
+.lectura h3 {
+  margin-bottom: 18px;
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-navy);
+  text-wrap: balance;
 }
 
 .lectura p {
@@ -396,6 +410,12 @@
 
 /* ---------- Metodología PACTO ---------- */
 
+/* El antetítulo (.sp-eyebrow) sobre un encabezado centrado (.sp-seccion-top):
+   el patrón es flex y alinea a la izquierda. */
+.eyebrowCentrado {
+  justify-content: center;
+}
+
 /* Los pasos: una lista ordenada (.pasos) con un paso por <li>. Desde 960px
    cada paso es una columna con su peldaño (.escalon, un dibujo oculto a
    lectores de pantalla), su nombre y su párrafo, en ese orden y con la misma
@@ -411,8 +431,8 @@
      --pacto-hueco   el hueco entre columnas;
      --pacto-grosor  el grosor de cada peldaño;
      --pacto-subida  lo que sube cada columna sobre la anterior;
-     --pacto-techo   el aire sobre la columna más alta, para el arco de la
-                     bolita. */
+     --pacto-techo   el aire sobre la columna más alta, para el arco del
+                     isotipo. */
 .pacto {
   --pacto-hueco: 16px;
   --pacto-grosor: 64px;
@@ -478,7 +498,7 @@
   /* Cinco columnas alineadas arriba. El desplazamiento es un margen superior:
      la columna de O no lleva ninguno y cada columna anterior lleva un escalón
      más, así que O queda 192px por encima de P sea cual sea el largo de los
-     textos. El relleno de arriba deja sitio a la bolita sobre O. */
+     textos. El relleno de arriba deja sitio al isotipo sobre O. */
   .pacto {
     position: relative;
   }
@@ -540,23 +560,27 @@
     margin-bottom: 8px;
   }
 
-  /* La bolita, en tres capas porque cada una lleva su propio movimiento:
+  /* El isotipo que brinca, en capas porque cada una lleva su propio
+     movimiento:
        .marcador         una caja de una columna de ancho y alto cero, sobre
                          la cara de arriba del peldaño de P. Lleva el avance
                          horizontal: una columna más un hueco por peldaño (el
                          porcentaje es el de su propio ancho, que es el de una
                          columna);
-       .bolita           la altura: un salto por peldaño, y el arco;
-       .bolita::after    el punto rojo, apoyado en la cara de arriba del
-                         peldaño, y el achatado y el estirón al saltar.
-     Quieta —movimiento reducido— está en el peldaño de P.
+       .bolita           la altura: un salto por peldaño, el arco y el rebote;
+       .isotipo          el isotipo de S-Peak tal cual, sin recolorear ni
+                         deformar: se inclina un poco en el vuelo y, quieto,
+                         sigue el vaivén del peldaño en el que está.
+     Quieto (movimiento reducido) está en el peldaño de P.
 
      Su posición: el techo, más los cuatro escalones que baja la columna de P,
      más un grosor de peldaño, porque las animaciones la suben un grosor
      (translate) hasta la cara de arriba.
 
-     El anillo blanco la separa del peldaño: sobre el peldaño activo, que es
-     rojo, el punto se fundiría con él en una sola mancha. */
+     El isotipo mide 36px de ancho (unos 21 de alto), el tamaño de la bolita
+     roja que había con su anillo. Se apoya sobre la cara del peldaño, centrado
+     y lejos de sus esquinas redondeadas, así que su fondo es el blanco de la
+     página y no se funde con el peldaño rojo. */
   .marcador {
     display: block;
     position: absolute;
@@ -573,52 +597,54 @@
     left: 50%;
   }
 
-  .bolita::after {
-    content: "";
+  .isotipo {
     position: absolute;
     bottom: 0;
-    left: -9px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: var(--color-red);
-    box-shadow: 0 0 0 3px var(--color-white), var(--shadow-card);
+    left: -18px;
+    display: block;
+    width: 36px;
+    height: auto;
+    max-width: none;
     transform-origin: 50% 100%;
   }
 }
 
 /* ---------- Animación de la escalera ----------
-   Un ciclo de 9 s en bucle, independiente del scroll: la bolita brinca de P a
-   O, se queda en O y se funde para volver a aparecer en P. No baja la
+   Un ciclo de 9 s en bucle, independiente del scroll: el isotipo brinca de P
+   a O, se queda en O y se funde para volver a aparecer en P. No baja la
    escalera de vuelta. Solo desde 960px y sin movimiento reducido; si no, todo
-   quieto: la bolita en P y ningún peldaño en rojo.
+   quieto: el isotipo en P y ningún peldaño en rojo.
 
    Tiempos (todas las animaciones de 9 s comparten estos porcentajes, y por eso
-   el peldaño se enciende justo cuando la bolita aterriza):
+   el peldaño se enciende justo cuando el isotipo aterriza):
      0–0.3 s      aparece en P (fundido)
-     0.8 s        primer salto; cada salto dura 0.6 s y tras aterrizar la
-                  bolita se queda 0.6 s en el peldaño antes del siguiente
+     0.8 s        primer salto; cada salto dura 0.6 s y tras aterrizar el
+                  isotipo se queda 0.6 s en el peldaño antes del siguiente
      5.0 s        aterriza en O y se queda
      8.4–9 s      se funde y el ciclo vuelve a empezar en P
 
-   El brinco, como una pelota de verdad:
+   El brinco:
      - pacto-recorrido lleva el avance horizontal, a velocidad constante del
-       peldaño de salida al de llegada; quieta entre saltos.
+       peldaño de salida al de llegada; quieto entre saltos.
      - pacto-arco lleva la altura: sube frenando (cuadrática de salida) hasta
        el punto más alto, a mitad de camino y 40px por encima del peldaño de
        llegada, y cae acelerando (cuadrática de entrada) hasta posarse en él.
-       Avance constante y altura cuadrática dan un arco de parábola.
-     - pacto-forma estira la bolita al despegar y justo antes de aterrizar, y
-       la achata al tocar el peldaño, con un pequeño rebote de vuelta a su
-       forma. Escala desde la base, así que no se separa del peldaño.
+       Avance constante y altura cuadrática dan un arco de parábola. Tras
+       aterrizar da un rebote de 6px (0.25 s).
+     - pacto-giro inclina el isotipo 8° hacia delante a mitad del vuelo y lo
+       endereza al aterrizar. No se deforma nunca.
+     - pacto-apoyo lo mantiene sobre la cara del peldaño mientras reposa:
+       repite el vaivén de ese peldaño (muestreado cada 0.1 s), así que no se
+       separa ni se hunde cuando el peldaño flota. Para que sea posible, el
+       vaivén dura 4.5 s, la mitad exacta del ciclo, y así cada peldaño está
+       siempre en la misma fase en el mismo momento del ciclo.
 
-   Los peldaños flotan 3px arriba y abajo en un vaivén lento, cada uno con
-   1/5 de ciclo de retraso sobre el anterior para que no suban a la vez; la
-   sombra se abre al subir y se recoge al bajar. La bolita aterriza en la
-   posición media del vaivén, así que como mucho queda 1.5px por encima o por
-   debajo de la cara del peldaño.
+   Los peldaños flotan 3px arriba y abajo en un vaivén lento de 4.5 s, cada
+   uno con 1/5 de ciclo de retraso sobre el anterior para que no suban a la
+   vez; la sombra se abre al subir y se recoge al bajar. El aterrizaje lo
+   marca solo el rebote.
 
-   Los keyframes de la bolita y de los peldaños están escritos a partir de esa
+   Los keyframes del isotipo y de los peldaños están escritos a partir de esa
    tabla de tiempos: si se cambia un tiempo, hay que recalcular todos. */
 @media (min-width: 960px) and (prefers-reduced-motion: no-preference) {
   .marcador {
@@ -631,34 +657,36 @@
     animation: pacto-arco 9s linear infinite;
   }
 
-  .bolita::after {
-    animation: pacto-forma 9s linear infinite;
+  .isotipo {
+    animation:
+      pacto-giro 9s linear infinite,
+      pacto-apoyo 9s linear infinite;
   }
 
   .escalon {
     animation:
-      pacto-flotar 2.5s ease-in-out infinite alternate,
+      pacto-flotar 2.25s ease-in-out infinite alternate,
       pacto-encender-p 9s linear infinite;
   }
 
   .paso:nth-child(2) .escalon {
     animation-name: pacto-flotar, pacto-encender-a;
-    animation-delay: -1s, 0s;
+    animation-delay: -0.9s, 0s;
   }
 
   .paso:nth-child(3) .escalon {
     animation-name: pacto-flotar, pacto-encender-c;
-    animation-delay: -2s, 0s;
+    animation-delay: -1.8s, 0s;
   }
 
   .paso:nth-child(4) .escalon {
     animation-name: pacto-flotar, pacto-encender-t;
-    animation-delay: -3s, 0s;
+    animation-delay: -2.7s, 0s;
   }
 
   .paso:nth-child(5) .escalon {
     animation-name: pacto-flotar, pacto-encender-o;
-    animation-delay: -4s, 0s;
+    animation-delay: -3.6s, 0s;
   }
 }
 
@@ -735,6 +763,16 @@
 
   15.556% {
     translate: 0 calc(-1 * var(--pacto-subida));
+    animation-timing-function: cubic-bezier(0.333, 0.667, 0.667, 1);
+  }
+
+  16.889% {
+    translate: 0 calc(-1 * var(--pacto-subida) - 6px);
+    animation-timing-function: cubic-bezier(0.333, 0, 0.667, 0.333);
+  }
+
+  18.333% {
+    translate: 0 calc(-1 * var(--pacto-subida));
   }
 
   22.222% {
@@ -748,6 +786,16 @@
   }
 
   28.889% {
+    translate: 0 calc(-2 * var(--pacto-subida));
+    animation-timing-function: cubic-bezier(0.333, 0.667, 0.667, 1);
+  }
+
+  30.222% {
+    translate: 0 calc(-2 * var(--pacto-subida) - 6px);
+    animation-timing-function: cubic-bezier(0.333, 0, 0.667, 0.333);
+  }
+
+  31.667% {
     translate: 0 calc(-2 * var(--pacto-subida));
   }
 
@@ -763,6 +811,16 @@
 
   42.222% {
     translate: 0 calc(-3 * var(--pacto-subida));
+    animation-timing-function: cubic-bezier(0.333, 0.667, 0.667, 1);
+  }
+
+  43.556% {
+    translate: 0 calc(-3 * var(--pacto-subida) - 6px);
+    animation-timing-function: cubic-bezier(0.333, 0, 0.667, 0.333);
+  }
+
+  45% {
+    translate: 0 calc(-3 * var(--pacto-subida));
   }
 
   48.889% {
@@ -775,148 +833,374 @@
     animation-timing-function: cubic-bezier(0.333, 0, 0.667, 0.333);
   }
 
-  55.556%,
+  55.556% {
+    translate: 0 calc(-4 * var(--pacto-subida));
+    animation-timing-function: cubic-bezier(0.333, 0.667, 0.667, 1);
+  }
+
+  56.889% {
+    translate: 0 calc(-4 * var(--pacto-subida) - 6px);
+    animation-timing-function: cubic-bezier(0.333, 0, 0.667, 0.333);
+  }
+
+  58.333%,
   100% {
     translate: 0 calc(-4 * var(--pacto-subida));
   }
+
 }
 
-@keyframes pacto-forma {
+@keyframes pacto-giro {
   0% {
-    scale: 1 1;
+    rotate: 0deg;
   }
 
   8.889% {
-    scale: 1 1;
+    rotate: 0deg;
+    animation-timing-function: ease-out;
   }
 
-  9.778% {
-    scale: 0.82 1.22;
-  }
-
-  11.111% {
-    scale: 1 1;
-  }
-
-  14.444% {
-    scale: 1 1;
-  }
-
-  15.222% {
-    scale: 0.88 1.14;
+  12.222% {
+    rotate: 8deg;
+    animation-timing-function: ease-in;
   }
 
   15.556% {
-    scale: 1.3 0.7;
-  }
-
-  16.667% {
-    scale: 0.94 1.06;
-  }
-
-  17.778% {
-    scale: 1 1;
+    rotate: 0deg;
   }
 
   22.222% {
-    scale: 1 1;
+    rotate: 0deg;
+    animation-timing-function: ease-out;
   }
 
-  23.111% {
-    scale: 0.82 1.22;
-  }
-
-  24.444% {
-    scale: 1 1;
-  }
-
-  27.778% {
-    scale: 1 1;
-  }
-
-  28.556% {
-    scale: 0.88 1.14;
+  25.556% {
+    rotate: 8deg;
+    animation-timing-function: ease-in;
   }
 
   28.889% {
-    scale: 1.3 0.7;
-  }
-
-  30% {
-    scale: 0.94 1.06;
-  }
-
-  31.111% {
-    scale: 1 1;
+    rotate: 0deg;
   }
 
   35.556% {
-    scale: 1 1;
+    rotate: 0deg;
+    animation-timing-function: ease-out;
   }
 
-  36.444% {
-    scale: 0.82 1.22;
-  }
-
-  37.778% {
-    scale: 1 1;
-  }
-
-  41.111% {
-    scale: 1 1;
-  }
-
-  41.889% {
-    scale: 0.88 1.14;
+  38.889% {
+    rotate: 8deg;
+    animation-timing-function: ease-in;
   }
 
   42.222% {
-    scale: 1.3 0.7;
-  }
-
-  43.333% {
-    scale: 0.94 1.06;
-  }
-
-  44.444% {
-    scale: 1 1;
+    rotate: 0deg;
   }
 
   48.889% {
-    scale: 1 1;
+    rotate: 0deg;
+    animation-timing-function: ease-out;
   }
 
-  49.778% {
-    scale: 0.82 1.22;
-  }
-
-  51.111% {
-    scale: 1 1;
-  }
-
-  54.444% {
-    scale: 1 1;
-  }
-
-  55.222% {
-    scale: 0.88 1.14;
+  52.222% {
+    rotate: 8deg;
+    animation-timing-function: ease-in;
   }
 
   55.556% {
-    scale: 1.3 0.7;
-  }
-
-  56.667% {
-    scale: 0.94 1.06;
-  }
-
-  57.778% {
-    scale: 1 1;
+    rotate: 0deg;
   }
 
   100% {
-    scale: 1 1;
+    rotate: 0deg;
   }
+}
+
+@keyframes pacto-apoyo {
+  0% {
+    translate: 0 1.5px;
+  }
+
+  1.111% {
+    translate: 0 1.49px;
+  }
+
+  2.222% {
+    translate: 0 1.45px;
+  }
+
+  3.333% {
+    translate: 0 1.39px;
+  }
+
+  4.444% {
+    translate: 0 1.31px;
+  }
+
+  5.556% {
+    translate: 0 1.2px;
+  }
+
+  6.667% {
+    translate: 0 1.06px;
+  }
+
+  7.778% {
+    translate: 0 0.89px;
+  }
+
+  8.889% {
+    translate: 0 0.71px;
+  }
+
+  15.556% {
+    translate: 0 -1.5px;
+  }
+
+  16.667% {
+    translate: 0 -1.47px;
+  }
+
+  17.778% {
+    translate: 0 -1.43px;
+  }
+
+  18.889% {
+    translate: 0 -1.35px;
+  }
+
+  20% {
+    translate: 0 -1.26px;
+  }
+
+  21.111% {
+    translate: 0 -1.13px;
+  }
+
+  22.222% {
+    translate: 0 -0.98px;
+  }
+
+  28.889% {
+    translate: 0 1.49px;
+  }
+
+  30% {
+    translate: 0 1.5px;
+  }
+
+  31.111% {
+    translate: 0 1.49px;
+  }
+
+  32.222% {
+    translate: 0 1.45px;
+  }
+
+  33.333% {
+    translate: 0 1.39px;
+  }
+
+  34.444% {
+    translate: 0 1.31px;
+  }
+
+  35.556% {
+    translate: 0 1.2px;
+  }
+
+  42.222% {
+    translate: 0 -1.43px;
+  }
+
+  43.333% {
+    translate: 0 -1.47px;
+  }
+
+  44.444% {
+    translate: 0 -1.5px;
+  }
+
+  45.556% {
+    translate: 0 -1.5px;
+  }
+
+  46.667% {
+    translate: 0 -1.47px;
+  }
+
+  47.778% {
+    translate: 0 -1.43px;
+  }
+
+  48.889% {
+    translate: 0 -1.35px;
+  }
+
+  55.556% {
+    translate: 0 1.31px;
+  }
+
+  56.667% {
+    translate: 0 1.39px;
+  }
+
+  57.778% {
+    translate: 0 1.45px;
+  }
+
+  58.889% {
+    translate: 0 1.49px;
+  }
+
+  60% {
+    translate: 0 1.5px;
+  }
+
+  61.111% {
+    translate: 0 1.49px;
+  }
+
+  62.222% {
+    translate: 0 1.45px;
+  }
+
+  63.333% {
+    translate: 0 1.39px;
+  }
+
+  64.444% {
+    translate: 0 1.31px;
+  }
+
+  65.556% {
+    translate: 0 1.2px;
+  }
+
+  66.667% {
+    translate: 0 1.06px;
+  }
+
+  67.778% {
+    translate: 0 0.89px;
+  }
+
+  68.889% {
+    translate: 0 0.71px;
+  }
+
+  70% {
+    translate: 0 0.5px;
+  }
+
+  71.111% {
+    translate: 0 0.29px;
+  }
+
+  72.222% {
+    translate: 0 0.06px;
+  }
+
+  73.333% {
+    translate: 0 -0.17px;
+  }
+
+  74.444% {
+    translate: 0 -0.4px;
+  }
+
+  75.556% {
+    translate: 0 -0.61px;
+  }
+
+  76.667% {
+    translate: 0 -0.8px;
+  }
+
+  77.778% {
+    translate: 0 -0.98px;
+  }
+
+  78.889% {
+    translate: 0 -1.13px;
+  }
+
+  80% {
+    translate: 0 -1.26px;
+  }
+
+  81.111% {
+    translate: 0 -1.35px;
+  }
+
+  82.222% {
+    translate: 0 -1.43px;
+  }
+
+  83.333% {
+    translate: 0 -1.47px;
+  }
+
+  84.444% {
+    translate: 0 -1.5px;
+  }
+
+  85.556% {
+    translate: 0 -1.5px;
+  }
+
+  86.667% {
+    translate: 0 -1.47px;
+  }
+
+  87.778% {
+    translate: 0 -1.43px;
+  }
+
+  88.889% {
+    translate: 0 -1.35px;
+  }
+
+  90% {
+    translate: 0 -1.26px;
+  }
+
+  91.111% {
+    translate: 0 -1.13px;
+  }
+
+  92.222% {
+    translate: 0 -0.98px;
+  }
+
+  93.333% {
+    translate: 0 -0.8px;
+  }
+
+  94.444% {
+    translate: 0 -0.61px;
+  }
+
+  95.556% {
+    translate: 0 -0.4px;
+  }
+
+  96.667% {
+    translate: 0 -0.17px;
+  }
+
+  97.778% {
+    translate: 0 0.06px;
+  }
+
+  98.889% {
+    translate: 0 0.29px;
+  }
+
+  100% {
+    translate: 0 0.5px;
+  }
+
 }
 
 @keyframes pacto-encender-p {
@@ -1045,13 +1329,6 @@
 /* ---------- Si algo se complica ---------- */
 
 /* Sección de ancho completo en navy, con el texto claro. */
-/* Con el aviso oculto (MOSTRAR_AVISO en page.tsx), las preguntas frecuentes
-   van justo después de la metodología, sobre el mismo fondo: sin relleno de
-   arriba, para que entre las dos quede un solo relleno de sección y no dos. */
-.faqTrasMetodologia {
-  padding-top: 0;
-}
-
 .aviso {
   background: var(--color-navy);
   border-radius: 0;
@@ -1099,20 +1376,98 @@
   margin: 0;
 }
 
-/* ---------- Preguntas frecuentes ---------- */
+/* ---------- Valores ----------
+   Fondo navy a todo lo ancho, texto en claro. Encabezado centrado
+   (.sp-seccion-top) y cuatro tarjetas: cuatro columnas desde 960px, dos en
+   tableta y una en móvil.
 
-.faqLista {
-  max-width: 860px;
+   Contraste sobre el navy (#1a3c4d), WCAG AA:
+     - H2 en blanco: 11.7:1; títulos de las tarjetas, 9.5:1 sobre su
+       superficie.
+     - Párrafos en blanco al 80 %, como los del aviso: 8.1:1 sobre el navy y
+       6.8:1 sobre la superficie de las tarjetas.
+     - El eyebrow no puede ir en el rojo del patrón (--color-red, 1.8:1; ni
+       --color-red-light, 2.6:1): el texto va en blanco y la raya de
+       .sp-eyebrow::before se queda roja, que es decorativa.
+     - Los iconos, en blanco sobre la pastilla de .sp-icono--claro. */
+.valores {
+  background: var(--color-navy);
+  border-radius: 0;
+}
+
+.valoresTop h2 {
+  margin-bottom: 0;
+  color: var(--color-white);
+}
+
+.valoresEyebrow {
+  justify-content: center;
+  color: var(--color-white);
+}
+
+/* Las tarjetas, en el contenedor normal de la página (el mismo ancho y el
+   mismo aire lateral que las demás secciones). Desde tableta, todas las filas
+   del alto de la más alta (grid-auto-rows: 1fr): las cuatro tarjetas miden
+   lo mismo también cuando van en dos filas. En móvil, una columna con su alto
+   natural. */
+.valoresLista {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  max-width: var(--container-max);
   margin: 0 auto;
+  padding: 0;
+  list-style: none;
 }
 
-/* base.css deja los enlaces sin subrayado y con el color del texto: dentro de
-   una respuesta no se distinguirían. */
-.faqRespuesta a {
-  color: var(--color-red);
-  text-decoration: underline;
-  text-underline-offset: 2px;
+@media (min-width: 600px) {
+  .valoresLista {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+  }
 }
+
+@media (min-width: 960px) {
+  .valoresLista {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* La superficie es la de las tarjetas sobre fondo oscuro del sistema
+   (.sp-testi-card): blanco al 7 % y borde al 10 %, radio grande. Por dentro,
+   de arriba abajo: icono (.sp-icono--claro, la variante del sistema para
+   fondo oscuro), título y párrafo. */
+.valor {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--space-inset);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-grande);
+}
+
+.valor :global(.sp-icono) {
+  margin-bottom: 20px;
+}
+
+.valor h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: var(--weight-bold);
+  line-height: 1.3;
+  color: var(--color-white);
+}
+
+.valor p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ---------- Preguntas frecuentes ----------
+   El bloque es PreguntasFrecuentes.tsx, con su estilo en patrones.css. */
 
 /* ---------- CTA final ---------- */
 

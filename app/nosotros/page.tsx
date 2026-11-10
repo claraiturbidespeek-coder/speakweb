@@ -8,6 +8,8 @@ import { TableroProgreso } from "@/app/components/SeccionEvidencia";
 import SelloSTPS from "@/app/components/SelloSTPS";
 // La lista de las seis páginas de idioma vive con la plantilla de equipo.
 import { IDIOMAS } from "@/app/equipo/tipos";
+import Icono from "@/app/components/Icono";
+import PreguntasFrecuentes from "@/app/components/PreguntasFrecuentes";
 import { imagenResponsiva } from "@/lib/imagenes";
 import HeroVideo from "./HeroVideo";
 import styles from "./nosotros.module.css";
@@ -69,9 +71,8 @@ const SIZES_MISION = "(max-width: 959px) min(92vw, 760px), min(44vw, 652px)";
 const MOSTRAR_OBJECIONES = false;
 
 /* Oculta mientras tanto: la sección «Si algo se complica, se lo avisamos
-   primero» (#aviso), entre la metodología y las preguntas frecuentes. Para que
-   vuelva a verse, ponerlo en true: el código y los estilos siguen en su sitio,
-   y las preguntas frecuentes recuperan su relleno de arriba (.faqTrasMetodologia). */
+   primero» (#aviso), entre la metodología y los valores. Para que vuelva a
+   verse, ponerlo en true: el código y los estilos siguen en su sitio. */
 const MOSTRAR_AVISO = false;
 
 /* Oculto mientras tanto: el bloque del tablero de Trazabilidad al final de
@@ -268,6 +269,42 @@ const TABLERO = {
 
 const MCER = "https://www.coe.int/en/web/common-european-framework-reference-languages";
 
+/* Los valores (#valores): icono, título y párrafo de cada tarjeta. Los
+   iconos son del registro de Icono.tsx y no repiten ninguno de la página. */
+const VALORES = [
+  {
+    icono: "tendencia",
+    titulo: "Enfoque en los resultados",
+    texto:
+      "Nuestro objetivo es que vea en datos qué está pasando con su programa y qué podemos ajustar para que su equipo saque más provecho de él.",
+  },
+  {
+    icono: "escudo",
+    titulo: "Nos hacemos cargo del programa",
+    texto:
+      "No entregamos clases y desaparecemos. Alguien de nuestro equipo responde por el avance de su programa, le da seguimiento mes con mes y le dice qué hace falta para sostenerlo.",
+  },
+  {
+    icono: "reloj",
+    titulo: "Nos adaptamos a su operación",
+    texto:
+      "Los turnos cambian, la gente viaja y los proyectos se atraviesan. El programa se reacomoda tantas veces como haga falta para que su equipo no tenga que elegir entre trabajar y aprender.",
+  },
+  {
+    icono: "mensaje",
+    titulo: "Hablamos claro",
+    texto:
+      "Si un grupo se está quedando atrás o una sede dejó de avanzar, se lo decimos antes de que usted lo descubra en el reporte, aunque la conversación no sea cómoda.",
+  },
+];
+
+/* La tarjeta navy al lado de las preguntas frecuentes: la misma de la home. */
+const TARJETA_FAQ = {
+  titulo: "¿Quedan Dudas?",
+  texto: "Un asesor las resuelve y le prepara una cotización a la medida de su equipo.",
+  boton: CTA,
+};
+
 const FAQ = [
   {
     pregunta: "¿Con qué escala miden el nivel de cada colaborador?",
@@ -402,9 +439,13 @@ export default function Nosotros() {
         {/* PRESENTACIÓN E IDIOMAS */}
         <section className={`sp-seccion ${styles.presentacion}`} id="presentacion">
           <div className={`${styles.presentacionInner} reveal`}>
-            <p className={styles.presentacionLinea}>
+            <h2 className={styles.presentacionLinea}>
               Desde 2006, en S-Peak somos líderes en capacitación de idiomas
-              <br className={styles.corte} /> para empresas en México.
+              <br className={styles.corte} /> para empresas en México
+            </h2>
+            <p className={styles.modalidades}>
+              Presencial, en línea en vivo o híbrida, en una o varias sedes en
+              cualquier parte de México.
             </p>
             <ul className={styles.idiomas}>
               {IDIOMAS.map((i) => (
@@ -415,10 +456,6 @@ export default function Nosotros() {
                 </li>
               ))}
             </ul>
-            <p className={styles.modalidades}>
-              Presencial, en línea en vivo o híbrida, en una o varias sedes en
-              cualquier parte de México.
-            </p>
           </div>
         </section>
 
@@ -429,7 +466,8 @@ export default function Nosotros() {
           <div className="sp-seccion">
             <div className={styles.dosColumnas}>
               <div className={`${styles.lectura} reveal`}>
-                <h2>S-Peak nació de una inconformidad</h2>
+                <div className="sp-eyebrow">Nuestra Historia</div>
+                <h2>En S-Peak nacimos de una inconformidad</h2>
                 <p>
                   En 2006 lo normal era que la empresa se acomodara a su proveedor: sus
                   horarios, su sede, su temario. A nosotros nos parecía al revés. Quien
@@ -464,10 +502,10 @@ export default function Nosotros() {
             >
               <div className={`${styles.dosColumnas} ${styles.dosColumnasInvertido}`}>
                 <div className={`${styles.lectura} reveal`}>
-                  <p>
+                  <h3>
                     Veinte años después, esto es lo que seguimos encontrando cuando una
-                    empresa nos llama.
-                  </p>
+                    empresa nos llama
+                  </h3>
                   <p>
                     Imagine a una gerente de Recursos Humanos. Dirección le pide que, en
                     un año, sus gerentes dirijan las juntas con la casa matriz en inglés.
@@ -483,7 +521,7 @@ export default function Nosotros() {
                     listas de asistencia.
                   </p>
                   <p className={styles.remate}>
-                    El problema no fue el inglés. Fue que nadie se hizo cargo del
+                    El problema no fue el idioma. Fue que nadie se hizo cargo del
                     programa.
                   </p>
                 </div>
@@ -540,6 +578,7 @@ export default function Nosotros() {
         <ProyectosVideo
           id="proyectos"
           className={styles.proyectos}
+          eyebrow="Casos de Éxito"
           titulo="Orgullosos del trabajo que nos confían"
           bajada="Nosotros llevamos veinte años del otro lado de esa historia. Estos son algunos de los programas que hemos operado, contados también por quienes los vivieron."
           celdas={CELDAS_PROYECTOS}
@@ -549,6 +588,7 @@ export default function Nosotros() {
         <section className="sp-seccion" id="metodologia">
           <div className="sp-inner">
             <div className="sp-seccion-top reveal">
+              <div className={`sp-eyebrow ${styles.eyebrowCentrado}`}>Nuestra Metodología</div>
               <h2>
                 Cómo trabajamos: metodología PACTO para programas de idiomas en
                 empresas
@@ -563,7 +603,7 @@ export default function Nosotros() {
                 cada paso es una columna con su peldaño (un dibujo oculto para
                 lectores de pantalla, con solo la letra), su nombre y su
                 párrafo, y cada columna sube un escalón más que la anterior.
-                La bolita va fuera de la lista, sobre las columnas. Por debajo
+                El isotipo que brinca va fuera de la lista, sobre las columnas. Por debajo
                 de 960px no hay peldaños: la lista lleva la letra al lado. */}
             {/* Sin el tablero, la escalera cierra la sección: sin margen de
                 abajo, para que solo quede el relleno de la sección. */}
@@ -585,7 +625,15 @@ export default function Nosotros() {
                 ))}
               </ol>
               <span className={styles.marcador} aria-hidden="true">
-                <span className={styles.bolita} />
+                <span className={styles.bolita}>
+                  <img
+                    className={styles.isotipo}
+                    src="/images/isotype.svg"
+                    alt=""
+                    width="1587"
+                    height="907"
+                  />
+                </span>
               </span>
             </div>
 
@@ -639,33 +687,37 @@ export default function Nosotros() {
           </section>
         ) : null}
 
-        {/* PREGUNTAS FRECUENTES */}
-        {/* Sin el aviso, las preguntas siguen a la metodología sobre el mismo
-            fondo y no llevan relleno de arriba: el de abajo de la metodología
-            ya las separa. */}
-        <section
-          className={`sp-seccion${MOSTRAR_AVISO ? "" : ` ${styles.faqTrasMetodologia}`}`}
-          id="faq"
-        >
+        {/* VALORES: fondo navy a todo lo ancho, encabezado centrado y cuatro
+            tarjetas en el contenedor de la página. */}
+        <section className={`sp-seccion ${styles.valores}`} id="valores">
           <div className="sp-inner">
-            <div className="sp-seccion-top reveal">
-              <h2>Preguntas frecuentes sobre la capacitación en idiomas para su empresa</h2>
+            <div className={`sp-seccion-top ${styles.valoresTop} reveal`}>
+              <div className={`sp-eyebrow ${styles.valoresEyebrow}`}>Nuestros Valores</div>
+              <h2>En qué creemos</h2>
             </div>
-            <div className={`sp-faq-lista ${styles.faqLista} reveal`}>
-              {FAQ.map((f) => (
-                <details key={f.pregunta} className="sp-faq-item" name="faq-nosotros">
-                  <summary className="sp-faq-pregunta">
-                    {f.pregunta}
-                    <span className="sp-faq-icono">+</span>
-                  </summary>
-                  <div className={`sp-faq-respuesta ${styles.faqRespuesta}`}>
-                    {f.respuesta}
-                  </div>
-                </details>
+            <ul className={`${styles.valoresLista} reveal stagger`}>
+              {VALORES.map((v) => (
+                <li key={v.titulo} className={styles.valor}>
+                  <span className="sp-icono sp-icono--md sp-icono--claro">
+                    <Icono nombre={v.icono} />
+                  </span>
+                  <h3>{v.titulo}</h3>
+                  <p>{v.texto}</p>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
+
+        {/* PREGUNTAS FRECUENTES */}
+        <PreguntasFrecuentes
+          id="faq"
+          eyebrow="Preguntas Frecuentes"
+          titulo="Preguntas frecuentes sobre la capacitación en idiomas para su empresa"
+          preguntas={FAQ}
+          nombre="faq-nosotros"
+          tarjeta={TARJETA_FAQ}
+        />
 
         {/* CIERRE */}
         <section className={`sp-seccion ${styles.finalCta}`}>
@@ -679,7 +731,7 @@ export default function Nosotros() {
             loading="lazy"
           />
           <div className={`${styles.finalInner} reveal`}>
-            <h2>Ahora imagine a esa misma gerente, con S-Peak</h2>
+            <h2>Ahora imagine a esa misma gerente, con nosotros</h2>
             <p>
               Esta vez el proveedor trabaja para ella. Al cerrar el año no llega a
               Dirección con listas de asistencia: llega con el avance de cada gerente en
