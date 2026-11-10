@@ -389,35 +389,35 @@
 
 /* ---------- Metodología PACTO ---------- */
 
-/* Los pasos: una lista ordenada (.pasos) que es el contenido, y desde 960px,
-   encima, la escalera (.escalera), un dibujo oculto a lectores de pantalla.
+/* Los pasos: una lista ordenada (.pasos) con un paso por <li>. Desde 960px
+   cada paso es una columna con su peldaño (.escalon, un dibujo oculto a
+   lectores de pantalla), su nombre y su párrafo, en ese orden y con la misma
+   separación en las cinco.
 
-   Por debajo de 960px no hay escalera: cada paso es un renglón con su letra,
-   su nombre y su párrafo.
+   Por debajo de 960px no hay peldaños: cada paso es un renglón con su letra,
+   su nombre y su párrafo, sin desplazamientos.
 
-   Desde 960px la escalera y la lista comparten rejilla (cinco columnas con el
-   mismo hueco), así que cada nombre y cada párrafo quedan bajo su peldaño, y
-   los cinco nombres y los cinco párrafos arrancan a la misma altura. En la
-   escalera solo va la letra.
-
-   La escalera es una escalinata: los cinco peldaños tienen el mismo grosor y
-   lo que cambia es la altura a la que está cada uno. Medidas, en variables
-   porque el marcador las repite:
-     --pacto-hueco   el hueco entre columnas, el mismo de la lista;
+   Desde 960px la escalinata la forman las columnas enteras: la de P no se
+   mueve y cada una sube un escalón más que la anterior (A 48px, C 96px, T
+   144px, O 192px), así que cada nombre y cada párrafo acompañan a su peldaño.
+   Medidas, en variables porque el marcador las repite:
+     --pacto-hueco   el hueco entre columnas;
      --pacto-grosor  el grosor de cada peldaño;
-     --pacto-subida  el salto vertical de un peldaño al siguiente;
-     --pacto-aire    la separación entre el primer peldaño y la línea base. */
+     --pacto-subida  lo que sube cada columna sobre la anterior;
+     --pacto-techo   el aire sobre la columna más alta, para el arco de la
+                     bolita. */
 .pacto {
   --pacto-hueco: 16px;
   --pacto-grosor: 64px;
   --pacto-subida: 48px;
-  --pacto-aire: 6px;
+  --pacto-techo: 32px;
   /* Debajo va directo el bloque del tablero: el mismo aire que separa el
      encabezado de la sección de la escalera. */
   margin-bottom: 56px;
 }
 
-.escalera {
+.escalon,
+.marcador {
   display: none;
 }
 
@@ -462,102 +462,41 @@
 }
 
 @media (min-width: 960px) {
-  /* Cinco peldaños planos del mismo grosor sobre la línea base (el borde
-     inferior), con sombra suave. Todos se alinean abajo y el margen inferior
-     sube cada uno un salto más que el anterior; el primero queda unos píxeles
-     por encima de la línea. El relleno de arriba deja sitio al marcador sobre
-     el peldaño más alto. */
-  .escalera {
+  /* Cinco columnas alineadas arriba. El desplazamiento es un margen superior:
+     la columna de O no lleva ninguno y cada columna anterior lleva un escalón
+     más, así que O queda 192px por encima de P sea cual sea el largo de los
+     textos. El relleno de arriba deja sitio a la bolita sobre O. */
+  .pacto {
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    align-items: end;
-    gap: var(--pacto-hueco);
-    padding: 32px 0 var(--pacto-aire);
-    border-bottom: 2px solid var(--color-navy);
   }
 
-  .escalon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: var(--pacto-grosor);
-    border-radius: var(--radius);
-    background: var(--color-navy);
-    box-shadow: var(--shadow-card);
-    font-size: 32px;
-    font-weight: var(--weight-black);
-    line-height: 1;
-    color: var(--color-white);
-  }
-
-  .escalon:nth-child(2) {
-    margin-bottom: var(--pacto-subida);
-  }
-
-  .escalon:nth-child(3) {
-    margin-bottom: calc(2 * var(--pacto-subida));
-  }
-
-  .escalon:nth-child(4) {
-    margin-bottom: calc(3 * var(--pacto-subida));
-  }
-
-  .escalon:nth-child(5) {
-    margin-bottom: calc(4 * var(--pacto-subida));
-  }
-
-  /* El marcador: una caja de una columna de ancho y alto cero, al pie del
-     primer peldaño; el punto rojo va centrado en ella y apoyado en su borde,
-     así que toca la cara de arriba del peldaño. Se coloca con translate: en
-     X, una columna más un hueco por peldaño (el porcentaje es el de su propio
-     ancho, que es el de una columna); en Y, el grosor más un salto por
-     peldaño. Sin animación —movimiento reducido o navegador sin soporte— se
-     queda en el último.
-
-     El anillo blanco lo separa del peldaño: sobre el peldaño activo, que es
-     rojo, el punto se fundiría con él en una sola mancha. */
-  .marcador {
-    position: absolute;
-    bottom: var(--pacto-aire);
-    left: 0;
-    width: calc((100% - 4 * var(--pacto-hueco)) / 5);
-    height: 0;
-    translate: calc(4 * (100% + var(--pacto-hueco)))
-      calc(-1 * (var(--pacto-grosor) + 4 * var(--pacto-subida)));
-  }
-
-  .marcador::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 18px;
-    height: 18px;
-    margin-left: -9px;
-    border-radius: 50%;
-    background: var(--color-red);
-    box-shadow: 0 0 0 3px var(--color-white), var(--shadow-card);
-  }
-
-  /* La lista, en la misma rejilla que la escalera: nombre y párrafo. Cada
-     paso ocupa dos filas compartidas (subgrid), así que los cinco nombres
-     están a la misma altura y los cinco párrafos arrancan en la misma línea
-     aunque algún nombre ocupara dos renglones. */
   .pasos {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    grid-template-rows: auto auto;
+    align-items: start;
     column-gap: var(--pacto-hueco);
-    margin-top: 24px;
+    padding-top: var(--pacto-techo);
   }
 
   .paso {
-    display: grid;
-    grid-row: span 2;
-    grid-template-rows: subgrid;
-    grid-template-columns: none;
+    display: block;
     padding: 0;
+  }
+
+  .paso:nth-child(1) {
+    margin-top: calc(4 * var(--pacto-subida));
+  }
+
+  .paso:nth-child(2) {
+    margin-top: calc(3 * var(--pacto-subida));
+  }
+
+  .paso:nth-child(3) {
+    margin-top: calc(2 * var(--pacto-subida));
+  }
+
+  .paso:nth-child(4) {
+    margin-top: var(--pacto-subida);
   }
 
   .paso + .paso {
@@ -568,132 +507,482 @@
     display: none;
   }
 
+  /* El peldaño, arriba de su columna: plano, con sombra suave. */
+  .escalon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--pacto-grosor);
+    margin-bottom: 24px;
+    border-radius: var(--radius);
+    background: var(--color-navy);
+    box-shadow: var(--shadow-card);
+    font-size: 32px;
+    font-weight: var(--weight-black);
+    line-height: 1;
+    color: var(--color-white);
+  }
+
   .pasoNombre {
     margin-bottom: 8px;
   }
-}
 
-/* El marcador avanza con el scroll, no con un temporizador: la línea de
-   tiempo es el paso de la escalera por la ventana (view-timeline). Arranca en
-   P cuando la escalera termina de entrar por abajo (contain 0%) y llega a O
-   hacia la mitad del recorrido (contain 50%), cuando la escalera ha subido
-   más o menos al tercio superior de la pantalla. Si el lector vuelve a subir,
-   el marcador baja.
+  /* La bolita, en tres capas porque cada una lleva su propio movimiento:
+       .marcador         una caja de una columna de ancho y alto cero, sobre
+                         la cara de arriba del peldaño de P. Lleva el avance
+                         horizontal: una columna más un hueco por peldaño (el
+                         porcentaje es el de su propio ancho, que es el de una
+                         columna);
+       .bolita           la altura: un salto por peldaño, y el arco;
+       .bolita::after    el punto rojo, apoyado en la cara de arriba del
+                         peldaño, y el achatado y el estirón al saltar.
+     Quieta —movimiento reducido— está en el peldaño de P.
 
-   Avanza peldaño a peldaño: en cada uno se queda quieto el 80% de su tramo y
-   salta al siguiente en el 20% restante. El peldaño donde está pasa de navy
-   al rojo de marca; cada uno se enciende en su décima parte del recorrido.
+     Su posición: el techo, más los cuatro escalones que baja la columna de P,
+     más un grosor de peldaño, porque las animaciones la suben un grosor
+     (translate) hasta la cara de arriba.
 
-   Solo con soporte de animation-timeline y sin movimiento reducido. Si no, es
-   el estado de arriba: peldaños en navy y el marcador en el último. */
-@supports (animation-timeline: view()) {
-  @media (min-width: 960px) and (prefers-reduced-motion: no-preference) {
-    .escalera {
-      view-timeline: --pacto-escalera block;
-    }
-
-    .marcador {
-      animation: pacto-marcador linear both;
-      animation-timeline: --pacto-escalera;
-      animation-range: contain 0% contain 50%;
-    }
-
-    .escalon {
-      animation: pacto-encender linear both;
-      animation-timeline: --pacto-escalera;
-    }
-
-    .escalon:nth-child(1) {
-      animation-name: pacto-encender-primero;
-      animation-range: contain 0% contain 10%;
-    }
-
-    .escalon:nth-child(2) {
-      animation-range: contain 10% contain 20%;
-    }
-
-    .escalon:nth-child(3) {
-      animation-range: contain 20% contain 30%;
-    }
-
-    .escalon:nth-child(4) {
-      animation-range: contain 30% contain 40%;
-    }
-
-    .escalon:nth-child(5) {
-      animation-name: pacto-encender-ultimo;
-      animation-range: contain 40% contain 50%;
-    }
-  }
-}
-
-@keyframes pacto-marcador {
-  0%,
-  16% {
+     El anillo blanco la separa del peldaño: sobre el peldaño activo, que es
+     rojo, el punto se fundiría con él en una sola mancha. */
+  .marcador {
+    display: block;
+    position: absolute;
+    top: calc(var(--pacto-techo) + 4 * var(--pacto-subida) + var(--pacto-grosor));
+    left: 0;
+    width: calc((100% - 4 * var(--pacto-hueco)) / 5);
+    height: 0;
     translate: 0 calc(-1 * var(--pacto-grosor));
   }
 
-  20%,
-  36% {
-    translate: calc(100% + var(--pacto-hueco))
-      calc(-1 * (var(--pacto-grosor) + var(--pacto-subida)));
+  .bolita {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
   }
 
-  40%,
-  56% {
-    translate: calc(2 * (100% + var(--pacto-hueco)))
-      calc(-1 * (var(--pacto-grosor) + 2 * var(--pacto-subida)));
-  }
-
-  60%,
-  76% {
-    translate: calc(3 * (100% + var(--pacto-hueco)))
-      calc(-1 * (var(--pacto-grosor) + 3 * var(--pacto-subida)));
-  }
-
-  80%,
-  100% {
-    translate: calc(4 * (100% + var(--pacto-hueco)))
-      calc(-1 * (var(--pacto-grosor) + 4 * var(--pacto-subida)));
+  .bolita::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -9px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-red);
+    box-shadow: 0 0 0 3px var(--color-white), var(--shadow-card);
+    transform-origin: 50% 100%;
   }
 }
 
-/* El primero está encendido antes de empezar (el marcador arranca en él) y
-   el último se queda encendido al terminar (el marcador acaba en él). */
-@keyframes pacto-encender-primero {
+/* ---------- Animación de la escalera ----------
+   Un ciclo de 9 s en bucle, independiente del scroll: la bolita brinca de P a
+   O, se queda en O y se funde para volver a aparecer en P. No baja la
+   escalera de vuelta. Solo desde 960px y sin movimiento reducido; si no, todo
+   quieto: la bolita en P y ningún peldaño en rojo.
+
+   Tiempos (todas las animaciones de 9 s comparten estos porcentajes, y por eso
+   el peldaño se enciende justo cuando la bolita aterriza):
+     0–0.3 s      aparece en P (fundido)
+     0.8 s        primer salto; cada salto dura 0.6 s y tras aterrizar la
+                  bolita se queda 0.6 s en el peldaño antes del siguiente
+     5.0 s        aterriza en O y se queda
+     8.4–9 s      se funde y el ciclo vuelve a empezar en P
+
+   El brinco, como una pelota de verdad:
+     - pacto-recorrido lleva el avance horizontal, a velocidad constante del
+       peldaño de salida al de llegada; quieta entre saltos.
+     - pacto-arco lleva la altura: sube frenando (cuadrática de salida) hasta
+       el punto más alto, a mitad de camino y 40px por encima del peldaño de
+       llegada, y cae acelerando (cuadrática de entrada) hasta posarse en él.
+       Avance constante y altura cuadrática dan un arco de parábola.
+     - pacto-forma estira la bolita al despegar y justo antes de aterrizar, y
+       la achata al tocar el peldaño, con un pequeño rebote de vuelta a su
+       forma. Escala desde la base, así que no se separa del peldaño.
+
+   Los peldaños flotan 3px arriba y abajo en un vaivén lento, cada uno con
+   1/5 de ciclo de retraso sobre el anterior para que no suban a la vez; la
+   sombra se abre al subir y se recoge al bajar. La bolita aterriza en la
+   posición media del vaivén, así que como mucho queda 1.5px por encima o por
+   debajo de la cara del peldaño.
+
+   Los keyframes de la bolita y de los peldaños están escritos a partir de esa
+   tabla de tiempos: si se cambia un tiempo, hay que recalcular todos. */
+@media (min-width: 960px) and (prefers-reduced-motion: no-preference) {
+  .marcador {
+    animation:
+      pacto-recorrido 9s linear infinite,
+      pacto-fundido 9s linear infinite;
+  }
+
+  .bolita {
+    animation: pacto-arco 9s linear infinite;
+  }
+
+  .bolita::after {
+    animation: pacto-forma 9s linear infinite;
+  }
+
+  .escalon {
+    animation:
+      pacto-flotar 2.5s ease-in-out infinite alternate,
+      pacto-encender-p 9s linear infinite;
+  }
+
+  .paso:nth-child(2) .escalon {
+    animation-name: pacto-flotar, pacto-encender-a;
+    animation-delay: -1s, 0s;
+  }
+
+  .paso:nth-child(3) .escalon {
+    animation-name: pacto-flotar, pacto-encender-c;
+    animation-delay: -2s, 0s;
+  }
+
+  .paso:nth-child(4) .escalon {
+    animation-name: pacto-flotar, pacto-encender-t;
+    animation-delay: -3s, 0s;
+  }
+
+  .paso:nth-child(5) .escalon {
+    animation-name: pacto-flotar, pacto-encender-o;
+    animation-delay: -4s, 0s;
+  }
+}
+
+/* El vaivén de cada peldaño: 1.5px por debajo y por encima de su sitio. Al
+   subir, la sombra baja un poco más y se difumina; al bajar, se recoge. */
+@keyframes pacto-flotar {
+  from {
+    translate: 0 1.5px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  }
+
+  to {
+    translate: 0 -1.5px;
+    box-shadow: 0 11px 28px rgba(0, 0, 0, 0.06);
+  }
+}
+
+@keyframes pacto-recorrido {
   0%,
-  90% {
+  8.889% {
+    translate: 0 calc(-1 * var(--pacto-grosor));
+  }
+
+  15.556%,
+  22.222% {
+    translate: calc(100% + var(--pacto-hueco)) calc(-1 * var(--pacto-grosor));
+  }
+
+  28.889%,
+  35.556% {
+    translate: calc(2 * (100% + var(--pacto-hueco))) calc(-1 * var(--pacto-grosor));
+  }
+
+  42.222%,
+  48.889% {
+    translate: calc(3 * (100% + var(--pacto-hueco))) calc(-1 * var(--pacto-grosor));
+  }
+
+  55.556%,
+  100% {
+    translate: calc(4 * (100% + var(--pacto-hueco))) calc(-1 * var(--pacto-grosor));
+  }
+}
+
+@keyframes pacto-fundido {
+  0% {
+    opacity: 0;
+  }
+
+  3.333%,
+  93.333% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pacto-arco {
+  0% {
+    translate: 0 0;
+  }
+
+  8.889% {
+    translate: 0 0;
+    animation-timing-function: cubic-bezier(0.333, 0.667, 0.667, 1);
+  }
+
+  12.222% {
+    translate: 0 calc(-1 * var(--pacto-subida) - 40px);
+    animation-timing-function: cubic-bezier(0.333, 0, 0.667, 0.333);
+  }
+
+  15.556% {
+    translate: 0 calc(-1 * var(--pacto-subida));
+  }
+
+  22.222% {
+    translate: 0 calc(-1 * var(--pacto-subida));
+    animation-timing-function: cubic-bezier(0.333, 0.667, 0.667, 1);
+  }
+
+  25.556% {
+    translate: 0 calc(-2 * var(--pacto-subida) - 40px);
+    animation-timing-function: cubic-bezier(0.333, 0, 0.667, 0.333);
+  }
+
+  28.889% {
+    translate: 0 calc(-2 * var(--pacto-subida));
+  }
+
+  35.556% {
+    translate: 0 calc(-2 * var(--pacto-subida));
+    animation-timing-function: cubic-bezier(0.333, 0.667, 0.667, 1);
+  }
+
+  38.889% {
+    translate: 0 calc(-3 * var(--pacto-subida) - 40px);
+    animation-timing-function: cubic-bezier(0.333, 0, 0.667, 0.333);
+  }
+
+  42.222% {
+    translate: 0 calc(-3 * var(--pacto-subida));
+  }
+
+  48.889% {
+    translate: 0 calc(-3 * var(--pacto-subida));
+    animation-timing-function: cubic-bezier(0.333, 0.667, 0.667, 1);
+  }
+
+  52.222% {
+    translate: 0 calc(-4 * var(--pacto-subida) - 40px);
+    animation-timing-function: cubic-bezier(0.333, 0, 0.667, 0.333);
+  }
+
+  55.556%,
+  100% {
+    translate: 0 calc(-4 * var(--pacto-subida));
+  }
+}
+
+@keyframes pacto-forma {
+  0% {
+    scale: 1 1;
+  }
+
+  8.889% {
+    scale: 1 1;
+  }
+
+  9.778% {
+    scale: 0.82 1.22;
+  }
+
+  11.111% {
+    scale: 1 1;
+  }
+
+  14.444% {
+    scale: 1 1;
+  }
+
+  15.222% {
+    scale: 0.88 1.14;
+  }
+
+  15.556% {
+    scale: 1.3 0.7;
+  }
+
+  16.667% {
+    scale: 0.94 1.06;
+  }
+
+  17.778% {
+    scale: 1 1;
+  }
+
+  22.222% {
+    scale: 1 1;
+  }
+
+  23.111% {
+    scale: 0.82 1.22;
+  }
+
+  24.444% {
+    scale: 1 1;
+  }
+
+  27.778% {
+    scale: 1 1;
+  }
+
+  28.556% {
+    scale: 0.88 1.14;
+  }
+
+  28.889% {
+    scale: 1.3 0.7;
+  }
+
+  30% {
+    scale: 0.94 1.06;
+  }
+
+  31.111% {
+    scale: 1 1;
+  }
+
+  35.556% {
+    scale: 1 1;
+  }
+
+  36.444% {
+    scale: 0.82 1.22;
+  }
+
+  37.778% {
+    scale: 1 1;
+  }
+
+  41.111% {
+    scale: 1 1;
+  }
+
+  41.889% {
+    scale: 0.88 1.14;
+  }
+
+  42.222% {
+    scale: 1.3 0.7;
+  }
+
+  43.333% {
+    scale: 0.94 1.06;
+  }
+
+  44.444% {
+    scale: 1 1;
+  }
+
+  48.889% {
+    scale: 1 1;
+  }
+
+  49.778% {
+    scale: 0.82 1.22;
+  }
+
+  51.111% {
+    scale: 1 1;
+  }
+
+  54.444% {
+    scale: 1 1;
+  }
+
+  55.222% {
+    scale: 0.88 1.14;
+  }
+
+  55.556% {
+    scale: 1.3 0.7;
+  }
+
+  56.667% {
+    scale: 0.94 1.06;
+  }
+
+  57.778% {
+    scale: 1 1;
+  }
+
+  100% {
+    scale: 1 1;
+  }
+}
+
+@keyframes pacto-encender-p {
+  0%,
+  8.889% {
     background-color: var(--color-red);
   }
 
+  9.444%,
   100% {
     background-color: var(--color-navy);
   }
 }
 
-@keyframes pacto-encender {
-  0% {
+@keyframes pacto-encender-a {
+  0%,
+  15.444% {
     background-color: var(--color-navy);
   }
 
-  10%,
-  90% {
+  16.111%,
+  22.222% {
     background-color: var(--color-red);
   }
 
+  22.778%,
   100% {
     background-color: var(--color-navy);
   }
 }
 
-@keyframes pacto-encender-ultimo {
-  0% {
+@keyframes pacto-encender-c {
+  0%,
+  28.778% {
     background-color: var(--color-navy);
   }
 
-  10%,
-  100% {
+  29.444%,
+  35.556% {
     background-color: var(--color-red);
+  }
+
+  36.111%,
+  100% {
+    background-color: var(--color-navy);
+  }
+}
+
+@keyframes pacto-encender-t {
+  0%,
+  42.111% {
+    background-color: var(--color-navy);
+  }
+
+  42.778%,
+  48.889% {
+    background-color: var(--color-red);
+  }
+
+  49.444%,
+  100% {
+    background-color: var(--color-navy);
+  }
+}
+
+@keyframes pacto-encender-o {
+  0%,
+  55.444% {
+    background-color: var(--color-navy);
+  }
+
+  56.111%,
+  93.333% {
+    background-color: var(--color-red);
+  }
+
+  93.889%,
+  100% {
+    background-color: var(--color-navy);
   }
 }
 

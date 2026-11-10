@@ -514,22 +514,18 @@ export default function Nosotros() {
             </div>
 
             {/* Los pasos son la lista ordenada: el contenido real. Desde 960px
-                va encima la escalera, un dibujo oculto para lectores de
-                pantalla con solo la letra de cada paso; el nombre y el párrafo
-                son los de la lista, debajo de cada peldaño. Por debajo de
-                960px no hay escalera: la lista lleva también la letra. */}
+                cada paso es una columna con su peldaño (un dibujo oculto para
+                lectores de pantalla, con solo la letra), su nombre y su
+                párrafo, y cada columna sube un escalón más que la anterior.
+                La bolita va fuera de la lista, sobre las columnas. Por debajo
+                de 960px no hay peldaños: la lista lleva la letra al lado. */}
             <div className={`${styles.pacto} reveal`}>
-              <div className={styles.escalera} aria-hidden="true">
-                {PACTO.map((p) => (
-                  <div key={p.letra} className={styles.escalon}>
-                    {p.letra}
-                  </div>
-                ))}
-                <span className={styles.marcador} />
-              </div>
               <ol className={styles.pasos}>
                 {PACTO.map((p) => (
                   <li key={p.letra} className={styles.paso}>
+                    <div className={styles.escalon} aria-hidden="true">
+                      {p.letra}
+                    </div>
                     <span className={styles.pasoLetra} aria-hidden="true">
                       {p.letra}
                     </span>
@@ -538,6 +534,9 @@ export default function Nosotros() {
                   </li>
                 ))}
               </ol>
+              <span className={styles.marcador} aria-hidden="true">
+                <span className={styles.bolita} />
+              </span>
             </div>
 
             {/* Con `rotativo` el tablero no pinta su etiqueta de ejemplo: va

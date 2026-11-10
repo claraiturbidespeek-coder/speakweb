@@ -13,10 +13,11 @@ import styles from "./nosotros.module.css";
    móvil, en tablet y con movimiento reducido se queda la imagen y el video no
    se descarga.
 
-   El video lleva el mismo poster, así que al montarse encima no hay salto
-   mientras carga. Va silenciado, en bucle y sin controles.
+   El <video> no lleva `poster`: la imagen ya está debajo y cubre la caja
+   mientras carga, y el atributo descargaría el WebP completo otra vez. Va
+   silenciado, en bucle y sin controles.
 
-   Sin video ni poster (hoy) es un placeholder: el gris y el icono apagado de
+   Sin video ni poster es un placeholder: el gris y el icono apagado de
    las celdas de video vacías del bento de proyectos. */
 
 type Props = {
@@ -68,7 +69,6 @@ export default function HeroVideo({ video, poster }: Props) {
         <video
           className={styles.heroVideoMedia}
           src={video}
-          poster={poster}
           autoPlay
           muted
           loop
