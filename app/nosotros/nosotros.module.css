@@ -396,19 +396,21 @@
    su nombre y su párrafo.
 
    Desde 960px la escalera y la lista comparten rejilla (cinco columnas con el
-   mismo hueco), así que cada párrafo queda bajo su escalón y todos arrancan a
-   la misma altura. Los nombres de la lista se ocultan a la vista, no al lector
-   de pantalla: los pone la escalera.
+   mismo hueco), así que cada nombre y cada párrafo quedan bajo su peldaño, y
+   los cinco nombres y los cinco párrafos arrancan a la misma altura. En la
+   escalera solo va la letra.
 
-   Medidas de la escalera, en variables porque el marcador las repite:
+   La escalera es una escalinata: los cinco peldaños tienen el mismo grosor y
+   lo que cambia es la altura a la que está cada uno. Medidas, en variables
+   porque el marcador las repite:
      --pacto-hueco   el hueco entre columnas, el mismo de la lista;
-     --pacto-alto    el alto del primer escalón;
-     --pacto-subida  lo que crece cada escalón sobre el anterior;
-     --pacto-aire    la separación entre los escalones y la línea base. */
+     --pacto-grosor  el grosor de cada peldaño;
+     --pacto-subida  el salto vertical de un peldaño al siguiente;
+     --pacto-aire    la separación entre el primer peldaño y la línea base. */
 .pacto {
   --pacto-hueco: 16px;
-  --pacto-alto: 96px;
-  --pacto-subida: 32px;
+  --pacto-grosor: 64px;
+  --pacto-subida: 48px;
   --pacto-aire: 6px;
   /* Debajo va directo el bloque del tablero: el mismo aire que separa el
      encabezado de la sección de la escalera. */
@@ -460,9 +462,11 @@
 }
 
 @media (min-width: 960px) {
-  /* Cinco bloques planos apoyados en la línea base (el borde inferior), unos
-     píxeles por encima de ella y con una sombra suave. El relleno de arriba
-     deja sitio al marcador sobre el escalón más alto. */
+  /* Cinco peldaños planos del mismo grosor sobre la línea base (el borde
+     inferior), con sombra suave. Todos se alinean abajo y el margen inferior
+     sube cada uno un salto más que el anterior; el primero queda unos píxeles
+     por encima de la línea. El relleno de arriba deja sitio al marcador sobre
+     el peldaño más alto. */
   .escalera {
     position: relative;
     display: grid;
@@ -475,53 +479,44 @@
 
   .escalon {
     display: flex;
-    flex-direction: column;
-    gap: 6px;
-    padding: 16px;
+    align-items: center;
+    justify-content: center;
+    height: var(--pacto-grosor);
     border-radius: var(--radius);
     background: var(--color-navy);
     box-shadow: var(--shadow-card);
+    font-size: 32px;
+    font-weight: var(--weight-black);
+    line-height: 1;
     color: var(--color-white);
   }
 
-  .escalon:nth-child(1) {
-    height: var(--pacto-alto);
-  }
-
   .escalon:nth-child(2) {
-    height: calc(var(--pacto-alto) + var(--pacto-subida));
+    margin-bottom: var(--pacto-subida);
   }
 
   .escalon:nth-child(3) {
-    height: calc(var(--pacto-alto) + 2 * var(--pacto-subida));
+    margin-bottom: calc(2 * var(--pacto-subida));
   }
 
   .escalon:nth-child(4) {
-    height: calc(var(--pacto-alto) + 3 * var(--pacto-subida));
+    margin-bottom: calc(3 * var(--pacto-subida));
   }
 
   .escalon:nth-child(5) {
-    height: calc(var(--pacto-alto) + 4 * var(--pacto-subida));
+    margin-bottom: calc(4 * var(--pacto-subida));
   }
 
-  .escalonLetra {
-    font-size: 44px;
-    font-weight: var(--weight-black);
-    line-height: 1;
-  }
+  /* El marcador: una caja de una columna de ancho y alto cero, al pie del
+     primer peldaño; el punto rojo va centrado en ella y apoyado en su borde,
+     así que toca la cara de arriba del peldaño. Se coloca con translate: en
+     X, una columna más un hueco por peldaño (el porcentaje es el de su propio
+     ancho, que es el de una columna); en Y, el grosor más un salto por
+     peldaño. Sin animación —movimiento reducido o navegador sin soporte— se
+     queda en el último.
 
-  .escalonNombre {
-    font-size: 14px;
-    font-weight: var(--weight-bold);
-    line-height: 1.3;
-  }
-
-  /* El marcador: una caja de una columna de ancho y alto cero, al pie de la
-     escalera; el punto rojo va centrado en ella, apoyado en el escalón. Se
-     coloca con translate: en X, una columna más un hueco por escalón (el
-     porcentaje es el de su propio ancho, que es el de una columna); en Y, el
-     alto del escalón. Sin animación —movimiento reducido o navegador sin
-     soporte— se queda en el último escalón. */
+     El anillo blanco lo separa del peldaño: sobre el peldaño activo, que es
+     rojo, el punto se fundiría con él en una sola mancha. */
   .marcador {
     position: absolute;
     bottom: var(--pacto-aire);
@@ -529,32 +524,39 @@
     width: calc((100% - 4 * var(--pacto-hueco)) / 5);
     height: 0;
     translate: calc(4 * (100% + var(--pacto-hueco)))
-      calc(-1 * (var(--pacto-alto) + 4 * var(--pacto-subida)));
+      calc(-1 * (var(--pacto-grosor) + 4 * var(--pacto-subida)));
   }
 
   .marcador::after {
     content: "";
     position: absolute;
-    bottom: 8px;
+    bottom: 0;
     left: 50%;
-    width: 16px;
-    height: 16px;
-    margin-left: -8px;
+    width: 18px;
+    height: 18px;
+    margin-left: -9px;
     border-radius: 50%;
     background: var(--color-red);
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 0 0 3px var(--color-white), var(--shadow-card);
   }
 
-  /* La lista, en la misma rejilla que la escalera: solo los párrafos. */
+  /* La lista, en la misma rejilla que la escalera: nombre y párrafo. Cada
+     paso ocupa dos filas compartidas (subgrid), así que los cinco nombres
+     están a la misma altura y los cinco párrafos arrancan en la misma línea
+     aunque algún nombre ocupara dos renglones. */
   .pasos {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: var(--pacto-hueco);
-    margin-top: 28px;
+    grid-template-rows: auto auto;
+    column-gap: var(--pacto-hueco);
+    margin-top: 24px;
   }
 
   .paso {
-    display: block;
+    display: grid;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+    grid-template-columns: none;
     padding: 0;
   }
 
@@ -566,15 +568,8 @@
     display: none;
   }
 
-  /* Oculto a la vista, no al lector de pantalla. */
   .pasoNombre {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
+    margin-bottom: 8px;
   }
 }
 
@@ -585,12 +580,12 @@
    más o menos al tercio superior de la pantalla. Si el lector vuelve a subir,
    el marcador baja.
 
-   Avanza escalón a escalón: en cada uno se queda quieto el 80% de su tramo y
-   salta al siguiente en el 20% restante. El escalón donde está pasa de navy a
-   rojo; cada uno se enciende en su décima parte del recorrido.
+   Avanza peldaño a peldaño: en cada uno se queda quieto el 80% de su tramo y
+   salta al siguiente en el 20% restante. El peldaño donde está pasa de navy
+   al rojo de marca; cada uno se enciende en su décima parte del recorrido.
 
    Solo con soporte de animation-timeline y sin movimiento reducido. Si no, es
-   el estado de arriba: escalones en navy y el marcador en el último. */
+   el estado de arriba: peldaños en navy y el marcador en el último. */
 @supports (animation-timeline: view()) {
   @media (min-width: 960px) and (prefers-reduced-motion: no-preference) {
     .escalera {
@@ -635,31 +630,31 @@
 @keyframes pacto-marcador {
   0%,
   16% {
-    translate: 0 calc(-1 * var(--pacto-alto));
+    translate: 0 calc(-1 * var(--pacto-grosor));
   }
 
   20%,
   36% {
     translate: calc(100% + var(--pacto-hueco))
-      calc(-1 * (var(--pacto-alto) + var(--pacto-subida)));
+      calc(-1 * (var(--pacto-grosor) + var(--pacto-subida)));
   }
 
   40%,
   56% {
     translate: calc(2 * (100% + var(--pacto-hueco)))
-      calc(-1 * (var(--pacto-alto) + 2 * var(--pacto-subida)));
+      calc(-1 * (var(--pacto-grosor) + 2 * var(--pacto-subida)));
   }
 
   60%,
   76% {
     translate: calc(3 * (100% + var(--pacto-hueco)))
-      calc(-1 * (var(--pacto-alto) + 3 * var(--pacto-subida)));
+      calc(-1 * (var(--pacto-grosor) + 3 * var(--pacto-subida)));
   }
 
   80%,
   100% {
     translate: calc(4 * (100% + var(--pacto-hueco)))
-      calc(-1 * (var(--pacto-alto) + 4 * var(--pacto-subida)));
+      calc(-1 * (var(--pacto-grosor) + 4 * var(--pacto-subida)));
   }
 }
 

@@ -361,13 +361,13 @@ export default function Nosotros() {
             <SelloSTPS />
           </div>
           {/* Fuera de .heroInner: la caja va casi a todo lo ancho, no al del
-              texto. La banda de logos se monta sobre su borde superior.
-              Ruta del video y del poster cuando el equipo pase el archivo:
-                video="/video/hero-nosotros.mp4"
-                poster="/images/nosotros/hero-nosotros-poster.webp" */}
+              texto. La banda de logos se monta sobre su borde superior. */}
           <div className={styles.heroMedia}>
             <BandaLogos className={styles.logosSobreVideo} />
-            <HeroVideo />
+            <HeroVideo
+              video="/video/hero-nosotros.mp4"
+              poster="/images/nosotros/hero-nosotros-poster.webp"
+            />
           </div>
         </section>
 
@@ -514,16 +514,15 @@ export default function Nosotros() {
             </div>
 
             {/* Los pasos son la lista ordenada: el contenido real. Desde 960px
-                los nombres de la lista se ocultan a la vista (no al lector de
-                pantalla) y encima va la escalera, un dibujo oculto para
-                lectores de pantalla con la letra y el nombre de cada paso.
-                Por debajo de 960px no hay escalera: la lista se ve completa. */}
+                va encima la escalera, un dibujo oculto para lectores de
+                pantalla con solo la letra de cada paso; el nombre y el párrafo
+                son los de la lista, debajo de cada peldaño. Por debajo de
+                960px no hay escalera: la lista lleva también la letra. */}
             <div className={`${styles.pacto} reveal`}>
               <div className={styles.escalera} aria-hidden="true">
                 {PACTO.map((p) => (
                   <div key={p.letra} className={styles.escalon}>
-                    <span className={styles.escalonLetra}>{p.letra}</span>
-                    <span className={styles.escalonNombre}>{p.nombre}</span>
+                    {p.letra}
                   </div>
                 ))}
                 <span className={styles.marcador} />

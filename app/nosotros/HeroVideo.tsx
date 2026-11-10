@@ -26,9 +26,11 @@ type Props = {
   poster?: string;
 };
 
-/* Provisional: calculado para un poster 16:9 recortado con object-fit: cover
-   en la caja (ancho de la página menos dos gutters extendidos, alto de
-   260/360/560px). Hay que medirlo en el navegador cuando exista el poster. */
+/* Medido en el navegador con el poster 16:9 recortado con object-fit: cover
+   en la caja. Manda el mayor entre el ancho de la caja (la página menos dos
+   gutters extendidos) y su alto por 16/9: 462px a 390 de ancho, 559 a 599,
+   640 a 600, 919 a 959, 996 de 960 a 1000 y, por encima, el 96% de la
+   ventana (1382 a 1440, 1843 a 1920). */
 const SIZES =
   "(max-width: 599px) max(calc(100vw - 40px), 463px), (max-width: 959px) max(calc(100vw - 40px), 640px), max(96vw, 996px)";
 
