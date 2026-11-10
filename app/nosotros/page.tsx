@@ -8,6 +8,7 @@ import { TableroProgreso } from "@/app/components/SeccionEvidencia";
 import SelloSTPS from "@/app/components/SelloSTPS";
 // La lista de las seis páginas de idioma vive con la plantilla de equipo.
 import { IDIOMAS } from "@/app/equipo/tipos";
+import { imagenResponsiva } from "@/lib/imagenes";
 import HeroVideo from "./HeroVideo";
 import styles from "./nosotros.module.css";
 
@@ -52,6 +53,26 @@ export const metadata: Metadata = {
 };
 
 const CTA = "Solicite una Cotización";
+
+/* Oculto mientras tanto: el párrafo que las presenta («Nosotros llevamos
+   veinte años del otro lado de esa historia…»), la franja navy «Busco un
+   proveedor confiable…» y las seis tarjetas de objeciones (DOLORES) del final
+   de #origen. Para que vuelvan
+   a verse, ponerlo en true: el código, los datos y los estilos siguen en su
+   sitio, y el bloque de arriba recupera su separación corta (.origenTop). */
+/* Ancho en pantalla de las dos fotos del bloque de misión (#origen), medido
+   en el navegador: por debajo de 960px, una columna (320px a 360, 551 a 599,
+   707 a 768) con tope de 760px; desde 960px, media rejilla (414px a 960, 524
+   a 1200, 634 a 1440) con tope de 652px a partir de 1600. */
+const SIZES_MISION = "(max-width: 959px) min(92vw, 760px), min(44vw, 652px)";
+
+const MOSTRAR_OBJECIONES = false;
+
+/* Oculta mientras tanto: la sección «Si algo se complica, se lo avisamos
+   primero» (#aviso), entre la metodología y las preguntas frecuentes. Para que
+   vuelva a verse, ponerlo en true: el código y los estilos siguen en su sitio,
+   y las preguntas frecuentes recuperan su relleno de arriba (.faqTrasMetodologia). */
+const MOSTRAR_AVISO = false;
 
 const DOLORES = [
   {
@@ -361,13 +382,13 @@ export default function Nosotros() {
             <SelloSTPS />
           </div>
           {/* Fuera de .heroInner: la caja va casi a todo lo ancho, no al del
-              texto. La banda de logos se monta sobre su borde superior. */}
+              texto. La banda de logos se monta sobre su borde inferior. */}
           <div className={styles.heroMedia}>
-            <BandaLogos className={styles.logosSobreVideo} />
             <HeroVideo
               video="/video/hero-nosotros.mp4"
               poster="/images/nosotros/hero-nosotros-poster.webp"
             />
+            <BandaLogos className={styles.logosSobreVideo} />
           </div>
         </section>
 
@@ -375,9 +396,8 @@ export default function Nosotros() {
         <section className={`sp-seccion ${styles.presentacion}`} id="presentacion">
           <div className={`${styles.presentacionInner} reveal`}>
             <p className={styles.presentacionLinea}>
-              S-Peak es una empresa mexicana de capacitación en idiomas para empresas,
-              <br className={styles.corte} /> fundada en 2006 y registrada ante la
-              STPS como agente capacitador.
+              Desde 2006, en S-Peak somos líderes en capacitación de idiomas
+              <br className={styles.corte} /> para empresas en México.
             </p>
             <ul className={styles.idiomas}>
               {IDIOMAS.map((i) => (
@@ -417,16 +437,24 @@ export default function Nosotros() {
                   clientes.
                 </p>
               </div>
-              {/* PLACEHOLDER: aquí va la imagen definitiva de la primera
-                  sub-sección. */}
-              <div className={`${styles.placeholderImagen} reveal`} aria-hidden="true">
-                Imagen
-              </div>
+              <img
+                className={`${styles.fotoMision} reveal`}
+                {...imagenResponsiva("/images/nosotros/nosotros-uno.webp", SIZES_MISION)}
+                alt="Mujer con diadema y micrófono tomando una clase por videoconferencia desde su laptop, con un cuaderno de apuntes en el escritorio"
+                width="1200"
+                height="896"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </div>
 
           <div className={styles.origen}>
-            <div className={`sp-seccion ${styles.origenTop}`}>
+            {/* Con las objeciones ocultas, el bloque cierra con el relleno normal
+                de sección: no hay franja que lo siga dentro del off-white. */}
+            <div
+              className={`sp-seccion${MOSTRAR_OBJECIONES ? ` ${styles.origenTop}` : ""}`}
+            >
               <div className={`${styles.dosColumnas} ${styles.dosColumnasInvertido}`}>
                 <div className={`${styles.lectura} reveal`}>
                   <p>
@@ -452,41 +480,52 @@ export default function Nosotros() {
                     programa.
                   </p>
                 </div>
-                {/* PLACEHOLDER: aquí va la imagen definitiva de la segunda
-                    sub-sección. */}
-                <div className={`${styles.placeholderImagen} reveal`} aria-hidden="true">
-                  Imagen
+                <img
+                  className={`${styles.fotoMision} reveal`}
+                  {...imagenResponsiva("/images/nosotros/nosotros-dos.webp", SIZES_MISION)}
+                  alt="Tres colegas en una sala de juntas conversan con una persona que participa por videollamada en la pantalla de la pared"
+                  width="1200"
+                  height="896"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              {/* La entrada a las objeciones: se oculta con ellas. */}
+              {MOSTRAR_OBJECIONES ? (
+                <div className={`sp-seccion-top ${styles.origenEntrada} reveal`}>
+                  <p>
+                    Nosotros llevamos veinte años del otro lado de esa historia. Esto es
+                    lo que escuchamos de Recursos Humanos, y lo que hacemos con cada cosa:
+                  </p>
                 </div>
-              </div>
-
-              <div className={`sp-seccion-top ${styles.origenEntrada} reveal`}>
-                <p>
-                  Nosotros llevamos veinte años del otro lado de esa historia. Esto es lo
-                  que escuchamos de Recursos Humanos, y lo que hacemos con cada cosa:
-                </p>
-              </div>
+              ) : null}
             </div>
 
-            <div className={`sp-banda ${styles.confianza}`}>
-              <div className={`${styles.confianzaInner} reveal`}>
-                <h3>«Busco un proveedor confiable, con buenas referencias»</h3>
-                <p>
-                  La primera empresa que confió en nosotros siguió con S-Peak durante
-                  15 años.
-                </p>
-              </div>
-            </div>
+            {MOSTRAR_OBJECIONES ? (
+              <>
+                <div className={`sp-banda ${styles.confianza}`}>
+                  <div className={`${styles.confianzaInner} reveal`}>
+                    <h3>«Busco un proveedor confiable, con buenas referencias»</h3>
+                    <p>
+                      La primera empresa que confió en nosotros siguió con S-Peak durante
+                      15 años.
+                    </p>
+                  </div>
+                </div>
 
-            <div className={`sp-seccion ${styles.origenGrid}`}>
-              <ul className={`sp-inner ${styles.dolores} reveal stagger`}>
-                {DOLORES.map((d) => (
-                  <li key={d.titulo} className={`sp-tarjeta sp-barra ${styles.dolor}`}>
-                    <h3>{d.titulo}</h3>
-                    <p>{d.descripcion}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                <div className={`sp-seccion ${styles.origenGrid}`}>
+                  <ul className={`sp-inner ${styles.dolores} reveal stagger`}>
+                    {DOLORES.map((d) => (
+                      <li key={d.titulo} className={`sp-tarjeta sp-barra ${styles.dolor}`}>
+                        <h3>{d.titulo}</h3>
+                        <p>{d.descripcion}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </>
+            ) : null}
           </div>
         </section>
 
@@ -495,7 +534,7 @@ export default function Nosotros() {
           id="proyectos"
           className={styles.proyectos}
           titulo="Orgullosos del trabajo que nos confían"
-          bajada="Algunos de los programas más retadores que hemos operado, contados también por ellos."
+          bajada="Nosotros llevamos veinte años del otro lado de esa historia. Estos son algunos de los programas que hemos operado, contados también por quienes los vivieron."
           celdas={CELDAS_PROYECTOS}
         />
 
@@ -565,28 +604,36 @@ export default function Nosotros() {
         </section>
 
         {/* SI ALGO SE COMPLICA */}
-        <section className={`sp-seccion ${styles.aviso}`} id="aviso">
-          <div className={`sp-inner ${styles.avisoInner}`}>
-            <div className={`${styles.avisoTexto} reveal`}>
-              <h2>Si algo se complica, se lo avisamos primero</h2>
-              <p>
-                En todo proyecto aparecen imprevistos. Aprendimos que entre más pronto se
-                anticipan y se comunican, más rápido se resuelven y más chicos se quedan.
-                Por eso, si un cierre de mes obliga a cancelar sesiones, su ejecutivo de
-                cuentas se lo avisa en cuanto lo detecta y le propone cuándo reponerlas,
-                antes de que Dirección se lo pregunte.
-              </p>
-              <p>
-                Revisamos los avances
-                con usted, escuchamos a su equipo y adaptamos el programa conforme su
-                empresa cambia.
-              </p>
+        {MOSTRAR_AVISO ? (
+          <section className={`sp-seccion ${styles.aviso}`} id="aviso">
+            <div className={`sp-inner ${styles.avisoInner}`}>
+              <div className={`${styles.avisoTexto} reveal`}>
+                <h2>Si algo se complica, se lo avisamos primero</h2>
+                <p>
+                  En todo proyecto aparecen imprevistos. Aprendimos que entre más pronto se
+                  anticipan y se comunican, más rápido se resuelven y más chicos se quedan.
+                  Por eso, si un cierre de mes obliga a cancelar sesiones, su ejecutivo de
+                  cuentas se lo avisa en cuanto lo detecta y le propone cuándo reponerlas,
+                  antes de que Dirección se lo pregunte.
+                </p>
+                <p>
+                  Revisamos los avances
+                  con usted, escuchamos a su equipo y adaptamos el programa conforme su
+                  empresa cambia.
+                </p>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        ) : null}
 
         {/* PREGUNTAS FRECUENTES */}
-        <section className="sp-seccion" id="faq">
+        {/* Sin el aviso, las preguntas siguen a la metodología sobre el mismo
+            fondo y no llevan relleno de arriba: el de abajo de la metodología
+            ya las separa. */}
+        <section
+          className={`sp-seccion${MOSTRAR_AVISO ? "" : ` ${styles.faqTrasMetodologia}`}`}
+          id="faq"
+        >
           <div className="sp-inner">
             <div className="sp-seccion-top reveal">
               <h2>Preguntas frecuentes sobre la capacitación en idiomas para su empresa</h2>

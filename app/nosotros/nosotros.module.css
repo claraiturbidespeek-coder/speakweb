@@ -69,35 +69,34 @@
    porcentajes de los gutters de dentro se siguen resolviendo contra el ancho
    de la página.
 
-   Sin margen arriba: el aire entre el sello y la banda es la mitad de la
-   altura de la banda que deja libre su translateY (66px con la banda de hoy).
-   En móvil, sin solape, ese aire no existe y se le dan los 40px que tenía la
-   caja de video. */
+   La banda va sobre el borde inferior, así que entre el sello y el video solo
+   queda la separación normal de bloque: 40px, los mismos que en móvil. */
 .heroMedia {
-  margin-top: 0;
+  margin-top: 40px;
 }
 
-/* La banda de logos sobre el borde superior del video: la mitad por encima y
-   la mitad dentro. Es BandaLogos tal cual, con una clase de esta página que
+/* La banda de logos sobre el borde inferior del video: la mitad dentro y la
+   mitad por debajo. Es BandaLogos tal cual, con una clase de esta página que
    solo cambia el envoltorio (.sp-logos); la tarjeta blanca, su radio y su
    sombra (--shadow-panel, que ya trae el patrón) no se tocan.
      - Sin el fondo off-white ni el -60px con que en las demás páginas se
        monta sobre el hero.
-     - translateY(50%) la baja la mitad de su propia altura sobre el video,
+     - translateY(-50%) la sube la mitad de su propia altura sobre el video,
        sea cual sea esa altura. Su caja sigue ocupando el sitio de antes, así
-       que encima de la banda queda esa misma mitad de aire.
+       que debajo de la banda queda esa misma mitad de aire (66px con la banda
+       de hoy) antes de la sección siguiente, que suma su propio relleno.
      - Con solape (desde 600px) el ancho se mide desde la caja de video: el
        envoltorio lleva el mismo gutter extendido que la caja más 24px, así
        que el video asoma 24px por lado en cualquier ancho. Medirla con el
        contenedor normal dejaba en tableta solo 4–11px de asomo, porque ahí
-       el gutter normal y el extendido casi coinciden. Por encima de
-       --container-max la tarjeta se topa y el asomo crece.
-     - En móvil, sin solape, conserva el gutter normal del patrón.
+       el gutter normal y el extendido casi coinciden.
+     - En móvil, sin solape, va apilada debajo del video con el gutter normal
+       del patrón.
      - El z-index 5 de .sp-logos la deja sobre el video (z-index 1). */
 .logosSobreVideo {
   background: transparent;
   margin-top: 0;
-  transform: translateY(50%);
+  transform: translateY(-50%);
 }
 
 @media (min-width: 600px) {
@@ -166,6 +165,17 @@
   border-radius: 0;
 }
 
+/* Con solape, la mitad libre de la banda de logos (66px con la banda de hoy)
+   ya separa el hero de esta sección: el relleno de arriba solo completa hasta
+   el ritmo de sección (66 + 24 ≈ --space-section). Sin él, entre la banda y
+   el texto quedaban 182px. En móvil no hay solape y se queda el relleno
+   normal. */
+@media (min-width: 600px) {
+  .presentacion {
+    padding-top: 24px;
+  }
+}
+
 .presentacionInner {
   max-width: 1000px;
   margin: 0 auto;
@@ -232,20 +242,17 @@
   gap: 32px;
 }
 
-/* Provisional: se reemplaza por la <img> definitiva cuando llegue. */
-.placeholderImagen {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* La foto que acompaña al texto en .dosColumnas: 4:3, recortada para llenar
+   su hueco. */
+.fotoMision {
+  display: block;
   width: 100%;
   max-width: 760px;
+  height: auto;
   margin: 0 auto;
   aspect-ratio: 4 / 3;
-  background: var(--color-border);
+  object-fit: cover;
   border-radius: var(--radius-grande);
-  font-size: 15px;
-  font-weight: var(--weight-semibold);
-  color: var(--color-muted);
 }
 
 @media (min-width: 960px) {
@@ -255,11 +262,11 @@
     align-items: center;
   }
 
-  .placeholderImagen {
+  .fotoMision {
     max-width: none;
   }
 
-  .dosColumnasInvertido .placeholderImagen {
+  .dosColumnasInvertido .fotoMision {
     order: -1;
   }
 }
@@ -1032,6 +1039,13 @@
 /* ---------- Si algo se complica ---------- */
 
 /* Sección de ancho completo en navy, con el texto claro. */
+/* Con el aviso oculto (MOSTRAR_AVISO en page.tsx), las preguntas frecuentes
+   van justo después de la metodología, sobre el mismo fondo: sin relleno de
+   arriba, para que entre las dos quede un solo relleno de sección y no dos. */
+.faqTrasMetodologia {
+  padding-top: 0;
+}
+
 .aviso {
   background: var(--color-navy);
   border-radius: 0;
@@ -1170,18 +1184,11 @@
   }
 }
 
-/* En móvil sin solape: la banda entera encima del video, apilada. */
+/* En móvil sin solape: la banda entera debajo del video, apilada. */
 @media (max-width: 599px) {
-  .heroMedia {
-    margin-top: 40px;
-  }
-
   .logosSobreVideo {
-    transform: none;
-  }
-
-  .heroVideo {
     margin-top: 20px;
+    transform: none;
   }
 }
 

@@ -1039,6 +1039,30 @@
       1440
     ]
   },
+  "/images/nosotros/nosotros-dos.webp": {
+    "width": 1200,
+    "height": 896,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080
+    ]
+  },
+  "/images/nosotros/nosotros-uno.webp": {
+    "width": 1200,
+    "height": 896,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080
+    ]
+  },
   "/images/proyectos/proyectos-covestro-poster.webp": {
     "width": 1280,
     "height": 720,
