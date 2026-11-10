@@ -1026,6 +1026,30 @@
       480
     ]
   },
+  "/images/proyectos/proyectos-covestro-poster.webp": {
+    "width": 1280,
+    "height": 720,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080
+    ]
+  },
+  "/images/proyectos/proyectos-kering-poster.webp": {
+    "width": 1280,
+    "height": 720,
+    "anchos": [
+      160,
+      320,
+      480,
+      640,
+      800,
+      1080
+    ]
+  },
   "/images/stps-logo.webp": {
     "width": 202,
     "height": 56,

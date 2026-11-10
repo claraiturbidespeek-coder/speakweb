@@ -3,8 +3,7 @@ import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BandaLogos from "@/app/components/BandaLogos";
 import CentroDeRecursos from "@/app/components/CentroDeRecursos";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
-import ProyectosVideo, { type CifraProyecto } from "@/app/components/proyectos/ProyectosVideo";
-import type { VideoProyecto } from "@/app/components/proyectos/CeldaVideo";
+import ProyectosVideo, { type CeldaProyecto } from "@/app/components/proyectos/ProyectosVideo";
 import { TableroProgreso } from "@/app/components/SeccionEvidencia";
 import SelloSTPS from "@/app/components/SelloSTPS";
 // La lista de las seis páginas de idioma vive con la plantilla de equipo.
@@ -87,31 +86,97 @@ const DOLORES = [
   },
 ];
 
-/* Sección de proyectos. Los videos esperan su ID de YouTube y su portada
-   (public/images/proyectos/, WebP 16:9 de 1920×1080): mientras no tengan
-   `id`, cada celda se ve como estado vacío. */
-const VIDEOS_PROYECTOS: [VideoProyecto, VideoProyecto] = [{}, {}];
-
-/* Datos reales de proyectos del cliente, literales. */
-const CIFRAS_PROYECTOS: [CifraProyecto, CifraProyecto, CifraProyecto, CifraProyecto] = [
+/* Sección de proyectos: nueve celdas, una por área del mosaico (el esquema
+   está en app/components/proyectos/ProyectosVideo.module.css), en el orden de
+   lectura. Las cifras son datos reales de proyectos del cliente, literales.
+   Las citas son literales: la de la celda alta (D), completa; las demás,
+   fragmentos del testimonio original. Cada video lleva su ID de YouTube, su
+   título (el de YouTube, tal cual), un clip de preview en public/video/ y su
+   portada en public/images/proyectos/. */
+const CELDAS_PROYECTOS: CeldaProyecto[] = [
   {
-    icono: "usuarios",
-    cifra: "50",
-    descriptor: "grupos presenciales simultáneos",
-    cliente: "Braskem Idesa",
+    area: "A",
+    tipo: "testimonio",
+    cita: "Se adaptan a las necesidades de sus perfiles de puesto.",
+    nombre: "Braskem Idesa",
+    rol: "Área de RRHH",
   },
-  { icono: "fabrica", cifra: "10 plantas", descriptor: "a la vez", cliente: "PepsiCo" },
   {
+    area: "B",
+    tipo: "cifra",
+    icono: "fabrica",
+    cifra: "10 plantas",
+    descriptor: "a la vez",
+    cliente: "PepsiCo",
+  },
+  /* Video A: Kering. Clip de 6 s del segundo 66 (Rocío Barajas hablando a
+     cámara); la portada es su primer fotograma. */
+  {
+    area: "C",
+    tipo: "video",
+    id: "mR5DD5LEfEU",
+    titulo:
+      "Mejorando el desempeño profesional a través del aprendizaje de idiomas en Kering con S-Peak",
+    portada: "/images/proyectos/proyectos-kering-poster.webp",
+    clip: "/video/proyectos-kering.mp4",
+    /* Ancho de la portada recortada con cover, medido: 350px en móvil; en
+       dos columnas la celda es alta (comparte fila con la cita larga de D) y
+       la portada mide 883px a 600, 660 a 768 y 564 a 960; desde 1200px, de
+       369 a 427px. */
+    sizes:
+      "(max-width: 599px) calc(100vw - 40px), (max-width: 767px) 884px, (max-width: 959px) 660px, (max-width: 1199px) 564px, 430px",
+  },
+  {
+    area: "D",
+    tipo: "testimonio",
+    cita: "S-Peak ha sido un gran aliado para nosotros, ya que se adapta a nuestras necesidades y cuenta con un sistema robusto de seguimiento en asistencias. Valoramos también que siempre nos brinda una buena atención tanto a la empresa como a los alumnos.",
+    nombre: "Anabel P.",
+    rol: "Analista de Planeación y Desarrollo de RH",
+  },
+  {
+    area: "E",
+    tipo: "cifra",
     icono: "globo",
     cifra: "5 países",
     descriptor: "al mismo tiempo, en línea en vivo",
     cliente: "Bolloré Logistics",
   },
+  /* F es la celda destacada (navy), sea cual sea su contenido. */
   {
+    area: "F",
+    tipo: "cifra",
     icono: "usuarioCheck",
     cifra: "+1,000",
     descriptor: "personas evaluadas en su nivel de idioma",
     cliente: "Grupo Modelo",
+  },
+  /* Video B: Covestro. Clip de 6 s del segundo 32 (Erika Cárdenas hablando
+     a cámara); la portada es su primer fotograma. */
+  {
+    area: "G",
+    tipo: "video",
+    id: "a5CFZDmtNN8",
+    titulo: "Eficiencia en la capacitación de idiomas de S-Peak: Covestro",
+    portada: "/images/proyectos/proyectos-covestro-poster.webp",
+    clip: "/video/proyectos-covestro.mp4",
+    /* Medido: a lo ancho en dos columnas (92% de la ventana) y, desde
+       1200px, el 45% de la ventana hasta topar en 670px. */
+    sizes: "(max-width: 599px) calc(100vw - 40px), (max-width: 1199px) 92vw, min(46vw, 670px)",
+  },
+  {
+    area: "H",
+    tipo: "testimonio",
+    cita: "Valoramos el seguimiento que S-Peak nos brinda, el feedback que piden a través de citas regulares y encuestas…",
+    nombre: "Erika C.",
+    rol: "People Development, Culture & D&I Expert",
+  },
+  {
+    area: "I",
+    tipo: "cifra",
+    icono: "usuarios",
+    cifra: "50",
+    descriptor: "grupos presenciales simultáneos",
+    cliente: "Braskem Idesa",
   },
 ];
 
@@ -296,15 +361,15 @@ export default function Nosotros() {
             <SelloSTPS />
           </div>
           {/* Fuera de .heroInner: la caja va casi a todo lo ancho, no al del
-              texto. Ruta del video y del poster cuando el equipo pase el
-              archivo:
+              texto. La banda de logos se monta sobre su borde superior.
+              Ruta del video y del poster cuando el equipo pase el archivo:
                 video="/video/hero-nosotros.mp4"
                 poster="/images/nosotros/hero-nosotros-poster.webp" */}
-          <HeroVideo />
+          <div className={styles.heroMedia}>
+            <BandaLogos className={styles.logosSobreVideo} />
+            <HeroVideo />
+          </div>
         </section>
-
-        {/* LOGOS */}
-        <BandaLogos />
 
         {/* PRESENTACIÓN E IDIOMAS */}
         <section className={`sp-seccion ${styles.presentacion}`} id="presentacion">
@@ -425,13 +490,13 @@ export default function Nosotros() {
           </div>
         </section>
 
-        {/* PROYECTOS: el título es provisional, hasta definir los videos. */}
+        {/* PROYECTOS */}
         <ProyectosVideo
           id="proyectos"
-          titulo="Proyectos que no caben en un salón"
-          bajada="Algunos de los programas más retadores que hemos operado."
-          videos={VIDEOS_PROYECTOS}
-          cifras={CIFRAS_PROYECTOS}
+          className={styles.proyectos}
+          titulo="Orgullosos del trabajo que nos confían"
+          bajada="Algunos de los programas más retadores que hemos operado, contados también por ellos."
+          celdas={CELDAS_PROYECTOS}
         />
 
         {/* METODOLOGÍA PACTO */}
@@ -448,40 +513,33 @@ export default function Nosotros() {
               </p>
             </div>
 
-            <ol className={`${styles.escalera} reveal stagger`}>
-              {PACTO.map((p) => (
-                <li key={p.letra} className={`sp-tarjeta ${styles.escalon}`}>
-                  <span className={styles.letra} aria-hidden="true">
-                    {p.letra}
-                  </span>
-                  <h3>{p.nombre}</h3>
-                  <p>{p.descripcion}</p>
-                </li>
-              ))}
-            </ol>
-
-            <figure
-              className={`sp-testi-card sp-testi-card--acento ${styles.testiPacto} reveal`}
-            >
-              <div className="sp-estrellas" style={{ color: "var(--color-navy)" }}>
-                ★★★★★
-              </div>
-              <blockquote className="sp-testi-quote">
-                &ldquo;S-Peak ha sido un gran aliado para nosotros, ya que se adapta a
-                nuestras necesidades y cuenta con un sistema robusto de seguimiento en
-                asistencias. Valoramos también que siempre nos brinda una buena atención
-                tanto a la empresa como a los alumnos.&rdquo;
-              </blockquote>
-              <figcaption className="sp-testi-autor">
-                <div className="sp-avatar">AP</div>
-                <div>
-                  <div className="sp-autor-nombre">Anabel P.</div>
-                  <div className="sp-autor-rol">
-                    Analista de Planeación y Desarrollo de RH
+            {/* Los pasos son la lista ordenada: el contenido real. Desde 960px
+                los nombres de la lista se ocultan a la vista (no al lector de
+                pantalla) y encima va la escalera, un dibujo oculto para
+                lectores de pantalla con la letra y el nombre de cada paso.
+                Por debajo de 960px no hay escalera: la lista se ve completa. */}
+            <div className={`${styles.pacto} reveal`}>
+              <div className={styles.escalera} aria-hidden="true">
+                {PACTO.map((p) => (
+                  <div key={p.letra} className={styles.escalon}>
+                    <span className={styles.escalonLetra}>{p.letra}</span>
+                    <span className={styles.escalonNombre}>{p.nombre}</span>
                   </div>
-                </div>
-              </figcaption>
-            </figure>
+                ))}
+                <span className={styles.marcador} />
+              </div>
+              <ol className={styles.pasos}>
+                {PACTO.map((p) => (
+                  <li key={p.letra} className={styles.paso}>
+                    <span className={styles.pasoLetra} aria-hidden="true">
+                      {p.letra}
+                    </span>
+                    <h3 className={styles.pasoNombre}>{p.nombre}</h3>
+                    <p>{p.descripcion}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
 
             {/* Con `rotativo` el tablero no pinta su etiqueta de ejemplo: va
                 aquí, encabezando la columna de texto. */}
@@ -525,44 +583,6 @@ export default function Nosotros() {
                 con usted, escuchamos a su equipo y adaptamos el programa conforme su
                 empresa cambia.
               </p>
-            </div>
-            {/* Los dos testimonios, con el texto de
-                app/idioma/ingles-para-empresas/page.tsx tal cual. */}
-            <div className={`${styles.avisoTestimonios} reveal stagger`}>
-              <figure className="sp-testi-card">
-                <div className="sp-estrellas">★★★★★</div>
-                <blockquote className="sp-testi-quote">
-                  &quot;Valoramos el seguimiento que <strong>S-Peak</strong> nos brinda,
-                  el feedback que piden a través de citas regulares y encuestas, así como
-                  reaccionan a lo que pedimos como cliente. Además, los profesores están
-                  muy bien preparados para asegurar el aprendizaje, y los precios son
-                  justos.&quot;
-                </blockquote>
-                <figcaption className="sp-testi-autor">
-                  <div className="sp-avatar">EC</div>
-                  <div>
-                    <div className="sp-autor-nombre">Erika C.</div>
-                    <div className="sp-autor-rol">
-                      People Development, Culture &amp; D&amp;I Expert
-                    </div>
-                  </div>
-                </figcaption>
-              </figure>
-              <figure className="sp-testi-card">
-                <div className="sp-estrellas">★★★★★</div>
-                <blockquote className="sp-testi-quote">
-                  &quot;El equipo de <strong>S-Peak</strong> tiene una gran actitud de
-                  servicio, sus cursos de idiomas son excelentes para nuestros equipos,
-                  se adaptan a las necesidades de sus perfiles de puesto.&quot;
-                </blockquote>
-                <figcaption className="sp-testi-autor">
-                  <div className="sp-avatar">BI</div>
-                  <div>
-                    <div className="sp-autor-nombre">Braskem Idesa</div>
-                    <div className="sp-autor-rol">Área de RRHH</div>
-                  </div>
-                </figcaption>
-              </figure>
             </div>
           </div>
         </section>

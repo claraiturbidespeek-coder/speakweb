@@ -6,16 +6,16 @@
    mismo hero de una columna y el mismo cierre en rojo: es candidato a subir a
    patrones.css, pero eso toca /diagnostico/ y se deja para una pasada aparte.
 
-   Las tarjetas de "S-Peak nació de una inconformidad" y los escalones de PACTO
-   son .sp-tarjeta; los testimonios, .sp-testi-card; el tablero de
-   Trazabilidad, TableroProgreso con su variante `amplio`. La escalera es de
-   esta página y no tiene patrón. */
+   Las tarjetas de "S-Peak nació de una inconformidad" son .sp-tarjeta; el
+   tablero de Trazabilidad, TableroProgreso con su variante `amplio`. La
+   escalera de PACTO es de esta página y no tiene patrón. */
 
 /* ---------- Hero ---------- */
 
 /* Ancho completo: radio cero explícito, como en las landings. Sin foto, así que
-   va a una columna. Abajo reserva los 100px que deja el hero de /equipo/ a la
-   banda de logos, que se monta 60px sobre él.
+   va a una columna. Sin padding inferior: el hero termina en el borde de la
+   caja de video, y la separación con lo que sigue la pone el padding superior
+   de esa sección.
 
    Sin padding lateral: el texto y la caja de video llevan cada uno el suyo. El
    texto, el gutter normal (en .heroInner); la caja, el de las secciones
@@ -29,7 +29,7 @@
     var(--color-off-white) 55%
   );
   border-radius: 0;
-  padding: 80px 0 100px;
+  padding: 80px 0 0;
 }
 
 /* Página de identidad, no landing: el hero va centrado y con un ancho propio
@@ -65,6 +65,47 @@
   justify-content: center;
 }
 
+/* La caja de video y la banda de logos montada sobre ella. Sin padding: los
+   porcentajes de los gutters de dentro se siguen resolviendo contra el ancho
+   de la página.
+
+   Sin margen arriba: el aire entre el sello y la banda es la mitad de la
+   altura de la banda que deja libre su translateY (66px con la banda de hoy).
+   En móvil, sin solape, ese aire no existe y se le dan los 40px que tenía la
+   caja de video. */
+.heroMedia {
+  margin-top: 0;
+}
+
+/* La banda de logos sobre el borde superior del video: la mitad por encima y
+   la mitad dentro. Es BandaLogos tal cual, con una clase de esta página que
+   solo cambia el envoltorio (.sp-logos); la tarjeta blanca, su radio y su
+   sombra (--shadow-panel, que ya trae el patrón) no se tocan.
+     - Sin el fondo off-white ni el -60px con que en las demás páginas se
+       monta sobre el hero.
+     - translateY(50%) la baja la mitad de su propia altura sobre el video,
+       sea cual sea esa altura. Su caja sigue ocupando el sitio de antes, así
+       que encima de la banda queda esa misma mitad de aire.
+     - Con solape (desde 600px) el ancho se mide desde la caja de video: el
+       envoltorio lleva el mismo gutter extendido que la caja más 24px, así
+       que el video asoma 24px por lado en cualquier ancho. Medirla con el
+       contenedor normal dejaba en tableta solo 4–11px de asomo, porque ahí
+       el gutter normal y el extendido casi coinciden. Por encima de
+       --container-max la tarjeta se topa y el asomo crece.
+     - En móvil, sin solape, conserva el gutter normal del patrón.
+     - El z-index 5 de .sp-logos la deja sobre el video (z-index 1). */
+.logosSobreVideo {
+  background: transparent;
+  margin-top: 0;
+  transform: translateY(50%);
+}
+
+@media (min-width: 600px) {
+  .logosSobreVideo {
+    padding-inline: calc(var(--space-gutter-ancho) + 24px);
+  }
+}
+
 /* La caja de video (HeroVideo.tsx): casi a todo lo ancho, separada de cada
    borde por el gutter de las secciones extendidas (20px hasta 1000px de
    ancho, 2% por encima), para que se lea como una caja y no como una banda a
@@ -76,7 +117,7 @@
   position: relative;
   z-index: 1;
   height: 260px;
-  margin: 40px var(--space-gutter-ancho) 0;
+  margin: 0 var(--space-gutter-ancho);
   overflow: hidden;
   border-radius: var(--radius-grande);
   background: var(--color-border);
@@ -119,7 +160,7 @@
 
 /* ---------- Presentación e idiomas ---------- */
 
-/* Mismo fondo que la banda de logos, que queda justo encima. */
+/* Sección de ancho completo sobre fondo off-white liso, sin radio. */
 .presentacion {
   background: var(--color-off-white);
   border-radius: 0;
@@ -336,65 +377,329 @@
   color: var(--color-ink-2);
 }
 
+/* ---------- Proyectos ----------
+   El bento (ProyectosVideo) sobre el fondo alterno, a todo lo ancho y con su
+   encabezado dentro: las tarjetas blancas se despegan del fondo, y la sección
+   se distingue de la de arriba, que termina en off-white. Radio cero, como las
+   demás secciones de ancho completo. */
+.proyectos {
+  background: var(--color-fondo-alterno);
+  border-radius: 0;
+}
+
 /* ---------- Metodología PACTO ---------- */
 
-/* La escalera: cinco columnas que suben de izquierda a derecha. Cada escalón
-   se estira hasta el fondo de la fila, así que el margen de arriba es lo que
-   lo deja más bajo: los pies quedan alineados y los techos forman los
-   peldaños. El último no lleva margen y marca la altura de la fila. */
+/* Los pasos: una lista ordenada (.pasos) que es el contenido, y desde 960px,
+   encima, la escalera (.escalera), un dibujo oculto a lectores de pantalla.
+
+   Por debajo de 960px no hay escalera: cada paso es un renglón con su letra,
+   su nombre y su párrafo.
+
+   Desde 960px la escalera y la lista comparten rejilla (cinco columnas con el
+   mismo hueco), así que cada párrafo queda bajo su escalón y todos arrancan a
+   la misma altura. Los nombres de la lista se ocultan a la vista, no al lector
+   de pantalla: los pone la escalera.
+
+   Medidas de la escalera, en variables porque el marcador las repite:
+     --pacto-hueco   el hueco entre columnas, el mismo de la lista;
+     --pacto-alto    el alto del primer escalón;
+     --pacto-subida  lo que crece cada escalón sobre el anterior;
+     --pacto-aire    la separación entre los escalones y la línea base. */
+.pacto {
+  --pacto-hueco: 16px;
+  --pacto-alto: 96px;
+  --pacto-subida: 32px;
+  --pacto-aire: 6px;
+  /* Debajo va directo el bloque del tablero: el mismo aire que separa el
+     encabezado de la sección de la escalera. */
+  margin-bottom: 56px;
+}
+
 .escalera {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
+  display: none;
+}
+
+.pasos {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.escalon {
-  display: flex;
-  flex-direction: column;
-  padding: 24px 20px;
-  border-top: 4px solid var(--color-red);
+.paso {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  column-gap: 16px;
+  padding: 20px 0;
 }
 
-.escalon:nth-child(1) {
-  margin-top: 128px;
+.paso + .paso {
+  border-top: 1px solid var(--color-border);
 }
 
-.escalon:nth-child(2) {
-  margin-top: 96px;
-}
-
-.escalon:nth-child(3) {
-  margin-top: 64px;
-}
-
-.escalon:nth-child(4) {
-  margin-top: 32px;
-}
-
-.letra {
-  margin-bottom: 12px;
-  font-size: 44px;
+.pasoLetra {
+  grid-row: span 2;
+  font-size: 32px;
   font-weight: var(--weight-black);
   line-height: 1;
   color: var(--color-red);
 }
 
-.escalon h3 {
-  margin-bottom: 10px;
+.pasoNombre {
+  margin: 0 0 6px;
   font-size: 16px;
   font-weight: var(--weight-bold);
   line-height: 1.3;
   color: var(--color-navy);
 }
 
-.escalon p {
+.paso p {
   margin: 0;
   font-size: 14px;
   line-height: 1.65;
   color: var(--color-ink-2);
+}
+
+@media (min-width: 960px) {
+  /* Cinco bloques planos apoyados en la línea base (el borde inferior), unos
+     píxeles por encima de ella y con una sombra suave. El relleno de arriba
+     deja sitio al marcador sobre el escalón más alto. */
+  .escalera {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-items: end;
+    gap: var(--pacto-hueco);
+    padding: 32px 0 var(--pacto-aire);
+    border-bottom: 2px solid var(--color-navy);
+  }
+
+  .escalon {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px;
+    border-radius: var(--radius);
+    background: var(--color-navy);
+    box-shadow: var(--shadow-card);
+    color: var(--color-white);
+  }
+
+  .escalon:nth-child(1) {
+    height: var(--pacto-alto);
+  }
+
+  .escalon:nth-child(2) {
+    height: calc(var(--pacto-alto) + var(--pacto-subida));
+  }
+
+  .escalon:nth-child(3) {
+    height: calc(var(--pacto-alto) + 2 * var(--pacto-subida));
+  }
+
+  .escalon:nth-child(4) {
+    height: calc(var(--pacto-alto) + 3 * var(--pacto-subida));
+  }
+
+  .escalon:nth-child(5) {
+    height: calc(var(--pacto-alto) + 4 * var(--pacto-subida));
+  }
+
+  .escalonLetra {
+    font-size: 44px;
+    font-weight: var(--weight-black);
+    line-height: 1;
+  }
+
+  .escalonNombre {
+    font-size: 14px;
+    font-weight: var(--weight-bold);
+    line-height: 1.3;
+  }
+
+  /* El marcador: una caja de una columna de ancho y alto cero, al pie de la
+     escalera; el punto rojo va centrado en ella, apoyado en el escalón. Se
+     coloca con translate: en X, una columna más un hueco por escalón (el
+     porcentaje es el de su propio ancho, que es el de una columna); en Y, el
+     alto del escalón. Sin animación —movimiento reducido o navegador sin
+     soporte— se queda en el último escalón. */
+  .marcador {
+    position: absolute;
+    bottom: var(--pacto-aire);
+    left: 0;
+    width: calc((100% - 4 * var(--pacto-hueco)) / 5);
+    height: 0;
+    translate: calc(4 * (100% + var(--pacto-hueco)))
+      calc(-1 * (var(--pacto-alto) + 4 * var(--pacto-subida)));
+  }
+
+  .marcador::after {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin-left: -8px;
+    border-radius: 50%;
+    background: var(--color-red);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* La lista, en la misma rejilla que la escalera: solo los párrafos. */
+  .pasos {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: var(--pacto-hueco);
+    margin-top: 28px;
+  }
+
+  .paso {
+    display: block;
+    padding: 0;
+  }
+
+  .paso + .paso {
+    border-top: none;
+  }
+
+  .pasoLetra {
+    display: none;
+  }
+
+  /* Oculto a la vista, no al lector de pantalla. */
+  .pasoNombre {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* El marcador avanza con el scroll, no con un temporizador: la línea de
+   tiempo es el paso de la escalera por la ventana (view-timeline). Arranca en
+   P cuando la escalera termina de entrar por abajo (contain 0%) y llega a O
+   hacia la mitad del recorrido (contain 50%), cuando la escalera ha subido
+   más o menos al tercio superior de la pantalla. Si el lector vuelve a subir,
+   el marcador baja.
+
+   Avanza escalón a escalón: en cada uno se queda quieto el 80% de su tramo y
+   salta al siguiente en el 20% restante. El escalón donde está pasa de navy a
+   rojo; cada uno se enciende en su décima parte del recorrido.
+
+   Solo con soporte de animation-timeline y sin movimiento reducido. Si no, es
+   el estado de arriba: escalones en navy y el marcador en el último. */
+@supports (animation-timeline: view()) {
+  @media (min-width: 960px) and (prefers-reduced-motion: no-preference) {
+    .escalera {
+      view-timeline: --pacto-escalera block;
+    }
+
+    .marcador {
+      animation: pacto-marcador linear both;
+      animation-timeline: --pacto-escalera;
+      animation-range: contain 0% contain 50%;
+    }
+
+    .escalon {
+      animation: pacto-encender linear both;
+      animation-timeline: --pacto-escalera;
+    }
+
+    .escalon:nth-child(1) {
+      animation-name: pacto-encender-primero;
+      animation-range: contain 0% contain 10%;
+    }
+
+    .escalon:nth-child(2) {
+      animation-range: contain 10% contain 20%;
+    }
+
+    .escalon:nth-child(3) {
+      animation-range: contain 20% contain 30%;
+    }
+
+    .escalon:nth-child(4) {
+      animation-range: contain 30% contain 40%;
+    }
+
+    .escalon:nth-child(5) {
+      animation-name: pacto-encender-ultimo;
+      animation-range: contain 40% contain 50%;
+    }
+  }
+}
+
+@keyframes pacto-marcador {
+  0%,
+  16% {
+    translate: 0 calc(-1 * var(--pacto-alto));
+  }
+
+  20%,
+  36% {
+    translate: calc(100% + var(--pacto-hueco))
+      calc(-1 * (var(--pacto-alto) + var(--pacto-subida)));
+  }
+
+  40%,
+  56% {
+    translate: calc(2 * (100% + var(--pacto-hueco)))
+      calc(-1 * (var(--pacto-alto) + 2 * var(--pacto-subida)));
+  }
+
+  60%,
+  76% {
+    translate: calc(3 * (100% + var(--pacto-hueco)))
+      calc(-1 * (var(--pacto-alto) + 3 * var(--pacto-subida)));
+  }
+
+  80%,
+  100% {
+    translate: calc(4 * (100% + var(--pacto-hueco)))
+      calc(-1 * (var(--pacto-alto) + 4 * var(--pacto-subida)));
+  }
+}
+
+/* El primero está encendido antes de empezar (el marcador arranca en él) y
+   el último se queda encendido al terminar (el marcador acaba en él). */
+@keyframes pacto-encender-primero {
+  0%,
+  90% {
+    background-color: var(--color-red);
+  }
+
+  100% {
+    background-color: var(--color-navy);
+  }
+}
+
+@keyframes pacto-encender {
+  0% {
+    background-color: var(--color-navy);
+  }
+
+  10%,
+  90% {
+    background-color: var(--color-red);
+  }
+
+  100% {
+    background-color: var(--color-navy);
+  }
+}
+
+@keyframes pacto-encender-ultimo {
+  0% {
+    background-color: var(--color-navy);
+  }
+
+  10%,
+  100% {
+    background-color: var(--color-red);
+  }
 }
 
 .testiPacto {
@@ -442,22 +747,23 @@
 
 /* ---------- Si algo se complica ---------- */
 
-/* Fondo navy porque la tarjeta de testimonio del sistema está pensada para ir
-   sobre él. */
+/* Sección de ancho completo en navy, con el texto claro. */
 .aviso {
   background: var(--color-navy);
   border-radius: 0;
   overflow: hidden;
 }
 
+/* Una columna centrada, con las medidas de lectura de .sp-seccion-top: el
+   titular a 48ch y los párrafos a 760px. */
 .avisoInner {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 56px;
-  align-items: center;
+  text-align: center;
 }
 
 .avisoTexto h2 {
+  max-width: 48ch;
+  margin-inline: auto;
+  text-wrap: balance;
   margin-bottom: 18px;
   font-size: var(--text-title-md);
   font-weight: var(--weight-bold);
@@ -467,10 +773,16 @@
 }
 
 .avisoTexto p {
+  max-width: 760px;
+  margin-inline: auto;
   margin-bottom: 16px;
   font-size: 16px;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.8);
+}
+
+.avisoTexto p:last-child {
+  margin-bottom: 0;
 }
 
 .avisoTestimonios {
@@ -558,40 +870,9 @@
 
 /* ---------- Responsive ---------- */
 
-/* La escalera se pone de pie: un escalón por renglón, cada uno un poco más
-   adentro que el anterior para que se siga leyendo como subida. */
 @media (max-width: 960px) {
   .dolores {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .escalera {
-    grid-template-columns: 1fr;
-  }
-
-  .escalon:nth-child(n) {
-    margin-top: 0;
-  }
-
-  .escalon:nth-child(2) {
-    margin-left: 12px;
-  }
-
-  .escalon:nth-child(3) {
-    margin-left: 24px;
-  }
-
-  .escalon:nth-child(4) {
-    margin-left: 36px;
-  }
-
-  .escalon:nth-child(5) {
-    margin-left: 48px;
-  }
-
-  .avisoInner {
-    grid-template-columns: 1fr;
-    gap: 36px;
   }
 }
 
@@ -605,6 +886,21 @@
   }
 }
 
+/* En móvil sin solape: la banda entera encima del video, apilada. */
+@media (max-width: 599px) {
+  .heroMedia {
+    margin-top: 40px;
+  }
+
+  .logosSobreVideo {
+    transform: none;
+  }
+
+  .heroVideo {
+    margin-top: 20px;
+  }
+}
+
 @media (max-width: 600px) {
   /* La etiqueta de ejemplo (.sp-etiqueta-ejemplo): en esta página ningún texto
      del tablero baja de 12px en móvil. */
@@ -613,7 +909,7 @@
   }
 
   .hero {
-    padding: 48px 0 80px;
+    padding: 48px 0 0;
   }
 
   .dolores {

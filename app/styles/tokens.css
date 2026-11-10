@@ -53,6 +53,12 @@
   /* Neutros */
   --color-white: #ffffff;
   --color-off-white: #f5f7fa;
+  /* Segundo fondo de sección, para cuando una sección va pegada a otra en
+     off-white y tiene que distinguirse de ella, o cuando lleva tarjetas
+     blancas que tienen que despegarse del fondo. Un punto más oscuro que
+     off-white (1,10:1 con él; 1,18:1 con el blanco) sin llegar a
+     --color-border, que es el color de los bordes y no debe usarse de fondo. */
+  --color-fondo-alterno: #e9edf2;
   --color-ink: #111827;
   --color-ink-2: #374151;
   --color-muted: #6b7280;

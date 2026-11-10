@@ -4,35 +4,60 @@
    interna. */
 
 /* ---------- Rejilla ----------
-   El alto lo manda la rejilla y las celdas llenan su fila.
-     - Hasta 600px: alto automático; cada celda a su contenido y el video en
-       16:9 (lo pone .celdaVideo).
-     - De 601 a 960px: cuatro filas, en el orden del HTML: video A, dos de
-       cifras y video B. Las de video a 260px y las de cifras a 230px.
-     - Desde 960px: dos filas de 240px; con el gap, unos 500px en total, para
-       que la sección con su titular quepa en una laptop de 720px de alto. */
+   Desde 1200px, mosaico de cuatro columnas y tres filas:
+
+     A  B  C  D
+     E  F  F  D
+     G  G  H  I
+
+   D es la celda alta (filas 1 y 2), F la ancha del centro y G la ancha de
+   abajo. Filas de 200, 200 y 260px como mínimo: si un contenido no cabe, la
+   fila crece en vez de desbordarse.
+
+   De 600 a 1199px, dos columnas en el orden del HTML, con F y G a lo ancho.
+   Filas de 230px como mínimo, que crecen con su contenido; G en 16:9.
+
+   Hasta 599px, una columna con alto automático y los videos en 16:9 (lo pone
+   .celdaVideo). */
 .rejilla {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 20px;
 }
 
-@media (min-width: 601px) {
+@media (min-width: 600px) {
   .rejilla {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: 260px 230px 230px 260px;
+    grid-auto-rows: minmax(230px, auto);
   }
+}
 
-  .video {
+@media (min-width: 600px) and (max-width: 1199px) {
+  .areaF,
+  .areaG {
     grid-column: span 2;
   }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1200px) {
   .rejilla {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-template-rows: repeat(2, 240px);
+    grid-template-rows: minmax(200px, auto) minmax(200px, auto) minmax(260px, auto);
+    grid-template-areas:
+      "a b c d"
+      "e f f d"
+      "g g h i";
   }
+
+  .areaA { grid-area: a; }
+  .areaB { grid-area: b; }
+  .areaC { grid-area: c; }
+  .areaD { grid-area: d; }
+  .areaE { grid-area: e; }
+  .areaF { grid-area: f; }
+  .areaG { grid-area: g; }
+  .areaH { grid-area: h; }
+  .areaI { grid-area: i; }
 }
 
 /* ---------- Tarjeta de cifra ----------
@@ -54,8 +79,9 @@
 
 /* No son clicables: de .sp-tarjeta se quedan la superficie (fondo, borde y
    radio), no su hover, que las haría pasar por interactivas y competiría con
-   el video, la única celda que se puede pulsar. */
-.cifra:hover {
+   el video, la única celda que se puede pulsar. Igual los testimonios. */
+.cifra:hover,
+.testimonio:hover {
   border-color: var(--color-border);
   transform: none;
   box-shadow: none;
@@ -90,6 +116,98 @@
   color: var(--color-navy);
 }
 
+/* ---------- Testimonio ----------
+   Las piezas de .sp-testi-card (estrellas, cita, autor) están pensadas para
+   ir sobre navy. En la superficie blanca de la celda se pasan a los colores
+   de texto sobre claro; el destacado va en navy y las usa tal cual. */
+.testimonio {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 24px;
+}
+
+.testimonio :global(.sp-testi-quote) {
+  margin-bottom: 16px;
+  color: var(--color-ink-2);
+}
+
+.testimonio :global(.sp-avatar) {
+  background: var(--color-off-white);
+  color: var(--color-navy);
+}
+
+.testimonio :global(.sp-autor-nombre) {
+  color: var(--color-navy);
+}
+
+.testimonio :global(.sp-autor-rol) {
+  color: var(--color-muted);
+}
+
+/* ---------- Celda destacada ----------
+   La del área F, con cifra o con testimonio: misma disposición que las
+   demás, en navy y con texto claro. Va al final del módulo de tarjetas para
+   mandar sobre sus colores. */
+.destacado {
+  border-radius: var(--radius-grande);
+  background: var(--color-navy);
+}
+
+.destacado :global(.sp-testi-quote) {
+  font-size: 22px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.destacado :global(.sp-avatar) {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+}
+
+.destacado :global(.sp-autor-nombre) {
+  color: var(--color-white);
+}
+
+.destacado :global(.sp-autor-rol) {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Cifra en la destacada: la celda es ancha, así que la cifra crece (56px, el
+   tamaño de los contadores del home en tablet) y el descriptor va a su lado
+   en vez de debajo, para que la tarjeta no gane alto. */
+.destacado .cifraCentro {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  column-gap: 16px;
+  row-gap: 6px;
+}
+
+.destacado .cifraNum {
+  margin: 0;
+  font-size: 56px;
+  color: var(--color-white);
+}
+
+.destacado .cifraDescriptor {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.destacado .cifraCliente {
+  border-top-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+}
+
+/* Tamaño de cita por celda. La alta (D) lleva una cita completa, que es la
+   que la llena. La del destacado (F), una frase corta en una celda ancha,
+   sube a 22px en su regla de arriba. */
+.areaD :global(.sp-testi-quote) {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
 /* ---------- Celda de video ---------- */
 
 .celdaVideo {
@@ -100,11 +218,19 @@
   background: var(--color-navy);
 }
 
-/* Desde 601px el video pierde el 16:9 y llena el alto de su fila; la portada
+/* Desde 600px el video pierde el 16:9 y llena el alto de su fila; la portada
    y el iframe ocupan la celda entera. */
-@media (min-width: 601px) {
+@media (min-width: 600px) {
   .celdaVideo {
     aspect-ratio: auto;
+  }
+}
+
+/* En dos columnas, el video ancho G conserva el 16:9: a lo ancho no tiene
+   vecina que le marque el alto. */
+@media (min-width: 600px) and (max-width: 1199px) {
+  .areaG {
+    aspect-ratio: 16 / 9;
   }
 }
 
@@ -163,6 +289,41 @@
 .botonPlay:focus-visible .play {
   background: var(--color-red-dark);
   transform: scale(1.06);
+}
+
+/* ---------- Modal del video (ModalVideo.tsx) ----------
+   El fondo oscurecido, el centrado y el reset del <dialog> los pone
+   .sp-modal-overlay, el mismo del modal de contacto; la cruz es
+   .sp-modal-cerrar, blanca, que se lee sobre ese fondo.
+
+   La caja es lo más ancha que deja el contenedor de lectura, sin pasar del
+   ancho que cabe en el alto de la ventana con el video en 16:9: el alto
+   disponible es la ventana menos el relleno del overlay (24px arriba y abajo)
+   y la fila de la cruz (28px más 8px de separación). */
+.modalVideo:focus {
+  outline: none;
+}
+
+.modalCaja {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  width: min(100%, var(--container-lectura), calc((100dvh - 84px) * 16 / 9));
+}
+
+.modalCerrar:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+.modalMarco {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-grande);
+  background: var(--color-navy-dark);
 }
 
 .iframe {
