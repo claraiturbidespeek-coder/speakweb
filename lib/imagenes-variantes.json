@@ -257,18 +257,6 @@
       1440
     ]
   },
-  "/images/blog/capacitacion-idiomas-retencion-desempeno-talento-portada.webp": {
-    "width": 1200,
-    "height": 896,
-    "anchos": [
-      160,
-      320,
-      480,
-      640,
-      800,
-      1080
-    ]
-  },
   "/images/blog/capacitacion-personal-programa-idiomas-01.webp": {
     "width": 1024,
     "height": 683,
@@ -355,19 +343,6 @@
   "/images/blog/como-implementar-capacitacion-en-ingles-empresas-portada.webp": {
     "width": 1600,
     "height": 1067,
-    "anchos": [
-      160,
-      320,
-      480,
-      640,
-      800,
-      1080,
-      1440
-    ]
-  },
-  "/images/blog/curso-idiomas-empresas-portada.webp": {
-    "width": 1600,
-    "height": 1085,
     "anchos": [
       160,
       320,
@@ -559,19 +534,6 @@
       1920
     ]
   },
-  "/images/blog/programa-capacitacion-idiomas-desde-cero-portada.webp": {
-    "width": 1600,
-    "height": 1088,
-    "anchos": [
-      160,
-      320,
-      480,
-      640,
-      800,
-      1080,
-      1440
-    ]
-  },
   "/images/blog/roi-capacitacion-idiomas-portada.webp": {
     "width": 1600,
     "height": 1096,
@@ -744,17 +706,6 @@
     ]
   },
   "/images/home/blog-idiomas-para-empresas.webp": {
-    "width": 1024,
-    "height": 683,
-    "anchos": [
-      160,
-      320,
-      480,
-      640,
-      800
-    ]
-  },
-  "/images/home/blog-ingles-de-negocios.webp": {
     "width": 1024,
     "height": 683,
     "anchos": [

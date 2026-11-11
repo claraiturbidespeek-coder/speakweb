@@ -19,8 +19,6 @@ export type PreguntaFrecuente = {
 };
 
 type Props = {
-  /* Antetítulo opcional sobre el H2, con el patrón .sp-eyebrow. */
-  eyebrow?: string;
   titulo: string;
   bajada?: string;
   preguntas: PreguntaFrecuente[];
@@ -32,7 +30,6 @@ type Props = {
 };
 
 export default function PreguntasFrecuentes({
-  eyebrow,
   titulo,
   bajada,
   preguntas,
@@ -45,7 +42,6 @@ export default function PreguntasFrecuentes({
     <section className={`sp-seccion${className ? ` ${className}` : ""}`} id={id}>
       <div className="sp-inner sp-faq-bloque">
         <div>
-          {eyebrow ? <div className="sp-eyebrow">{eyebrow}</div> : null}
           <h2 className="sp-faq-bloque-titulo">{titulo}</h2>
           {bajada ? <p className="sp-faq-bloque-bajada">{bajada}</p> : null}
           <div className="sp-faq-lista sp-faq-bloque-lista">

@@ -1323,11 +1323,6 @@
   }
 }
 
-.testiPacto {
-  max-width: 760px;
-  margin: 56px auto 40px;
-}
-
 /* El tablero de TableroProgreso, en su variante `rotativo`. En una columna
    conserva el tope que pidió el cliente; en dos, manda la columna. */
 .panel {
@@ -1404,16 +1399,6 @@
 
 .avisoTexto p:last-child {
   margin-bottom: 0;
-}
-
-.avisoTestimonios {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.avisoTestimonios figure {
-  margin: 0;
 }
 
 /* ---------- Nuestra Historia ----------
