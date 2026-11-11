@@ -111,6 +111,11 @@ export default function Footer() {
                 Centro de Recursos
               </Link>
             </li>
+            <li>
+              <Link className={styles.link} href="/nosotros/">
+                Conózcanos
+              </Link>
+            </li>
             {/* Casos de éxito (/clientes/), oculta. Descomentar para
                 reactivarla; la página sigue en su sitio. */}
             {/*

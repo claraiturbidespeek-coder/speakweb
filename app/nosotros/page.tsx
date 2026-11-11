@@ -9,7 +9,6 @@ import SelloSTPS from "@/app/components/SelloSTPS";
 // La lista de las seis páginas de idioma vive con la plantilla de equipo.
 import { IDIOMAS } from "@/app/equipo/tipos";
 import Icono from "@/app/components/Icono";
-import PreguntasFrecuentes from "@/app/components/PreguntasFrecuentes";
 import { imagenResponsiva } from "@/lib/imagenes";
 import HeroVideo from "./HeroVideo";
 import styles from "./nosotros.module.css";
@@ -27,16 +26,12 @@ const TITULO = "S-Peak, capacitación en idiomas para empresas desde 2006";
 const DESCRIPCION =
   "Capacitación en idiomas para empresas desde 2006: registro STPS, constancia DC-3 y metodología PACTO con reportes mensuales. Presencial, en línea o híbrida.";
 
-/* Página oculta mientras el cliente la aprueba: robots noindex/nofollow, fuera
-   del sitemap y sin enlaces desde el menú ni desde ninguna otra página. Solo se
-   llega escribiendo la URL. Para publicarla: quitar `robots` de aquí, añadir
-   "/nosotros/" a las rutas fijas de app/sitemap.ts (y retirarla del comentario
-   de ese archivo y del de app/robots.ts) y darle su entrada de menú en
-   app/components/nav/secciones.ts. */
+/* Página pública: indexable, en el sitemap (app/sitemap.ts), en el menú del
+   header (ENLACES_SUELTOS de app/components/nav/secciones.ts) y en la columna
+   Recursos del footer. */
 export const metadata: Metadata = {
   title: TITULO,
   description: DESCRIPCION,
-  robots: { index: false, follow: false },
   alternates: { canonical: URL },
   openGraph: {
     type: "website",
@@ -126,7 +121,7 @@ const CELDAS_PROYECTOS: CeldaProyecto[] = [
   {
     area: "A",
     tipo: "testimonio",
-    cita: "Se adaptan a las necesidades de sus perfiles de puesto.",
+    cita: "Se adaptan a las necesidades de nuestros perfiles de puesto.",
     nombre: "Braskem Idesa",
     rol: "Área de RRHH",
   },
@@ -134,7 +129,7 @@ const CELDAS_PROYECTOS: CeldaProyecto[] = [
     area: "B",
     tipo: "cifra",
     icono: "fabrica",
-    cifra: "10 plantas",
+    cifra: "9 plantas",
     descriptor: "a la vez",
     cliente: "PepsiCo",
   },
@@ -267,22 +262,20 @@ const TABLERO = {
   ],
 };
 
-const MCER = "https://www.coe.int/en/web/common-european-framework-reference-languages";
-
 /* Los valores (#valores): icono, título y párrafo de cada tarjeta. Los
    iconos son del registro de Icono.tsx y no repiten ninguno de la página. */
 const VALORES = [
   {
     icono: "tendencia",
-    titulo: "Enfoque en los resultados",
+    titulo: "Le mostramos cómo va",
     texto:
-      "Nuestro objetivo es que vea en datos qué está pasando con su programa y qué podemos ajustar para que su equipo saque más provecho de él.",
+      "Usted ve en datos cómo avanza cada grupo y qué conviene ajustar para que su equipo le saque más provecho al programa.",
   },
   {
     icono: "escudo",
     titulo: "Nos hacemos cargo del programa",
     texto:
-      "No entregamos clases y desaparecemos. Alguien de nuestro equipo responde por el avance de su programa, le da seguimiento mes con mes y le dice qué hace falta para sostenerlo.",
+      "No entregamos clases y desaparecemos. Alguien de nuestro equipo responde por su programa, le da seguimiento cada mes y le dice qué hace falta para que el avance se sostenga.",
   },
   {
     icono: "reloj",
@@ -298,74 +291,6 @@ const VALORES = [
   },
 ];
 
-/* La tarjeta navy al lado de las preguntas frecuentes: la misma de la home. */
-const TARJETA_FAQ = {
-  titulo: "¿Quedan Dudas?",
-  texto: "Un asesor las resuelve y le prepara una cotización a la medida de su equipo.",
-  boton: CTA,
-};
-
-const FAQ = [
-  {
-    pregunta: "¿Con qué escala miden el nivel de cada colaborador?",
-    respuesta: (
-      <>
-        Con la del{" "}
-        <a href={MCER} target="_blank" rel="noopener noreferrer">
-          Marco Común Europeo de Referencia
-        </a>{" "}
-        (A1 a C2), desde el examen del diagnóstico inicial.
-      </>
-    ),
-  },
-  {
-    pregunta: "¿Cuánto tiempo hay que contratar?",
-    respuesta:
-      "Un año mínimo. Es el tiempo en que el avance alcanza a verse en el puesto.",
-  },
-  {
-    pregunta: "¿Quién da las sesiones?",
-    respuesta:
-      "Especialistas en idioma de negocios, nativos o bilingües, con experiencia en entornos empresariales; si alguno no resulta el adecuado, lo cambiamos.",
-  },
-  {
-    pregunta: "¿Qué pasa si el instructor no puede dar una sesión?",
-    respuesta: "Se repone en un horario que acuerdan el colaborador y el instructor.",
-  },
-  {
-    pregunta: "¿Pueden darse de alta como proveedor en nuestra empresa?",
-    respuesta:
-      "Sí: entregamos la documentación para el alta y firmamos acuerdo de confidencialidad.",
-  },
-  {
-    pregunta: "¿El material tiene costo?",
-    respuesta: "El material se cotiza aparte; su costo depende del idioma y del nivel.",
-  },
-  {
-    pregunta: "¿Cómo se factura?",
-    respuesta: "Nos adaptamos a la forma de facturación de su empresa.",
-  },
-  {
-    pregunta: "¿Atienden fuera de la Ciudad de México?",
-    respuesta:
-      "Sí, en cualquier parte de México: presencial en la empresa, en línea en vivo o híbrida, en una o varias sedes.",
-  },
-  {
-    pregunta:
-      "¿La constancia DC-3 es una certificación de idioma, como Cambridge o IELTS?",
-    respuesta: (
-      <>
-        No. La DC-3 es la constancia de capacitación con formato de la{" "}
-        <a href="https://www.gob.mx/stps" target="_blank" rel="noopener noreferrer">
-          STPS
-        </a>
-        , que firmamos como agente capacitador externo; el nivel de idioma se mide
-        aparte, con la escala del Marco Común Europeo.
-      </>
-    ),
-  },
-];
-
 /* Los tres del Centro de Recursos, por su url en CentroDeRecursos.tsx. */
 const ARTICULOS = [
   "/blog-capacitacion-en-ingles-programa-fantasma/",
@@ -373,7 +298,6 @@ const ARTICULOS = [
   "/capacitacion-personal-programa-idiomas/",
 ];
 
-/* Sin FAQPage, a diferencia de las demás páginas con preguntas frecuentes. */
 function datosEstructurados() {
   return JSON.stringify({
     "@context": "https://schema.org",
@@ -440,8 +364,8 @@ export default function Nosotros() {
         <section className={`sp-seccion ${styles.presentacion}`} id="presentacion">
           <div className={`${styles.presentacionInner} reveal`}>
             <h2 className={styles.presentacionLinea}>
-              Desde 2006, en S-Peak somos líderes en capacitación de idiomas
-              <br className={styles.corte} /> para empresas en México
+              Desde 2006 capacitamos en idiomas
+              <br className={styles.corte} /> a equipos de empresas en México
             </h2>
             <p className={styles.modalidades}>
               Presencial, en línea en vivo o híbrida, en una o varias sedes en
@@ -469,17 +393,16 @@ export default function Nosotros() {
                 <div className="sp-eyebrow">Nuestra Historia</div>
                 <h2>En S-Peak nacimos de una inconformidad</h2>
                 <p>
-                  En 2006 lo normal era que la empresa se acomodara a su proveedor: sus
-                  horarios, su sede, su temario. A nosotros nos parecía al revés. Quien
-                  contrata la capacitación es quien tiene el problema que resolver;
-                  quien debe acomodarse es quien cobra por resolverlo.
+                  En 2006, lo normal era que la empresa se acomodara a su proveedor: sus
+                  horarios, su sede, su temario. A nosotros nos parecía al revés: quien
+                  contrata la capacitación tiene un problema que resolver, y es el
+                  proveedor quien debe acomodarse a él.
                 </p>
                 <p>
-                  Por eso fuimos de los primeros en México en llevar al instructor
-                  dentro de la empresa y en dar clases por videoconferencia, cuando las
-                  dos cosas sonaban raras. No lo hicimos por modernos: era la única
-                  forma de que el programa cupiera en la operación de nuestros
-                  clientes.
+                  Por eso fuimos de los primeros en México en llevar al instructor dentro
+                  de la empresa y en dar clases por videoconferencia, cuando ninguna de
+                  las dos era común. No lo hicimos por modernos: era la forma de que el
+                  programa cupiera en la operación de nuestros clientes.
                 </p>
               </div>
               <img
@@ -503,8 +426,8 @@ export default function Nosotros() {
               <div className={`${styles.dosColumnas} ${styles.dosColumnasInvertido}`}>
                 <div className={`${styles.lectura} reveal`}>
                   <h3>
-                    Veinte años después, esto es lo que seguimos encontrando cuando una
-                    empresa nos llama
+                    Más de veinte años después, esto es lo que seguimos encontrando cuando
+                    una empresa nos llama
                   </h3>
                   <p>
                     Imagine a una gerente de Recursos Humanos. Dirección le pide que, en
@@ -580,7 +503,7 @@ export default function Nosotros() {
           className={styles.proyectos}
           eyebrow="Casos de Éxito"
           titulo="Orgullosos del trabajo que nos confían"
-          bajada="Nosotros llevamos veinte años del otro lado de esa historia. Estos son algunos de los programas que hemos operado, contados también por quienes los vivieron."
+          bajada="Estos son algunos de los programas que hemos operado, contados también por quienes los vivieron."
           celdas={CELDAS_PROYECTOS}
         />
 
@@ -708,16 +631,6 @@ export default function Nosotros() {
             </ul>
           </div>
         </section>
-
-        {/* PREGUNTAS FRECUENTES */}
-        <PreguntasFrecuentes
-          id="faq"
-          eyebrow="Preguntas Frecuentes"
-          titulo="Preguntas frecuentes sobre la capacitación en idiomas para su empresa"
-          preguntas={FAQ}
-          nombre="faq-nosotros"
-          tarjeta={TARJETA_FAQ}
-        />
 
         {/* CIERRE */}
         <section className={`sp-seccion ${styles.finalCta}`}>

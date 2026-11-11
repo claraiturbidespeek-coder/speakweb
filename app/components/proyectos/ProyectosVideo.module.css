@@ -201,9 +201,12 @@
 }
 
 /* Tamaño de cita por celda. La alta (D) lleva una cita completa, que es la
-   que la llena. La del destacado (F), una frase corta en una celda ancha,
-   sube a 22px en su regla de arriba. */
-.areaD :global(.sp-testi-quote) {
+   que la llena; las de A y H, fragmentos más cortos, van al mismo tamaño para
+   no dejar hueco en su celda. La del destacado (F), una frase corta en una
+   celda ancha, sube a 22px en su regla de arriba. */
+.areaA :global(.sp-testi-quote),
+.areaD :global(.sp-testi-quote),
+.areaH :global(.sp-testi-quote) {
   font-size: 18px;
   line-height: 1.5;
 }

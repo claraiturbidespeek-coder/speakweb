@@ -6,7 +6,7 @@ import { obtenerPosts } from "@/lib/posts";
 
    Solo entra lo que está terminado y debe indexarse. Quedan fuera, a propósito:
 
-   - /clientes/ y /nosotros/, ocultas por decisión y ya con robots noindex.
+   - /clientes/, oculta por decisión y ya con robots noindex.
    - /gracias/, que dispara la conversión y por su naturaleza no se indexa.
    - Las cinco de /category/, hoy esqueletos. Entran cuando el listado por
      categoría esté construido.
@@ -27,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const fijas = [
     "/",
     "/blog/",
+    "/nosotros/",
     "/aviso-de-privacidad/",
     "/idioma/",
     ...ENLACES_IDIOMAS.map((e) => e.ruta),

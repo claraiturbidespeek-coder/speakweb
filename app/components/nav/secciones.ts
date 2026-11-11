@@ -34,6 +34,7 @@ export const ENLACES_SUELTOS = [
   // navegación en línea y el panel a pantalla completa.
   // { nombre: "Clientes", ruta: "/clientes/" },
   { nombre: "Recursos", ruta: "/blog/" },
+  { nombre: "Conózcanos", ruta: "/nosotros/" },
 ];
 
 /* Las anclas del header en modo landing, en el orden en que las secciones
