@@ -337,6 +337,14 @@
     "hash": "6660cd073c75b7aa45e88eed5e8499b387d8ea6f",
     "descartados": []
   },
+  "/images/logos/bollore.webp": {
+    "hash": "181f0e3fd3c0f00ec3e20ef71766c03d311f74ca",
+    "descartados": []
+  },
+  "/images/logos/braskem.webp": {
+    "hash": "ff36c6ba223ee9b6245a1aba1342a1e2b404f8bf",
+    "descartados": []
+  },
   "/images/logos/club med.webp": {
     "hash": "1e08dd10af55144c1eb9e16afec668e613317eee",
     "descartados": []
@@ -346,6 +354,10 @@
     "descartados": [
       480
     ]
+  },
+  "/images/logos/grupo-modelo.webp": {
+    "hash": "c32fe7c4cc3ddb46263bc6632e5ff436d015e028",
+    "descartados": []
   },
   "/images/logos/kio.webp": {
     "hash": "725d797301b8fa674cbbd763107c8738a6bde676",
@@ -388,11 +400,11 @@
     "descartados": []
   },
   "/images/nosotros/nosotros-dos.webp": {
-    "hash": "793f8147cf74619bfa7f29c86e7e0efb0cf12416",
+    "hash": "e35a80847e082d3926e8d6e895c35e34a553251f",
     "descartados": []
   },
   "/images/nosotros/nosotros-uno.webp": {
-    "hash": "e1ffdca43ae7524831c66949f53199d1b0ab1e18",
+    "hash": "e2e8233160e70042f9078825215bc30837cd3fa3",
     "descartados": []
   },
   "/images/proyectos/proyectos-covestro-poster.webp": {

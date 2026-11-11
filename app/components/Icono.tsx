@@ -8,7 +8,11 @@
 
    El trazo, el grosor y los remates los pone `.sp-icono svg` en patrones.css;
    aquí solo va la geometría. Regla de las páginas: dentro de una misma página
-   no se repite un icono. */
+   no se repite un icono.
+
+   Excepción acordada: la línea de tiempo de /nosotros/ repite `baseDatos` en
+   sus tres sistemas de información, y `globo`, `fabrica` y `usuarios`, que ya
+   salen en las cifras del bento de esa misma página. */
 
 const TRAZOS: Record<string, string> = {
   // — Genéricos del hero —
@@ -78,6 +82,21 @@ const TRAZOS: Record<string, string> = {
   // — Medios —
   reproducir:
     "M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z",
+  video:
+    "m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5|rect:14,12,2,6,2",
+  movil: "rect:14,20,5,2,2|M12 18h.01",
+
+  // — Línea de tiempo de /nosotros/ —
+  bandera:
+    "M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528",
+  /* La elipse de arriba va como dos arcos: el componente no dibuja <ellipse>. */
+  baseDatos:
+    "M3 5a9 3 0 1 0 18 0a9 3 0 1 0-18 0|M3 5v14a9 3 0 0 0 18 0V5|M3 12a9 3 0 0 0 18 0",
+  /* Dos pines, uno por ciudad: el de Lucide (map-pin) reducido y duplicado. */
+  pinesMapa:
+    "M12 9c0 3.1-3.4 6.3-4.6 7.3a.6.6 0 0 1-.8 0C5.4 15.3 2 12.1 2 9a5 5 0 0 1 10 0|circle:7,9,2|M22 13c0 3.1-3.4 6.3-4.6 7.3a.6.6 0 0 1-.8 0C15.4 19.3 12 16.1 12 13a5 5 0 0 1 10 0|circle:17,13,2",
+  portapapelesCheck:
+    "rect:8,4,8,2,1|M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2|m9 14 2 2 4-4",
 };
 
 /* Marcas de marca: un solo trazado relleno, no un contorno de Lucide. Van en

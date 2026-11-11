@@ -116,6 +116,86 @@
   color: var(--color-navy);
 }
 
+/* ---------- Contorno rojo ----------
+   El rectángulo de Contorno, encima del borde de la tarjeta: el SVG cubre la
+   caja de borde (-1px sobre el relleno) y el trazo va centrado en su orilla,
+   con el radio de la tarjeta, así que sigue la curva del borde. Es un dibujo
+   encima: no mueve ni cambia el tamaño de nada, y no recibe clics.
+
+   Fino, de 2px, como la raya roja del .sp-eyebrow. Apagado por defecto; en la
+   tarjeta con data-contorno-activo (lo pone RejillaContorno) corre una vez:
+   el trazo recorre el perímetro hasta cerrarse, se queda un momento y se
+   desvanece. Dura lo mismo que el turno de RejillaContorno (3.2 s). Con
+   movimiento reducido no se enciende. */
+.contorno {
+  position: absolute;
+  inset: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.contorno rect {
+  rx: var(--radius-grande);
+  fill: none;
+  stroke: var(--color-red);
+  stroke-width: 2px;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-contorno-activo] > .contorno rect {
+    animation: contorno-recorrido 3.2s linear forwards;
+  }
+}
+
+@keyframes contorno-recorrido {
+  0% {
+    stroke-dashoffset: 1;
+    opacity: 1;
+  }
+
+  /* El trazo cierra en 2 s, se queda 0.6 s y se desvanece en el resto. */
+  62.5% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  81.25% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+/* ---------- Logo de la empresa ----------
+   En lugar del nombre, en la fila del cliente de las cifras y en la firma de
+   los testimonios. La caja mide lo que la marca y recorta el resto del
+   lienzo; el tamaño y el desplazamiento los pone LogoCliente. Va a la
+   izquierda, alineado con el texto de la tarjeta. */
+.logo {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.logo img {
+  position: absolute;
+  max-width: none;
+}
+
+/* Entre el logo y el rol, el mismo aire que dejaba el renglón del nombre. */
+.autorLogo {
+  margin-bottom: 4px;
+}
+
 /* ---------- Testimonio ----------
    Las piezas de .sp-testi-card (estrellas, cita, autor) están pensadas para
    ir sobre navy. En la superficie blanca de la celda se pasan a los colores

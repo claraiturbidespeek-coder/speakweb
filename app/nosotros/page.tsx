@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BandaLogos from "@/app/components/BandaLogos";
 import CentroDeRecursos from "@/app/components/CentroDeRecursos";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
-import ProyectosVideo, { type CeldaProyecto } from "@/app/components/proyectos/ProyectosVideo";
+import ProyectosVideo, {
+  type CeldaProyecto,
+  type LogoProyecto,
+} from "@/app/components/proyectos/ProyectosVideo";
 import { TableroProgreso } from "@/app/components/SeccionEvidencia";
 import SelloSTPS from "@/app/components/SelloSTPS";
 // La lista de las seis páginas de idioma vive con la plantilla de equipo.
@@ -11,14 +15,16 @@ import { IDIOMAS } from "@/app/equipo/tipos";
 import Icono from "@/app/components/Icono";
 import { imagenResponsiva } from "@/lib/imagenes";
 import HeroVideo from "./HeroVideo";
+import LineaDesplazable from "./LineaDesplazable";
 import styles from "./nosotros.module.css";
 
 /* /nosotros/: quiénes somos, contado como la historia de una gerente de RH.
 
    Hero de una columna, secciones sp-* y CTA final en rojo, como /diagnostico/.
    Se renderiza en el servidor: los únicos trozos de cliente son los botones de
-   contacto, AnimacionesEntrada, el carrusel del Centro de Recursos y la
-   rotación del tablero de Trazabilidad. Todos los botones abren el modal de
+   contacto, AnimacionesEntrada, el carrusel del Centro de Recursos, las
+   flechas de la línea de tiempo (LineaDesplazable) y la rotación del tablero
+   de Trazabilidad. Todos los botones abren el modal de
    contacto general. */
 
 const URL = "https://s-peak.com/nosotros/";
@@ -57,11 +63,16 @@ const CTA = "Solicite una Cotización";
    de #origen. Para que vuelvan
    a verse, ponerlo en true: el código, los datos y los estilos siguen en su
    sitio, y el bloque de arriba recupera su separación corta (.origenTop). */
-/* Ancho en pantalla de las dos fotos del bloque de misión (#origen), medido
-   en el navegador: por debajo de 960px, una columna (320px a 360, 551 a 599,
-   707 a 768) con tope de 760px; desde 960px, media rejilla (414px a 960, 524
-   a 1200, 634 a 1440) con tope de 652px a partir de 1600. */
-const SIZES_MISION = "(max-width: 959px) min(92vw, 760px), min(44vw, 652px)";
+/* Ancho en que se pinta la imagen de las dos fotos del bloque de misión
+   (#origen), no el de su caja: son 16:9 recortadas con object-fit: cover, así
+   que la imagen siempre es más ancha que la caja. Medido en el navegador:
+   - Por debajo de 960px, caja 4:3 a una columna (350px a 390, 693 a 768,
+     tope de 760): la imagen mide 4/3 de la caja (468px a 390, 924 a 768).
+   - Desde 960px la caja se estira al alto de su columna de texto, así que el
+     ancho depende del texto y no del viewport: entre 740 y 923px en todo el
+     rango medido (836/923 a 960, 755/847 a 1100, 740/876 a 1280, 837 a 1440,
+     870 a 1920). Se declara el tope redondeado. */
+const SIZES_MISION = "(max-width: 959px) calc(min(92vw, 760px) * 4 / 3), 900px";
 
 const MOSTRAR_OBJECIONES = false;
 
@@ -117,12 +128,24 @@ const DOLORES = [
    fragmentos del testimonio original. Cada video lleva su ID de YouTube, su
    título (el de YouTube, tal cual), un clip de preview en public/video/ y su
    portada en public/images/proyectos/. */
+/* Braskem Idesa sale dos veces: en el testimonio de A y en la cifra de I. Las
+   cajas de los logos son la marca dentro de su lienzo de 600×300 (ver
+   LogoProyecto en ProyectosVideo.tsx). */
+/* Su marca es muy alargada: a la escala común quedaba de 16px de alto frente a
+   los 25 a 34 de las demás. Con 1.35 queda de unos 22px, al peso de PepsiCo. */
+const LOGO_BRASKEM: LogoProyecto = {
+  src: "/images/logos/braskem.webp",
+  caja: [80, 107, 439, 86],
+  escala: 1.35,
+};
+
 const CELDAS_PROYECTOS: CeldaProyecto[] = [
   {
     area: "A",
     tipo: "testimonio",
     cita: "Se adaptan a las necesidades de nuestros perfiles de puesto.",
     nombre: "Braskem Idesa",
+    logo: LOGO_BRASKEM,
     rol: "Área de RRHH",
   },
   {
@@ -132,6 +155,7 @@ const CELDAS_PROYECTOS: CeldaProyecto[] = [
     cifra: "9 plantas",
     descriptor: "a la vez",
     cliente: "PepsiCo",
+    logo: { src: "/images/logos/pepsico.webp", caja: [82, 84, 435, 133] },
   },
   /* Video A: Kering. Clip de 6 s del segundo 66 (Rocío Barajas hablando a
      cámara); la portada es su primer fotograma. */
@@ -164,6 +188,7 @@ const CELDAS_PROYECTOS: CeldaProyecto[] = [
     cifra: "5 países",
     descriptor: "al mismo tiempo, en línea en vivo",
     cliente: "Bolloré Logistics",
+    logo: { src: "/images/logos/bollore.webp", caja: [81, 60, 438, 180] },
   },
   /* F es la celda destacada (navy), sea cual sea su contenido. */
   {
@@ -173,6 +198,8 @@ const CELDAS_PROYECTOS: CeldaProyecto[] = [
     cifra: "+1,000",
     descriptor: "personas evaluadas en su nivel de idioma",
     cliente: "Grupo Modelo",
+    /* La celda F es navy: este logo se lee sobre oscuro por su disco dorado. */
+    logo: { src: "/images/logos/grupo-modelo.webp", caja: [210, 60, 180, 180] },
   },
   /* Video B: Covestro. Clip de 6 s del segundo 32 (Erika Cárdenas hablando
      a cámara); la portada es su primer fotograma. */
@@ -201,6 +228,7 @@ const CELDAS_PROYECTOS: CeldaProyecto[] = [
     cifra: "50",
     descriptor: "grupos presenciales simultáneos",
     cliente: "Braskem Idesa",
+    logo: LOGO_BRASKEM,
   },
 ];
 
@@ -211,31 +239,31 @@ const PACTO = [
     letra: "P",
     nombre: "Planificación",
     descripcion:
-      "Diagnosticamos el nivel de cada colaborador y definimos con usted qué debe poder hacer en el idioma en su puesto.",
+      "Medimos el nivel de cada colaborador y acordamos con usted qué necesita poder hacer en el idioma dentro de su puesto.",
   },
   {
     letra: "A",
     nombre: "Arranque",
     descripcion:
-      "Sesión de arranque con el grupo: calendario, reglas del programa y metas de cada colaborador.",
+      "Reunimos al grupo para acordar el calendario, las reglas del programa y la meta de cada persona.",
   },
   {
     letra: "C",
     nombre: "Competencias",
     descripcion:
-      "Etapas de 26 horas, cada una enfocada en un dominio del puesto, con práctica real: juntas, correos y presentaciones.",
+      "Avanzamos por etapas de 26 horas. Cada una trabaja una situación del puesto con práctica real: juntas, correos y presentaciones.",
   },
   {
     letra: "T",
     nombre: "Trazabilidad",
     descripcion:
-      "Reportes por mes, trimestre, nivel y año; evidencia evaluada con rúbrica; Tarjeta de Resultados al cerrar cada etapa y constancia DC-3.",
+      "Le entregamos reportes por mes, trimestre y año, y por nivel. Evaluamos con rúbrica la evidencia de cada persona. Cada etapa cierra con su Tarjeta de Resultados y la constancia DC-3.",
   },
   {
     letra: "O",
     nombre: "Optimización",
     descripcion:
-      "Con base en los resultados, decidimos con usted la siguiente etapa y ajustamos el programa.",
+      "Con esos resultados, decidimos con usted la siguiente etapa y ajustamos el programa.",
   },
 ];
 
@@ -262,6 +290,72 @@ const TABLERO = {
   ],
 };
 
+/* La línea de tiempo de Nuestra Historia (#historia), en orden cronológico.
+   La posición la da el orden: los hitos alternan arriba y abajo del eje, el
+   primero arriba. La categoría solo cambia el color de la tarjeta: `cliente`,
+   las primeras veces con un cliente, en rojo; `propio`, lo que construimos,
+   en navy. */
+const HITOS: {
+  anio: string;
+  categoria: "cliente" | "propio";
+  icono: string;
+  texto: string;
+}[] = [
+  { anio: "2006", categoria: "propio", icono: "bandera", texto: "30 de junio: empezamos a operar" },
+  {
+    anio: "2009",
+    categoria: "propio",
+    icono: "baseDatos",
+    texto: "Nuestro primer sistema de información",
+  },
+  {
+    anio: "2010",
+    categoria: "cliente",
+    icono: "pinesMapa",
+    texto: "Un mismo cliente con clases presenciales a la vez en CDMX y Monterrey",
+  },
+  {
+    anio: "2012",
+    categoria: "cliente",
+    icono: "video",
+    texto: "Primera clase por videoconferencia (Cisco Webex)",
+  },
+  {
+    anio: "2013",
+    categoria: "cliente",
+    icono: "portapapelesCheck",
+    texto: "Evaluación automática de más de 1,000 personas",
+  },
+  {
+    anio: "2013",
+    categoria: "cliente",
+    icono: "globo",
+    texto: "Clases por videoconferencia en varios países",
+  },
+  { anio: "2017", categoria: "propio", icono: "baseDatos", texto: "Segundo sistema de información" },
+  {
+    anio: "2018",
+    categoria: "cliente",
+    icono: "fabrica",
+    texto: "Clases presenciales en 9 sedes a la vez",
+  },
+  { anio: "2019", categoria: "cliente", icono: "usuarios", texto: "50 grupos presenciales a la vez" },
+  { anio: "2019", categoria: "propio", icono: "movil", texto: "App móvil para profesores" },
+  { anio: "2026", categoria: "propio", icono: "baseDatos", texto: "Tercer sistema de información" },
+];
+
+/* Las marcas de año del eje horizontal: una por año. Los hitos seguidos del
+   mismo año (2013 y 2019) comparten marca, a medio camino entre los dos. */
+const ANIOS_EJE = HITOS.reduce<{ anio: string; primero: number; ultimo: number }[]>(
+  (marcas, hito, i) => {
+    const ultima = marcas[marcas.length - 1];
+    if (ultima && ultima.anio === hito.anio) ultima.ultimo = i;
+    else marcas.push({ anio: hito.anio, primero: i, ultimo: i });
+    return marcas;
+  },
+  []
+);
+
 /* Los valores (#valores): icono, título y párrafo de cada tarjeta. Los
    iconos son del registro de Icono.tsx y no repiten ninguno de la página. */
 const VALORES = [
@@ -281,7 +375,7 @@ const VALORES = [
     icono: "reloj",
     titulo: "Nos adaptamos a su operación",
     texto:
-      "Los turnos cambian, la gente viaja y los proyectos se atraviesan. El programa se reacomoda tantas veces como haga falta para que su equipo no tenga que elegir entre trabajar y aprender.",
+      "Los turnos cambian, la gente viaja y los proyectos se atraviesan. El programa se reacomoda a esos cambios para que su equipo no tenga que elegir entre trabajar y aprender.",
   },
   {
     icono: "mensaje",
@@ -327,7 +421,7 @@ export default function Nosotros() {
   return (
     <>
       <AnimacionesEntrada threshold={0.08} />
-      <main>
+      <main className={styles.pagina}>
         {/* HERO */}
         <section className={styles.hero}>
           <img
@@ -344,8 +438,9 @@ export default function Nosotros() {
             <h1>20 años preparando compañías para operar en varios idiomas</h1>
             <p className="sp-hero-sub">
               Trabajamos para que el idioma deje de ser una frontera dentro de las
-              empresas: que quien tenga algo que decir pueda decirlo, y que ninguna
-              compañía crezca menos de lo que podría por un idioma que no habla.
+              empresas: que quien tenga algo que aportar no se quede callado, y que
+              ninguna empresa crezca menos de lo que podría por un idioma que no
+              habla.
             </p>
             <SelloSTPS />
           </div>
@@ -364,12 +459,13 @@ export default function Nosotros() {
         <section className={`sp-seccion ${styles.presentacion}`} id="presentacion">
           <div className={`${styles.presentacionInner} reveal`}>
             <h2 className={styles.presentacionLinea}>
-              Desde 2006 capacitamos en idiomas
+              Desde 2006 capacitamos en seis idiomas
               <br className={styles.corte} /> a equipos de empresas en México
             </h2>
             <p className={styles.modalidades}>
-              Presencial, en línea en vivo o híbrida, en una o varias sedes en
-              cualquier parte de México.
+              <strong>Presencial</strong>, <strong>en línea en vivo</strong> o{" "}
+              <strong>híbrida</strong>, en una o varias sedes en cualquier parte de
+              México.
             </p>
             <ul className={styles.idiomas}>
               {IDIOMAS.map((i) => (
@@ -390,7 +486,7 @@ export default function Nosotros() {
           <div className="sp-seccion">
             <div className={styles.dosColumnas}>
               <div className={`${styles.lectura} reveal`}>
-                <div className="sp-eyebrow">Nuestra Historia</div>
+                <div className="sp-eyebrow">Nuestro Origen</div>
                 <h2>En S-Peak nacimos de una inconformidad</h2>
                 <p>
                   En 2006, lo normal era que la empresa se acomodara a su proveedor: sus
@@ -406,11 +502,11 @@ export default function Nosotros() {
                 </p>
               </div>
               <img
-                className={`${styles.fotoMision} reveal`}
+                className={`${styles.fotoMision} ${styles.fotoInstructor} reveal`}
                 {...imagenResponsiva("/images/nosotros/nosotros-uno.webp", SIZES_MISION)}
-                alt="Mujer con diadema y micrófono tomando una clase por videoconferencia desde su laptop, con un cuaderno de apuntes en el escritorio"
-                width="1200"
-                height="896"
+                alt="Un instructor explica frente a un rotafolio a un grupo de colaboradores sentados alrededor de una mesa con laptops y cuadernos"
+                width="2048"
+                height="1152"
                 loading="lazy"
                 decoding="async"
               />
@@ -431,12 +527,13 @@ export default function Nosotros() {
                   </h3>
                   <p>
                     Imagine a una gerente de Recursos Humanos. Dirección le pide que, en
-                    un año, sus gerentes dirijan las juntas con la casa matriz en inglés.
+                    un año, los gerentes de la empresa dirijan en inglés las juntas con la
+                    casa matriz.
                   </p>
                   <p>
-                    Contrata a un proveedor y se acomoda a él: sus horarios, su sede, su
-                    temario. Llegan los cierres de mes y los viajes, y las sesiones
-                    perdidas no se reponen. Ella pasa las semanas persiguiendo
+                    Contrata a un proveedor y es ella quien se ajusta: a sus horarios, su
+                    sede, su temario. Llegan los cierres de mes y los viajes, y las
+                    sesiones perdidas no se reponen. Ella pasa las semanas persiguiendo
                     asistencias.
                   </p>
                   <p>
@@ -449,11 +546,11 @@ export default function Nosotros() {
                   </p>
                 </div>
                 <img
-                  className={`${styles.fotoMision} reveal`}
+                  className={`${styles.fotoMision} ${styles.fotoGerente} reveal`}
                   {...imagenResponsiva("/images/nosotros/nosotros-dos.webp", SIZES_MISION)}
-                  alt="Tres colegas en una sala de juntas conversan con una persona que participa por videollamada en la pantalla de la pared"
-                  width="1200"
-                  height="896"
+                  alt="Una gerente, con la mano en la frente, revisa en su escritorio una pila de listas de asistencia junto a su laptop"
+                  width="2048"
+                  height="1152"
                   loading="lazy"
                   decoding="async"
                 />
@@ -512,10 +609,7 @@ export default function Nosotros() {
           <div className="sp-inner">
             <div className="sp-seccion-top reveal">
               <div className={`sp-eyebrow ${styles.eyebrowCentrado}`}>Nuestra Metodología</div>
-              <h2>
-                Cómo trabajamos: metodología PACTO para programas de idiomas en
-                empresas
-              </h2>
+              <h2>Cómo trabajamos: la metodología PACTO</h2>
               <p>
                 PACTO son cinco pasos para que su inversión se vea en el puesto, no
                 solo en la lista de asistencia.
@@ -609,6 +703,88 @@ export default function Nosotros() {
             </div>
           </section>
         ) : null}
+
+        {/* NUESTRA HISTORIA: línea de tiempo. Desde 960px es horizontal: una
+            rejilla de N + 1 columnas (N hitos) con tres filas, el carril de
+            arriba, el eje con los años y el carril de abajo. El hito i ocupa
+            las columnas i + 1 e i + 2, así que su centro cae en un punto del
+            eje y los hitos de un mismo carril quedan pegados con solo el hueco
+            de la rejilla entre ellos. Se ven como mucho seis hitos a la vez;
+            el resto se desplaza en lateral, solo y con las flechas de
+            LineaDesplazable. Por debajo de 960px es vertical: una columna con
+            el eje a la izquierda.
+
+            Se construye al entrar en pantalla con la misma clase .visible de
+            .reveal (AnimacionesEntrada): avanza el eje y cada hito aparece
+            cuando el eje llega a él. Una sola vez. */}
+        <section className={`sp-seccion ${styles.historia}`} id="historia">
+          <div className="sp-inner">
+            <div className="sp-seccion-top reveal">
+              <div className={`sp-eyebrow ${styles.eyebrowCentrado}`}>Nuestra Historia</div>
+              <h2>Lo que hemos ido construyendo</h2>
+            </div>
+
+            <ul className={`${styles.historiaLeyenda} reveal`}>
+              <li className={styles.leyendaCliente}>Primeras veces con un cliente</li>
+              <li className={styles.leyendaPropio}>Lo que construimos</li>
+            </ul>
+          </div>
+
+          <div className="sp-inner">
+            <LineaDesplazable
+              className={styles.historiaPista}
+              claseNav={styles.historiaNav}
+              etiqueta="Línea de tiempo de S-Peak, de 2006 a 2026"
+            >
+              <div
+                className={`${styles.historiaLinea} reveal`}
+                style={{ "--hitos": HITOS.length, "--columnas": HITOS.length + 1 } as CSSProperties}
+              >
+                <div className={styles.eje} data-eje aria-hidden="true" />
+                {ANIOS_EJE.map((m) => (
+                  <span
+                    key={m.anio}
+                    className={styles.ejeAnio}
+                    aria-hidden="true"
+                    style={
+                      {
+                        gridColumn: `${m.primero + 1} / ${m.ultimo + 3}`,
+                        "--i": (m.primero + m.ultimo) / 2,
+                      } as CSSProperties
+                    }
+                  >
+                    {m.anio}
+                  </span>
+                ))}
+                {/* role="list": con display: contents algunos lectores de
+                    pantalla dejan de anunciar la lista. */}
+                <ol className={styles.hitos} role="list">
+                  {HITOS.map((h, i) => (
+                    <li
+                      key={`${h.anio}-${i}`}
+                      className={`${styles.hito} ${i % 2 === 0 ? styles.hitoArriba : styles.hitoAbajo} ${
+                        h.categoria === "cliente" ? styles.hitoCliente : styles.hitoPropio
+                      }`}
+                      style={{ gridColumn: `${i + 1} / span 2`, "--i": i } as CSSProperties}
+                    >
+                      <div className={styles.hitoCabeza}>
+                        <span
+                        className={`sp-icono sp-icono--sm ${
+                          h.categoria === "cliente" ? "sp-icono--rojo" : "sp-icono--navy"
+                        }`}
+                      >
+                          <Icono nombre={h.icono} />
+                        </span>
+                        <span className={styles.hitoAnio}>{h.anio}</span>
+                      </div>
+                      <p>{h.texto}</p>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </LineaDesplazable>
+          </div>
+        </section>
 
         {/* VALORES: fondo navy a todo lo ancho, encabezado centrado y cuatro
             tarjetas en el contenedor de la página. */}

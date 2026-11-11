@@ -10,6 +10,21 @@
    tablero de Trazabilidad, TableroProgreso con su variante `amplio`. La
    escalera de PACTO es de esta página y no tiene patrón. */
 
+/* ---------- Bajadas ----------
+
+   Todas las bajadas de la página con las líneas equilibradas, para que
+   ninguna termine con una palabra sola abajo: la del hero, la de la
+   presentación, las de .sp-seccion-top (el bento, PACTO y la entrada de las
+   objeciones) y la del Centro de Recursos. Los patrones no lo llevan y los
+   usan otras páginas, así que el equilibrado se acota a esta con .pagina, el
+   <main>. */
+.pagina :global(.sp-hero-sub),
+.pagina :global(.sp-seccion-top p),
+.pagina :global(.sp-recursos-lead),
+.modalidades {
+  text-wrap: balance;
+}
+
 /* ---------- Hero ---------- */
 
 /* Ancho completo: radio cero explícito, como en las landings. Sin foto, así que
@@ -246,6 +261,10 @@
 
 /* La foto que acompaña al texto en .dosColumnas: 4:3, recortada para llenar
    su hueco. */
+/* Las fotos son 16:9 y se muestran recortadas: 4:3 en una columna y, en dos,
+   al menos 4:3 y tan altas como su columna de texto (ver la media query de
+   abajo), para que no queden más bajas que el texto de al lado. Cada una
+   lleva su punto de encuadre para que el recorte no corte a las personas. */
 .fotoMision {
   display: block;
   width: 100%;
@@ -257,6 +276,20 @@
   border-radius: var(--radius-grande);
 }
 
+/* El instructor y el grupo: casi pegado a la izquierda. Entran el alumno de
+   espaldas, el instructor y la alumna rubia; el alumno de la derecha queda
+   fuera entero en vez de partido. Cuando la caja se estrecha (dos columnas a
+   960px), se pierde por la derecha y el instructor se queda. */
+.fotoInstructor {
+  object-position: 5% center;
+}
+
+/* La gerente está en la mitad derecha: el encuadre la sigue y lo que se
+   pierde es el escritorio de la izquierda. */
+.fotoGerente {
+  object-position: 85% center;
+}
+
 @media (min-width: 960px) {
   .dosColumnas {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -264,8 +297,13 @@
     align-items: center;
   }
 
+  /* Tan alta como su columna de texto, sin bajar del 4:3: la fila de la
+     rejilla mide lo que el más alto de los dos (el texto, o la foto a 4:3) y
+     la foto se estira a ese alto. */
   .fotoMision {
     max-width: none;
+    align-self: stretch;
+    height: 100%;
   }
 
   .dosColumnasInvertido .fotoMision {
@@ -434,7 +472,7 @@
      --pacto-techo   el aire sobre la columna más alta, para el arco del
                      isotipo. */
 .pacto {
-  --pacto-hueco: 16px;
+  --pacto-hueco: 32px;
   --pacto-grosor: 64px;
   --pacto-subida: 48px;
   --pacto-techo: 32px;
@@ -511,9 +549,11 @@
     padding-top: var(--pacto-techo);
   }
 
+  /* El nombre y el párrafo, centrados bajo su peldaño. */
   .paso {
     display: block;
     padding: 0;
+    text-align: center;
   }
 
   .paso:nth-child(1) {
@@ -1376,6 +1416,485 @@
   margin: 0;
 }
 
+/* ---------- Nuestra Historia ----------
+
+   Línea de tiempo en off-white, entre la escalera de PACTO (sobre blanco) y
+   los valores (navy). Los once hitos van en orden cronológico. Las tarjetas
+   son blancas, con borde fino, sombra suave y texto navy, como las demás
+   sobre fondo claro; la categoría queda de acento (--acento): el icono, el
+   año, el tallo y el filete del lado que toca el eje, en rojo las primeras
+   veces con un cliente y en navy lo que construimos. La leyenda lo explica.
+
+   Por debajo de 960px, vertical: una columna, con el eje a la izquierda y un
+   tallo de cada tarjeta a la línea. Desde 960px, horizontal: la pista va en
+   el contenedor normal, con el mismo margen lateral que las demás secciones,
+   y muestra a la vez como mucho seis tarjetas, contando los dos carriles
+   (ver .historiaLinea). El resto de la línea se desplaza en lateral, sin
+   barra visible: sola, en vaivén, y con las flechas de LineaDesplazable.tsx.
+
+   Medidas, en variables porque las comparten el eje, los tallos y la
+   animación:
+     --historia-hueco     el hueco entre columnas de la rejilla;
+     --historia-tarjeta   el ancho de cada tarjeta en horizontal, como parte
+                          de las dos columnas que le tocan: lo que sobra se
+                          reparte a sus dos lados y se suma al hueco;
+     --historia-tallo     el tallo de cada tarjeta hasta el borde de la fila
+                          del eje (horizontal) o hasta la línea (vertical);
+     --historia-eje       el alto de la fila del eje en horizontal (la línea va
+                          al centro) y el margen izquierdo del eje en vertical;
+     --historia-filete    el grosor del filete de acento;
+     --historia-inicio    lo que espera la animación tras entrar en pantalla;
+     --historia-duracion  lo que tarda el eje en recorrer la línea. */
+/* Registradas para que la orilla se pueda animar al encenderse y apagarse:
+   sin registrar, una propiedad personalizada cambia de golpe. El valor
+   inicial es el ancho del desvanecido. */
+@property --historia-orilla-izq {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 64px;
+}
+
+@property --historia-orilla-der {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 64px;
+}
+
+.historia {
+  --historia-hueco: 24px;
+  --historia-tarjeta: 84%;
+  --historia-tallo: 24px;
+  --historia-eje: 32px;
+  --historia-filete: 3px;
+  --historia-inicio: 0.3s;
+  --historia-duracion: 3.2s;
+  background: var(--color-off-white);
+  border-radius: 0;
+}
+
+/* El encabezado va seguido de la leyenda, que es parte de la línea: más
+   cerca que el aire normal de .sp-seccion-top. */
+.historia :global(.sp-seccion-top) {
+  margin-bottom: 32px;
+}
+
+/* La leyenda de las dos categorías, centrada sobre la línea. */
+.historiaLeyenda {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 28px;
+  margin: 0 0 40px;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  font-weight: var(--weight-semibold);
+  color: var(--color-ink-2);
+}
+
+.historiaLeyenda li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.historiaLeyenda li::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-pildora);
+}
+
+.leyendaCliente::before {
+  background: var(--color-red);
+}
+
+.leyendaPropio::before {
+  background: var(--color-navy);
+}
+
+/* La lista de hitos no pinta caja: sus <li> se colocan directamente en la
+   línea, junto al eje y las marcas de año. */
+.hitos {
+  display: contents;
+}
+
+/* La tarjeta de cada hito. */
+.hito {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-grande);
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
+}
+
+.hitoCliente {
+  --acento: var(--color-red);
+}
+
+.hitoPropio {
+  --acento: var(--color-navy);
+}
+
+.hitoCabeza {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hitoAnio {
+  font-size: 14px;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--acento);
+}
+
+.hito p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-navy);
+}
+
+/* El tallo, en el color del acento. */
+.hito::after {
+  content: "";
+  position: absolute;
+  background: var(--acento);
+}
+
+/* ----- Vertical, por debajo de 960px ----- */
+
+/* Sin flechas: en vertical no hay nada que desplazar. */
+.historiaNav {
+  display: none;
+}
+
+.historiaLinea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 640px;
+  margin-inline: auto;
+  padding-left: calc(var(--historia-eje) + var(--historia-tallo));
+}
+
+/* El eje: una línea navy a la izquierda, de la primera tarjeta a la última. */
+.eje {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--historia-eje);
+  width: 2px;
+  background: var(--color-navy);
+  transform-origin: center top;
+}
+
+/* El año ya va en cada tarjeta; en vertical el eje no lleva marcas. */
+.ejeAnio {
+  display: none;
+}
+
+/* El filete, del lado del eje. */
+.hito {
+  border-left: var(--historia-filete) solid var(--acento);
+}
+
+/* El tallo, de la línea al filete de la tarjeta, a la altura del icono. */
+.hito::after {
+  top: 35px;
+  right: 100%;
+  width: var(--historia-tallo);
+  height: 2px;
+}
+
+/* ----- Horizontal, desde 960px ----- */
+
+@media (min-width: 960px) {
+  .historiaNav {
+    display: flex;
+  }
+
+  /* La pista desplaza en lateral sin barra visible (como .sp-carrusel-track).
+     Es contenedor de consulta: la rejilla mide sus columnas contra su ancho.
+
+     - Sombras: el desbordamiento recorta todo lo que sale de la caja, y la
+       sombra de las tarjetas (--shadow-card, 0 8px 24px) sale 16px por arriba
+       y 32px por abajo. El relleno es ese, con un margen de 4px.
+     - Orillas: una máscara desvanece la línea a los lados, así que las
+       tarjetas que entran y salen aparecen y desaparecen sobre el fondo de la
+       sección en vez de verse recortadas. En el extremo donde ya no hay más
+       línea (data-al-inicio, data-al-final, que pone LineaDesplazable) esa
+       orilla se apaga, para no desvanecer la primera y la última tarjeta.
+     - Arrastre con el mouse: mano abierta encima, cerrada al arrastrar
+       (data-arrastrando) y sin seleccionar texto mientras tanto. */
+  .historiaPista {
+    container-type: inline-size;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    padding-block: 20px 36px;
+    scrollbar-width: none;
+    cursor: grab;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 var(--historia-orilla-izq),
+      #000 calc(100% - var(--historia-orilla-der)),
+      transparent
+    );
+    transition:
+      --historia-orilla-izq 0.4s ease,
+      --historia-orilla-der 0.4s ease;
+  }
+
+  .historiaPista::-webkit-scrollbar {
+    display: none;
+  }
+
+  .historiaPista[data-al-inicio] {
+    --historia-orilla-izq: 0px;
+  }
+
+  .historiaPista[data-al-final] {
+    --historia-orilla-der: 0px;
+  }
+
+  .historiaPista[data-arrastrando] {
+    cursor: grabbing;
+    user-select: none;
+  }
+
+  /* N hitos, N + 1 columnas (--columnas, de page.tsx: repeat() no admite un
+     calc() en todos los navegadores): el hito i ocupa la i + 1 y la i + 2 (lo
+     pone page.tsx), y los dos carriles se intercalan medio hito.
+
+     Seis tarjetas seguidas, tres por carril, ocupan siete columnas: cada
+     columna mide un séptimo del ancho de la pista (100cqw) descontados sus
+     seis huecos. Así, con la línea alineada a una columna se ven seis
+     tarjetas enteras; a mitad de un deslizamiento, cinco enteras y dos
+     asomando por los bordes. Las once no caben y la rejilla se sale de la
+     pista, que es lo que se desplaza.
+
+     Cada tarjeta mide lo que pide su texto. Las filas de los carriles miden
+     lo que la más alta de cada uno, y las demás se pegan al lado del eje (las
+     de arriba por abajo, las de abajo por arriba), así que todos los tallos
+     miden lo mismo. */
+  .historiaLinea {
+    display: grid;
+    grid-template-columns: repeat(
+      var(--columnas),
+      calc((100cqw - 6 * var(--historia-hueco)) / 7)
+    );
+    grid-template-rows: auto var(--historia-eje) auto;
+    column-gap: var(--historia-hueco);
+    row-gap: 0;
+    max-width: none;
+    padding-left: 0;
+  }
+
+  .eje {
+    position: static;
+    grid-row: 2;
+    grid-column: 1 / -1;
+    align-self: center;
+    width: auto;
+    height: 2px;
+    transform-origin: left center;
+  }
+
+  /* La marca de año, centrada sobre el eje en el punto de su hito (o entre
+     los dos, en 2013 y 2019). Va encima de los tallos. */
+  .ejeAnio {
+    position: relative;
+    z-index: 1;
+    display: block;
+    grid-row: 2;
+    justify-self: center;
+    align-self: center;
+    padding: 4px 12px;
+    border: 2px solid var(--color-navy);
+    border-radius: var(--radius-pildora);
+    background: var(--color-white);
+    font-size: 13px;
+    font-weight: var(--weight-bold);
+    line-height: 1.2;
+    color: var(--color-navy);
+  }
+
+  /* El filete pasa al lado que mira al eje: abajo en el carril de arriba,
+     arriba en el de abajo. */
+  .hito {
+    border-left-width: 1px;
+    border-left-color: var(--color-border);
+  }
+
+  /* Más angosta que sus dos columnas y centrada en ellas: el centro, y con
+     él el tallo, sigue cayendo en el punto del eje. */
+  .hito {
+    justify-self: center;
+    width: var(--historia-tarjeta);
+    padding-inline: 18px;
+  }
+
+  .hitoArriba {
+    grid-row: 1;
+    align-self: end;
+    margin-bottom: var(--historia-tallo);
+    border-bottom: var(--historia-filete) solid var(--acento);
+  }
+
+  .hitoAbajo {
+    grid-row: 3;
+    align-self: start;
+    margin-top: var(--historia-tallo);
+    border-top: var(--historia-filete) solid var(--acento);
+  }
+
+  /* El tallo, del centro del filete a la línea del eje, por debajo de la
+     marca de año. Arranca en el borde interior del filete, así que lo suma. */
+  .hito::after {
+    left: calc(50% - 1px);
+    right: auto;
+    width: 2px;
+    height: calc(var(--historia-filete) + var(--historia-tallo) + var(--historia-eje) / 2);
+  }
+
+  .hitoArriba::after {
+    top: 100%;
+  }
+
+  .hitoAbajo::after {
+    top: auto;
+    bottom: 100%;
+  }
+}
+
+/* ---------- Animación de la línea de tiempo ----------
+   Arranca cuando AnimacionesEntrada pone .visible en la línea y se queda en
+   su estado final: no vuelve a correr ni sigue al scroll. El eje crece a
+   velocidad constante —hacia abajo en vertical, hacia la derecha en
+   horizontal— y cada hito y cada año aparecen cuando el eje llega a ellos
+   (--i, el índice del hito, que pone page.tsx; en una marca compartida, el
+   punto medio entre sus dos hitos).
+
+   En horizontal el hito i está a (i + 1) / (N + 1) del ancho; en vertical se
+   toma su posición en la lista, (i + 0.5) / N del alto, porque las tarjetas
+   no miden todas lo mismo.
+
+   Con movimiento reducido no hay animación: la línea sale construida. Hace
+   falta decirlo aquí: la regla global de interacciones.css acorta las
+   duraciones pero no los retrasos, y los hitos tardarían segundos en salir. */
+@media (prefers-reduced-motion: no-preference) {
+  .eje {
+    transform: scaleY(0);
+  }
+
+  .ejeAnio,
+  .hito {
+    opacity: 0;
+  }
+
+  .historiaLinea:global(.visible) .eje {
+    animation: historia-eje-v var(--historia-duracion) linear var(--historia-inicio) forwards;
+  }
+
+  .historiaLinea:global(.visible) .hito {
+    animation: historia-hito-v 0.5s var(--ease-out-soft) forwards;
+    animation-delay: calc(
+      var(--historia-inicio) + var(--historia-duracion) * (var(--i) + 0.5) / var(--hitos)
+    );
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) and (min-width: 960px) {
+  .eje {
+    transform: scaleX(0);
+  }
+
+  .historiaLinea:global(.visible) .eje {
+    animation-name: historia-eje-h;
+  }
+
+  .historiaLinea:global(.visible) .ejeAnio,
+  .historiaLinea:global(.visible) .hito {
+    animation: historia-aparecer 0.5s var(--ease-out-soft) forwards;
+    animation-delay: calc(
+      var(--historia-inicio) + var(--historia-duracion) * (var(--i) + 1) / (var(--hitos) + 1)
+    );
+  }
+
+  .historiaLinea:global(.visible) .hitoArriba {
+    animation-name: historia-hito-arriba;
+  }
+
+  .historiaLinea:global(.visible) .hitoAbajo {
+    animation-name: historia-hito-abajo;
+  }
+}
+
+@keyframes historia-eje-v {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes historia-eje-h {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes historia-aparecer {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Cada tarjeta sale desde el eje: en vertical, desde la izquierda; en
+   horizontal, la de arriba sube y la de abajo baja. */
+@keyframes historia-hito-v {
+  from {
+    opacity: 0;
+    translate: -12px 0;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes historia-hito-arriba {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes historia-hito-abajo {
+  from {
+    opacity: 0;
+    translate: 0 -12px;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
 /* ---------- Valores ----------
    Fondo navy a todo lo ancho, texto en claro. Encabezado centrado
    (.sp-seccion-top) y cuatro tarjetas: cuatro columnas desde 960px, dos en
@@ -1499,19 +2018,14 @@
   color: rgba(255, 255, 255, 0.85);
 }
 
-/* El Centro de Recursos (.sp-recursos) es una tarjeta off-white que en las
-   demás páginas va después de una sección blanca: el relleno de abajo de esa
-   sección deja blanco encima de la tarjeta, un relleno de sección (88px, 56px
-   en móvil). Aquí va justo después de la franja roja del cierre y quedaba
-   pegada a ella; el margen le devuelve ese mismo aire. */
+/* El Centro de Recursos (.sp-recursos) es una tarjeta off-white con un
+   margen lateral del 2% (patrones.css). Aquí va entre la franja roja del
+   cierre y el footer, y queda enmarcada con ese mismo margen por los cuatro
+   lados: un margen vertical en porcentaje también se resuelve contra el ancho
+   del contenedor, así que el 2% de arriba y abajo mide lo mismo que el de los
+   lados en cualquier ancho de pantalla. */
 .recursosTrasCierre {
-  margin-top: var(--space-section);
-}
-
-@media (max-width: 600px) {
-  .recursosTrasCierre {
-    margin-top: var(--space-section-mobile);
-  }
+  margin-block: 2%;
 }
 
 /* ---------- Isotipo decorativo ---------- */
