@@ -391,7 +391,8 @@
    así que su borde izquierdo queda alineado con la foto y el derecho con el
    texto. La separa de la escena el ritmo de sección (el de .sp-seccion, que
    en móvil baja al suyo). .sp-tarjeta pone el radio; aquí, el rojo (también
-   en el borde), la sombra suave, el relleno y el contenido centrado: título,
+   en el borde), la sombra suave, el relleno (56px arriba y abajo, 32px en
+   móvil; a los lados, el de tarjeta) y el contenido centrado: título,
    párrafo y el botón blanco del sistema para fondo rojo. El título y el
    párrafo van al ancho de lectura para que no se estiren a todo el
    contenedor. No es clicable: de .sp-tarjeta no se queda el hover, que la
@@ -404,7 +405,7 @@
   gap: 20px;
   max-width: var(--container-max);
   margin: var(--space-section) auto 0;
-  padding: var(--space-inset);
+  padding: 56px var(--space-inset);
   background: var(--color-red);
   border-color: var(--color-red);
   box-shadow: var(--shadow-card);
@@ -433,6 +434,7 @@
 @media (max-width: 600px) {
   .despues {
     margin-top: var(--space-section-mobile);
+    padding-block: 32px;
   }
 }
 
