@@ -211,13 +211,15 @@ const CELDAS_PROYECTOS: CeldaProyecto[] = [
     portada: "/images/proyectos/proyectos-covestro-poster.webp",
     clip: "/video/proyectos-covestro.mp4",
     /* Medido: a lo ancho en dos columnas (92% de la ventana) y, desde
-       1200px, el 45% de la ventana hasta topar en 670px. */
-    sizes: "(max-width: 599px) calc(100vw - 40px), (max-width: 1199px) 92vw, min(46vw, 670px)",
+       1200px, según el corte de la fila de abajo: 38.5% de la ventana hasta
+       1269px, 36.6% hasta 1319px y 34.7% desde ahí, hasta topar en 513px. */
+    sizes:
+      "(max-width: 599px) calc(100vw - 40px), (max-width: 1199px) 92vw, (max-width: 1269px) 39vw, (max-width: 1319px) 37vw, min(35vw, 513px)",
   },
   {
     area: "H",
     tipo: "testimonio",
-    cita: "Valoramos el seguimiento que S-Peak nos brinda, el feedback que piden a través de citas regulares y encuestas…",
+    cita: "Valoramos el seguimiento que S-Peak nos brinda, el feedback que piden a través de citas regulares y encuestas, así como reaccionan a lo que pedimos como cliente. Además, los profesores están muy bien preparados para asegurar el aprendizaje, y los precios son justos.",
     nombre: "Erika C.",
     rol: "People Development, Culture & D&I Expert",
   },
@@ -479,9 +481,8 @@ export default function Nosotros() {
           </div>
         </section>
 
-        {/* S-PEAK NACIÓ DE UNA INCONFORMIDAD: el bloque de misión, con un solo
-            encabezado. La primera sub-sección conserva el fondo de la página y el
-            resto el off-white de .origen. */}
+        {/* NUESTRO ORIGEN: S-Peak nació de una inconformidad. Sobre el fondo de
+            la página. */}
         <section id="origen">
           <div className="sp-seccion">
             <div className={styles.dosColumnas}>
@@ -512,86 +513,182 @@ export default function Nosotros() {
               />
             </div>
           </div>
+        </section>
 
-          <div className={styles.origen}>
-            {/* Con las objeciones ocultas, el bloque cierra con el relleno normal
-                de sección: no hay franja que lo siga dentro del off-white. */}
-            <div
-              className={`sp-seccion${MOSTRAR_OBJECIONES ? ` ${styles.origenTop}` : ""}`}
-            >
-              <div className={`${styles.dosColumnas} ${styles.dosColumnasInvertido}`}>
-                <div className={`${styles.lectura} reveal`}>
-                  <h3>
-                    Más de veinte años después, esto es lo que seguimos encontrando cuando
-                    una empresa nos llama
-                  </h3>
-                  <p>
-                    Imagine a una gerente de Recursos Humanos. Dirección le pide que, en
-                    un año, los gerentes de la empresa dirijan en inglés las juntas con la
-                    casa matriz.
-                  </p>
-                  <p>
-                    Contrata a un proveedor y es ella quien se ajusta: a sus horarios, su
-                    sede, su temario. Llegan los cierres de mes y los viajes, y las
-                    sesiones perdidas no se reponen. Ella pasa las semanas persiguiendo
-                    asistencias.
-                  </p>
-                  <p>
-                    Al cerrar el año, Dirección le pregunta qué se logró. Ella solo tiene
-                    listas de asistencia.
-                  </p>
-                  <p className={styles.remate}>
-                    El problema no fue el idioma. Fue que nadie se hizo cargo del
-                    programa.
-                  </p>
-                </div>
-                <img
-                  className={`${styles.fotoMision} ${styles.fotoGerente} reveal`}
-                  {...imagenResponsiva("/images/nosotros/nosotros-dos.webp", SIZES_MISION)}
-                  alt="Una gerente, con la mano en la frente, revisa en su escritorio una pila de listas de asistencia junto a su laptop"
-                  width="2048"
-                  height="1152"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
+        {/* NUESTRA HISTORIA: línea de tiempo. Desde 960px es horizontal: una
+            rejilla de N + 1 columnas (N hitos) con tres filas, el carril de
+            arriba, el eje con los años y el carril de abajo. El hito i ocupa
+            las columnas i + 1 e i + 2, así que su centro cae en un punto del
+            eje y los hitos de un mismo carril quedan pegados con solo el hueco
+            de la rejilla entre ellos. Se ven como mucho seis hitos a la vez;
+            el resto se desplaza en lateral, solo y con las flechas de
+            LineaDesplazable. Por debajo de 960px es vertical: una columna con
+            el eje a la izquierda.
 
-              {/* La entrada a las objeciones: se oculta con ellas. */}
-              {MOSTRAR_OBJECIONES ? (
-                <div className={`sp-seccion-top ${styles.origenEntrada} reveal`}>
-                  <p>
-                    Nosotros llevamos veinte años del otro lado de esa historia. Esto es
-                    lo que escuchamos de Recursos Humanos, y lo que hacemos con cada cosa:
-                  </p>
-                </div>
-              ) : null}
+            Se construye al entrar en pantalla con la misma clase .visible de
+            .reveal (AnimacionesEntrada): avanza el eje y cada hito aparece
+            cuando el eje llega a él. Una sola vez. */}
+        <section className={`sp-seccion ${styles.historia}`} id="historia">
+          <div className="sp-inner">
+            <div className="sp-seccion-top reveal">
+              <div className={`sp-eyebrow ${styles.eyebrowCentrado}`}>Nuestra Historia</div>
+              <h2>Lo que hemos ido construyendo</h2>
             </div>
 
-            {MOSTRAR_OBJECIONES ? (
-              <>
-                <div className={`sp-banda ${styles.confianza}`}>
-                  <div className={`${styles.confianzaInner} reveal`}>
-                    <h3>«Busco un proveedor confiable, con buenas referencias»</h3>
-                    <p>
-                      La primera empresa que confió en nosotros siguió con S-Peak durante
-                      15 años.
-                    </p>
-                  </div>
-                </div>
+            <ul className={`${styles.historiaLeyenda} reveal`}>
+              <li className={styles.leyendaCliente}>Primeras veces con un cliente</li>
+              <li className={styles.leyendaPropio}>Lo que construimos</li>
+            </ul>
+          </div>
 
-                <div className={`sp-seccion ${styles.origenGrid}`}>
-                  <ul className={`sp-inner ${styles.dolores} reveal stagger`}>
-                    {DOLORES.map((d) => (
-                      <li key={d.titulo} className={`sp-tarjeta sp-barra ${styles.dolor}`}>
-                        <h3>{d.titulo}</h3>
-                        <p>{d.descripcion}</p>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </>
+          <div className="sp-inner">
+            <LineaDesplazable
+              className={styles.historiaPista}
+              claseNav={styles.historiaNav}
+              etiqueta="Línea de tiempo de S-Peak, de 2006 a 2026"
+            >
+              <div
+                className={`${styles.historiaLinea} reveal`}
+                style={{ "--hitos": HITOS.length, "--columnas": HITOS.length + 1 } as CSSProperties}
+              >
+                <div className={styles.eje} data-eje aria-hidden="true" />
+                {ANIOS_EJE.map((m) => (
+                  <span
+                    key={m.anio}
+                    className={styles.ejeAnio}
+                    aria-hidden="true"
+                    style={
+                      {
+                        gridColumn: `${m.primero + 1} / ${m.ultimo + 3}`,
+                        "--i": (m.primero + m.ultimo) / 2,
+                      } as CSSProperties
+                    }
+                  >
+                    {m.anio}
+                  </span>
+                ))}
+                {/* role="list": con display: contents algunos lectores de
+                    pantalla dejan de anunciar la lista. */}
+                <ol className={styles.hitos} role="list">
+                  {HITOS.map((h, i) => (
+                    <li
+                      key={`${h.anio}-${i}`}
+                      className={`${styles.hito} ${i % 2 === 0 ? styles.hitoArriba : styles.hitoAbajo} ${
+                        h.categoria === "cliente" ? styles.hitoCliente : styles.hitoPropio
+                      }`}
+                      style={{ gridColumn: `${i + 1} / span 2`, "--i": i } as CSSProperties}
+                    >
+                      <div className={styles.hitoCabeza}>
+                        <span
+                        className={`sp-icono sp-icono--sm ${
+                          h.categoria === "cliente" ? "sp-icono--rojo" : "sp-icono--navy"
+                        }`}
+                      >
+                          <Icono nombre={h.icono} />
+                        </span>
+                        <span className={styles.hitoAnio}>{h.anio}</span>
+                      </div>
+                      <p>{h.texto}</p>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            </LineaDesplazable>
+          </div>
+        </section>
+
+        {/* LA ESCENA DE LA GERENTE: sección propia sobre el fondo de la página.
+            El "antes" a dos columnas y, pegada debajo, la tarjeta del
+            "después", su segunda mitad. Con las objeciones ocultas, cierra con
+            el relleno normal de sección. */}
+        <section id="escena">
+          <div
+            className={`sp-seccion${MOSTRAR_OBJECIONES ? ` ${styles.origenTop}` : ""}`}
+          >
+            <div className={`${styles.dosColumnas} ${styles.dosColumnasInvertido}`}>
+              <div className={`${styles.lectura} reveal`}>
+                <h2 className={styles.tituloEscena}>
+                  Más de veinte años después, esto es lo que seguimos encontrando cuando
+                  una empresa nos llama
+                </h2>
+                <p>
+                  Imagine a una gerente de Recursos Humanos. Dirección le pide que, en
+                  un año, los gerentes de la empresa dirijan en inglés las juntas con la
+                  casa matriz.
+                </p>
+                <p>
+                  Contrata a un proveedor y es ella quien se ajusta: a sus horarios, su
+                  sede, su temario. Llegan los cierres de mes y los viajes, y las
+                  sesiones perdidas no se reponen. Ella pasa las semanas persiguiendo
+                  asistencias.
+                </p>
+                <p>
+                  Al cerrar el año, Dirección le pregunta qué se logró. Ella solo tiene
+                  listas de asistencia.
+                </p>
+                <p className={styles.remate}>
+                  El problema no fue el idioma. Fue que nadie se hizo cargo del
+                  programa.
+                </p>
+              </div>
+              <img
+                className={`${styles.fotoMision} ${styles.fotoGerente} reveal`}
+                {...imagenResponsiva("/images/nosotros/nosotros-dos.webp", SIZES_MISION)}
+                alt="Una gerente, con la mano en la frente, revisa en su escritorio una pila de listas de asistencia junto a su laptop"
+                width="2048"
+                height="1152"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div className={`sp-tarjeta ${styles.despues} reveal`}>
+              <h3 className={styles.tituloEscena}>
+                Ahora imagine a esa misma gerente, con nosotros
+              </h3>
+              <p>
+                Esta vez el proveedor trabaja para ella. Al cerrar el año no llega a
+                Dirección con listas de asistencia: llega con el avance de cada gerente
+                en la escala del Marco Común Europeo y su Tarjeta de Resultados.
+              </p>
+              <BotonContacto className="sp-btn sp-btn--blanco">{CTA}</BotonContacto>
+            </div>
+
+            {/* La entrada a las objeciones: se oculta con ellas. */}
+            {MOSTRAR_OBJECIONES ? (
+              <div className={`sp-seccion-top ${styles.origenEntrada} reveal`}>
+                <p>
+                  Nosotros llevamos veinte años del otro lado de esa historia. Esto es
+                  lo que escuchamos de Recursos Humanos, y lo que hacemos con cada cosa:
+                </p>
+              </div>
             ) : null}
           </div>
+
+          {MOSTRAR_OBJECIONES ? (
+            <>
+              <div className={`sp-banda ${styles.confianza}`}>
+                <div className={`${styles.confianzaInner} reveal`}>
+                  <h3>«Busco un proveedor confiable, con buenas referencias»</h3>
+                  <p>
+                    La primera empresa que confió en nosotros siguió con S-Peak durante
+                    15 años.
+                  </p>
+                </div>
+              </div>
+
+              <div className={`sp-seccion ${styles.origenGrid}`}>
+                <ul className={`sp-inner ${styles.dolores} reveal stagger`}>
+                  {DOLORES.map((d) => (
+                    <li key={d.titulo} className={`sp-tarjeta sp-barra ${styles.dolor}`}>
+                      <h3>{d.titulo}</h3>
+                      <p>{d.descripcion}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          ) : null}
         </section>
 
         {/* PROYECTOS */}
@@ -704,88 +801,6 @@ export default function Nosotros() {
           </section>
         ) : null}
 
-        {/* NUESTRA HISTORIA: línea de tiempo. Desde 960px es horizontal: una
-            rejilla de N + 1 columnas (N hitos) con tres filas, el carril de
-            arriba, el eje con los años y el carril de abajo. El hito i ocupa
-            las columnas i + 1 e i + 2, así que su centro cae en un punto del
-            eje y los hitos de un mismo carril quedan pegados con solo el hueco
-            de la rejilla entre ellos. Se ven como mucho seis hitos a la vez;
-            el resto se desplaza en lateral, solo y con las flechas de
-            LineaDesplazable. Por debajo de 960px es vertical: una columna con
-            el eje a la izquierda.
-
-            Se construye al entrar en pantalla con la misma clase .visible de
-            .reveal (AnimacionesEntrada): avanza el eje y cada hito aparece
-            cuando el eje llega a él. Una sola vez. */}
-        <section className={`sp-seccion ${styles.historia}`} id="historia">
-          <div className="sp-inner">
-            <div className="sp-seccion-top reveal">
-              <div className={`sp-eyebrow ${styles.eyebrowCentrado}`}>Nuestra Historia</div>
-              <h2>Lo que hemos ido construyendo</h2>
-            </div>
-
-            <ul className={`${styles.historiaLeyenda} reveal`}>
-              <li className={styles.leyendaCliente}>Primeras veces con un cliente</li>
-              <li className={styles.leyendaPropio}>Lo que construimos</li>
-            </ul>
-          </div>
-
-          <div className="sp-inner">
-            <LineaDesplazable
-              className={styles.historiaPista}
-              claseNav={styles.historiaNav}
-              etiqueta="Línea de tiempo de S-Peak, de 2006 a 2026"
-            >
-              <div
-                className={`${styles.historiaLinea} reveal`}
-                style={{ "--hitos": HITOS.length, "--columnas": HITOS.length + 1 } as CSSProperties}
-              >
-                <div className={styles.eje} data-eje aria-hidden="true" />
-                {ANIOS_EJE.map((m) => (
-                  <span
-                    key={m.anio}
-                    className={styles.ejeAnio}
-                    aria-hidden="true"
-                    style={
-                      {
-                        gridColumn: `${m.primero + 1} / ${m.ultimo + 3}`,
-                        "--i": (m.primero + m.ultimo) / 2,
-                      } as CSSProperties
-                    }
-                  >
-                    {m.anio}
-                  </span>
-                ))}
-                {/* role="list": con display: contents algunos lectores de
-                    pantalla dejan de anunciar la lista. */}
-                <ol className={styles.hitos} role="list">
-                  {HITOS.map((h, i) => (
-                    <li
-                      key={`${h.anio}-${i}`}
-                      className={`${styles.hito} ${i % 2 === 0 ? styles.hitoArriba : styles.hitoAbajo} ${
-                        h.categoria === "cliente" ? styles.hitoCliente : styles.hitoPropio
-                      }`}
-                      style={{ gridColumn: `${i + 1} / span 2`, "--i": i } as CSSProperties}
-                    >
-                      <div className={styles.hitoCabeza}>
-                        <span
-                        className={`sp-icono sp-icono--sm ${
-                          h.categoria === "cliente" ? "sp-icono--rojo" : "sp-icono--navy"
-                        }`}
-                      >
-                          <Icono nombre={h.icono} />
-                        </span>
-                        <span className={styles.hitoAnio}>{h.anio}</span>
-                      </div>
-                      <p>{h.texto}</p>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            </LineaDesplazable>
-          </div>
-        </section>
-
         {/* VALORES: fondo navy a todo lo ancho, encabezado centrado y cuatro
             tarjetas en el contenedor de la página. */}
         <section className={`sp-seccion ${styles.valores}`} id="valores">
@@ -808,8 +823,8 @@ export default function Nosotros() {
           </div>
         </section>
 
-        {/* CIERRE */}
-        <section className={`sp-seccion ${styles.finalCta}`}>
+        {/* CIERRE: sección roja de orilla a orilla, centrada. */}
+        <section className={`sp-seccion ${styles.cierre}`}>
           <img
             className={styles.decoCta}
             src="/images/isotype.svg"
@@ -819,12 +834,11 @@ export default function Nosotros() {
             height="907"
             loading="lazy"
           />
-          <div className={`${styles.finalInner} reveal`}>
-            <h2>Ahora imagine a esa misma gerente, con nosotros</h2>
+          <div className={`${styles.cierreInner} reveal`}>
+            <h2>Hablemos de su programa</h2>
             <p>
-              Esta vez el proveedor trabaja para ella. Al cerrar el año no llega a
-              Dirección con listas de asistencia: llega con el avance de cada gerente en
-              la escala del Marco Común Europeo y su Tarjeta de Resultados.
+              Cuéntenos cuántas personas, qué idiomas y en qué sedes. Le respondemos
+              con una propuesta hecha para su operación, no con un paquete de catálogo.
             </p>
             <BotonContacto className="sp-btn sp-btn--blanco">{CTA}</BotonContacto>
           </div>

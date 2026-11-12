@@ -33,8 +33,8 @@ export const ENLACES_SUELTOS = [
   // del menú. Para reactivarla, descomentar esta línea: la consumen a la vez la
   // navegación en línea y el panel a pantalla completa.
   // { nombre: "Clientes", ruta: "/clientes/" },
-  { nombre: "Recursos", ruta: "/blog/" },
   { nombre: "Conózcanos", ruta: "/nosotros/" },
+  { nombre: "Recursos", ruta: "/blog/" },
 ];
 
 /* Las anclas del header en modo landing, en el orden en que las secciones

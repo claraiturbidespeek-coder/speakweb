@@ -1,10 +1,19 @@
 /* Lo propio de /nosotros/.
 
-   El hero, el CTA final y los isotipos decorativos repiten los valores de
-   app/diagnostico/diagnostico.module.css, que a su vez repite los de las
-   landings de idioma. Con esta ya son tres páginas fuera de /idioma/ con el
-   mismo hero de una columna y el mismo cierre en rojo: es candidato a subir a
+   El hero y los dos isotipos decorativos (el del hero y el del cierre)
+   repiten los valores de app/diagnostico/diagnostico.module.css, que a su vez
+   repite los de las landings de idioma. Con esta ya son tres páginas fuera de
+   /idioma/ con el mismo hero de una columna: es candidato a subir a
    patrones.css, pero eso toca /diagnostico/ y se deja para una pasada aparte.
+   El cierre comparte con esas páginas el rojo y el isotipo, pero aquí es solo
+   una frase y el botón (.cierre).
+
+   Fondos, de arriba abajo, sin dos secciones seguidas del mismo color: hero
+   (degradado hasta off-white) y presentación en off-white, que lo continúa;
+   origen en blanco, historia en off-white, escena en blanco (con la tarjeta
+   del "después" dentro), el bento en el fondo alterno, PACTO en blanco,
+   valores en navy, el cierre en rojo y el Centro de Recursos como tarjeta
+   off-white sobre blanco.
 
    Las tarjetas de "S-Peak nació de una inconformidad" son .sp-tarjeta; el
    tablero de Trazabilidad, TableroProgreso con su variante `amplio`. La
@@ -329,9 +338,13 @@
   color: var(--color-navy);
 }
 
-/* El título de la segunda sub-sección. Mismo tratamiento que los demás h3 de
-   bloque de la página (.panelCierre h3, .confianzaInner h3), en navy. */
-.lectura h3 {
+/* El título de la escena de la gerente (h2 de su sección) y el de la tarjeta
+   del "después" (h3). Conservan el tamaño de bloque que la escena tenía como
+   sub-sección (el de .panelCierre h3 y .confianzaInner h3), en navy (el de la
+   tarjeta, en blanco sobre su rojo): más chico que el h2 de .lectura, que es
+   el de "Nuestro Origen". */
+.lectura .tituloEscena,
+.despues .tituloEscena {
   margin-bottom: 18px;
   font-size: clamp(22px, 2.4vw, 32px);
   font-weight: var(--weight-bold);
@@ -348,22 +361,19 @@
   color: var(--color-ink-2);
 }
 
-/* El remate de la segunda sub-sección: mismo tamaño que el párrafo, en bold y
-   navy. */
+/* El remate de la escena: mismo tamaño que el párrafo, en bold y navy. */
 .lectura .remate {
   font-weight: var(--weight-bold);
   color: var(--color-navy);
 }
 
-/* ---------- S-Peak nació de una inconformidad ---------- */
+/* ---------- La escena de la gerente ----------
 
-/* Tres bloques seguidos: la entradilla, la franja navy a todo el ancho y la
-   rejilla. La franja no puede vivir dentro de una .sp-seccion porque el gutter
-   la encogería; por eso la sección se parte en tres y la separación entre
-   ellas se recorta a la mitad del ritmo normal. */
-.origen {
-  background: var(--color-off-white);
-}
+   Sobre el fondo de la página. Con las objeciones visibles (ocultas hoy), la
+   escena sigue con tres bloques: la entradilla, la franja navy a todo el ancho
+   y la rejilla. La franja no puede vivir dentro de una .sp-seccion porque el
+   gutter la encogería; por eso la sección se parte en tres y la separación
+   entre ellas se recorta a la mitad del ritmo normal. */
 
 .origenTop {
   padding-bottom: 48px;
@@ -374,6 +384,56 @@
    mismo aire que hay entre los bloques de esta sección. */
 .origenEntrada {
   margin: 48px auto 0;
+}
+
+/* El "después": la segunda mitad de la escena, una tarjeta roja debajo de
+   las dos columnas. Del ancho de .dosColumnas (el contenedor de la página),
+   así que su borde izquierdo queda alineado con la foto y el derecho con el
+   texto. La separa de la escena el ritmo de sección (el de .sp-seccion, que
+   en móvil baja al suyo). .sp-tarjeta pone el radio; aquí, el rojo (también
+   en el borde), la sombra suave, el relleno y el contenido centrado: título,
+   párrafo y el botón blanco del sistema para fondo rojo. El título y el
+   párrafo van al ancho de lectura para que no se estiren a todo el
+   contenedor. No es clicable: de .sp-tarjeta no se queda el hover, que la
+   haría pasar por interactiva (como las tarjetas del bento); el botón
+   conserva el suyo. */
+.despues {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: var(--container-max);
+  margin: var(--space-section) auto 0;
+  padding: var(--space-inset);
+  background: var(--color-red);
+  border-color: var(--color-red);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+}
+
+.despues:hover {
+  border-color: var(--color-red);
+  transform: none;
+  box-shadow: var(--shadow-card);
+}
+
+.despues .tituloEscena,
+.despues p {
+  max-width: 760px;
+  margin: 0;
+  color: var(--color-white);
+}
+
+.despues p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+@media (max-width: 600px) {
+  .despues {
+    margin-top: var(--space-section-mobile);
+  }
 }
 
 .confianza {
@@ -1403,8 +1463,8 @@
 
 /* ---------- Nuestra Historia ----------
 
-   Línea de tiempo en off-white, entre la escalera de PACTO (sobre blanco) y
-   los valores (navy). Los once hitos van en orden cronológico. Las tarjetas
+   Línea de tiempo en off-white, entre el origen y la escena de la gerente,
+   los dos sobre blanco. Los once hitos van en orden cronológico. Las tarjetas
    son blancas, con borde fino, sombra suave y texto navy, como las demás
    sobre fondo claro; la categoría queda de acento (--acento): el icono, el
    año, el tallo y el filete del lado que toca el eje, en rojo las primeras
@@ -1970,9 +2030,11 @@
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* ---------- CTA final ---------- */
-
-.finalCta {
+/* ---------- Cierre ----------
+   Sección roja de orilla a orilla, con el relleno normal de .sp-seccion y sin
+   radio. Todo centrado: la frase como título, su párrafo y el botón, por encima
+   del isotipo decorativo (.decoCta), que la sección recorta. */
+.cierre {
   background: var(--color-red);
   color: var(--color-white);
   border-radius: 0;
@@ -1980,15 +2042,17 @@
   overflow: hidden;
 }
 
-.finalInner {
+.cierreInner {
   position: relative;
   z-index: 1;
-  max-width: 760px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
-.finalCta h2 {
-  margin: 0 auto 20px;
+.cierre h2 {
+  margin: 0;
   font-size: clamp(26px, 3.2vw, 42px);
   font-weight: var(--weight-bold);
   line-height: 1.12;
@@ -1996,8 +2060,11 @@
   text-wrap: balance;
 }
 
-.finalCta p {
-  margin-bottom: 16px;
+/* El párrafo, con el tratamiento del cierre rojo anterior (17px, blanco al
+   85 %), al ancho de lectura. */
+.cierre p {
+  max-width: 760px;
+  margin: 0;
   font-size: 17px;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.85);

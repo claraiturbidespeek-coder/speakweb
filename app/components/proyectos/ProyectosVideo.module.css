@@ -4,18 +4,22 @@
    interna. */
 
 /* ---------- Rejilla ----------
-   Desde 1200px, mosaico de cuatro columnas y tres filas:
+   Desde 1200px, mosaico de cuatro columnas iguales y tres filas. Cada columna
+   son dos tramos, para que en la fila de abajo G pueda terminar dentro de la
+   segunda columna (el corte se explica en "Fila de abajo en escritorio"):
 
      A  B  C  D
      E  F  F  D
-     G  G  H  I
+     G  G' H  I      (G ocupa la columna 1 y parte de la 2; H, el resto)
 
    D es la celda alta (filas 1 y 2), F la ancha del centro y G la ancha de
-   abajo. Filas de 200, 200 y 260px como mínimo: si un contenido no cabe, la
-   fila crece en vez de desbordarse.
+   abajo. Filas de 200 y 200px como mínimo: si un contenido no cabe, la fila
+   crece en vez de desbordarse. La tercera la marca G, en la proporción de su
+   video.
 
    De 600 a 1199px, dos columnas en el orden del HTML, con F y G a lo ancho.
-   Filas de 230px como mínimo, que crecen con su contenido; G en 16:9.
+   Filas de 230px como mínimo, que crecen con su contenido; G en la proporción
+   de su video.
 
    Hasta 599px, una columna con alto automático y los videos en 16:9 (lo pone
    .celdaVideo). */
@@ -41,12 +45,14 @@
 
 @media (min-width: 1200px) {
   .rejilla {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-template-rows: minmax(200px, auto) minmax(200px, auto) minmax(260px, auto);
+    grid-template-columns:
+      minmax(0, 1fr) minmax(0, 1fr) minmax(0, var(--tramo-g)) minmax(0, var(--tramo-h))
+      repeat(4, minmax(0, 1fr));
+    grid-template-rows: minmax(200px, auto) minmax(200px, auto) auto;
     grid-template-areas:
-      "a b c d"
-      "e f f d"
-      "g g h i";
+      "a a b b c c d d"
+      "e e f f f f d d"
+      "g g g h h h i i";
   }
 
   .areaA { grid-area: a; }
@@ -281,14 +287,86 @@
 }
 
 /* Tamaño de cita por celda. La alta (D) lleva una cita completa, que es la
-   que la llena; las de A y H, fragmentos más cortos, van al mismo tamaño para
-   no dejar hueco en su celda. La del destacado (F), una frase corta en una
-   celda ancha, sube a 22px en su regla de arriba. */
+   que la llena; la de A, un fragmento más corto, y la de H, completa, van al
+   mismo tamaño (en escritorio H lo ajusta a su fila, ver abajo). La del
+   destacado (F), una frase corta en una celda ancha, sube a 22px en su regla
+   de arriba. */
 .areaA :global(.sp-testi-quote),
 .areaD :global(.sp-testi-quote),
 .areaH :global(.sp-testi-quote) {
   font-size: 18px;
   line-height: 1.5;
+}
+
+/* ---------- Fila de abajo en escritorio (G, H, I) ----------
+   Desde 1200px, el video G marca el alto de la fila con la proporción de su
+   archivo, y la cita completa de H tiene que caber en ese alto. G termina a
+   cerca de un cuarto de la tarjeta F de arriba y H se queda con el resto; I
+   conserva su columna. El corte lo ponen los tramos 3 y 4 de la rejilla
+   (--tramo-g y --tramo-h, que suman siempre 2fr) y se midió en el navegador,
+   igual que el tamaño de la cita, para que alto del video y alto de la cita
+   coincidan:
+     1200–1269px  corte a 1/3 de F, cita a 14px (no alcanza: G queda hasta
+                  15px más bajo que la cita)
+     1270–1319px  corte a 0.29 de F, cita a 14px
+     1320–1399px  corte a 1/4 de F, cita a 14px
+     desde 1400   corte a 1/4 de F, cita a 16px
+   Lo poco que sobre en H se reparte arriba y abajo: cita y firma van juntas
+   y centradas en el alto. */
+@media (min-width: 1200px) {
+  .rejilla {
+    --tramo-g: 1.5fr;
+    --tramo-h: 0.5fr;
+  }
+
+  .areaH {
+    justify-content: center;
+  }
+
+  .areaH :global(.sp-testi-quote) {
+    flex: none;
+    font-size: 14px;
+  }
+
+  .areaH :global(.sp-testi-autor) {
+    margin-top: 0;
+  }
+
+  /* I no se ve vacía en el alto de la fila: la cifra crece al tamaño de la
+     del destacado (56px) y el icono, la cifra, su texto y el logo se reparten
+     parejo de arriba a abajo. */
+  .areaI {
+    justify-content: space-between;
+  }
+
+  .areaI .cifraCentro {
+    display: contents;
+  }
+
+  .areaI .cifraNum {
+    margin: 0;
+    font-size: 56px;
+  }
+}
+
+@media (min-width: 1270px) {
+  .rejilla {
+    --tramo-g: 1.3fr;
+    --tramo-h: 0.7fr;
+  }
+}
+
+@media (min-width: 1320px) {
+  .rejilla {
+    --tramo-g: 1.1fr;
+    --tramo-h: 0.9fr;
+  }
+}
+
+@media (min-width: 1400px) {
+  .areaH :global(.sp-testi-quote) {
+    font-size: 16px;
+  }
 }
 
 /* ---------- Celda de video ---------- */
@@ -309,12 +387,12 @@
   }
 }
 
-/* En dos columnas, el video ancho G conserva el 16:9: a lo ancho no tiene
-   vecina que le marque el alto. */
-@media (min-width: 600px) and (max-width: 1199px) {
-  .areaG {
-    aspect-ratio: 16 / 9;
-  }
+/* El video ancho G (Covestro) toma siempre la proporción de su archivo,
+   1280×720, la del clip y la portada: así se ven completos, sin recorte del
+   cover. En el mosaico de escritorio es G quien marca el alto de su fila, y
+   H e I se estiran a él. */
+.areaG {
+  aspect-ratio: 1280 / 720;
 }
 
 /* El anillo de foco va en la celda y no en el botón: el overflow de la celda
