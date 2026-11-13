@@ -8,7 +8,7 @@ category: "Implementación del programa"
 categorySlug: "implementacion-del-programa"
 tags: []
 featuredImage: "/images/blog/como-aprende-ingles-un-ejecutivo-ocupado-metodologia-tiempos-y-expectativas-reales-portada.webp"
-featuredImageAlt: "Un hombre de traje habla por teléfono en su escritorio, con banderas de Estados Unidos, Canadá y Reino Unido y un mapamundi."
+featuredImageAlt: "Una persona de saco gris sostiene un cuaderno y libros, junto a cuatro personas sentadas ante computadoras."
 seoTitle: "Inglés para ejecutivos: ¡Aprenda sin perder tiempo! | %%sitename%%"
 seoDescription: "¿Busca inglés para ejecutivos? Conozca la metodología ideal para agendas saturadas y optimice el tiempo de sus líderes."
 focusKeyword: "Inglés para ejecutivos"
