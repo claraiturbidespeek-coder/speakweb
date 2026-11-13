@@ -3,12 +3,12 @@ title: "5 errores de comunicación en su primer año de Nearshoring"
 slug: "errores-comunicacion-nearshoring-en-mexico"
 date: "2026-06-05T17:15:42"
 author: "Andrea Ríos"
-excerpt: "Del inglés técnico al seguimiento de objetivos, estos son cinco errores de comunicación que suelen aparecer en el primer año de nearshoring y la forma de anticiparlos."
+excerpt: "Cinco errores de comunicación que suelen aparecer en el primer año de nearshoring, del inglés técnico al seguimiento de objetivos."
 category: "Nearshoring y expansión"
 categorySlug: "nearshoring-y-expansion"
 tags: []
 featuredImage: "/images/blog/errores-comunicacion-nearshoring-en-mexico-portada.webp"
-featuredImageAlt: "Dos manos sostienen una tableta con un mapamundi y gráficas, y una de ellas señala con un bolígrafo; sobre la mesa hay otro mapa impreso y una laptop."
+featuredImageAlt: "Dos manos sostienen una tableta con un mapamundi y una señala con bolígrafo; en la mesa hay un mapa impreso y una laptop."
 seoTitle: "Nearshoring en México: 5 errores de comunicación | %%sitename%%"
 seoDescription: "Conozca los 5 errores de comunicación más comunes en el primer año de nearshoring en México y cómo evitarlos. Contacte a un asesor."
 focusKeyword: "Nearshoring en México"
@@ -24,7 +24,7 @@ El nearshoring consiste en trasladar operaciones a un país cercano al mercado d
 
 Los cinco errores son suponer que el inglés conversacional basta, confundir el "sí" con un compromiso, no adaptarse a la comunicación en tiempo real, no unificar el vocabulario técnico y tratar la capacitación como un beneficio y no como un indicador. La cercanía geográfica puede dar una falsa sensación de confianza, y por eso conviene revisarlos desde el inicio de la operación.
 
-![Tres personas en una oficina: dos hombres sentados frente a una laptop y una mujer de pie que sonríe, con un mapamundi oscuro en la pared.](/images/blog/errores-comunicacion-nearshoring-en-mexico-01.webp)
+![Dos hombres sentados frente a una laptop y una mujer de pie que sonríe, con un mapamundi oscuro en la pared.](/images/blog/errores-comunicacion-nearshoring-en-mexico-01.webp)
 
 ### Error 1: Suponer que el inglés conversacional basta para la operación técnica
 

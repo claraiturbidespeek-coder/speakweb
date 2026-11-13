@@ -8,7 +8,7 @@ category: "Diagnóstico de necesidades"
 categorySlug: "diagnostico-de-necesidades"
 tags: []
 featuredImage: "/images/blog/mejores-idiomas-para-empresas-portada.webp"
-featuredImageAlt: "Dos ejecutivos corporativos analizando la estrategia de idiomas para empresas frente a un mapa mundial."
+featuredImageAlt: "Una mujer y un hombre con diademas sonríen frente a sus laptops; él sostiene un globo terráqueo y al fondo hay un mapamundi."
 seoTitle: "Los mejores idiomas para empresas: Guía de elección | %%sitename%%"
 seoDescription: "¿Qué idiomas piden las empresas y cuál es mejor para su plantilla? Mapee las necesidades lingüísticas de su negocio con esta guía."
 focusKeyword: "idiomas para empresas"
@@ -80,4 +80,4 @@ Contamos con profesores nativos y tableros de control en tiempo real. Así, uste
 
 [**Contacte a un consultor de S-Peak**](#contacto) hoy mismo para diseñar su programa corporativo.
 
-Siga nuestras actualizaciones sobre desarrollo de talento global en [**LinkedIn**](https://www.linkedin.com/company/s-peak/?originalSubdomain=mx).
+Siga nuestras actualizaciones sobre desarrollo de talento global en [**LinkedIn**](https://mx.linkedin.com/company/s-peak).

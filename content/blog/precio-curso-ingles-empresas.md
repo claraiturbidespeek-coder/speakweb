@@ -8,7 +8,7 @@ category: "Resultados y ROI"
 categorySlug: "resultados-y-roi"
 tags: []
 featuredImage: "/images/blog/precio-curso-ingles-empresas-portada.webp"
-featuredImageAlt: "Profesor de inglés grabando una clase virtual con una bandera del Reino Unido, frente a un pizarrón con conjugaciones verbales."
+featuredImageAlt: "Un profesor sonríe con una bandera del Reino Unido mientras graba una clase con su celular frente a un pizarrón de verbos."
 seoTitle: "Cursos de inglés precios: cuánto cuesta capacitar a su equipo | %%sitename%%"
 seoDescription: "Conozca sobre cursos de inglés precios y rangos para empresas. Compare opciones individuales vs. corporativas y evalúe su ROI."
 focusKeyword: "cuánto cuesta un curso de inglés para empresas"
@@ -82,4 +82,4 @@ Complete el formulario, un asesor se pondrá en contacto.
 
 **Solicitar mi cotización**
 
-Siga nuestro canal en [LinkedIn](https://www.linkedin.com/company/s-peak/?originalSubdomain=mx) para más consejos de capital humano.
+Siga nuestro canal en [LinkedIn](https://mx.linkedin.com/company/s-peak) para más consejos de capital humano.

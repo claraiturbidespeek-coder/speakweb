@@ -8,9 +8,9 @@ category: "Selección de proveedor"
 categorySlug: "seleccion-de-proveedor"
 tags: []
 featuredImage: "/images/blog/blog-errores-cursos-idiomas-empresas-portada.webp"
-featuredImageAlt: "Tres personas con traje oscuro sonríen sentadas a una mesa, con banderas de Reino Unido, Estados Unidos y Alemania en primer plano y documentos con una pluma sobre la mesa."
+featuredImageAlt: "Tres hombres de traje oscuro sonríen sentados a una mesa con banderas del Reino Unido, Estados Unidos y Alemania."
 seoTitle: "Cursos de idiomas para empresas: ¡Evite estos 5 errores! | %%sitename%%"
-seoDescription: "Conozca los 5 errores al contratar cursos de idiomas para empresas en México y cómo evitarlos. Hable con un asesor."
+seoDescription: "Conozca los 5 errores al contratar cursos de idiomas para empresas en México y qué pedir al proveedor para evitarlos. Hable con un asesor."
 focusKeyword: "errores al contratar cursos de idiomas para empresas"
 readingTime: 9
 hasLeadForm: true
@@ -76,7 +76,7 @@ En conjunto, los cinco errores describen a un proveedor que vende contenido gen�
 
 Se justifica mostrando qué mejora en el negocio y cómo se medirá el avance, y no solo cuántas personas asistieron.
 
-![Mujer de cabello largo y blazer a cuadros que sonríe mientras habla por teléfono junto a un mapamundi pegado en una pared de ladrillo.](/images/blog/blog-errores-cursos-idiomas-empresas-01.webp)
+![Una mujer de saco a cuadros sonríe mientras habla por teléfono junto a un mapamundi en una pared de ladrillo.](/images/blog/blog-errores-cursos-idiomas-empresas-01.webp)
 
 Cuando presenta un proyecto de capacitación ante la Dirección general o finanzas, la pregunta del millón siempre será: *¿Cuál es el retorno de inversión (ROI)?* Para justificar cada peso, **la estrategia debe transformarse de un simple beneficio laboral a un pilar de crecimiento del negocio.**
 

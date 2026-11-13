@@ -8,7 +8,7 @@ category: "Nearshoring y expansión"
 categorySlug: "nearshoring-y-expansion"
 tags: []
 featuredImage: "/images/blog/aprender-idiomas-nearshoring-mexico-portada.webp"
-featuredImageAlt: "Ejecutivos bilingües en México planeando estrategias comerciales para aprender idiomas corporativos."
+featuredImageAlt: "Una mujer con traje a rayas sonríe mientras lee un cuaderno; detrás, dos personas trabajan con una laptop en una mesa."
 seoTitle: "Aprender idiomas: el impacto del nearshoring | %%sitename%%"
 seoDescription: "Aprender idiomas es vital para su empresa. Conozca qué lenguas demanda el mercado por el nearshoring y proteja su competitividad hoy."
 focusKeyword: "aprender idiomas"
@@ -81,4 +81,4 @@ Ayudamos a sus líderes a dominar las competencias que los nuevos mercados exige
 
 [Contacte a un especialista](#contacto) de S-Peak y diseñemos un programa lingüístico empresarial totalmente a la medida.
 
-Siga nuestro canal de [LinkedIn](https://www.linkedin.com/company/s-peak/?originalSubdomain=mx) para mantenerse al día con las mejores estrategias de capacitación corporativa.
+Siga nuestro canal de [LinkedIn](https://mx.linkedin.com/company/s-peak) para mantenerse al día con las mejores estrategias de capacitación corporativa.

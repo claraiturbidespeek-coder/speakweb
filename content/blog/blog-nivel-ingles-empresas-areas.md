@@ -124,4 +124,4 @@ En S-Peak, ***no vendemos cursos genéricos de idiomas; nos convertimos en sus c
 
 Deje de adivinar el nivel de su equipo y comience a medir resultados reales. [Póngase en contacto con nuestros especialistas](#contacto) y solicite hoy mismo una sesión de consultoría y un diagnóstico de nivelación para las áreas críticas de su organización.
 
-Manténgase a la vanguardia en la gestión de capital humano y competitividad empresarial corporativa. Únase a nuestra red de directivos en [LinkedIn](https://www.linkedin.com/company/s-peak/posts/?feedView=all).
+Manténgase a la vanguardia en la gestión de capital humano y competitividad empresarial corporativa. Únase a nuestra red de directivos en [LinkedIn](https://mx.linkedin.com/company/s-peak).

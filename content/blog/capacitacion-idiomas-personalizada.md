@@ -42,7 +42,7 @@ Se personalizan cinco elementos: contenido, nivel, horarios, modalidad e indicad
 Antes de enseñar un solo verbo se revisan los roles, los retos cotidianos y las metas de la organización. Si su equipo negocia con Alemania, el contenido se centra en alemán comercial y en la etiqueta de negocios, y los materiales usan casos del propio sector. El nivel se mide por colaborador para que cada grupo avance a un ritmo parecido.
 
 > **Dato clave:** El Acuerdo de la STPS publicado en el Diario Oficial en 2013 establece que el plan y los programas de capacitación consideren **las necesidades de capacitación y adiestramiento de todos los puestos y niveles de trabajo existentes en la empresa**
-> ([STPS, DOF 2013](https://dof.gob.mx/nota_detalle.php?codigo=5302582&fecha=14/06/2013)).
+> ([STPS, 2013](https://dof.gob.mx/nota_detalle.php?codigo=5302582&fecha=14/06/2013)).
 
 ### Horarios, modalidad e indicadores
 

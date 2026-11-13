@@ -8,7 +8,7 @@ category: "Implementación del programa"
 categorySlug: "implementacion-del-programa"
 tags: []
 featuredImage: "/images/blog/como-aprende-ingles-un-ejecutivo-ocupado-metodologia-tiempos-y-expectativas-reales-portada.webp"
-featuredImageAlt: "Una profesionista ejecutiva en su oficina expresando seguridad y fluidez gracias al programa de inglés para ejecutivos de S-Peak."
+featuredImageAlt: "Un hombre de traje habla por teléfono en su escritorio, con banderas de Estados Unidos, Canadá y Reino Unido y un mapamundi."
 seoTitle: "Inglés para ejecutivos: ¡Aprenda sin perder tiempo! | %%sitename%%"
 seoDescription: "¿Busca inglés para ejecutivos? Conozca la metodología ideal para agendas saturadas y optimice el tiempo de sus líderes."
 focusKeyword: "Inglés para ejecutivos"
@@ -73,4 +73,4 @@ En S-Peak, entendemos la velocidad a la que se mueve la alta dirección en Méxi
 
 Permítanos diseñar una solución formativa que su equipo de dirección sí pueda completar. Póngase en [contacto con nuestros asesores](#contacto) hoy mismo y solicite una propuesta a la medida de los objetivos y tiempos de su organización.
 
-Descubra las mejores prácticas en liderazgo multilingüe, capital humano de alto rendimiento y tendencias de nearshoring en México. Síganos en nuestra comunidad de [LinkedIn](https://www.linkedin.com/company/s-peak/posts/?feedView=all).
+Descubra las mejores prácticas en liderazgo multilingüe, capital humano de alto rendimiento y tendencias de nearshoring en México. Síganos en nuestra comunidad de [LinkedIn](https://mx.linkedin.com/company/s-peak).

@@ -8,7 +8,7 @@ categorySlug: "implementacion-del-programa"
 tags: []
 excerpt: "Qué es cada una de las tres modalidades en que se imparte la capacitación en idiomas para equipos y qué dicen los estudios académicos sobre sus resultados."
 featuredImage: "/images/blog/modalidad-capacitacion-idiomas-empresas-portada.webp"
-featuredImageAlt: "Instructor sonriente con audífonos blancos que saluda con la mano frente a una laptop, con un pizarrón de conjugaciones en inglés y banderas de Estados Unidos y Reino Unido al fondo."
+featuredImageAlt: "Un instructor con audífonos saluda frente a una laptop, con un pizarrón de conjugaciones en inglés y banderas al fondo."
 seoTitle: "Capacitación en idiomas: presencial, híbrida y en línea | %%sitename%%"
 seoDescription: "Modalidades de capacitación en idiomas para empresas: qué es la presencial, la híbrida y la en línea, y qué dicen los estudios. Hable con un asesor."
 focusKeyword: "modalidades de capacitación en idiomas para empresas"
@@ -92,3 +92,5 @@ Esas fuentes dan pistas para orientar la decisión. Con eso en mente, en el cier
 ## ¿Quiere conocer las tres modalidades en acción?
 
 Si su área de RH quiere ver cómo se imparte la capacitación en idiomas en su empresa, [póngase en contacto con un asesor](#contacto). Y si aún está definiendo el programa, antes puede revisar [cómo estructurar una capacitación en inglés que su equipo no abandone](https://s-peak.com/como-implementar-capacitacion-en-ingles-empresas/).
+
+Y si desea seguir más contenido sobre capacitación y desarrollo de talento, puede encontrarnos en [LinkedIn](https://mx.linkedin.com/company/s-peak).

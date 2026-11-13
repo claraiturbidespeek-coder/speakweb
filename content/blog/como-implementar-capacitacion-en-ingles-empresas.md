@@ -3,13 +3,13 @@ title: "Cómo implementar una capacitación en inglés en su empresa: 5 pasos pa
 slug: "como-implementar-capacitacion-en-ingles-empresas"
 date: "2026-06-15T12:37:29"
 author: "Andrea Ríos"
-excerpt: "Cinco pasos para estructurar una capacitación en inglés en una empresa: auditar necesidades, evaluar el nivel real, elegir la modalidad, medir con indicadores y sostener la participación."
+excerpt: "Cinco pasos para implementar una capacitación en inglés en su empresa: necesidades, nivel real, modalidad, indicadores y participación."
 category: "Implementación del programa"
 categorySlug: "implementacion-del-programa"
 tags: []
 featuredImage: "/images/blog/como-implementar-capacitacion-en-ingles-empresas-portada.webp"
-featuredImageAlt: "Dos personas se dan la mano de pie frente a una pared de ladrillo blanco, mientras tres personas sentadas a una mesa redonda toman notas, con banderas del Reino Unido y de Estados Unidos sobre la mesa."
-seoTitle: "Cómo implementar una capacitación en inglés | %%sitename%%"
+featuredImageAlt: "Dos personas se dan la mano junto a una pared de ladrillo mientras otras tres conversan en una mesa con banderas."
+seoTitle: "Cómo implementar una capacitación en inglés en su empresa | %%sitename%%"
 seoDescription: "Cómo implementar una capacitación en inglés en una empresa en cinco pasos: necesidades, nivel, modalidad, indicadores e incentivos. Hable con un asesor."
 focusKeyword: "cómo implementar una capacitación en inglés en una empresa"
 readingTime: 6
@@ -58,9 +58,9 @@ Esas condiciones (control, práctica y retroalimentación) sirven como criterios
 
 No mida el éxito de su programa basándose únicamente en la asistencia a una plataforma. **Establezca indicadores clave de rendimiento operativos:**
 
--   Reducción del tiempo de resolución de incidencias documentadas en inglés.
--   Autonomía de los mandos medios en juntas internacionales sin la intervención de un traductor.
--   Incremento en la tasa de cierre de propuestas comerciales bilingües.
+-   **Incidencias:** reducción del tiempo de resolución de incidencias documentadas en inglés.
+-   **Juntas internacionales:** autonomía de los mandos medios en juntas internacionales sin la intervención de un traductor.
+-   **Propuestas comerciales:** incremento en la tasa de cierre de propuestas comerciales bilingües.
 
 Según ATD, 45 % de las organizaciones tiene una persona dedicada a evaluar sus programas de aprendizaje ([ATD, 2025](https://www.prweb.com/releases/atd-research-organizations-struggle-with-measuring-the-impact-of-training-302441494.html)).
 
@@ -76,7 +76,7 @@ Esa orientación del gerente es parte de la corresponsabilidad. Para diseñar un
 
 Para profundizar en cómo integrar el aprendizaje a la cultura de la empresa, incluido el reconocimiento de logros y la práctica diaria, consulte [cómo integrar la capacitación en idiomas en la cultura corporativa](https://s-peak.com/capacitacion-idiomas-cultura-corporativa/).
 
-![Tres personas sonríen alrededor de una mesa de trabajo con una laptop, vasos de café y notas adhesivas, mientras una de ellas señala hacia la pantalla.](/images/blog/como-implementar-capacitacion-en-ingles-empresas-01.webp)
+![Tres personas sonríen en una mesa con laptops, vasos de café y una nota adhesiva; una de ellas señala hacia una pantalla.](/images/blog/como-implementar-capacitacion-en-ingles-empresas-01.webp)
 
 ## ¿Cómo puede S-Peak apoyar su programa de inglés?
 

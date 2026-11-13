@@ -8,7 +8,7 @@ category: "Resultados y ROI"
 categorySlug: "resultados-y-roi"
 tags: []
 featuredImage: "/images/blog/blog-capacitacion-en-ingles-programa-fantasma-portada.webp"
-featuredImageAlt: "Grupo de cinco profesionales en una clase presencial de inglés, con ejercicios de verbos irregulares en papel y banderas de Reino Unido y Estados Unidos sobre la mesa, mientras una instructora supervisa."
+featuredImageAlt: "Una mujer de pie observa a un grupo que escribe en hojas, sentado a una mesa con una bandera del Reino Unido."
 seoTitle: "Capacitación en inglés: Por qué fallan los cursos corporativos | %%sitename%%"
 seoDescription: "¿Nadie usa el curso de idiomas de su empresa? Conozca las causas del programa fantasma en la capacitación en inglés corporativa."
 focusKeyword: "Capacitación en inglés"
@@ -90,4 +90,4 @@ Por ello, eliminamos los programas fantasma de raíz: sustituimos las plataforma
 
 Haga que cada peso invertido en el desarrollo global de su organización rinda frutos reales. Póngase en [contacto con nuestros especialistas](#contacto) hoy mismo para realizar una auditoría de rendimiento lingüístico y diseñar una estrategia a la medida de su empresa.
 
-¿Le interesa optimizar el capital humano, la productividad y el desarrollo de talento multilingüe en su organización? Acompáñenos en nuestra comunidad profesional de [LinkedIn](https://www.linkedin.com/company/s-peak/posts/?feedView=all).
+¿Le interesa optimizar el capital humano, la productividad y el desarrollo de talento multilingüe en su organización? Acompáñenos en nuestra comunidad profesional de [LinkedIn](https://mx.linkedin.com/company/s-peak).

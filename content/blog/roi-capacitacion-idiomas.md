@@ -8,8 +8,8 @@ categorySlug: "resultados-y-roi"
 tags: []
 excerpt: "En qué frentes puede una empresa esperar retorno de la capacitación en idiomas y cómo calcularlo con la fórmula estándar, con fuentes verificables."
 featuredImage: "/images/blog/roi-capacitacion-idiomas-portada.webp"
-featuredImageAlt: "Tres personas con traje oscuro sentadas a una mesa; una señala con una pluma documentos impresos frente a un muro de ladrillo."
-seoTitle: "Cómo medir el ROI de la formación en idiomas | %%sitename%%"
+featuredImageAlt: "Tres personas de traje oscuro sentadas a una mesa; una señala con una pluma documentos impresos junto a un muro de ladrillo."
+seoTitle: "Cómo medir el ROI de la formación en idiomas en su empresa | %%sitename%%"
 seoDescription: "Aprenda cómo medir el ROI de la formación en idiomas: beneficios, fórmula y qué datos reunir. Hable con un asesor sobre el programa de su equipo."
 focusKeyword: "cómo medir el ROI de la formación en idiomas"
 readingTime: 6
@@ -75,9 +75,9 @@ El ROI de capacitación de idiomas se calcula comparando los beneficios netos de
 
 Los beneficios que conviene reunir para esa fórmula son estos:
 
--   Menos tiempo perdido en traducciones y correcciones.
--   Incremento de ventas y eficiencia en negociaciones.
--   Clientes más satisfechos y fidelizados.
+-   **Tiempo:** menos tiempo perdido en traducciones y correcciones.
+-   **Ventas:** incremento de ventas y eficiencia en negociaciones.
+-   **Clientes:** clientes más satisfechos y fidelizados.
 
 Defina para cada uno un dato de partida y vuelva a medirlo al cierre del programa; sin ese punto de comparación no es posible atribuirle la mejora a la capacitación. Un programa de idiomas tiene ROI positivo para la empresa que lo contrata cuando los beneficios que logra medir superan lo que invirtió, y eso depende de esa medición, no de una cifra general.
 

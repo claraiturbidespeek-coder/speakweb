@@ -8,7 +8,7 @@ category: "Selección de proveedor"
 categorySlug: "seleccion-de-proveedor"
 tags: []
 featuredImage: "/images/blog/blog-ingles-corporativo-mexico-precio-portada.webp"
-featuredImageAlt: "Mujer de cabello gris y lentes que sonríe mientras señala un libro abierto frente a una laptop, con un pizarrón con ejemplos de gramática en inglés y una bandera del Reino Unido sobre el escritorio."
+featuredImageAlt: "Una mujer de cabello gris sonríe y señala un libro junto a una laptop, con un pizarrón en inglés y una bandera británica."
 seoTitle: "¿Cuánto cuesta un curso de inglés corporativo en México? | %%sitename%%"
 seoDescription: "Rangos de referencia del precio del inglés corporativo en México y qué exigir en una cotización. Hable con un asesor de su empresa."
 focusKeyword: "Inglés corporativo"
@@ -50,7 +50,7 @@ Imagine que dos propuestas ofrecen el mismo precio por hora, pero una cobra apar
 -   **Seguimiento y reportes:** solicite qué métricas de asistencia y avance recibirá, además de la lista de asistentes.
 -   **Contenido por puesto:** pregunte si el programa se diseña por departamento o es genérico, y cómo se adapta a lo que cada puesto necesita.
 
-![Mujer de cabello canoso y blusa azul que se inclina sobre una mesa para escribir en una tabla con sujetapapeles mientras conversa con una persona sentada de espaldas, con una bandera de Estados Unidos en la pared y otras personas de pie al fondo.](/images/blog/blog-ingles-corporativo-mexico-precio-01.webp)
+![Una mujer de cabello canoso escribe en una mesa frente a una persona sentada, con una bandera de Estados Unidos al fondo.](/images/blog/blog-ingles-corporativo-mexico-precio-01.webp)
 
 Si además quiere identificar las señales de un curso deficiente, revise [las causas reales por las que los equipos abandonan la capacitación de idiomas](https://s-peak.com/blog-capacitacion-en-ingles-programa-fantasma/).
 
@@ -100,4 +100,4 @@ Con esas preguntas en la mano, el cierre le dice cómo dar el siguiente paso.
 
 Si su área de RH quiere comparar propuestas de inglés corporativo, [póngase en contacto con un asesor](#contacto). Y si necesita ver los rangos de precio y el retorno de inversión, antes puede consultar [cuánto cuesta capacitar a su equipo en inglés](https://s-peak.com/precio-curso-ingles-empresas/).
 
-Y si desea seguir más contenido sobre capacitación y desarrollo de talento en las empresas, puede encontrarnos en [LinkedIn](https://www.linkedin.com/company/s-peak/).
+Y si desea seguir más contenido sobre capacitación y desarrollo de talento, puede encontrarnos en [LinkedIn](https://mx.linkedin.com/company/s-peak).

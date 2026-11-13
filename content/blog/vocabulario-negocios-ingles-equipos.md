@@ -7,7 +7,7 @@ category: "Implementación del programa"
 categorySlug: "implementacion-del-programa"
 tags: []
 featuredImage: "/images/blog/vocabulario-negocios-ingles-equipos-portada.webp"
-featuredImageAlt: "Vocabulario de negocios en inglés: guía práctica de términos y frases"
+featuredImageAlt: "Dos personas de traje se dan la mano en una oficina luminosa."
 seoTitle: "Vocabulario de negocios en inglés: términos y frases clave | S-Peak"
 seoDescription: "Guía práctica de vocabulario de negocios en inglés para empresas. Aprenda los términos y frases clave para llamadas, correos y reuniones."
 readingTime: 6
@@ -155,4 +155,4 @@ Un equipo que comparte el mismo vocabulario de negocios en inglés proyecta una 
 
 Conozca los programas corporativos de S-Peak y capacite a su equipo con un estándar consistente de vocabulario en cada reunión, correo y negociación.
 
-Siga nuestra comunidad en [LinkedIn ](https://www.linkedin.com/company/s-peak/?originalSubdomain=mx)para conocer más.
+Siga nuestra comunidad en [LinkedIn ](https://mx.linkedin.com/company/s-peak)para conocer más.

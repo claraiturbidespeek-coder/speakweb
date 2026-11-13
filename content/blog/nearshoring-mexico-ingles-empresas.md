@@ -8,7 +8,7 @@ category: "Nearshoring y expansión"
 categorySlug: "nearshoring-y-expansion"
 tags: []
 featuredImage: "/images/blog/blog-nearshoring-mexico-ingles-empresas-portada.webp"
-featuredImageAlt: "Profesionista sonriente sosteniendo banderas de distintos países —Canadá, Italia, Estados Unidos, Reino Unido, Alemania y Francia— que representa la diversidad de mercados que exige el nearshoring."
+featuredImageAlt: "Varias manos señalan un mapamundi en una infografía de negocios."
 seoTitle: "Nearshoring: ¿Qué es y por qué exige inglés empresarial? | %%sitename%%"
 seoDescription: "¿Su empresa está lista para el nearshoring? Descubra qué es y por qué el inglés empresarial es clave para captar inversiones internacionales."
 focusKeyword: "Nearshoring que es"
@@ -36,7 +36,7 @@ Asimismo, estudios del [Banco Interamericano de Desarrollo (BID)](https://www.ia
 
 Esta relocalización geográfica implica una integración operativa inmediata. Su organización ya no competirá únicamente con proveedores locales; ahora estará bajo el escrutinio de auditorías internacionales, comités de calidad norteamericanos y juntas de planeación con corporaciones asiáticas y europeas que utilizan el inglés como idioma vehicular exclusivo para sus operaciones. Si además planea llevar su oferta a otros países, consulte nuestra guía sobre las [claves de una estrategia de expansión global con idiomas](/expansion-global-empresas-claves/).
 
-![Dos personas señalando un mapa mundial en una infografía de negocios, representando la relocalización de cadenas de producción propia del nearshoring.](/images/blog/blog-nearshoring-mexico-ingles-empresas-01.webp)
+![Una mujer sonriente sostiene banderas de Canadá, Italia, Estados Unidos, Reino Unido, Alemania y Francia.](/images/blog/blog-nearshoring-mexico-ingles-empresas-01.webp)
 
 ## El idioma como infraestructura humana en la era del nearshoring
 
@@ -94,4 +94,4 @@ Anticípese a las demandas de sus futuros socios globales y blinde la competitiv
 
 en desarrollo de talento y solicite una auditoría diagnóstica de nivelación corporativa sin costo para las áreas clave de su empresa.
 
-Manténgase al tanto de las mejores estrategias sobre capital humano, nearshoring y competitividad empresarial en México. Únase a nuestra red de líderes en [LinkedIn](https://www.linkedin.com/company/s-peak/posts/?feedView=all).
+Manténgase al tanto de las mejores estrategias sobre capital humano, nearshoring y competitividad empresarial en México. Únase a nuestra red de líderes en [LinkedIn](https://mx.linkedin.com/company/s-peak).

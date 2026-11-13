@@ -8,7 +8,7 @@ category: "Diagnóstico de necesidades"
 categorySlug: "diagnostico-de-necesidades"
 tags: []
 featuredImage: "/images/blog/evaluacion-de-ingles-ejecutivos-portada.webp"
-featuredImageAlt: "Evaluación de inglés corporativa para ejecutivos y directores en una junta de negocios."
+featuredImageAlt: "Una mujer con diadema y micrófono muestra una hoja de repaso de tiempos verbales en inglés junto a una laptop y una taza."
 seoTitle: "Evaluación de inglés para ejecutivos: 6 situaciones | %%sitename%%"
 seoDescription: "¿Su equipo directivo realmente domina el idioma? Conozca las 6 situaciones críticas y por qué una evaluación de inglés protege su negocio."
 focusKeyword: "evaluación de inglés"
@@ -48,7 +48,7 @@ Las mejores alianzas ocurren fuera de la oficina. Un directivo con un inglés pl
 
 Coordinar células de trabajo en diferentes países requiere empatía y claridad absoluta. El inglés para ejecutivos ayuda a inspirar confianza y a delegar de forma exacta. Si el mensaje es confuso, el equipo perderá el rumbo rápidamente.
 
-![](/images/blog/evaluacion-de-ingles-ejecutivos-01.webp)
+![Cinco personas aplauden y sonríen alrededor de una mesa de juntas con una laptop, frente a una pantalla con gráficas.](/images/blog/evaluacion-de-ingles-ejecutivos-01.webp)
 
 ## Resultados del negocio: Con vs. Sin evaluación de inglés
 
@@ -85,4 +85,4 @@ Ayudamos a sus directores a comunicarse con total seguridad y soltura en cualqui
 
 [Contacte a un especialista de S-Peak](#contacto) para agendar un diagnóstico empresarial a la medida.
 
-Siga nuestro canal en [LinkedIn](https://www.linkedin.com/company/s-peak/?originalSubdomain=mx) para más consejos de capital humano.
+Siga nuestro canal en [LinkedIn](https://mx.linkedin.com/company/s-peak) para más consejos de capital humano.
