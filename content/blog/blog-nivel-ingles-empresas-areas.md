@@ -8,7 +8,7 @@ category: "Diagnóstico de necesidades"
 categorySlug: "diagnostico-de-necesidades"
 tags: []
 featuredImage: "/images/blog/blog-nivel-ingles-empresas-areas-portada.webp"
-featuredImageAlt: "Dos mujeres frente a un pizarrón blanco comparando ortografía de inglés británico y americano en una clase de idiomas."
+featuredImageAlt: "Un hombre con lentes y camisa azul clara escribe con un lápiz en un cuaderno, con dos personas desenfocadas al fondo."
 seoTitle: "Inglés para empresas: ¡Defina el nivel de cada área! | %%sitename%%"
 seoDescription: "¿Qué nivel de inglés para empresas requiere su equipo? Evite pérdidas. Aprenda a evaluar cada área y optimice su presupuesto."
 focusKeyword: "Inglés para empresas"
