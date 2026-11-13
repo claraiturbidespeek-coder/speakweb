@@ -8,7 +8,7 @@ categorySlug: "implementacion-del-programa"
 tags: []
 excerpt: "Ocho claves para poner en marcha la capacitación de idiomas en una empresa, y qué dicen los estudios disponibles sobre cada una."
 featuredImage: "/images/blog/capacitacion-de-idiomas-para-empresas-portada.webp"
-featuredImageAlt: "Siluetas de personas sentadas alrededor de una mesa de juntas, con globos de diálogo sobre sus cabezas que muestran las banderas de Francia, India, Japón, Brasil, Estados Unidos, Alemania, Reino Unido y China."
+featuredImageAlt: "Un hombre de pie junto a una pizarra con verbos irregulares explica a cuatro personas sentadas en una oficina luminosa."
 seoTitle: "Capacitación de idiomas para empresas: 8 claves | %%sitename%%"
 seoDescription: "Ocho claves para poner en marcha la capacitación de idiomas en su empresa y qué dicen los estudios sobre ellas. Hable con un asesor sobre su equipo."
 focusKeyword: "Capacitación de idiomas para empresas"
