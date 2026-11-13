@@ -8,7 +8,7 @@ category: "Diagnóstico de necesidades"
 categorySlug: "diagnostico-de-necesidades"
 tags: []
 featuredImage: "/images/blog/evaluacion-de-ingles-ejecutivos-portada.webp"
-featuredImageAlt: "Una mujer con diadema y micrófono muestra una hoja de repaso de tiempos verbales en inglés junto a una laptop y una taza."
+featuredImageAlt: "Un hombre de saco gris sostiene cuadernos ante cuatro personas sentadas frente a computadoras, con un mapamundi al fondo."
 seoTitle: "Evaluación de inglés para ejecutivos: 6 situaciones | %%sitename%%"
 seoDescription: "¿Su equipo directivo realmente domina el idioma? Conozca las 6 situaciones críticas y por qué una evaluación de inglés protege su negocio."
 focusKeyword: "evaluación de inglés"
