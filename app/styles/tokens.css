@@ -16,8 +16,8 @@
    Criterio de admisión, para que este archivo no se llene de valores
    inventados: entra lo que ya existía en dos o más lugares del proyecto. Un
    valor que aparece una sola vez se queda en su página hasta que una segunda
-   la pida. Por eso no están aquí el verde de WhatsApp, los tonos de acierto y
-   error del formulario ni los tres literales de la escena 404.
+   la pida. Por eso no están aquí el verde de WhatsApp, el tono de error del
+   formulario ni los tres literales de la escena 404.
 
    Los nombres siguen la convención de --color-* y --container-*, que ya usaban
    globals.css y los módulos del sitio. Durante la migración convivieron con los
@@ -70,6 +70,11 @@
   --color-red-hover: #ffd6df; /* hover de los enlaces del footer */
   --color-blue-hero: #f0f9ff; /* fondo del hero del home y de la cabecera de nota */
   --color-blue-gradient: #eaeff5; /* arranque del degradado del hero de referencia */
+
+  /* Verde de acierto: el de .sp-form-estado.is-success. Entra al pedirlo una
+     segunda vez la etiqueta "Avanza de etapa" de /nosotros/. */
+  --color-green: #1b7a3d;
+  --color-green-soft: #e7f6ec;
 
   /* ---------- Tipografía ---------- */
 

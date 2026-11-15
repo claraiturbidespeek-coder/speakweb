@@ -57,6 +57,18 @@ export const metadata: Metadata = {
 
 const CTA = "Solicite una Cotización";
 
+/* El ejemplo de Tarjeta de Resultados de la escena de la gerente: un
+   colaborador ficticio, sin nombre real ni empresa. */
+const NIVELES_MCER = ["A1", "A2", "B1", "B2", "C1", "C2"];
+const NIVEL_PARTIDA = "A2";
+const NIVEL_ACTUAL = "B1";
+const RUBRICA = [
+  { nombre: "Fluidez", puntos: 3 },
+  { nombre: "Precisión", puntos: 2 },
+  { nombre: "Vocabulario del puesto", puntos: 4 },
+  { nombre: "Adecuación a la situación", puntos: 3 },
+];
+
 /* Oculto mientras tanto: el párrafo que las presenta («Nosotros llevamos
    veinte años del otro lado de esa historia…»), la franja navy «Busco un
    proveedor confiable…» y las seis tarjetas de objeciones (DOLORES) del final
@@ -221,6 +233,9 @@ const CELDAS_PROYECTOS: CeldaProyecto[] = [
     tipo: "testimonio",
     cita: "Valoramos el seguimiento que S-Peak nos brinda, el feedback que piden a través de citas regulares y encuestas, así como reaccionan a lo que pedimos como cliente. Además, los profesores están muy bien preparados para asegurar el aprendizaje, y los precios son justos.",
     nombre: "Erika C.",
+    empresa: "Covestro",
+    /* Circular como el de Grupo Modelo: se recortó a su mismo cuadro. */
+    logo: { src: "/images/logos/covestro.webp", caja: [210, 60, 180, 180] },
     rol: "People Development, Culture & D&I Expert",
   },
   {
@@ -437,7 +452,7 @@ export default function Nosotros() {
           />
           <div className={styles.heroInner}>
             <div className="sp-etiqueta">Quiénes somos</div>
-            <h1>20 años preparando compañías para operar en varios idiomas</h1>
+            <h1>Más de 20 años preparando compañías para operar en varios idiomas</h1>
             <p className="sp-hero-sub">
               Trabajamos para que el idioma deje de ser una frontera dentro de las
               empresas: que quien tenga algo que aportar no se quede callado, y que
@@ -627,8 +642,7 @@ export default function Nosotros() {
                   listas de asistencia.
                 </p>
                 <p className={styles.remate}>
-                  El problema no fue el idioma. Fue que nadie se hizo cargo del
-                  programa.
+                  Ella hizo su parte. El proveedor no se hizo cargo del programa.
                 </p>
               </div>
               <img
@@ -643,15 +657,95 @@ export default function Nosotros() {
             </div>
 
             <div className={`sp-tarjeta ${styles.despues} reveal`}>
-              <h3 className={styles.tituloEscena}>
-                Ahora imagine a esa misma gerente, con nosotros
-              </h3>
-              <p>
-                Esta vez el proveedor trabaja para ella. Al cerrar el año no llega a
-                Dirección con listas de asistencia: llega con el avance de cada gerente
-                en la escala del Marco Común Europeo y su Tarjeta de Resultados.
-              </p>
-              <BotonContacto className="sp-btn sp-btn--blanco">{CTA}</BotonContacto>
+              <div className={styles.despuesTexto}>
+                <h3 className={styles.tituloEscena}>
+                  Ahora imagine a esa misma gerente, con nosotros
+                </h3>
+                <p>
+                  Esta vez el proveedor trabaja para ella. Al cerrar el año no llega a
+                  Dirección con listas de asistencia: llega con el avance de cada gerente
+                  en la escala del Marco Común Europeo y su Tarjeta de Resultados.
+                </p>
+                <BotonContacto className="sp-btn sp-btn--blanco">{CTA}</BotonContacto>
+              </div>
+
+              {/* Ejemplo de Tarjeta de Resultados, en HTML y no como imagen
+                  para que se lea en celular. Colaborador ficticio. */}
+              <article
+                className={styles.resultados}
+                aria-label="Ejemplo de Tarjeta de Resultados"
+              >
+                <header className={styles.resultadosCabecera}>
+                  <span>Tarjeta de Resultados</span>
+                  <span className={styles.resultadosEjemplo}>Ejemplo</span>
+                </header>
+                <div className={styles.resultadosCuerpo}>
+                  <div className={styles.resultadosPersona}>
+                    <span className={styles.resultadosInicial} aria-hidden="true">
+                      A
+                    </span>
+                    <div>
+                      <div className={styles.resultadosNombre}>Colaborador A</div>
+                      <div className={styles.resultadosPuesto}>
+                        Gerente de Operaciones · Inglés
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={styles.resultadosTitulo}>
+                    Nivel en el Marco Común Europeo
+                  </div>
+                  <div
+                    className={styles.resultadosNiveles}
+                    role="img"
+                    aria-label="Nivel de partida A2; nivel actual B1"
+                  >
+                    {NIVELES_MCER.map((nivel) => (
+                      <span
+                        key={nivel}
+                        className={
+                          nivel === NIVEL_ACTUAL
+                            ? styles.nivelActual
+                            : nivel === NIVEL_PARTIDA
+                              ? styles.nivelPartida
+                              : undefined
+                        }
+                      >
+                        {nivel}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className={styles.resultadosTitulo}>Evaluación con rúbrica</div>
+                  <ul className={styles.resultadosRubrica}>
+                    {RUBRICA.map((criterio) => (
+                      <li key={criterio.nombre}>
+                        <span>{criterio.nombre}</span>
+                        <span
+                          className={styles.resultadosBarra}
+                          role="img"
+                          aria-label={`${criterio.puntos} de 4`}
+                        >
+                          {[1, 2, 3, 4].map((segmento) => (
+                            <i
+                              key={segmento}
+                              className={
+                                segmento <= criterio.puntos
+                                  ? styles.segmentoLleno
+                                  : undefined
+                              }
+                            />
+                          ))}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <footer className={styles.resultadosPie}>
+                  <span>Evidencia: junta dirigida en inglés</span>
+                  <span className={styles.resultadosAvanza}>Avanza de etapa</span>
+                </footer>
+              </article>
             </div>
 
             {/* La entrada a las objeciones: se oculta con ellas. */}

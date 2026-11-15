@@ -61,6 +61,9 @@ export type TestimonioProyecto = {
   nombre: string;
   rol: string;
   logo?: LogoProyecto;
+  /* Con logo, la empresa del logo cuando firma una persona: va de alt y
+     el nombre se escribe debajo del logo. Sin ella, el logo es quien firma. */
+  empresa?: string;
 };
 
 export type AreaProyecto = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I";
@@ -167,6 +170,7 @@ function TarjetaTestimonio({
   nombre,
   rol,
   logo,
+  empresa,
   destacado,
   className,
 }: TestimonioProyecto & DeCelda) {
@@ -197,9 +201,10 @@ function TarjetaTestimonio({
         <div>
           {logo ? (
             <div className={styles.autorLogo}>
-              <LogoCliente logo={logo} alt={nombre} />
+              <LogoCliente logo={logo} alt={empresa ?? nombre} />
             </div>
-          ) : (
+          ) : null}
+          {logo && !empresa ? null : (
             <div className="sp-autor-nombre">{nombre}</div>
           )}
           <div className="sp-autor-rol">{rol}</div>

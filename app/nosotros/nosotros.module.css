@@ -398,18 +398,19 @@
    contenedor. No es clicable: de .sp-tarjeta no se queda el hover, que la
    haría pasar por interactiva (como las tarjetas del bento); el botón
    conserva el suyo. */
+/* Dos columnas en escritorio: el texto con el botón, y el ejemplo de Tarjeta
+   de Resultados. Por debajo de 960px, la tarjeta baja debajo del botón. */
 .despues {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
-  gap: 20px;
+  gap: 32px;
   max-width: var(--container-max);
   margin: var(--space-section) auto 0;
   padding: 56px var(--space-inset);
   background: var(--color-red);
   border-color: var(--color-red);
   box-shadow: var(--shadow-card);
-  text-align: center;
 }
 
 .despues:hover {
@@ -418,17 +419,32 @@
   box-shadow: var(--shadow-card);
 }
 
+.despuesTexto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
 .despues .tituloEscena,
-.despues p {
+.despuesTexto p {
   max-width: 760px;
   margin: 0;
   color: var(--color-white);
 }
 
-.despues p {
+.despuesTexto p {
   font-size: 16px;
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.85);
+}
+
+@media (min-width: 960px) {
+  .despues {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
+    gap: 56px;
+    padding-inline: 56px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -436,6 +452,165 @@
     margin-top: var(--space-section-mobile);
     padding-block: 32px;
   }
+}
+
+/* ---------- El ejemplo de Tarjeta de Resultados ----------
+   Mismo vocabulario que el tablero de SeccionEvidencia: cabecera navy,
+   títulos en versalitas grises, avatar navy y barras rojas. */
+.resultados {
+  overflow: hidden;
+  background: var(--color-white);
+  border-radius: var(--radius-grande);
+  box-shadow: var(--shadow-panel);
+  color: var(--color-ink);
+}
+
+.resultadosCabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--color-navy);
+  color: var(--color-white);
+  font-size: 11px;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.resultadosEjemplo {
+  padding: 3px 10px;
+  border-radius: var(--radius-pildora);
+  background: rgba(255, 255, 255, 0.15);
+  font-size: 10px;
+}
+
+.resultadosCuerpo {
+  padding: 20px;
+}
+
+.resultadosPersona {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.resultadosInicial {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-navy);
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: var(--weight-black);
+}
+
+.resultadosNombre {
+  font-size: 15px;
+  font-weight: var(--weight-bold);
+  color: var(--color-navy);
+}
+
+.resultadosPuesto {
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+.resultadosTitulo {
+  margin-bottom: 10px;
+  font-size: 10.5px;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.resultadosNiveles {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.resultadosNiveles span {
+  padding: 8px 0;
+  border-radius: var(--radius);
+  background: var(--color-fondo-alterno);
+  color: var(--color-muted);
+  font-size: 13px;
+  font-weight: var(--weight-bold);
+  text-align: center;
+}
+
+.resultadosNiveles .nivelPartida {
+  background: var(--color-red-hover);
+  color: var(--color-red-dark);
+}
+
+.resultadosNiveles .nivelActual {
+  background: var(--color-red);
+  color: var(--color-white);
+}
+
+.resultadosRubrica {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resultadosRubrica li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--color-ink-2);
+}
+
+.resultadosBarra {
+  display: grid;
+  flex-shrink: 0;
+  grid-template-columns: repeat(4, 22px);
+  gap: 4px;
+}
+
+.resultadosBarra i {
+  height: 8px;
+  border-radius: var(--radius-pildora);
+  background: var(--color-fondo-alterno);
+}
+
+.resultadosBarra .segmentoLleno {
+  background: var(--color-red);
+}
+
+.resultadosPie {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--color-border);
+  font-size: 13px;
+  color: var(--color-ink-2);
+}
+
+.resultadosAvanza {
+  padding: 4px 12px;
+  border-radius: var(--radius-pildora);
+  background: var(--color-green-soft);
+  color: var(--color-green);
+  font-size: 12px;
+  font-weight: var(--weight-bold);
 }
 
 .confianza {
