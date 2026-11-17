@@ -76,15 +76,19 @@ Para argumentar ante el CFO, compare dos números de su propia empresa: el costo
 
 ### ¿Por qué no basta comparar el precio por hora?
 
-Porque el precio por hora no muestra qué incluye ni cuánto se aprovecha. Material, exámenes, reposición de clases y seguimiento pueden cambiar el costo final.
+Porque el precio por hora no muestra qué incluye ni cuánto se aprovecha. Material, exámenes, reposición de clases y seguimiento pueden cambiar el costo final. Dos propuestas con el mismo precio por hora pueden terminar en presupuestos distintos si una cobra aparte los libros y los exámenes de nivel de cada colaborador.
 
 ### ¿Qué significa que los rangos sean de referencia?
 
-Son estimaciones de mercado de esta nota, no tarifas oficiales. Sirven para ordenar las cotizaciones que recibe, no para fijar un presupuesto.
+Son estimaciones de mercado de esta nota, no tarifas oficiales ni resultado de un estudio. Sirven para ordenar las cotizaciones que recibe, no para fijar un presupuesto. Los montos varían según la tecnología, la especialización de los contenidos y el número de colaboradores inscritos, y el modelo a la medida no tiene precio de lista.
 
 ### ¿Qué modelos de cotización existen además de la clase por hora?
 
-Licencias por usuario para plataformas de autoaprendizaje y consultoría por hora o por iguala mensual, como muestra la tabla.
+Existen las licencias mensuales por usuario para plataformas de autoaprendizaje, sin profesor en vivo, y la consultoría lingüística B2B, que se cotiza a la medida por hora de consultoría o mediante iguala mensual, como muestra la tabla. Cada modelo vende algo distinto, así que conviene compararlos por lo que incluyen y no solo por la cifra.
+
+### ¿Qué debe pedir por escrito antes de firmar?
+
+Pida por escrito qué ocurre si se cancela o reprograma una clase, si los libros, los accesos a plataformas y los exámenes diagnósticos están incluidos, cuál es el índice de rotación de instructores, qué métricas de avance recibirá y si el contenido se diseña por puesto. Con esa lista compara las propuestas en igualdad de condiciones.
 
 ## ¿Cómo decidir entre las cotizaciones?
 
