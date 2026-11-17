@@ -22,7 +22,7 @@ hasLeadForm: true
 
 **Invertir en cursos de idiomas para empresas o programas multifuncionales de lenguas extranjeras no debería ser un juego de azar.** El problema rara vez es la falta de interés de sus colaboradores; la verdadera causa suele encontrarse en fallas estratégicas durante el proceso de selección de proveedores.
 
-Si está evaluando opciones de capacitación en idiomas para empresas, lo invitamos a revisar esta lista para asegurarse de que su inversión se traduzca en resultados reales y no en un gasto archivado. Los cinco errores al contratar cursos de idiomas para empresas son: contratar clases genéricas, no exigir un diagnóstico de necesidades, imponer un solo formato, confundir asistencia con progreso y elegir un proveedor de contenido en lugar de un aliado.
+Si está evaluando opciones de capacitación en idiomas para empresas, lo invitamos a revisar esta lista para asegurarse de que su inversión se traduzca en resultados reales y no en un gasto archivado. Los cinco errores al contratar cursos de idiomas para empresas son: contratar clases genéricas, no exigir un diagnóstico de necesidades, imponer un solo formato, confundir asistencia con progreso y elegir un proveedor de contenido en lugar de un aliado. La preparamos desde la experiencia de S-Peak, que capacita a equipos de empresas en México en seis idiomas.
 
 ## ¿Por qué falla la capacitación en idiomas para empresas tradicional?
 
@@ -30,7 +30,19 @@ Falla porque los métodos educativos tradicionales de nivel escolar no están di
 
 ## ¿Cuáles son los cinco errores al contratar cursos de idiomas para empresas?
 
-Los cinco errores son contratar clases genéricas en vez de inglés de negocios, no exigir un diagnóstico de necesidades, imponer un solo formato, confundir asistencia con progreso y elegir un proveedor de contenido en lugar de un aliado. **A continuación, desglosamos las principales trampas en las que caen las organizaciones al estructurar sus planes formativos**:
+Los cinco errores son contratar clases genéricas en vez de inglés de negocios, no exigir un diagnóstico de necesidades, imponer un solo formato, confundir asistencia con progreso y elegir un proveedor de contenido en lugar de un aliado.
+
+Los errores de un vistazo:
+
+| Error | Qué lo provoca | Qué pedir al proveedor |
+| --- | --- | --- |
+| Clases genéricas | Un plan de estudio limitado a gramática básica y estructuras académicas | Simulaciones reales de inglés de negocios, con tecnicismos de su industria |
+| Sin diagnóstico de necesidades | Un catálogo de cursos estándar igual para todas las áreas | Un DNC que evalúe el nivel real del equipo y los objetivos de cada departamento antes de firmar |
+| Un solo formato | Horarios fijos en aula o una plataforma digital sin tutor | Flexibilidad para transitar entre modalidades virtuales y presenciales sin perder el progreso |
+| Asistencia en lugar de progreso | Reportes que solo muestran quién se conectó o asistió | Métricas basadas en marcos internacionales como el MCER y un tablero de competencias |
+| Proveedor de contenido | Aplicaciones de bajo costo o escuelas con un "área de empresas" improvisada | Un socio que absorba la carga administrativa, alinee el curso a sus KPI y dé referencias verificables |
+
+**A continuación, desglosamos las principales trampas en las que caen las organizaciones al estructurar sus planes formativos**:
 
 ### Error 1: Buscar clases de inglés para empresas genéricas en vez de inglés de negocios
 
@@ -102,11 +114,29 @@ Los exportadores, las filiales y los equipos regionales pueden necesitar [portug
 
 Con el idioma definido, lo que sigue es cerrar el presupuesto y la propuesta con el proveedor.
 
-## Optimice su presupuesto de inglés para empresas: Dé el primer paso con S-Peak
+## Preguntas frecuentes sobre cursos de idiomas para empresas
 
-Evitar estos errores comunes ayuda a que su inversión en capacitación se traduzca en resultados que usted pueda medir. Dominar un idioma extranjero no es un lujo decorativo en el currículum del colaborador, sino una herramienta de trabajo para las áreas que se comunican con clientes y socios en otros mercados.
+### ¿Qué es un diagnóstico de necesidades de capacitación (DNC)?
 
-En S-Peak capacitamos a equipos de empresas en México con programas diseñados por puesto. Cada programa cierra con evidencia real (una simulación, un correo, una presentación), evaluada con rúbrica y documentada en una Tarjeta de Resultados para la Dirección. Los instructores son especialistas en idioma de negocios, nativos o bilingües, con experiencia en entornos corporativos.
+Es el análisis que el proveedor realiza antes de firmar el contrato para evaluar el nivel inicial real del equipo y mapear los objetivos de cada departamento. Con él, el programa responde a lo que necesita cada área: un programador requiere lectura técnica y redacción precisa de correos, y un vendedor, fluidez oral y persuasión.
+
+### ¿Cómo saber si el curso de idiomas está dando resultados?
+
+Pida reportes que muestren el desarrollo de competencias y no solo la asistencia. Una capacitación de nivel profesional mide el avance con marcos internacionales como el MCER y ofrece un tablero de control donde usted observa el progreso de sus colaboradores, para tomar decisiones basadas en datos y no en suposiciones.
+
+### ¿Es mejor la capacitación presencial o en línea?
+
+Ninguna es mejor por sí sola: en el metaanálisis de Sitzmann y colaboradores, ambas fueron igual de eficaces cuando se usaron los mismos métodos de enseñanza. Lo que conviene exigir es flexibilidad, para que sus colaboradores transiten entre modalidades virtuales y presenciales según su agenda sin perder el hilo de su progreso.
+
+### ¿Qué debe pedir a un proveedor antes de contratarlo?
+
+Pida un diagnóstico de necesidades, un plan de inglés de negocios por puesto, flexibilidad de modalidades, métricas de progreso basadas en marcos internacionales y referencias verificables de otras empresas que hayan completado un programa con ese proveedor. Así distingue a un proveedor de contenido de un aliado alineado con la cultura y los KPI de su organización.
+
+## ¿Cómo dar el primer paso?
+
+El primer paso es revisar la propuesta de cada proveedor con los cinco errores de esta nota antes de cerrar el presupuesto. Evitar estos errores comunes ayuda a que su inversión en capacitación se traduzca en resultados que usted pueda medir. Dominar un idioma extranjero no es un lujo decorativo en el currículum del colaborador, sino una herramienta de trabajo para las áreas que se comunican con clientes y socios en otros mercados.
+
+Capacitamos a equipos de empresas en México con programas diseñados por puesto. Cada programa cierra con evidencia real (una simulación, un correo, una presentación), evaluada con rúbrica y documentada en una Tarjeta de Resultados para la Dirección. Los instructores son especialistas en idioma de negocios, nativos o bilingües, con experiencia en entornos corporativos.
 
 Si su área de RH quiere revisar una propuesta de idiomas con estos criterios, [póngase en contacto con un asesor](#contacto).
 
