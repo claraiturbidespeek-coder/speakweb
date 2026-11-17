@@ -8,7 +8,7 @@ category: "Selección de proveedor"
 categorySlug: "seleccion-de-proveedor"
 tags: []
 featuredImage: "/images/blog/blog-clases-idiomas-empresas-proveedor-portada.webp"
-featuredImageAlt: "Cuatro personas en una mesa con banderas de Reino Unido y Estados Unidos; una mujer de pie señala una laptop."
+featuredImageAlt: "Un hombre con saco señala un rotafolio ante tres colegas, frente a un mapamundi en la pared de una sala de reuniones."
 seoTitle: "Clases de idiomas para empresas: genérico o aliado | %%sitename%%"
 seoDescription: "Clases de idiomas para empresas: compare un proveedor genérico con un aliado corporativo y elija con criterios claros. Hable con un asesor."
 focusKeyword: "Clases de idiomas para empresas"
