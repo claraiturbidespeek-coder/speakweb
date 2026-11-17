@@ -8,7 +8,7 @@ category: "Resultados y ROI"
 categorySlug: "resultados-y-roi"
 tags: []
 featuredImage: "/images/blog/precio-curso-ingles-empresas-portada.webp"
-featuredImageAlt: "Una mano entrega un fajo de billetes de cien dólares a otra, junto a una laptop, una tableta y hojas con gráficas."
+featuredImageAlt: "Una mano entrega una tarjeta de crédito a un hombre con una terminal de pago, sobre un escritorio de madera."
 seoTitle: "Cursos de inglés precios: cuánto cuesta capacitar a su equipo | %%sitename%%"
 seoDescription: "Conozca sobre cursos de inglés precios y rangos para empresas. Compare opciones individuales vs. corporativas y evalúe su ROI."
 focusKeyword: "cuánto cuesta un curso de inglés para empresas"
