@@ -22,6 +22,15 @@ Imagine que la dirección de su empresa aprueba abrir un mercado nuevo y, semana
 
 Las cuatro claves son entender la cultura del mercado, diseñar una estrategia de entrada integral, cohesionar a los equipos multiculturales y medir de forma continua los resultados. Cada una parte de la misma premisa: el idioma es una herramienta de negocio, no un complemento. A continuación se explican en el orden en que conviene abordarlas.
 
+Las claves de un vistazo:
+
+| Clave | Qué resuelve | Cómo empezar |
+| --- | --- | --- |
+| Inteligencia cultural | Errores costosos por no entender cómo compra, negocia y decide cada mercado | Investigar competidores locales, consumidor y tabúes culturales, y normativa |
+| Estrategia de entrada integral | Crecimiento sin rumbo y una cadena de suministro difícil de gestionar | Definir mercados, adaptación de productos, forma de entrada y marketing localizado, junto con los idiomas |
+| Equipos multiculturales | Malentendidos entre áreas y sedes | Un programa de idiomas por puesto con el vocabulario de cada trabajo |
+| Evaluación y mejora continua | Una capacitación que se vive como gasto | Monitorear nivel de competencia, satisfacción del cliente y eficiencia operativa |
+
 ### Clave 1: Inteligencia cultural antes de vender
 
 La inteligencia cultural es la capacidad de entender cómo compra, negocia y decide cada mercado, y conviene desarrollarla al mismo tiempo que el idioma. Piense en un escenario hipotético: una empresa mexicana de alimentos que planea llegar a Japón necesita dominar algo más que el japonés, pues también debe conocer las tradiciones culinarias y los hábitos de consumo locales. Para evitar errores costosos, su equipo debería investigar tres frentes antes de entrar:
@@ -76,6 +85,24 @@ Evaluar el rendimiento significa definir indicadores clave (KPIs) que muestren s
 > ([CILT para la Comisión Europea, 2006](https://ec.europa.eu/assets/eac/languages/policy/strategic-framework/documents/elan_en.pdf)).
 
 Medir el nivel de competencia exige partir de un registro como ese, y revisar los indicadores de forma periódica permite detectar a tiempo dónde se pierde negocio y corregirlo antes de la siguiente negociación.
+
+## Preguntas frecuentes sobre la expansión global con idiomas
+
+### ¿Qué es la inteligencia cultural en una expansión internacional?
+
+Es la capacidad de entender cómo compra, negocia y decide cada mercado, y conviene desarrollarla al mismo tiempo que el idioma. Antes de entrar, su equipo debería investigar a los competidores locales, lo que espera el consumidor y sus tabúes culturales, y la normativa y las barreras comerciales que condicionan la entrada.
+
+### ¿Cuándo conviene decidir qué idiomas necesita la expansión?
+
+Conviene decidirlos junto con los mercados, no después. Según el estudio ELAN, una pyme que invirtiera en estrategia de idiomas, hablantes nativos, personal con competencias en idiomas e intérpretes alcanzaría una proporción de ventas de exportación 44.5 % superior. Una estrategia de entrada integral define qué idiomas necesita cada puesto que interactúa con esos mercados.
+
+### ¿Cómo ayuda el idioma a un equipo multicultural?
+
+Un equipo multicultural funciona mejor cuando todos comparten un idioma de trabajo y saben usarlo en su puesto. Invertir en el idioma de sus colaboradores puede reducir los malentendidos entre áreas y sedes, hacer los procesos más claros y ágiles, y crear un equipo que colabora con mayor confianza en la operación diaria.
+
+### ¿Qué indicadores muestran si la formación en idiomas funciona?
+
+Monitoree tres: el nivel de competencia alcanzado por el equipo, la satisfacción del cliente, es decir, si percibe que se le habla en su propio idioma, y la eficiencia operativa, medida por la reducción de errores causados por fallas de comunicación. Revisarlos de forma periódica permite detectar dónde se pierde negocio y corregirlo a tiempo.
 
 ## ¿Por dónde empezar su expansión internacional?
 
