@@ -8,7 +8,7 @@ category: "Diagnóstico de necesidades"
 categorySlug: "diagnostico-de-necesidades"
 tags: []
 featuredImage: "/images/blog/mejores-idiomas-para-empresas-portada.webp"
-featuredImageAlt: "Una mujer y un hombre con diademas sonríen frente a sus laptops; él sostiene un globo terráqueo y al fondo hay un mapamundi."
+featuredImageAlt: "Una mujer con saco gris y lentes habla por teléfono frente a un mapamundi físico y político."
 seoTitle: "Los mejores idiomas para empresas: Guía de elección | %%sitename%%"
 seoDescription: "¿Qué idiomas piden las empresas y cuál es mejor para su plantilla? Mapee las necesidades lingüísticas de su negocio con esta guía."
 focusKeyword: "idiomas para empresas"
