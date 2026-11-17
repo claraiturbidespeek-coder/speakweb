@@ -21,13 +21,12 @@ Imagine que su área de RH recibe el encargo de poner en marcha un programa de i
 
 Las ocho claves son la frecuencia de las sesiones, la integración de la cultura, la personalización, el valor de otros idiomas además del inglés, la retención de talento, el desempeño de los equipos multinacionales, la toma de decisiones y la reducción de barreras de comunicación.
 
-Las claves de un vistazo:
+Siete de las ocho claves de un vistazo:
 
 | Clave | Qué dicen los estudios | Cómo aplicarla |
 | --- | --- | --- |
 | Frecuencia vs. intensidad | El intervalo entre sesiones que más retención producía aumentaba cuanto más tiempo se quería conservar lo aprendido (Cepeda et al., 2006) | Sesiones cortas y frecuentes en lugar de sesiones maratónicas |
 | Cultura en los negocios | Alrededor de la mitad de 572 ejecutivos dijo que una comunicación ineficaz había obstaculizado transacciones internacionales (EIU, 2012) | Incluir la cultura en la formación para reducir fricciones y malentendidos |
-| Tecnología y personalización | Sin estudio citado en esta nota | Adaptar el contenido al ritmo y al puesto de cada colaborador |
 | Multilingüismo | El inglés es clave para exportar, pero el ruso, el francés y el español predominan en otras regiones (ELAN, 2006) | Elegir los idiomas según los mercados de la empresa |
 | Retención de talento | 94 % de los empleados se quedaría más tiempo en una empresa que invirtiera en su desarrollo (LinkedIn, 2018) | Presentar la capacitación como inversión en el crecimiento profesional |
 | Equipos multinacionales | Una mayor diferencia de nivel entre los integrantes se asoció con menor desempeño del equipo (Li et al., 2018) | Buscar un nivel de idioma parejo en el equipo |
