@@ -15,13 +15,26 @@ focusKeyword: "Capacitación de idiomas para empresas"
 readingTime: 6
 ---
 
-La capacitación de idiomas para empresas es el conjunto de decisiones con las que un área de RH pone en marcha un programa para su equipo: con qué frecuencia se estudia, cuánto peso tiene la cultura, qué tanto se personaliza, qué idiomas se incluyen y qué resultados es realista esperar. Esta nota reúne ocho claves y, para cada una, indica qué dicen las fuentes.
-
-Implementar una capacitación de idiomas para empresas no es solo una cuestión de gramática; es una inversión estratégica en el capital humano. Si busca potenciar el talento de su organización, aquí le presentamos los pilares fundamentales para que su equipo domine un nuevo idioma de manera efectiva. Los datos que siguen provienen de investigaciones de distintos países y contextos; en cada caso se indica a quiénes corresponden.
+Imagine que su área de RH recibe el encargo de poner en marcha un programa de idiomas y, al planearlo, surgen preguntas que nadie había previsto: cada cuánto deben ser las sesiones, si conviene incluir otros idiomas además del inglés y qué resultados es realista prometer a la Dirección. La capacitación de idiomas para empresas es el conjunto de decisiones con las que un área de RH pone en marcha un programa para su equipo: con qué frecuencia se estudia, cuánto peso tiene la cultura, qué tanto se personaliza, qué idiomas se incluyen y qué resultados es realista esperar. Esta nota reúne ocho claves y, para cada una, indica qué dicen las fuentes. Los datos que siguen provienen de investigaciones de distintos países y contextos; en cada caso se indica a quiénes corresponden. La preparamos desde la experiencia de S-Peak, que imparte capacitación de idiomas para empresas con programas a la medida de los objetivos comerciales de cada organización.
 
 ## ¿Cuáles son las 8 claves para poner en marcha una capacitación de idiomas en su empresa?
 
-Las ocho claves son la frecuencia de las sesiones, la integración de la cultura, la personalización, el valor de otros idiomas además del inglés, la retención de talento, el desempeño de los equipos multinacionales, la toma de decisiones y la reducción de barreras de comunicación. Para que un entrenamiento de idiomas empresarial sea exitoso, debe considerar estos puntos:
+Las ocho claves son la frecuencia de las sesiones, la integración de la cultura, la personalización, el valor de otros idiomas además del inglés, la retención de talento, el desempeño de los equipos multinacionales, la toma de decisiones y la reducción de barreras de comunicación.
+
+Las claves de un vistazo:
+
+| Clave | Qué dicen los estudios | Cómo aplicarla |
+| --- | --- | --- |
+| Frecuencia vs. intensidad | El intervalo entre sesiones que más retención producía aumentaba cuanto más tiempo se quería conservar lo aprendido (Cepeda et al., 2006) | Sesiones cortas y frecuentes en lugar de sesiones maratónicas |
+| Cultura en los negocios | Alrededor de la mitad de 572 ejecutivos dijo que una comunicación ineficaz había obstaculizado transacciones internacionales (EIU, 2012) | Incluir la cultura en la formación para reducir fricciones y malentendidos |
+| Tecnología y personalización | Sin estudio citado en esta nota | Adaptar el contenido al ritmo y al puesto de cada colaborador |
+| Multilingüismo | El inglés es clave para exportar, pero el ruso, el francés y el español predominan en otras regiones (ELAN, 2006) | Elegir los idiomas según los mercados de la empresa |
+| Retención de talento | 94 % de los empleados se quedaría más tiempo en una empresa que invirtiera en su desarrollo (LinkedIn, 2018) | Presentar la capacitación como inversión en el crecimiento profesional |
+| Equipos multinacionales | Una mayor diferencia de nivel entre los integrantes se asoció con menor desempeño del equipo (Li et al., 2018) | Buscar un nivel de idioma parejo en el equipo |
+| Decisiones en un segundo idioma | 71 % aceptó apuestas favorables al decidir en español, frente a 54 % en inglés (University of Chicago, 2012) | Considerar que el idioma puede cambiar la forma de evaluar el riesgo |
+| Barreras de comunicación | 11 % de las pymes exportadoras encuestadas había perdido un contrato por falta de idiomas (ELAN, 2006) | Sumar conocimiento cultural y lingüístico del país de destino |
+
+Para que un entrenamiento de idiomas empresarial sea exitoso, debe considerar estos puntos:
 
 ### 1\. Frecuencia vs. Intensidad en el aprendizaje
 
@@ -73,10 +86,28 @@ La formación lingüística puede mejorar la comprensión intercultural y, con e
 
 La cifra recoge los contratos perdidos que las propias empresas reconocieron. Además, según el estudio, las alianzas comerciales de largo plazo dependen de construir y gestionar relaciones, para lo cual son esenciales el conocimiento cultural y lingüístico del país de destino. Para decidir cómo impartir el programa, revise [las modalidades de capacitación en idiomas para empresas](https://s-peak.com/modalidad-capacitacion-idiomas-empresas/) y [cómo estructurar una capacitación en inglés que su equipo no abandone](https://s-peak.com/como-implementar-capacitacion-en-ingles-empresas/).
 
-## ¿Cómo puede S-Peak apoyar la capacitación de idiomas de su empresa?
+## Preguntas frecuentes sobre la capacitación de idiomas para empresas
 
-S-Peak imparte capacitación de idiomas para empresas con programas a la medida de los objetivos comerciales de cada organización. No solo impartimos clases; generamos evidencias de desempeño y reportes para su área de RH que permiten dar seguimiento al avance de su equipo.
+### ¿Con qué frecuencia conviene programar las sesiones?
 
-**¿Quiere llevar la comunicación de su organización al siguiente nivel?** [Conozca nuestras soluciones en S-Peak y revolucione su formación corporativa.](https://s-peak.com/) Si su área de RH quiere evaluar cómo aplicar estas claves en su equipo, [póngase en contacto con un asesor](#contacto).
+Conviene dedicar periodos cortos y frecuentes en lugar de sesiones maratónicas que agotan al colaborador. El metaanálisis de Cepeda y colaboradores encontró que el intervalo entre sesiones que producía mayor retención aumentaba cuanto más tiempo se quería conservar lo aprendido, un hallazgo que apoya el principio de espaciar las sesiones.
+
+### ¿Conviene capacitar en otros idiomas además del inglés?
+
+Depende de los mercados de su empresa. El estudio ELAN encontró que el inglés es clave para acceder a mercados de exportación, pero que el ruso se usa ampliamente en Europa del Este, el francés en áreas de África y el español en América Latina. Por eso la elección de idiomas debe seguir a sus mercados.
+
+### ¿La capacitación de idiomas ayuda a retener talento?
+
+Puede ayudar, porque los colaboradores pueden percibirla como una inversión en su crecimiento profesional. En el Workplace Learning Report de LinkedIn, 94 % de los empleados encuestados dijo que se quedaría más tiempo en una empresa que invirtiera en su desarrollo. En México, el IMCO estima que quienes dominan el inglés pueden ganar aproximadamente 28 % más.
+
+### ¿Por qué incluir la cultura en la formación de idiomas?
+
+Porque dominar un idioma implica entender su cultura. En un informe de The Economist Intelligence Unit, alrededor de la mitad de 572 ejecutivos admitió que una comunicación ineficaz o una colaboración insuficiente había obstaculizado transacciones internacionales importantes. Incluir la cultura en la formación busca reducir esas fricciones y malentendidos con clientes y socios.
+
+## ¿Cómo empezar a aplicar estas claves?
+
+Para empezar, revise con su área de RH cuáles de estas ocho claves ya cubre su programa y cuáles faltan, y defina cómo dará seguimiento al avance del equipo. Un programa a la medida de los objetivos comerciales de su organización genera evidencias de desempeño y reportes para su área de RH que permiten dar seguimiento a ese avance.
+
+Si su área de RH quiere evaluar cómo aplicar estas claves en su equipo, [póngase en contacto con un asesor](#contacto).
 
 Y si desea seguir más contenido sobre capacitación y desarrollo de talento, puede encontrarnos en [LinkedIn](https://mx.linkedin.com/company/s-peak).
