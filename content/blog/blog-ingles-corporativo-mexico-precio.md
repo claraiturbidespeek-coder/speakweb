@@ -8,7 +8,7 @@ category: "Selección de proveedor"
 categorySlug: "seleccion-de-proveedor"
 tags: []
 featuredImage: "/images/blog/blog-ingles-corporativo-mexico-precio-portada.webp"
-featuredImageAlt: "Una persona de saco gris cuenta billetes de dólar junto a una calculadora, sobre un escritorio de madera clara."
+featuredImageAlt: "Una mano sostiene una tarjeta y otra teclea en una calculadora, junto a una laptop, monedas y gráficas."
 seoTitle: "¿Cuánto cuesta un curso de inglés corporativo en México? | %%sitename%%"
 seoDescription: "Rangos de referencia del precio del inglés corporativo en México y qué exigir en una cotización. Hable con un asesor de su empresa."
 focusKeyword: "Inglés corporativo"
