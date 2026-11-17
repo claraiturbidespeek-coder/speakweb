@@ -9,7 +9,7 @@ categorySlug: "seleccion-de-proveedor"
 tags: []
 featuredImage: "/images/blog/blog-errores-cursos-idiomas-empresas-portada.webp"
 featuredImageAlt: "Una mujer con auriculares sostiene una carpeta azul ante una laptop, junto a un pizarrón de gramática en inglés."
-seoTitle: "Cursos de idiomas para empresas: ¡Evite estos 5 errores! | %%sitename%%"
+seoTitle: "Errores al contratar cursos de idiomas para empresas | %%sitename%%"
 seoDescription: "Conozca los 5 errores al contratar cursos de idiomas para empresas en México y qué pedir al proveedor para evitarlos. Hable con un asesor."
 focusKeyword: "errores al contratar cursos de idiomas para empresas"
 readingTime: 9
