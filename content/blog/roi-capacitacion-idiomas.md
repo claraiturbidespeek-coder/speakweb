@@ -15,13 +15,22 @@ focusKeyword: "cómo medir el ROI de la formación en idiomas"
 readingTime: 6
 ---
 
-El ROI de capacitación de idiomas es la relación entre los beneficios que una empresa puede atribuir a un programa de idiomas y lo que invirtió en él. En esta nota le explicamos en qué frentes suelen aparecer esos beneficios (errores de comunicación, productividad, retención y mercados), qué dicen las fuentes disponibles y cómo medir el ROI de la formación en idiomas con la fórmula estándar.
+Imagine que la Dirección le pide a su área de RH justificar el presupuesto del programa de idiomas antes de aprobarlo para el siguiente año, y la única evidencia disponible es la lista de asistencia. El ROI de capacitación de idiomas es la relación entre los beneficios que una empresa puede atribuir a un programa de idiomas y lo que invirtió en él. En esta nota le explicamos en qué frentes suelen aparecer esos beneficios (errores de comunicación, productividad, retención y mercados), qué dicen las fuentes disponibles y cómo medir el ROI de la formación en idiomas con la fórmula estándar. La preparamos desde la experiencia de S-Peak, que ofrece [programas de idiomas para empresas](https://s-peak.com/idioma/).
 
 Medir el ROI de la capacitación de idiomas permite a una empresa decidir con datos si el programa justifica lo que cuesta. Para un área de RH, esa medición ayuda a tratar la capacitación como una decisión financiera y a sustentarla ante la Dirección.
 
 ## ¿Qué beneficios estratégicos aporta la capacitación en idiomas a una empresa?
 
 La capacitación en idiomas aporta beneficios en cuatro frentes: menos errores de comunicación, mayor productividad, retención de talento y acceso a mercados internacionales.
+
+Los cuatro frentes de un vistazo:
+
+| Frente | Qué beneficio puede aportar | Qué medir |
+| --- | --- | --- |
+| Errores de comunicación | Menos malentendidos y retrasos, con ahorros operativos | Tiempo perdido en traducciones y correcciones |
+| Productividad | Reuniones y negociaciones más rápidas, sin aclaraciones ni traductores | Duración de reuniones y negociaciones, y eficiencia al negociar |
+| Retención de talento | Mayor satisfacción y compromiso del equipo | Participación, progreso en competencias y satisfacción del colaborador |
+| Mercados internacionales | Conversaciones fluidas con clientes y proveedores, y cierre de acuerdos | Incremento de ventas y satisfacción de los clientes |
 
 ### Reducción de errores con capacitación de idiomas
 
@@ -83,6 +92,24 @@ Defina para cada uno un dato de partida y vuelva a medirlo al cierre del program
 
 El otro lado de la fórmula es el costo. Para conocer los rangos y qué pedir en una propuesta, revise [cuánto cuesta un curso de inglés corporativo en México y cómo auditar una cotización](https://s-peak.com/blog-ingles-corporativo-mexico-precio/) y el [precio de un curso de inglés para empresas](https://s-peak.com/precio-curso-ingles-empresas/).
 
+## Preguntas frecuentes sobre el ROI de la formación en idiomas
+
+### ¿Qué fórmula se usa para calcular el ROI de la capacitación en idiomas?
+
+Se usa la fórmula de la metodología de Jack J. Phillips: ROI (%) = (beneficios netos del programa ÷ costos del programa) × 100. Para aplicarla, conviene aislar el efecto de la capacitación, convertir los resultados a términos monetarios y contabilizar todos los costos, incluidos el desarrollo, la impartición y el tiempo de los participantes.
+
+### ¿Qué beneficios conviene medir?
+
+Conviene reunir tres: el tiempo que deja de perderse en traducciones y correcciones, el incremento de ventas y la eficiencia en negociaciones, y la satisfacción y fidelidad de los clientes. Defina para cada uno un dato de partida y vuelva a medirlo al cierre del programa, para poder atribuirle la mejora a la capacitación.
+
+### ¿Cuándo tiene ROI positivo un programa de idiomas?
+
+Cuando los beneficios que la empresa logra medir superan lo que invirtió en el programa. Eso depende de la medición de cada empresa y no de una cifra general, por lo que conviene definir los indicadores antes de empezar y comparar los resultados al cierre con el dato de partida de cada uno.
+
+### ¿Qué costos deben entrar en el cálculo?
+
+Deben entrar todos los costos del programa: el desarrollo, la impartición y el tiempo de los participantes, como indica la metodología de Phillips. Para conocer los rangos de precio y qué pedir en una propuesta antes de hacer el cálculo, revise [cómo auditar una cotización de inglés corporativo](https://s-peak.com/blog-ingles-corporativo-mexico-precio/).
+
 ## ¿Cómo diseñar un programa de idiomas que apoye la retención del talento?
 
 Un programa apoya la retención cuando parte de las necesidades de cada rol, se mide con indicadores y se vincula con el desarrollo profesional del equipo. Estos son los elementos que conviene definir:
@@ -101,6 +128,6 @@ Tres errores comunes restan efecto a ese diseño:
 
 Invertir en capacitación en idiomas puede generar beneficios medibles: mejor comunicación, mayor productividad, retención de talento y competitividad global.
 
-En S-Peak ofrecemos [programas de idiomas para empresas](https://s-peak.com/idioma/). Si su área de RH quiere evaluar el retorno de uno para su equipo, [póngase en contacto con un asesor](#contacto).
+Si su área de RH quiere evaluar el retorno de uno para su equipo, [póngase en contacto con un asesor](#contacto).
 
 Y si desea seguir más contenido sobre capacitación y desarrollo de talento, puede encontrarnos en [LinkedIn](https://mx.linkedin.com/company/s-peak).
