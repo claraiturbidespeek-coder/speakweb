@@ -15,7 +15,7 @@ focusKeyword: "modalidades de capacitación en idiomas para empresas"
 readingTime: 8
 ---
 
-Su área de RH ya tiene el presupuesto y el equipo a capacitar. Falta decidir algo que parece logístico y no lo es: dónde se darán las clases. ¿En la oficina, a distancia o una mezcla de ambas? Detrás de esa duda hay tres formas de impartir un [programa de idiomas](https://s-peak.com/idioma/): presencial, híbrida y en línea (también llamada remota). En S-Peak las impartimos todas, y aquí le explicamos en qué consiste cada una de estas modalidades de capacitación en idiomas para empresas y qué dicen los estudios sobre cómo les va a las personas que trabajan en cada una.
+Su área de RH ya tiene el presupuesto y el equipo a capacitar. Falta decidir dónde se darán las clases. ¿En la oficina, a distancia o una mezcla de ambas? Detrás de esa duda hay tres formas de impartir un [programa de idiomas](https://s-peak.com/idioma/): presencial, híbrida y en línea (también llamada remota). En S-Peak las impartimos todas, y aquí le explicamos en qué consiste cada una de estas modalidades de capacitación en idiomas para empresas y qué dicen los estudios sobre cómo les va a las personas que trabajan en cada una.
 
 ## ¿Qué es la capacitación presencial en las instalaciones de la empresa?
 
@@ -53,9 +53,11 @@ Imagine ahora un equipo con integrantes repartidos: algunos en la oficina, otros
 
 La investigación también señala una desventaja. J. N. Bailenson, del Virtual Human Interaction Lab de la Universidad de Stanford, plantea en un [ensayo publicado en 2021 en *Technology, Mind, and Behavior*](https://vhil.stanford.edu/publications/social-interaction/nonverbal-overload-theoretical-argument-causes-zoom-fatigue) que pasar el día en videollamadas cansa, y propone cuatro posibles causas ligadas al diseño de las plataformas. Los propios argumentos aún no se han probado de forma directa.
 
-## Las tres modalidades de capacitación en idiomas para empresas, de un vistazo
+## ¿En qué se distinguen las tres modalidades?
 
-En resumen, así se distingue cada una:
+Se distinguen por el lugar donde se imparten las sesiones y por la forma en que participa el equipo.
+
+Las tres modalidades de un vistazo:
 
 | Modalidad | Dónde se imparte | Cómo participa el equipo |
 | --- | --- | --- |
@@ -69,15 +71,19 @@ La modalidad define dónde se toman las sesiones, no qué se aprende. De lo segu
 
 ### ¿En qué se diferencia la capacitación híbrida de la capacitación en línea?
 
-En la modalidad en línea todas las sesiones son a distancia. En la híbrida, una parte se toma a distancia y otra en las instalaciones de la empresa, con el instructor presente.
+En la modalidad en línea todas las sesiones son a distancia, en tiempo real y con un instructor que guía al grupo. En la híbrida, una parte se toma a distancia y otra en las instalaciones de la empresa, con el instructor presente. En ese caso, el equipo sigue un solo programa con dos formatos.
 
 ### ¿En qué se diferencia la capacitación presencial de la capacitación en línea?
 
-En el lugar. En la presencial, el grupo y el instructor comparten una sala de la empresa; en la modalidad en línea, cada persona se conecta desde donde esté, también en tiempo real.
+En el lugar. En la presencial, el grupo y el instructor comparten una sala de la empresa; en la modalidad en línea, cada persona se conecta desde donde esté, también en tiempo real. En ambas el grupo se reúne a la misma hora con el instructor; lo que cambia es si alguien necesita desplazarse.
 
 ### ¿Qué modalidades requieren que el equipo se reúna en un mismo lugar?
 
-La presencial, siempre, y la híbrida en la parte presencial del programa. La modalidad en línea no lo requiere: cada persona se conecta desde donde esté.
+La presencial, siempre, y la híbrida en la parte presencial del programa. La modalidad en línea no lo requiere: cada persona se conecta desde donde esté. Por eso la presencial se ajusta a equipos que trabajan juntos en la misma oficina, y la híbrida, a los que combinan oficina y trabajo desde casa.
+
+### ¿Qué modalidad conviene a un equipo repartido en varias sedes?
+
+La modalidad en línea suele ser la más práctica, porque cada persona se conecta desde la oficina, desde casa o desde otra ciudad, y nadie necesita desplazarse para coincidir en una misma sala. El grupo sigue reuniéndose a la misma hora con el instructor. Si parte del equipo coincide en una oficina principal, la híbrida también es una opción.
 
 ## ¿Cuál de las tres modalidades es mejor?
 
