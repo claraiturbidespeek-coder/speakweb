@@ -99,20 +99,11 @@ const POSTS = [
   },
 ];
 
-/* `articulos` es una selección de POSTS por su `url`, en el orden en que se
-   pide: /nosotros/ lleva tres. Sin ella van los ocho, como en el resto de las
-   páginas. Una url que no esté en POSTS se ignora. */
 export default function CentroDeRecursos({
   className,
-  articulos,
 }: {
   className?: string;
-  articulos?: string[];
 }) {
-  const posts = articulos
-    ? articulos.flatMap((url) => POSTS.filter((p) => p.url === url))
-    : POSTS;
-
   return (
     <section
       className={`sp-seccion sp-seccion--ancha sp-recursos${className ? ` ${className}` : ""}`}
@@ -135,7 +126,7 @@ export default function CentroDeRecursos({
           </div>
 
           <CarruselTrack etiqueta="Artículos del blog" className="sp-recursos-track">
-            {posts.map((p) => (
+            {POSTS.map((p) => (
               <article
                 key={p.url}
                 className="sp-recursos-tarjeta sp-post-card"
