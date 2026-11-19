@@ -402,13 +402,6 @@ const VALORES = [
   },
 ];
 
-/* Los tres del Centro de Recursos, por su url en CentroDeRecursos.tsx. */
-const ARTICULOS = [
-  "/blog-capacitacion-en-ingles-programa-fantasma/",
-  "/blog-nivel-ingles-empresas-areas/",
-  "/capacitacion-personal-programa-idiomas/",
-];
-
 function datosEstructurados() {
   return JSON.stringify({
     "@context": "https://schema.org",
@@ -940,7 +933,7 @@ export default function Nosotros() {
 
         {/* CENTRO DE RECURSOS: aquí sigue a la franja roja del cierre, no a una
             sección blanca, y necesita su propio aire arriba. */}
-        <CentroDeRecursos articulos={ARTICULOS} className={styles.recursosTrasCierre} />
+        <CentroDeRecursos className={styles.recursosTrasCierre} />
       </main>
 
       {/* Etiqueta nativa, no next/script: con `afterInteractive` el JSON-LD se
