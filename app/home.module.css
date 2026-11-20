@@ -532,175 +532,9 @@
   justify-self: center;
 }
 
-/* ---------- 9. Casos de éxito ---------- */
-
-/* El reparto medido en la referencia es 65/35. La segunda columna se escribe
-   como 1fr y no como 35% a propósito: los porcentajes se resuelven contra la
-   caja de contenido de la rejilla, así que 65% + 35% ya la ocupan entera y el
-   gap de 20px se sumaría por fuera, desbordando el documento. Con 1fr la
-   segunda columna toma el resto una vez descontado el gap, que es exactamente
-   el 35% visible. No lo cambies de vuelta a 35%. */
-/* El 2% de envoltorio que tenía aquí lo pone ahora `.sp-seccion--ancha`: si se
-   quedara, se sumaría al de la sección y estas filas no se ensancharían. */
-.cases {
-  display: grid;
-  grid-template-columns: 65% 1fr;
-  gap: 20px;
-  margin-top: 30px;
-}
-
-/* La segunda fila reparte 50/50 */
-.casesSecond {
-  grid-template-columns: 1fr 1fr;
-  margin-top: 20px;
-}
-
-/* 60vh sobre el viewport de referencia (626px) */
-.case {
-  display: flex;
-  align-items: center;
-  min-height: 376px;
-  padding: 2%;
-  background-color: var(--color-navy);
-}
-
-/* ---------- Velo de los casos con foto ----------
-   Entre la fotografía y la tarjeta de cristal: sin él la foto compite con el
-   texto, y tapándola del todo se perdería el contexto que aporta. Cuelga de su
-   propia clase y no de `.case` porque los otros dos casos (.caseYellow y
-   .caseRed) son color plano y no lo necesitan.
-
-   Orden de capas, de abajo arriba: el color de `.case`, la foto (.caseImg, con
-   z-index -1 dentro del contexto que abre `isolation`), el velo y la tarjeta. */
-.caseFoto {
-  /* El navy de tokens.css (--color-navy, #1a3c4d) con alfa. La intensidad del
-     velo se ajusta aquí, y solo aquí: los dos bloques la heredan. En rgba y no
-     en color-mix porque es como el proyecto escribe el color con alfa; ver
-     --glass-fondo en tokens.css. */
-  --velo-caso: rgba(26, 60, 77, 0.55);
-
-  position: relative;
-  isolation: isolate;
-}
-
-/* La foto del caso, como <img> para servirla con srcset. Mismo encuadre que el
-   fondo que sustituye: cover y centrada, con la curva del artículo. */
-.caseImg {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  border-radius: inherit;
-}
-
-.caseFoto::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--velo-caso);
-  /* Recortado con la curva del artículo, para no asomar por las esquinas. */
-  border-radius: inherit;
-  pointer-events: none;
-}
-
-/* La tarjeta, por delante del velo. Sin esto quedaría por debajo: el ::before
-   está posicionado y la tarjeta no, así que se pintaría encima de ella. */
-.caseFoto .caseCard {
-  position: relative;
-  z-index: 1;
-}
-
-.caseYellow {
-  background-color: var(--color-yellow);
-}
-
-.caseRed {
-  background-color: var(--color-red);
-  padding: 4%;
-}
-
-.caseCard {
-  background: var(--color-white);
-  padding: 7%;
-}
-
-/* --width:56% declarado para la tarjeta del primer caso */
-.caseCardNarrow {
-  width: 56%;
-}
-
-/* Medido: 570.5 sobre un panel de 666 y alineada a la derecha.
-   El original no declara ancho para esta tarjeta. */
-.caseCardWide {
-  width: 86%;
-  margin-left: auto;
-}
-
-.caseTitle {
-  margin: 0 0 14px;
-  font-size: 22px;
-  font-weight: var(--weight-bold);
-  line-height: 1.25;
-  color: var(--color-navy);
-}
-
-.caseQuote {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--color-navy);
-}
-
-.caseOnColor .caseTitle,
-.caseOnColor .caseQuote,
-.caseOnColor .personName,
-.caseOnColor .personRole {
-  color: var(--color-white);
-}
-
-.caseOnColor .caseTitle {
-  font-size: 20px;
-}
-
-/* Avatar y texto: 20/80 en los casos 1 y 2, 10/80 en los casos 3 y 4 */
-.person {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-top: 24px;
-}
-
-.person img {
-  flex: 0 0 20%;
-  width: 20%;
-  height: auto;
-  object-fit: cover;
-}
-
-.personNarrow img {
-  flex-basis: 10%;
-  width: 10%;
-}
-
-.person > span {
-  flex: 0 1 80%;
-}
-
-.personName {
-  display: block;
-  font-size: 14px;
-  font-weight: var(--weight-bold);
-  color: var(--color-navy);
-}
-
-.personRole {
-  display: block;
-  font-size: 13px;
-  color: var(--color-navy);
-}
+/* ---------- 9. Casos de éxito ----------
+   Es CasosDeExito, la misma sección que /nosotros/: su estilo vive en
+   app/components/proyectos/ProyectosVideo.module.css. */
 
 /* ---------- 10. FAQ ----------
    Salió de aquí: con /nosotros/ como segunda página pasó a componente
@@ -774,12 +608,6 @@
     gap: 40px;
   }
 
-  .cases,
-  .casesSecond {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
   .heroTitle {
     letter-spacing: -0.02em;
   }
@@ -803,12 +631,6 @@
 
   .bandCta {
     justify-self: start;
-  }
-
-  .caseCardNarrow,
-  .caseCardWide {
-    width: 100%;
-    margin-left: 0;
   }
 
   .mosaicColumnFirst,
@@ -889,21 +711,18 @@
 .diffCard,
 .diffMedia,
 .tile,
-.band,
-.case,
-.caseCard {
+.band {
   border-radius: var(--radius-grande);
 }
 
 /* ---------- Glass: solo donde hay algo detrás ----------
 
-   Dos sitios, y no más: los callouts del hero, que flotan sobre el video, y la
-   tarjeta de los casos, que se apoya sobre la foto o sobre el color del
-   artículo. En el resto de la home el fondo es blanco u off-white plano: ahí el
+   Un solo sitio: los callouts del hero, que flotan sobre el video (la tarjeta
+   de los casos, el otro que había, se fue con la sección anterior de casos).
+   En el resto de la home el fondo es blanco u off-white plano: ahí el
    desenfoque no se percibe y solo cuesta pintado. */
 
-.callout,
-.caseCard {
+.callout {
   background: var(--glass-fondo);
   border: 1px solid var(--glass-borde);
   -webkit-backdrop-filter: blur(var(--glass-desenfoque));
@@ -913,8 +732,7 @@
 /* Sin soporte de backdrop-filter no hay desenfoque que valga: se vuelve al
    fondo opaco para no dejar el texto sobre la foto a medio velar. */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .callout,
-  .caseCard {
+  .callout {
     background: var(--color-white);
   }
 }

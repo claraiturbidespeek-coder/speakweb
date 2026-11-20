@@ -4,10 +4,7 @@ import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BandaLogos from "@/app/components/BandaLogos";
 import CentroDeRecursos from "@/app/components/CentroDeRecursos";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
-import ProyectosVideo, {
-  type CeldaProyecto,
-  type LogoProyecto,
-} from "@/app/components/proyectos/ProyectosVideo";
+import CasosDeExito from "@/app/components/proyectos/CasosDeExito";
 import { TableroProgreso } from "@/app/components/SeccionEvidencia";
 import SelloSTPS from "@/app/components/SelloSTPS";
 // La lista de las seis páginas de idioma vive con la plantilla de equipo.
@@ -133,122 +130,6 @@ const DOLORES = [
   },
 ];
 
-/* Sección de proyectos: nueve celdas, una por área del mosaico (el esquema
-   está en app/components/proyectos/ProyectosVideo.module.css), en el orden de
-   lectura. Las cifras son datos reales de proyectos del cliente, literales.
-   Las citas son literales: la de la celda alta (D), completa; las demás,
-   fragmentos del testimonio original. Cada video lleva su ID de YouTube, su
-   título (el de YouTube, tal cual), un clip de preview en public/video/ y su
-   portada en public/images/proyectos/. */
-/* Braskem Idesa sale dos veces: en el testimonio de A y en la cifra de I. Las
-   cajas de los logos son la marca dentro de su lienzo de 600×300 (ver
-   LogoProyecto en ProyectosVideo.tsx). */
-/* Su marca es muy alargada: a la escala común quedaba de 16px de alto frente a
-   los 25 a 34 de las demás. Con 1.35 queda de unos 22px, al peso de PepsiCo. */
-const LOGO_BRASKEM: LogoProyecto = {
-  src: "/images/logos/braskem.webp",
-  caja: [80, 107, 439, 86],
-  escala: 1.35,
-};
-
-const CELDAS_PROYECTOS: CeldaProyecto[] = [
-  {
-    area: "A",
-    tipo: "testimonio",
-    cita: "Se adaptan a las necesidades de nuestros perfiles de puesto.",
-    nombre: "Braskem Idesa",
-    logo: LOGO_BRASKEM,
-    rol: "Área de RRHH",
-  },
-  {
-    area: "B",
-    tipo: "cifra",
-    icono: "fabrica",
-    cifra: "9 plantas",
-    descriptor: "a la vez",
-    cliente: "PepsiCo",
-    logo: { src: "/images/logos/pepsico.webp", caja: [82, 84, 435, 133] },
-  },
-  /* Video A: Kering. Clip de 6 s del segundo 66 (Rocío Barajas hablando a
-     cámara); la portada es su primer fotograma. */
-  {
-    area: "C",
-    tipo: "video",
-    id: "mR5DD5LEfEU",
-    titulo:
-      "Mejorando el desempeño profesional a través del aprendizaje de idiomas en Kering con S-Peak",
-    portada: "/images/proyectos/proyectos-kering-poster.webp",
-    clip: "/video/proyectos-kering.mp4",
-    /* Ancho de la portada recortada con cover, medido: 350px en móvil; en
-       dos columnas la celda es alta (comparte fila con la cita larga de D) y
-       la portada mide 883px a 600, 660 a 768 y 564 a 960; desde 1200px, de
-       369 a 427px. */
-    sizes:
-      "(max-width: 599px) calc(100vw - 40px), (max-width: 767px) 884px, (max-width: 959px) 660px, (max-width: 1199px) 564px, 430px",
-  },
-  {
-    area: "D",
-    tipo: "testimonio",
-    cita: "S-Peak ha sido un gran aliado para nosotros, ya que se adapta a nuestras necesidades y cuenta con un sistema robusto de seguimiento en asistencias. Valoramos también que siempre nos brinda una buena atención tanto a la empresa como a los alumnos.",
-    nombre: "Anabel P.",
-    rol: "Analista de Planeación y Desarrollo de RH",
-  },
-  {
-    area: "E",
-    tipo: "cifra",
-    icono: "globo",
-    cifra: "5 países",
-    descriptor: "al mismo tiempo, en línea en vivo",
-    cliente: "Bolloré Logistics",
-    logo: { src: "/images/logos/bollore.webp", caja: [81, 60, 438, 180] },
-  },
-  /* F es la celda destacada (navy), sea cual sea su contenido. */
-  {
-    area: "F",
-    tipo: "cifra",
-    icono: "usuarioCheck",
-    cifra: "+1,000",
-    descriptor: "personas evaluadas en su nivel de idioma",
-    cliente: "Grupo Modelo",
-    /* La celda F es navy: este logo se lee sobre oscuro por su disco dorado. */
-    logo: { src: "/images/logos/grupo-modelo.webp", caja: [210, 60, 180, 180] },
-  },
-  /* Video B: Covestro. Clip de 6 s del segundo 32 (Erika Cárdenas hablando
-     a cámara); la portada es su primer fotograma. */
-  {
-    area: "G",
-    tipo: "video",
-    id: "a5CFZDmtNN8",
-    titulo: "Eficiencia en la capacitación de idiomas de S-Peak: Covestro",
-    portada: "/images/proyectos/proyectos-covestro-poster.webp",
-    clip: "/video/proyectos-covestro.mp4",
-    /* Medido: a lo ancho en dos columnas (92% de la ventana) y, desde
-       1200px, según el corte de la fila de abajo: 38.5% de la ventana hasta
-       1269px, 36.6% hasta 1319px y 34.7% desde ahí, hasta topar en 513px. */
-    sizes:
-      "(max-width: 599px) calc(100vw - 40px), (max-width: 1199px) 92vw, (max-width: 1269px) 39vw, (max-width: 1319px) 37vw, min(35vw, 513px)",
-  },
-  {
-    area: "H",
-    tipo: "testimonio",
-    cita: "Valoramos el seguimiento que S-Peak nos brinda, el feedback que piden a través de citas regulares y encuestas, así como reaccionan a lo que pedimos como cliente. Además, los profesores están muy bien preparados para asegurar el aprendizaje, y los precios son justos.",
-    nombre: "Erika C.",
-    empresa: "Covestro",
-    /* Circular como el de Grupo Modelo: se recortó a su mismo cuadro. */
-    logo: { src: "/images/logos/covestro.webp", caja: [210, 60, 180, 180] },
-    rol: "People Development, Culture & D&I Expert",
-  },
-  {
-    area: "I",
-    tipo: "cifra",
-    icono: "usuarios",
-    cifra: "50",
-    descriptor: "grupos presenciales simultáneos",
-    cliente: "Braskem Idesa",
-    logo: LOGO_BRASKEM,
-  },
-];
-
 /* Los cinco pasos de la metodología, en orden: cada uno es un escalón más
    alto que el anterior. */
 const PACTO = [
@@ -361,6 +242,12 @@ const HITOS: {
   { anio: "2026", categoria: "propio", icono: "baseDatos", texto: "Tercer sistema de información" },
 ];
 
+/* El hito final, después de 2026: no es un año sino lo que sigue, el
+   programa de la empresa que lee la página. Va detrás de HITOS, en el carril
+   que le toca por su posición, y su marca del eje dice «Lo que sigue» en vez
+   de un año. Cuenta en --hitos y --columnas como uno más. */
+const INDICE_SIGUIENTE = HITOS.length;
+
 /* Las marcas de año del eje horizontal: una por año. Los hitos seguidos del
    mismo año (2013 y 2019) comparten marca, a medio camino entre los dos. */
 const ANIOS_EJE = HITOS.reduce<{ anio: string; primero: number; ultimo: number }[]>(
@@ -445,7 +332,12 @@ export default function Nosotros() {
           />
           <div className={styles.heroInner}>
             <div className="sp-etiqueta">Quiénes somos</div>
-            <h1>Más de 20 años preparando compañías para operar en varios idiomas</h1>
+            {/* Dos líneas fijas en escritorio, cortando tras «compañías»; por
+                debajo de 960px, el texto corre solo (ver .tituloLinea). */}
+            <h1>
+              <span className={styles.tituloLinea}>Más de 20 años preparando compañías</span>{" "}
+              <span className={styles.tituloLinea}>para operar en varios idiomas</span>
+            </h1>
             <p className="sp-hero-sub">
               Trabajamos para que el idioma deje de ser una frontera dentro de las
               empresas: que quien tenga algo que aportar no se quede callado, y que
@@ -557,7 +449,12 @@ export default function Nosotros() {
             >
               <div
                 className={`${styles.historiaLinea} reveal`}
-                style={{ "--hitos": HITOS.length, "--columnas": HITOS.length + 1 } as CSSProperties}
+                style={
+                  {
+                    "--hitos": HITOS.length + 1,
+                    "--columnas": HITOS.length + 2,
+                  } as CSSProperties
+                }
               >
                 <div className={styles.eje} data-eje aria-hidden="true" />
                 {ANIOS_EJE.map((m) => (
@@ -575,6 +472,18 @@ export default function Nosotros() {
                     {m.anio}
                   </span>
                 ))}
+                <span
+                  className={`${styles.ejeAnio} ${styles.ejeSiguiente}`}
+                  aria-hidden="true"
+                  style={
+                    {
+                      gridColumn: `${INDICE_SIGUIENTE + 1} / ${INDICE_SIGUIENTE + 3}`,
+                      "--i": INDICE_SIGUIENTE,
+                    } as CSSProperties
+                  }
+                >
+                  Lo que sigue
+                </span>
                 {/* role="list": con display: contents algunos lectores de
                     pantalla dejan de anunciar la lista. */}
                 <ol className={styles.hitos} role="list">
@@ -599,6 +508,27 @@ export default function Nosotros() {
                       <p>{h.texto}</p>
                     </li>
                   ))}
+                  <li
+                    className={`${styles.hito} ${
+                      INDICE_SIGUIENTE % 2 === 0 ? styles.hitoArriba : styles.hitoAbajo
+                    } ${styles.hitoSiguiente}`}
+                    style={
+                      {
+                        gridColumn: `${INDICE_SIGUIENTE + 1} / span 2`,
+                        "--i": INDICE_SIGUIENTE,
+                      } as CSSProperties
+                    }
+                  >
+                    <h3>El programa de su empresa</h3>
+                    <p>
+                      El siguiente hito de esta historia <strong>lo construimos juntos</strong>:
+                      definimos con usted qué necesita lograr su equipo en otro idioma y cómo lo
+                      vamos a comprobar.
+                    </p>
+                    <BotonContacto className="sp-btn sp-btn--rojo">
+                      Platiquemos de su equipo →
+                    </BotonContacto>
+                  </li>
                 </ol>
               </div>
             </LineaDesplazable>
@@ -659,7 +589,7 @@ export default function Nosotros() {
                   Dirección con listas de asistencia: llega con el avance de cada gerente
                   en la escala del Marco Común Europeo y su Tarjeta de Resultados.
                 </p>
-                <BotonContacto className="sp-btn sp-btn--blanco">{CTA}</BotonContacto>
+                <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
               </div>
 
               {/* Ejemplo de Tarjeta de Resultados, en HTML y no como imagen
@@ -779,14 +709,7 @@ export default function Nosotros() {
         </section>
 
         {/* PROYECTOS */}
-        <ProyectosVideo
-          id="proyectos"
-          className={styles.proyectos}
-          eyebrow="Casos de Éxito"
-          titulo="Orgullosos del trabajo que nos confían"
-          bajada="Estos son algunos de los programas que hemos operado, contados también por quienes los vivieron."
-          celdas={CELDAS_PROYECTOS}
-        />
+        <CasosDeExito />
 
         {/* METODOLOGÍA PACTO */}
         <section className="sp-seccion" id="metodologia">

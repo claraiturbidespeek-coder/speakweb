@@ -3,6 +3,7 @@ import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BandaLogos from "@/app/components/BandaLogos";
 import Carrusel from "@/app/components/Carrusel";
 import CentroDeRecursos from "@/app/components/CentroDeRecursos";
+import CasosDeExito from "@/app/components/proyectos/CasosDeExito";
 import FranjaIdiomas from "@/app/components/FranjaIdiomas";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
 import SeccionEvidencia from "@/app/components/SeccionEvidencia";
@@ -34,30 +35,6 @@ const CIFRAS = [
   { icono: "premio", num: "+20", label: "Años de experiencia" },
 ];
 
-
-const TESTIMONIOS = [
-  {
-    iniciales: "BI",
-    nombre: "Braskem Idesa",
-    rol: "Área de RRHH",
-    acento: false,
-    cita: "El equipo de S-Peak tiene una gran actitud de servicio, sus cursos de idiomas son excelentes para nuestros equipos, se adaptan a las necesidades de sus perfiles de puesto.",
-  },
-  {
-    iniciales: "FD",
-    nombre: "Fernanda D.",
-    rol: "Alumna · Chedraui",
-    acento: true,
-    cita: "S-Peak es una organización sumamente dinámica. Su capacidad para entender nuestras necesidades específicas y adaptar sus mejores recursos a nuestros objetivos de negocio es su gran diferencial.",
-  },
-  {
-    iniciales: "EC",
-    nombre: "Erika C.",
-    rol: "People Development & D&I Expert",
-    acento: false,
-    cita: "Valoramos el seguimiento que S-Peak nos brinda, el feedback que piden a través de citas regulares y encuestas, así como su reacción a lo que pedimos como cliente.",
-  },
-];
 
 function datosEstructurados(datos: DatosEquipo) {
   const url = `https://s-peak.com/equipo/${datos.slug}/`;
@@ -327,42 +304,10 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
           </BotonContacto>
         </section>
 
-        {/* TESTIMONIOS */}
-        <section className={`sp-seccion ${styles.testimonials}`} id="resultados">
-          <div className="sp-testi-top reveal">
-            <div
-              className="sp-eyebrow"
-              style={{ color: "rgba(255,255,255,0.4)", justifyContent: "center" }}
-            >
-              Lo que dicen nuestros clientes
-            </div>
-            <h2>{datos.testimonios.titulo}</h2>
-            <p>En S-Peak, el éxito no se supone: se mide en números.</p>
-          </div>
-          <div className={`${styles.testiGrid} reveal stagger`}>
-            {TESTIMONIOS.map((t) => (
-              <div
-                key={t.iniciales}
-                className={`sp-testi-card sp-barra${t.acento ? " sp-testi-card--acento" : ""}`}
-              >
-                <div
-                  className="sp-estrellas"
-                  style={t.acento ? { color: "var(--color-navy)" } : undefined}
-                >
-                  ★★★★★
-                </div>
-                <p className="sp-testi-quote">&ldquo;{t.cita}&rdquo;</p>
-                <div className="sp-testi-autor">
-                  <div className="sp-avatar">{t.iniciales}</div>
-                  <div>
-                    <div className="sp-autor-nombre">{t.nombre}</div>
-                    <div className="sp-autor-rol">{t.rol}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        {/* CASOS DE ÉXITO: la sección compartida con el home, /nosotros/ y las
+            páginas de idioma. Con id="resultados", el ancla de la de
+            testimonios a la que sustituye. */}
+        <CasosDeExito id="resultados" />
 
         {/* FAQ */}
         <section className="sp-seccion" id="faq">

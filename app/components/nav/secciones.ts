@@ -28,6 +28,12 @@ export const ENLACES_EQUIPOS = [
   { nombre: "Tecnología e Ingeniería", ruta: "/equipo/tecnologia-e-ingenieria/" },
 ];
 
+/* «Clientes»: no lleva a una página sino a la sección de casos de éxito de
+   la página en curso; el clic lo resuelve irACasosDeExito. La ruta es la de
+   respaldo, la sección del home, para las páginas que no la tienen. Va entre
+   Equipos y Conózcanos en los dos menús, el en línea y el de celular. */
+export const ENLACE_CLIENTES = { nombre: "Clientes", ruta: "/#proyectos" };
+
 export const ENLACES_SUELTOS = [
   // Clientes, oculta. La página sigue en app/clientes/ y en pie; solo se retiró
   // del menú. Para reactivarla, descomentar esta línea: la consumen a la vez la

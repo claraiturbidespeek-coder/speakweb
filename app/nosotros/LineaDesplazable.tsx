@@ -200,6 +200,9 @@ export default function LineaDesplazable({
 
     const alPresionar = (e: PointerEvent) => {
       if (e.pointerType !== "mouse" || e.button !== 0) return;
+      /* Sobre un botón o un enlace (el CTA del último hito) no se arrastra:
+         la captura del puntero se quedaría el clic y el botón no respondería. */
+      if (e.target instanceof Element && e.target.closest("a, button")) return;
       if (pista.scrollWidth - pista.clientWidth <= 1) return;
       e.preventDefault();
       arrastrando = true;

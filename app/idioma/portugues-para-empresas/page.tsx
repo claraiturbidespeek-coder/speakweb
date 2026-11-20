@@ -1,9 +1,9 @@
 "use client";
 
-import Script from "next/script";
 import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BandaLogos from "@/app/components/BandaLogos";
 import CentroDeRecursos from "@/app/components/CentroDeRecursos";
+import CasosDeExito from "@/app/components/proyectos/CasosDeExito";
 import FranjaIdiomas from "@/app/components/FranjaIdiomas";
 import Icono from "@/app/components/Icono";
 import SeccionEvidencia from "@/app/components/SeccionEvidencia";
@@ -14,11 +14,6 @@ import { IDIOMAS } from "@/app/equipo/tipos";
 import CicloMetodo, { type PasoMetodo } from "../CicloMetodo";
 import styles from "../landing.module.css";
 import { imagenResponsiva } from "@/lib/imagenes";
-
-// El guion de los dos comportamientos que siguen siendo DOM suelto: el ciclo
-// radial del método y el carrusel de testimonios. El envío de leads y el modal
-// de WhatsApp salieron de aquí a React —lib/atribucion.ts y
-// components/whatsapp/FlotanteWhatsApp.tsx—, así que esto ya no toca window.
 
 /* Los cinco pasos del método, en el orden del recorrido. La posición de cada
    uno en el círculo y el comportamiento del ciclo los pone CicloMetodo.tsx. */
@@ -69,35 +64,6 @@ const PASOS: PasoMetodo[] = [
     ),
   },
 ];
-
-const SCRIPT_PRINCIPAL = `
-
-  // Carrusel testimonios: avance automático tarjeta por tarjeta.
-  (function () {
-    const track = document.querySelector('.testi-track');
-    if (!track) return;
-    const TOTAL = 4;          // tarjetas originales (sin el set duplicado)
-    let idx = 0;
-    function cardStep() {
-      const card = track.children[0];
-      const style = getComputedStyle(card);
-      return card.offsetWidth + parseFloat(style.marginRight || 0);
-    }
-    function advance() {
-      idx++;
-      track.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-      track.style.transform = 'translateX(' + (-idx * cardStep()) + 'px)';
-      if (idx >= TOTAL) {
-        setTimeout(function () {
-          track.style.transition = 'none';
-          idx = 0;
-          track.style.transform = 'translateX(0)';
-        }, 650);
-      }
-    }
-    setInterval(advance, 3500);
-  })();
-`;
 
 export default function Page() {
   const { abrir } = useContacto();
@@ -255,114 +221,10 @@ export default function Page() {
   </div>
 </section>
 
-{/* TESTIMONIOS — son los de la landing de inglés, a propósito.
-    Los cuatro testimonios (y su copia para el bucle del carrusel) son de
-    clientes de los programas de inglés, copiados tal cual de
-    app/idioma/ingles-para-empresas/page.tsx. No es un error: es decisión del
-    cliente, que sabe que no son de su programa de portugués y los quiere aquí
-    mientras consigue testimonios propios de este programa. No los borre.
-    Cuando lleguen los de portugués, se sustituyen en este bloque. */}
-<section className={`sp-seccion ${styles.testimonials}`} id="resultados">
-  <div className="sp-testi-top reveal">
-    <div className="sp-eyebrow" style={{ color: "rgba(255,255,255,0.4)", justifyContent: "center" }}>Lo que dicen nuestros clientes</div>
-    <h2>Resultados reales en equipos nacionales e internacionales</h2>
-    <p>En <strong>S-Peak</strong>, el éxito no se supone: se mide en números.</p>
-  </div>
-  <div className={`${styles.testiCarousel} reveal`}>
-    <div className={`${styles.testiTrack} testi-track`}>
-      {/* Set 1 */}
-      <div className={`sp-testi-card ${styles.testiCard}`}>
-        <div className="sp-estrellas">★★★★★</div>
-        <p className="sp-testi-quote">"El equipo de <strong>S-Peak</strong> tiene una gran actitud de servicio, sus cursos de idiomas son excelentes para nuestros equipos, se adaptan a las necesidades de sus perfiles de puesto."</p>
-        <div className="sp-testi-autor">
-          <div className="sp-avatar">BI</div>
-          <div>
-            <div className="sp-autor-nombre">Braskem Idesa</div>
-            <div className="sp-autor-rol">Área de RRHH</div>
-          </div>
-        </div>
-      </div>
-      <div className={`sp-testi-card sp-testi-card--acento ${styles.testiCard}`}>
-        <div className="sp-estrellas" style={{ color: "var(--color-navy)" }}>★★★★★</div>
-        <p className="sp-testi-quote">"<strong>S-Peak</strong> es una organización sumamente dinámica. Su capacidad para entender nuestras necesidades específicas y adaptar sus mejores recursos a nuestros objetivos de negocio es su gran diferencial."</p>
-        <div className="sp-testi-autor">
-          <div className="sp-avatar">FD</div>
-          <div>
-            <div className="sp-autor-nombre">Fernanda D.</div>
-            <div className="sp-autor-rol">Alumna · Chedraui</div>
-          </div>
-        </div>
-      </div>
-      <div className={`sp-testi-card ${styles.testiCard}`}>
-        <div className="sp-estrellas">★★★★★</div>
-        <p className="sp-testi-quote">"<strong>S-Peak</strong> ha sido un gran aliado para nosotros, ya que se adapta a nuestras necesidades y cuenta con un sistema robusto de seguimiento en asistencias. Valoramos también que siempre nos brinda una buena atención tanto a la empresa como a los alumnos."</p>
-        <div className="sp-testi-autor">
-          <div className="sp-avatar">AP</div>
-          <div>
-            <div className="sp-autor-nombre">Anabel P.</div>
-            <div className="sp-autor-rol">Analista de Planeación y Desarrollo de RH</div>
-          </div>
-        </div>
-      </div>
-      <div className={`sp-testi-card ${styles.testiCard}`}>
-        <div className="sp-estrellas">★★★★★</div>
-        <p className="sp-testi-quote">"Valoramos el seguimiento que <strong>S-Peak</strong> nos brinda, el feedback que piden a través de citas regulares y encuestas, así como reaccionan a lo que pedimos como cliente. Además, los profesores están muy bien preparados para asegurar el aprendizaje, y los precios son justos."</p>
-        <div className="sp-testi-autor">
-          <div className="sp-avatar">EC</div>
-          <div>
-            <div className="sp-autor-nombre">Erika C.</div>
-            <div className="sp-autor-rol">People Development, Culture &amp; D&amp;I Expert</div>
-          </div>
-        </div>
-      </div>
-      {/* Set 2 (duplicado para loop infinito) */}
-      <div className={`sp-testi-card ${styles.testiCard}`} aria-hidden="true" inert>
-        <div className="sp-estrellas">★★★★★</div>
-        <p className="sp-testi-quote">"El equipo de <strong>S-Peak</strong> tiene una gran actitud de servicio, sus cursos de idiomas son excelentes para nuestros equipos, se adaptan a las necesidades de sus perfiles de puesto."</p>
-        <div className="sp-testi-autor">
-          <div className="sp-avatar">BI</div>
-          <div>
-            <div className="sp-autor-nombre">Braskem Idesa</div>
-            <div className="sp-autor-rol">Área de RRHH</div>
-          </div>
-        </div>
-      </div>
-      <div className={`sp-testi-card sp-testi-card--acento ${styles.testiCard}`} aria-hidden="true" inert>
-        <div className="sp-estrellas" style={{ color: "var(--color-navy)" }}>★★★★★</div>
-        <p className="sp-testi-quote">"<strong>S-Peak</strong> es una organización sumamente dinámica. Su capacidad para entender nuestras necesidades específicas y adaptar sus mejores recursos a nuestros objetivos de negocio es su gran diferencial."</p>
-        <div className="sp-testi-autor">
-          <div className="sp-avatar">FD</div>
-          <div>
-            <div className="sp-autor-nombre">Fernanda D.</div>
-            <div className="sp-autor-rol">Alumna · Chedraui</div>
-          </div>
-        </div>
-      </div>
-      <div className={`sp-testi-card ${styles.testiCard}`} aria-hidden="true" inert>
-        <div className="sp-estrellas">★★★★★</div>
-        <p className="sp-testi-quote">"<strong>S-Peak</strong> ha sido un gran aliado para nosotros, ya que se adapta a nuestras necesidades y cuenta con un sistema robusto de seguimiento en asistencias. Valoramos también que siempre nos brinda una buena atención tanto a la empresa como a los alumnos."</p>
-        <div className="sp-testi-autor">
-          <div className="sp-avatar">AP</div>
-          <div>
-            <div className="sp-autor-nombre">Anabel P.</div>
-            <div className="sp-autor-rol">Analista de Planeación y Desarrollo de RH</div>
-          </div>
-        </div>
-      </div>
-      <div className={`sp-testi-card ${styles.testiCard}`} aria-hidden="true" inert>
-        <div className="sp-estrellas">★★★★★</div>
-        <p className="sp-testi-quote">"Valoramos el seguimiento que <strong>S-Peak</strong> nos brinda, el feedback que piden a través de citas regulares y encuestas, así como reaccionan a lo que pedimos como cliente. Además, los profesores están muy bien preparados para asegurar el aprendizaje, y los precios son justos."</p>
-        <div className="sp-testi-autor">
-          <div className="sp-avatar">EC</div>
-          <div>
-            <div className="sp-autor-nombre">Erika C.</div>
-            <div className="sp-autor-rol">People Development, Culture &amp; D&amp;I Expert</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+{/* CASOS DE ÉXITO: la sección compartida con el home, /nosotros/ y las
+    páginas de equipo. Con id="resultados", el ancla de la de testimonios a la
+    que sustituye. */}
+<CasosDeExito id="resultados" />
 
 {/* FAQ */}
 <section className="sp-seccion" id="faq">
@@ -460,11 +322,6 @@ export default function Page() {
 <CentroDeRecursos className="sp-oculto-landing" />
 </main>
 
-      <Script
-        id="lp-portugues-principal"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: SCRIPT_PRINCIPAL }}
-      />
     </>
   );
 }

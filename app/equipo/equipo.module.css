@@ -454,22 +454,6 @@
   pointer-events: none;
 }
 
-/* ---------- Testimonios ---------- */
-
-.testimonials {
-  background: var(--color-navy);
-  border-radius: 0;
-  overflow: hidden;
-}
-
-.testiGrid {
-  max-width: var(--container-max);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
 /* ---------- FAQ ---------- */
 
 .faqInner {
@@ -521,8 +505,7 @@
 
 .competencias::after,
 .dolor::after,
-.diferenciadores::after,
-.testimonials::after {
+.diferenciadores::after {
   content: "";
   position: absolute;
   pointer-events: none;
@@ -553,15 +536,6 @@
   transform: rotate(16deg);
 }
 
-.testimonials::after {
-  width: 260px;
-  height: 260px;
-  right: -90px;
-  bottom: -80px;
-  transform: rotate(20deg);
-  border-color: rgba(181, 30, 64, 0.5);
-}
-
 /* ---------- Responsive ----------
    Las secciones y la fila de cifras ya cambian solas: su responsive vive con su
    patrón. Aquí solo las rejillas de esta página. */
@@ -577,10 +551,6 @@
 
   .compGrid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .testiGrid {
-    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -599,8 +569,7 @@
     padding: 48px var(--space-gutter) 80px;
   }
 
-  .compGrid,
-  .testiGrid {
+  .compGrid {
     grid-template-columns: 1fr;
   }
 }

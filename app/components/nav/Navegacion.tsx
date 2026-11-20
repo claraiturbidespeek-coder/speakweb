@@ -8,8 +8,10 @@ import {
   ENLACE_INDICE_IDIOMAS,
   ENLACES_EQUIPOS,
   ENLACES_IDIOMAS,
+  ENLACE_CLIENTES,
   ENLACES_SUELTOS,
 } from "./secciones";
+import { irACasosDeExito } from "./irACasosDeExito";
 import useModoLanding from "./useModoLanding";
 import styles from "./nav.module.css";
 
@@ -73,10 +75,19 @@ export default function Navegacion() {
         <li className={styles.item}>
           <Desplegable etiqueta="Equipos" enlaces={ENLACES_EQUIPOS} />
         </li>
+        <li className={styles.item}>
+          <Link
+            className={styles.link}
+            href={ENLACE_CLIENTES.ruta}
+            onClick={(e) => irACasosDeExito(e)}
+          >
+            <span className={styles.subrayado}>{ENLACE_CLIENTES.nombre}</span>
+          </Link>
+        </li>
         {ENLACES_SUELTOS.map((e) => (
           <li key={e.ruta} className={styles.item}>
             <Link className={styles.link} href={e.ruta}>
-              {e.nombre}
+              <span className={styles.subrayado}>{e.nombre}</span>
             </Link>
           </li>
         ))}

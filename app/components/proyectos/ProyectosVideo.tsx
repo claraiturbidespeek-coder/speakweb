@@ -64,6 +64,12 @@ export type TestimonioProyecto = {
   /* Con logo, la empresa del logo cuando firma una persona: va de alt y
      el nombre se escribe debajo del logo. Sin ella, el logo es quien firma. */
   empresa?: string;
+  /* Título sobre la cita. Con él, la tarjeta va sin estrellas: el título
+     ocupa su lugar, como en la tarjeta de origen del home. */
+  titulo?: string;
+  /* Foto de quien firma, en public/images/, en lugar del círculo de
+     iniciales. Cuadrada; el círculo enfoca la cara (ver .autorFoto). */
+  foto?: string;
 };
 
 export type AreaProyecto = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I";
@@ -82,6 +88,10 @@ type Props = {
   celdas: CeldaProyecto[];
   id?: string;
   className?: string;
+  /* Marca la sección como la de casos de éxito (data-casos-exito): es lo que
+     busca «Clientes» en el menú principal (nav/irACasosDeExito.ts), sea cual
+     sea el `id` de la página. Lo pone CasosDeExito. */
+  casosExito?: boolean;
 };
 
 /* La clase del área y si la celda es la destacada: las pone ProyectosVideo. */
@@ -171,6 +181,8 @@ function TarjetaTestimonio({
   rol,
   logo,
   empresa,
+  titulo,
+  foto,
   destacado,
   className,
 }: TestimonioProyecto & DeCelda) {
@@ -189,11 +201,27 @@ function TarjetaTestimonio({
           : `sp-tarjeta ${styles.testimonio} ${className}`
       }
     >
-      <div className="sp-estrellas">★★★★★</div>
+      {titulo ? (
+        <h3 className={styles.testiTitulo}>{titulo}</h3>
+      ) : (
+        <div className="sp-estrellas">★★★★★</div>
+      )}
       <blockquote className="sp-testi-quote">&ldquo;{cita}&rdquo;</blockquote>
       <figcaption className="sp-testi-autor">
-        {/* Con el logo de la empresa, el círculo de iniciales sobra. */}
-        {logo ? null : (
+        {/* Con el logo de la empresa, el círculo de iniciales sobra; con foto,
+            la foto lo sustituye. */}
+        {logo ? null : foto ? (
+          <span className={styles.autorFoto} aria-hidden="true">
+            <img
+              {...imagenResponsiva(foto, "96px")}
+              alt=""
+              width={1000}
+              height={1000}
+              loading="lazy"
+              decoding="async"
+            />
+          </span>
+        ) : (
           <div className="sp-avatar" aria-hidden="true">
             {iniciales}
           </div>
@@ -222,9 +250,14 @@ export default function ProyectosVideo({
   celdas,
   id,
   className,
+  casosExito,
 }: Props) {
   return (
-    <section className={`sp-seccion${className ? ` ${className}` : ""}`} id={id}>
+    <section
+      className={`sp-seccion${className ? ` ${className}` : ""}`}
+      id={id}
+      data-casos-exito={casosExito ? "" : undefined}
+    >
       <div className="sp-inner">
         <div className="sp-seccion-top reveal">
           {eyebrow ? <div className={`sp-eyebrow ${styles.eyebrow}`}>{eyebrow}</div> : null}

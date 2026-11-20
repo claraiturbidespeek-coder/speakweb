@@ -253,9 +253,6 @@ const datos: DatosEquipo = {
     cta: "Solicite una Cotización",
   },
 
-  testimonios: {
-    titulo: "Lo que dicen las empresas que ya se capacitaron con S-Peak",
-  },
 
   faq: {
     titulo:

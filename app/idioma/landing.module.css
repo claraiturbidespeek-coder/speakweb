@@ -8,7 +8,7 @@
 
    Lo compartido vive en app/styles/patrones.css con nombres sp-*. Aquí queda el
    hero con su retrato sobre el círculo, el ciclo
-   radial del método, el carrusel de testimonios, los dos modales con sus
+   radial del método, los dos modales con sus
    formularios, el botón de WhatsApp y el de volver arriba.
 
    De landing.css NO se trajeron:
@@ -28,7 +28,7 @@
      pasaron a interacciones.css: son clases que pone una librería en <html>, no
      estilos de esta página.
 
-   Las clases que el JavaScript consulta (testi-track, back-to-top,
+   Las clases que el JavaScript consulta (back-to-top,
    y los estados active, open e is-visible) siguen en el markup como nombres
    sueltos, sin estilo propio: son puntos de anclaje del guion. El estilo lo
    ponen las clases de este módulo sobre el mismo elemento. */
@@ -444,30 +444,6 @@
   color: var(--color-red);
 }
 
-/* ---------- Testimonios ---------- */
-
-.testimonials {
-  background: var(--color-navy);
-  border-radius: 0;
-}
-
-.testiCarousel {
-  max-width: var(--container-max);
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.testiTrack {
-  display: flex;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* La tarjeta es la del sistema; aquí solo se le da su medida de diapositiva. */
-.testiCard {
-  flex: 0 0 calc((100% - 36px) / 3);
-  margin-right: 18px;
-}
-
 /* ---------- FAQ ---------- */
 
 .faqInner {
@@ -644,10 +620,6 @@
     grid-template-columns: 1fr;
     gap: 36px;
   }
-
-  .testiCard {
-    flex-basis: calc((100% - 18px) / 2);
-  }
 }
 
 @media (max-width: 768px) {
@@ -721,11 +693,6 @@
 
   .fakeFormBtn {
     width: 100%;
-  }
-
-  .testiCard {
-    flex-basis: 100%;
-    margin-right: 0;
   }
 }
 

@@ -58,7 +58,9 @@ export default function Desplegable({
 
   return (
     <details ref={detalles} className={styles.details} name="menu-general">
-      <summary className={styles.summary}>{etiqueta}</summary>
+      <summary className={styles.summary}>
+        <span className={styles.subrayado}>{etiqueta}</span>
+      </summary>
       <ul className={styles.dropdown}>
         {enlaces.map((e) => (
           <li key={e.ruta}>

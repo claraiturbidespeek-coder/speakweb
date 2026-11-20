@@ -50,6 +50,32 @@
   color: var(--color-white);
 }
 
+/* Línea de acento bajo el texto al pasar el cursor, solo en el menú
+   principal (no en la barra de anclas del modo landing). Va en un <span> con
+   el texto, así que en los desplegables no pasa bajo el chevron. Es absoluta:
+   no ocupa sitio ni mueve nada. Entra desde la izquierda. */
+.subrayado {
+  position: relative;
+}
+
+.subrayado::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background: var(--color-red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease-out-soft);
+}
+
+.nav .link:hover .subrayado::after,
+.nav .summary:hover .subrayado::after {
+  transform: scaleX(1);
+}
+
 .link:focus-visible,
 .summary:focus-visible {
   outline: 2px solid var(--color-white);

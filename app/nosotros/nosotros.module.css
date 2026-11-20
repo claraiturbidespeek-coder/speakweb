@@ -77,6 +77,28 @@
   color: var(--color-navy);
 }
 
+/* Desde 960px, el titular en dos líneas fijas: «Más de 20 años preparando
+   compañías» y «para operar en varios idiomas», cada una sin partirse. El h1
+   toma el ancho de su línea más larga aunque pase de los 800px de .heroInner,
+   y se centra sobre el eje del hero con el desplazamiento de medio ancho.
+
+   El tamaño de letra no cambia: la línea larga mide unas 17,5em y, con la
+   letra en 3.2vw (su tope de 42px llega a los 1312px), ocupa como mucho el
+   56% del ancho de la ventana, siempre dentro del ancho de la página. Por
+   debajo de 960px el texto corre solo, como antes. */
+@media (min-width: 960px) {
+  .hero h1 {
+    width: max-content;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .tituloLinea {
+    display: block;
+    white-space: nowrap;
+  }
+}
+
 .hero :global(.sp-hero-sub) {
   /* El patrón tope a 540px, pensado para heros de dos columnas; aquí es de una
      y se le deja la medida de lectura de las bajadas de sección. */
@@ -386,14 +408,14 @@
   margin: 48px auto 0;
 }
 
-/* El "después": la segunda mitad de la escena, una tarjeta roja debajo de
+/* El "después": la segunda mitad de la escena, una tarjeta navy debajo de
    las dos columnas. Del ancho de .dosColumnas (el contenedor de la página),
    así que su borde izquierdo queda alineado con la foto y el derecho con el
    texto. La separa de la escena el ritmo de sección (el de .sp-seccion, que
-   en móvil baja al suyo). .sp-tarjeta pone el radio; aquí, el rojo (también
+   en móvil baja al suyo). .sp-tarjeta pone el radio; aquí, el navy (también
    en el borde), la sombra suave, el relleno (56px arriba y abajo, 32px en
    móvil; a los lados, el de tarjeta) y el contenido centrado: título,
-   párrafo y el botón blanco del sistema para fondo rojo. El título y el
+   párrafo y el botón rojo principal del sistema. El título y el
    párrafo van al ancho de lectura para que no se estiren a todo el
    contenedor. No es clicable: de .sp-tarjeta no se queda el hover, que la
    haría pasar por interactiva (como las tarjetas del bento); el botón
@@ -408,13 +430,13 @@
   max-width: var(--container-max);
   margin: var(--space-section) auto 0;
   padding: 56px var(--space-inset);
-  background: var(--color-red);
-  border-color: var(--color-red);
+  background: var(--color-navy);
+  border-color: var(--color-navy);
   box-shadow: var(--shadow-card);
 }
 
 .despues:hover {
-  border-color: var(--color-red);
+  border-color: var(--color-navy);
   transform: none;
   box-shadow: var(--shadow-card);
 }
@@ -455,8 +477,11 @@
 }
 
 /* ---------- El ejemplo de Tarjeta de Resultados ----------
-   Mismo vocabulario que el tablero de SeccionEvidencia: cabecera navy,
-   títulos en versalitas grises, avatar navy y barras rojas. */
+   El vocabulario del tablero de SeccionEvidencia con los colores
+   intercambiados, para que la tarjeta resalte sobre el fondo navy del
+   "después": cabecera y avatar en rojo; nivel actual y barras de la rúbrica
+   en navy, y el nivel de partida en un navy claro (el navy mezclado con
+   blanco, como el rosado del rojo). Títulos en versalitas grises, como allí. */
 .resultados {
   overflow: hidden;
   background: var(--color-white);
@@ -471,7 +496,7 @@
   justify-content: space-between;
   gap: 12px;
   padding: 14px 20px;
-  background: var(--color-navy);
+  background: var(--color-red);
   color: var(--color-white);
   font-size: 11px;
   font-weight: var(--weight-bold);
@@ -505,7 +530,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--color-navy);
+  background: var(--color-red);
   color: var(--color-white);
   font-size: 14px;
   font-weight: var(--weight-black);
@@ -549,12 +574,12 @@
 }
 
 .resultadosNiveles .nivelPartida {
-  background: var(--color-red-hover);
-  color: var(--color-red-dark);
+  background: color-mix(in srgb, var(--color-navy) 16%, var(--color-white));
+  color: var(--color-navy);
 }
 
 .resultadosNiveles .nivelActual {
-  background: var(--color-red);
+  background: var(--color-navy);
   color: var(--color-white);
 }
 
@@ -589,7 +614,7 @@
 }
 
 .resultadosBarra .segmentoLleno {
-  background: var(--color-red);
+  background: var(--color-navy);
 }
 
 .resultadosPie {
@@ -674,14 +699,8 @@
 }
 
 /* ---------- Proyectos ----------
-   El bento (ProyectosVideo) sobre el fondo alterno, a todo lo ancho y con su
-   encabezado dentro: las tarjetas blancas se despegan del fondo, y la sección
-   se distingue de la de arriba, que termina en off-white. Radio cero, como las
-   demás secciones de ancho completo. */
-.proyectos {
-  background: var(--color-fondo-alterno);
-  border-radius: 0;
-}
+   La sección de casos de éxito es CasosDeExito, compartida con el home: su
+   fondo y su estilo viven en app/components/proyectos/ProyectosVideo.module.css. */
 
 /* ---------- Metodología PACTO ---------- */
 
@@ -1641,7 +1660,8 @@
 /* ---------- Nuestra Historia ----------
 
    Línea de tiempo en off-white, entre el origen y la escena de la gerente,
-   los dos sobre blanco. Los once hitos van en orden cronológico. Las tarjetas
+   los dos sobre blanco. Los once hitos van en orden cronológico, y detrás un
+   duodécimo, «Lo que sigue» (ver .hitoSiguiente). Las tarjetas
    son blancas, con borde fino, sombra suave y texto navy, como las demás
    sobre fondo claro; la categoría queda de acento (--acento): el icono, el
    año, el tallo y el filete del lado que toca el eje, en rojo las primeras
@@ -1788,6 +1808,46 @@
   content: "";
   position: absolute;
   background: var(--acento);
+}
+
+/* El último hito, «Lo que sigue»: tarjeta navy con texto blanco, título,
+   párrafo y el CTA. Sin cabeza de icono y año: su rótulo es la marca del eje
+   (.ejeSiguiente), que en vertical no se pinta, como los años. El botón va a
+   su ancho, no estirado, y parte su texto si la tarjeta es angosta. */
+.hito.hitoSiguiente {
+  --acento: var(--color-navy);
+  border-color: var(--color-navy);
+  background: var(--color-navy);
+}
+
+.hitoSiguiente h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: var(--weight-bold);
+  line-height: 1.3;
+  color: var(--color-white);
+}
+
+.hito.hitoSiguiente p {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hitoSiguiente p strong {
+  font-weight: var(--weight-bold);
+  color: var(--color-white);
+}
+
+.hitoSiguiente :global(.sp-btn) {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+/* La marca del eje de «Lo que sigue»: el punto relleno en navy, con el texto
+   en blanco. Solo existe en horizontal (en vertical .ejeAnio no se pinta). */
+.ejeAnio.ejeSiguiente {
+  background: var(--color-navy);
+  color: var(--color-white);
+  white-space: nowrap;
 }
 
 /* ----- Vertical, por debajo de 960px ----- */
@@ -1963,6 +2023,12 @@
     justify-self: center;
     width: var(--historia-tarjeta);
     padding-inline: 18px;
+  }
+
+  /* La de «Lo que sigue» lleva más texto y un botón: usa sus dos columnas
+     enteras. Sigue centrada en ellas, así que el tallo cae en su punto. */
+  .hito.hitoSiguiente {
+    width: 100%;
   }
 
   .hitoArriba {

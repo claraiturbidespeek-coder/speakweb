@@ -5,8 +5,8 @@ import type { TableroEvidencia } from "@/app/components/SeccionEvidencia";
 
    Sale del documento del cliente (referencias/Soluciones por Equipo - S-Peak.pdf),
    que trae las siete áreas con la misma estructura. Lo que el documento no da
-   —cifras del hero, avatares, logos y testimonios— lo pone la plantilla, igual
-   para las siete.
+   —cifras del hero, avatares, logos y la sección de casos de éxito— lo pone la
+   plantilla, igual para las siete.
 
    `respuestaPlana` existe porque el FAQ va dos veces: como markup, donde el
    texto lleva <strong>, y dentro del JSON-LD de FAQPage, que solo admite texto.
@@ -80,7 +80,6 @@ export type DatosEquipo = {
 
   banda: { titulo: string; texto: string; cta: string };
 
-  testimonios: { titulo: string };
 
   faq: {
     titulo: string;

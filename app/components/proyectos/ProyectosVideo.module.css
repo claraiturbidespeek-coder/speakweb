@@ -3,6 +3,16 @@
    Las tarjetas de cifra son .sp-tarjeta: de aquí solo sale su disposición
    interna. */
 
+/* ---------- Sección de casos de éxito (CasosDeExito.tsx) ----------
+   El bento sobre el fondo alterno, a todo lo ancho y con su encabezado
+   dentro: las tarjetas blancas se despegan del fondo. Radio cero, como las
+   demás secciones de ancho completo. Venía de nosotros.module.css (.proyectos)
+   y subió aquí al compartirse con el home. */
+.seccionCasos {
+  background: var(--color-fondo-alterno);
+  border-radius: 0;
+}
+
 /* ---------- Rejilla ----------
    Desde 1200px, mosaico de cuatro columnas iguales y tres filas. Cada columna
    son dos tramos, para que en la fila de abajo G pueda terminar dentro de la
@@ -197,6 +207,44 @@
   max-width: none;
 }
 
+/* Foto de quien firma, en el círculo del avatar (44px). La foto es de medio
+   cuerpo, así que se pinta al doble y desplazada para que el círculo enfoque
+   la cara (en la de Fernanda D., hacia el 53% del ancho y el 25% del alto del
+   archivo). */
+.autorFoto {
+  position: relative;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.autorFoto img {
+  position: absolute;
+  top: -2px;
+  left: -29px;
+  width: 96px;
+  height: 96px;
+  max-width: none;
+}
+
+/* Título sobre la cita, en lugar de las estrellas. Tras él, la cita va a
+   16px: el título ya hace de entrada, y a 22px (la del destacado) no cabría
+   en la fila. */
+.testiTitulo {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: var(--weight-bold);
+  line-height: 1.3;
+  color: var(--color-navy);
+}
+
+.testiTitulo + :global(.sp-testi-quote) {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
 /* Entre el logo y el rol, el mismo aire que dejaba el renglón del nombre. */
 .autorLogo {
   margin-bottom: 4px;
@@ -255,6 +303,27 @@
   color: var(--color-white);
 }
 
+.destacado .testiTitulo {
+  color: var(--color-white);
+}
+
+/* Con título, la cita del destacado baja a 16px como en las demás tarjetas
+   con título (la regla de .testiTitulo, que esta del destacado pisaría).
+
+   Y la tarjeta se compacta para no hacer más alta su fila: medido de 600 a
+   1940px, donde la cita pasa a 4 renglones (600–650 y 1265–1345) se pasaba
+   hasta 8px del alto que la fila tenía sin ella. Con 20px de relleno arriba
+   y abajo y 12px entre cita y firma queda 4px por debajo en el peor punto. */
+.destacado:has(.testiTitulo) {
+  padding-block: 20px;
+}
+
+.destacado .testiTitulo + :global(.sp-testi-quote) {
+  margin-bottom: 12px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
 .destacado :global(.sp-autor-rol) {
   color: rgba(255, 255, 255, 0.45);
 }
@@ -303,16 +372,22 @@
    archivo, y la cita completa de H tiene que caber en ese alto. G termina a
    cerca de un cuarto de la tarjeta F de arriba y H se queda con el resto; I
    conserva su columna. El corte lo ponen los tramos 3 y 4 de la rejilla
-   (--tramo-g y --tramo-h, que suman siempre 2fr) y se midió en el navegador,
-   igual que el tamaño de la cita, para que alto del video y alto de la cita
-   coincidan:
-     1200–1269px  corte a 1/3 de F, cita a 14px (no alcanza: G queda hasta
-                  15px más bajo que la cita)
-     1270–1319px  corte a 0.29 de F, cita a 14px
-     1320–1399px  corte a 1/4 de F, cita a 14px
-     desde 1400   corte a 1/4 de F, cita a 16px
-   Lo poco que sobre en H se reparte arriba y abajo: cita y firma van juntas
-   y centradas en el alto. */
+   (--tramo-g y --tramo-h, que suman siempre 2fr).
+
+   Para que la cita quepa en el alto del video, H es más compacta que los
+   demás testimonios: relleno de 16px, 8px entre cita y firma y 2px bajo el
+   logo; y la cita, en el tamaño e interlineado de cada tramo. Todo se midió
+   en el navegador, de 5 en 5px, con H a 2px o más del alto de G en el peor
+   punto de cada tramo (1200 y 1400 son los más justos):
+     1200–1269px  corte a 1/3 de F; cita a 13px / 1.4, relleno de 14px arriba
+                  y abajo, sin aire bajo las estrellas y 6px bajo la cita
+     1270–1319px  corte a 0.29 de F; cita a 14px / 1.4
+     1320–1399px  corte a 1/4 de F; cita a 13.5px / 1.5
+     1400–1519px  corte a 1/4 de F; cita a 15px / 1.45
+     desde 1520   corte a 1/4 de F; cita a 16px / 1.5
+   I cabe sin ajustes. Lo poco que sobre en H se reparte arriba y abajo: cita
+   y firma van juntas y centradas en el alto. Si cambia el texto de la cita,
+   hay que volver a medir. */
 @media (min-width: 1200px) {
   .rejilla {
     --tramo-g: 1.5fr;
@@ -366,6 +441,57 @@
 @media (min-width: 1400px) {
   .areaH :global(.sp-testi-quote) {
     font-size: 16px;
+  }
+}
+
+/* H compacta, para caber en el alto de G (ver "Fila de abajo en
+   escritorio"). */
+@media (min-width: 1200px) {
+  .areaH {
+    padding: 16px;
+  }
+
+  .areaH :global(.sp-testi-quote) {
+    margin-bottom: 8px;
+  }
+
+  .areaH .autorLogo {
+    margin-bottom: 2px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1269px) {
+  .areaH {
+    padding-block: 14px;
+  }
+
+  .areaH :global(.sp-estrellas) {
+    margin-bottom: 0;
+  }
+
+  .areaH :global(.sp-testi-quote) {
+    margin-bottom: 6px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+}
+
+@media (min-width: 1270px) and (max-width: 1319px) {
+  .areaH :global(.sp-testi-quote) {
+    line-height: 1.4;
+  }
+}
+
+@media (min-width: 1320px) and (max-width: 1399px) {
+  .areaH :global(.sp-testi-quote) {
+    font-size: 13.5px;
+  }
+}
+
+@media (min-width: 1400px) and (max-width: 1519px) {
+  .areaH :global(.sp-testi-quote) {
+    font-size: 15px;
+    line-height: 1.45;
   }
 }
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BandaLogos from "@/app/components/BandaLogos";
 import CentroDeRecursos from "@/app/components/CentroDeRecursos";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
@@ -7,6 +8,7 @@ import HeroHomeMedia from "@/app/components/HeroHomeMedia";
 import SelloSTPS from "@/app/components/SelloSTPS";
 import Icono from "@/app/components/Icono";
 import PreguntasFrecuentes from "@/app/components/PreguntasFrecuentes";
+import CasosDeExito from "@/app/components/proyectos/CasosDeExito";
 import styles from "./home.module.css";
 import { atributosDimension } from "@/lib/dimensiones";
 import { imagenResponsiva } from "@/lib/imagenes";
@@ -200,6 +202,7 @@ const FAQ = [
 export default function Home() {
   return (
     <main>
+      <AnimacionesEntrada threshold={0.08} />
       {/* Hero nuevo — en construcción */}
       <section className={`sp-seccion ${styles.heroNuevo}`} data-hero>
         <div className={`sp-inner ${styles.heroNuevoInner}`}>
@@ -445,154 +448,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. Casos de éxito */}
-      <section className="sp-seccion sp-seccion--ancha">
-        <div className={`sp-inner ${styles.centered}`}>
-          <p className="sp-eyebrow">Lo que dicen nuestros clientes</p>
-          <h2 className={styles.heading}>
-            Resultados reales en equipos nacionales e internacionales
-          </h2>
-          <p className={styles.lead}>
-            En S-Peak, el éxito no es subjetivo; se mide en números.
-          </p>
-        </div>
-
-        <div className={`sp-inner sp-inner--ancho ${styles.cases}`}>
-          <article className={`${styles.case} ${styles.caseFoto}`}>
-            <img
-              className={styles.caseImg}
-              {...imagenResponsiva(
-                "/images/home/caso-brechas-linguisticas.webp",
-                "(max-width: 600px) 670px, (max-width: 960px) calc(100vw - 40px), (max-width: 1100px) 820px, 63vw",
-              )}
-              {...atributosDimension("/images/home/caso-brechas-linguisticas.webp")}
-              alt=""
-              loading="lazy"
-            />
-            <div className={`${styles.caseCard} ${styles.caseCardNarrow}`}>
-              <h3 className={styles.caseTitle}>
-                Programas de idiomas adaptados a cada perfil de puesto
-              </h3>
-              <p className={styles.caseQuote}>
-                El equipo de S-Peak tiene una gran actitud de servicio, sus
-                cursos de idiomas son excelentes para nuestros equipos, se
-                adaptan a las necesidades de sus perfiles de puesto.
-              </p>
-              <div className={styles.person}>
-                <img
-                  {...imagenResponsiva("/images/home/testimonio-braskem.webp", "120px")}
-                  {...atributosDimension("/images/home/testimonio-braskem.webp")}
-                  alt=""
-                  aria-hidden="true"
-                  loading="lazy"
-                />
-                <span>
-                  <span className={styles.personName}>Braskem Idesa</span>
-                  <span className={styles.personRole}>Área de RRHH</span>
-                </span>
-              </div>
-            </div>
-          </article>
-
-          <article className={`${styles.case} ${styles.caseYellow}`}>
-            <div className={styles.caseCard}>
-              <h3 className={styles.caseTitle}>
-                Claridad y contexto corporativo en cada sesión
-              </h3>
-              <p className={styles.caseQuote}>
-                S-Peak es una organización sumamente dinámica. Su capacidad para
-                entender nuestras necesidades específicas y adaptar sus mejores
-                recursos a nuestros objetivos de negocio es su gran diferencial.
-              </p>
-              <div className={styles.person}>
-                <img
-                  {...imagenResponsiva("/images/home/testimonio-fernanda.webp", "120px")}
-                  {...atributosDimension("/images/home/testimonio-fernanda.webp")}
-                  alt=""
-                  aria-hidden="true"
-                  loading="lazy"
-                />
-                <span>
-                  <span className={styles.personName}>Fernanda D.</span>
-                  <span className={styles.personRole}>Alumna, Chedraui</span>
-                </span>
-              </div>
-            </div>
-          </article>
-
-        </div>
-
-        <div className={`sp-inner sp-inner--ancho ${styles.cases} ${styles.casesSecond}`}>
-          <article
-            className={`${styles.case} ${styles.caseRed} ${styles.caseOnColor}`}
-          >
-            <div>
-              <h3 className={styles.caseTitle}>
-                Adaptabilidad, seguimiento y atención
-              </h3>
-              <p className={styles.caseQuote}>
-                S-Peak ha sido un gran aliado para nosotros, ya que se adapta a
-                nuestras necesidades y cuenta con un sistema robusto de
-                seguimiento en asistencias. Valoramos también que siempre nos
-                brinda una buena atención tanto a la empresa como a los alumnos.
-              </p>
-              <div className={`${styles.person} ${styles.personNarrow}`}>
-                <img
-                  {...imagenResponsiva("/images/home/testimonio-anabel.webp", "120px")}
-                  {...atributosDimension("/images/home/testimonio-anabel.webp")}
-                  alt=""
-                  aria-hidden="true"
-                  loading="lazy"
-                />
-                <span>
-                  <span className={styles.personName}>Anabel P.</span>
-                  <span className={styles.personRole}>
-                    Analista de Planeación y Desarrollo de RH
-                  </span>
-                </span>
-              </div>
-            </div>
-          </article>
-
-          <article className={`${styles.case} ${styles.caseFoto}`}>
-            <img
-              className={styles.caseImg}
-              {...imagenResponsiva(
-                "/images/home/caso-seguimiento-calidad.webp",
-                "(max-width: 600px) 770px, (max-width: 960px) calc(100vw - 40px), (max-width: 1100px) 770px, (max-width: 1440px) 690px, 48vw",
-              )}
-              {...atributosDimension("/images/home/caso-seguimiento-calidad.webp")}
-              alt=""
-              loading="lazy"
-            />
-            <div className={`${styles.caseCard} ${styles.caseCardWide}`}>
-              <h3 className={styles.caseTitle}>Seguimiento, calidad y valor</h3>
-              <p className={styles.caseQuote}>
-                Valoramos el seguimiento que S-Peak nos brinda, el feedback que
-                piden a través de citas regulares y encuestas, así como
-                reaccionan a lo que pedimos como cliente. Además, los profesores
-                están muy bien preparados para asegurar el aprendizaje, y los
-                precios son justos.
-              </p>
-              <div className={`${styles.person} ${styles.personNarrow}`}>
-                <img
-                  {...imagenResponsiva("/images/home/testimonio-erika.webp", "120px")}
-                  {...atributosDimension("/images/home/testimonio-erika.webp")}
-                  alt=""
-                  aria-hidden="true"
-                  loading="lazy"
-                />
-                <span>
-                  <span className={styles.personName}>Erika C.</span>
-                  <span className={styles.personRole}>
-                    People Development, Culture and D&amp;I Expert
-                  </span>
-                </span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
+      {/* 9. Casos de éxito: la misma sección que /nosotros/, compartida
+          (CasosDeExito). Sus bloques entran con .reveal, de ahí
+          AnimacionesEntrada, que el home no necesitaba hasta ahora. */}
+      <CasosDeExito />
 
       {/* 10. FAQ */}
       <PreguntasFrecuentes

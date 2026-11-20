@@ -7,8 +7,10 @@ import {
   ENLACE_INDICE_IDIOMAS,
   ENLACES_EQUIPOS,
   ENLACES_IDIOMAS,
+  ENLACE_CLIENTES,
   ENLACES_SUELTOS,
 } from "./secciones";
+import { irACasosDeExito } from "./irACasosDeExito";
 import useModoLanding from "./useModoLanding";
 import styles from "./nav.module.css";
 
@@ -35,7 +37,8 @@ import styles from "./nav.module.css";
    con un botón para volver. Ese cambio lo gobierna `data-detalle`, y el CSS lo
    ignora por encima del breakpoint.
 
-   Clientes y Recursos no despliegan nada: navegan. Se distinguen por ir tras
+   Clientes, Conózcanos y Recursos no despliegan nada: navegan (Clientes, a la
+   sección de casos de éxito de la página o del home). Se distinguen por ir tras
    una separación, sin el fondo de seleccionado y con una flecha en lugar del
    chevron. Un elemento que lleva a otra página y otro que abre contenido a la
    derecha no deberían verse igual. */
@@ -174,6 +177,25 @@ export default function MenuCompleto() {
 
             {/* Estos dos no despliegan: llevan a otra página. */}
             <ul className={`${styles.listaItems} ${styles.listaDirectos}`}>
+              {/* Clientes: si la página tiene casos de éxito, cierra el panel
+                  y suelta el fondo en el mismo clic (como MenuAnclas) y baja a
+                  la sección; si no, navega al home y el panel se cierra con
+                  el cambio de ruta. */}
+              <li>
+                <Link
+                  className={styles.listaEnlace}
+                  href={ENLACE_CLIENTES.ruta}
+                  onClick={(e) =>
+                    irACasosDeExito(e, () => {
+                      document.body.style.overflow = "";
+                      window.__lenis?.start();
+                      cerrar();
+                    })
+                  }
+                >
+                  {ENLACE_CLIENTES.nombre}
+                </Link>
+              </li>
               {ENLACES_SUELTOS.map((e) => (
                 <li key={e.ruta}>
                   <Link className={styles.listaEnlace} href={e.ruta}>

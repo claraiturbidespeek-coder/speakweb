@@ -9,8 +9,8 @@ import { IDIOMAS, type DatosEquipo } from "../tipos";
    Y los enlaces de idioma van a los slugs canónicos, no a las redirecciones.
 
    Añadidos por la plantilla, porque el documento no los trae para ninguna área:
-   antetítulos de dolor, diferenciadores y testimonios, y el texto de la banda
-   de CTA, adaptados de la referencia de ventas y marketing. */
+   antetítulos de dolor y diferenciadores, y el texto de la banda de CTA,
+   adaptados de la referencia de ventas y marketing. */
 
 const datos: DatosEquipo = {
   slug: "legal-y-juridico",
@@ -275,9 +275,6 @@ const datos: DatosEquipo = {
     cta: "Solicite una Cotización",
   },
 
-  testimonios: {
-    titulo: "Lo que dicen las empresas que ya se capacitaron con S-Peak",
-  },
 
   faq: {
     titulo:
