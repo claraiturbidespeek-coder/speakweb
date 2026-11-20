@@ -11,9 +11,10 @@
 
 /* ---------- Hero ---------- */
 
-/* Ancho completo: radio cero explícito, como en las landings. Sin foto ni
-   banda de logos debajo, así que el hero va a una columna y cierra con el
-   ritmo de sección normal en lugar de los 120px que dejan sitio a los logos. */
+/* Ancho completo: radio cero explícito, como en las landings. Dos columnas,
+   el texto y la animación (ver .heroInner); por debajo de 960px, una. Sin
+   banda de logos montada encima de lo que sigue, así que cierra con el ritmo
+   de sección normal en lugar de los 120px que dejan sitio a los logos. */
 .hero {
   position: relative;
   background: linear-gradient(
@@ -25,16 +26,253 @@
   padding: 80px var(--space-gutter) var(--space-section);
 }
 
+/* Dos columnas iguales: el texto y la animación (AnimacionDiagnostico.tsx),
+   que llena la suya. El texto arranca arriba, a la altura de la etiqueta; la
+   animación, que mide solo su contenido, va centrada en vertical a su lado
+   (ver .animMarco). `minmax(0, …)` deja que las columnas encojan por debajo
+   del ancho de su contenido, para que nada desborde. Por debajo de 960px, una
+   columna (ver Responsive). */
 .heroInner {
   position: relative;
   z-index: 1;
-  max-width: 1160px;
+  /* El ancho del contenido del header (Header.module.css, .inner) y del hero
+     de /equipo/: el texto arranca en el borde del logo y la animación acaba
+     en el del botón del menú. */
+  max-width: var(--container-max);
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+  align-items: start;
 }
 
-.hero h1 {
-  max-width: 22ch;
-  margin-bottom: 14px;
+/* Contenedor del titular: la línea del idioma mide su tamaño máximo contra el
+   ancho de esta columna. */
+.heroTexto {
+  container-type: inline-size;
+}
+
+/* ---------- Animación del hero ----------
+   Sin tarjeta: el título del paso y la escena con los 18 puntos van directo
+   sobre el fondo del hero, sin relleno, con el título al borde izquierdo de la
+   columna.
+
+   El marco es el contenedor: todas las medidas van en --u, un píxel del
+   diseño original de 420px de ancho, escalado al ancho real del marco. Así en
+   escritorio la animación llena su columna y crece en proporción. Por debajo
+   de 960px, --u vuelve a valer 1px y usa sus medidas fijas (ver Responsive).
+
+   Alto: solo el del contenido. La escena no tiene contenido en flujo (los
+   puntos y los grupos van en absoluto), así que su alto se calcula: el del
+   grupo más alto, 4 filas de puntos, más el hueco y el bloque de nombre,
+   personas y ruta de debajo (ver .animEscena).
+   Cada punto se coloca con sus variables (AnimacionDiagnostico.tsx): en los
+   pasos 1 y 2, su casilla de una rejilla de 6 × 3 centrada en la escena; en
+   los 3 y 4, su casilla de una rejilla de 2 columnas dentro de su grupo, y los
+   tres grupos centrados en tercios. El viaje entre una y otra es la
+   transición de left/top. */
+.animMarco {
+  container-type: inline-size;
+  --u: calc(100cqw / 420);
+  align-self: center;
+}
+
+.anim {
+  --punto: calc(32 * var(--u));
+  --hueco: calc(10 * var(--u));
+  display: flex;
+  flex-direction: column;
+  gap: calc(16 * var(--u));
+}
+
+/* Los cuatro títulos en la misma celda: el que entra aparece mientras el que
+   sale se va, sin que la escena se mueva. Centrados, sobre el mismo eje que la
+   rejilla de puntos y el grupo del medio. Debajo, fija en todos los pasos, una
+   línea corta en el rojo de acento. */
+.animTitulos {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.animTitulos::after {
+  content: "";
+  width: calc(40 * var(--u));
+  height: calc(3 * var(--u));
+  margin-top: calc(10 * var(--u));
+  background: var(--color-red);
+}
+
+.animTitulo {
+  grid-area: 1 / 1;
+  margin: 0;
+  font-size: calc(20 * var(--u));
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-navy);
+  opacity: 0;
+  transform: translateY(calc(6 * var(--u)));
+  transition: opacity 0.4s ease, transform 0.4s var(--ease-out-soft);
+}
+
+.animTituloActivo {
+  opacity: 1;
+  transform: none;
+}
+
+/* 4 filas de puntos y 3 huecos (el grupo B1, el más alto), 16 de hueco y
+   65 del bloque de debajo de los grupos: nombre (13 × 1,3), personas
+   (12 × 1,3), y la ruta (8 de margen, 6 de barra, 4 de hueco y 11 × 1,3). */
+.animEscena {
+  position: relative;
+  height: calc(4 * var(--punto) + 3 * var(--hueco) + 81 * var(--u));
+}
+
+.animPunto {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--punto);
+  height: var(--punto);
+  border: calc(2 * var(--u)) solid var(--color-navy);
+  border-radius: 50%;
+  background: transparent;
+  /* Rejilla de 6 × 3, centrada en la escena. */
+  left: calc(50% - (6 * var(--punto) + 5 * var(--hueco)) / 2 + var(--col) * (var(--punto) + var(--hueco)));
+  top: calc(50% - (3 * var(--punto) + 2 * var(--hueco)) / 2 + var(--fila) * (var(--punto) + var(--hueco)));
+  transition: left 0.7s var(--ease-out-soft), top 0.7s var(--ease-out-soft),
+    background 0.3s ease;
+}
+
+/* Paso 1: se llenan uno a uno. Fuera del paso 1 ya están llenos y sin
+   retraso, para que el resto de los cambios no herede el escalonado. */
+.animLlenos .animPunto {
+  background: var(--color-navy);
+}
+
+.animPaso1.animLlenos .animPunto {
+  transition-delay: 0s, 0s, calc(var(--orden) * var(--escalon));
+}
+
+.animNivel {
+  font-size: calc(11 * var(--u));
+  font-weight: var(--weight-black);
+  line-height: 1;
+  color: var(--color-white);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.animPaso2 .animNivel,
+.animPaso3 .animNivel,
+.animPaso4 .animNivel {
+  opacity: 1;
+}
+
+/* Pasos 3 y 4: cada grupo en su tercio, dos puntos por fila, desde arriba. */
+.animPaso3 .animPunto,
+.animPaso4 .animPunto {
+  left: calc((var(--grupo) * 2 + 1) * 100% / 6 - (2 * var(--punto) + var(--hueco)) / 2 + var(--gcol) * (var(--punto) + var(--hueco)));
+  top: calc(var(--gfila) * (var(--punto) + var(--hueco)));
+}
+
+/* El nombre de cada grupo y su ruta, abajo de la escena, en los mismos
+   tercios que los puntos. */
+.animGrupos {
+  position: absolute;
+  inset: auto 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: calc(12 * var(--u));
+  text-align: center;
+  opacity: 0;
+  transform: translateY(calc(6 * var(--u)));
+  transition: opacity 0.4s ease, transform 0.4s var(--ease-out-soft);
+}
+
+.animPaso3 .animGrupos,
+.animPaso4 .animGrupos {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.5s;
+}
+
+.animGrupo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+.animGrupoNombre {
+  font-size: calc(13 * var(--u));
+  font-weight: var(--weight-bold);
+  line-height: 1.3;
+  color: var(--color-navy);
+}
+
+.animGrupoPersonas {
+  font-size: calc(12 * var(--u));
+  line-height: 1.3;
+  color: var(--color-muted);
+}
+
+/* La ruta solo en el paso 4: la barra avanza hacia el siguiente nivel. */
+.animRuta {
+  display: flex;
+  flex-direction: column;
+  gap: calc(4 * var(--u));
+  width: 100%;
+  margin-top: calc(8 * var(--u));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.animPaso4 .animRuta {
+  opacity: 1;
+}
+
+.animBarra {
+  height: calc(6 * var(--u));
+  border-radius: calc(3 * var(--u));
+  background: var(--color-off-white);
+  overflow: hidden;
+}
+
+.animBarra span {
+  display: block;
+  height: 100%;
+  background: var(--color-red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.animPaso4 .animBarra span {
+  transform: scaleX(1);
+  transition: transform 2s var(--ease-out-soft) 0.3s;
+}
+
+.animSiguiente {
+  font-size: calc(11 * var(--u));
+  font-weight: var(--weight-bold);
+  line-height: 1.3;
+  color: var(--color-red);
+}
+
+/* Titular con el idioma que rota (TitularIdiomas.tsx). Tipografía y margen
+   inferior del h1 de /equipo/. El idioma va en su propia línea, en el rojo de
+   acento (como el <strong> de aquel titular) y sin partirse: así las seis
+   versiones ocupan las mismas líneas y lo de debajo no se mueve.
+
+   Su tamaño es el del titular salvo que no quepa: min(1em, 7.4cqw) lo limita
+   al ancho de la columna de texto (.heroTexto es el contenedor), con margen
+   para «español para extranjeros», la más larga (~12,5em). Al no depender de
+   la palabra, la línea mide lo mismo en las seis versiones. */
+.titular {
+  margin: 0 0 20px;
   font-size: clamp(28px, 3.2vw, 42px);
   font-weight: var(--weight-bold);
   line-height: 1.1;
@@ -42,18 +280,74 @@
   color: var(--color-navy);
 }
 
-.heroIdiomas {
-  margin-bottom: 20px;
-  font-size: 15px;
-  font-weight: var(--weight-semibold);
-  line-height: 1.5;
+.titularIdioma {
+  font-size: min(1em, 7.4cqw);
+  white-space: nowrap;
   color: var(--color-red);
 }
 
+/* inline-block para que la palabra pueda moverse en vertical. Sale subiendo
+   y desvaneciéndose (300ms, el SALIDA del componente); la siguiente entra
+   igual, desde abajo. */
+.titularPalabra {
+  display: inline-block;
+  transition: opacity 300ms ease-in, transform 300ms ease-in;
+}
+
+.titularEntrando {
+  animation: titularEntrar 400ms var(--ease-out-soft);
+}
+
+.titularSaliendo {
+  opacity: 0;
+  transform: translateY(-0.25em);
+}
+
+@keyframes titularEntrar {
+  from {
+    opacity: 0;
+    transform: translateY(0.25em);
+  }
+}
+
+/* Como en el hero de /equipo/: el párrafo llena su columna en vez del tope
+   de 540px del patrón. */
 .hero :global(.sp-hero-sub) {
-  /* El patrón tope a 540px; aquí el hero es de una columna y el párrafo es
-     largo, así que se le deja la medida de lectura de las bajadas de sección. */
+  max-width: none;
+}
+
+/* ---------- Logos ----------
+   En las demás páginas la franja se monta 60px sobre la sección anterior
+   (margin-top negativo de .sp-logos, patrones.css) y no lleva padding
+   vertical. Aquí va como una sección más: sin montarse, y con el padding
+   vertical de sp-seccion arriba y abajo, también en su valor de móvil. */
+.logos {
+  margin-top: 0;
+  padding-block: var(--space-section);
+}
+
+/* ---------- Testimonio ----------
+   El fondo azul marino de la sección de testimonios de /equipo/ (equipo.module.css,
+   .testimonials): la tarjeta sp-testi-card es translúcida con texto blanco y
+   solo se lee sobre él. Una sola tarjeta, a la medida de lectura de las
+   bajadas de sección, y el botón debajo con el mismo hueco que separa el
+   sello STPS del botón del hero. */
+.testimonio {
+  background: var(--color-navy);
+  border-radius: 0;
+}
+
+.testimonioInner {
   max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.testimonioInner :global(.sp-testi-card) {
+  width: 100%;
 }
 
 /* ---------- Qué recibe ---------- */
@@ -68,23 +362,59 @@
   list-style: none;
 }
 
+/* Letra más grande que la del patrón sp-tarjeta-color (14px y 13px): es la
+   sección que vende la oferta, y el texto no baja del párrafo del hero (16px).
+   Para que la tarjeta no crezca, lo que se recorta es el aire: el icono pasa
+   de 48 a 40px (la medida de sp-icono--md) y se acercan el icono, el título y
+   el texto. En móvil también baja el relleno (ver Responsive). */
+.recibeGrid :global(.sp-tarjeta-color) {
+  padding: 20px;
+}
+
+.recibeGrid :global(.sp-icono) {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 12px;
+}
+
+.recibeGrid :global(.sp-icono svg) {
+  width: 20px;
+  height: 20px;
+}
+
+.recibeGrid h3 {
+  margin-bottom: 6px;
+  font-size: 17px;
+  line-height: 1.25;
+}
+
+.recibeGrid p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
 /* ---------- Cómo funciona ---------- */
 
 .pasosSeccion {
   background: var(--color-off-white);
 }
 
+/* Cinco columnas, una por paso, al ancho de `sp-inner`. La rejilla estira las
+   tarjetas a la altura de la más alta; dentro, el número arriba y el texto
+   debajo. Por debajo de 960px vuelven a apilarse con el número a la izquierda
+   (ver Responsive). */
 .pasos {
-  max-width: 860px;
   margin: 0 auto;
   display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 16px;
   list-style: none;
 }
 
 .paso {
   display: grid;
-  grid-template-columns: 48px 1fr;
+  grid-template-columns: 1fr;
+  align-content: start;
   gap: 20px;
   align-items: start;
   background: var(--color-white);
@@ -107,8 +437,15 @@
   line-height: 1;
 }
 
+/* CTA bajo los pasos, centrado como el de /equipo/ (.dolorCta). Lo separan de
+   las tarjetas los mismos 32px que separan el botón del hero de su párrafo
+   (margin-bottom de sp-hero-sub). */
+.pasosCta {
+  margin-top: 32px;
+  text-align: center;
+}
+
 .paso p {
-  align-self: center;
   font-size: 16px;
   line-height: 1.65;
   color: var(--color-ink-2);
@@ -137,30 +474,64 @@
   color: var(--color-ink-2);
 }
 
-.mideLista {
+/* Las cuatro habilidades, una por renglón. La marca va en una columna fija de
+   36px (sp-icono--sm): Hablar lleva el mismo hueco vacío, para que las cuatro
+   palabras arranquen en el mismo eje. */
+.habilidades {
   display: grid;
-  gap: 8px;
+  gap: 10px;
+  margin-bottom: 16px;
   list-style: none;
 }
 
-.mideLista li {
-  position: relative;
-  padding-left: 22px;
+.habilidades li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   font-size: 16px;
   line-height: 1.6;
-  color: var(--color-navy);
   font-weight: var(--weight-semibold);
+  color: var(--color-navy);
 }
 
-.mideLista li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.62em;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-red);
+.habilidadMarca {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.habilidadNota {
+  font-weight: var(--weight-normal);
+  color: var(--color-muted);
+}
+
+/* Costo de la evaluación oral: dos columnas a cualquier ancho, de la misma
+   medida; el texto se parte en líneas si no cabe. Los encabezados toman el
+   navy seminegrita de los renglones de habilidades, y la fila el gris de los
+   párrafos de la sección. */
+.mideTabla {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.mideTabla th,
+.mideTabla td {
+  padding: 10px 16px 10px 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+.mideTabla th {
+  border-bottom: 1px solid var(--color-border);
+  font-weight: var(--weight-semibold);
+  color: var(--color-navy);
+}
+
+.mideTabla td {
+  color: var(--color-ink-2);
 }
 
 /* ---------- Franja de idiomas ---------- */
@@ -270,15 +641,78 @@
 }
 
 @media (max-width: 960px) {
+  /* La animación, debajo del texto y a todo el ancho, con el hueco del hero
+     de /equipo/ a este ancho, y con puntos más chicos. */
+  .heroInner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 56px;
+  }
+
+  .animMarco {
+    --u: 1px;
+  }
+
+  .anim {
+    --punto: 24px;
+    --hueco: 6px;
+    gap: 12px;
+  }
+
+  .animTitulo {
+    font-size: 18px;
+  }
+
+  .animNivel {
+    font-size: 9.5px;
+  }
+
   .faqInner {
     grid-template-columns: 1fr;
     gap: 36px;
+  }
+
+  /* Los pasos, apilados como antes de las cinco columnas. */
+  .pasos {
+    max-width: 860px;
+    grid-template-columns: 1fr;
+  }
+
+  .paso {
+    grid-template-columns: 48px 1fr;
+  }
+
+  .paso p {
+    align-self: center;
   }
 }
 
 @media (max-width: 600px) {
   .hero {
     padding: 48px var(--space-gutter) var(--space-section-mobile);
+  }
+
+  .logos {
+    padding-block: var(--space-section-mobile);
+  }
+
+  /* Con las seis apiladas, el icono pasa a la izquierda del título para
+     ahorrar su renglón; el texto va debajo, a todo el ancho de la tarjeta. */
+  .recibeGrid :global(.sp-tarjeta-color) {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 8px;
+    padding: 16px;
+  }
+
+  .recibeGrid :global(.sp-icono),
+  .recibeGrid h3 {
+    margin-bottom: 0;
+  }
+
+  .recibeGrid p {
+    grid-column: 1 / -1;
   }
 
   .paso {

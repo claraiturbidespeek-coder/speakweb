@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
 import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
+import BandaLogos from "@/app/components/BandaLogos";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
 import Icono from "@/app/components/Icono";
 import SelloSTPS from "@/app/components/SelloSTPS";
 import styles from "./diagnostico.module.css";
+import AnimacionDiagnostico from "./AnimacionDiagnostico";
+import TitularIdiomas from "./TitularIdiomas";
 
 /* /diagnostico/: el diagnóstico de nivel sin costo.
 
    Sigue el sistema visual de las landings de idioma —hero, secciones sp-*,
    franja de idiomas, FAQ y CTA final— pero se renderiza en el servidor, como
    las páginas de /equipo/: los únicos trozos de cliente son los botones de
-   contacto y AnimacionesEntrada.
+   contacto, AnimacionesEntrada, el titular con el idioma que rota
+   (TitularIdiomas) y la animación del hero (AnimacionDiagnostico).
 
    Los botones abren por ahora el modal de contacto general. La variante del
    formulario propia del diagnóstico va en una pasada aparte. */
@@ -63,48 +67,45 @@ const RECIBE = [
     color: "navy",
   },
   {
-    titulo: "Una propuesta de grupos por nivel.",
-    descripcion: "Los grupos se arman con el nivel que obtuvo cada colaborador en el examen.",
+    titulo: "Una propuesta de grupos por nivel, de 1 a 10 colaboradores cada uno.",
+    descripcion: "Para que cada persona avance con compañeros de su mismo nivel.",
     icono: "usuarios",
     color: "rojo",
   },
   {
-    titulo: "Duración y presupuesto por grupo para alcanzar el objetivo.",
-    descripcion: "Cuánto costaría cada grupo propuesto y en cuánto tiempo terminaría.",
+    titulo: "Duración y presupuesto por grupo para llegar al nivel que su equipo necesita.",
+    descripcion: "Para que presente el proyecto a Dirección con un costo y una duración.",
     icono: "reloj",
     color: "amarillo",
   },
   {
-    titulo: "Una clase muestra sin costo para todo el grupo.",
-    descripcion:
-      "Para que su equipo conozca una clase antes de decidir. Sin costo, igual que el examen escrito.",
+    titulo: "Una clase muestra sin costo con uno de los grupos propuestos.",
+    descripcion: "Para que vea cómo trabajamos antes de decidir.",
     icono: "presentacion",
     color: "rojo",
   },
   {
-    titulo:
-      "Cuánto tardaría cada colaborador en llegar a un nivel intermedio (B1) o al siguiente (B2), según su nivel de partida.",
+    titulo: "Cuánto tardaría cada colaborador",
     descripcion:
-      "Así sabe, antes de invertir, en cuánto tiempo su equipo llegaría al nivel que necesita.",
+      "en llegar a un nivel intermedio (B1) o al siguiente (B2), según su nivel de partida",
     icono: "tendencia",
     color: "amarillo",
   },
   {
     titulo:
       "La propuesta de afinar el nivel de algunos participantes con una evaluación oral.",
-    descripcion:
-      "El examen no mide la expresión oral. Sin costo si contrata el programa; se cotiza si solo desea la evaluación.",
+    descripcion: "Se la proponemos en la junta.",
     icono: "mensaje",
     color: "navy",
   },
 ];
 
 const PASOS = [
-  "Platicamos con usted y definimos en qué idioma evaluar a su equipo. Si aún no sabe cuál, lo decidimos juntos en esa primera conversación.",
+  "Platicamos con usted y definimos en qué idioma evaluar a su equipo.",
   "Damos de alta a su empresa y creamos su acceso al examen, en el idioma acordado.",
   "Le enviamos el enlace para que lo comparta con su equipo.",
   "Cada colaborador lo presenta en línea. Le toma de 5 minutos a una hora, según su nivel.",
-  "Unos días después de que su equipo termine, le presentamos los resultados en una junta: todo lo que se enlista en «Qué recibe».",
+  "En cuanto su equipo termine, agendamos con usted la junta de resultados: todo lo que se enlista en «Qué recibe».",
 ];
 
 /* En el orden en que los nombra esta página, no en el de secciones.ts. Las
@@ -137,12 +138,7 @@ const FAQ = [
   {
     pregunta: "¿Cuándo tengo los resultados?",
     respuesta:
-      "Unos días después de que su equipo termine el examen. Se los presentamos en una junta.",
-  },
-  {
-    pregunta: "¿Por qué la parte oral va aparte?",
-    respuesta:
-      "Porque este examen no mide la expresión oral. En la junta le proponemos afinar el nivel de algunos participantes con una evaluación oral.",
+      "En cuanto su equipo termina el examen, agendamos con usted la junta de resultados.",
   },
   {
     pregunta: "¿En qué idiomas está disponible?",
@@ -202,19 +198,25 @@ export default function Diagnostico() {
             loading="lazy"
           />
           <div className={styles.heroInner}>
-            <div className="sp-etiqueta">Diagnóstico de Nivel para Equipos · Sin costo</div>
-            <h1>Conozca el nivel de inglés de su equipo antes de invertir en capacitación</h1>
-            <p className={styles.heroIdiomas}>
-              También en portugués, francés, alemán, italiano y español para extranjeros.
-            </p>
-            <p className="sp-hero-sub">
-              Cada colaborador presenta un examen en línea. Unos días después de que su
-              equipo lo termine, le presentamos en una junta el nivel de cada persona, una
-              propuesta de grupos y cuánto tardaría cada una en llegar a un nivel intermedio
-              (B1) o al siguiente (B2), según su nivel de partida. Sin costo.
-            </p>
-            <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
-            <SelloSTPS />
+            <div className={styles.heroTexto}>
+              <div className="sp-etiqueta">Diagnóstico de Nivel para Equipos · Sin costo</div>
+              <TitularIdiomas
+                claseTitular={styles.titular}
+                claseIdioma={styles.titularIdioma}
+                clasePalabra={styles.titularPalabra}
+                claseEntrando={styles.titularEntrando}
+                claseSaliendo={styles.titularSaliendo}
+              />
+              <p className="sp-hero-sub">
+                Cada colaborador presenta un examen en línea. En cuanto su equipo lo termine,
+                agendamos con usted una junta para presentarle el nivel de cada persona, una
+                propuesta de grupos y cuánto tardaría cada una en llegar a un nivel intermedio
+                (B1) o al siguiente (B2), según su nivel de partida. Sin costo.
+              </p>
+              <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
+              <SelloSTPS />
+            </div>
+            <AnimacionDiagnostico />
           </div>
         </section>
 
@@ -222,6 +224,12 @@ export default function Diagnostico() {
         <section className="sp-seccion" id="que-recibe">
           <div className="sp-inner">
             <div className="sp-seccion-top reveal">
+              {/* La línea de público: justo debajo del hero, centrada, como
+                  entrada de «Qué recibe». */}
+              <p>
+                Para áreas de Recursos Humanos y Dirección que van a capacitar a un equipo en
+                idiomas
+              </p>
               <h2>Qué recibe</h2>
             </div>
             <ul className={`${styles.recibeGrid} reveal stagger`}>
@@ -241,6 +249,31 @@ export default function Diagnostico() {
           </div>
         </section>
 
+        {/* LOGOS */}
+        <BandaLogos className={styles.logos} />
+
+        {/* TESTIMONIO: la tarjeta de /equipo/, sola, con el CTA debajo. */}
+        <section className={`sp-seccion ${styles.testimonio}`} id="testimonio">
+          <div className={`${styles.testimonioInner} reveal`}>
+            <div className="sp-testi-card sp-barra">
+              <div className="sp-estrellas">★★★★★</div>
+              <p className="sp-testi-quote">
+                &ldquo;El equipo de S-Peak tiene una gran actitud de servicio, sus cursos de
+                idiomas son excelentes para nuestros equipos, se adaptan a las necesidades de
+                nuestros perfiles de puesto.&rdquo;
+              </p>
+              <div className="sp-testi-autor">
+                <div className="sp-avatar">BI</div>
+                <div>
+                  <div className="sp-autor-nombre">Braskem Idesa</div>
+                  <div className="sp-autor-rol">Área de RRHH</div>
+                </div>
+              </div>
+            </div>
+            <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
+          </div>
+        </section>
+
         {/* CÓMO FUNCIONA */}
         <section className={`sp-seccion ${styles.pasosSeccion}`} id="como-funciona">
           <div className="sp-inner">
@@ -257,6 +290,9 @@ export default function Diagnostico() {
                 </li>
               ))}
             </ol>
+            <div className={`${styles.pasosCta} reveal`}>
+              <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
+            </div>
           </div>
         </section>
 
@@ -264,18 +300,43 @@ export default function Diagnostico() {
         <section className="sp-seccion" id="que-mide">
           <div className={`${styles.mideInner} reveal`}>
             <h2>Qué mide, y qué no</h2>
-            <p>
-              El examen mide tres de las cuatro habilidades del idioma: comprensión oral
-              (escuchar), comprensión escrita (leer) y expresión escrita.
-            </p>
-            <p>
-              La expresión oral no forma parte de este examen. En la junta le proponemos
-              afinar el nivel de algunos participantes con una evaluación oral:
-            </p>
-            <ul className={styles.mideLista}>
-              <li>Sin costo si contrata el programa.</li>
-              <li>Se cotiza si solo desea la evaluación.</li>
+            <ul className={styles.habilidades}>
+              {["Escuchar", "Leer", "Escribir"].map((h) => (
+                <li key={h}>
+                  <span
+                    className={`sp-icono sp-icono--sm sp-icono--rojo ${styles.habilidadMarca}`}
+                    role="img"
+                    aria-label="Se evalúa:"
+                  >
+                    <Icono nombre="palomita" />
+                  </span>
+                  {h}
+                </li>
+              ))}
+              <li>
+                <span className={styles.habilidadMarca} aria-hidden="true" />
+                Hablar
+                <span className={styles.habilidadNota}>Se evalúa aparte</span>
+              </li>
             </ul>
+            <p>
+              En la junta le proponemos afinar el nivel de algunos participantes con una
+              evaluación oral.
+            </p>
+            <table className={styles.mideTabla}>
+              <thead>
+                <tr>
+                  <th scope="col">Si contrata el programa</th>
+                  <th scope="col">Si solo desea la evaluación</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sin costo</td>
+                  <td>Se cotiza</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </section>
 
@@ -300,12 +361,12 @@ export default function Diagnostico() {
               <div className="sp-eyebrow">Preguntas frecuentes</div>
               <h2>Preguntas frecuentes sobre el diagnóstico de nivel</h2>
               <p>
-                Hemos recopilado las dudas más comunes de nuestros clientes para brindarle
-                claridad desde el primer momento.
+                Lo que nos preguntan las áreas de Recursos Humanos antes de solicitar el
+                diagnóstico.
               </p>
               <div className={`sp-cta-card ${styles.faqCtaCard}`}>
                 <p>¿Tiene una pregunta que no está aquí?</p>
-                <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
+                <BotonContacto className="sp-btn sp-btn--rojo">Hablar con un Experto</BotonContacto>
               </div>
             </div>
             <div className="sp-faq-lista reveal">
