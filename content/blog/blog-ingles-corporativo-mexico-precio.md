@@ -3,66 +3,77 @@ title: "¿Cuánto cuesta un curso de inglés corporativo en México? Cómo audit
 slug: "blog-ingles-corporativo-mexico-precio"
 date: "2026-06-02T18:04:49"
 author: "Andrea Ríos"
-excerpt: "Tres modelos de cotización, los puntos que cualquier área de RH puede exigir en una propuesta y cómo presentar la inversión ante la Dirección."
+excerpt: "Tres formas de cotizar inglés corporativo, qué debe incluir una propuesta y cómo calcular su costo total antes de firmar y presentarlo a la Dirección."
 category: "Selección de proveedor"
 categorySlug: "seleccion-de-proveedor"
 tags: []
 featuredImage: "/images/blog/blog-ingles-corporativo-mexico-precio-portada.webp"
 featuredImageAlt: "Una mano sostiene una tarjeta y otra teclea en una calculadora, junto a una laptop, monedas y gráficas."
-seoTitle: "¿Cuánto cuesta un curso de inglés corporativo en México? | %%sitename%%"
-seoDescription: "Rangos de referencia del precio del inglés corporativo en México y qué exigir en una cotización. Hable con un asesor de su empresa."
+seoTitle: "Costo del inglés corporativo: cómo auditar una cotización | %%sitename%%"
+seoDescription: "Aprenda a comparar cotizaciones de inglés corporativo en México: qué debe incluir cada propuesta, cómo calcular el costo total y qué pedir por escrito."
 focusKeyword: "Inglés corporativo"
-readingTime: 7
+readingTime: 6
 hasLeadForm: true
 ---
 
-Imagine que su área de RH recibe tres cotizaciones para el mismo curso de inglés corporativo y ninguna se parece a las otras: una cobra por licencia, otra por hora de clase y otra por proyecto. Es una situación frecuente, y comparar solo el precio por hora casi nunca basta para decidir. Esta nota explica qué modelos de cotización existen en México, qué puede exigir en cada propuesta y cómo defender la inversión ante la Dirección. Y como en S-Peak capacitamos a equipos de empresas en México, la escribimos pensando en quien tiene que comparar esas propuestas.
+Imagine que su área de RH recibe tres cotizaciones para el mismo curso de inglés corporativo y ninguna se parece a las otras: una cobra por licencia, otra por hora de clase y otra por proyecto. Comparar solo el precio por hora casi nunca basta para decidir, porque cada propuesta puede incluir cosas distintas. Esta nota explica cómo se cotiza el inglés corporativo en México, qué puede exigir en cada propuesta y cómo calcular el costo total antes de firmar.
 
 ## ¿Cuánto cuesta un curso de inglés corporativo en México?
 
-Depende del modelo: en el mercado mexicano hay tres, y los dos primeros tienen rangos de referencia estimados, de cientos de pesos al mes por licencia a cientos de pesos por hora de clase, mientras que el tercero se cotiza a la medida.
+No existe un precio único: depende de las horas que necesita el equipo, el tamaño de los grupos, el formato y lo que la propuesta incluya o cobre aparte.
 
-Piense en un área de RH que debe capacitar a un grupo de vendedores y a tres directivos con el mismo presupuesto. Lo más probable es que descubra que no son compras equivalentes, porque cada modelo vende algo distinto. Los montos de la tabla son rangos de referencia estimados, no tarifas oficiales ni resultado de un estudio, y varían según la tecnología, la especialización de los contenidos y el número de colaboradores inscritos.
+Piense en un área de RH que debe capacitar a un grupo de vendedores y a tres directivos con el mismo presupuesto. Lo más probable es que descubra que no son compras equivalentes. Como referencia, la tarifa de partida de S-Peak es desde $500 MXN por hora de instrucción; el costo final de cada programa se define según el equipo y el alcance. Para estimar cuántas horas necesita su equipo, consulte [cómo presupuestar un curso de inglés para su empresa](https://s-peak.com/precio-curso-ingles-empresas/).
 
-### Los tres modelos de un vistazo
+### Las tres formas de cotizar, de un vistazo
 
-| Modelo | Rango de referencia estimado | En qué consiste |
+| Modelo | Cómo se cobra | Qué conviene verificar |
 | --- | --- | --- |
-| Plataformas de autoaprendizaje (asincrónicas) | $300 a $800 pesos mensuales por licencia o usuario | Aplicaciones o software para avanzar al propio ritmo, sin profesor en vivo |
-| Academias tradicionales (clases por hora) | $450 a $850 pesos por hora de clase, usualmente en grupos cerrados de 4 a 8 personas | Enseñanza de gramática general, en horarios fijos |
-| Consultoría lingüística B2B (a la medida) | Cotización a la medida, por hora de consultoría o mediante iguala mensual, según el número de personas y el alcance del programa | Diseño curricular por departamento, simulaciones de casos de negocio en vivo y agenda flexible |
+| Plataforma de autoaprendizaje | Licencia mensual o anual por usuario | Si incluye acompañamiento humano y reportes de avance |
+| Clases por hora | Tarifa por hora de instrucción, para un grupo o por persona | Qué pasa con las clases canceladas, el material y los exámenes |
+| Programa a la medida | Cotización por proyecto, por hora de consultoría o por iguala mensual | Alcance, contenido por puesto y forma de medir resultados |
 
-Fíjese que en el modelo a la medida no hay un precio de lista: cada propuesta se arma según el equipo y el alcance del programa. Por eso conviene comparar esas cotizaciones con los puntos de la siguiente sección y no solo con una cifra.
+Fíjese que en el programa a la medida no hay un precio de lista: cada propuesta se arma según el equipo. Por eso conviene compararlas con los puntos de la siguiente sección y no solo con una cifra.
 
-¿Es el precio, entonces, lo que frena la capacitación? No necesariamente. Según la encuesta ENAPROCE del INEGI, entre las micro, pequeñas y medianas empresas que no capacitaron a su personal, pocas lo atribuyeron al costo. La encuesta abarca empresas de las cuales 97.3 % son microempresas.
+¿Es el precio, entonces, lo que frena la capacitación? Los datos de INEGI sugieren que no necesariamente, aunque miden la capacitación en general y no el inglés en particular. La encuesta abarca 4,169,677 empresas, de las cuales 97.3 % son microempresas.
 
-> **Dato clave:** De las micro, pequeñas y medianas empresas que no impartieron capacitación en 2017, solo **4.7 %** lo atribuyó a un costo elevado, y **7 de cada 10** dijeron que el conocimiento de su personal ya era adecuado ([INEGI, 2019](https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2019/especiales/ENAPROCE2018.pdf)).
+> **Dato clave:** De las micro, pequeñas y medianas empresas que no impartieron capacitación en 2017, solo **4.7 %** lo atribuyó a un costo elevado, y **7 de cada 10** dijeron que el conocimiento y las habilidades de su personal ya eran adecuados ([INEGI, 2019](https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2019/especiales/ENAPROCE2018.pdf)).
 
 ## ¿Qué debe incluir una cotización de inglés corporativo y cómo se audita?
 
 Una cotización seria detalla qué se cobra, qué se incluye y qué ocurre cuando el calendario cambia, y usted puede pedir cada punto por escrito.
 
-Imagine que dos propuestas ofrecen el mismo precio por hora, pero una cobra aparte los libros y los exámenes de nivel de cada colaborador. Ese detalle, que casi nunca aparece en el encabezado, es el que cambia el presupuesto final. Estos son los puntos que cualquier área de RH puede preguntar antes de firmar:
+Imagine que dos propuestas ofrecen casi el mismo precio por hora, pero una cobra aparte los libros y los exámenes de nivel de cada colaborador. Ese detalle, que casi nunca aparece en el encabezado, es el que cambia el presupuesto final. Estos son los puntos que cualquier área de RH puede preguntar antes de firmar:
 
 -   **Cancelación y reprogramación:** pregunte qué ocurre si una junta o una urgencia obliga a mover una clase; si se cobra completa sin reposición, el presupuesto se diluye en horas que nadie aprovechó.
--   **Material y exámenes:** pida por escrito si los libros, los accesos a plataformas y los exámenes diagnósticos están incluidos o se cobran por colaborador; una propuesta integral evita cargos aparte.
--   **Rotación de instructores:** consulte cuál es su índice de rotación y cómo se asegura la continuidad docente, porque cambiar de instructor con frecuencia rompe el hilo del aprendizaje.
+-   **Material y exámenes:** pida por escrito si los libros, los accesos a plataformas y los exámenes diagnósticos están incluidos o se cobran por colaborador.
+-   **Rotación de instructores:** consulte cómo se asegura la continuidad docente, porque cambiar de instructor con frecuencia rompe el hilo del aprendizaje.
 -   **Seguimiento y reportes:** solicite qué métricas de asistencia y avance recibirá, además de la lista de asistentes.
 -   **Contenido por puesto:** pregunte si el programa se diseña por departamento o es genérico, y cómo se adapta a lo que cada puesto necesita.
+
+### El costo total, con cifras de ejemplo
+
+Para comparar en igualdad de condiciones, calcule el costo total: horas por tarifa, más material, más exámenes. La tabla usa cifras hipotéticas para un grupo de 10 personas con 40 horas de clase.
+
+| Concepto | Propuesta A | Propuesta B |
+| --- | --- | --- |
+| Tarifa por hora de clase | $600 | $500 |
+| Horas del programa | 40 | 40 |
+| Subtotal de clases | $24,000 | $20,000 |
+| Libros (10 personas) | Incluidos | $4,500 |
+| Exámenes de nivel (10 personas) | Incluidos | $3,500 |
+| **Costo total** | **$24,000** | **$28,000** |
+
+La propuesta con la tarifa más baja resulta la más cara cuando se suma lo que cobra aparte. Los montos son un ejemplo de cálculo, no tarifas de ningún proveedor.
 
 ![Una mujer de cabello canoso escribe en una mesa frente a una persona sentada, con una bandera de Estados Unidos al fondo.](/images/blog/blog-ingles-corporativo-mexico-precio-01.webp)
 
 Si además quiere identificar las señales de un curso deficiente, revise [las causas reales por las que los equipos abandonan la capacitación de idiomas](https://s-peak.com/blog-capacitacion-en-ingles-programa-fantasma/).
 
-## ¿Cómo justificar la inversión en capacitación ante la Dirección General?
+## ¿Cómo justificar la inversión en inglés ante la Dirección General?
 
 Mostrando qué problema del negocio resuelve el programa y cómo se medirá, en lugar de presentarlo como una prestación para el personal.
 
-Piense en un área de RH que presenta su cotización a Finanzas diciendo que el curso es una prestación atractiva. Es probable que la conversación termine ahí, porque Finanzas necesita ver qué gasto evita o qué ingreso protege. Un análisis sobre capacitación en empresas, publicado en El Economista, lo plantea desde otro ángulo.
-
-> **Dato clave:** Los autores de un análisis del IMEF señalan que el reto es que la inversión en capacitación se perciba como una **contribución al éxito de la empresa** y no como un gasto innecesario ([Espinosa y García, El Economista, 2020](https://www.eleconomista.com.mx/revistaimef/Capacitacion-para-agregar-valor-20200209-0024.html)).
-
-El argumento se traslada bien a un programa de inglés. Dos situaciones suelen dar material para armarlo.
+Piense en un área de RH que presenta su cotización a Finanzas diciendo que el curso es una prestación atractiva. Es probable que la conversación termine ahí, porque Finanzas necesita ver qué gasto evita o qué ingreso protege. Dos situaciones suelen dar material para armar el argumento.
 
 ### Cuando la comunicación en inglés frena un negocio internacional
 
@@ -74,34 +85,32 @@ Para argumentar ante el CFO, compare dos números de su propia empresa: el costo
 
 ## Preguntas frecuentes sobre el costo del inglés corporativo
 
+### ¿Cuánto cuesta un curso de inglés corporativo?
+
+No existe un precio único. El costo total depende de cuántas horas necesita el equipo, del tamaño de los grupos, del formato y de lo que incluya la propuesta. Por eso conviene pedir el costo integral por escrito y calcularlo con la fórmula de esta nota: horas por tarifa, más material y exámenes.
+
 ### ¿Por qué no basta comparar el precio por hora?
 
-Porque el precio por hora no muestra qué incluye ni cuánto se aprovecha. Material, exámenes, reposición de clases y seguimiento pueden cambiar el costo final. Dos propuestas con el mismo precio por hora pueden terminar en presupuestos distintos si una cobra aparte los libros y los exámenes de nivel de cada colaborador.
+Porque el precio por hora no muestra qué incluye ni cuánto se aprovecha. Material, exámenes, reposición de clases y seguimiento pueden cambiar el costo final. Dos propuestas con una tarifa parecida pueden terminar en presupuestos distintos si una cobra aparte los libros y los exámenes de nivel de cada colaborador.
 
-### ¿Qué significa que los rangos sean de referencia?
+### ¿Qué formas de cotizar existen además de la clase por hora?
 
-Son estimaciones de mercado de esta nota, no tarifas oficiales ni resultado de un estudio. Sirven para ordenar las cotizaciones que recibe, no para fijar un presupuesto. Los montos varían según la tecnología, la especialización de los contenidos y el número de colaboradores inscritos, y el modelo a la medida no tiene precio de lista.
-
-### ¿Qué modelos de cotización existen además de la clase por hora?
-
-Existen las licencias mensuales por usuario para plataformas de autoaprendizaje, sin profesor en vivo, y la consultoría lingüística B2B, que se cotiza a la medida por hora de consultoría o mediante iguala mensual, como muestra la tabla. Cada modelo vende algo distinto, así que conviene compararlos por lo que incluyen y no solo por la cifra.
+Existen las licencias por usuario para plataformas de autoaprendizaje, sin profesor en vivo, y los programas a la medida, que se cotizan por proyecto, por hora de consultoría o mediante iguala mensual. Cada forma vende algo distinto, así que conviene compararlas por lo que incluyen y no solo por la cifra.
 
 ### ¿Qué debe pedir por escrito antes de firmar?
 
-Pida por escrito qué ocurre si se cancela o reprograma una clase, si los libros, los accesos a plataformas y los exámenes diagnósticos están incluidos, cuál es el índice de rotación de instructores, qué métricas de avance recibirá y si el contenido se diseña por puesto. Con esa lista compara las propuestas en igualdad de condiciones.
+Pida por escrito qué ocurre si se cancela o reprograma una clase, si los libros, los accesos a plataformas y los exámenes diagnósticos están incluidos, cómo se asegura la continuidad de los instructores, qué métricas de avance recibirá y si el contenido se diseña por puesto. Con esa lista compara las propuestas en igualdad de condiciones.
 
 ## ¿Cómo decidir entre las cotizaciones?
 
 Compare lo que cada propuesta incluye y cómo se medirá su resultado, no solo lo que cobra por hora. Esto es lo que se desprende de esta nota:
 
 -   **Si su prioridad es controlar el presupuesto total:** revise qué incluyen el material, los exámenes y la reposición de clases, y pida el costo integral por escrito.
--   **Si su prioridad es que el equipo termine el programa:** revise la rotación de instructores, la reposición de clases y los reportes de avance que recibirá.
--   **Si su prioridad es convencer a la Dirección:** presente el programa como contribución al éxito de la empresa, el reto que señalan [Espinosa y García (2020)](https://www.eleconomista.com.mx/revistaimef/Capacitacion-para-agregar-valor-20200209-0024.html), y compárelo con el costo que usted calcule de reemplazar a una persona clave.
-
-Con esas preguntas en la mano, el cierre le dice cómo dar el siguiente paso.
+-   **Si su prioridad es que el equipo termine el programa:** revise la continuidad de los instructores, la reposición de clases y los reportes de avance que recibirá.
+-   **Si su prioridad es convencer a la Dirección:** presente el programa como respuesta a un problema del negocio y compárelo con el costo que usted calcule de reemplazar a una persona clave.
 
 ## ¿Quiere revisar una cotización con un asesor?
 
-Si su área de RH quiere comparar propuestas de inglés corporativo, [póngase en contacto con un asesor](#contacto). Y si necesita ver los rangos de precio y el retorno de inversión, antes puede consultar [cuánto cuesta capacitar a su equipo en inglés](https://s-peak.com/precio-curso-ingles-empresas/).
+Si su área de RH quiere comparar propuestas de inglés corporativo, [póngase en contacto con un asesor](#contacto).
 
 Y si desea seguir más contenido sobre capacitación y desarrollo de talento, puede encontrarnos en [LinkedIn](https://mx.linkedin.com/company/s-peak).
