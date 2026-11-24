@@ -34,13 +34,21 @@ export const ENLACES_EQUIPOS = [
    Equipos y Conózcanos en los dos menús, el en línea y el de celular. */
 export const ENLACE_CLIENTES = { nombre: "Clientes", ruta: "/#proyectos" };
 
+/* Recursos: desplegable como Idiomas y Equipos. Abre con su página, el
+   Centro de Recursos (/blog/), como Idiomas abre con su índice, y detrás el
+   diagnóstico. Va el último en la barra en línea, en el sitio que tenía como
+   enlace suelto, y tercero entre los desplegables del panel de celular. */
+export const ENLACES_RECURSOS = [
+  { nombre: "Todos los recursos", ruta: "/blog/" },
+  { nombre: "Diagnóstico para su compañía", ruta: "/diagnostico/" },
+];
+
 export const ENLACES_SUELTOS = [
   // Clientes, oculta. La página sigue en app/clientes/ y en pie; solo se retiró
   // del menú. Para reactivarla, descomentar esta línea: la consumen a la vez la
   // navegación en línea y el panel a pantalla completa.
   // { nombre: "Clientes", ruta: "/clientes/" },
   { nombre: "Conózcanos", ruta: "/nosotros/" },
-  { nombre: "Recursos", ruta: "/blog/" },
 ];
 
 /* Las anclas del header en modo landing, en el orden en que las secciones

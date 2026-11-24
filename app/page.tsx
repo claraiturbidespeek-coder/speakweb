@@ -142,13 +142,6 @@ const MOSAICO = [
   ],
 ];
 
-/* La tarjeta navy al lado de las preguntas frecuentes. */
-const TARJETA_FAQ = {
-  titulo: "¿Quedan Dudas?",
-  texto: "Un asesor las resuelve y le prepara una cotización a la medida de su equipo.",
-  boton: "Solicite una Cotización",
-};
-
 const FAQ = [
   {
     pregunta: "¿Cómo miden el progreso de mis colaboradores?",
@@ -460,7 +453,6 @@ export default function Home() {
         bajada="Hemos recopilado las dudas más comunes de nuestros clientes para brindarle claridad desde el primer momento."
         preguntas={FAQ}
         nombre="faq-home"
-        tarjeta={TARJETA_FAQ}
       />
 
       {/* 11. Centro de Recursos */}

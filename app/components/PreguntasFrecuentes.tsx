@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
-import BotonContacto from "@/app/components/contacto/BotonContacto";
+import TarjetaDudas from "@/app/components/TarjetaDudas";
 
 /* El bloque de preguntas frecuentes de la home: el acordeón a la izquierda y,
-   a la derecha, la tarjeta navy de cierre con su título, su texto y su botón
-   de contacto. Nació en la home; con /nosotros/ como segunda página pasó a
+   a la derecha, la tarjeta navy de cierre (TarjetaDudas, compartida con las
+   demás páginas que la llevan). Nació en la home; con /nosotros/ como segunda página pasó a
    componente compartido, con su estilo en patrones.css (sp-faq-bloque-*).
 
    El acordeón son las piezas sp-faq-* de siempre. Los <details> comparten
@@ -24,7 +24,6 @@ type Props = {
   preguntas: PreguntaFrecuente[];
   /* El `name` de los <details>: uno por página. */
   nombre: string;
-  tarjeta: { titulo: string; texto: string; boton: string };
   id?: string;
   className?: string;
 };
@@ -34,7 +33,6 @@ export default function PreguntasFrecuentes({
   bajada,
   preguntas,
   nombre,
-  tarjeta,
   id,
   className,
 }: Props) {
@@ -63,11 +61,7 @@ export default function PreguntasFrecuentes({
           </div>
         </div>
 
-        <aside className="sp-cta-card">
-          <h3 className="sp-faq-bloque-tarjeta-titulo">{tarjeta.titulo}</h3>
-          <p className="sp-faq-bloque-tarjeta-texto">{tarjeta.texto}</p>
-          <BotonContacto className="sp-btn sp-btn--rojo">{tarjeta.boton}</BotonContacto>
-        </aside>
+        <TarjetaDudas />
       </div>
     </section>
   );

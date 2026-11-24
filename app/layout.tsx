@@ -36,14 +36,21 @@ const DATOS_SITIO = JSON.stringify({
   "@id": "https://s-peak.com/#organizacion",
   name: "S-Peak",
   url: "https://s-peak.com",
-  logo: "https://s-peak.com/brand/logo_white.svg",
+  /* La versión para fondo claro (texto en el navy de marca): los buscadores
+     muestran el logo sobre blanco, donde la blanca del header no se lee. */
+  logo: "https://s-peak.com/brand/logo_navy.svg",
   description:
     "S-Peak capacita a equipos de empresas en México en inglés, francés, alemán, italiano, portugués y español para extranjeros, con programas por puesto, registro ante la STPS y constancia DC-3.",
   areaServed: { "@type": "Country", name: "México" },
-  /* El mismo número del footer y del llms.txt. */
+  /* El año de fundación, el «desde 2006» de /nosotros/. */
+  foundingDate: "2006",
+  /* Los seis idiomas que imparte, en códigos ISO 639-1. */
+  knowsLanguage: ["en", "fr", "de", "it", "pt", "es"],
+  /* El mismo número del footer y del llms.txt, y el correo de contacto. */
   contactPoint: {
     "@type": "ContactPoint",
     telephone: "+52 55 8526 5520",
+    email: "hola@s-peak.com",
     contactType: "sales",
     areaServed: "MX",
     availableLanguage: "es",

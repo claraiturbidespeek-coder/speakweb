@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ENLACES_EQUIPOS, ENLACES_IDIOMAS } from "@/app/components/nav/secciones";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
+import EnlaceCorreo from "@/app/components/EnlaceCorreo";
 import Icono from "@/app/components/Icono";
 import LogotipoFooter from "@/app/components/LogotipoFooter";
 import styles from "./Footer.module.css";
@@ -51,6 +52,15 @@ export default function Footer() {
               </span>
               <span>+52 55 8526 5520</span>
             </a>
+          </p>
+          {/* El correo, debajo del teléfono y con su mismo estilo. También
+              visible en modo landing. Al clic registra `clic_correo`
+              (EnlaceCorreo.tsx). */}
+          <p className={styles.correo}>
+            <EnlaceCorreo
+              className={styles.telefonoEnlace}
+              claseIcono={styles.telefonoIcono}
+            />
           </p>
           <BotonContacto className={`sp-btn sp-btn--rojo ${styles.cta}`}>
             Solicite una Cotización
@@ -109,6 +119,11 @@ export default function Footer() {
             <li>
               <Link className={styles.link} href="/blog/">
                 Centro de Recursos
+              </Link>
+            </li>
+            <li>
+              <Link className={styles.link} href="/diagnostico/">
+                Diagnóstico para su compañía
               </Link>
             </li>
             <li>

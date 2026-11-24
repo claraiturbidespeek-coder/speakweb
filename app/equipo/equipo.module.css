@@ -479,13 +479,6 @@
   color: var(--color-ink-2);
 }
 
-.faqCtaCard p {
-  margin-bottom: 18px;
-  font-size: 17px;
-  font-weight: var(--weight-bold);
-  line-height: 1.4;
-}
-
 /* ---------- Acentos gráficos de sección ----------
    Cuadrados y círculos girados que asoman por los bordes. Son decoración de
    esta página; el sistema no los conoce. */

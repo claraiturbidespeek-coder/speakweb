@@ -8,6 +8,7 @@ import FranjaIdiomas from "@/app/components/FranjaIdiomas";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
 import SeccionEvidencia from "@/app/components/SeccionEvidencia";
 import SelloSTPS from "@/app/components/SelloSTPS";
+import TarjetaDudas from "@/app/components/TarjetaDudas";
 import Icono from "@/app/components/Icono";
 import type { DatosEquipo } from "./tipos";
 import styles from "./equipo.module.css";
@@ -316,12 +317,7 @@ export default function PaginaEquipo({ datos }: { datos: DatosEquipo }) {
               <div className="sp-eyebrow">Preguntas frecuentes</div>
               <h2>{datos.faq.titulo}</h2>
               <p>{datos.faq.texto}</p>
-              <div className={`sp-cta-card ${styles.faqCtaCard}`}>
-                <p>{datos.faq.ctaTitulo}</p>
-                <BotonContacto className="sp-btn sp-btn--rojo">
-                  {datos.faq.ctaBoton}
-                </BotonContacto>
-              </div>
+              <TarjetaDudas />
             </div>
             <div className="sp-faq-lista reveal">
               {datos.faq.preguntas.map((f) => (

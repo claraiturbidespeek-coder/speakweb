@@ -76,6 +76,12 @@
   --color-green: #1b7a3d;
   --color-green-soft: #e7f6ec;
 
+  /* Amarillo suave: el tinte claro de --color-yellow, como red-soft y
+     green-soft lo son de los suyos. Entra con la etiqueta «Se evalúa aparte»
+     de «Qué mide, y qué no» en /diagnostico/. El texto encima va en navy: el
+     amarillo de marca no da contraste sobre él. */
+  --color-yellow-soft: #fdf5e1;
+
   /* ---------- Tipografía ---------- */
 
   /* La familia se declaraba con dos pilas distintas: globals.css sin

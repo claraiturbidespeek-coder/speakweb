@@ -27,9 +27,9 @@ import Script from "next/script";
 
    EL DATALAYER EXISTE ANTES QUE CUALQUIER CONVERSIÓN, por partida doble: este
    inicializador corre al parsear el <body>, mucho antes de que se pueda abrir
-   un modal; y además los tres sitios que empujan eventos —ModalContacto.tsx y
-   FlotanteWhatsApp.tsx— hacen `window.dataLayer = window.dataLayer || []` antes
-   de su push. Si un evento llegara con el contenedor todavía cargando, se queda
+   un modal; y además los tres archivos que empujan eventos —ModalContacto.tsx,
+   FlotanteWhatsApp.tsx y EnlaceCorreo.tsx— hacen
+   `window.dataLayer = window.dataLayer || []` antes de su push. Si un evento llegara con el contenedor todavía cargando, se queda
    encolado en el array y GTM lo procesa al arrancar: ese es el contrato del
    dataLayer y por eso no se pierde ninguna conversión. */
 

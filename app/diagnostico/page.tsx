@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import AnimacionesEntrada from "@/app/components/AnimacionesEntrada";
 import BandaLogos from "@/app/components/BandaLogos";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
+import CasosDeExito from "@/app/components/proyectos/CasosDeExito";
 import Icono from "@/app/components/Icono";
 import SelloSTPS from "@/app/components/SelloSTPS";
+import TarjetaDudas from "@/app/components/TarjetaDudas";
 import styles from "./diagnostico.module.css";
 import AnimacionDiagnostico from "./AnimacionDiagnostico";
 import TitularIdiomas from "./TitularIdiomas";
@@ -19,21 +21,25 @@ import TitularIdiomas from "./TitularIdiomas";
    Los botones abren por ahora el modal de contacto general. La variante del
    formulario propia del diagnóstico va en una pasada aparte. */
 
+/* «Qué mide, y qué no»: el examen en línea cubre tres habilidades; Hablar se
+   evalúa aparte, en la evaluación oral. */
+const HABILIDADES = [
+  { nombre: "Escuchar", icono: "diadema", incluida: true },
+  { nombre: "Leer", icono: "lectura", incluida: true },
+  { nombre: "Escribir", icono: "lapiz", incluida: true },
+  { nombre: "Hablar", icono: "dialogo", incluida: false },
+];
+
 const URL = "https://s-peak.com/diagnostico/";
 const TITULO = "Diagnóstico de Nivel para Equipos, sin costo | S-Peak";
 const DESCRIPCION =
   "Cada colaborador presenta un examen en línea y le presentamos en una junta el nivel de cada persona, una propuesta de grupos y el tiempo para llegar a B1 o B2. Sin costo.";
 
-/* Página oculta mientras se revisa: robots noindex/nofollow, fuera del sitemap
-   y sin enlaces desde el menú ni desde ninguna otra página. Solo se llega
-   escribiendo la URL. Para publicarla: quitar `robots` de aquí, añadir
-   "/diagnostico/" a las rutas fijas de app/sitemap.ts y darle su entrada de
-   menú en app/components/nav/secciones.ts. No se bloquea en robots.txt, por lo
-   que explica ese archivo. */
+/* Página publicada: indexable, en el sitemap (app/sitemap.ts), en el menú
+   (Recursos, app/components/nav/secciones.ts), en el pie y en llms.txt. */
 export const metadata: Metadata = {
   title: TITULO,
   description: DESCRIPCION,
-  robots: { index: false, follow: false },
   alternates: { canonical: URL },
   openGraph: {
     type: "website",
@@ -202,7 +208,7 @@ export default function Diagnostico() {
               <div className="sp-etiqueta">Diagnóstico de Nivel para Equipos · Sin costo</div>
               <TitularIdiomas
                 claseTitular={styles.titular}
-                claseIdioma={styles.titularIdioma}
+                claseLinea={styles.titularLinea}
                 clasePalabra={styles.titularPalabra}
                 claseEntrando={styles.titularEntrando}
                 claseSaliendo={styles.titularSaliendo}
@@ -220,12 +226,16 @@ export default function Diagnostico() {
           </div>
         </section>
 
+        {/* LOGOS: encimados en el borde inferior del hero, como en el resto del
+            sitio (.sp-logos se monta 60px sobre la sección anterior). */}
+        <BandaLogos />
+
         {/* QUÉ RECIBE */}
         <section className="sp-seccion" id="que-recibe">
           <div className="sp-inner">
             <div className="sp-seccion-top reveal">
-              {/* La línea de público: justo debajo del hero, centrada, como
-                  entrada de «Qué recibe». */}
+              {/* La línea de público: justo debajo del hero y sus logos,
+                  centrada, como entrada de «Qué recibe». */}
               <p>
                 Para áreas de Recursos Humanos y Dirección que van a capacitar a un equipo en
                 idiomas
@@ -249,36 +259,21 @@ export default function Diagnostico() {
           </div>
         </section>
 
-        {/* LOGOS */}
-        <BandaLogos className={styles.logos} />
-
-        {/* TESTIMONIO: la tarjeta de /equipo/, sola, con el CTA debajo. */}
-        <section className={`sp-seccion ${styles.testimonio}`} id="testimonio">
-          <div className={`${styles.testimonioInner} reveal`}>
-            <div className="sp-testi-card sp-barra">
-              <div className="sp-estrellas">★★★★★</div>
-              <p className="sp-testi-quote">
-                &ldquo;El equipo de S-Peak tiene una gran actitud de servicio, sus cursos de
-                idiomas son excelentes para nuestros equipos, se adaptan a las necesidades de
-                nuestros perfiles de puesto.&rdquo;
-              </p>
-              <div className="sp-testi-autor">
-                <div className="sp-avatar">BI</div>
-                <div>
-                  <div className="sp-autor-nombre">Braskem Idesa</div>
-                  <div className="sp-autor-rol">Área de RRHH</div>
-                </div>
-              </div>
-            </div>
-            <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
-          </div>
-        </section>
+        {/* CASOS DE ÉXITO: la sección compartida con el resto del sitio
+            (CasosDeExito). Sus bloques entran con .reveal, que ya activa
+            AnimacionesEntrada. */}
+        <CasosDeExito />
 
         {/* CÓMO FUNCIONA */}
         <section className={`sp-seccion ${styles.pasosSeccion}`} id="como-funciona">
           <div className="sp-inner">
             <div className="sp-seccion-top reveal">
               <h2>Cómo funciona, paso a paso</h2>
+              <p>
+                Usted nos indica el idioma y el equipo; nosotros damos de alta su empresa y le
+                enviamos el enlace del examen. Cuando todos terminan, agendamos la junta para
+                presentarle los resultados.
+              </p>
             </div>
             <ol className={`${styles.pasos} reveal stagger`}>
               {PASOS.map((texto, i) => (
@@ -297,53 +292,85 @@ export default function Diagnostico() {
         </section>
 
         {/* QUÉ MIDE, Y QUÉ NO */}
-        <section className="sp-seccion" id="que-mide">
+        <section className={`sp-seccion ${styles.mide}`} id="que-mide">
+          {/* Dos columnas: a la izquierda, en un tercio, el texto y el botón; a
+              la derecha, en dos, las habilidades y la evaluación oral. */}
           <div className={`${styles.mideInner} reveal`}>
-            <h2>Qué mide, y qué no</h2>
-            <ul className={styles.habilidades}>
-              {["Escuchar", "Leer", "Escribir"].map((h) => (
-                <li key={h}>
-                  <span
-                    className={`sp-icono sp-icono--sm sp-icono--rojo ${styles.habilidadMarca}`}
-                    role="img"
-                    aria-label="Se evalúa:"
+            <div>
+              <div className="sp-eyebrow">El examen</div>
+              <h2>Qué mide, y qué no</h2>
+              <p>
+                El examen en línea mide tres habilidades: escuchar, leer y escribir. Con el
+                resultado de cada persona, en la junta le presentamos su nivel y una propuesta
+                de grupos.
+              </p>
+              <BotonContacto className="sp-btn sp-btn--rojo">{CTA}</BotonContacto>
+            </div>
+            <div className={styles.mideTarjetas}>
+              {/* Las cuatro habilidades: tres incluidas en el examen en línea y
+                  Hablar, la excepción, con borde punteado y su etiqueta en
+                  amarillo. */}
+              <ul className={styles.habilidades}>
+                {HABILIDADES.map((h) => (
+                  <li
+                    key={h.nombre}
+                    className={`${styles.habilidad}${h.incluida ? "" : ` ${styles.habilidadAparte}`}`}
                   >
-                    <Icono nombre="palomita" />
+                    <span className="sp-icono sp-icono--xl sp-icono--rojo">
+                      <Icono nombre={h.icono} />
+                    </span>
+                    <span className={styles.habilidadNombre}>{h.nombre}</span>
+                    {h.incluida ? (
+                      <span className={`${styles.habilidadEtiqueta} ${styles.habilidadIncluida}`}>
+                        <span className={`sp-icono ${styles.habilidadPalomita}`}>
+                          <Icono nombre="palomita" />
+                        </span>
+                        Incluido
+                      </span>
+                    ) : (
+                      <span className={`${styles.habilidadEtiqueta} ${styles.habilidadEtiquetaAparte}`}>
+                        Se evalúa aparte
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+
+              {/* La evaluación oral y su costo. */}
+              <div className={styles.oral}>
+                <div className={styles.oralCabeza}>
+                  <span className="sp-icono sp-icono--lg sp-icono--navy">
+                    <Icono nombre="dialogo" />
                   </span>
-                  {h}
-                </li>
-              ))}
-              <li>
-                <span className={styles.habilidadMarca} aria-hidden="true" />
-                Hablar
-                <span className={styles.habilidadNota}>Se evalúa aparte</span>
-              </li>
-            </ul>
-            <p>
-              En la junta le proponemos afinar el nivel de algunos participantes con una
-              evaluación oral.
-            </p>
-            <table className={styles.mideTabla}>
-              <thead>
-                <tr>
-                  <th scope="col">Si contrata el programa</th>
-                  <th scope="col">Si solo desea la evaluación</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Sin costo</td>
-                  <td>Se cotiza</td>
-                </tr>
-              </tbody>
-            </table>
+                  <p>
+                    En la junta le proponemos afinar el nivel de algunos participantes con una
+                    evaluación oral.
+                  </p>
+                </div>
+                <dl className={styles.costos}>
+                  <div className={styles.costo}>
+                    <dt>Si contrata el programa</dt>
+                    <dd>Sin costo</dd>
+                  </div>
+                  <div className={styles.costo}>
+                    <dt>Si solo desea la evaluación</dt>
+                    <dd>Se cotiza</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* FRANJA DE IDIOMAS — solo las etiquetas. No usa FranjaIdiomas porque
-            ese componente pide un titular y un texto que esta página no lleva. */}
-        <section className="sp-franja" aria-label="Idiomas del diagnóstico">
+        {/* FRANJA DE IDIOMAS — un titular centrado y las etiquetas debajo. No
+            usa FranjaIdiomas porque ese componente reparte titular y texto en
+            dos columnas, y esta página no lleva texto. El titular toma el
+            estilo de las demás franjas (.sp-franja-texto h2). */}
+        <section className="sp-franja" aria-labelledby="franja-idiomas-titulo">
           <div className={`sp-franja-inner ${styles.franjaInner}`}>
+            <div className={`sp-franja-texto ${styles.franjaTitulo} reveal`}>
+              <h2 id="franja-idiomas-titulo">Capacitamos a su equipo en estos idiomas</h2>
+            </div>
             <div className="sp-franja-idiomas reveal">
               {IDIOMAS.map((i) => (
                 <a key={i.ruta} className="sp-pill" href={i.ruta}>
@@ -364,10 +391,7 @@ export default function Diagnostico() {
                 Lo que nos preguntan las áreas de Recursos Humanos antes de solicitar el
                 diagnóstico.
               </p>
-              <div className={`sp-cta-card ${styles.faqCtaCard}`}>
-                <p>¿Tiene una pregunta que no está aquí?</p>
-                <BotonContacto className="sp-btn sp-btn--rojo">Hablar con un Experto</BotonContacto>
-              </div>
+              <TarjetaDudas />
             </div>
             <div className="sp-faq-lista reveal">
               {FAQ.map((f, i) => (

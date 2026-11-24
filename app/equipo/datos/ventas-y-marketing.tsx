@@ -261,8 +261,6 @@ const datos: DatosEquipo = {
     titulo:
       "Preguntas frecuentes sobre capacitación de idiomas para Ventas y Marketing",
     texto: "Resolvemos las dudas más comunes antes de que tenga que buscarlas.",
-    ctaTitulo: "¿Tiene una pregunta que no está aquí?",
-    ctaBoton: "Solicite una Cotización",
     preguntas: [
       {
         pregunta: "¿Cuánto cuesta capacitar a un equipo de ventas y marketing?",

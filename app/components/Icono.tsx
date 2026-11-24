@@ -14,9 +14,15 @@
    sus tres sistemas de información, y `globo`, `fabrica` y `usuarios`, que ya
    salen en las cifras del bento de esa misma página.
 
-   Excepción acordada: la lista de «Qué mide, y qué no» de /diagnostico/ repite
-   `palomita` en Escuchar, Leer y Escribir, porque son tres renglones con la
-   misma marca. */
+   Excepción acordada: «Qué mide, y qué no» de /diagnostico/ repite `palomita`
+   en las etiquetas de Escuchar, Leer y Escribir, porque son la misma marca, y
+   `dialogo` en la tarjeta de Hablar y en la de la evaluación oral, que es la
+   misma habilidad.
+
+   Excepción acordada: el footer lleva `correo` junto al correo de contacto
+   (EnlaceCorreo.tsx). El footer es común a todo el sitio y no cuenta como
+   contenido de la página, así que no es repetición aunque la página use
+   `correo` en su contenido, como cuatro de las de equipo. */
 
 const TRAZOS: Record<string, string> = {
   // — Genéricos del hero —
@@ -31,6 +37,10 @@ const TRAZOS: Record<string, string> = {
     "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2|circle:9,7,4|M22 21v-2a4 4 0 0 0-3-3.87|M16 3.13a4 4 0 0 1 0 7.75",
   usuarioCheck:
     "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2|circle:9,7,4|m16 11 2 2 4-4",
+  /* Dos burbujas: una conversación. La usa «Qué mide, y qué no» de
+     /diagnostico/, donde `mensaje` ya sale en «Qué recibe». */
+  dialogo:
+    "M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z|M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1",
   mensaje:
     "M21 11.5a8.4 8.4 0 0 1-.9 3.8A8.5 8.5 0 0 1 12.5 20a8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6A8.4 8.4 0 0 1 12.5 3h.5a8.5 8.5 0 0 1 8 8z",
   telefono:

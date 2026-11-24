@@ -280,8 +280,6 @@ const datos: DatosEquipo = {
     titulo:
       "Preguntas frecuentes sobre capacitación de idiomas para equipos Legales",
     texto: "Resolvemos las dudas más comunes antes de que tenga que buscarlas.",
-    ctaTitulo: "¿Tiene una pregunta que no está aquí?",
-    ctaBoton: "Solicite una Cotización",
     preguntas: [
       {
         pregunta: "¿S-Peak enseña inglés jurídico o derecho?",

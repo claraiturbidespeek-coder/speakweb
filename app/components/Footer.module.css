@@ -48,7 +48,13 @@
   color: var(--color-white);
 }
 
+/* El teléfono y, debajo, el correo: juntos como un bloque de contacto, y el
+   hueco de siempre antes del botón. */
 .telefono {
+  margin: 0 0 10px;
+}
+
+.correo {
   margin: 0 0 20px;
 }
 

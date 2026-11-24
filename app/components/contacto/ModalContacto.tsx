@@ -56,9 +56,40 @@ const ESTADO_INICIAL = { enviando: false, error: false, exito: false };
 type Paso = "capacitacion" | "contacto";
 const PASOS: Paso[] = ["capacitacion", "contacto"];
 
-const PREGUNTAS: Record<Paso, string> = {
-  capacitacion: "Su capacitación",
-  contacto: "¿A quién le enviamos la propuesta?",
+/* La pregunta de cada paso. La del paso de contacto cambia según la página
+   (ver TEXTOS_*). */
+const PREGUNTA_CAPACITACION = "Su capacitación";
+
+/* Los textos que cambian según la página. El sitio pide cotización; en
+   /diagnostico/ el modal pide el diagnóstico sin costo, lo abra el botón que
+   lo abra. Los campos y el envío son los mismos. `herramienta` y
+   `descripcionHerramienta` son el nombre y la descripción que el formulario
+   declara a los asistentes de IA (WebMCP); `nombreParametro`, la del campo
+   de nombre, que también hablaba de cotización. */
+const TEXTOS_COTIZACION = {
+  titulo: "Solicite una Cotización",
+  subtitulo: "Un asesor se pondrá en contacto en menos de 24 horas hábiles.",
+  enviar: "Solicite Cotización",
+  exito: "Nuestro equipo está atendiendo su solicitud. Le contactaremos muy pronto.",
+  preguntaContacto: "¿A quién le enviamos la propuesta?",
+  herramienta: "solicitar_cotizacion",
+  descripcionHerramienta:
+    "Solicite cotización de capacitación en idiomas para su empresa con S-Peak. Un asesor se pondrá en contacto en menos de 24 horas hábiles. Una persona revisa y confirma el envío.",
+  nombreParametro: "Nombre y apellido de la persona que solicita la cotización.",
+};
+
+const TEXTOS_DIAGNOSTICO = {
+  titulo: "Solicite su diagnóstico sin costo",
+  subtitulo:
+    "Le escribimos en menos de 24 horas hábiles para definir el idioma y enviarle el acceso al examen.",
+  enviar: "Solicitar diagnóstico",
+  exito:
+    "Recibimos su solicitud. Le escribimos en menos de 24 horas hábiles para enviarle el acceso al examen.",
+  preguntaContacto: "¿A quién le enviamos el acceso al examen?",
+  herramienta: "solicitar_diagnostico",
+  descripcionHerramienta:
+    "Solicite un diagnóstico de nivel de idioma sin costo para el equipo de su empresa con S-Peak. Cada colaborador presenta un examen en línea; le escribimos en menos de 24 horas hábiles para definir el idioma y enviarle el acceso al examen. Una persona revisa y confirma el envío.",
+  nombreParametro: "Nombre y apellido de la persona que solicita el diagnóstico.",
 };
 
 const RANGOS_COLABORADORES = ["1 a 10", "11 a 50", "51 a 200", "Más de 200"];
@@ -119,6 +150,7 @@ export default function ModalContacto({
   const altoCuerpo = useRef(0);
   const [estado, setEstado] = useState(ESTADO_INICIAL);
   const ruta = usePathname();
+  const textos = ruta.startsWith("/diagnostico") ? TEXTOS_DIAGNOSTICO : TEXTOS_COTIZACION;
 
   const [paso, setPaso] = useState<Paso>("capacitacion");
   const [idioma, setIdioma] = useState("");
@@ -519,10 +551,7 @@ export default function ModalContacto({
               <path d="M7 12.5l3.5 3.5L17 9" />
             </svg>
             <h3 id="modal-contacto-titulo">¡Solicitud enviada!</h3>
-            <p>
-              Nuestro equipo está atendiendo su solicitud. Le contactaremos muy
-              pronto.
-            </p>
+            <p>{textos.exito}</p>
             <p className="sp-form-exito-prisa">
               ¿Tiene prisa? Le atendemos de inmediato.
             </p>
@@ -544,11 +573,9 @@ export default function ModalContacto({
             <div className={styles.cabecera}>
               <div>
                 <h2 id="modal-contacto-titulo" className={styles.titulo}>
-                  Solicite una Cotización
+                  {textos.titulo}
                 </h2>
-                <p className={styles.subtitulo}>
-                  Un asesor se pondrá en contacto en menos de 24 horas hábiles.
-                </p>
+                <p className={styles.subtitulo}>{textos.subtitulo}</p>
               </div>
               <button
                 className={`sp-modal-cerrar ${styles.cerrar}`}
@@ -568,8 +595,8 @@ export default function ModalContacto({
               onBlur={alSalirDeCampo}
               onChange={alEscribir}
               noValidate
-              toolname="solicitar_cotizacion"
-              tooldescription="Solicite cotización de capacitación en idiomas para su empresa con S-Peak. Un asesor se pondrá en contacto en menos de 24 horas hábiles. Una persona revisa y confirma el envío."
+              toolname={textos.herramienta}
+              tooldescription={textos.descripcionHerramienta}
             >
               {/* Cuerpo: lo único que hace scroll. */}
               <div ref={cuerpo} className={styles.cuerpo}>
@@ -582,7 +609,7 @@ export default function ModalContacto({
                   ))}
                 </div>
                 <h3 id="contacto-pregunta" className={styles.pregunta}>
-                  {PREGUNTAS[paso]}
+                  {paso === "capacitacion" ? PREGUNTA_CAPACITACION : textos.preguntaContacto}
                 </h3>
 
                 {/* Solo el paso activo se muestra: cada uno mide lo suyo. */}
@@ -656,7 +683,7 @@ export default function ModalContacto({
                           type="text"
                           id="contactoNombre"
                           name="nombre"
-                          toolparamdescription="Nombre y apellido de la persona que solicita la cotización."
+                          toolparamdescription={textos.nombreParametro}
                           autoComplete="name"
                           enterKeyHint="next"
                           required
@@ -839,7 +866,7 @@ export default function ModalContacto({
                     }}
                     disabled={estado.enviando}
                   >
-                    {estado.enviando ? "Enviando…" : "Solicite Cotización"}
+                    {estado.enviando ? "Enviando…" : textos.enviar}
                   </button>
                 ) : (
                   <button

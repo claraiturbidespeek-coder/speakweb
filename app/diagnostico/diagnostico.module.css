@@ -23,7 +23,10 @@
     var(--color-off-white) 55%
   );
   border-radius: 0;
-  padding: 80px var(--space-gutter) var(--space-section);
+  /* Abajo, el hueco del hero de /equipo/ (100px; 80px en móvil): la franja
+     de logos se monta 60px sobre él (.sp-logos, patrones.css) y el
+     contenido del hero queda libre. */
+  padding: 80px var(--space-gutter) 100px;
 }
 
 /* Dos columnas iguales: el texto y la animación (AnimacionDiagnostico.tsx),
@@ -46,8 +49,8 @@
   align-items: start;
 }
 
-/* Contenedor del titular: la línea del idioma mide su tamaño máximo contra el
-   ancho de esta columna. */
+/* Contenedor del titular: su tamaño máximo se mide contra el ancho de esta
+   columna (ver .titular). */
 .heroTexto {
   container-type: inline-size;
 }
@@ -66,7 +69,7 @@
    puntos y los grupos van en absoluto), así que su alto se calcula: el del
    grupo más alto, 4 filas de puntos, más el hueco y el bloque de nombre,
    personas y ruta de debajo (ver .animEscena).
-   Cada punto se coloca con sus variables (AnimacionDiagnostico.tsx): en los
+   Cada persona se coloca con sus variables (AnimacionDiagnostico.tsx): en los
    pasos 1 y 2, su casilla de una rejilla de 6 × 3 centrada en la escena; en
    los 3 y 4, su casilla de una rejilla de 2 columnas dentro de su grupo, y los
    tres grupos centrados en tercios. El viaje entre una y otra es la
@@ -136,31 +139,56 @@
   justify-content: center;
   width: var(--punto);
   height: var(--punto);
-  border: calc(2 * var(--u)) solid var(--color-navy);
+  /* Sin terminar el examen: círculo gris claro y silueta gris. */
+  border: calc(2 * var(--u)) solid var(--color-fondo-alterno);
   border-radius: 50%;
-  background: transparent;
+  background: var(--color-fondo-alterno);
+  color: var(--color-muted);
   /* Rejilla de 6 × 3, centrada en la escena. */
   left: calc(50% - (6 * var(--punto) + 5 * var(--hueco)) / 2 + var(--col) * (var(--punto) + var(--hueco)));
   top: calc(50% - (3 * var(--punto) + 2 * var(--hueco)) / 2 + var(--fila) * (var(--punto) + var(--hueco)));
   transition: left 0.7s var(--ease-out-soft), top 0.7s var(--ease-out-soft),
-    background 0.3s ease;
+    background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
-/* Paso 1: se llenan uno a uno. Fuera del paso 1 ya están llenos y sin
-   retraso, para que el resto de los cambios no herede el escalonado. */
+/* Paso 1: terminan uno a uno, y pasan a azul marino con la silueta en
+   blanco. Fuera del paso 1 ya están terminados y sin retraso, para que el
+   resto de los cambios no herede el escalonado. */
 .animLlenos .animPunto {
+  border-color: var(--color-navy);
   background: var(--color-navy);
+  color: var(--color-white);
 }
 
 .animPaso1.animLlenos .animPunto {
-  transition-delay: 0s, 0s, calc(var(--orden) * var(--escalon));
+  --retraso: calc(var(--orden) * var(--escalon));
+  transition-delay: 0s, 0s, var(--retraso), var(--retraso), var(--retraso);
 }
 
+.animPersona {
+  width: 62%;
+  height: 62%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+/* El nivel, junto al ícono: una etiqueta pegada a su esquina superior
+   derecha, que sobresale hacia el hueco entre personas sin mover la
+   rejilla. */
 .animNivel {
-  font-size: calc(11 * var(--u));
+  position: absolute;
+  top: calc(-5 * var(--u));
+  right: calc(-5 * var(--u));
+  padding: calc(2 * var(--u)) calc(3 * var(--u));
+  border: calc(1 * var(--u)) solid var(--color-navy);
+  border-radius: calc(4 * var(--u));
+  background: var(--color-white);
+  font-size: calc(9 * var(--u));
   font-weight: var(--weight-black);
   line-height: 1;
-  color: var(--color-white);
+  color: var(--color-navy);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -263,35 +291,42 @@
 }
 
 /* Titular con el idioma que rota (TitularIdiomas.tsx). Tipografía y margen
-   inferior del h1 de /equipo/. El idioma va en su propia línea, en el rojo de
-   acento (como el <strong> de aquel titular) y sin partirse: así las seis
-   versiones ocupan las mismas líneas y lo de debajo no se mueve.
+   inferior del h1 de /equipo/. Tres líneas fijas, cada una sin partirse:
+   «Conozca el nivel de», «{idioma} de su equipo» y «antes de invertir en
+   capacitación». El idioma va en el rojo de acento (como el <strong> de
+   aquel titular).
 
-   Su tamaño es el del titular salvo que no quepa: min(1em, 7.4cqw) lo limita
-   al ancho de la columna de texto (.heroTexto es el contenedor), con margen
-   para «español para extranjeros», la más larga (~12,5em). Al no depender de
-   la palabra, la línea mide lo mismo en las seis versiones. */
+   Su tamaño es el del titular salvo que una línea no quepa en la columna de
+   texto (.heroTexto es el contenedor). Medidas en la letra del titular: la
+   línea más larga es la tercera, 16,16em; de la segunda, la más larga es
+   «portugués de su equipo», 11,85em. 6,1cqw deja la tercera en el 98,5% de
+   la columna. Como el tope no depende de la palabra, las seis versiones van
+   al mismo tamaño y en las mismas líneas.
+
+   En celular (600px o menos) solo se exige la segunda línea: el tope pasa a
+   8,3cqw (98,3% de la columna para «portugués de su equipo») y la tercera,
+   que es igual en todas las versiones, puede partirse (ver Responsive). */
 .titular {
   margin: 0 0 20px;
-  font-size: clamp(28px, 3.2vw, 42px);
+  font-size: min(clamp(28px, 3.2vw, 42px), 6.1cqw);
   font-weight: var(--weight-bold);
   line-height: 1.1;
   letter-spacing: -0.03em;
   color: var(--color-navy);
 }
 
-.titularIdioma {
-  font-size: min(1em, 7.4cqw);
+.titularLinea {
+  display: block;
   white-space: nowrap;
-  color: var(--color-red);
 }
 
-/* inline-block para que la palabra pueda moverse en vertical. Sale subiendo
-   y desvaneciéndose (300ms, el SALIDA del componente); la siguiente entra
-   igual, desde abajo. */
+/* La palabra cambia en su sitio, solo con un fundido: sale desvaneciéndose
+   (300ms, el SALIDA del componente) y la siguiente aparece. Sin moverse en
+   vertical: al subir o bajar se pegaba a la línea de arriba o a la de abajo
+   y el titular perdía su interlineado parejo. */
 .titularPalabra {
-  display: inline-block;
-  transition: opacity 300ms ease-in, transform 300ms ease-in;
+  color: var(--color-red);
+  transition: opacity 300ms ease-in;
 }
 
 .titularEntrando {
@@ -300,13 +335,11 @@
 
 .titularSaliendo {
   opacity: 0;
-  transform: translateY(-0.25em);
 }
 
 @keyframes titularEntrar {
   from {
     opacity: 0;
-    transform: translateY(0.25em);
   }
 }
 
@@ -314,40 +347,6 @@
    de 540px del patrón. */
 .hero :global(.sp-hero-sub) {
   max-width: none;
-}
-
-/* ---------- Logos ----------
-   En las demás páginas la franja se monta 60px sobre la sección anterior
-   (margin-top negativo de .sp-logos, patrones.css) y no lleva padding
-   vertical. Aquí va como una sección más: sin montarse, y con el padding
-   vertical de sp-seccion arriba y abajo, también en su valor de móvil. */
-.logos {
-  margin-top: 0;
-  padding-block: var(--space-section);
-}
-
-/* ---------- Testimonio ----------
-   El fondo azul marino de la sección de testimonios de /equipo/ (equipo.module.css,
-   .testimonials): la tarjeta sp-testi-card es translúcida con texto blanco y
-   solo se lee sobre él. Una sola tarjeta, a la medida de lectura de las
-   bajadas de sección, y el botón debajo con el mismo hueco que separa el
-   sello STPS del botón del hero. */
-.testimonio {
-  background: var(--color-navy);
-  border-radius: 0;
-}
-
-.testimonioInner {
-  max-width: 760px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-}
-
-.testimonioInner :global(.sp-testi-card) {
-  width: 100%;
 }
 
 /* ---------- Qué recibe ---------- */
@@ -453,9 +452,39 @@
 
 /* ---------- Qué mide ---------- */
 
+/* La sección es el contenedor: si caben dos columnas depende del ancho que
+   le queda al contenido, no del de la ventana (ver .mideInner). */
+.mide {
+  container-type: inline-size;
+}
+
+/* Dos columnas, con el ancho de contenido y el hueco del hero (.heroInner):
+   un tercio para el texto y dos para las tarjetas, para que las cuatro
+   habilidades quepan en una fila. El texto va centrado en vertical respecto
+   a las tarjetas. Cuando la columna de las tarjetas ya no da para las cuatro
+   en fila, o la del texto para el botón sin partirlo (320px), una sola
+   columna: el texto arriba y las tarjetas debajo, a todo el ancho. Con 1000px
+   de contenido, el texto queda en 320px y las tarjetas en 640px. */
 .mideInner {
-  max-width: 760px;
+  max-width: var(--container-max);
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 40px;
+  align-items: center;
+}
+
+@container (max-width: 1000px) {
+  .mideInner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+}
+
+/* La columna de las tarjetas es el contenedor de la rejilla de habilidades:
+   cuántas caben por fila depende de su ancho (ver .habilidades). */
+.mideTarjetas {
+  container-type: inline-size;
 }
 
 .mideInner h2 {
@@ -468,78 +497,187 @@
 }
 
 .mideInner p {
-  margin-bottom: 16px;
+  margin-bottom: 24px;
   font-size: 16px;
   line-height: 1.7;
   color: var(--color-ink-2);
 }
 
-/* Las cuatro habilidades, una por renglón. La marca va en una columna fija de
-   36px (sp-icono--sm): Hablar lleva el mismo hueco vacío, para que las cuatro
-   palabras arranquen en el mismo eje. */
+/* Las cuatro habilidades, en una fila de tarjetas: ícono, nombre y etiqueta,
+   centrados, con el relleno justo. Hablar, la que no entra en el examen,
+   lleva el borde punteado y la etiqueta en amarillo. Cuatro por fila mientras
+   quepa entera la etiqueta más larga, «Se evalúa aparte»; por debajo, dos
+   por dos (ver la consulta de debajo). */
 .habilidades {
   display: grid;
-  gap: 10px;
-  margin-bottom: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 12px;
   list-style: none;
 }
 
-.habilidades li {
+/* Dos por dos cuando la columna no da para cuatro: 4 tarjetas de 150px
+   (124 de la etiqueta, 2 × 11 de relleno, 2 × 2 del borde punteado) y 3
+   huecos de 12. Va detrás de la regla de arriba para mandar sobre ella. */
+@container (max-width: 635px) {
+  .habilidades {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.habilidad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 11px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-grande);
+  background: var(--color-white);
+  text-align: center;
+}
+
+.habilidadAparte {
+  border: 2px dashed var(--color-navy-light);
+}
+
+.habilidadNombre {
+  font-size: 16px;
+  font-weight: var(--weight-bold);
+  line-height: 1.3;
+  color: var(--color-navy);
+}
+
+.habilidadEtiqueta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pildora);
+  font-size: 12px;
+  font-weight: var(--weight-bold);
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.habilidadIncluida {
+  background: var(--color-green-soft);
+  color: var(--color-green);
+}
+
+.habilidadEtiquetaAparte {
+  background: var(--color-yellow-soft);
+  color: var(--color-navy);
+}
+
+/* La palomita de «Incluido», al tamaño de la letra de la etiqueta. */
+.habilidadPalomita {
+  width: 14px;
+  height: 14px;
+}
+
+.habilidadPalomita svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 2.5;
+}
+
+/* En los celulares más angostos (columna de 300px o menos), dos por dos
+   tampoco deja sitio a «Se evalúa aparte» con el relleno normal: se recortan
+   el hueco y los rellenos laterales. Va detrás de las reglas de la tarjeta y
+   de la etiqueta para mandar sobre ellas. Así cabe entera hasta una columna de
+   280px (pantalla de 320px). */
+@container (max-width: 300px) {
+  .habilidades {
+    gap: 8px;
+  }
+
+  .habilidad {
+    padding-inline: 6px;
+  }
+
+  .habilidadEtiqueta {
+    padding-inline: 8px;
+  }
+}
+
+/* La evaluación oral, debajo de las habilidades y a todo el ancho de la
+   columna: la frase con su ícono y los dos costos en recuadros blancos sobre
+   el fondo claro de la tarjeta. Cuando las habilidades pasan a dos por dos,
+   los recuadros se apilan (ver la consulta de debajo). */
+.oral {
+  padding: 16px 18px;
+  border-radius: var(--radius-grande);
+  background: var(--color-off-white);
+}
+
+.oralCabeza {
   display: flex;
   align-items: center;
   gap: 14px;
-  font-size: 16px;
-  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.mideInner .oralCabeza p {
+  margin: 0;
   font-weight: var(--weight-semibold);
   color: var(--color-navy);
 }
 
-.habilidadMarca {
-  width: 36px;
-  height: 36px;
-  flex-shrink: 0;
+.costos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.habilidadNota {
-  font-weight: var(--weight-normal);
-  color: var(--color-muted);
+@container (max-width: 635px) {
+  .costos {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
-/* Costo de la evaluación oral: dos columnas a cualquier ancho, de la misma
-   medida; el texto se parte en líneas si no cabe. Los encabezados toman el
-   navy seminegrita de los renglones de habilidades, y la fila el gris de los
-   párrafos de la sección. */
-.mideTabla {
-  width: 100%;
-  table-layout: fixed;
-  border-collapse: collapse;
-  font-size: 16px;
-  line-height: 1.6;
+.costo {
+  padding: 12px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-white);
 }
 
-.mideTabla th,
-.mideTabla td {
-  padding: 10px 16px 10px 0;
-  text-align: left;
-  vertical-align: top;
-}
-
-.mideTabla th {
-  border-bottom: 1px solid var(--color-border);
-  font-weight: var(--weight-semibold);
-  color: var(--color-navy);
-}
-
-.mideTabla td {
+.costo dt {
+  margin-bottom: 2px;
+  font-size: 14px;
+  line-height: 1.4;
   color: var(--color-ink-2);
+}
+
+.costo dd {
+  margin: 0;
+  font-size: 22px;
+  font-weight: var(--weight-black);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-navy);
 }
 
 /* ---------- Franja de idiomas ---------- */
 
-/* La franja compartida reparte dos columnas, texto e idiomas. Aquí solo van
-   las etiquetas: una columna, centradas. */
+/* La franja compartida reparte dos columnas, texto e idiomas. Aquí van en
+   una: el titular arriba y las etiquetas debajo, todo centrado, con un
+   hueco de titular a contenido y no el de columna a columna. */
 .franjaInner {
   grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+/* El titular, con el tamaño y el blanco de .sp-franja-texto h2, centrado y
+   repartido en líneas parejas si se parte (en celular, dos). */
+.franjaTitulo {
+  text-align: center;
+}
+
+.franjaTitulo h2 {
+  margin: 0;
+  text-wrap: balance;
 }
 
 .franjaInner :global(.sp-franja-idiomas) {
@@ -571,13 +709,6 @@
   font-size: 16px;
   line-height: 1.7;
   color: var(--color-ink-2);
-}
-
-.faqCtaCard p {
-  margin-bottom: 18px;
-  font-size: 18px;
-  font-weight: var(--weight-bold);
-  line-height: 1.4;
 }
 
 /* ---------- CTA final ---------- */
@@ -663,7 +794,10 @@
   }
 
   .animNivel {
-    font-size: 9.5px;
+    top: -4px;
+    right: -4px;
+    padding: 1.5px 2.5px;
+    font-size: 8px;
   }
 
   .faqInner {
@@ -687,12 +821,17 @@
 }
 
 @media (max-width: 600px) {
-  .hero {
-    padding: 48px var(--space-gutter) var(--space-section-mobile);
+  /* El titular: solo la línea del idioma tiene que caber entera. */
+  .titular {
+    font-size: min(clamp(28px, 3.2vw, 42px), 8.3cqw);
   }
 
-  .logos {
-    padding-block: var(--space-section-mobile);
+  .titularLinea:last-child {
+    white-space: normal;
+  }
+
+  .hero {
+    padding: 48px var(--space-gutter) 80px;
   }
 
   /* Con las seis apiladas, el icono pasa a la izquierda del título para

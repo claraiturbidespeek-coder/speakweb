@@ -9,6 +9,7 @@ import {
   ENLACES_EQUIPOS,
   ENLACES_IDIOMAS,
   ENLACE_CLIENTES,
+  ENLACES_RECURSOS,
   ENLACES_SUELTOS,
 } from "./secciones";
 import { irACasosDeExito } from "./irACasosDeExito";
@@ -91,6 +92,9 @@ export default function Navegacion() {
             </Link>
           </li>
         ))}
+        <li className={styles.item}>
+          <Desplegable etiqueta="Recursos" enlaces={ENLACES_RECURSOS} />
+        </li>
       </ul>
     </nav>
   );

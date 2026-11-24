@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/",
     "/blog/",
     "/nosotros/",
+    "/diagnostico/",
     "/aviso-de-privacidad/",
     "/idioma/",
     ...ENLACES_IDIOMAS.map((e) => e.ruta),

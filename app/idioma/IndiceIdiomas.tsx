@@ -5,6 +5,7 @@ import BandaLogos from "@/app/components/BandaLogos";
 import CentroDeRecursos from "@/app/components/CentroDeRecursos";
 import CasosDeExito from "@/app/components/proyectos/CasosDeExito";
 import Icono from "@/app/components/Icono";
+import TarjetaDudas from "@/app/components/TarjetaDudas";
 import SeccionEvidencia from "@/app/components/SeccionEvidencia";
 import SelloSTPS from "@/app/components/SelloSTPS";
 import { useContacto } from "@/app/components/contacto/useContacto";
@@ -277,10 +278,7 @@ export default function IndiceIdiomas() {
       <div className="sp-eyebrow">Preguntas frecuentes</div>
       <h2>Preguntas frecuentes sobre cursos de idiomas para empresas</h2>
       <p>Hemos recopilado las dudas más comunes de nuestros clientes para brindarle claridad desde el primer momento.</p>
-      <div className={`sp-cta-card ${styles.faqCtaCard}`}>
-        <p>¿Tiene una pregunta que no está aquí?</p>
-        <button className="sp-btn sp-btn--rojo" onClick={abrir}>Solicite una Cotización</button>
-      </div>
+      <TarjetaDudas />
     </div>
     <div className="sp-faq-lista reveal">
       <details className="sp-faq-item" name="faq-indice">

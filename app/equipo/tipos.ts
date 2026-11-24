@@ -84,8 +84,6 @@ export type DatosEquipo = {
   faq: {
     titulo: string;
     texto: string;
-    ctaTitulo: string;
-    ctaBoton: string;
     preguntas: { pregunta: string; respuesta: ReactNode; respuestaPlana: string }[];
   };
 

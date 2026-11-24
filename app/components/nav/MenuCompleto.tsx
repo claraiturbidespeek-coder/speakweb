@@ -8,6 +8,7 @@ import {
   ENLACES_EQUIPOS,
   ENLACES_IDIOMAS,
   ENLACE_CLIENTES,
+  ENLACES_RECURSOS,
   ENLACES_SUELTOS,
 } from "./secciones";
 import { irACasosDeExito } from "./irACasosDeExito";
@@ -37,8 +38,9 @@ import styles from "./nav.module.css";
    con un botón para volver. Ese cambio lo gobierna `data-detalle`, y el CSS lo
    ignora por encima del breakpoint.
 
-   Clientes, Conózcanos y Recursos no despliegan nada: navegan (Clientes, a la
-   sección de casos de éxito de la página o del home). Se distinguen por ir tras
+   Idiomas, Equipos y Recursos despliegan su lista. Clientes y Conózcanos no
+   despliegan nada: navegan (Clientes, a la sección de casos de éxito de la
+   página o del home). Se distinguen por ir tras
    una separación, sin el fondo de seleccionado y con una flecha en lugar del
    chevron. Un elemento que lleva a otra página y otro que abre contenido a la
    derecha no deberían verse igual. */
@@ -61,6 +63,7 @@ export default function MenuCompleto() {
       enlaces: [ENLACE_INDICE_IDIOMAS, ...ENLACES_IDIOMAS],
     },
     { clave: "equipos", etiqueta: "Equipos", enlaces: ENLACES_EQUIPOS },
+    { clave: "recursos", etiqueta: "Recursos", enlaces: ENLACES_RECURSOS },
   ];
 
   const activo = grupos.find((g) => g.clave === seleccion) ?? grupos[0];

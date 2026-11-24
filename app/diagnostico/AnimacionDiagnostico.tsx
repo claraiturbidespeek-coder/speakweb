@@ -4,12 +4,15 @@ import { useEffect, useState, type CSSProperties } from "react";
 import styles from "./diagnostico.module.css";
 
 /* La animación del hero de /diagnostico/: qué entrega el diagnóstico, en
-   cuatro pasos sobre 18 puntos, uno por colaborador. Se repite en bucle,
-   PASO ms por paso:
+   cuatro pasos sobre 18 personas, una por colaborador. Cada persona es un
+   círculo con su silueta: gris claro mientras no termina el examen, azul
+   marino con la silueta en blanco cuando termina. Se repite en bucle, PASO ms
+   por paso:
 
-   1. Examen en línea: los puntos se llenan uno a uno, como quien termina.
-   2. Nivel de cada persona: cada punto muestra su nivel.
-   3. Grupos sugeridos: los puntos se juntan en tres grupos, con su nombre.
+   1. Examen en línea: las personas terminan una a una.
+   2. Nivel de cada persona: cada una muestra su nivel junto a su ícono.
+   3. Grupos sugeridos: se juntan en tres grupos de un solo nivel, con su
+      nombre.
    4. Ruta al siguiente nivel: bajo cada grupo avanza una barra, sin cifras.
 
    Cada punto lleva en variables CSS su casilla en la rejilla (pasos 1 y 2) y
@@ -33,21 +36,20 @@ const TITULOS = [
   "Ruta al siguiente nivel",
 ];
 
+/* Un grupo por nivel, sin mezclar. */
 const GRUPOS = [
-  { nombre: "A1 y A2", personas: 6, siguiente: "B1" },
+  { nombre: "A1", personas: 5, siguiente: "A2" },
+  { nombre: "A2", personas: 6, siguiente: "B1" },
   { nombre: "B1", personas: 7, siguiente: "B2" },
-  { nombre: "B2 y C1", personas: 5, siguiente: "C1" },
 ];
 
 /* Ordenados por nivel, así quedan ya en el orden de su grupo. */
 const NIVELES = [
-  "A1", "A1",
-  "A2", "A2", "A2", "A2",
+  "A1", "A1", "A1", "A1", "A1",
+  "A2", "A2", "A2", "A2", "A2", "A2",
   "B1", "B1", "B1", "B1", "B1", "B1", "B1",
-  "B2", "B2", "B2", "B2",
-  "C1",
 ];
-const grupoDe = (nivel: string) => (nivel.startsWith("A") ? 0 : nivel === "B1" ? 1 : 2);
+const grupoDe = (nivel: string) => GRUPOS.findIndex((g) => g.nombre === nivel);
 
 /* Casilla de cada punto en la rejilla de 6 × 3: revueltos, para que en el
    paso 2 los niveles se vean mezclados como en un equipo real. */
@@ -70,7 +72,7 @@ const PUNTOS = NIVELES.map((nivel, i) => {
 });
 
 const DESCRIPCION =
-  "Ejemplo ilustrativo de lo que entrega el diagnóstico, en cuatro pasos: 18 colaboradores presentan el examen en línea; se obtiene el nivel de cada persona (A1: 2, A2: 4, B1: 7, B2: 4, C1: 1); se proponen tres grupos (A1 y A2 con 6 personas, B1 con 7, B2 y C1 con 5); y cada grupo tiene su ruta al siguiente nivel.";
+  "Ejemplo ilustrativo de lo que entrega el diagnóstico, en cuatro pasos: 18 colaboradores presentan el examen en línea; se obtiene el nivel de cada persona (A1: 5, A2: 6, B1: 7); se proponen tres grupos de un solo nivel (A1 con 5 personas, A2 con 6 y B1 con 7); y cada grupo tiene su ruta al siguiente nivel: A1 hacia A2, A2 hacia B1 y B1 hacia B2.";
 
 export default function AnimacionDiagnostico() {
   const [paso, setPaso] = useState(0);
@@ -139,6 +141,12 @@ export default function AnimacionDiagnostico() {
         <div className={styles.animEscena} aria-hidden="true">
           {PUNTOS.map((p, i) => (
             <span key={i} className={styles.animPunto} style={p.estilo}>
+              {/* La silueta: cabeza y hombros en trazo, del color del texto
+                  del círculo (gris o blanco, ver .animPunto). */}
+              <svg className={styles.animPersona} viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="9" r="3.5" />
+                <path d="M5.5 19c.8-3.3 3.4-5.2 6.5-5.2s5.7 1.9 6.5 5.2" />
+              </svg>
               <span className={styles.animNivel}>{p.nivel}</span>
             </span>
           ))}
