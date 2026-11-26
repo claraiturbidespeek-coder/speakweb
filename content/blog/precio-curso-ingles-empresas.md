@@ -3,26 +3,26 @@ title: "Precio de un curso de inglés: cuánto cuesta capacitar a su equipo"
 slug: "precio-curso-ingles-empresas"
 date: "2026-09-01T00:44:25+00:00"
 author: "Andrea Ríos"
-excerpt: "Qué define el precio de un curso de inglés para empresas, cuántas horas requiere subir de nivel y cómo calcular el presupuesto, desde $550 MXN por hora."
+excerpt: "Qué define el precio de un curso de inglés para empresas, cómo calcular el presupuesto de su equipo y qué pedir en una cotización, desde $550 MXN por hora."
 category: "Resultados y ROI"
 categorySlug: "resultados-y-roi"
 tags: []
 featuredImage: "/images/blog/precio-curso-ingles-empresas-portada.webp"
 featuredImageAlt: "Una mano entrega una tarjeta de crédito a un hombre con una terminal de pago, sobre un escritorio de madera."
 seoTitle: "Precio de un curso de inglés para empresas: presupuesto | %%sitename%%"
-seoDescription: "Qué factores definen el precio de un curso de inglés para empresas, cuántas horas se necesitan por nivel y cómo calcular el presupuesto de su equipo."
+seoDescription: "Qué factores definen el precio de un curso de inglés para empresas, cómo calcular el presupuesto de su equipo y qué pedir en una cotización."
 focusKeyword: "cuánto cuesta un curso de inglés para empresas"
-readingTime: 6
+readingTime: 5
 hasLeadForm: true
 ---
 
-Imagine que la Dirección le pide a su área de RH un presupuesto de capacitación en inglés para 30 personas y llegan tres cotizaciones: una por licencia mensual, otra por paquete de horas y otra por mensualidad por persona. A simple vista no se pueden comparar. El precio de un curso de inglés para empresas es el costo total de impartir un número de horas de instrucción a uno o varios grupos, y se compara mejor por hora de instrucción y por resultado que por mensualidad. Esta guía explica qué factores mueven el precio, cuántas horas requiere subir de nivel, cómo calcular el presupuesto de un equipo y qué pedir en una cotización. La preparamos desde la experiencia de S-Peak, cuya tarifa de partida es de $550 MXN por hora de instrucción.
+Imagine que la Dirección le pide a su área de RH un presupuesto de capacitación en inglés para 30 personas y llegan tres cotizaciones: una por licencia mensual, otra por paquete de horas y otra por mensualidad por persona. A simple vista no se pueden comparar. El precio de un curso de inglés para empresas es el costo total de impartir un número de horas de instrucción a uno o varios grupos, y se compara mejor por hora de instrucción y por resultado que por mensualidad. Esta guía explica qué factores mueven el precio, cómo calcular el presupuesto de un equipo y qué pedir en una cotización. La preparamos desde la experiencia de S-Peak, cuya tarifa de partida es de $550 MXN por hora de instrucción.
 
 ## ¿Cuánto cuesta un curso de inglés para empresas?
 
 El costo total depende de cuántas horas de instrucción necesita el programa, y nuestra tarifa de partida es de $550 MXN por hora de instrucción. Para estimar un presupuesto, multiplique las horas del programa por la tarifa por hora y sume lo que cada propuesta incluya aparte, como evaluaciones o reportes.
 
-A modo de ejemplo, un programa de 24 horas (dos sesiones semanales de una hora durante 12 semanas) suma $13,200 MXN de instrucción a esa tarifa de partida. La cifra final cambia con los factores de la siguiente sección.
+La cifra final cambia con los factores de la siguiente sección, y por eso conviene comparar siempre qué incluye cada propuesta y no solo la tarifa.
 
 ## ¿Qué factores determinan el precio de un curso de inglés para empresas?
 
@@ -38,28 +38,7 @@ Los factores de un vistazo:
 | Especialización del contenido | Un contenido por industria (finanzas, medicina, ingeniería) requiere más diseño | Si el temario se adapta a los puestos de su equipo |
 | Evaluación y seguimiento | Los diagnósticos y reportes pueden venir incluidos o cobrarse aparte | Qué evaluaciones y reportes de avance recibe Recursos Humanos |
 
-Para profundizar en cómo auditar una propuesta, consulte la guía sobre [cuánto cuesta un curso de inglés corporativo en México y cómo revisar una cotización](https://s-peak.com/blog-ingles-corporativo-mexico-precio/).
-
-## ¿Cuántas horas se necesitan para subir de nivel y cómo afecta el presupuesto?
-
-En general se necesitan unas 200 horas de aprendizaje guiado para pasar de un nivel del MCER al siguiente, así que conviene presupuestar por etapas y con metas medibles.
-
-> **Dato clave:** Cambridge English estima, como orientación, entre 350 y 400 horas de aprendizaje guiado acumuladas desde cero para llegar al nivel B1 y entre 500 y 600 para B2, y en general unas 200 horas para pasar de un nivel al siguiente. Son cifras aproximadas: cada persona puede necesitar más o menos tiempo ([Cambridge English](https://support.cambridgeenglish.org/hc/en-gb/articles/202838506-Guided-learning-hours)).
-
-Las horas acumuladas, de un vistazo:
-
-| Nivel del MCER | Horas de aprendizaje guiado acumuladas (aproximadas) |
-| --- | --- |
-| A1 | 90 a 100 |
-| A2 | 180 a 200 |
-| B1 | 350 a 400 |
-| B2 | 500 a 600 |
-| C1 | 700 a 800 |
-| C2 | 1,000 a 1,200 |
-
-Fuente: [Cambridge English](https://support.cambridgeenglish.org/hc/en-gb/articles/202838506-Guided-learning-hours). Horas aproximadas de aprendizaje guiado acumuladas desde cero.
-
-Para estimar el costo de subir un nivel, multiplique la tarifa por hora de instrucción por unas 200 horas. Para saber qué nivel necesita cada área antes de presupuestar, revise la guía sobre el [nivel de inglés que requiere cada área de la empresa](https://s-peak.com/blog-nivel-ingles-empresas-areas/).
+Para saber qué nivel necesita cada área antes de presupuestar, revise la guía sobre el [nivel de inglés que requiere cada área de la empresa](https://s-peak.com/blog-nivel-ingles-empresas-areas/). Para profundizar en cómo auditar una propuesta, consulte la guía sobre [cuánto cuesta un curso de inglés corporativo en México y cómo revisar una cotización](https://s-peak.com/blog-ingles-corporativo-mexico-precio/).
 
 ## ¿Es más barato un curso grupal o uno individual para una empresa?
 
@@ -88,11 +67,11 @@ Depende de las horas, el tamaño del grupo, la modalidad y los servicios incluid
 
 ### ¿Cómo calcular el presupuesto de capacitación en inglés de un equipo?
 
-Multiplique las horas de instrucción del programa por la tarifa por hora y sume evaluaciones, materiales y reportes si se cobran aparte. Por ejemplo, 24 horas a $550 MXN por hora suman $13,200 MXN. Después, defina cuántos grupos necesita según el nivel y las tareas de cada área, y confirme con el proveedor cómo se cobra cada grupo.
+Multiplique las horas de instrucción del programa por la tarifa por hora y sume evaluaciones, materiales y reportes si se cobran aparte. Después, defina cuántos grupos necesita según el nivel y las tareas de cada área, y confirme con el proveedor cómo se cobra cada grupo y qué ocurre si una sesión se cancela.
 
-### ¿Cuántas horas se necesitan para subir un nivel de inglés?
+### ¿Conviene presupuestar todo el programa de una vez o por etapas?
 
-Según Cambridge English, en general se necesitan unas 200 horas de aprendizaje guiado para pasar de un nivel del MCER al siguiente. Son cifras aproximadas: cada persona puede necesitar más o menos tiempo. Por eso conviene presupuestar por etapas, con evaluaciones al inicio y al final, en lugar de comprometer toda la inversión en un solo paso.
+Conviene por etapas. Cada etapa debe cerrar con una evaluación que muestre si el equipo avanzó, para decidir con datos si se continúa, se ajusta el contenido o se cambian los grupos. Así la empresa no compromete toda la inversión antes de comprobar que el programa funciona.
 
 ### ¿La capacitación en idiomas es una obligación de la empresa?
 
