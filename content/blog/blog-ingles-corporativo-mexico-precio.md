@@ -22,7 +22,7 @@ Imagine que su área de RH recibe tres cotizaciones para el mismo curso de ingl�
 
 No existe un precio único: depende de las horas que necesita el equipo, el tamaño de los grupos, el formato y lo que la propuesta incluya o cobre aparte.
 
-Piense en un área de RH que debe capacitar a un grupo de vendedores y a tres directivos con el mismo presupuesto. Lo más probable es que descubra que no son compras equivalentes. Como referencia, la tarifa de partida de S-Peak es desde $500 MXN por hora de instrucción; el costo final de cada programa se define según el equipo y el alcance. Para estimar cuántas horas necesita su equipo, consulte [cómo presupuestar un curso de inglés para su empresa](https://s-peak.com/precio-curso-ingles-empresas/).
+Piense en un área de RH que debe capacitar a un grupo de vendedores y a tres directivos con el mismo presupuesto. Lo más probable es que descubra que no son compras equivalentes. Como referencia, la tarifa de partida de S-Peak es desde $550 MXN por hora de instrucción; el costo final de cada programa se define según el equipo y el alcance. Para estimar cuántas horas necesita su equipo, consulte [cómo presupuestar un curso de inglés para su empresa](https://s-peak.com/precio-curso-ingles-empresas/).
 
 ### Las tres formas de cotizar, de un vistazo
 
