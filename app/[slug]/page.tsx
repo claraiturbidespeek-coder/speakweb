@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import BotonContacto from "@/app/components/contacto/BotonContacto";
 import IndiceContenidos from "@/app/components/IndiceContenidos";
+import TarjetaArticulo, { colorDeTarjeta } from "@/app/components/TarjetaArticulo";
 import {
   formatearFecha,
   obtenerPosts,
@@ -10,8 +11,8 @@ import {
   renderizarPost,
   type PostRenderizado,
 } from "@/lib/posts";
-import { atributosDimension } from "@/lib/dimensiones";
 import styles from "./nota.module.css";
+import { atributosDimension } from "@/lib/dimensiones";
 import { imagenResponsiva } from "@/lib/imagenes";
 
 const SITIO = "https://s-peak.com";
@@ -123,6 +124,13 @@ export default async function Nota(props: PageProps<"/[slug]">) {
   if (!post) notFound();
 
   const relacionados = obtenerRelacionados(post.slug, post.categorySlug);
+  /* El color de la barra es el de la tarjeta de esta nota. La posición solo
+     cuenta si la categoría no tiene color propio, y entonces es la misma que
+     en el índice del blog, que pinta las notas en el orden de obtenerPosts(). */
+  const color = colorDeTarjeta(
+    post.categorySlug,
+    obtenerPosts().findIndex((p) => p.slug === post.slug),
+  );
 
   return (
     <main>
@@ -133,7 +141,7 @@ export default async function Nota(props: PageProps<"/[slug]">) {
         dangerouslySetInnerHTML={{ __html: datosEstructurados(post) }}
       />
       <article>
-        <header className={`sp-seccion ${styles.cabecera}`}>
+        <header className={`sp-seccion ${styles.cabecera} ${styles[color]}`}>
           <div className={`sp-inner ${styles.cabeceraInner}`}>
             <p className={styles.meta}>
               <span className={styles.metaItem}>
@@ -174,30 +182,10 @@ export default async function Nota(props: PageProps<"/[slug]">) {
               </span>
             </p>
 
-            <h1 className={styles.titulo}>{post.title}</h1>
-
-            {post.excerpt ? (
-              <p className={styles.extracto}>{post.excerpt}</p>
-            ) : null}
-          </div>
-        </header>
-
-        {post.featuredImage ? (
-          /* Es el LCP de la nota: carga inmediata y prioridad alta. Las
-             dimensiones reservan su sitio antes de que llegue. */
-          <img
-            className={styles.destacada}
-            {...imagenResponsiva(post.featuredImage, "100vw")}
-            alt={post.featuredImageAlt ?? ""}
-            {...atributosDimension(post.featuredImage)}
-            loading="eager"
-            fetchPriority="high"
-          />
-        ) : null}
-
-        <div className="sp-seccion">
-          <div className="sp-inner sp-lectura">
-            <div className="sp-lectura-principal">
+            {/* Titular y tiempo de lectura van juntos: entre ellos la separación
+                es menor que la del resto de la cabecera. */}
+            <div className={styles.tituloBloque}>
+              <h1 className={styles.titulo}>{post.title}</h1>
               {post.readingTime ? (
                 <p className={styles.lectura}>
                   <svg
@@ -216,14 +204,45 @@ export default async function Nota(props: PageProps<"/[slug]">) {
                   Tiempo estimado de lectura: {post.readingTime} minutos
                 </p>
               ) : null}
+            </div>
 
+            {post.excerpt ? (
+              <p className={styles.extracto}>{post.excerpt}</p>
+            ) : null}
+          </div>
+        </header>
+
+
+        <div className="sp-seccion">
+          <div className="sp-inner sp-lectura">
+            {post.featuredImage ? (
+              /* La imagen destacada entera, con su proporción original, del
+                 ancho de la columna de texto. Es lo primero que se ve bajo la
+                 cabecera, así que es candidata a LCP: carga inmediata y
+                 prioridad alta.
+
+                 El sizes es el mismo de las imágenes del cuerpo (lib/posts.ts),
+                 porque ocupa la misma columna y tampoco se recorta. */
+              <img
+                className={styles.panoramica}
+                {...imagenResponsiva(
+                  post.featuredImage,
+                  "(max-width: 960px) calc(100vw - 40px), (max-width: 1280px) 61vw, 780px",
+                )}
+                alt={post.featuredImageAlt ?? ""}
+                {...atributosDimension(post.featuredImage)}
+                loading="eager"
+                fetchPriority="high"
+              />
+            ) : null}
+            <div className={`sp-lectura-principal ${styles.principal}`}>
               <div
                 className={styles.contenido}
                 dangerouslySetInnerHTML={{ __html: post.html }}
               />
             </div>
 
-            <aside className="sp-lectura-lateral">
+            <aside className={`sp-lectura-lateral ${styles.lateral}`}>
               <div className="sp-lectura-sticky">
                 <IndiceContenidos encabezados={post.encabezados} />
 
@@ -247,25 +266,16 @@ export default async function Nota(props: PageProps<"/[slug]">) {
           <div className={`sp-inner ${styles.relacionadosInner}`}>
             <h2 className={styles.relacionadosTitulo}>Artículos Relacionados</h2>
             <ul className={styles.relacionadosLista}>
-              {relacionados.map((r) => (
-                <li key={r.slug} className="sp-post-card">
-                  <Link className="sp-post-enlace" href={`/${r.slug}/`}>
-                    {r.featuredImage ? (
-                      <img
-                        className="sp-post-img"
-                        {...imagenResponsiva(
-                          r.featuredImage,
-                          "(max-width: 600px) 85vw, (max-width: 960px) 290px, 310px",
-                          5 / 4,
-                        )}
-                        alt={r.featuredImageAlt ?? ""}
-                        {...atributosDimension(r.featuredImage)}
-                        loading="lazy"
-                      />
-                    ) : null}
-                    <h3 className="sp-post-titulo">{r.title}</h3>
-                  </Link>
-                </li>
+              {relacionados.map((r, i) => (
+                <TarjetaArticulo
+                  key={r.slug}
+                  como="li"
+                  titulo={r.title}
+                  href={`/${r.slug}/`}
+                  categoria={r.categorySlug}
+                  resumen={r.excerpt ?? r.resumen}
+                  indice={i}
+                />
               ))}
             </ul>
           </div>

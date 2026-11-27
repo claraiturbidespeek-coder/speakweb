@@ -165,8 +165,8 @@ export function obtenerPosts(): Post[] {
    cubierta sin tocar el .md.
 
    `loading="lazy"` y `decoding="async"` porque ninguna de estas es el LCP: van
-   siempre debajo del titular y de la imagen destacada, que sí lo es y se sirve
-   aparte desde la plantilla. Si una imagen no se puede leer —externa o de un
+   siempre debajo de la cabecera de la nota y de la imagen
+   destacada, que sí puede serlo y se sirve aparte desde la plantilla. Si una imagen no se puede leer —externa o de un
    formato que no es WebP ni SVG— se deja sin dimensiones en vez de inventarlas. */
 function prepararImagenes() {
   return () => (arbol: Root) => {

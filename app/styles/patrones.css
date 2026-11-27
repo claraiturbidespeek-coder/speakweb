@@ -1009,63 +1009,102 @@
 }
 
 /* ========== Tarjeta de artículo ==========
-   Tres implementaciones: los teasers del home, los relacionados de una nota y
-   las tarjetas del índice del blog. Ninguna de las dos páginas de referencia
-   tiene una, así que manda la coincidencia: dos de las tres usaban proporción
-   5:4, título de 16px y subrayado al pasar el cursor.
+   Una sola, TarjetaArticulo.tsx, en los tres sitios donde sale: el carrusel
+   Centro de Recursos, los relacionados de una nota y el índice del blog.
 
-   La caja es una tarjeta de verdad, con la misma receta que `.sp-tarjeta`:
-   superficie blanca, `--radius-grande` (el radio de las superficies, ver
-   tokens.css) y el filo de `--color-border`, que es la definición mínima con
-   que el sistema despega una superficie blanca del off-white. El `--space-inset`
-   rodea todo el contenido por igual, imagen incluida, así que no hace falta
-   recortar nada con `overflow`: nada llega al borde. */
+   Sin imagen: un bloque de color sólido de la marca, sin rojo claro ni tintes:
+   navy y rojo con texto blanco, amarillo con texto navy (el blanco no da
+   contraste sobre el amarillo). Cuál le toca a cada nota lo decide el
+   componente. Todo va a la izquierda: la flecha de enlace arriba a la derecha
+   y, debajo, el título y el resumen.
+
+   El alto sale de la proporción 4:5: como todas las tarjetas de un listado
+   miden lo mismo de ancho, todas miden lo mismo de alto, sea cual sea el
+   título. Con `--radius-grande`, el de los bloques de color. Al pasar el
+   cursor no se mueve ni se subraya nada: solo aparece el halo navy. */
 
 .sp-post-card {
-  background: var(--color-white);
-  border: 1px solid var(--color-border);
+  display: flex;
+  aspect-ratio: 4 / 5;
+  min-width: 0;
   border-radius: var(--radius-grande);
-  padding: var(--space-inset);
+  overflow: hidden;
+  transition: box-shadow var(--transition-fast);
 }
 
-.sp-post-img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 5 / 4;
-  object-fit: cover;
-  background: rgba(26, 60, 77, 0.06);
+.sp-post-card:hover {
+  box-shadow: var(--shadow-halo-navy);
 }
 
-/* Dentro del inset y con radio propio en las cuatro esquinas: `--radius`, el de
-   las cajas pequeñas, que es menor que el `--radius-grande` de la tarjeta. Las
-   dos curvas se leen como una pieza dentro de otra, no como una esquina doble,
-   porque entre ellas hay aire. */
-.sp-post-card .sp-post-img {
-  border-radius: var(--radius);
+.sp-post-card--navy {
+  background: var(--color-navy);
+  color: var(--color-white);
 }
 
-.sp-post-titulo {
-  margin: 16px 0 0;
-  font-size: 16px;
-  font-weight: var(--weight-semibold);
-  line-height: 1.35;
+.sp-post-card--rojo {
+  background: var(--color-red);
+  color: var(--color-white);
+}
+
+.sp-post-card--amarillo {
+  background: var(--color-yellow);
   color: var(--color-navy);
 }
 
+/* El enlace es la tarjeta entera: el inset va en él y no en la caja, para que
+   todo el bloque sea clicable. En columna: la flecha ocupa su fila arriba y el
+   texto se centra en el alto que queda, así nunca se montan. */
+.sp-post-enlace {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: var(--space-inset);
+  color: inherit;
+  text-align: left;
+  text-decoration: none;
+}
+
+.sp-post-enlace:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -6px;
+}
+
+/* Solo el trazo, sin cuadro de fondo: el color lo hereda de la tarjeta. */
+.sp-post-flecha {
+  align-self: flex-end;
+  color: inherit;
+}
+
+.sp-post-texto {
+  margin-block: auto;
+  min-width: 0;
+}
+
+/* Más de cinco líneas se corta con puntos suspensivos. Solo aquí: en la nota
+   el título va completo. Sin subrayado en ningún estado. */
+.sp-post-titulo {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  overflow: hidden;
+  margin: 0;
+  font-size: 18px;
+  font-weight: var(--weight-bold);
+  line-height: 1.35;
+  color: inherit;
+  text-decoration: none;
+  overflow-wrap: break-word;
+}
+
+/* El recorte a 15 palabras lo hace el componente, no el CSS. */
 .sp-post-resumen {
   margin: 12px 0 0;
   font-size: 14px;
   font-weight: var(--weight-normal);
   line-height: 1.6;
-  color: var(--color-navy);
-}
-
-.sp-post-enlace {
-  display: block;
-}
-
-.sp-post-enlace:hover .sp-post-titulo {
-  text-decoration: underline;
+  color: inherit;
 }
 
 /* ========== Carrusel horizontal ==========
@@ -1215,10 +1254,25 @@
   gap: 30px;
 }
 
-/* Solo la medida dentro del track: la caja (superficie, filo, radio y padding)
-   la pone `.sp-post-card`, que esta tarjeta lleva también. Antes el radio y el
-   `overflow` vivían aquí, sin padding que los acompañara, y la curva se comía
-   el arranque del título. */
+/* El track recorta lo que sale de él (overflow), y con sus 8px y 14px de
+   relleno el halo de `.sp-post-card:hover` quedaba cortado arriba, abajo y en
+   la primera y la última tarjeta. Se le da relleno para el halo y un margen
+   negativo igual que lo devuelve: las tarjetas no se mueven de sitio.
+
+   28px arriba y abajo y 24px a los lados, al menos los 24px que alcanza
+   `--shadow-halo-navy`. A los lados el track sobresale 24px de su caja: cabe
+   dentro del gutter de la sección más su margen del 2% (26,4px en la pantalla
+   más estrecha, 320px), así que no abre scroll horizontal. Si el halo crece,
+   este relleno tiene que crecer con él. */
+.sp-recursos-track.sp-carrusel-track {
+  padding: 28px 24px;
+  margin: -20px -24px -14px;
+  width: calc(100% + 48px);
+  max-width: none;
+}
+
+/* Solo la medida dentro del track: la caja (color, proporción, radio y
+   padding) la pone `.sp-post-card`, que esta tarjeta lleva también. */
 .sp-recursos-tarjeta {
   flex: 0 0 calc((100% - 3 * 30px) / 4);
   min-width: 0;

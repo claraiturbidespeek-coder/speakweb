@@ -8,9 +8,9 @@ import styles from "./ListadoBlog.module.css";
 const TODOS = "todos";
 const PASO = 9;
 
-// Las 26 tarjetas llegan como children ya renderizadas en el servidor: aquí no
+// Las 22 tarjetas llegan como children ya renderizadas en el servidor: aquí no
 // se pinta ninguna. Este componente solo gobierna dos atributos del envoltorio
-// y el CSS decide qué se ve. Así los 26 enlaces están en el HTML inicial.
+// y el CSS decide qué se ve. Así los 22 enlaces están en el HTML inicial.
 export default function ListadoBlog({
   categorias,
   total,
@@ -75,7 +75,7 @@ export default function ListadoBlog({
       </div>
 
       {/* Sin JavaScript el estado nunca cambia y solo se verían las primeras
-          nueve. Esto devuelve las 26 a la vista. */}
+          nueve. Esto devuelve las 22 a la vista. */}
       <noscript>
         <style>{`.${styles.rejilla} > * { display: block !important }`}</style>
       </noscript>

@@ -22,7 +22,13 @@
    Excepción acordada: el footer lleva `correo` junto al correo de contacto
    (EnlaceCorreo.tsx). El footer es común a todo el sitio y no cuenta como
    contenido de la página, así que no es repetición aunque la página use
-   `correo` en su contenido, como cuatro de las de equipo. */
+   `correo` en su contenido, como cuatro de las de equipo.
+
+   Excepción acordada: la tarjeta de artículo (TarjetaArticulo.tsx) lleva
+   `flechaEnlace` en la esquina, y se repite en todas las tarjetas de un
+   listado —el carrusel Centro de Recursos, el índice del blog y los
+   relacionados de una nota—. Es la marca de "esto es un enlace", la misma en
+   cada tarjeta, como el correo del pie. */
 
 const TRAZOS: Record<string, string> = {
   // — Genéricos del hero —
@@ -112,6 +118,10 @@ const TRAZOS: Record<string, string> = {
   portapapelesCheck:
     "rect:8,4,8,2,1|M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2|m9 14 2 2 4-4",
   palomita: "M20 6 9 17l-5-5",
+
+  // — Tarjeta de artículo —
+  /* Diagonal hacia arriba y a la derecha: la de un enlace (arrow-up-right). */
+  flechaEnlace: "M7 7h10v10|M7 17 17 7",
 };
 
 /* Marcas de marca: un solo trazado relleno, no un contorno de Lucide. Van en

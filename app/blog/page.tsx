@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import ListadoBlog from "@/app/components/ListadoBlog";
+import TarjetaArticulo from "@/app/components/TarjetaArticulo";
 import { obtenerCategorias, obtenerPosts } from "@/lib/posts";
 import styles from "./blog.module.css";
-import { atributosDimension } from "@/lib/dimensiones";
-import { imagenResponsiva } from "@/lib/imagenes";
 
-/* La descripción nombra lo que el centro de recursos tiene de verdad —26
+/* La descripción nombra lo que el centro de recursos tiene de verdad —22
    artículos repartidos en cinco categorías— y no guías, tutoriales ni
    plantillas descargables, que es lo que prometía antes y no existen. */
 export const metadata: Metadata = {
@@ -52,30 +50,17 @@ export default function Blog() {
           <h2 className={styles.tituloSeccion}>Artículos</h2>
 
           <ListadoBlog categorias={categorias} total={posts.length}>
-            {posts.map((post) => (
-              <li
+            {posts.map((post, i) => (
+              <TarjetaArticulo
                 key={post.slug}
-                className={`sp-post-card ${styles.tarjeta}`}
-                data-categoria={post.categorySlug}
-              >
-                <Link className="sp-post-enlace" href={`/${post.slug}/`}>
-                  {post.featuredImage ? (
-                    <img
-                      className="sp-post-img"
-                      {...imagenResponsiva(
-                        post.featuredImage,
-                        "(max-width: 600px) 75vw, (max-width: 960px) 34vw, (max-width: 1440px) 24vw, 360px",
-                        5 / 4,
-                      )}
-                      alt={post.featuredImageAlt ?? ""}
-                      {...atributosDimension(post.featuredImage)}
-                      loading="lazy"
-                    />
-                  ) : null}
-                  <h3 className="sp-post-titulo">{post.title}</h3>
-                </Link>
-                <p className="sp-post-resumen">{post.resumen}</p>
-              </li>
+                como="li"
+                className={styles.tarjeta}
+                titulo={post.title}
+                href={`/${post.slug}/`}
+                categoria={post.categorySlug}
+                resumen={post.excerpt ?? post.resumen}
+                indice={i}
+              />
             ))}
           </ListadoBlog>
         </div>

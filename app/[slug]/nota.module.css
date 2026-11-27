@@ -1,38 +1,56 @@
 /* Nota del blog.
    Tipografía, espaciado vertical y tratamiento del cuerpo: post-6445.css de la
    referencia, con los porcentajes convertidos al viewport de 1416px.
-   Imagen destacada, índice y tarjetas de relacionados no existen en la
+   La barra de color, el índice y las tarjetas de relacionados no existen en la
    referencia: esos vienen del sistema del sitio y de landing.css. */
 
 /* ---------- Cabecera ----------
-   Los tres contenedores de la nota usan el tope de lectura, no el del sitio:
-   con 1360 la columna del artículo se iría a 980px. Ver tokens.css. */
+   Una barra de color a todo el ancho, con el color de la tarjeta de la nota
+   (TarjetaArticulo.tsx): navy y rojo con texto blanco, amarillo con texto
+   navy. Todo va a la izquierda y en el mismo contenedor de lectura que el
+   cuerpo, así que la cabecera arranca en el mismo margen que el texto.
+
+   La imagen destacada no va aquí: va debajo, entera (ver «Imagen
+   destacada»). Además sigue en Open Graph, Twitter y el JSON-LD. */
 
 /* Ancho completo: radio cero explícito, por lo mismo que el resto de las
    bandas. Ver el token --radius en tokens.css. */
 .cabecera {
-  background: var(--color-blue-hero);
   border-radius: 0;
+}
+
+.navy {
+  background: var(--color-navy);
+  color: var(--color-white);
+}
+
+.rojo {
+  background: var(--color-red);
+  color: var(--color-white);
+}
+
+.amarillo {
+  background: var(--color-yellow);
+  color: var(--color-navy);
 }
 
 .cabeceraInner {
   max-width: var(--container-lectura);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 40px;
+  align-items: flex-start;
+  gap: 24px;
 }
 
 .meta {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
-  gap: 28px;
+  gap: 12px 28px;
   margin: 0;
   font-size: 14px;
   font-weight: 400;
-  color: var(--color-navy);
+  color: inherit;
 }
 
 .metaItem {
@@ -47,56 +65,93 @@
   flex-shrink: 0;
 }
 
+/* Sobre rojo, el hover rojo de antes desaparecía: se marca con subrayado,
+   que se lee en los tres fondos. */
 .metaEnlace {
-  color: var(--color-navy);
+  color: inherit;
   text-decoration: none;
 }
 
 .metaEnlace:hover {
-  color: var(--color-red);
+  text-decoration: underline;
 }
 
 .titulo {
   margin: 0;
   max-width: 900px;
-  text-align: center;
   font-size: var(--text-title-lg);
   font-weight: var(--weight-bold);
   line-height: 1.1;
   letter-spacing: -0.03em;
-  color: var(--color-navy);
+  color: inherit;
 }
 
-.extracto {
-  margin: 0;
-  max-width: 80%;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 26px;
-  color: var(--color-navy);
+/* Titular y «Tiempo estimado de lectura» en un bloque propio: entre los dos
+   14px, menos que los 24px que separan el resto de la cabecera. */
+.tituloBloque {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
 }
 
-/* ---------- Imagen destacada, a ancho completo ---------- */
-
-.destacada {
-  display: block;
-  width: 100%;
-  max-height: 520px;
-  object-fit: cover;
-}
-
-/* ---------- Cuerpo ---------- */
-
+/* Del color de la barra, como el titular; el reloj también, por currentColor. */
 .lectura {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 0 0 30px;
+  margin: 0;
   font-size: 14px;
-  font-weight: 500;
-  color: var(--color-navy);
+  font-weight: var(--weight-normal);
+  color: inherit;
 }
+
+.extracto {
+  margin: 0;
+  max-width: 780px;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 26px;
+  color: inherit;
+}
+
+/* ---------- Imagen destacada ----------
+   La imagen destacada entera, sin recorte, con su proporción original: del
+   ancho de la columna de texto y con el alto que le da esa proporción (los
+   width y height del <img> reservan el sitio antes de que cargue). Con el
+   radio de las tarjetas.
+
+   Va como una pieza más de la rejilla `.sp-lectura` y no dentro de la columna
+   de texto: a 960px o menos, `.sp-lectura-lateral` (índice y tarjeta de
+   contacto) se adelanta con `order: -1`, y la imagen dentro de la columna
+   quedaría debajo de ella. Así, en escritorio ocupa la primera fila de la
+   columna de texto, con el lateral bajando a su lado por las dos filas para
+   que su sticky siga teniendo recorrido; a una columna va antes que el
+   lateral, justo bajo la cabecera. Override acotado a la nota: el patrón
+   `.sp-lectura` lo usa también el aviso de privacidad y no se toca. */
+
+.panoramica {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-grande);
+  background: rgba(26, 60, 77, 0.06);
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.principal {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.lateral {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+/* ---------- Cuerpo ---------- */
+
 
 /* ---------- Contenido markdown — 17px / 33px ---------- */
 
@@ -255,6 +310,18 @@
 /* ---------- Responsive: breakpoints del sitio (960 / 600) ---------- */
 
 @media (max-width: 960px) {
+  /* A una columna: imagen, lateral y texto, en ese orden. */
+  .panoramica {
+    order: -2;
+  }
+
+  .panoramica,
+  .principal,
+  .lateral {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
   .titulo {
     line-height: 1.15;
     letter-spacing: -0.02em;
@@ -262,7 +329,6 @@
 
   .extracto {
     max-width: 100%;
-    text-align: start;
     font-size: 16px;
     line-height: 28px;
   }
